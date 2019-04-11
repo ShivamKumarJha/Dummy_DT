@@ -1,0 +1,12 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.dmapp.rc
+
+#NUBIA: dm instructions
+service dmapp  /vendor/bin/dmapp
+    class main
+    seclabel u:r:dm:s0
+
+#Start Dmapp Services
+on boot
+    start dmapp

@@ -1,0 +1,333 @@
+# Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+on post-fs-data
+   # Nubia add start
+
+    # proximity
+    chown system system /sys/class/proximity/proximity/enable
+    chown system system /sys/class/proximity/proximity/prox_value
+    chown system system /sys/class/proximity/proximity/prox_init
+    chown system system /sys/class/proximity/proximity/chip_name
+    chown system system /sys/class/proximity/proximity/proximity_fb
+
+    chmod 664 /sys/class/proximity/proximity/enable
+    chmod 664 /sys/class/proximity/proximity/prox_value
+    chmod 664 /sys/class/proximity/proximity/prox_init
+    chmod 664 /sys/class/proximity/proximity/chip_name
+    chmod 666 /sys/class/proximity/proximity/proximity_fb
+
+    #prox_value_a belong to the ultrasonic wave sensor node for NX606J
+    chown system system /sys/class/proximity/proximity/prox_value_a
+    chown system system /sys/class/proximity/proximity/dev_init
+    chown system system /sys/class/proximity/proximity/delay
+    chown system system /sys/class/proximity/proximity/prox_manual_calibrate_threshold
+    chown system system /sys/class/proximity/proximity/prox_init
+    chown system system /sys/class/proximity/proximity/prox_threshold_init
+    chown system system /sys/class/proximity/proximity/prox_offset_init
+    chown system system /sys/class/proximity/proximity/prox_thres
+    chown system system /sys/class/proximity/proximity/chip_name
+    chown system system /sys/class/proximity/proximity/prox_threshold_cal_start
+    chown system system /sys/class/proximity/proximity/prox_offset_cal_start
+    chown system system /sys/class/proximity/proximity/prox_offset_cal
+    chown system system /sys/class/proximity/proximity/prox_data_safe_range_max
+    chown system system /sys/class/proximity/proximity/prox_data_safe_range_min
+    chown system system /sys/class/proximity/proximity/prox_calibrate
+    chown system system /sys/class/proximity/proximity/prox_calibrate_start
+    chown system system /sys/class/proximity/proximity/prox_calibrate_result
+    chown system system /sys/class/proximity/proximity/prox_data_max
+    chown system system /sys/class/proximity/proximity/prox_debug
+    chown system system /sys/class/proximity/proximity/prox_thres_max
+    chown system system /sys/class/proximity/proximity/prox_thres_min
+    chown system system /sys/class/proximity/proximity/prox_threshold_high
+    chown system system /sys/class/proximity/proximity/prox_threshold_low
+    chown system system /sys/class/proximity/proximity/prox_thres_param_high
+    chown system system /sys/class/proximity/proximity/prox_thres_param_low
+    chown system system /sys/class/proximity/proximity/prox_pluse_length
+    chown system system /sys/class/proximity/proximity/prox_thres_pulse_count
+    chown system system /sys/class/proximity/proximity/prox_wakelock
+    chown system system /sys/class/proximity/proximity/prox_phone_is_sleep
+    chown system system /sys/class/proximity/proximity/prox_irq
+    chown system system /sys/class/proximity/proximity/prox_offset_cal_verify
+    chown system system /sys/class/proximity/proximity/prox_calibrate_verify
+    chown system system /sys/class/proximity/proximity/reset
+    chown system system /sys/class/proximity/proximity/prox_first_event
+    chown system system /sys/class/proximity/proximity/prox_offset
+    chown system system /sys/class/proximity/proximity/debug
+
+    ##add for TMD3702 for proximity_front for NX616J
+    chown system system /sys/class/proximity_front/proximity_front/enable
+    chown system system /sys/class/proximity_front/proximity_front/prox_uncover_max
+    chown system system /sys/class/proximity_front/proximity_front/prox_uncover_min
+    chown system system /sys/class/proximity_front/proximity_front/reg
+    chown system system /sys/class/proximity_front/proximity_front/prox_value
+    chown system system /sys/class/proximity_front/proximity_front/dev_init
+    chown system system /sys/class/proximity_front/proximity_front/delay
+    chown system system /sys/class/proximity_front/proximity_front/prox_manual_calibrate_threshold
+    chown system system /sys/class/proximity_front/proximity_front/prox_init
+    chown system system /sys/class/proximity_front/proximity_front/prox_threshold_init
+    chown system system /sys/class/proximity_front/proximity_front/prox_offset_init
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres
+    chown system system /sys/class/proximity_front/proximity_front/chip_name
+    chown system system /sys/class/proximity_front/proximity_front/prox_threshold_cal_start
+    chown system system /sys/class/proximity_front/proximity_front/prox_offset_cal_start
+    chown system system /sys/class/proximity_front/proximity_front/prox_offset_cal
+    chown system system /sys/class/proximity_front/proximity_front/prox_data_safe_range_max
+    chown system system /sys/class/proximity_front/proximity_front/prox_data_safe_range_min
+    chown system system /sys/class/proximity_front/proximity_front/prox_calibrate
+    chown system system /sys/class/proximity_front/proximity_front/prox_calibrate_start
+    chown system system /sys/class/proximity_front/proximity_front/prox_calibrate_result
+    chown system system /sys/class/proximity_front/proximity_front/prox_data_max
+    chown system system /sys/class/proximity_front/proximity_front/prox_debug
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres_max
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres_min
+    chown system system /sys/class/proximity_front/proximity_front/prox_threshold_high
+    chown system system /sys/class/proximity_front/proximity_front/prox_threshold_low
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres_param_high
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres_param_low
+    chown system system /sys/class/proximity_front/proximity_front/prox_pluse_length
+    chown system system /sys/class/proximity_front/proximity_front/prox_thres_pulse_count
+    chown system system /sys/class/proximity_front/proximity_front/prox_wakelock
+    chown system system /sys/class/proximity_front/proximity_front/prox_phone_is_sleep
+    chown system system /sys/class/proximity_front/proximity_front/prox_irq
+    chown system system /sys/class/proximity_front/proximity_front/prox_offset_cal_verify
+    chown system system /sys/class/proximity_front/proximity_front/prox_calibrate_verify
+    chown system system /sys/class/proximity_front/proximity_front/reset
+    chown system system /sys/class/proximity_front/proximity_front/prox_first_event
+    chown system system /sys/class/proximity_front/proximity_front/prox_offset
+    chown system system /sys/class/proximity_front/proximity_front/debug
+
+    ##add for PA224 for proximity_back for NX616J
+    chown system system /sys/class/proximity_back/proximity_back/debug
+    chown system system /sys/class/proximity_back/proximity_back/chip_name
+    chown system system /sys/class/proximity_back/proximity_back/enable
+    chown system system /sys/class/proximity_back/proximity_back/prox_data_max
+    chown system system /sys/class/proximity_back/proximity_back/prox_debug
+    chown system system /sys/class/proximity_back/proximity_back/prox_first_event
+    chown system system /sys/class/proximity_back/proximity_back/prox_gain
+    chown system system /sys/class/proximity_back/proximity_back/prox_init
+    chown system system /sys/class/proximity_back/proximity_back/prox_offset
+    chown system system /sys/class/proximity_back/proximity_back/prox_offset_cal
+    chown system system /sys/class/proximity_back/proximity_back/prox_persist
+    chown system system /sys/class/proximity_back/proximity_back/prox_raw
+    chown system system /sys/class/proximity_back/proximity_back/prox_regs
+    chown system system /sys/class/proximity_back/proximity_back/prox_thres
+    chown system system /sys/class/proximity_back/proximity_back/prox_thres_max
+    chown system system /sys/class/proximity_back/proximity_back/prox_thres_min
+    chown system system /sys/class/proximity_back/proximity_back/prox_uncover_max
+    chown system system /sys/class/proximity_back/proximity_back/prox_uncover_min
+    chown system system /sys/class/proximity_back/proximity_back/prox_value
+
+    chmod 0777 /persist/sensors
+
+    #prox_value_a belong to the ultrasonic wave sensor node for NX606J
+	chmod 0644 /sys/class/proximity/proximity/reset
+    chmod 0644 /sys/class/proximity/proximity/reg
+    chmod 0644 /sys/class/proximity/proximity/prox_value_a
+    chmod 0644 /sys/class/proximity/proximity/prox_value
+    chmod 0644 /sys/class/proximity/proximity/prox_offset_cal
+    chmod 0644 /sys/class/proximity/proximity/dev_init
+    chmod 0644 /sys/class/proximity/proximity/prox_manual_calibrate_threshold
+    chmod 0644 /sys/class/proximity/proximity/chip_name
+    chmod 0644 /sys/class/proximity/proximity/prox_threshold_cal_start
+    chmod 0644 /sys/class/proximity/proximity/prox_offset_cal_start
+    chmod 0644 /sys/class/proximity/proximity/prox_data_safe_range_max
+    chmod 0644 /sys/class/proximity/proximity/prox_data_safe_range_min
+    chmod 0644 /sys/class/proximity/proximity/prox_calibrate_start
+    chmod 0644 /sys/class/proximity/proximity/prox_calibrate_result
+    chmod 0644 /sys/class/proximity/proximity/prox_debug
+    chmod 0644 /sys/class/proximity/proximity/prox_uncover_max
+    chmod 0644 /sys/class/proximity/proximity/prox_uncover_min
+    chmod 0644 /sys/class/proximity/proximity/prox_thres_max
+    chmod 0644 /sys/class/proximity/proximity/prox_thres_min
+    chmod 0644 /sys/class/proximity/proximity/prox_threshold_high
+    chmod 0644 /sys/class/proximity/proximity/prox_threshold_low
+    chmod 0644 /sys/class/proximity/proximity/prox_pluse_length
+    chmod 0644 /sys/class/proximity/proximity/prox_thres_pulse_count
+    chmod 0644 /sys/class/proximity/proximity/prox_irq
+    chmod 0644 /sys/class/proximity/proximity/prox_offset_cal_verify
+    chmod 0644 /sys/class/proximity/proximity/prox_calibrate_verify
+    chmod 0644 /sys/class/proximity/proximity/prox_first_event
+    chmod 0644 /sys/class/proximity/proximity/prox_offset
+
+	##add for TMD3702 for proximity_front for NX616J
+    chmod 0666 /sys/class/proximity_front/proximity_front/enable    
+    chmod 0666 /sys/class/proximity_front/proximity_front/prox_init
+    chmod 0644 /sys/class/proximity_front/proximity_front/reset
+    chmod 0644 /sys/class/proximity_front/proximity_front/reg
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_value
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset_cal
+    chmod 0644 /sys/class/proximity_front/proximity_front/dev_init
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_manual_calibrate_threshold
+    chmod 0644 /sys/class/proximity_front/proximity_front/chip_name
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_threshold_cal_start
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset_cal_start
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_data_safe_range_max
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_data_safe_range_min
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_calibrate_start
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_calibrate_result
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_debug
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_uncover_max
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_uncover_min
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_thres_max
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_thres_min
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_threshold_high
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_threshold_low
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_pluse_length
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_thres_pulse_count
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_irq
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset_cal_verify
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_calibrate_verify
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_first_event
+    chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset
+
+	##add for PA224 for proximity_back for NX616J
+	chmod 0664 /sys/class/proximity_back/proximity_back/chip_name
+    chmod 0666 /sys/class/proximity_back/proximity_back/enable
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_data_max
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_debug
+#   chmod 0664 /sys/class/proximity_back/proximity_back/prox_detect
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_first_event
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_gain
+    chmod 0666 /sys/class/proximity_back/proximity_back/prox_init
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_offset
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_offset_cal
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_persist
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_raw
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_regs
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_thres
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_thres_max
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_thres_min
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_uncover_max
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_uncover_min
+    chmod 0664 /sys/class/proximity_back/proximity_back/prox_value
+
+    chown system system /persist/sensors/xtalk_cal
+    chmod 0664 /persist/sensors/xtalk_cal
+    ## for PA224
+    chown system system /persist/sensors/xtalk_cal2
+    chmod 0664 /persist/sensors/xtalk_cal2
+
+    ## for g_sensor_calibration FFBM calibration set result flag
+    chmod 0664 /persist/sensors/g_sensor_cal
+    chown system system /persist/sensors/g_sensor_cal
+
+    # light
+    chown system system /sys/class/light/light/enable
+    chown system system /sys/class/light/light/tp_cfg
+    chown system system /sys/class/light/light/fac_calibrate
+    chown system system /sys/class/light/light/calibrate
+    chown system system /sys/class/light/light/chip_name
+    chown system system /sys/class/light/light/light_value
+    chown system system /sys/class/light/light/delay
+    chown system system /sys/class/light/light/red_data
+    chown system system /sys/class/light/light/green_data
+    chown system system /sys/class/light/light/blue_data
+    chown system system /sys/class/light/light/clear_data
+    chown system system /sys/class/light/light/dump_reg
+    chown system system /sys/class/light/light/module_tpcolor
+    chown system system /sys/class/light/light/dump_tp_parameter
+    chown system system /sys/class/light/light/dev_init
+
+    chmod 0644 system system /sys/class/light/light/enable
+    chmod 0644 system system /sys/class/light/light/tp_cfg
+    chmod 0644 system system /sys/class/light/light/fac_calibrate
+    chmod 0644 system system /sys/class/light/light/calibrate
+    chmod 0644 system system /sys/class/light/light/chip_name
+    chmod 0644 system system /sys/class/light/light/light_value
+    chmod 0644 system system /sys/class/light/light/delay
+    chmod 0644 system system /sys/class/light/light/red_data
+    chmod 0644 system system /sys/class/light/light/blue_data
+    chmod 0644 system system /sys/class/light/light/green_data
+    chmod 0644 system system /sys/class/light/light/clear_data
+    chmod 0644 system system /sys/class/light/light/dump_reg
+    chmod 0644 system system /sys/class/light/light/module_tpcolor
+    chmod 0644 system system /sys/class/light/light/dump_tp_parameter
+    chown 0644 system system /sys/class/light/light/dev_init
+    chown system system /persist/sensors/rgb_color_cfg
+    chmod 0664 /persist/sensors/rgb_color_cfg
+    chown system system /persist/sensors/rgbc_cfg
+    chmod 0664 /persist/sensors/rgbc_cfg
+
+    # Optical key left
+    chown system system /sys/class/optical_key/left/chip_name
+    chown system system /sys/class/optical_key/left/delay
+    chown system system /sys/class/optical_key/left/enable
+    chown system system /sys/class/optical_key/left/init
+    chown system system /sys/class/optical_key/left/debug
+    chown system system /sys/class/optical_key/left/collect
+    chown system system /sys/class/optical_key/left/calculate
+    chown system system /sys/class/optical_key/left/curve_data
+    chown system system /sys/class/optical_key/left/threshold
+    chown system system /sys/class/optical_key/left/current_level
+    chown system system /persist/sensors/optical_key/left
+
+    chmod 0644 /sys/class/optical_key/left/chip_name
+    chmod 0644 /sys/class/optical_key/left/delay
+    chmod 0644 /sys/class/optical_key/left/enable
+    chmod 0664 /sys/class/optical_key/left/init
+    chmod 0664 /sys/class/optical_key/left/debug
+    chmod 0664 /sys/class/optical_key/left/collect
+    chmod 0664 /sys/class/optical_key/left/calculate
+    chmod 0664 /sys/class/optical_key/left/curve_data
+    chmod 0664 /sys/class/optical_key/left/threshold
+    chmod 0664 /sys/class/optical_key/left/current_level
+    chmod 0764 /persist/sensors/optical_key/left
+
+    # Optical key right
+    chown system system /sys/class/optical_key/right/chip_name
+    chown system system /sys/class/optical_key/right/delay
+    chown system system /sys/class/optical_key/right/enable
+    chown system system /sys/class/optical_key/right/init
+    chown system system /sys/class/optical_key/right/debug
+    chown system system /sys/class/optical_key/right/collect
+    chown system system /sys/class/optical_key/right/calculate
+    chown system system /sys/class/optical_key/right/curve_data
+    chown system system /sys/class/optical_key/right/threshold
+    chown system system /sys/class/optical_key/right/current_level
+    chown system system /persist/sensors/optical_key/right
+
+    chmod 0644 /sys/class/optical_key/right/chip_name
+    chmod 0644 /sys/class/optical_key/right/delay
+    chmod 0644 /sys/class/optical_key/right/enable
+    chmod 0664 /sys/class/optical_key/right/init
+    chmod 0664 /sys/class/optical_key/right/debug
+    chmod 0664 /sys/class/optical_key/right/collect
+    chmod 0664 /sys/class/optical_key/right/calculate
+    chmod 0664 /sys/class/optical_key/right/curve_data
+    chmod 0664 /sys/class/optical_key/right/threshold
+    chmod 0664 /sys/class/optical_key/right/current_level
+    chmod 0764 /persist/sensors/optical_key/right
+
+    # hall_device
+    chown system system /sys/class/hall_device/hall_device/enable
+    chmod 0644 /sys/class/hall_device/hall_device/enable
+
+    # Nubia add end
+

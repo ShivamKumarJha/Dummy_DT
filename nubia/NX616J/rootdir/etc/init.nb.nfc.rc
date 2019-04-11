@@ -1,0 +1,15 @@
+# ADDED BY ZTEMT
+# add the nfc sysfs permission
+# NFC permission
+on post-fs-data
+# NFC
+    chmod 777 /dev/sec-nfc
+    chown nfc nfc /dev/sec-nfc
+
+# NFC: create data/nfc for nv storage
+    mkdir /data/nfc 770 nfc nfc
+
+# NFC HAL suffix
+    setprop ro.hardware.nfc_nci sec
+
+# ADDED BY ZTEMT Lvsen END

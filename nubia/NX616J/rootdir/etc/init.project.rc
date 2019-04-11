@@ -1,0 +1,10 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.project.rc
+# For the specific project only
+
+service cirsur /system/bin/circle-surface
+	class core
+	user root
+on property:init.svc.surfaceflinger=running
+	start cirsur

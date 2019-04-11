@@ -1,0 +1,6 @@
+# ADDED BY NUBIA
+# add the texfat insmod
+on boot
+#Tuxera exFAT kernel module
+insmod /vendor/lib/modules/texfat.ko
+

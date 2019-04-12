@@ -382,6 +382,24 @@
         <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
+    <path name="low-latency-playback speaker-and-bt-sco">
+        <path name="low-latency-playback bt-sco" />
+        <path name="low-latency-playback speaker" />
+    </path>
+
+    <path name="low-latency-playback speaker-and-bt-sco-wb">
+        <path name="low-latency-playback bt-sco-wb" />
+        <path name="low-latency-playback speaker" />
+    </path>
+
+    <path name="low-latency-playback wsa-speaker-and-bt-sco">
+        <path name="low-latency-playback speaker-and-bt-sco" />
+    </path>
+
+    <path name="low-latency-playback wsa-speaker-and-bt-sco-wb">
+        <path name="low-latency-playback speaker-and-bt-sco-wb" />
+    </path>
+
     <path name="audio-ull-playback">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia3" value="1" />
     </path>

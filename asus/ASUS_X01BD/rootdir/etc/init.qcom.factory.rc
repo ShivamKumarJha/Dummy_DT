@@ -32,24 +32,24 @@ service fastmmi /system/bin/mmi
     group root
     disabled
 
-service mmid /vendor/bin/mmid
+service vendor.mmid /vendor/bin/mmid
     user root
     group root
     disabled
 
 service mmi_diag /system/bin/mmi_diag
-    class main
-    user root
-    group root oem_2901
-    disabled
+        class main
+        user root
+        group root oem_2901
+        disabled
 
-on property:sys.boot_mode=ffbm
+on property:vendor.sys.boot_mode=ffbm
     write ${persist.vendor.mmi.misc_dev_path} "ffbm-01"
 
-on property:sys.boot_mode=qmmi
+on property:vendor.sys.boot_mode=qmmi
     write ${persist.vendor.mmi.misc_dev_path} "ffbm-02"
 
-on property:sys.boot_mode=normal
+on property:vendor.sys.boot_mode=normal
     write ${persist.vendor.mmi.misc_dev_path} "normal"
 
 # Creating a scratch storage on /data for factory testing.
@@ -59,23 +59,20 @@ on factory-fs && property:ro.bootmode=ffbm-00
 on factory-fs && property:ro.bootmode=ffbm-01
     mount tmpfs tmpfs /data
 
-on post-fs-data
 # aligned the usb port with system standard, otherwise if only diag be added
 # Then in QMMI mode, the whole Andoid be booted, but due to the ro.bootmode is
 # not normal/unknow, then when it apply the default funcs, it will turn to MTP
 # which cause the diag/Wwan/modem port all be lost in qmmi mode. Details:
 # UsbDeviceManager.java---->getDefaultFunctions and trySetEnabledFunctions
-
-    setprop persist.sys.usb.ffbm-00.func ${persist.sys.usb.config}
-    setprop persist.sys.usb.ffbm-01.func ${persist.sys.usb.config}
-    setprop persist.sys.usb.ffbm-02.func ${persist.sys.usb.config}
+on property:persist.vendor.usb.config=*
+    setprop persist.sys.usb.ffbm-02.func ${persist.vendor.usb.config}
 
 on mmi && property:ro.bootmode=ffbm-00
     # ========================================================
     #              This is FFBM only settings.
     # ========================================================
     #mkdir for factory data files.
-    mkdir /persist/FTM_AP 0750 root root
+    mkdir /mnt/vendor/persist/FTM_AP 0750 system system
 
     start fastmmi
     # start qcom-post-boot to set the misc partition path property value
@@ -87,12 +84,21 @@ on mmi && property:ro.bootmode=ffbm-01
     #              This is FFBM only settings.
     # ========================================================
     #mkdir for factory data files.
-    mkdir /persist/FTM_AP 0750 root root
+    mkdir /mnt/vendor/persist/FTM_AP 0750 system system
 
     start fastmmi
     ## start qcom-post-boot to set the misc partition path property value
     start qcom-post-boot
     start mmi_diag
+
+on property:persist.vendor.usb.config=* && property:ro.bootmode=ffbm-00
+    setprop sys.usb.config ${persist.vendor.usb.config}
+
+on property:persist.vendor.usb.config=* && property:ro.bootmode=ffbm-01
+    setprop sys.usb.config ${persist.vendor.usb.config}
+
+on property:persist.vendor.usb.config=* && property:ro.bootmode=ffbm-02
+    setprop sys.usb.config ${persist.vendor.usb.config}
 
 on ffbm
     trigger early-fs
@@ -229,7 +235,8 @@ on property:persist.sys.debug.getalllog=1
     restart getalllog
 on property:persist.sys.debug.getalllog=0
     stop getalllog
-#Huaqin add for delete log by zhangjingzhi at 20181026 start
+
+# Huaqin add for BugReporter by wangxiaowen at 2018/12/11 start
 service  deletelog /system/bin/deletelog
     disabled
     user root
@@ -238,12 +245,31 @@ service  deletelog /system/bin/deletelog
 
 on property:persist.asus.savelogs=0
     start deletelog
-#Huaqin add for delete log by zhangjingzhi at 20181026 end
+
+service savelogs /system/bin/savelogs
+    disabled
+    user root
+    group sdcard_rw
+    oneshot
+    seclabel u:r:savelogs:s0
+
+on property:persist.asus.savelogs=*
+    start savelogs
+
+service savelogscomplete /system/bin/savelogscomplete
+    disabled
+    user root
+    oneshot
+    seclabel u:r:savelogs:s0
+
+on property:persist.asus.savelogs=0
+    start savelogscomplete
+# Huaqin add for BugReporter by yangzhiyuan at 2018/12/11 end
 
 #huaqin modiy to close default log by taohuipeng at 20180504 for rom start
 #on boot
 #    start getpersistlog
-#    setprop persist.sys.debug.getaplog 1
+#    setprop persist.vendor.debug.getaplog 1
 #huaqin modiy to close default log by taohuipeng at 20180504 for rom end
 #Huaqin modiy for log sepolicy to system by zhangjingzhi at 20180306 end
 
@@ -262,3 +288,126 @@ on property:sys.diag.enable=1
     setprop sys.usb.config ${ro.usb.firstboot.config}
 
 #Huaqin modify for enable diag by zhangjingzhi at 20180130 for rom end
+
+# ========================================================
+#          Start for audio TC
+# ========================================================
+
+service vendor.audio_tc53 /vendor/bin/mm-audio-ftm -tc 53
+    user audio
+    group audio
+    disabled
+    oneshot
+
+
+service vendor.audio_tc51 /vendor/bin/mm-audio-ftm -tc 51
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc56 /vendor/bin/mm-audio-ftm -tc 56
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc222 /vendor/bin/mm-audio-ftm -tc 222
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc228 /vendor/bin/mm-audio-ftm -tc 228
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc229 /vendor/bin/mm-audio-ftm -tc 229
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc230 /vendor/bin/mm-audio-ftm -tc 230
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc225 /vendor/bin/mm-audio-ftm -tc 225
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc246 /vendor/bin/mm-audio-ftm -tc 246
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc247 /vendor/bin/mm-audio-ftm -tc 247
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc250 /vendor/bin/mm-audio-ftm -tc 250
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc251 /vendor/bin/mm-audio-ftm -tc 251
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc252 /vendor/bin/mm-audio-ftm -tc 252
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc253 /vendor/bin/mm-audio-ftm -tc 253
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc11 /vendor/bin/mm-audio-ftm -tc 11
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc101 /vendor/bin/mm-audio-ftm -tc 101
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc102 /vendor/bin/mm-audio-ftm -tc 102
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc103 /vendor/bin/mm-audio-ftm -tc 103
+    user audio
+    group audio
+    disabled
+    oneshot
+
+service vendor.audio_tc104 /vendor/bin/mm-audio-ftm -tc 104
+    user audio
+    group audio
+    disabled
+    oneshot
+
+# ========================================================
+#           End for audio TC
+# ========================================================

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <bool name="config_allowAllRotations">false</bool>
+    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_bluetooth_le_peripheral_mode_supported">false</bool>
+    <bool name="config_camera_sound_forced">false</bool>
+    <bool name="config_carrier_volte_available">false</bool>
+    <bool name="config_carrier_wfc_ims_available">false</bool>
+    <bool name="config_cellBroadcastAppLinks">false</bool>
+    <bool name="config_device_volte_available">false</bool>
+    <bool name="config_device_vt_available">false</bool>
+    <bool name="config_device_wfc_ims_available">false</bool>
+    <bool name="config_dozeAfterScreenOffByDefault">false</bool>
+    <bool name="config_dynamic_bind_ims">false</bool>
+    <bool name="config_enableMultiUserUI">false</bool>
+    <bool name="config_enableWifiDisplay">false</bool>
+    <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
+    <bool name="config_hotswapCapable">false</bool>
+    <bool name="config_intrusiveNotificationLed">false</bool>
+    <bool name="config_pinnerCameraApp">false</bool>
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">false</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+    <bool name="config_showNavigationBar">false</bool>
+    <bool name="config_speed_up_audio_on_mt_calls">false</bool>
+    <bool name="config_supportAudioSourceUnprocessed">false</bool>
+    <bool name="config_swipe_up_gesture_setting_available">false</bool>
+    <bool name="config_switch_phone_on_voice_reg_state_change">true</bool>
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+    <bool name="config_useDevInputEventForAudioJack">false</bool>
+    <bool name="config_useVideoPauseWorkaround">false</bool>
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
+    <bool name="config_wifi_background_scan_support">false</bool>
+    <bool name="config_wifi_dual_band_support">false</bool>
+    <bool name="config_wifi_softap_acs_supported">false</bool>
+    <bool name="config_wifi_softap_ieee80211ac_supported">false</bool>
+    <bool name="skip_restoring_network_selection">false</bool>
+    <dimen name="status_bar_height_landscape">28.0dip</dimen>
+    <dimen name="status_bar_height_portrait">28.0dip</dimen>
+    <fraction name="config_autoBrightnessAdjustmentMaxGamma">300.0%</fraction>
+    <fraction name="config_maximumScreenDimRatio">20.000004%</fraction>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">4000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">8000</integer>
+    <integer name="config_bluetooth_operating_voltage_mv">0</integer>
+    <integer name="config_brightness_ramp_rate_fast">180</integer>
+    <integer name="config_brightness_ramp_rate_slow">60</integer>
+    <integer name="config_multiuserMaximumUsers">1</integer>
+    <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
+    <integer name="config_notificationsBatteryLowARGB">0xFFFF0000</integer>
+    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFF00</integer>
+    <integer name="config_num_physical_slots">1</integer>
+    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDoze">1</integer>
+    <integer name="config_screenBrightnessSettingDefault">102</integer>
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
+    <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
+    <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
+    <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
+    <item type="bool" name="config_nightDisplayAvailable">@bool/config_setColorTransformAccelerated</item> <bool name="config_setColorTransformAccelerated">false</bool>
+    <string name="config_dozeComponent" />
+    <string name="config_mainBuiltInDisplayCutout">M -91,0 L 91, 0 L 30, 73 L -30, 73 Z</string>
+    <string name="config_mms_user_agent" /> <string name="config_mms_user_agent_profile_url" />
+    <string name="config_persistentDataPackageName">com.google.android.gms</string>
+    <string name="config_wifi_tcp_buffers">524288,1048576,2097152,262144,524288,1048576</string>
+</resources>

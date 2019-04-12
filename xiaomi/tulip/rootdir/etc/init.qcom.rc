@@ -908,7 +908,7 @@ on property:sys.user.0.ce_available=true
     start vendor.cnss_diag
     start vendor.tcpdump
 
-service startpktlog /system/bin/iwpriv wlan0 pktlog 2
+service startpktlog /system/bin/iwpriv wlan0 pktlog 1
     class main
     user root
     group root

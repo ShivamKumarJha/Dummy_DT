@@ -69,6 +69,7 @@ on fs
 on post-fs
     start vendor.qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
+    insmod /vendor/lib/modules/exfat.ko
     write /dev/ipa 1
 
 on init
@@ -152,6 +153,17 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
+on property:sys.thermallct.isincall=1
+    write /sys/class/power_supply/battery/device/thermalcall 1
+
+on property:sys.thermallct.isincall=0
+    write /sys/class/power_supply/battery/device/thermalcall 0
+
+on property:sys.thermallct.isinvideo=1
+    write /sys/class/thermal/thermal_message/sconfig 12
+
+on property:sys.thermallct.isinvideo=0
+    write /sys/class/thermal/thermal_message/sconfig 0
 
 on property:vendor.camera.thermal_lc=12
     write /sys/class/thermal/thermal_message/sconfig 12
@@ -696,6 +708,39 @@ service checknv /system/bin/checknv
     seclabel u:r:vendor_init:s0
 	
 #audio loopback test end
+
+on property:persist.sys.display_srgb=1
+    write /sys/class/graphics/fb0/msm_fb_srgb 1
+
+on property:persist.sys.display_srgb=2
+    write /sys/class/graphics/fb0/msm_fb_srgb 2
+
+on property:persist.sys.display_ce=4
+    write /sys/class/graphics/fb0/msm_fb_ce 1
+
+on property:persist.sys.display_ce=0
+    write /sys/class/graphics/fb0/msm_fb_ce 2
+
+on property:persist.sys.display_cabc=1
+    write /sys/class/graphics/fb0/msm_fb_cabc 1
+
+on property:persist.sys.display_cabc=2
+    write /sys/class/graphics/fb0/msm_fb_cabc 2
+
+
+
+service adswitch /vendor/bin/adswitch
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.ad.enable=on
+    start adswitch
+
+on property:sys.ad.enable=off
+    start adswitch
+
 on property:sys.dynamic_debug=1
    write /sys/kernel/debug/dynamic_debug/control "file q6afe.c +p" 
    write /sys/kernel/debug/dynamic_debug/control "file q6adm.c +p" 
@@ -729,7 +774,8 @@ service wifisarDIS1 /vendor/bin/wifisarDIS1
     oneshot
     disabled
 
-on property:persist.vendor.sys.wifisarDIS1=1
+on property:persist.sys.wifisarDIS1=1
+    setprop persist.sys.wifisarDIS1 0
     start wifisarDIS1
 
 service wifisarDIS2 /vendor/bin/wifisarDIS2
@@ -738,5 +784,6 @@ service wifisarDIS2 /vendor/bin/wifisarDIS2
     oneshot
     disabled
 
-on property:persist.vendor.sys.wifisarDIS2=1
+on property:persist.sys.wifisarDIS2=1
+    setprop persist.sys.wifisarDIS2 0
     start wifisarDIS2

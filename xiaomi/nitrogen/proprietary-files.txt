@@ -2189,6 +2189,7 @@ vendor/lib/libizat_client_api.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 vendor/lib/libloc_api_v02.so
+vendor/lib/libloc_core.so
 vendor/lib/libloc_ds_api.so
 vendor/lib/libloc_externalDr.so
 vendor/lib/libloc_externalDrcore.so
@@ -2221,6 +2222,7 @@ vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/libloc_api_v02.so
+vendor/lib64/libloc_core.so
 vendor/lib64/libloc_ds_api.so
 vendor/lib64/libloc_externalDr.so
 vendor/lib64/libloc_externalDrcore.so
@@ -2740,6 +2742,7 @@ vendor/lib/hw/activity_recognition.sdm660.so
 vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
+vendor/lib/libssc_default_listener.so
 vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/hw/activity_recognition.sdm660.so
@@ -2747,6 +2750,7 @@ vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensorndkbridge.so
+vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.ssc.so
 
@@ -2788,6 +2792,18 @@ vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
 vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+
+# Touchscreen
+vendor/etc/hbtp/hbtpcfg.dat
+vendor/etc/hbtp/hbtpcfg2.dat
+vendor/etc/hbtp/hbtpcfg_adsp_800s_fhd.dat
+vendor/etc/hbtp/hbtpcfg_sdm630_800s_fhd.dat
+vendor/etc/hbtp/hbtpcfg_sdm660_800h_qhd.dat
+vendor/etc/hbtp/hbtpcfg_sdm660_800s_qhd.dat
+vendor/etc/hbtp/loader.cfg
+vendor/etc/hbtp/qtc800h.bin
+vendor/etc/hbtp/qtc800h_8998_660.bin
+vendor/etc/hbtp/qtc800s_dsp.bin
 
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -2855,7 +2871,10 @@ vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
 vendor/lib/libqsap_sdk.so
+vendor/lib/vendor.qti.hardware.wifi.hostapd@1.0.so
+vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
 vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
+vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
 vendor/lib64/libqsap_sdk.so
 vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
 vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
@@ -2988,16 +3007,6 @@ vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
 vendor/etc/audio.bsd
 vendor/etc/ftm_test_config
-vendor/etc/hbtp/hbtpcfg.dat
-vendor/etc/hbtp/hbtpcfg2.dat
-vendor/etc/hbtp/hbtpcfg_adsp_800s_fhd.dat
-vendor/etc/hbtp/hbtpcfg_sdm630_800s_fhd.dat
-vendor/etc/hbtp/hbtpcfg_sdm660_800h_qhd.dat
-vendor/etc/hbtp/hbtpcfg_sdm660_800s_qhd.dat
-vendor/etc/hbtp/loader.cfg
-vendor/etc/hbtp/qtc800h.bin
-vendor/etc/hbtp/qtc800h_8998_660.bin
-vendor/etc/hbtp/qtc800s_dsp.bin
 vendor/etc/hdr_config.cfg
 vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/rild.legacy.rc
@@ -3039,16 +3048,12 @@ vendor/lib/libnanopb.so
 vendor/lib/libqcbor.so
 vendor/lib/libqminvapi.so
 vendor/lib/libsi.so
-vendor/lib/libssc_default_listener.so
 vendor/lib/libssccalapi.so
 vendor/lib/libstreamparser.so
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwapi_cert.so
-vendor/lib/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libaoa.so
@@ -3072,7 +3077,6 @@ vendor/lib64/libnanopb.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqminvapi.so
 vendor/lib64/libsi.so
-vendor/lib64/libssc_default_listener.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/libstreamparser.so
 vendor/lib64/libsysmon_cdsp_skel.so

@@ -71,6 +71,8 @@ on post-fs
     chown system system /sys/class/leds/red/brightness
 	chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/red/duty_pcts
+    insmod /vendor/lib/modules/exfat.ko
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -325,6 +327,7 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/vendor/wifi/wigig_hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+	mkdir /data/vendor/wlan_logs 0770 system wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
     #create port-bridge log dir
@@ -880,6 +883,45 @@ service wifi_ftmd /system/vendor/bin/wifi_ftmd
 on property:vendor.wifi.ftmd.load=true
     insmod /system/lib/modules/pronto/pronto_wlan.ko con_mode=5
 
+service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f
+    class late_start
+    user system
+    group system wifi inet net_admin sdcard_rw media_rw diag
+    disabled
+    oneshot
+
+service vendor.tcpdump /vendor/bin/tcpdump -i any -W 2 -C 2 -s 134 -w /data/vendor/wlan_logs/tcpdump.pcap
+    class main
+    user root
+    group root wifi
+    disabled
+    oneshot
+
+service sniffer /vendor/bin/tcpdump -i wlan0 -w /sdcard/wlan_logs/sniffer.pcap
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.user.0.ce_available=true
+    start vendor.cnss_diag
+    start vendor.tcpdump
+
+service startpktlog /system/bin/iwpriv wlan0 pktlog 1
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service stoppktlog /system/bin/iwpriv wlan0 pktlog 0
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:persist.vendor.data.shs_ko_load=1
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules rmnet_shs
 
@@ -1311,10 +1353,10 @@ on property:vendor.opengles.version=*
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
-#workaround for camera HAL can not read sys property
+#workaround for camera HAL can not read sys property 
 on property:sys.camera.face.unlock=*
     setprop vendor.camera.face.unlock ${sys.camera.face.unlock}
-
+    
 #add MIUI camera flag
 on property:sys.camera.miui.apk=*
     setprop vendor.camera.miui.apk ${sys.camera.miui.apk}
@@ -1327,9 +1369,9 @@ on property:sys.camera.not.cts.apk=*
 on property:sys.camera.douyin.apk=*
     setprop vendor.camera.douyin.apk ${sys.camera.douyin.apk}
 
-#add cts verify flag
+#add cts verify flag	
 on property:sys.camera.not.ctsverify.apk=*
     setprop vendor.camera.not.ctsverify.apk ${sys.camera.not.ctsverify.apk}
-#add cts verify flag
+#add cts verify flag	
     on property:sys.gyro.sensorname=*
     setprop vendor.camera.gyro.sensorname ${sys.gyro.sensorname}

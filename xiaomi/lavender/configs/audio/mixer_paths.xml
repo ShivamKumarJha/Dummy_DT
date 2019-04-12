@@ -1948,7 +1948,7 @@
 
     <path name="sidetone-handset">
         <path name="sidetone-iir" />
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="IIR1 INP1 Volume" value="73" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
     </path>
 
@@ -2034,8 +2034,8 @@
     <path name="ultrasound-proximity-factory-func">
         <ctl name="Ultrasound Enable" value="On" />
         <ctl name="Ultrasound Mode" value="614" />
-        <ctl name="Ultrasound Debug Mode" value="1" />
-        <ctl name="Ultrasound Log Level" value="7" />
+        <ctl name="Ultrasound Debug Mode" value="0" />
+        <ctl name="Ultrasound Log Level" value="0" />
     </path>
 
 
@@ -2370,6 +2370,12 @@
     <path name="dmic-endfire">
         <path name="handset-dmic-endfire" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef-echo">
+	<path name="speaker-dmic-endfire" />
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="I2S_RX" />
+        <ctl name="MultiMedia1 Mixer INT3_MI2S_TX" value="1" />
     </path>
 
     <path name="dmic-endfire-liquid">

@@ -201,6 +201,9 @@ It allows additional grants on top of privapp-permissions-platform.xml
     <privapp-permissions package="org.codeaurora.snapcam">
         <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
         <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+        <!-- Huaqin add for CtsPermission2TestCases by wunan at 2019/2/26 start -->
+        <permission name="android.permission.SET_ANIMATION_SCALE"/>
+        <!-- Huaqin add for CtsPermission2TestCases by wunan at 2019/2/26 end -->
     </privapp-permissions>
 
     <privapp-permissions package="com.qualcomm.qti.callenhancement">

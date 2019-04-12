@@ -246,15 +246,12 @@ service  deletelog /system/bin/deletelog
 on property:persist.asus.savelogs=0
     start deletelog
 
-#Huaqin modify for 1272729 by yangzhiyuan at 20190110 start
 service savelogs /system/bin/savelogs
     disabled
     user root
     group sdcard_rw
     oneshot
-#seclabel u:r:savelogs:s0
-    seclabel u:r:dumpstate:s0
-#Huaqin modify for 1272729 by yangzhiyuan at 20190110 end
+    seclabel u:r:savelogs:s0
 
 on property:persist.asus.savelogs=*
     start savelogs

@@ -3017,7 +3017,6 @@ vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
 vendor/bin/adpl
 vendor/bin/athdiag
-vendor/bin/cdsprpcd
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample

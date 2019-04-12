@@ -34,10 +34,6 @@ import /vendor/etc/init/hw/init.qcom.test.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
-#Huaqin add for 1272729 by yangzhiyuan at 20190110 start
-    chmod 755 /system/bin/savelogs
-    chown root:shell /system/bin/savelogs
-#Huaqin add for 1272729 by yangzhiyuan at 20190110 end
 
   # create symlink for vendor mount points
     symlink /vendor/firmware_mnt /firmware

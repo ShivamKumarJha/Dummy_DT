@@ -50,7 +50,6 @@ vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # Audio
 vendor/bin/audioflacapp
-vendor/etc/audio.scd
 vendor/etc/diracvdd.bin
 vendor/etc/speaker.ftcfg
 vendor/firmware/dbmd4_va_fw.bin
@@ -3001,16 +3000,12 @@ vendor/lib/libgcs-calwrapper.so
 vendor/lib/libgcs-ipc.so
 vendor/lib/libgcs-osal.so
 vendor/lib/libgcs.so
-vendor/lib/libnwa.so
 vendor/lib/libsmwrapper.so
-vendor/lib/libsse.so
 vendor/lib64/hw/sound_trigger.primary.sdm660.so
 vendor/lib64/libgcs-calwrapper.so
 vendor/lib64/libgcs-ipc.so
 vendor/lib64/libgcs-osal.so
 vendor/lib64/libgcs.so
-vendor/lib64/libnwa.so
-vendor/lib64/libsse.so
 
 # Media
 lib/libmmosal.so
@@ -3512,24 +3507,32 @@ vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
+framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
+lib/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
+lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
+vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
 vendor/bin/tidad@1.1
 vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
+vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.1.so
 vendor/lib/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -3537,12 +3540,14 @@ vendor/lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libtida@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so

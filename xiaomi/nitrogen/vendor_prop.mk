@@ -126,8 +126,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rcs.supported=0 \
     persist.rmnet.data.enable=true \
     persist.sys.job_delay=true \
-    persist.sys.offlinelog.kernel=false \
-    persist.sys.offlinelog.logcat=false \
+    persist.sys.offlinelog.kernel \
+    persist.sys.offlinelog.logcat \
     persist.sys.strictmode.disable=true \
     persist.vendor.df.extcolor.proc=0 \
     persist.vendor.facearea.dom=CN \
@@ -143,7 +143,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.fp.goodix=true \
     ro.logd.size=2M \
     ro.sys.fw.use_trim_settings=true \
-    ro.xiaomi.bl.notify=1 \
+    ro.xiaomi.bl.notify=0 \
+    ro.xiaomi.bl.poll=true \
     sdm.idle_time=1100 \
     sys.autobrightness_optimize=true \
     sys.autosuspend.timeout=500000 \

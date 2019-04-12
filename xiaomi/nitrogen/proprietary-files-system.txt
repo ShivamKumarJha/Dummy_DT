@@ -11,6 +11,7 @@
 -priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/dpmd
+bin/iwpriv
 bin/wfdservice
 etc/dpm/dpm.conf
 etc/init/dpmd.rc
@@ -28,6 +29,7 @@ etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/telephonyservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 framework/QtiTelephonyServicelibrary.jar
@@ -56,6 +58,7 @@ framework/vendor.qti.hardware.data.qmi-V1.0-java.jar
 framework/vendor.qti.ims.callinfo-V1.0-java.jar
 framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
+framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/com.qualcomm.qti.ant@1.0.so
 lib/com.qualcomm.qti.imscmservice@1.0.so
 lib/com.qualcomm.qti.imscmservice@2.0.so
@@ -100,6 +103,7 @@ lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.ims.rcsconfig@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
+lib/vendor.xiaomi.hardware.misys@2.0.so
 lib64/com.qualcomm.qti.ant@1.0.so
 lib64/com.qualcomm.qti.dpm.api@1.0.so
 lib64/com.qualcomm.qti.imscmservice@1.0.so
@@ -134,3 +138,4 @@ lib64/vendor.qti.ims.callinfo@1.0.so
 lib64/vendor.qti.ims.rcsconfig@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
+lib64/vendor.xiaomi.hardware.misys@2.0.so

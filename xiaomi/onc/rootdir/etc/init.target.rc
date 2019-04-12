@@ -51,6 +51,7 @@ on fs
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/stability 0755 system system
     mkdir /mnt/vendor/persist/bms 0700 root system
     restorecon_recursive /mnt/vendor/persist
 
@@ -97,6 +98,9 @@ on post-fs-data
 # xuke @ 20181129	Import QR feature from F7A.	Begin
     mkdir /data/vendor/mac_addr 0770 system wifi
 # End
+
+    #mkdir charger log   --lct  19.3.18
+    mkdir /data/vendor/charge_logger 0771 system system
 
 #start camera server as daemon
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
@@ -250,6 +254,17 @@ on boot
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
 
+#add charge_logger service for dump charge message
+service charge_logger /vendor/bin/charge_logger
+    class last_start
+    user system
+    group system system wakelock
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+   start charge_logger
+
 service wcnss-service /system/vendor/bin/wcnss_service
     class main
     user system
@@ -328,8 +343,10 @@ on charger
     setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
     setprop persist.sys.usb.config mass_storage
+    mkdir /data/vendor/charge_logger 0771 system system
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
+    start charge_logger
 
 service dts_configurator /system/vendor/bin/dts_configurator
     class late_start

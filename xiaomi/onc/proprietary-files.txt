@@ -1022,7 +1022,6 @@ vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libssd.so
 vendor/lib/libtzdrmgenprov.so
-vendor/lib/libtzplayready.so
 vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libGPreqcancel.so
@@ -1034,7 +1033,6 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libprdrmdecrypt.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -1043,21 +1041,12 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib64/libtzplayready.so
 
 # DRM-Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/mediadrm/libprmediadrmdecrypt.so
-vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -1827,17 +1816,25 @@ vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
 # Xiaomi
+etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
+lib/vendor.xiaomi.hardware.misys@1.0.so
+lib64/vendor.xiaomi.hardware.misys@1.0.so
+vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
 vendor/bin/tidad@1.1
+vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
+vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.1.so
+vendor/lib/vendor.xiaomi.hardware.misys@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -1846,11 +1843,13 @@ vendor/lib/vendor.xiaomi.hardware.mtdservice@1.2.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
+vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libtida@1.1.so
+vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -1867,6 +1866,7 @@ vendor/bin/KmInstallKeybox
 vendor/bin/PktRspTest
 vendor/bin/adpl
 vendor/bin/athdiag
+vendor/bin/charge_logger
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
@@ -1916,6 +1916,7 @@ vendor/bin/ssr_setup
 vendor/bin/subsystem_ramdump
 vendor/bin/sviswitch
 vendor/bin/tbaseLoader
+vendor/bin/tcpdump
 vendor/bin/test_diag
 vendor/bin/test_module_pproc
 vendor/bin/tinyhostless
@@ -1927,6 +1928,8 @@ vendor/bin/wigignpt
 vendor/bin/writeMacAddress
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+vendor/etc/autotest.xml
+vendor/etc/autotest__2.xml
 vendor/etc/cit1.xml
 vendor/etc/cit2.xml
 vendor/etc/cit2_Global.xml
@@ -1965,7 +1968,6 @@ vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libgarden.so
 vendor/lib/libmt@1.2.so
-vendor/lib/libprdrmdecrypt.so
 vendor/lib/libscalar.so
 vendor/lib/libsi.so
 vendor/lib/libstreamparser.so
@@ -1981,6 +1983,7 @@ vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastcrc.so
 vendor/lib64/libgarden.so
+vendor/lib64/libpcap.so
 vendor/lib64/libscalar.so
 vendor/lib64/libsi.so
 vendor/lib64/libstreamparser.so

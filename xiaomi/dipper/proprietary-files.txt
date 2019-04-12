@@ -294,6 +294,7 @@ vendor/lib/libmibokeh_845.so
 vendor/lib/libmorpho_video_refiner.so
 vendor/lib/libmpbase.so
 vendor/lib/libremosaic_daemon.so
+vendor/lib/libremosaiclib.so
 vendor/lib/libsymphony-cpu.so
 vendor/lib/libsymphonypower.so
 vendor/lib/libvideoutils.so
@@ -308,6 +309,7 @@ vendor/lib64/libcdsprpc.so
 vendor/lib64/libmibokeh_845.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libremosaic_daemon.so
+vendor/lib64/libremosaiclib.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera-arcsoft
@@ -583,13 +585,16 @@ vendor/firmware/tas2557_uCDSP_goer.bin
 # GPS
 vendor/bin/garden_app
 vendor/lib/libevent_observer.so
+vendor/lib/libloc_core.so
 vendor/lib/liblocation_api.so
 vendor/lib/vendor.qti.gnss@1.0.so
 vendor/lib/vendor.qti.gnss@1.1.so
 vendor/lib/vendor.qti.gnss@1.2.so
 vendor/lib/vendor.qti.gnss@2.0.so
 vendor/lib/vendor.qti.gnss@2.1.so
+vendor/lib64/android.hardware.gnss@1.1-impl-xiaomi.so
 vendor/lib64/libevent_observer.so
+vendor/lib64/libloc_core.so
 vendor/lib64/liblocation_api.so
 vendor/lib64/vendor.qti.gnss@1.0.so
 vendor/lib64/vendor.qti.gnss@1.1.so
@@ -744,6 +749,8 @@ vendor/lib/libmulawdec.so
 vendor/lib/libstagefright_foundation.so
 vendor/lib/libstagefright_omx.so
 vendor/lib/libstagefright_soft_qtiflacdec.so
+vendor/lib/libvppclient.so
+vendor/lib/libvpphcp.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvpplibrary.so
 vendor/lib/libvpptestutils.so
@@ -768,6 +775,8 @@ vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmmosal_proprietary.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libstagefright_soft_qtiflacdec.so
+vendor/lib64/libvppclient.so
+vendor/lib64/libvpphcp.so
 vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
@@ -778,6 +787,13 @@ vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/bin/msm_irqbalance
 vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
 vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/perf-profile0.conf
+vendor/etc/perf/perf-profile1.conf
+vendor/etc/perf/perf-profile2.conf
+vendor/etc/perf/perf-profile3.conf
+vendor/etc/perf/perf-profile4.conf
+vendor/etc/perf/perf-profile5.conf
+vendor/etc/perf/perf-profile6.conf
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/perfboostsconfigmi.xml
 vendor/etc/perf/targetconfig.xml
@@ -1101,10 +1117,12 @@ vendor/bin/sensors.qti
 vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
+vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorslog.so
+vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ssc.so
 
 # Soter
@@ -1152,6 +1170,13 @@ vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
 vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0-service.so
 vendor/lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+
+# Touchscreen
+vendor/etc/hbtp/hbtpcfg.dat
+vendor/etc/hbtp/hbtpcfg_sdm845_800s_4k.dat
+vendor/etc/hbtp/hbtpcfg_sdm845_800s_qhd.dat
+vendor/etc/hbtp/loader.cfg
+vendor/etc/hbtp/qtc800s_dsp.bin
 
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -1205,6 +1230,7 @@ vendor/lib/libhdcp2p2prov.so
 vendor/lib/libwfdcommonutils_proprietary.so
 vendor/lib/libwfdhaldsmanager.so
 vendor/lib/libwfdhdcpcp.so
+vendor/lib/libwfdmmservice_proprietary.so
 vendor/lib/libwfdmodulehdcpsession.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
@@ -1216,7 +1242,10 @@ vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
 vendor/lib/libqsap_sdk.so
+vendor/lib/vendor.qti.hardware.wifi.hostapd@1.0.so
+vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
 vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
+vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
 vendor/lib64/libqsap_sdk.so
 vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
 vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
@@ -1252,7 +1281,6 @@ vendor/lib/vendor.xiaomi.hardware.citsensorservice@1.0_vendor.so
 vendor/lib/vendor.xiaomi.hardware.citsensorservice@1.1_vendor.so
 vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
-vendor/lib64/android.hardware.gnss@1.1-impl-xiaomi.so
 vendor/lib64/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
@@ -1350,11 +1378,6 @@ vendor/etc/SensorHub.patch
 vendor/etc/XiaoAiTongXue.uim
 vendor/etc/ftm_test_config
 vendor/etc/gpsconfig.xml
-vendor/etc/hbtp/hbtpcfg.dat
-vendor/etc/hbtp/hbtpcfg_sdm845_800s_4k.dat
-vendor/etc/hbtp/hbtpcfg_sdm845_800s_qhd.dat
-vendor/etc/hbtp/loader.cfg
-vendor/etc/hbtp/qtc800s_dsp.bin
 vendor/etc/hdr_config.cfg
 vendor/etc/init/android.hardware.contexthub@1.0-service.rc
 vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
@@ -1364,13 +1387,6 @@ vendor/etc/init/vendor.nxp.hardware.nfc@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/init/vendor.qti.secure_element@1.0-service.rc
 vendor/etc/lhd.conf
-vendor/etc/perf/perf-profile0.conf
-vendor/etc/perf/perf-profile1.conf
-vendor/etc/perf/perf-profile2.conf
-vendor/etc/perf/perf-profile3.conf
-vendor/etc/perf/perf-profile4.conf
-vendor/etc/perf/perf-profile5.conf
-vendor/etc/perf/perf-profile6.conf
 vendor/etc/pm_test_item_config.xml
 vendor/etc/rcv.wav
 vendor/etc/rcv_hp.wav
@@ -1426,7 +1442,6 @@ vendor/lib/libpn551_fw.so
 vendor/lib/libpn553_fw.so
 vendor/lib/libpn557_fw.so
 vendor/lib/libqminvapi.so
-vendor/lib/libremosaiclib.so
 vendor/lib/libsi.so
 vendor/lib/libsns_device_mode_stub.so
 vendor/lib/libsns_low_lat_stream_stub.so
@@ -1435,7 +1450,6 @@ vendor/lib/libspcom.so
 vendor/lib/libspiris.so
 vendor/lib/libspl.so
 vendor/lib/libssc.so
-vendor/lib/libssc_default_listener.so
 vendor/lib/libssccalapi.so
 vendor/lib/libstfaceunlockoclqcom.so
 vendor/lib/libstreamparser.so
@@ -1445,13 +1459,7 @@ vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libtonemapalgo.so
-vendor/lib/libvppclient.so
-vendor/lib/libvpphcp.so
 vendor/lib/libwapi_cert.so
-vendor/lib/libwfdmmservice_proprietary.so
-vendor/lib/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
 vendor/lib64/ese_spi_nxp.so
 vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
 vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
@@ -1492,7 +1500,6 @@ vendor/lib64/libmdmimgload.so
 vendor/lib64/libnanopb.so
 vendor/lib64/libplatformconfig.so
 vendor/lib64/libqminvapi.so
-vendor/lib64/libremosaiclib.so
 vendor/lib64/libsi.so
 vendor/lib64/libsns_device_mode_stub.so
 vendor/lib64/libsns_low_lat_stream_stub.so
@@ -1501,14 +1508,11 @@ vendor/lib64/libspcom.so
 vendor/lib64/libspiris.so
 vendor/lib64/libspl.so
 vendor/lib64/libssc.so
-vendor/lib64/libssc_default_listener.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/libswvdec.so
 vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
-vendor/lib64/libvppclient.so
-vendor/lib64/libvpphcp.so
 vendor/lib64/libwapi_cert.so
 vendor/lib64/nfc_nci_nxp.so
 vendor/lib64/vendor.nxp.hardware.nfc@1.0.so

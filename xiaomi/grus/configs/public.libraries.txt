@@ -28,7 +28,6 @@ libarcsoft_low_light_hdr.so
 libarcsoft_supernight.so
 libmibokeh_712.so
 libarcsoft_distortion_correction.so
-libalLDC.so
 libarcsoft_bodyslim.so
 libVDSuperPhotoAPI.so
 libalCFR.so

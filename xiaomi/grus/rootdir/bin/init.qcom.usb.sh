@@ -98,7 +98,7 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
                           setprop persist.vendor.usb.config none
                       fi
                   ;;
-                  "PYXIS" | "COSMOS" | "BAMBOO")
+                  "PYXIS" | "VELA")
                       if [ "$(getprop ro.build.factorybuild)" == "1" ]; then
                           setprop persist.sys.usb.config diag,serial_cdev,rmnet,adb
                       else

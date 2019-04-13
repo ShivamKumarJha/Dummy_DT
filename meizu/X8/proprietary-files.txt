@@ -156,6 +156,13 @@ vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
+# CDSP
+vendor/bin/cdsprpcd
+vendor/lib/libcdsp_default_listener.so
+vendor/lib/libcdsprpc.so
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -288,7 +295,6 @@ vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libmpbase.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libremosaiclib.so
@@ -353,7 +359,6 @@ vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxtintlessalgo.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libremosaic_daemon.so
 vendor/lib64/libremosaiclib.so
@@ -952,7 +957,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
@@ -981,7 +985,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
@@ -1048,6 +1051,15 @@ vendor/lib64/lib-uceservice.so
 vendor/lib64/vendor.qti.hardware.radio.ims@1.0_vendor.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
+
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
 
 # Sensor-calibrate
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
@@ -1164,12 +1176,10 @@ vendor/etc/sensors/config/tmd2725.json
 
 # Sensors
 vendor/bin/sensors.qti
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ssc.so
-vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensorslog.so
@@ -1220,6 +1230,12 @@ vendor/etc/hbtp/loader.cfg
 vendor/etc/hbtp/qtc800h.bin
 vendor/etc/hbtp/qtc800s_dsp.bin
 vendor/etc/hbtp/qtc801s.bin
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/libhbtpfrmwk.so
+vendor/lib64/libhbtpclient.so
+vendor/lib64/libhbtpdsp.so
+vendor/lib64/libhbtpfrmwk.so
 
 # Voice
 vendor/etc/qvop/antispoofing.bin
@@ -1316,7 +1332,6 @@ vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
 vendor/bin/WifiLogger_app
 vendor/bin/athdiag
-vendor/bin/cdsprpcd
 vendor/bin/chre
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
@@ -1364,9 +1379,6 @@ vendor/bin/sigma_dut
 vendor/bin/sscrpcd
 vendor/bin/ssgqmigd
 vendor/bin/ssgtzd
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 vendor/bin/tcpdump
 vendor/bin/test_diag
 vendor/bin/tloc_daemon
@@ -1398,7 +1410,6 @@ vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/libaoa.so
-vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplaydebug.so
@@ -1413,9 +1424,6 @@ vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib/libgarden.so
 vendor/lib/libgpqese.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
 vendor/lib/libllvm-qgl.so
 vendor/lib/libmakeup_style.so
 vendor/lib/libmediacodecservice.so
@@ -1455,7 +1463,6 @@ vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libaoa.so
 vendor/lib64/libcaihedata.so
-vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libdiagjni.so
@@ -1468,9 +1475,6 @@ vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgpqese.so
-vendor/lib64/libhbtpclient.so
-vendor/lib64/libhbtpdsp.so
-vendor/lib64/libhbtpfrmwk.so
 vendor/lib64/liblearningmodule.so
 vendor/lib64/libllvm-qgl.so
 vendor/lib64/libmakeup_style.so

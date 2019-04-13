@@ -123,6 +123,13 @@ vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
+# CDSP
+vendor/bin/cdsprpcd
+vendor/lib/libcdsp_default_listener.so
+vendor/lib/libcdsprpc.so
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -312,7 +319,6 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libmegface.so
 vendor/lib/libmibokeh_855.so
@@ -431,7 +437,6 @@ vendor/lib64/libcamxlocalhistogramalgo.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libmibokeh_855.so
 vendor/lib64/libmpbase.so
@@ -982,6 +987,11 @@ vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 
+# Neural-networks
+vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
+vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
+vendor/lib64/libhexagon_nn_stub.so
+
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/bin/msm_irqbalance
@@ -1127,7 +1137,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/libvsim.so
 vendor/lib/qcrild_librilutils.so
@@ -1166,7 +1175,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
@@ -1280,6 +1288,15 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
+
 # Sensor-calibrate
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
@@ -1338,13 +1355,11 @@ vendor/etc/sensors/sns_reg_config
 # Sensors
 vendor/bin/sensors.qti
 vendor/etc/elliptic_sensor.xml
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ssc.so
 vendor/lib/sensors.touch.so
-vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libnotifyaudiohal.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorndkbridge.so
@@ -1406,6 +1421,12 @@ vendor/etc/hbtp/hbtpcfg_sdm855_801s_4k.dat
 vendor/etc/hbtp/loader.cfg
 vendor/etc/hbtp/qtc800h.bin
 vendor/etc/hbtp/qtc801s.bin
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/libhbtpfrmwk.so
+vendor/lib64/libhbtpclient.so
+vendor/lib64/libhbtpdsp.so
+vendor/lib64/libhbtpfrmwk.so
 
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -1552,7 +1573,6 @@ vendor/bin/athdiag
 vendor/bin/audioshell_service
 vendor/bin/batteryd
 vendor/bin/cameratest
-vendor/bin/cdsprpcd
 vendor/bin/charge_logger
 vendor/bin/chre
 vendor/bin/cplay
@@ -1574,7 +1594,6 @@ vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hw/android.hardware.contexthub@1.0-service
-vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
 vendor/bin/hw/vendor.nxp.hardware.nfc@1.1-service
 vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/hw/vendor.qti.hardware.seccam@1.0-service-qti
@@ -1617,9 +1636,6 @@ vendor/bin/sigma_dut
 vendor/bin/spdaemon
 vendor/bin/spectraltool
 vendor/bin/sscrpcd
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 vendor/bin/tcpdump
 vendor/bin/test_diag
 vendor/bin/toucheventcheck
@@ -1641,7 +1657,6 @@ vendor/etc/ha/ifaa/provision_get_device_state.json
 vendor/etc/ha/ifaa/provision_install_ha_ifaa.json
 vendor/etc/hdr_config.cfg
 vendor/etc/init/android.hardware.contexthub@1.0-service.rc
-vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
 vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/minidump.rc
 vendor/etc/init/vendor.nxp.hardware.nfc@1.1-service.rc
@@ -1702,7 +1717,6 @@ vendor/lib/libalhLDC.so
 vendor/lib/libarbitrarybytes.so
 vendor/lib/libcapiv2svacnn.so
 vendor/lib/libcapiv2vop.so
-vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libchrome.so
 vendor/lib/libcom.qti.chinodeutils.so
@@ -1720,9 +1734,6 @@ vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libgarden.so
 vendor/lib/libgralloccore.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
 vendor/lib/libmialgo_fs.so
 vendor/lib/libmialgo_sd.so
 vendor/lib/libnanopb.so
@@ -1785,7 +1796,6 @@ vendor/lib64/libarbitrarybytes.so
 vendor/lib64/libarm_proxy_skel.so
 vendor/lib64/libcapiv2svacnn.so
 vendor/lib64/libcapiv2vop.so
-vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libchrome.so
 vendor/lib64/libcom.qti.chinodeutils.so
@@ -1804,10 +1814,6 @@ vendor/lib64/libgameoptfeature.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgarden_haltests_e2e.so
 vendor/lib64/libgralloccore.so
-vendor/lib64/libhbtpclient.so
-vendor/lib64/libhbtpdsp.so
-vendor/lib64/libhbtpfrmwk.so
-vendor/lib64/libhexagon_nn_stub.so
 vendor/lib64/libhvx_proxy_stub.so
 vendor/lib64/libifaaclient.so
 vendor/lib64/liblearningmodule.so

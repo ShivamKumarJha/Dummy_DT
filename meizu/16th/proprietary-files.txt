@@ -125,6 +125,13 @@ vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
+# CDSP
+vendor/bin/cdsprpcd
+vendor/lib/libcdsp_default_listener.so
+vendor/lib/libcdsprpc.so
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -254,7 +261,6 @@ vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libmpbase.so
 vendor/lib/libqvrcamera_client.so
 vendor/lib/libqvrservice_client.so
@@ -314,7 +320,6 @@ vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxtintlessalgo.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libqvrcamera_client.so
 vendor/lib64/libqvrservice_client.so
@@ -872,6 +877,11 @@ vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1_vendor.so
 
+# Neural-networks
+vendor/bin/hw/vendor.qti.neuralnetworks@1.0-service-hvx
+vendor/etc/init/vendor.qti.neuralnetworks@1.0-service-hvx.rc
+vendor/lib64/libhexagon_nn_stub.so
+
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/bin/msm_irqbalance
@@ -1004,7 +1014,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
@@ -1032,7 +1041,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
@@ -1100,6 +1108,15 @@ vendor/lib64/vendor.qti.hardware.radio.ims@1.0_vendor.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
+
 # Sensor-calibrate
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
@@ -1151,12 +1168,10 @@ vendor/etc/sensors/config/stk3x2x_0.json
 # Sensors
 vendor/bin/sensors.qcom
 vendor/lib/libSensorManagerHAL.so
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ssc.so
-vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensorslog.so
@@ -1210,6 +1225,12 @@ vendor/etc/hbtp/hbtpcfg_sdm845_800s_qhd.dat
 vendor/etc/hbtp/loader.cfg
 vendor/etc/hbtp/qtc800h.bin
 vendor/etc/hbtp/qtc800s_dsp.bin
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/libhbtpfrmwk.so
+vendor/lib64/libhbtpclient.so
+vendor/lib64/libhbtpdsp.so
+vendor/lib64/libhbtpfrmwk.so
 
 # Voice
 vendor/etc/qvop/antispoofing.bin
@@ -1306,7 +1327,6 @@ vendor/bin/KmInstallKeybox
 vendor/bin/PktRspTest
 vendor/bin/WifiLogger_app
 vendor/bin/athdiag
-vendor/bin/cdsprpcd
 vendor/bin/chre
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
@@ -1329,7 +1349,6 @@ vendor/bin/hw/rild
 vendor/bin/hw/vendor.caih.hardware.edata@1.0-service
 vendor/bin/hw/vendor.meizu.bsp.mzfacereco@1.0-service
 vendor/bin/hw/vendor.qti.hardware.ifaa@1.0-service
-vendor/bin/hw/vendor.qti.neuralnetworks@1.0-service-hvx
 vendor/bin/icm
 vendor/bin/ipacm-diag
 vendor/bin/klog
@@ -1352,9 +1371,6 @@ vendor/bin/seemp_healthd
 vendor/bin/spdaemon
 vendor/bin/ssgqmigd
 vendor/bin/ssgtzd
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 vendor/bin/tcpdump
 vendor/bin/test_diag
 vendor/bin/tloc_daemon
@@ -1373,7 +1389,6 @@ vendor/etc/init/rild.rc
 vendor/etc/init/vendor.caih.hardware.edata@1.0-service.rc
 vendor/etc/init/vendor.meizu.bsp.mzfacereco@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.ifaa@1.0-service.rc
-vendor/etc/init/vendor.qti.neuralnetworks@1.0-service-hvx.rc
 vendor/etc/lm/ReferenceFeature.xml
 vendor/etc/mdevice.ini
 vendor/etc/mkelog_parser.ini
@@ -1388,7 +1403,6 @@ vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/lib_ifaa_tac.so
 vendor/lib/libaoa.so
-vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplayqos.so
@@ -1402,9 +1416,6 @@ vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib/libgarden.so
 vendor/lib/libgpqese.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
 vendor/lib/libifaa_jni.so
 vendor/lib/libifaa_manager_interface.so
 vendor/lib/libllvm-qgl.so
@@ -1451,7 +1462,6 @@ vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/lib_ifaa_tac.so
 vendor/lib64/libaoa.so
 vendor/lib64/libcaihedata.so
-vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libdiagjni.so
@@ -1463,10 +1473,6 @@ vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgpqese.so
-vendor/lib64/libhbtpclient.so
-vendor/lib64/libhbtpdsp.so
-vendor/lib64/libhbtpfrmwk.so
-vendor/lib64/libhexagon_nn_stub.so
 vendor/lib64/libifaa_jni.so
 vendor/lib64/libifaa_manager_interface.so
 vendor/lib64/liblearningmodule.so

@@ -11,19 +11,25 @@
     <bool name="config_device_volte_available">true</bool>
     <bool name="config_device_vt_available">true</bool>
     <bool name="config_device_wfc_ims_available">false</bool>
+    <bool name="config_displayBlanksAfterDoze">false</bool>
     <bool name="config_dozeAfterScreenOffByDefault">true</bool>
     <bool name="config_dynamic_bind_ims">false</bool>
     <bool name="config_enableMultiUserUI">false</bool>
+    <bool name="config_enableNetworkLocationOverlay">false</bool>
     <bool name="config_enableWifiDisplay">false</bool>
     <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
     <bool name="config_hotswapCapable">true</bool>
     <bool name="config_intrusiveNotificationLed">false</bool>
+    <bool name="config_lidControlsSleep">true</bool>
     <bool name="config_pinnerCameraApp">false</bool>
     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+    <bool name="config_setColorTransformAccelerated">false</bool>
     <bool name="config_showNavigationBar">true</bool>
     <bool name="config_speed_up_audio_on_mt_calls">false</bool>
     <bool name="config_supportAudioSourceUnprocessed">false</bool>
+    <bool name="config_supportDoubleTapWake">false</bool>
+    <bool name="config_sustainedPerformanceModeSupported">false</bool>
     <bool name="config_swipe_up_gesture_setting_available">false</bool>
     <bool name="config_switch_phone_on_voice_reg_state_change">true</bool>
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -31,6 +37,7 @@
     <bool name="config_useVideoPauseWorkaround">false</bool>
     <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
     <bool name="config_wifi_background_scan_support">false</bool>
+    <bool name="config_wifi_batched_scan_supported">false</bool>
     <bool name="config_wifi_dual_band_support">false</bool>
     <bool name="config_wifi_softap_acs_supported">false</bool>
     <bool name="config_wifi_softap_ieee80211ac_supported">false</bool>
@@ -52,16 +59,74 @@
     <integer name="config_screenBrightnessDoze">1</integer>
     <integer name="config_screenBrightnessSettingDefault">536</integer>
     <integer name="config_screenBrightnessSettingMinimum">12</integer>
+    <integer name="config_shutdownBatteryTemperature">600</integer>
     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
-    <item type="bool" name="config_nightDisplayAvailable">@bool/config_setColorTransformAccelerated</item> <bool name="config_setColorTransformAccelerated">false</bool>
     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
-    <string name="config_mainBuiltInDisplayCutout">M-138,0 C-100.319015,0 -78.8094286,11.585036 -56.9106598,48.2868587 C-45.0899716,68.1052477 -23.8069241,81 0.002904346,81 C23.8127328,81 45.0899716,68.1052477 56.9164685,48.2868587 C78.8094286,11.585036 100.324824,0 138,0 L-138,0 Z</string> <string name="config_mainBuiltInDisplayCutoutRectApproximation">@string/config_mainBuiltInDisplayCutout</string>
-    <string name="config_mms_user_agent" /> <string name="config_mms_user_agent_profile_url" />
-    <string name="config_persistentDataPackageName" />
+    <string name="config_mainBuiltInDisplayCutout">M-138,0 C-100.319015,0 -78.8094286,11.585036 -56.9106598,48.2868587 C-45.0899716,68.1052477 -23.8069241,81 0.002904346,81 C23.8127328,81 45.0899716,68.1052477 56.9164685,48.2868587 C78.8094286,11.585036 100.324824,0 138,0 L-138,0 Z</string>
     <string name="config_wifi_tcp_buffers">524288,1048576,5505024,262144,524288,5505024</string>
+    <integer-array name="config_autoBrightnessDisplayValuesNits">
+        <item>4</item>
+        <item>5</item>
+        <item>9</item>
+        <item>16</item>
+        <item>24</item>
+        <item>31</item>
+        <item>35</item>
+        <item>48</item>
+        <item>61</item>
+        <item>83</item>
+        <item>87</item>
+        <item>87</item>
+        <item>88</item>
+        <item>88</item>
+        <item>88</item>
+        <item>89</item>
+        <item>89</item>
+        <item>89</item>
+        <item>90</item>
+        <item>90</item>
+        <item>91</item>
+        <item>91</item>
+        <item>91</item>
+        <item>92</item>
+        <item>92</item>
+        <item>93</item>
+        <item>95</item>
+        <item>96</item>
+        <item>98</item>
+        <item>98</item>
+        <item>100</item>
+        <item>101</item>
+        <item>102</item>
+        <item>104</item>
+        <item>105</item>
+        <item>107</item>
+        <item>108</item>
+        <item>110</item>
+        <item>111</item>
+        <item>113</item>
+        <item>114</item>
+        <item>116</item>
+        <item>117</item>
+        <item>119</item>
+        <item>120</item>
+        <item>142</item>
+        <item>164</item>
+        <item>190</item>
+        <item>216</item>
+        <item>243</item>
+        <item>272</item>
+        <item>302</item>
+        <item>313</item>
+        <item>386</item>
+        <item>430</item>
+        <item>434</item>
+        <item>445</item>
+        <item>445</item>
+    </integer-array>
     <integer-array name="config_autoBrightnessLevels">
         <item>1</item>
         <item>2</item>
@@ -241,5 +306,16 @@
         <item>/system/lib64/libRSDriver.so</item>
         <item>/system/lib64/libRSCpuRef.so</item>
         <item>/system/lib64/libblas.so</item>
+    </string-array>
+    <string-array name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>SUPL_MODE=1</item>
+        <item>SUPL_ES=1</item>
+        <item>LPP_PROFILE=0</item>
+        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
+        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
+        <item>GPS_LOCK=0</item>
     </string-array>
 </resources>

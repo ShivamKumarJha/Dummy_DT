@@ -156,6 +156,12 @@ vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
+# CDSP
+vendor/lib/libcdsp_default_listener.so
+vendor/lib/libcdsprpc.so
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -242,7 +248,6 @@ vendor/lib64/vendor.qti.latency@2.0.so
 # Camera
 vendor/lib/hw/camera.sdm660.so
 vendor/lib/libbase64.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libdepthmapwrapper.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libgui_vendor.so
@@ -267,7 +272,6 @@ vendor/lib/libts_detected_face_hal.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libvideoutils.so
 vendor/lib64/libbase64.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libts_detected_face_hal.so
 vendor/lib64/libts_face_beautify_hal.so
 vendor/lib64/libvideoutils.so
@@ -2726,7 +2730,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/qcrild_librilutils.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0.so
@@ -2763,7 +2766,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
@@ -2878,6 +2880,15 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
+
 # Sensor-calibrate
 vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
 vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
@@ -2889,7 +2900,6 @@ vendor/etc/sensors/sensor_def_qcomdev.conf
 vendor/bin/sensors.qti
 vendor/lib/hw/activity_recognition.sdm660.so
 vendor/lib/hw/sensors.sdm660_64.so
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libcalmodule_common.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
@@ -2899,7 +2909,6 @@ vendor/lib/sensors.native.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/hw/activity_recognition.sdm660.so
 vendor/lib64/hw/sensors.sdm660_64.so
-vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libcalmodule_common.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
@@ -2954,6 +2963,12 @@ vendor/etc/hbtp/loader.cfg
 vendor/etc/hbtp/qtc800h.bin
 vendor/etc/hbtp/qtc800h_8998_660.bin
 vendor/etc/hbtp/qtc800s_dsp.bin
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/libhbtpfrmwk.so
+vendor/lib64/libhbtpclient.so
+vendor/lib64/libhbtpdsp.so
+vendor/lib64/libhbtpfrmwk.so
 
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -3087,10 +3102,7 @@ vendor/bin/sigma_dut
 vendor/bin/spectraltool
 vendor/bin/ssgqmigd
 vendor/bin/ssgtzd
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
 vendor/bin/stopqxdmlog
-vendor/bin/subsystem_ramdump
 vendor/bin/tbaseLoader
 vendor/bin/test_diag
 vendor/bin/test_module_pproc
@@ -3113,15 +3125,11 @@ vendor/lib/ese_spi_nxp.so
 vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/libUBWC.so
 vendor/lib/libbinder.so
-vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcutils.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libgarden.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
 vendor/lib/libqcbor.so
 vendor/lib/libsi.so
 vendor/lib/libstreamparser.so
@@ -3136,15 +3144,11 @@ vendor/lib64/ese_spi_nxp.so
 vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libbinder.so
-vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcutils.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastcrc.so
 vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libgarden.so
-vendor/lib64/libhbtpclient.so
-vendor/lib64/libhbtpdsp.so
-vendor/lib64/libhbtpfrmwk.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libsi.so
 vendor/lib64/libstreamparser.so

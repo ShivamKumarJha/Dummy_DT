@@ -101,6 +101,9 @@ vendor/lib/libbt-hidlclient.so
 vendor/lib/libbt-vendor.so
 vendor/lib/libbtnv.so
 
+# CDSP
+vendor/lib/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -149,7 +152,6 @@ vendor/lib/libMiWatermark.so
 vendor/lib/libXMFD_AgeGender.so
 vendor/lib/lib_lowlight.so
 vendor/lib/libbase64.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libchromaflash.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
@@ -2213,7 +2215,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/vendor.qti.hardware.radio.am@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.radio.atcmdfwd@1.0_vendor.so
@@ -2267,6 +2268,13 @@ vendor/lib/vendor.qti.hardware.radio.ims@1.0_vendor.so
 vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib/vendor.qti.imsrtpservice@1.0_vendor.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+
 # Sensor-calibrate
 vendor/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
 vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
@@ -2277,7 +2285,6 @@ vendor/etc/sensors/sensor_def_qcomdev.conf
 # Sensors
 vendor/bin/sensors.qcom
 vendor/lib/hw/activity_recognition.msm8953.so
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/libsensor_user_cal.so
@@ -2313,6 +2320,9 @@ vendor/etc/hbtp/hbtpcfg_msm8937_800s_fhd.dat
 vendor/etc/hbtp/qtc800h.bin
 vendor/etc/hbtp/qtc800s_dsp.bin
 vendor/etc/hbtp/qtc800s_msm8937.bin
+vendor/lib/libhbtpclient.so
+vendor/lib/libhbtpdsp.so
+vendor/lib/libhbtpfrmwk.so
 
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
@@ -2423,9 +2433,6 @@ vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qseecom_sample_client
 vendor/bin/resize_ext4
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 vendor/bin/sviswitch
 vendor/bin/tbaseLoader
 vendor/bin/test_diag
@@ -2467,9 +2474,6 @@ vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libfeedbackhandler.so
-vendor/lib/libhbtpclient.so
-vendor/lib/libhbtpdsp.so
-vendor/lib/libhbtpfrmwk.so
 vendor/lib/libhwminijail.so
 vendor/lib/libllvm-qgl.so
 vendor/lib/libmediacodecservice.so

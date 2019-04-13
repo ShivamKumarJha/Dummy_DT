@@ -7,6 +7,8 @@ Output from bash scripts to prepare following of a target ROM:
 4. **vendor_prop.mk:** Properties from /system & /vendor build.prop.
 5. **configs:** From both /system & /vendor. No Makefile generated.
 6. **rootdir:** Ramdisk with generated Makefile.
+7. **overlay:** FWB configs, Bluetooth & CarrierConfig
+8. **skeleton tree**
 
 #### Note:
 These files **may** require edits but will certainly **save you a lot of time**.

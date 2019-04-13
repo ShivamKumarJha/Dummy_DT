@@ -147,6 +147,13 @@ vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
+# CDSP
+vendor/bin/cdsprpcd
+vendor/lib/libcdsp_default_listener.so
+vendor/lib/libcdsprpc.so
+vendor/lib64/libcdsp_default_listener.so
+vendor/lib64/libcdsprpc.so
+
 # CNE
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
@@ -321,7 +328,6 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libvideoutils.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
@@ -486,7 +492,6 @@ vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libmibokeh_660.so
 vendor/lib64/libmpbase.so
@@ -1021,6 +1026,11 @@ vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 
+# Neural-networks
+vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
+vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
+vendor/lib64/libhexagon_nn_stub.so
+
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/bin/msm_irqbalance
@@ -1166,7 +1176,6 @@ vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/librilqmiservices.so
 vendor/lib/libsettings.so
-vendor/lib/libsubsystem_control.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/libvsim.so
 vendor/lib/qcrild_librilutils.so
@@ -1205,7 +1214,6 @@ vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/librilqmiservices.so
 vendor/lib64/libsettings.so
-vendor/lib64/libsubsystem_control.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
@@ -1320,6 +1328,15 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
+
 # Sensor-calibrate
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
@@ -1397,12 +1414,10 @@ vendor/etc/sensors/sns_reg_config
 
 # Sensors
 vendor/bin/sensors.qti
-vendor/lib/libSubSystemShutdown.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ssc.so
-vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensorslog.so
@@ -1556,7 +1571,6 @@ vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
 vendor/bin/adpl
 vendor/bin/athdiag
-vendor/bin/cdsprpcd
 vendor/bin/charge_logger
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
@@ -1574,7 +1588,6 @@ vendor/bin/ftmtest
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
 vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/icm
 vendor/bin/ipacm-diag
@@ -1605,9 +1618,6 @@ vendor/bin/spectraltool
 vendor/bin/sscrpcd
 vendor/bin/ssgqmigd
 vendor/bin/ssgtzd
-vendor/bin/ssr_diag
-vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 vendor/bin/sviswitch
 vendor/bin/test_diag
 vendor/bin/vendor_cmd_tool
@@ -1630,7 +1640,6 @@ vendor/etc/ftm_test_config_qrd
 vendor/etc/ftm_test_config_sm6150-tavil-snd-card
 vendor/etc/ftm_test_config_sm6150-wcd9375qrd-snd-card
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
 vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/qdcmss.rc
 vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
@@ -1654,7 +1663,6 @@ vendor/lib/libaoa.so
 vendor/lib/libarbitrarybytes.so
 vendor/lib/libcapiv2svacnn.so
 vendor/lib/libcapiv2vop.so
-vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcvp.so
 vendor/lib/libcvp_common.so
@@ -1703,7 +1711,6 @@ vendor/lib64/libappclassifier.so
 vendor/lib64/libarbitrarybytes.so
 vendor/lib64/libcapiv2svacnn.so
 vendor/lib64/libcapiv2vop.so
-vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
 vendor/lib64/libcvp.so
@@ -1719,7 +1726,6 @@ vendor/lib64/libgameoptfeature.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgarden_haltests_e2e.so
 vendor/lib64/libgralloccore.so
-vendor/lib64/libhexagon_nn_stub.so
 vendor/lib64/liblearningmodule.so
 vendor/lib64/libmegface.so
 vendor/lib64/libmeters-ns.so

@@ -35,6 +35,7 @@
     <bool name="config_wifi_softap_acs_supported">false</bool>
     <bool name="config_wifi_softap_ieee80211ac_supported">false</bool>
     <bool name="skip_restoring_network_selection">true</bool>
+    <dimen name="status_bar_height_portrait">40.0dip</dimen>
     <fraction name="config_autoBrightnessAdjustmentMaxGamma">100.0%</fraction>
     <fraction name="config_maximumScreenDimRatio">29.999996%</fraction>
     <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
@@ -56,11 +57,170 @@
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
     <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
     <item type="bool" name="config_nightDisplayAvailable">@bool/config_setColorTransformAccelerated</item> <bool name="config_setColorTransformAccelerated">true</bool>
-    <item type="dimen" name="status_bar_height">@dimen/status_bar_height_portrait</item> <item type="dimen" name="status_bar_height_landscape">@dimen/status_bar_height_portrait</item> <dimen name="status_bar_height_portrait">40.0dip</dimen>
-    <item type="dimen" name="status_bar_height_landscape">@dimen/status_bar_height_portrait</item>
     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
     <string name="config_mainBuiltInDisplayCutout">M299.981023,0 L420.018977,0 C418.943843,0.0559965572 417.861243,0.111993114 416.789842,0.171722776 C416.252275,0.28371589 415.707242,0.391975901 415.169675,0.503969015 C414.374524,0.825015943 413.583106,1.14606287 412.787955,1.4671098 C412.067465,1.96734571 411.343243,2.46384852 410.622754,2.96408443 C410.029191,3.60991139 409.43936,4.25573835 408.842064,4.90156531 C408.412757,5.64445297 407.987183,6.38734063 407.557876,7.12649519 C407.374954,7.64539662 407.188299,8.16429805 407.005377,8.68693258 C406.803789,9.74340096 406.594735,10.7998693 406.389415,11.8563377 C406.29982,12.513364 406.206492,13.1703903 406.116898,13.8311496 C402.910162,36.8420016 383.232972,54 359.998133,54 C336.767028,54 317.089838,36.8420016 313.886835,13.8311496 C313.797241,13.1703903 313.70018,12.513364 313.610585,11.8563377 C313.405265,10.7998693 313.196211,9.74340096 312.99089,8.68693258 C312.811701,8.16429805 312.625046,7.64539662 312.442124,7.12649519 C312.012817,6.38734063 311.587243,5.64445297 311.157936,4.90156531 C310.56064,4.25573835 309.970809,3.60991139 309.377246,2.96408443 C308.656757,2.46384852 307.932535,1.96734571 307.212045,1.4671098 C306.416894,1.14606287 305.625476,0.825015943 304.830325,0.503969015 C304.292758,0.391975901 303.747725,0.28371589 303.210158,0.171722776 C302.135024,0.111993114 301.056157,0.0559965572 299.981023,3.2959755e-16 Z</string>
     <string name="config_mms_user_agent">Android-Mms/2.0</string> <string name="config_mms_user_agent_profile_url">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
     <string name="config_persistentDataPackageName">com.google.android.gms</string>
     <string name="config_wifi_tcp_buffers">524288,1048576,5505024,262144,524288,4194304</string>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>5</item>
+        <item>8</item>
+        <item>13</item>
+        <item>17</item>
+        <item>21</item>
+        <item>26</item>
+        <item>30</item>
+        <item>34</item>
+        <item>39</item>
+        <item>60</item>
+        <item>140</item>
+        <item>310</item>
+        <item>400</item>
+        <item>500</item>
+        <item>600</item>
+        <item>1000</item>
+        <item>1200</item>
+        <item>1500</item>
+        <item>3000</item>
+        <item>3500</item>
+        <item>4000</item>
+    </integer-array>
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>8</item>
+        <item>13</item>
+        <item>20</item>
+        <item>25</item>
+        <item>33</item>
+        <item>41</item>
+        <item>45</item>
+        <item>45</item>
+        <item>45</item>
+        <item>55</item>
+        <item>70</item>
+        <item>80</item>
+        <item>88</item>
+        <item>100</item>
+        <item>110</item>
+        <item>120</item>
+        <item>130</item>
+        <item>140</item>
+        <item>208</item>
+        <item>248</item>
+        <item>255</item>
+    </integer-array>
+    <integer-array name="config_tether_upstream_types">
+        <item>1</item>
+        <item>0</item>
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </integer-array>
+    <integer-array name="config_keyboardTapVibePattern">
+        <item>40</item>
+    </integer-array>
+    <string-array name="config_tether_usb_regexs">
+        <item>usb\\d</item>
+        <item>rndis\\d</item>
+    </string-array>
+    <string-array name="config_tether_wifi_regexs">
+        <item>wigig0</item>
+        <item>wlan0</item>
+    </string-array>
+    <string-array name="config_tether_bluetooth_regexs">
+        <item>bnep\\d</item>
+        <item>bt-pan</item>
+    </string-array>
+    <string-array name="config_tether_dhcp_range">
+        <item>192.168.42.2</item>
+        <item>192.168.42.254</item>
+        <item>192.168.43.2</item>
+        <item>192.168.43.254</item>
+        <item>192.168.44.2</item>
+        <item>192.168.44.254</item>
+        <item>192.168.45.2</item>
+        <item>192.168.45.254</item>
+        <item>192.168.46.2</item>
+        <item>192.168.46.254</item>
+        <item>192.168.47.2</item>
+        <item>192.168.47.254</item>
+        <item>192.168.48.2</item>
+        <item>192.168.48.254</item>
+        <item>192.168.49.2</item>
+        <item>192.168.49.254</item>
+        <item>192.168.50.2</item>
+        <item>192.168.50.254</item>
+        <item>192.168.51.2</item>
+        <item>192.168.51.254</item>
+    </string-array>
+    <string-array name="networkAttributes">
+        <item>wifi,1,1,1,-1,true</item>
+        <item>mobile,0,0,0,-1,true</item>
+        <item>mobile_mms,2,0,4,300000,true</item>
+        <item>mobile_supl,3,0,2,300000,true</item>
+        <item>mobile_dun,4,0,2,300000,true</item>
+        <item>mobile_hipri,5,0,3,300000,true</item>
+        <item>mobile_fota,10,0,2,300000,true</item>
+        <item>mobile_ims,11,0,2,300000,true</item>
+        <item>mobile_cbs,12,0,2,300000,true</item>
+        <item>bluetooth,7,7,2,-1,true</item>
+        <item>ethernet,9,9,4,-1,true</item>
+    </string-array>
+    <string-array name="radioAttributes">
+        <item>1,1</item>
+        <item>0,1</item>
+        <item>7,1</item>
+        <item>9,1</item>
+    </string-array>
+    <string-array name="config_mobile_tcp_buffers">
+        <item>5gnr:2097152,6291456,16777216,512000,2097152,8388608</item>
+        <item>lte:2097152,4194304,8388608,262144,524288,1048576</item>
+        <item>lte_ca:4096,6291456,12582912,4096,1048576,2097152</item>
+        <item>umts:4094,87380,1220608,4096,16384,1220608</item>
+        <item>hspa:4094,87380,1220608,4096,16384,1220608</item>
+        <item>hsupa:4094,87380,1220608,4096,16384,1220608</item>
+        <item>hsdpa:4094,87380,1220608,4096,16384,1220608</item>
+        <item>hspap:4094,87380,1220608,4096,16384,1220608</item>
+        <item>edge:4093,26280,35040,4096,16384,35040</item>
+        <item>gprs:4092,8760,11680,4096,8760,11680</item>
+        <item>evdo:4094,87380,524288,4096,16384,262144</item>
+    </string-array>
+    <string-array name="config_defaultPinnerServiceFiles">
+        <item>/data/dalvik-cache/arm64/system@framework@boot.oat</item>
+        <item>/data/dalvik-cache/arm/system@framework@boot.oat</item>
+        <item>/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex</item>
+        <item>/data/dalvik-cache/arm/system@framework@services.jar@classes.dex</item>
+        <item>/system/framework/arm64/boot.oat</item>
+        <item>/system/framework/arm/boot.oat</item>
+        <item>/system/framework/oat/arm64/services.odex</item>
+        <item>/system/framework/oat/arm/services.odex</item>
+        <item>/system/framework/arm64/boot-framework.oat</item>
+        <item>/system/framework/arm/boot-framework.oat</item>
+        <item>/system/framework/arm64/boot-core-libart.oat</item>
+        <item>/system/framework/arm/boot-core-libart.oat</item>
+        <item>/system/lib64/libRScpp.so</item>
+        <item>/system/lib64/libRS.so</item>
+        <item>/system/lib64/libRS_internal.so</item>
+        <item>/system/lib64/libbcinfo.so</item>
+        <item>/system/lib64/libRSDriver.so</item>
+        <item>/system/lib64/libRSCpuRef.so</item>
+        <item>/system/lib64/libblas.so</item>
+    </string-array>
 </resources>

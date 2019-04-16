@@ -1519,6 +1519,7 @@ vendor/lib/libtinycompress_vendor.so
 vendor/lib/libtonemapalgo.so
 vendor/lib/libwapi_cert.so
 vendor/lib/libwvkeybox.so
+vendor/lib/vndk/libxlog.so
 vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/hw/vr.sdm845.so

@@ -18,7 +18,7 @@ PRODUCT_MODEL := POCO F1
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := beryllium
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="beryllium-user 9 PKQ1.180729.001 9.4.11 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="beryllium-user 9 PKQ1.180729.001 9.4.15 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/beryllium/beryllium:9/PKQ1.180729.001/9.4.11:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/beryllium/beryllium:9/PKQ1.180729.001/9.4.15:user/release-keys

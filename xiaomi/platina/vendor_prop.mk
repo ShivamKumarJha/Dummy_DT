@@ -131,6 +131,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cit.nonrootbuild=true \
     ro.cit.stablebuild=true \
     ro.colorpick_adjust=true \
+    ro.control_privapp_permissions=log \
     ro.df.effect.conflict=1 \
     ro.hardware.fp.fpc=true \
     ro.hardware.fp.goodix=true \

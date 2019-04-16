@@ -7,7 +7,7 @@
     <bool name="config_camera_sound_forced">true</bool>
     <bool name="config_carrier_volte_available">false</bool>
     <bool name="config_carrier_wfc_ims_available">false</bool>
-    <bool name="config_cellBroadcastAppLinks">true</bool>
+    <bool name="config_cellBroadcastAppLinks">false</bool>
     <bool name="config_device_volte_available">true</bool>
     <bool name="config_device_vt_available">true</bool>
     <bool name="config_device_wfc_ims_available">false</bool>
@@ -42,7 +42,7 @@
     <bool name="config_wifi_softap_acs_supported">false</bool>
     <bool name="config_wifi_softap_ieee80211ac_supported">false</bool>
     <bool name="skip_restoring_network_selection">false</bool>
-    <dimen name="status_bar_height_portrait">35.0dip</dimen>
+    <dimen name="status_bar_height_portrait">27.269989dip</dimen>
     <fraction name="config_autoBrightnessAdjustmentMaxGamma">100.0%</fraction>
     <fraction name="config_maximumScreenDimRatio">29.999996%</fraction>
     <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>

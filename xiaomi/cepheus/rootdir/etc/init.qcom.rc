@@ -1261,6 +1261,12 @@ on property:vendor.opengles.version=*
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
+on property:vendor.perf.gpu_maxfreq.enable=true
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 810000000
+
+on property:vendor.perf.gpu_maxfreq.enable=false
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 585000000
+
 service vendor.wifilearner /system/vendor/bin/wifilearner
     class main
     user wifi

@@ -29,9 +29,6 @@ libarcsoft_supernight.so
 libmibokeh_855.so
 libarcsoft_distortion_correction.so
 libarcsoft_bodyslim.so
-libalLDC.so
-libalhLDC.so
-libalRnBRT_GL_GBWRAPPER.so
 libAlmalenceSrInterface.so
 libalCFR.so
 libcvp.so

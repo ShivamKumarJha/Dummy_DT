@@ -3844,6 +3844,9 @@ case "$target" in
 
         echo 120 > /proc/sys/vm/watermark_scale_factor
 
+        # limt the GPU max frequency
+        echo 585000000 > /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+
         # Enable oom_reaper
 	if [ -f /sys/module/lowmemorykiller/parameters/oom_reaper ]; then
 		echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper

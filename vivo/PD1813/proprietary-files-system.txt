@@ -1,0 +1,2 @@
+lib64/libaptXHD_encoder.so
+lib64/libaptX_encoder.so

@@ -2421,6 +2421,7 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/vulkan.sdm660.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
+vendor/lib/libEGL_adreno.so
 vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libadreno_utils.so
@@ -2431,6 +2432,7 @@ vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libpvr.so
+vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -2449,6 +2451,7 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/vulkan.sdm660.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
+vendor/lib64/libEGL_adreno.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/libadreno_utils.so
@@ -2459,6 +2462,7 @@ vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libpvr.so
+vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so

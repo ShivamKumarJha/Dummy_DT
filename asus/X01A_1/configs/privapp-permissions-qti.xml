@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017, The Linux Foundation. All rights reserved.
+
+  ~ Not a Contribution.
+-->
+
+<!--
+  ~ Copyright (C) 2016 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
+<!--
+This XML file declares which signature|privileged permissions should be
+granted to privileged applications on QTI devices.
+It allows additional grants on top of privapp-permissions-platform.xml
+-->
+
+<permissions>
+    <privapp-permissions package="com.quicinc.cne.CNEService">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.PACKET_KEEPALIVE_OFFLOAD"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.qti.dpmserviceapp">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.qualcomm.qcrilmsgtunnel">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.dialer">
+        <permission name="android.permission.ALLOW_ANY_CODEC_FOR_PLAYBACK"/>
+        <permission name="android.permission.CONTROL_INCALL_EXPERIENCE"/>
+        <permission name="android.permission.GET_ACCOUNTS_PRIVILEGED"/>
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+        <permission name="android.permission.STATUS_BAR"/>
+        <permission name="android.permission.STOP_APP_SWITCHES"/>
+        <permission name="com.android.voicemail.permission.READ_VOICEMAIL"/>
+        <permission name="com.android.voicemail.permission.WRITE_VOICEMAIL"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.qti.qtiNetworkApp">
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.qti.nrNetworkSettingApp">
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.ims">
+        <permission name="android.permission.READ_PRECISE_PHONE_STATE"/>
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.android.soundrecorder">
+        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+        <permission name="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.quicinc.voice.activation">
+        <permission name="android.permission.CAPTURE_AUDIO_HOTWORD"/>
+        <permission name="android.permission.MANAGE_SOUND_TRIGGER"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.qualcomm.qti.carrierswitch">
+        <permission name="android.permission.REBOOT"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.qualcomm.wfd.service">
+        <permission name="android.permission.READ_FRAME_BUFFER"/>
+        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.android.mms">
+        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+        <permission name="android.permission.WRITE_APN_SETTINGS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.bluetooth.batestapp">
+        <permission name="android.permission.BLUETOOTH_PRIVILEGED"/>
+        <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="org.codeaurora.snapcam">
+        <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.qualcomm.qti.callenhancement">
+        <permission name="android.permission.RECORD_AUDIO" />
+        <permission name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+        <permission name="android.permission.READ_EXTERNAL_STORAGE" />
+        <permission name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <permission name="android.permission.READ_BLOCKED_NUMBERS" />
+        <permission name="android.permission.VIBRATE" />
+    </privapp-permissions>
+
+    <privapp-permissions package="com.skyhook.blp">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+
+    <!--Huaqin add for ZQL1830-656 by chenlingyu at 2018.8.29 start-->
+    <privapp-permissions package="com.asus.livedemoservice">
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+	<permission name="android.permission.INSTALL_PACKAGES"/>
+	<permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+	<permission name="android.permission.MASTER_CLEAR"/>
+	<permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+	<permission name="android.permission.REBOOT"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.batterysoh">
+        <permission name="android.permission.BATTERY_STATS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.soundrecorder">
+        <permission name="android.permission.CAPTURE_AUDIO_OUTPUT"/>
+	<permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.loguploader">
+        <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<permission name="android.permission.READ_LOGS"/>
+	<permission name="android.permission.BATTERY_STATS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.loguploaderproxy">
+        <permission name="android.permission.DUMP"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.livedemo">
+        <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.powersaver">
+        <permission name="android.permission.BATTERY_STATS"/>
+	<permission name="android.permission.CONTROL_LOCATION_UPDATES"/>
+	<permission name="android.permission.FORCE_STOP_PACKAGES"/>
+	<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+	<permission name="android.permission.MANAGE_USERS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.facebook.system">
+        <permission name="android.permission.CHANGE_COMPONENT_ENABLED_STATE"/>
+	<permission name="android.permission.DELETE_PACKAGES"/>
+	<permission name="android.permission.INSTALL_PACKAGES"/>
+	<permission name="android.permission.REAL_GET_TASKS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.google.android.apps.nbu.files">
+        <permission name="android.permission.DELETE_CACHE_FILES"/>
+	<permission name="android.permission.DELETE_PACKAGES"/>
+	<permission name="android.permission.PACKAGE_USAGE_STATS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.sysmonitor">
+         <permission name="android.permission.BATTERY_STATS"/>
+         <permission name="android.permission.DUMP"/>
+         <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+         <permission name="android.permission.READ_LOGS"/>
+         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+         <permission name="android.permission.UPDATE_DEVICE_STATS"/>
+         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.sysdiagnostic">
+         <permission name="android.permission.CONTROL_LOCATION_UPDATES"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.asus.smartreading">
+         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.android.cellbroadcastreceiver">
+         <permission name="android.permission.STATUS_BAR"/>
+    </privapp-permissions>
+
+    <!--Huaqin add for ZQL1830-656 by chenlingyu at 2018.8.29 end-->
+    <privapp-permissions package="com.android.cellbroadcastreceiver">
+        <permission name="android.permission.STATUS_BAR"/>
+    </privapp-permissions>
+    <!-- Huaqin add for 1224561 by zhangshuli at 2018/08/01 end -->
+
+    <!-- Huaqin add by huhongyan for cts fail on 20181024 begin-->
+    <privapp-permissions package="ru.yandex.searchplugin">
+        <permission name="android.permission.PACKAGE_USAGE_STATS"/>
+    </privapp-permissions>
+    <!-- Huaqin add by huhongyan for cts fail on 20181024 end-->
+
+    <!-- archermind add by wangwei for cts fail on 20190304 begin-->
+    <privapp-permissions package="org.codeaurora.snapcam">
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+    </privapp-permissions>
+    <!-- archermind add by wangwei for cts fail on 20190304 end-->
+
+    <!-- archermind add by wangwei for cts fail on 20190304 begin-->
+    <privapp-permissions package="com.android.launcher3">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+    <!-- archermind add by wangwei for cts fail on 20190304 end-->
+
+
+</permissions>

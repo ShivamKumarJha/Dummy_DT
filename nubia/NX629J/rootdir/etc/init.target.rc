@@ -1,0 +1,363 @@
+# Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+# nubia customization
+import /vendor/etc/init/hw/init.nb.rc
+
+on early-init
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_tfa9894 audio_wcd9360 audio_hdmi audio_machine_msmnile
+    write /proc/sys/kernel/sched_boost 1
+    symlink /data/tombstones /tombstones
+
+on init
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 1
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 1
+    write /dev/stune/schedtune.colocate 0
+    write /dev/stune/background/schedtune.colocate 0
+    write /dev/stune/system-background/schedtune.colocate 0
+    write /dev/stune/foreground/schedtune.colocate 0
+    write /dev/stune/top-app/schedtune.colocate 1
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+    wait /dev/block/platform/soc/1d84000.ufshc
+    symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
+    start logd
+    start vendor.qseecomd
+    start keymaster-4-0
+    start keymaster-sb-4-0
+
+# Add a cpuset for the camera daemon
+# We want all cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/mems 0
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+    chmod 0660 /dev/cpuset/camera-daemon/tasks
+
+on early-fs
+    start vold
+
+on fs
+    start hwservicemanager
+    mount_all /vendor/etc/fstab.qcom --early
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
+
+on post-fs
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
+
+    write /dev/ipa 1
+#    start vendor.spdaemon
+#    start vendor.sec_nvm
+
+on late-fs
+    wait_for_prop hwservicemanager.ready true
+    exec_start wait_for_keymaster
+    mount_all /vendor/etc/fstab.qcom --late
+
+on post-fs-data
+    mkdir /vendor/data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /data/vendor/hbtp 0750 system system
+    mkdir /data/vendor/tloc 0700 system drmrpc
+    mkdir /data/vendor/nnhal 0700 system system
+    chown system system /sys/kernel/fan/fan_speed_level
+    chmod 0664 /sys/kernel/fan/fan_speed_level
+    chown system system /sys/kernel/fan/fan_enable
+    chmod 0664 /sys/kernel/fan/fan_enable
+on early-boot
+    start vendor.sensors
+
+# For cpusets initialize for Silver Only first and then Silver + Gold
+# Silver Only configuration cannot work with 0-7
+on boot
+    chown system system /sys/kernel/hbtp/display_pwr
+    chown system system /sys/kernel/qvr_external_sensor/fd
+    start rmt_storage
+    start rfs_access
+    #write /dev/cpuset/top-app/cpus 0-3
+    write /dev/cpuset/audio-app/cpus 1-2
+    #write /dev/cpuset/foreground/cpus 0-3
+    #write /dev/cpuset/foreground/boost/cpus 0-3
+    #write /dev/cpuset/background/cpus 0-3
+    #write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-7
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-1
+    #NUBIA ADD FOR CPUSET
+    write /dev/cpuset/dex2oat/cpus 0-2,7
+    write /dev/cpuset/dex2oatfg/cpus 3,4-7
+    write /dev/cpuset/fullon/cpus 0-7
+    write /dev/cpuset/systemserver/cpus 0-7
+    #NUBIA END
+
+    #nubia begin add for TGPA
+    write /dev/cpuset/bigcluster/cpus 4-7
+    write /dev/cpuset/littlecluster/cpus 0-3
+    #nubia add for TGPA end
+
+    # Create netmgr recovery folder
+    mkdir /data/vendor/netmgr/recovery 0700 radio radio
+    chmod 0770 /data/vendor/netmgr/recovery
+    write /data/vendor/netmgr/recovery/recovery_info ""
+    chown radio radio /data/vendor/netmgr/recovery/recovery_info
+
+#USB controller configuration
+    setprop vendor.usb.rndis.func.name "gsi"
+    setprop vendor.usb.rmnet.func.name "gsi"
+    setprop vendor.usb.rmnet.inst.name "rmnet"
+    setprop vendor.usb.dpl.inst.name "dpl"
+    setprop vendor.usb.controller a600000.dwc3
+    setprop sys.usb.configfs 1
+
+on property:vendor.display.lcd_density=560
+   setprop dalvik.vm.heapgrowthlimit 256m
+
+on property:vendor.display.lcd_density=640
+   setprop dalvik.vm.heapgrowthlimit 512m
+
+on boot && property:persist.vendor.usb.controller.default=*
+    setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
+
+on property:vendor.usb.controller=*
+    setprop sys.usb.controller ${vendor.usb.controller}
+
+#Load WLAN driver
+    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+
+#pd-mapper
+service vendor.pd_mapper /vendor/bin/pd-mapper
+    class core
+    user system
+    group system
+
+#Peripheral manager
+service vendor.per_mgr /vendor/bin/pm-service
+    class core
+    user system
+    group system
+    ioprio rt 4
+
+service vendor.per_proxy /vendor/bin/pm-proxy
+    class core
+    user system
+    group system
+    disabled
+
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
+
+on property:sys.shutdown.requested=*
+    stop vendor.per_proxy
+    stop vendor.ims_rtp_daemon
+
+on charger
+    start vendor.hvdcp_opti
+    start vendor.power_off_alarm
+    setprop vendor.usb.controller a600000.dwc3
+    setprop sys.usb.configfs 1
+
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+
+#service vendor.spdaemon /vendor/bin/spdaemon
+#    class core
+#    user system
+#    group system
+#    shutdown critical
+
+#service vendor.sec_nvm /vendor/bin/sec_nvm
+#    class core
+#    user system
+#    group system
+
+service vendor.thermal-engine /vendor/bin/thermal-engine
+   class main
+   user root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
+   socket thermal-send-rule stream 0660 system system
+   group root system
+
+
+service vendor.adsprpcd /vendor/bin/adsprpcd
+   class main
+   user root
+   group media
+
+service vendor.adsprpcd_audiopd /vendor/bin/adsprpcd audiopd
+   class main
+   user media
+   group media
+
+service vendor.cdsprpcd /vendor/bin/cdsprpcd
+   class main
+   user system
+   group system
+
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio log diag
+
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet log diag
+    disabled
+
+service vendor.mdm_helper /vendor/bin/mdm_helper
+    class core
+    group system wakelock
+    disabled
+
+service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
+    class main
+    oneshot
+
+
+service vendor.imsrcsservice /vendor/bin/imsrcsd
+    class main
+    user system
+    group radio diag inet log wakelock
+
+on property:vendor.ims.QMI_DAEMON_STATUS=1
+    start vendor.imsdatadaemon
+
+#on property:vold.decrypt=trigger_restart_framework
+#    start cnss_diag
+#nubia add for cnss log
+on property:sys.nubia.wifi.log=enable
+    start cnss_diag
+
+on property:sys.nubia.wifi.log=disable
+    stop cnss_diag
+#nubia add end
+service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
+    class main
+    user system
+    group system wifi inet sdcard_rw media_rw diag
+    disabled
+    oneshot
+
+#nubia add for poweroff&&poweroffcharge log
+service powerofflog /system/bin/sh /system/etc/fg_logs_start.sh /persist/nubialog
+    disabled
+    oneshot
+    group root shell
+    seclabel u:r:powerofflog:s0
+on property:sys.poweroffcharge.control=on
+    start powerofflog
+	
+service powercharge_property   /system/vendor/bin/poweroffcharge-getprop
+    disabled
+    oneshot
+    user root
+
+on property:persist.vendor.poweroffchargeproperty.control=on
+    start powercharge_property
+
+on charger
+    wait /dev/block/platform/soc/1d84000.ufshc
+    symlink /dev/block/platform/soc/1d84000.ufshc /dev/block/bootdevice
+    mkdir /mnt/vendor/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist  /mnt/vendor/persist  nosuid nodev barrier=1
+    mount_all fstab.qcom
+    restorecon_recursive /persist
+    restorecon_recursive /sys/kernel/debug
+    rm /sdcard
+    symlink /persist /sdcard
+    load_system_props
+    start qcom-post-boot
+    mkdir /mnt/vendor/persist/settings 0777 system system
+    #write /mnt/vendor/persist/settings/persist.vendor.game.lamps.charge.enable on
+    #touch /mnt/vendor/persist/misc/settings/persist.sys.game.lamps.charge.enable
+    setprop persist.vendor.poweroffchargeproperty.control on
+    chown  system system /mnt/vendor/persist/factory/lamps_charge_enable
+    chmod 777 /mnt/vendor/persist/factory/lamps_charge_enable
+    mkdir /persist/nubialog 0755 system system
+    chmod 755 /system/etc/fg_logs_start.sh
+    chown root shell /system/etc/fg_logs_start.sh
+#nubia add end
+
+
+service vendor.ims_rtp_daemon /vendor/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio diag inet log
+
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+    restart vendor.ims_rtp_daemon
+
+service vendor.energy-awareness /vendor/bin/energy-awareness
+    class main
+    user system
+    group system
+    oneshot
+
+service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
+    class main
+    user root
+    group system wakelock
+
+service vendor.tlocd /vendor/bin/tloc_daemon
+    class late_start
+    user system
+    group drmrpc gps net_raw
+
+service smcinvoked /system/bin/smcinvoked
+    class main
+    user system
+    group system
+
+service vendor.sar_proxy_mgr /vendor/bin/sarproxymgr
+    class main
+    user radio
+    group radio wakelock net_admin
+    capabilities BLOCK_SUSPEND
+    disabled
+
+on property:ro.boot.baseband=mdm
+    start vendor.sar_proxy_mgr

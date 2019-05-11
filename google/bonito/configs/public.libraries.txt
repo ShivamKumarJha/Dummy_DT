@@ -1,0 +1,10 @@
+libadsprpc.so
+libcdsprpc.so
+libsdsprpc.so
+liblistenjni.so
+liblistensoundmodel2.so
+libOpenCL.so
+libnpu.so
+lib_aion_buffer.so
+libqdMetaData.so
+libaix.so

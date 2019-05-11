@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright (C) 2015 vivo MOBILE COMMUNICATION CO.,LTD 
+
+     ALL RIGHT RESERVED
+-->
+
+<Included>
+    <Decoders>
+        <MediaCodec name="OMX.vivo.rv.decoder">
+            <Type name="video/rv">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.vivo.vc1.decoder">
+            <!-- wmv3&vc1 -->
+            <Type name="video/x-ms-wmv" >
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+            <!-- wmv1&v2 -->
+            <Type name="video/x-ms-wmv2">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.vivo.flv.decoder">
+            <Type name="video/x-flv">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+            <Type name="video/flv1">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <!-- MS MPEG4/V3 -->
+        <MediaCodec name="OMX.vivo.divx3.decoder"> 
+            <Type name="video/divx3">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+               <!--  cts -c android.media.cts.ImageReaderDecoderTest -m testOtherH263Image
+         <MediaCodec name="OMX.vivo.h263.decoder"> 
+            <Type name="video/3gpp">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec> -->
+		<!--  cts -c android.media.cts.MediaCodecCapabilitiesTest -m testAllVideoDecodersAreAdaptive
+        <MediaCodec name="OMX.vivo.avc.decoder"> 
+            <Type name="video/avc">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.vivo.hevc.decoder"> 
+            <Type name="video/hevc">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>  -->
+               <!--  cts -c android.media.cts.ImageReaderDecoderTest -m testOtherMpeg4Image
+        <MediaCodec name="OMX.vivo.mpeg4.decoder"> 
+            <Type name="video/mp4v-es">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec> -->
+        <MediaCodec name="OMX.vivo.mpeg2.decoder"> 
+            <Type name="video/mpeg2">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.vivo.mjpeg.decoder"> 
+            <Type name="video/mjpeg">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+            <!-- Mediatek use this mime type -->
+            <Type name="video/x-motion-jpeg">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+		 <!--  cts -c android.media.cts.MediaCodecCapabilitiesTest -m testAllVideoDecodersAreAdaptive
+        <MediaCodec name="OMX.vivo.vp8.decoder"> 
+            <Type name="video/x-vnd.on2.vp8">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.vivo.vp9.decoder"> 
+            <Type name="video/x-vnd.on2.vp9">
+                <Limit name="size" min="2x2" max="1920x1088" />
+            </Type>
+        </MediaCodec>  -->
+    </Decoders>
+</Included>

@@ -49,6 +49,10 @@ framework/com.quicinc.cne.server-V2.1-java.jar
 framework/com.quicinc.cne.server-V2.2-java.jar
 framework/dpmapi.jar
 framework/embmslibrary.jar
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
 framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/tcmclient.jar

@@ -202,6 +202,7 @@ vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 
 # Camera
+vendor/lib/libdualcameraddm.so
 vendor/lib/libmibokeh_835.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/mibokeh_835_opencl.bin
@@ -210,7 +211,6 @@ vendor/lib/libFaceGrade.so
 vendor/lib/libXMFD_AgeGender.so
 vendor/lib/lib_lowlight.so
 vendor/lib/libbase64.so
-vendor/lib/libdualcameraddm.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libhal_dbg.so
@@ -230,6 +230,7 @@ vendor/lib/libqomx_jpegenc.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libvideoutils.so
 vendor/lib64/libbase64.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libvideoutils.so
 
 # Camera-actuators
@@ -263,6 +264,9 @@ vendor/lib/libarcsoft_beautyshot_video_algorithm.so
 vendor/lib/libarcsoft_dualcam_optical_zoom.so
 vendor/lib/libarcsoft_dualcam_optical_zoom_control.so
 vendor/lib/libarcsoft_dualcam_refocus.so
+
+# Camera-bin
+vendor/bin/mm-qcamera-app
 
 # Camera-chromatix
 vendor/lib/libchromatix_chiron_imx386_semco_4K_preview.so
@@ -2356,6 +2360,13 @@ vendor/lib64/libmmosal_proprietary.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libstagefright_soft_qtiflacdec.so
 
+# NFC
+vendor/lib/libpn547_fw.so
+vendor/lib/libpn548ad_fw.so
+vendor/lib/libpn551_fw.so
+vendor/lib/libpn553_fw.so
+vendor/lib/libpn557_fw.so
+
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
 vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
@@ -2749,6 +2760,14 @@ vendor/lib64/libqsap_sdk.so
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
@@ -2759,6 +2778,9 @@ vendor/bin/hw/vendor.xiaomi.hardware.citsensorservice@1.1-service
 vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
+vendor/bin/mlipayd@1.1
+vendor/bin/mtd@1.2
+vendor/bin/tidad@1.1
 vendor/etc/init/vendor.xiaomi.hardware.citsensorservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
@@ -2770,38 +2792,35 @@ vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/lib/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
+vendor/lib/libmlipay.so
+vendor/lib/libmlipay@1.1.so
+vendor/lib/libmt.so
+vendor/lib/libtida@1.1.so
 vendor/lib/vendor.xiaomi.hardware.citsensorservice@1.0_vendor.so
 vendor/lib/vendor.xiaomi.hardware.citsensorservice@1.1_vendor.so
 vendor/lib64/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
-vendor/lib64/vendor.xiaomi.hardware.citsensorservice@1.0_vendor.so
-vendor/lib64/vendor.xiaomi.hardware.citsensorservice@1.1_vendor.so
-vendor/bin/mlipayd@1.1
-vendor/bin/mtd@1.2
-vendor/bin/tidad@1.1
-vendor/lib/libmlipay.so
-vendor/lib/libmlipay@1.1.so
-vendor/lib/libmt.so
-vendor/lib/libtida@1.1.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libtida@1.1.so
+vendor/lib64/vendor.xiaomi.hardware.citsensorservice@1.0_vendor.so
+vendor/lib64/vendor.xiaomi.hardware.citsensorservice@1.1_vendor.so
 
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
--vendor/app/ConnectionSecurityService/oat/arm64/ConnectionSecurityService.odex
--vendor/app/ConnectionSecurityService/oat/arm64/ConnectionSecurityService.vdex
+vendor/app/ConnectionSecurityService/oat/arm64/ConnectionSecurityService.odex
+vendor/app/ConnectionSecurityService/oat/arm64/ConnectionSecurityService.vdex
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
--vendor/app/SSGTelemetryService/oat/arm64/SSGTelemetryService.odex
--vendor/app/SSGTelemetryService/oat/arm64/SSGTelemetryService.vdex
--vendor/app/TimeService/oat/arm64/TimeService.odex
--vendor/app/TimeService/oat/arm64/TimeService.vdex
+vendor/app/SSGTelemetryService/oat/arm64/SSGTelemetryService.odex
+vendor/app/SSGTelemetryService/oat/arm64/SSGTelemetryService.vdex
+vendor/app/TimeService/oat/arm64/TimeService.odex
+vendor/app/TimeService/oat/arm64/TimeService.vdex
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
--vendor/app/TrustZoneAccessService/oat/arm64/TrustZoneAccessService.odex
--vendor/app/TrustZoneAccessService/oat/arm64/TrustZoneAccessService.vdex
+vendor/app/TrustZoneAccessService/oat/arm64/TrustZoneAccessService.odex
+vendor/app/TrustZoneAccessService/oat/arm64/TrustZoneAccessService.vdex
 vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
 vendor/bin/adpl
@@ -2831,11 +2850,8 @@ vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hostapd_cli
-vendor/bin/hw/android.hardware.nfc@1.1-service
-vendor/bin/hw/android.hardware.vr@1.0-service
 vendor/bin/hw/hostapd
 vendor/bin/hw/rild
-vendor/bin/hw/vendor.nxp.hardware.nfc@1.0-service
 vendor/bin/hw/vendor.qti.secure_element@1.0-service
 vendor/bin/hw/wpa_supplicant
 vendor/bin/ipacm
@@ -2845,7 +2861,6 @@ vendor/bin/mdm_helper
 vendor/bin/mdm_helper_proxy
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -2857,7 +2872,6 @@ vendor/bin/nqnfcinfo
 vendor/bin/nv_mac
 vendor/bin/pktlogconf
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -2890,8 +2904,6 @@ vendor/build.prop
 vendor/etc/IPACM_cfg.xml
 vendor/etc/a2dp_audio_policy_configuration.xml
 vendor/etc/apdr.conf
-vendor/etc/audio/audio_policy_configuration.xml
-vendor/etc/default_volume_tables.xml
 vendor/etc/flp.conf
 vendor/etc/fstab.qcom
 vendor/etc/ftm_test_config
@@ -2901,15 +2913,9 @@ vendor/etc/gps.conf
 vendor/etc/graphite_ipc_platform_info.xml
 vendor/etc/group
 vendor/etc/hdr_config.cfg
-vendor/etc/init/android.hardware.nfc@1.1-service.rc
-vendor/etc/init/android.hardware.vr@1.0-service.rc
 vendor/etc/init/hostapd.android.rc
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/manifest_sku.rc
-vendor/etc/init/rild.legacy.rc
-vendor/etc/init/vendor.nxp.hardware.nfc@1.0-service.rc
 vendor/etc/init/vendor.qti.secure_element@1.0-service.rc
-vendor/etc/init/vendor.rild.legacy.rc
 vendor/etc/init/vndservicemanager.rc
 vendor/etc/izat.conf
 vendor/etc/jdi_fhd_cmd_incell_dsi_panel_ct.xml
@@ -2935,9 +2941,7 @@ vendor/etc/spk_cal_silence.wav
 vendor/etc/spk_cal_sweep.wav
 vendor/etc/usb_audio_policy_configuration.xml
 vendor/etc/xtwifi.conf
-vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
-vendor/lib/hw/android.hardware.vr@1.0-impl.so
 vendor/lib/hw/audio.r_submix.default.so
 vendor/lib/hw/audio.usb.default.so
 vendor/lib/hw/local_time.default.so
@@ -2989,11 +2993,6 @@ vendor/lib/libmorpho_hdr_checker.so
 vendor/lib/libnanopb.so
 vendor/lib/libnbaio_mono.so
 vendor/lib/libp61-jcop-kit.so
-vendor/lib/libpn547_fw.so
-vendor/lib/libpn548ad_fw.so
-vendor/lib/libpn551_fw.so
-vendor/lib/libpn553_fw.so
-vendor/lib/libpn557_fw.so
 vendor/lib/libqcbor.so
 vendor/lib/libqdMetaData.so
 vendor/lib/libqdutils.so
@@ -3034,13 +3033,10 @@ vendor/lib/soundfx/libreverbwrapper.so
 vendor/lib/soundfx/libvisualizer.so
 vendor/lib/soundfx/libvolumelistener.so
 vendor/lib64/ese_spi_nxp.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/hw/android.hardware.secure_element@1.0-impl.so
-vendor/lib64/hw/android.hardware.vr@1.0-impl.so
 vendor/lib64/hw/audio.r_submix.default.so
 vendor/lib64/hw/audio.usb.default.so
 vendor/lib64/hw/local_time.default.so
-vendor/lib64/hw/nfc_nci.nqx.default.so
 vendor/lib64/hw/power.default.so
 vendor/lib64/hw/power.qcom.so
 vendor/lib64/hw/vendor.nxp.hardware.nfc@1.0-impl.so
@@ -3108,7 +3104,6 @@ vendor/lib64/libspl.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/libstagefrighthw.so
 vendor/lib64/libstreamparser.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress.so
 vendor/lib64/libtinycompress_vendor.so

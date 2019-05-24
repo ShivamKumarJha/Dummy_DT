@@ -448,15 +448,39 @@ vendor/lib/camera/libc.vivo.s5k3p9.chromatix.zsl_video_4K.awb.so
 vendor/lib/camera/libc.vivo.s5k3p9.chromatix.zsl_video_720p.awb.so
 vendor/lib/camera/tuning_pd1826_imx586_vivohaf.so
 vendor/lib/camera/tuning_pd1826_s5k3l6_vivohaf.so
+vendor/lib/hw/bbktouchscreen.default.so
 vendor/lib/hw/camera.qcom.so
+vendor/lib/libAltek_DualCam3D_DLL.so
+vendor/lib/libMegviiHum.so
+vendor/lib/libNtiOutline.so
+vendor/lib/libSTDualCamCaptureBokeh.so
+vendor/lib/libSTdisp.so
+vendor/lib/libSTdisp_cpu.so
+vendor/lib/libStereoblur.so
 vendor/lib/lib_lowlight.so
+vendor/lib/libalhLDC.so
 vendor/lib/libbase64.so
+vendor/lib/libbbkemsensor.so
 vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libmpbase.so
+vendor/lib/libnti_ExtremeHDR.so
+vendor/lib/libnti_beauty.so
+vendor/lib/libnti_cv.so
+vendor/lib/libnti_gpu_beautyengine.so
+vendor/lib/libnti_hdrsc.so
+vendor/lib/libnti_image_bokeh.so
+vendor/lib/libnti_lut.so
+vendor/lib/libnti_mem_share.so
+vendor/lib/libnti_previewbeauty.so
+vendor/lib/libnti_refocus_engine.so
+vendor/lib/libnti_rportrait.so
+vendor/lib/libnti_video_bokeh.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
@@ -475,12 +499,16 @@ vendor/lib64/camera/fdconfigpreviewlite.bin
 vendor/lib64/camera/fdconfigvideo.bin
 vendor/lib64/camera/fdconfigvideolite.bin
 vendor/lib64/libbase64.so
+vendor/lib64/libbbkemsensor.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
 vendor/lib64/libremosaic_daemon.so
 vendor/lib64/libremosaiclib.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera-arcsoft
@@ -694,6 +722,9 @@ vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libprmediadrmdecrypt.so
 vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
+
+# DTS
+vendor/lib/libomx-dts.so
 
 # Display-calibration
 vendor/etc/qdcm_calib_data_Dual_nt35597_video_mode_dsi_truly_panel_without_DSC.xml
@@ -1642,8 +1673,11 @@ vendor/bin/hw/vendor.vivo.hardware.ringleds@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.sectee@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.sensorfactory@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.vibrator_hall@1.0-service
+vendor/bin/init.vivo.crashdata.sh
+vendor/bin/init.vivo.nfc.sh
 vendor/bin/vendor.vivo.hardware.frameworkmessager@1.0-test
 vendor/bin/vivo_defend
+vendor/etc/init/init.vivo.nfc.rc
 vendor/etc/init/vendor.factory.hardware.vivoem@1.0-service.rc
 vendor/etc/init/vendor.vivo.hardware.atcmd@1.0-service.rc
 vendor/etc/init/vendor.vivo.hardware.bbkts@1.0-service.rc
@@ -1838,8 +1872,6 @@ vendor/lib64/vendor.qti.hardware.wifi.wifivendorsta@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
-
-
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
@@ -1867,7 +1899,6 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/icm
 vendor/bin/ipacm-diag
 vendor/bin/mlid
@@ -1877,7 +1908,6 @@ vendor/bin/myftm
 vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qdmastatsd
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -1930,10 +1960,7 @@ vendor/etc/ftm_test_config_sdm710-skuw-snd-card
 vendor/etc/ftm_test_config_sdm710-tasha-snd-card
 vendor/etc/ftm_test_config_sdm710-tavil-snd-card
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/init.vivo.nfc.rc
 vendor/etc/init/slad.rc
-vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/lm/AdaptLaunchFeature.xml
 vendor/etc/svfd/svfd_5150.dat
 vendor/etc/system_properties.xml
@@ -1944,36 +1971,24 @@ vendor/etc/tfa98xx_PD1836LG4.cnt
 vendor/lib/RkAlgos.so
 vendor/lib/drm-vts-test-libs/libvtswidevine.so
 vendor/lib/hw/adnc_strm.primary.default.so
-vendor/lib/hw/bbktouchscreen.default.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/dualleds.default.so
 vendor/lib/hw/ringleds.default.so
 vendor/lib/hw/sound_trigger.primary.default.so
 vendor/lib/hw/vibrator_camera.default.so
 vendor/lib/ksensors.sdm710.so
-vendor/lib/libAltek_DualCam3D_DLL.so
 vendor/lib/libGPMTEEC_vendor.so
 vendor/lib/libImageFlip.so
-vendor/lib/libMegviiHum.so
 vendor/lib/libMpeg4SwEncoder.so
-vendor/lib/libNtiOutline.so
 vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/libRkSuperns_stub.so
-vendor/lib/libSTDualCamCaptureBokeh.so
-vendor/lib/libSTdisp.so
-vendor/lib/libSTdisp_cpu.so
-vendor/lib/libStereoblur.so
-vendor/lib/libalhLDC.so
 vendor/lib/libanalysis.so
 vendor/lib/libaoa.so
 vendor/lib/libarm_proxy_skel.so
 vendor/lib/libbacklight.so
-vendor/lib/libbbkemsensor.so
 vendor/lib/libblooming_detect.so
 vendor/lib/libblur_channel.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libdiagjni.so
@@ -1993,22 +2008,9 @@ vendor/lib/libhvx_proxy_stub.so
 vendor/lib/libiniparser.so
 vendor/lib/libktv_qcom.so
 vendor/lib/libnnp.so
-vendor/lib/libnti_ExtremeHDR.so
 vendor/lib/libnti_allinone.so
-vendor/lib/libnti_beauty.so
-vendor/lib/libnti_cv.so
-vendor/lib/libnti_gpu_beautyengine.so
-vendor/lib/libnti_hdrsc.so
-vendor/lib/libnti_image_bokeh.so
-vendor/lib/libnti_lut.so
-vendor/lib/libnti_mem_share.so
 vendor/lib/libnti_portrait_seg_gpu.so
-vendor/lib/libnti_previewbeauty.so
-vendor/lib/libnti_refocus_engine.so
-vendor/lib/libnti_rportrait.so
 vendor/lib/libnti_selfcaibration.so
-vendor/lib/libnti_video_bokeh.so
-vendor/lib/libomx-dts.so
 vendor/lib/libp61-jcop-kit.so
 vendor/lib/libplatformconfig.so
 vendor/lib/libprdrmdecrypt.so
@@ -2063,9 +2065,6 @@ vendor/lib64/libUSTANative.so
 vendor/lib64/libanalysis.so
 vendor/lib64/libaoa.so
 vendor/lib64/libarm_proxy_skel.so
-vendor/lib64/libbbkemsensor.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagbridge.so
 vendor/lib64/libdiagjni.so
@@ -2103,7 +2102,6 @@ vendor/lib64/libspcom.so
 vendor/lib64/libspiris.so
 vendor/lib64/libssc.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvafx_proc.so
 vendor/lib64/libvdtf.so

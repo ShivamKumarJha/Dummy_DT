@@ -216,6 +216,8 @@ vendor/lib/libMiWatermark.so
 vendor/lib/libXMFD_AgeGender.so
 vendor/lib/lib_lowlight.so
 vendor/lib/libbase64.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libjpegdhw.so
@@ -237,6 +239,8 @@ vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/mibokeh_625_opencl.bin
 vendor/lib64/libbase64.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
 vendor/lib64/libvideoutils.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
@@ -266,6 +270,10 @@ vendor/lib/libactuator_vince_dw9763_sunny.so
 vendor/lib/libarcsoft_beautyshot.so
 vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_high_dynamic_range.so
+
+# Camera-bin
+vendor/bin/mm-qcamera-app
+vendor/bin/mm-qcamera-daemon
 
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
@@ -3294,6 +3302,14 @@ vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
@@ -3361,8 +3377,6 @@ vendor/bin/icm
 vendor/bin/ipacm-diag
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
-vendor/bin/mm-qcamera-daemon
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3371,7 +3385,6 @@ vendor/bin/mmid
 vendor/bin/pktlogconf
 vendor/bin/ptt_socket_app
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3399,15 +3412,11 @@ vendor/etc/ftm_test_config_msm8953-sku3-tasha-snd-card
 vendor/etc/ftm_test_config_msm8953-sku4-snd-card
 vendor/etc/ftm_test_config_mtp
 vendor/etc/ftm_test_config_wcd9335
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/rild.legacy.rc
 vendor/etc/sensor_log.cfg
 vendor/etc/test_sensor_0_20180118.ini
 vendor/etc/wifi_log.cfg
 vendor/lib/libUBWC.so
 vendor/lib/libbinder.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcutils.so
 vendor/lib/libdiagjni.so
@@ -3422,8 +3431,6 @@ vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwapi_cert.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libbinder.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcutils.so
 vendor/lib64/libdiagjni.so

@@ -260,8 +260,6 @@ vendor/lib/camera/com.qti.sensormodule.ofilm_s5k5e8.bin
 vendor/lib/camera/com.qti.sensormodule.pmd_irs1645.bin
 vendor/lib/camera/com.qti.sensormodule.semco_imx258.bin
 vendor/lib/camera/com.qti.sensormodule.semco_imx386.bin
-vendor/lib/camera/com.qti.sensormodule.semco_imx586.bin
-vendor/lib/camera/com.qti.sensormodule.semco_s5k5e8.bin
 vendor/lib/camera/com.qti.sensormodule.sony_imx334.bin
 vendor/lib/camera/com.qti.sensormodule.sunny_imx519.bin
 vendor/lib/camera/com.qti.sensormodule.sunny_imx576.bin
@@ -296,8 +294,6 @@ vendor/lib/camera/com.qti.tuned.semco_imx258.bin
 vendor/lib/camera/com.qti.tuned.semco_imx258_mono.bin
 vendor/lib/camera/com.qti.tuned.semco_imx386.bin
 vendor/lib/camera/com.qti.tuned.semco_imx481.bin
-vendor/lib/camera/com.qti.tuned.semco_imx586.bin
-vendor/lib/camera/com.qti.tuned.semco_s5k5e8.bin
 vendor/lib/camera/com.qti.tuned.sunny_imx519.bin
 vendor/lib/camera/com.qti.tuned.sunny_imx586.bin
 vendor/lib/camera/com.qti.tuned.sunny_imx586_cn.bin
@@ -332,6 +328,12 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
+vendor/lib/libcvp.so
+vendor/lib/libcvp_common.so
+vendor/lib/libcvp_stub.so
+vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libvideoutils.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
@@ -346,8 +348,6 @@ vendor/lib64/camera/com.qti.sensor.imx576.so
 vendor/lib64/camera/com.qti.sensor.imx577.so
 vendor/lib64/camera/com.qti.sensor.imx586.so
 vendor/lib64/camera/com.qti.sensor.imx586_factory.so
-vendor/lib64/camera/com.qti.sensor.imx586_semco.so
-vendor/lib64/camera/com.qti.sensor.imx586_semco_factory.so
 vendor/lib64/camera/com.qti.sensor.imx586_sunny.so
 vendor/lib64/camera/com.qti.sensor.imx586_sunny_factory.so
 vendor/lib64/camera/com.qti.sensor.max7366_6dof.so
@@ -364,7 +364,6 @@ vendor/lib64/camera/com.qti.sensor.ov8856.so
 vendor/lib64/camera/com.qti.sensor.s5k2l7.so
 vendor/lib64/camera/com.qti.sensor.s5k2x5sp.so
 vendor/lib64/camera/com.qti.sensor.s5k5e8.so
-vendor/lib64/camera/com.qti.sensor.s5k5e8_semco.so
 vendor/lib64/camera/com.qti.sensor.s5k5e8_sunny.so
 vendor/lib64/camera/com.qti.sensor.s5k5e9yu05.so
 vendor/lib64/camera/com.qti.sensormodule.altek1_imx577.bin
@@ -387,8 +386,6 @@ vendor/lib64/camera/com.qti.sensormodule.ofilm_s5k5e8.bin
 vendor/lib64/camera/com.qti.sensormodule.pmd_irs1645.bin
 vendor/lib64/camera/com.qti.sensormodule.semco_imx258.bin
 vendor/lib64/camera/com.qti.sensormodule.semco_imx386.bin
-vendor/lib64/camera/com.qti.sensormodule.semco_imx586.bin
-vendor/lib64/camera/com.qti.sensormodule.semco_s5k5e8.bin
 vendor/lib64/camera/com.qti.sensormodule.sony_imx334.bin
 vendor/lib64/camera/com.qti.sensormodule.sunny_imx519.bin
 vendor/lib64/camera/com.qti.sensormodule.sunny_imx576.bin
@@ -423,8 +420,6 @@ vendor/lib64/camera/com.qti.tuned.semco_imx258.bin
 vendor/lib64/camera/com.qti.tuned.semco_imx258_mono.bin
 vendor/lib64/camera/com.qti.tuned.semco_imx386.bin
 vendor/lib64/camera/com.qti.tuned.semco_imx481.bin
-vendor/lib64/camera/com.qti.tuned.semco_imx586.bin
-vendor/lib64/camera/com.qti.tuned.semco_s5k5e8.bin
 vendor/lib64/camera/com.qti.tuned.sunny_imx519.bin
 vendor/lib64/camera/com.qti.tuned.sunny_imx586.bin
 vendor/lib64/camera/com.qti.tuned.sunny_imx586_cn.bin
@@ -503,11 +498,18 @@ vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
+vendor/lib64/libcvp.so
+vendor/lib64/libcvp_common.so
+vendor/lib64/libcvp_stub.so
+vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libmibokeh_660.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libsymphony-cpu.so
 vendor/lib64/libsymphonypower.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libvidhance.so
 vendor/lib64/mibokeh_660_opencl.bin
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
@@ -630,6 +632,7 @@ vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libssd.so
 vendor/lib/libtzdrmgenprov.so
+vendor/lib/libtzplayready.so
 vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libGPreqcancel.so
@@ -642,6 +645,7 @@ vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/liboemcrypto.so
+vendor/lib64/libprdrmdecrypt.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -650,12 +654,21 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
+vendor/lib64/libtzplayready.so
 
 # DRM-Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
+vendor/lib/mediadrm/libprmediadrmdecrypt.so
+vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
+vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
+vendor/lib64/mediadrm/libprmediadrmdecrypt.so
+vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -868,7 +881,6 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/vulkan.sm6150.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libadreno_utils.so
@@ -879,7 +891,6 @@ vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -898,7 +909,6 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/vulkan.sm6150.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/libadreno_utils.so
@@ -909,7 +919,6 @@ vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
@@ -1449,7 +1458,6 @@ vendor/bin/thermal-engine
 vendor/etc/thermal-engine-camera.conf
 vendor/etc/thermal-engine-map.conf
 vendor/etc/thermal-engine-normal.conf
-vendor/etc/thermal-engine-studio.conf
 vendor/etc/thermal-engine.conf
 -vendor/lib/libthermalclient.so
 vendor/lib/libthermalfeature.so
@@ -1593,7 +1601,6 @@ vendor/bin/ftmtest
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/icm
 vendor/bin/ipacm-diag
 vendor/bin/loopbacktest
@@ -1608,7 +1615,6 @@ vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qdcmss
 vendor/bin/qdmastatsd
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -1624,7 +1630,6 @@ vendor/bin/sscrpcd
 vendor/bin/ssgqmigd
 vendor/bin/ssgtzd
 vendor/bin/sviswitch
-vendor/bin/tcpdump
 vendor/bin/test_diag
 vendor/bin/vendor_cmd_tool
 vendor/bin/vppservice
@@ -1646,9 +1651,7 @@ vendor/etc/ftm_test_config_qrd
 vendor/etc/ftm_test_config_sm6150-tavil-snd-card
 vendor/etc/ftm_test_config_sm6150-wcd9375qrd-snd-card
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/qdcmss.rc
-vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/lm/AdaptLaunchFeature.xml
 vendor/etc/lm/AppClassifierFeature.xml
 vendor/etc/lm/GameOptimizationFeature.xml
@@ -1667,13 +1670,7 @@ vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/libaoa.so
 vendor/lib/libarbitrarybytes.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
-vendor/lib/libcvp.so
-vendor/lib/libcvp_common.so
-vendor/lib/libcvp_stub.so
-vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplaydebug.so
 vendor/lib/libdisplayqos.so
@@ -1682,8 +1679,8 @@ vendor/lib/libfastcrc.so
 vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libgarden.so
 vendor/lib/libgralloccore.so
-vendor/lib/libmialgo_fs.so
 vendor/lib/libplatformconfig.so
+vendor/lib/libprdrmdecrypt.so
 vendor/lib/libqcbor.so
 vendor/lib/libqdma.so
 vendor/lib/libsdm-colormgr-algo.so
@@ -1715,14 +1712,8 @@ vendor/lib64/libadaptlaunch.so
 vendor/lib64/libaoa.so
 vendor/lib64/libappclassifier.so
 vendor/lib64/libarbitrarybytes.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcvp.so
-vendor/lib64/libcvp_common.so
-vendor/lib64/libcvp_stub.so
-vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libdisplaydebug.so
 vendor/lib64/libdisplayqos.so
@@ -1736,9 +1727,7 @@ vendor/lib64/liblearningmodule.so
 vendor/lib64/libmegface.so
 vendor/lib64/libmeters-ns.so
 vendor/lib64/libmeters.so
-vendor/lib64/libmialgo_fs.so
 vendor/lib64/libnpu.so
-vendor/lib64/libpcap.so
 vendor/lib64/libplatformconfig.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqdma.so
@@ -1754,7 +1743,6 @@ vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libssc.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libwapi_cert.so

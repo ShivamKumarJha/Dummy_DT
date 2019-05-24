@@ -307,6 +307,9 @@ vendor/lib/libarcsoft_dualcam_refocus_rear_t.so
 vendor/lib/libarcsoft_dualcam_refocus_rear_w.so
 vendor/lib/libarcsoft_high_dynamic_range.so
 
+# Camera-bin
+vendor/bin/mm-qcamera-app
+
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
@@ -3529,6 +3532,10 @@ vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
@@ -3606,7 +3613,6 @@ vendor/bin/iwpriv
 vendor/bin/loopbacktest
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3616,7 +3622,6 @@ vendor/bin/myftm
 vendor/bin/pktlogconf
 vendor/bin/qdmastatsd
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3644,7 +3649,6 @@ vendor/etc/MIUI_Time.ttf
 vendor/etc/Miui-Light.ttf
 vendor/etc/ad_calib.cfg
 vendor/etc/ftm_test_config
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/rild.rc
 vendor/lib/libLctDiagSendDataApi.so
 vendor/lib/libUBWC.so

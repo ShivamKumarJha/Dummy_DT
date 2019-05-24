@@ -281,6 +281,7 @@ vendor/lib/hw/camera.qcom.so
 vendor/lib/libFaceGrade.so
 vendor/lib/libMegviiFacepp-0.5.2.so
 vendor/lib/libSNPE.so
+vendor/lib/libSuperSensor.so
 vendor/lib/libVDClearShot.so
 vendor/lib/libXMFD_AgeGender.so
 vendor/lib/libbase64.so
@@ -293,6 +294,8 @@ vendor/lib/libcamxstaticaecalgo.so
 vendor/lib/libcamxstaticawbalgo.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libmegface.so
 vendor/lib/libmpbase.so
@@ -301,14 +304,18 @@ vendor/lib/libsymphonypower.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/mibokeh_845_opencl.bin
+vendor/lib64/libSuperSensor.so
 vendor/lib64/libVDClearShot.so
 vendor/lib64/libbase64.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libmibokeh_845.so
 vendor/lib64/libmpbase.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera-arcsoft
@@ -335,6 +342,9 @@ vendor/lib64/libarcsoft_low_light_hdr.so
 vendor/lib64/libarcsoft_portrait_lighting.so
 vendor/lib64/libarcsoft_portrait_lighting_c.so
 vendor/lib64/libarcsoft_supernight.so
+
+# Camera-bin
+vendor/bin/cameratest
 
 # Camera-configs
 vendor/etc/camera/MIUI_Time.ttf
@@ -764,6 +774,13 @@ vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
+
+# NFC
+vendor/lib/libpn547_fw.so
+vendor/lib/libpn548ad_fw.so
+vendor/lib/libpn551_fw.so
+vendor/lib/libpn553_fw.so
+vendor/lib/libpn557_fw.so
 
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
@@ -1275,6 +1292,10 @@ vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
@@ -1341,7 +1362,6 @@ vendor/bin/adpl
 vendor/bin/athdiag
 vendor/bin/audioshell_service
 vendor/bin/batteryd
-vendor/bin/cameratest
 vendor/bin/ccid_daemon
 vendor/bin/charge_logger
 vendor/bin/chre
@@ -1366,10 +1386,6 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.contexthub@1.0-service
-vendor/bin/hw/android.hardware.nfc@1.1-service
-vendor/bin/hw/vendor.nxp.hardware.nfc@1.0-service
-vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/hw/vendor.qti.secure_element@1.0-service
 vendor/bin/i2cdetect
 vendor/bin/i2cdump
@@ -1391,7 +1407,6 @@ vendor/bin/nv_mac
 vendor/bin/pktlogconf
 vendor/bin/poweroffm64
 vendor/bin/ppd
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
 vendor/bin/qrtr-ns
@@ -1416,11 +1431,6 @@ vendor/etc/XiaoAiTongXue.uim
 vendor/etc/ftm_test_config
 vendor/etc/gpsconfig.xml
 vendor/etc/hdr_config.cfg
-vendor/etc/init/android.hardware.contexthub@1.0-service.rc
-vendor/etc/init/android.hardware.nfc@1.1-service.rc
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/vendor.nxp.hardware.nfc@1.0-service.rc
-vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/init/vendor.qti.secure_element@1.0-service.rc
 vendor/etc/lhd.conf
 vendor/etc/pm_test_item_config.xml
@@ -1436,8 +1446,6 @@ vendor/etc/system_properties.xml
 vendor/etc/tas2557.ftcfg
 vendor/etc/tzlog.dict
 vendor/etc/ultrasound.wav
-vendor/lib/hw/android.hardware.contexthub@1.0-impl.generic.so
-vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/displayfeature.default.so
@@ -1447,11 +1455,8 @@ vendor/lib/libHalSuperSensorServer.so
 vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
-vendor/lib/libSuperSensor.so
 vendor/lib/libSuperSensorCPU.so
 vendor/lib/libaoa.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libcsd-client.so
@@ -1469,11 +1474,6 @@ vendor/lib/libgralloccore.so
 vendor/lib/libmisegment_front_845.so
 vendor/lib/libnanopb.so
 vendor/lib/libplatformconfig.so
-vendor/lib/libpn547_fw.so
-vendor/lib/libpn548ad_fw.so
-vendor/lib/libpn551_fw.so
-vendor/lib/libpn553_fw.so
-vendor/lib/libpn557_fw.so
 vendor/lib/libqminvapi.so
 vendor/lib/libsi.so
 vendor/lib/libsns_device_mode_stub.so
@@ -1496,27 +1496,21 @@ vendor/lib/libultrasound.so
 vendor/lib/libwapi_cert.so
 vendor/lib/vendor.nxp.hardware.nfc@1.0.so
 vendor/lib64/ese_spi_nxp.so
-vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/hw/android.hardware.secure_element@1.0-impl.so
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/hw/flp.brcm.so
 vendor/lib64/hw/gps.brcm.so
-vendor/lib64/hw/nfc_nci.nqx.default.so
 vendor/lib64/hw/vendor.nxp.hardware.nfc@1.0-impl.so
 vendor/lib64/hw/vr.sdm845.so
 vendor/lib64/libHalSuperSensorServer.so
 vendor/lib64/libMpeg4SwEncoder.so
 vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
-vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorCPU.so
 vendor/lib64/libVDDualCameraClearShot.so
 vendor/lib64/libalCFR.so
 vendor/lib64/libaoa.so
 vendor/lib64/libbeauty.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcsd-client.so
 vendor/lib64/libdiag_jni.so
@@ -1545,13 +1539,9 @@ vendor/lib64/libspl.so
 vendor/lib64/libssc.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libultrasound.so
 vendor/lib64/libwapi_cert.so
 vendor/lib64/nfc_nci_nxp.so
-vendor/lib64/vendor.nxp.hardware.nfc@1.0.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc@1.0.so
 vendor/lib64/vendor.qti.hardware.camera.device@3.2.so

@@ -321,6 +321,12 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
+vendor/lib/libcvp.so
+vendor/lib/libcvp_common.so
+vendor/lib/libcvp_stub.so
+vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libmpbase.so
 vendor/lib/libremosaic_daemon.so
@@ -409,9 +415,16 @@ vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
+vendor/lib64/libcvp.so
+vendor/lib64/libcvp_common.so
+vendor/lib64/libcvp_stub.so
+vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libremosaic_daemon.so
 vendor/lib64/libremosaiclib.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera-arcsoft
@@ -926,6 +939,11 @@ vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 
+# Meizu
+vendor/bin/hw/vendor.meizu.bsp.mzfacereco@1.0-service
+vendor/etc/init/vendor.meizu.bsp.mzfacereco@1.0-service.rc
+vendor/lib64/vendor.meizu.bsp.mzfacereco@1.0.so
+
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
 vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
@@ -1408,8 +1426,6 @@ vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
-
-
 # Misc
 -vendor/app/CABLService/CABLService.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
@@ -1434,9 +1450,7 @@ vendor/bin/ftmtest
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/vendor.meizu.bsp.mzfacereco@1.0-service
 vendor/bin/hw/vendor.microtrust.hardware.ifaa@1.0-service
-vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/icm
 vendor/bin/ifaa_client
 vendor/bin/ipacm-diag
@@ -1449,7 +1463,6 @@ vendor/bin/npu_launcher
 vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qdcmss
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -1485,12 +1498,9 @@ vendor/etc/ifaata.b05
 vendor/etc/ifaata.b06
 vendor/etc/ifaata.b07
 vendor/etc/ifaata.mdt
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/init_remosaic_daemon.rc
 vendor/etc/init/qdcmss.rc
-vendor/etc/init/vendor.meizu.bsp.mzfacereco@1.0-service.rc
 vendor/etc/init/vendor.microtrust.hardware.ifaa@1.0-service.rc
-vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/key.cfg
 vendor/etc/lm/AdaptLaunchFeature.xml
 vendor/etc/lm/AppClassifierFeature.xml
@@ -1504,14 +1514,8 @@ vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/libaoa.so
 vendor/lib/libarbitrarybytes.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcom.qti.chinodeutils.so
-vendor/lib/libcvp.so
-vendor/lib/libcvp_common.so
-vendor/lib/libcvp_stub.so
-vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplaydebug.so
 vendor/lib/libdisplayqos.so
@@ -1555,14 +1559,8 @@ vendor/lib64/libadaptlaunch.so
 vendor/lib64/libaoa.so
 vendor/lib64/libappclassifier.so
 vendor/lib64/libarbitrarybytes.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcvp.so
-vendor/lib64/libcvp_common.so
-vendor/lib64/libcvp_stub.so
-vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libdisplaydebug.so
 vendor/lib64/libdisplayqos.so
@@ -1593,9 +1591,7 @@ vendor/lib64/libstagefright_soft_ffmpegadec.so
 vendor/lib64/libstagefright_soft_ffmpegvdec.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libwapi_cert.so
-vendor/lib64/vendor.meizu.bsp.mzfacereco@1.0.so
 vendor/lib64/vendor.microtrust.hardware.ifaa@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.seccam@1.0.so

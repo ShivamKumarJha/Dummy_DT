@@ -253,6 +253,7 @@ vendor/lib64/libbase64.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libqvrcamera_client.so
 vendor/lib64/libqvrservice_client.so
+vendor/lib64/libsysmon_cdsp_skel.so
 
 # Camera-configs
 vendor/etc/camera/SceneParamFile
@@ -366,6 +367,10 @@ vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/mediadrm/libwvdrmengine.so
+
+# DTS
+vendor/etc/dts/dts.lic
+vendor/etc/dts/srs_processing.cfg
 
 # Display-calibration
 vendor/etc/qdcm_calib_data_himax_cmd_mode_dsi_boe_panel.xml
@@ -1127,8 +1132,6 @@ vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.1_vendor.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
-
-
 # Misc
 -vendor/app/AdvancedTest/AdvancedTest.apk
 -vendor/app/CABLService/CABLService.apk
@@ -1166,7 +1169,6 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.vr@1.0-service
 vendor/bin/hw/rild
 vendor/bin/icm
 vendor/bin/ipacm-diag
@@ -1182,7 +1184,6 @@ vendor/bin/nubia_mmi_debug
 vendor/bin/nubia_mmi_diag
 vendor/bin/pvclicense_sample
 vendor/bin/qdmastatsd
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qseecom_sample_client
 vendor/bin/qvop-daemon
@@ -1205,12 +1206,9 @@ vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
 vendor/compatibility_matrix.xml
 vendor/etc/driver.iso
-vendor/etc/dts/dts.lic
-vendor/etc/dts/srs_processing.cfg
 vendor/etc/ffbm_ftm_test_config
 vendor/etc/ftm_test_config
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.vr@1.0-service.rc
 vendor/etc/init/rild.rc
 vendor/etc/init/wifi-diag.rc
 vendor/etc/init/wirelessdiagnoise.rc
@@ -1285,7 +1283,6 @@ vendor/etc/qti-logkit/scenarios/default.png
 vendor/etc/system_properties.xml
 vendor/etc/test_sensor_0.ini
 vendor/lib/hw/android.hardware.health@1.0-impl.so
-vendor/lib/hw/android.hardware.vr@1.0-impl.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/vr.sdm845.so
 vendor/lib/libMpeg4SwEncoder.so
@@ -1353,7 +1350,6 @@ vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.limits@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.wipower@1.0_vendor.so
 vendor/lib64/hw/android.hardware.health@1.0-impl.so
-vendor/lib64/hw/android.hardware.vr@1.0-impl.so
 vendor/lib64/hw/vr.sdm845.so
 vendor/lib64/libMpeg4SwEncoder.so
 vendor/lib64/libOmxSwVdec.so
@@ -1390,7 +1386,6 @@ vendor/lib64/libspcom.so
 vendor/lib64/libspl.so
 vendor/lib64/libssc.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvraudio_client.so

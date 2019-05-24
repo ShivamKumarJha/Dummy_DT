@@ -371,8 +371,10 @@ vendor/lib/camera/libc.vivo.s5k3l6.chromatix.zsl_preview_weixin.awb.so
 vendor/lib/camera/libc.vivo.s5k3l6.chromatix.zsl_video_1080p.awb.so
 vendor/lib/camera/libc.vivo.s5k3l6.chromatix.zsl_video_4K.awb.so
 vendor/lib/camera/libc.vivo.s5k3l6.chromatix.zsl_video_720p.awb.so
+vendor/lib/hw/bbktouchscreen.default.so
 vendor/lib/hw/camera.qcom.so
 vendor/lib/libbase64.so
+vendor/lib/libbbkemsensor.so
 vendor/lib/libcamera_nn_stub.so
 vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdalgov8.so
@@ -380,6 +382,12 @@ vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxswprocessalgo.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
+vendor/lib/libcvp.so
+vendor/lib/libcvp_common.so
+vendor/lib/libcvp_stub.so
+vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
@@ -488,8 +496,13 @@ vendor/lib64/camera/libc.vivo.s5k3l6.chromatix.zsl_video_1080p.awb.so
 vendor/lib64/camera/libc.vivo.s5k3l6.chromatix.zsl_video_4K.awb.so
 vendor/lib64/camera/libc.vivo.s5k3l6.chromatix.zsl_video_720p.awb.so
 vendor/lib64/hw/camera.qcom.so
+vendor/lib64/libFaceCA.so
+vendor/lib64/libSuperSensor.so
+vendor/lib64/libSuperSensorFallback.so
+vendor/lib64/libSuperSensorProcessor.so
 vendor/lib64/lib_lowlight.so
 vendor/lib64/libbase64.so
+vendor/lib64/libbbkemsensor.so
 vendor/lib64/libcamera_nn_stub.so
 vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdalgov8.so
@@ -497,8 +510,15 @@ vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxswprocessalgo.so
 vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
+vendor/lib64/libcvp.so
+vendor/lib64/libcvp_common.so
+vendor/lib64/libcvp_stub.so
+vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libmpbase.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
@@ -1182,6 +1202,9 @@ vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/lib64/vendor.qti.hardware.vpp@1.2.so
 
+# NFC
+vendor/lib/libpn553_fw.so
+
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
 vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
@@ -1625,6 +1648,7 @@ vendor/bin/hw/vendor.vivo.hardware.sectee@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.sensorfactory@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.vibrator_hall@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.vibrator_pro@1.0-service
+vendor/bin/init.vivo.crashdata.sh
 vendor/bin/vendor.vivo.hardware.frameworkmessager@1.0-test
 vendor/bin/vivo_defend
 vendor/etc/init/vendor.factory.hardware.vivoem@1.0-service.rc
@@ -1831,8 +1855,6 @@ vendor/lib64/vendor.qti.hardware.wifi.wifivendorsta@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
-
-
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
@@ -1860,9 +1882,6 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.boot@1.0-service
-vendor/bin/hw/android.hardware.nfc@1.1-service
-vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/bin/hw/vendor.qti.hardware.mlshal@1.0-service
 vendor/bin/hw/vendor.qti.hardware.seccam@1.0-service-qti
 vendor/bin/hw/vendor.qti.hardware.vibrator@1.2-service
@@ -1880,7 +1899,6 @@ vendor/bin/npu_launcher
 vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qdcmss
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -1924,14 +1942,10 @@ vendor/etc/ftm-mixerpath.TD1804.xml
 vendor/etc/ftm_test_config
 vendor/etc/ftm_test_config_qrd
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.boot@1.0-service.rc
-vendor/etc/init/android.hardware.nfc@1.1-service.rc
 vendor/etc/init/init.msmnile.nfc.rc
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/init_qfp_daemon.rc
 vendor/etc/init/qdcmss.rc
 vendor/etc/init/slad.rc
-vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.mlshal@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.seccam@1.0-service-qti.rc
 vendor/etc/init/vendor.qti.hardware.vibrator@1.2-service.rc
@@ -1945,9 +1959,6 @@ vendor/etc/tfa98xx_PD1824B.cnt
 vendor/etc/tfa98xx_PD1824LG4.cnt
 vendor/lib/android.hardware.secure_element@1.0-impl.so
 vendor/lib/drm-vts-test-libs/libvtswidevine.so
-vendor/lib/hw/android.hardware.boot@1.0-impl.so
-vendor/lib/hw/android.hardware.nfc@1.0-impl.so
-vendor/lib/hw/bbktouchscreen.default.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/dualleds.default.so
 vendor/lib/hw/vibrator_camera.default.so
@@ -1959,15 +1970,8 @@ vendor/lib/libanalysis.so
 vendor/lib/libaoa.so
 vendor/lib/libarbitrarybytes.so
 vendor/lib/libarm_proxy_skel.so
-vendor/lib/libbbkemsensor.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libcom.qti.chinodeutils.so
-vendor/lib/libcvp.so
-vendor/lib/libcvp_common.so
-vendor/lib/libcvp_stub.so
-vendor/lib/libcvpcpuRev_skel.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplaydebug.so
 vendor/lib/libdisplayqos.so
@@ -1986,7 +1990,6 @@ vendor/lib/libktv_qcom.so
 vendor/lib/libnpu.so
 vendor/lib/libp61-jcop-kit.so
 vendor/lib/libplatformconfig.so
-vendor/lib/libpn553_fw.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libprovidertohal.so
 vendor/lib/libqcbor.so
@@ -2020,15 +2023,12 @@ vendor/lib64/RkAlgos.so
 vendor/lib64/android.hardware.secure_element@1.0-impl.so
 vendor/lib64/drm-vts-test-libs/libvtswidevine.so
 vendor/lib64/ese_spi_nxp.so
-vendor/lib64/hw/android.hardware.boot@1.0-impl.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/hw/bbktouchscreen.default.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/hw/dualleds.default.so
 vendor/lib64/hw/vendor.qti.hardware.mlshal@1.0-impl.so
 vendor/lib64/hw/vibrator_camera.default.so
 vendor/lib64/libAltek_DualCam3D_DLL.so
-vendor/lib64/libFaceCA.so
 vendor/lib64/libGPMTEEC_vendor.so
 vendor/lib64/libImageFlip.so
 vendor/lib64/libMegviiHum.so
@@ -2041,9 +2041,6 @@ vendor/lib64/libSEESalt.so
 vendor/lib64/libSTDualCamCaptureBokeh.so
 vendor/lib64/libSTdisp.so
 vendor/lib64/libStereoblur.so
-vendor/lib64/libSuperSensor.so
-vendor/lib64/libSuperSensorFallback.so
-vendor/lib64/libSuperSensorProcessor.so
 vendor/lib64/libUSTANative.so
 vendor/lib64/libadaptlaunch.so
 vendor/lib64/libalhLDC.so
@@ -2053,16 +2050,9 @@ vendor/lib64/libappclassifier.so
 vendor/lib64/libarbitrarybytes.so
 vendor/lib64/libarm_proxy_skel.so
 vendor/lib64/libbacklight.so
-vendor/lib64/libbbkemsensor.so
 vendor/lib64/libblur_channel.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcvp.so
-vendor/lib64/libcvp_common.so
-vendor/lib64/libcvp_stub.so
-vendor/lib64/libcvpcpuRev_skel.so
 vendor/lib64/libdiagbridge.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libdisplaydebug.so
@@ -2130,7 +2120,6 @@ vendor/lib64/libstlport_shared.so
 vendor/lib64/libsv_fd.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libthread_blur.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvafx_proc.so
@@ -2141,8 +2130,6 @@ vendor/lib64/libwapi_cert.so
 vendor/lib64/nfc_nci_nxp.so
 vendor/lib64/soundfx/libmultifx.so
 vendor/lib64/soundfx/libvafx_hp.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc@1.0.so
 vendor/lib64/vendor.qti.hardware.mlshal@1.0-halimpl.so
 vendor/lib64/vendor.qti.hardware.mlshal@1.0.so
 vendor/libnfc-nxp_RF.conf

@@ -207,6 +207,10 @@ vendor/lib/libarcsoft_beautyshot_exin.so
 vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_high_dynamic_range.so
 
+# Camera-bin
+vendor/bin/mm-qcamera-app
+vendor/bin/mm-qcamera-daemon
+
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
@@ -2373,8 +2377,12 @@ vendor/bin/cnss_diag
 vendor/lib/vendor.qti.hardware.wifi.supplicant@1.0_vendor.so
 
 # Xiaomi
+vendor/bin/mlipayd
+vendor/bin/mtd
+vendor/bin/tidad
 vendor/lib/libmlipay.so
 vendor/lib/libmt.so
+vendor/lib/libtida.so
 
 # Misc
 vendor/Diag.cfg
@@ -2412,10 +2420,7 @@ vendor/bin/iwlist
 vendor/bin/iwpriv
 vendor/bin/loopbacktest
 vendor/bin/mlid
-vendor/bin/mlipayd
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
-vendor/bin/mm-qcamera-daemon
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -2426,17 +2431,14 @@ vendor/bin/mmi_agent32
 vendor/bin/mmi_debug
 vendor/bin/mmi_diag
 vendor/bin/mmid
-vendor/bin/mtd
 vendor/bin/ptt_socket_app
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qseecom_sample_client
 vendor/bin/resize_ext4
 vendor/bin/sviswitch
 vendor/bin/tbaseLoader
 vendor/bin/test_diag
-vendor/bin/tidad
 vendor/bin/toolbox_vendor
 vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
@@ -2491,7 +2493,6 @@ vendor/lib/libsi.so
 vendor/lib/libsmemlog.so
 vendor/lib/libstreamparser.so
 vendor/lib/libteeclientjni.so
-vendor/lib/libtida.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwifi-hal.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so

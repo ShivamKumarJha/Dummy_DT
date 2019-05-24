@@ -295,6 +295,9 @@ vendor/lib/libcamxfdalgov7.so
 vendor/lib/libcamxfdengine.so
 vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
+vendor/lib/libdualcam_optical_zoom_control.so
+vendor/lib/libdualcam_video_optical_zoom.so
+vendor/lib/libmakeup_style.so
 vendor/lib/libmpbase.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libremosaiclib.so
@@ -359,9 +362,11 @@ vendor/lib64/libcamxfdalgov7.so
 vendor/lib64/libcamxfdengine.so
 vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libmakeup_style.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libremosaic_daemon.so
 vendor/lib64/libremosaiclib.so
+vendor/lib64/libsysmon_cdsp_skel.so
 
 # Camera-arcsoft
 vendor/lib/libarcsoft_aiscenedetection.so
@@ -824,6 +829,10 @@ vendor/lib64/libvpphvx.so
 vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1_vendor.so
+
+# Meizu
+vendor/bin/hw/vendor.meizu.bsp.mzfacereco@1.0-service
+vendor/etc/init/vendor.meizu.bsp.mzfacereco@1.0-service.rc
 
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
@@ -1315,8 +1324,6 @@ vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.wifi.supplicant@1.1_vendor.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 
-
-
 # Misc
 -vendor/app/CABLService/CABLService.apk
 -vendor/app/Perfdump/Perfdump.apk
@@ -1350,10 +1357,8 @@ vendor/bin/hal_rec_test
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.contexthub@1.0-service
 vendor/bin/hw/rild
 vendor/bin/hw/vendor.caih.hardware.edata@1.0-service
-vendor/bin/hw/vendor.meizu.bsp.mzfacereco@1.0-service
 vendor/bin/hw/vendor.qti.hardware.limits@1.0-service
 vendor/bin/icm
 vendor/bin/ifaa_product
@@ -1366,7 +1371,6 @@ vendor/bin/mm-audio-ftm
 vendor/bin/mmid
 vendor/bin/myftm
 vendor/bin/pvclicense_sample
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qseecom_sample_client
 vendor/bin/qti_sound_trigger_test
@@ -1394,15 +1398,12 @@ vendor/etc/ftm_test_config_sdm670-skuw-snd-card
 vendor/etc/ftm_test_config_sdm710-tasha-snd-card
 vendor/etc/ftm_test_config_sdm710-tavil-snd-card
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.contexthub@1.0-service.rc
 vendor/etc/init/rild.rc
 vendor/etc/init/vendor.caih.hardware.edata@1.0-service.rc
-vendor/etc/init/vendor.meizu.bsp.mzfacereco@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.limits@1.0-service.rc
 vendor/etc/lm/AdaptLaunchFeature.xml
 vendor/etc/pubkey_odm.pem
 vendor/etc/sw_config.xml
-vendor/lib/hw/android.hardware.contexthub@1.0-impl.generic.so
 vendor/lib/hw/android.hardware.health@1.0-impl.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/vendor.qti.hardware.limits@1.0-impl.so
@@ -1414,8 +1415,6 @@ vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdisplaydebug.so
 vendor/lib/libdisplayqos.so
-vendor/lib/libdualcam_optical_zoom_control.so
-vendor/lib/libdualcam_video_optical_zoom.so
 vendor/lib/libese-sysdeps.so
 vendor/lib/libese.so
 vendor/lib/libfastcrc.so
@@ -1425,7 +1424,6 @@ vendor/lib/libfeedbackhandler.so
 vendor/lib/libgarden.so
 vendor/lib/libgpqese.so
 vendor/lib/libllvm-qgl.so
-vendor/lib/libmakeup_style.so
 vendor/lib/libmediacodecservice.so
 vendor/lib/libminijail_vendor.so
 vendor/lib/libmm-disp-apis.so
@@ -1453,7 +1451,6 @@ vendor/lib/libvraudio_client.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
 vendor/lib/vendor.qti.hardware.fm@1.0_vendor.so
 vendor/lib/vendor.qti.hardware.limits@1.0_vendor.so
-vendor/lib64/hw/android.hardware.contexthub@1.0-impl.generic.so
 vendor/lib64/hw/android.hardware.health@1.0-impl.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/hw/vendor.caih.hardware.edata@1.0-impl.so
@@ -1477,7 +1474,6 @@ vendor/lib64/libgarden.so
 vendor/lib64/libgpqese.so
 vendor/lib64/liblearningmodule.so
 vendor/lib64/libllvm-qgl.so
-vendor/lib64/libmakeup_style.so
 vendor/lib64/libmeters.so
 vendor/lib64/libminijail_vendor.so
 vendor/lib64/libmm-disp-apis.so
@@ -1497,7 +1493,6 @@ vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libspcom.so
 vendor/lib64/libssc.so
 vendor/lib64/libswvdec.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvfb_render.so
 vendor/lib64/libvmp_render.so

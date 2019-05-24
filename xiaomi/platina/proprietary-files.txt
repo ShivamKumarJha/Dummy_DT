@@ -253,6 +253,7 @@ vendor/lib/libvidhance_gyro.so
 vendor/lib/mibokeh_660_opencl.bin
 vendor/lib64/libbase64.so
 vendor/lib64/libdualcameraddm.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libvideobokeh.so
 vendor/lib64/libvideoutils.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
@@ -285,6 +286,9 @@ vendor/lib/libarcsoft_beautyshot.so
 vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_high_dynamic_range.so
 vendor/lib/libarcsoft_supernight.so
+
+# Camera-bin
+vendor/bin/mm-qcamera-app
 
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
@@ -2943,6 +2947,14 @@ vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
@@ -3027,7 +3039,6 @@ vendor/bin/ipacm-diag
 vendor/bin/minidump64
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3039,7 +3050,6 @@ vendor/bin/nv_mac
 vendor/bin/pktlogconf
 vendor/bin/poweroffm64
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3063,9 +3073,6 @@ vendor/bin/xtwifi-inet-agent
 vendor/etc/audio.bsd
 vendor/etc/ftm_test_config
 vendor/etc/hdr_config.cfg
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/rild.legacy.rc
-vendor/etc/init/vendor.rild.legacy.rc
 vendor/etc/pm_test_item_config.xml
 vendor/etc/rcv.wav
 vendor/etc/rcv_hp.wav
@@ -3124,7 +3131,6 @@ vendor/lib64/libqminvapi.so
 vendor/lib64/libsi.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/libstreamparser.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libwapi_cert.so

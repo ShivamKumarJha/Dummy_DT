@@ -17,8 +17,11 @@
     <ctl name="ADC3 Volume" value="8" />
     <ctl name="ADC4 Volume" value="8" />
     <ctl name="QUAT_MI2S_RX Channels" value="One" />
-    <ctl name="QUAT_MI2S_TX Channels" value="One" />
+    <ctl name="QUAT_MI2S_RX Format" value="S24_LE" />
     <ctl name="QUAT_MI2S_RX SampleRate" value="KHZ_48" />
+    <ctl name="QUAT_MI2S_TX Channels" value="One" />
+    <ctl name="QUAT_MI2S_TX Format" value="S24_LE" />
+    <ctl name="QUAT_MI2S_TX SampleRate" value="KHZ_48" />
     <ctl name="External AMIC2 Mux" value="Dual_ADC" />
     <ctl name="AMP Enable Switch" value="0" />
     <ctl name="DSP1 Firmware" value="Protection" />
@@ -478,6 +481,29 @@
         <ctl name="ADC1 Volume" value="8" />
     </path>
 
+    <!-- for mius start -->
+    <path name="mi_ultrasound-proximity">
+        <ctl name="MI_Ultrasound Enable" value="On"/>
+        <ctl name="MI_Ultrasound Mode" value="618"/>
+    </path>
+
+    <path name="mi_ultrasound-output">
+        <ctl name="MI_Ultrasound Enable" value="On" />
+        <ctl name="SLIM RX7 MUX" value="AIF2_PB" />
+        <ctl name="CDC_IF RX7 MUX" value="SLIM RX7" />
+        <ctl name="RX INT0_2 MUX" value="RX7" />
+        <ctl name="RX INT0 DEM MUX" value="CLSH_DSM_OUT" />
+        <ctl name="EAR SPKR PA Gain" value="G_6_DB" />
+    </path>
+
+    <path name="mi_ultrasound-input">
+        <ctl name="AIF2_CAP Mixer SLIM TX4" value="1" />
+        <ctl name="CDC_IF TX4 MUX" value="DEC4" />
+        <ctl name="ADC MUX4" value="AMIC" />
+        <ctl name="AMIC MUX4" value="ADC1" />
+        <ctl name="ADC1 Volume" value="8" />
+    </path>
+    <!-- for mius end -->
 
     <path name="speaker">
         <ctl name="DSP1 Firmware" value="Protection" />

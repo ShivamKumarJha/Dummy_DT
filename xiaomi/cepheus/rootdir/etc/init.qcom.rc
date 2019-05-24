@@ -495,14 +495,14 @@ on property:persist.vendor.sys.pil_proxy_timeout=*
 on property:persist.vendor.ssr.restart_level=*
     start vendor.ssr_setup
 
-on property:persist.vendor.ssr.enable_ramdumps=1
+on property:persist.vendor.ssr.enable_ramdumps=1 && property:ro.boot.dp=0xB
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
     mkdir /data/vendor/ramdump_ssr 770 system system
 #   start vendor.ss_ramdump
 
-on property:persist.vendor.ssr.enable_ramdumps=0
+on property:persist.vendor.ssr.enable_ramdumps=0 || property:ro.boot.dp=0x0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    stop vendor.ss_ramdump
+#    stop vendor.ss_ramdump
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "

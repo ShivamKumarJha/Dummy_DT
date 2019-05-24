@@ -550,6 +550,16 @@
     <ctl name="Ultrasound Microphone Index" value="0"/>
     <ctl name="Ultrasound Suspend" value="0"/>
 
+    <!-- for mius start -->
+    <ctl name="Mi_Ultrasound Enable" value="Off" />
+    <ctl name="Mi_Ultrasound RampDown" value="Off"/>
+    <ctl name="Mi_Ultrasound Event" value="0"/>
+    <ctl name="Mi_Ultrasound Mode" value="0"/>
+    <ctl name="Mi_Ultrasound Rx Port" value="Off"/>
+    <ctl name="Mi_Ultrasound Microphone Index" value="0"/>
+    <ctl name="Mi_Ultrasound Suspend" value="0"/>
+    <!-- for mius end -->
+
     <!-- Add the new path begin -->
     <path name="deep-buffer-playback speaker">
         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
@@ -836,6 +846,78 @@
         <ctl name="DSP Booted" value="0" />
         <ctl name="DSP1 Preload Switch" value="0" />
     </path>
+
+    <!-- for mius start -->
+    <path name="mi_ultrasound-proximity">
+        <ctl name="Mi_Ultrasound Enable" value="On"/>
+        <ctl name="Mi_Ultrasound Mode" value="617"/>
+    </path>
+
+    <path name="mi_ultrasound-proximity-output">
+    </path>
+
+    <path name="mi_ultrasound-proximity-input">
+    </path>
+
+    <path name="mi_ultrasound-gesture1">
+        <ctl name="Mi_Ultrasound Enable" value="On"/>
+        <!--  release mode  -->
+        <!--ctl name="Mi_Ultrasound Mode" value="584"/-->
+        <!--  debug mode  -->
+        <ctl name="Mi_Ultrasound Mode" value="585"/>
+        <ctl name="Mi_Ultrasound Log Level" value="7" />
+    </path>
+
+    <path name="mi_ultrasound-gesture1-output">
+        <!--  mixer controls for RX use-case  -->
+    </path>
+
+    <path name="mi_ultrasound-gesture1-input">
+        <!--  mixer controls for TX use-case  -->
+    </path>
+
+    <path name="mi_ultrasound-rampdown">
+        <ctl name="Mi_Ultrasound RampDown" value="On"/>
+    </path>
+
+    <path name="mi_ultrasound-screen-on">
+        <ctl name="Mi_Ultrasound Event" value="1"/>
+    </path>
+
+    <path name="mi_ultrasound-output">
+        <ctl name="Mi_Ultrasound Enable" value="On" />
+        <ctl name="SLIM RX7 MUX" value="AIF2_PB" />
+        <ctl name="CDC_IF RX7 MUX" value="SLIM RX7" />
+        <ctl name="RX INT4_2 MUX" value="RX7" />
+        <ctl name="RX4 Mix Digital Volume" value="84" />
+        <ctl name="LINEOUT2 Volume" value="13" />
+    </path>
+
+    <path name="mi_ultrasound-input">
+        <ctl name="AIF2_CAP Mixer SLIM TX4" value="1" />
+        <ctl name="CDC_IF TX4 MUX" value="DEC4" />
+        <ctl name="ADC MUX4" value="AMIC" />
+        <ctl name="AMIC MUX4" value="ADC4" />
+        <ctl name="AMIC4_5 SEL" value="AMIC5" />
+        <ctl name="ADC4 Volume" value="12" />
+    </path>
+
+    <path name="mi_ultrasound-on">
+        <ctl name="Mi_Ultrasound Tx Port" value="On"/>
+    </path>
+
+    <path name="mi_ultrasound-output-stereo">
+        <!--  mixer controls for receiver/speaker stereo mode  -->
+    </path>
+
+    <path name="mi_ultrasound-input-secondary">
+        <!--  mixer controls for dedicated microphone  -->
+    </path>
+
+    <path name="mi_ultrasound-suspend">
+        <ctl name="Mi_Ultrasound Suspend" value="1"/>
+    </path>
+    <!-- for mius end -->
 
     <path name="cirrus-sp-diagnostic">
         <ctl name="PCM Source" value="DSP" />

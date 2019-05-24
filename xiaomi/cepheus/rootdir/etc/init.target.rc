@@ -119,6 +119,7 @@ on post-fs-data
     mkdir /data/vendor/misc/display 0771 system system
     mkdir /data/vendor/nfc 0770 nfc nfc
     chmod 666 /sys/class/drm/card0-DSI-1/disp_count
+    mkdir /data/vendor/mqsas_common 0771 system system
 
 # add charge_logger service for dump charge message
 service charge_logger /vendor/bin/charge_logger
@@ -361,6 +362,10 @@ service displaycount /vendor/bin/displaycount
     user system
     group system
     oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start displaycount
 
 on property:init.svc.surfaceflinger=stopped
     stop displayfeature

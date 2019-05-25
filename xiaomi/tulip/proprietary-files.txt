@@ -306,6 +306,9 @@ vendor/lib/libarcsoft_dualcam_refocus_front.so
 vendor/lib/libarcsoft_dualcam_refocus_rear_t.so
 vendor/lib/libarcsoft_high_dynamic_range.so
 
+# Camera-bin
+vendor/bin/mm-qcamera-app
+
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
@@ -2669,7 +2672,6 @@ vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libssd.so
 vendor/lib/libtzdrmgenprov.so
-vendor/lib/libtzplayready.so
 vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libGPreqcancel.so
@@ -2681,7 +2683,6 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libprdrmdecrypt.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -2690,21 +2691,12 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib64/libtzplayready.so
 
 # DRM-Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/mediadrm/libprmediadrmdecrypt.so
-vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -3528,6 +3520,14 @@ vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.vdex
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
@@ -3602,7 +3602,6 @@ vendor/bin/iwlist
 vendor/bin/loopbacktest
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3613,7 +3612,6 @@ vendor/bin/nv_mac
 vendor/bin/pktlogconf
 vendor/bin/qdmastatsd
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3650,7 +3648,6 @@ vendor/etc/cit2_Global.xml
 vendor/etc/cit3.xml
 vendor/etc/cit_config.xml
 vendor/etc/ftm_test_config
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/rild.rc
 vendor/etc/qc.xml
 vendor/etc/qc_GCF.xml

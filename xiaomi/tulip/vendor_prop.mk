@@ -13,6 +13,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.ras.enabled=false \
     ro.af.client_heap_size_kbyte=7168 \
+    ro.audio.para.version=AUDIO_HMI_L6662_A01_20190327_V01 \
     ro.audio.soundfx.dirac=true \
     ro.vendor.audio.sdk.fluencetype=none \
     ro.vendor.audio.sdk.ssr=false \

@@ -1375,3 +1375,6 @@ on property:sys.camera.not.ctsverify.apk=*
 #add cts verify flag	
     on property:sys.gyro.sensorname=*
     setprop vendor.camera.gyro.sensorname ${sys.gyro.sensorname}
+#add vtcall flag
+on property:sys.camera.vtcall=*
+	setprop vendor.camera.vtcall ${sys.camera.vtcall}

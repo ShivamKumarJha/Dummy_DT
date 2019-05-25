@@ -6,10 +6,22 @@
         <boolean name="config_enable_vt_with_mobile_data_off" value="true" />
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="allow_adding_apns_bool" value="true" />
+        <string-array name="read_only_apn_types_string_array" num="0" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
     </carrier_config>
     <carrier_config sdk="26">
         <boolean name="vilte_data_is_metered_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="001" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="hide_ims_apn_bool" value="false" />
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="" />
+        </string-array>
+        <string-array name="read_only_apn_types_string_array" num="0" />
     </carrier_config>
     <carrier_config mcc="208" mnc="10" sdk="28">
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
@@ -154,6 +166,11 @@
     <carrier_config mcc="466" mnc="05">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="2" />
+        <int name="wfc_spn_format_idx_int" value="1" />
+        <string-array name="non_roaming_operator_string_array" num="1">
+            <item value="46697" />
+        </string-array>
+        <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="456" mnc="11">
         <boolean name="editable_enhanced_4g_lte_bool" value="false" />
@@ -161,10 +178,13 @@
     <carrier_config mcc="226" mnc="01">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
-    <carrier_config mcc="214" mnc="01">
+    <carrier_config mcc="222" mnc="10">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
-    <carrier_config mcc="214" mnc="04">
+    <carrier_config mcc="234" mnc="15">
+        <boolean name="config_support_callbarring_over_ims" value="false" />
+    </carrier_config>
+    <carrier_config mcc="214">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
     <carrier_config mcc="510" mnc="28">
@@ -172,5 +192,17 @@
     </carrier_config>
     <carrier_config mcc="260" mnc="06">
         <int name="wfc_spn_format_idx_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="02">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="202" mnc="10">
+        <boolean name="config_callbarring_base_on_volte" value="true" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="01">
+        <boolean name="config_callbarring_base_on_volte" value="true" />
+    </carrier_config>
+    <carrier_config mcc="246" mnc="01">
+        <boolean name="config_callbarring_base_on_volte" value="true" />
     </carrier_config>
 </carrier_config_list>

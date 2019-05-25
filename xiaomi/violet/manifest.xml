@@ -243,6 +243,17 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- TouchFeature HAL service -->
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.touchfeature</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchFeature</name>
+        <instance>default</instance>
+        </interface>
+    </hal>
     <!-- keymaster -->
     <hal format="hidl">
        <name>android.hardware.keymaster</name>
@@ -842,7 +853,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
-    <!-- MLS HAL Service 
+    <!-- MLS HAL Service
     <hal format="hidl">
         <name>vendor.qti.hardware.mlshal</name>
         <transport>hwbinder</transport>

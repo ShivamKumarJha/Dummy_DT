@@ -26,7 +26,7 @@
      <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-     <bool name="config_cellBroadcastAppLinks">true</bool>
+     <bool name="config_cellBroadcastAppLinks">false</bool>
 
     <!-- Flag specifying whether VoLTE is available on device -->
      <bool name="config_device_volte_available">true</bool>
@@ -194,7 +194,7 @@
      <bool name="skip_restoring_network_selection">false</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">24.0dip</dimen>
+     <dimen name="status_bar_height_portrait">29.089996dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -288,7 +288,7 @@
          Specify the component name or an empty string if none.
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
-     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
+     <string name="config_dozeComponent">com.miui.aod/com.miui.aod.doze.DozeService</string>
 
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
@@ -302,10 +302,7 @@
          appended after the path string to interpret coordinates in dp instead of px units.
          Note that a physical cutout should be configured in pixels for the best results.
     -->
-     <string name="config_mainBuiltInDisplayCutout">M-1.13686838e-13,-4.86277685e-14 L-1.13686838e-13,90 L-84,90 L-84,-4.86277685e-14 L-1.13686838e-13,-4.86277685e-14 Z M449.726011,-4.86277685e-14 L630.273115,-4.86277685e-14 C623.518647,1.73558108e-12 617.735595,1.16456348 613.776079,4.49351078 C609.810883,7.81677729 607.663541,13.3101084 606.487616,19.9623222 L605.811601,23.7798181 C600.931796,51.4453017 579.270916,73.1061824 551.605432,77.9859874 C547.7436,78.666848 543.791987,79.0013845 540,79.0119074 C535.975354,79.0230759 532.009734,78.6692509 528.140816,77.9771066 C501.347514,73.1838203 479.191968,52.1649521 474.187525,23.7798181 L473.51719,19.9623222 C472.341265,13.3101084 470.193924,7.81677729 466.228727,4.49351078 C462.263531,1.16456348 456.48616,1.73558108e-12 449.726011,1.73558108e-12 Z M1080.00481,-4.86277685e-14 L1187,-4.86277685e-14 L1187,90 L1080.00481,90 L1080.00481,-4.86277685e-14 Z</string>
-
-    <!--  Define Google play service package for FRP-->
-     <string name="config_persistentDataPackageName">com.google.android.gms</string>
+     <string name="config_mainBuiltInDisplayCutout">M58,0 L-58.0007212,0 L-58.0007212,45.4057646 C-35.4445452,67.8221566 -16.1109714,79.020235 -8.52651283e-14,79 C3.82479465,78.9951961 7.70925593,78.6729031 11.6054322,77.9859874 C24.8823563,75.6441233 40.3461259,64.7753094 57.996741,45.3795456 L58,0 Z</string>
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
@@ -436,7 +433,7 @@
 
     <!-- Values for GPS configuration -->
     <string-array name="config_gpsParameters">
-        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_HOST=supl.qxwz.com</item>
         <item>SUPL_PORT=7275</item>
         <item>SUPL_VER=0x20000</item>
         <item>SUPL_MODE=3</item>

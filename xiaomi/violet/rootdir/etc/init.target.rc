@@ -41,7 +41,7 @@ on init
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    wait /dev/block/platform/soc/${ro.boot.bootdevice} 
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     start vendor.qseecomd
     start keymaster-4-0
@@ -65,6 +65,7 @@ on fs
     chmod 0771 /mnt/vendor/persist
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/stability 0755 system system
 
     chmod 0664 /sys/class/thermal/thermal_message/sconfig
     chown system system /sys/class/thermal/thermal_message/sconfig
@@ -102,7 +103,7 @@ on post-fs-data
     mkdir /data/vendor/nnhal 0700 system system
 # zad Import QR feature from F7A.	Begin
     mkdir /data/vendor/mac_addr 0770 system wifi
-# End
+# End 
  chmod 0644 /dev/goodix_fp
     chown system system /dev/goodix_fp
     #mkdir charger log   --yangshengtao  19.1.04
@@ -110,6 +111,15 @@ on post-fs-data
 
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
+
+    chmod 0666 /dev/migt
+    restorecon /dev/migt
+    chmod 0777 /sys/module/migt/parameters/migt_freq
+    restorecon /sys/module/migt/parameters/migt_freq
+    chmod 0777 /sys/module/migt/parameters/migt_ms
+    restorecon /sys/module/migt/parameters/migt_ms
+    chmod 0777 /sys/module/migt/parameters/migt_thresh
+    restorecon /sys/module/migt/parameters/migt_thresh
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -414,27 +424,15 @@ service vendor.imsrcsservice /system/vendor/bin/imsrcsd
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start vendor.imsdatadaemon
 
-on property:vold.decrypt=trigger_restart_framework
-   start vendor.cnss_diag
+#on property:vold.decrypt=trigger_restart_framework
+#   start vendor.cnss_diag
 
 service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
    class main
    user system
    group system wifi inet sdcard_rw media_rw diag
-   oneshot
-
-#Modify a way to collect wlan logs and default closed the logs in consumer
-service cnss_diag_system  /system/bin/cnss_diag_system -q -f -t HELIUM
-   class main
-   user system
-   group system wifi inet sdcard_rw media_rw diag
-   oneshot
    disabled
 
-on property:sys.cnss_diag_system.log=1
-    start cnss_diag_system
-on property:persist.cnss_diag_system.log=1
-    start cnss_diag_system
 service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
    user system
@@ -512,7 +510,7 @@ service smcinvoked /system/bin/smcinvoked
 #    group drmrpc gps net_raw
 
 # smart pa cal  add by dzy 
-service smart-pa-cal /system/vendor/bin/FactoryApp -t 25 -c /vendor/etc/tas2563_aacspk.ftcfg -v
+service smart-pa-cal /system/vendor/bin/FactoryApp -r -t 25
     user root
     group root audio
     disabled
@@ -524,7 +522,7 @@ on property:odm.pa-cal=0
 on property:odm.pa-cal=1
     start smart-pa-cal
 
-service smart-pa-test /system/vendor/bin/FactoryApp -t 25 -c /vendor/etc/tas2563_aacspk.ftcfg -v -m
+service smart-pa-test /system/vendor/bin/FactoryApp -f
     user root
     group root audio
     disabled
@@ -582,26 +580,41 @@ on property:persist.sys.display_cabc=1
 on property:persist.sys.display_cabc=2
     write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 2
 
-on property:persist.sys.display_cabc_movie=1
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_movie 1
+on property:persist.sys.display_cabc=3
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 3
 
-on property:persist.sys.display_cabc_movie=2
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_movie 2
+on property:persist.sys.display_cabc=0
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 0
 
-on property:persist.sys.display_cabc_still=1
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_still 1
+on property:sys.display_hbm=1
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_hbm 1
 
-on property:persist.sys.display_cabc_still=2
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_still 2
+on property:sys.display_hbm=2
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_hbm 2
+
+on property:sys.display_hbm=3
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_hbm 3
+
+on property:sys.display_hbm=0
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_hbm 0
+
 #lcd feature nodes test end
 
 #add thermal tactics
 on  property:vendor.camera.boost.en=1
-    write /sys/class/thermal/thermal_message/sconfig 0
+    write /sys/class/thermal/thermal_message/sconfig 33
 on  property:vendor.camera.boost.en=0
     write /sys/class/thermal/thermal_message/sconfig 12
 on  property:vendor.camera.boost.en=2
-    write /sys/class/thermal/thermal_message/sconfig 0
+    write /sys/class/thermal/thermal_message/sconfig 33
+
+#add 1080p@120fps video
+on  property:vendor.camera.hfr.en=1
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+	write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 6
+on  property:vendor.camera.hfr.en=0
+    write /dev/stune/foreground/schedtune.prefer_idle 0
+	write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
 
 #service sviswitch add begin
 service sviswitch /vendor/bin/sviswitch

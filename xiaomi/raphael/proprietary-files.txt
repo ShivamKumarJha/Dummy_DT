@@ -506,6 +506,7 @@ vendor/etc/camera/body_slim_ui9_params.config
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/camera/eisoverridesettings.txt
 vendor/etc/camera/eyelineblush.cng
+vendor/etc/camera/golden_rear_dc_cal_wu.bin
 vendor/etc/camera/lf_facerank_model.bin
 vendor/etc/camera/libalfpc_tuning.bin
 vendor/etc/camera/libsnpe_dsp_v66_domains_v2_skel.so

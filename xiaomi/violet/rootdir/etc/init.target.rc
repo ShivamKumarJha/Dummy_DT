@@ -112,15 +112,6 @@ on post-fs-data
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
 
-    chmod 0666 /dev/migt
-    restorecon /dev/migt
-    chmod 0777 /sys/module/migt/parameters/migt_freq
-    restorecon /sys/module/migt/parameters/migt_freq
-    chmod 0777 /sys/module/migt/parameters/migt_ms
-    restorecon /sys/module/migt/parameters/migt_ms
-    chmod 0777 /sys/module/migt/parameters/migt_thresh
-    restorecon /sys/module/migt/parameters/migt_thresh
-
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
@@ -510,7 +501,7 @@ service smcinvoked /system/bin/smcinvoked
 #    group drmrpc gps net_raw
 
 # smart pa cal  add by dzy 
-service smart-pa-cal /system/vendor/bin/FactoryApp -r -t 25
+service smart-pa-cal /system/vendor/bin/FactoryApp -t 25 -c /vendor/etc/tas2563_aacspk.ftcfg -v
     user root
     group root audio
     disabled
@@ -522,7 +513,7 @@ on property:odm.pa-cal=0
 on property:odm.pa-cal=1
     start smart-pa-cal
 
-service smart-pa-test /system/vendor/bin/FactoryApp -f
+service smart-pa-test /system/vendor/bin/FactoryApp -t 25 -c /vendor/etc/tas2563_aacspk.ftcfg -v -m
     user root
     group root audio
     disabled
@@ -580,11 +571,17 @@ on property:persist.sys.display_cabc=1
 on property:persist.sys.display_cabc=2
     write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 2
 
-on property:persist.sys.display_cabc=3
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 3
+on property:persist.sys.display_cabc_movie=1
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_movie 1
 
-on property:persist.sys.display_cabc=0
-    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc 0
+on property:persist.sys.display_cabc_movie=2
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_movie 2
+
+on property:persist.sys.display_cabc_still=1
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_still 1
+
+on property:persist.sys.display_cabc_still=2
+    write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_cabc_still 2
 
 on property:sys.display_hbm=1
     write /sys/devices/platform/soc/soc:qcom,dsi-display/dsi_display_hbm 1

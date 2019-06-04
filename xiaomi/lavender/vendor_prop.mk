@@ -118,7 +118,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcomsysd.enabled=1 \
     ro.am.reschedule_service=true \
     ro.colorpick_adjust=true \
-    ro.control_privapp_permissions=log \
     ro.sys.fw.use_trim_settings=true \
     ro.vendor.df.effect.conflict=1 \
     sys.autosuspend.timeout=500000 \

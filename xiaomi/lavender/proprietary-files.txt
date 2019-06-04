@@ -311,6 +311,9 @@ vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_high_dynamic_range.so
 vendor/lib/libarcsoft_supernight.so
 
+# Camera-bin
+vendor/bin/mm-qcamera-app
+
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
 vendor/lib/libchromatix_csidtg_cpp_preview.so
@@ -2665,7 +2668,6 @@ vendor/lib/libcpion.so
 vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/librmp.so
 vendor/lib/librpmb.so
@@ -2685,7 +2687,6 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/liboemcrypto.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -2930,7 +2931,6 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/vulkan.sdm660.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libadreno_utils.so
@@ -2941,7 +2941,6 @@ vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -2960,7 +2959,6 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/vulkan.sdm660.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/libadreno_utils.so
@@ -2971,7 +2969,6 @@ vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
@@ -3535,28 +3532,56 @@ vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
 vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 
 # Xiaomi
+etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.odex
+framework/oat/arm64/vendor.xiaomi.hardware.misys-V2.0-java.vdex
+framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
+framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
+lib/vendor.xiaomi.hardware.misys@1.0.so
+lib/vendor.xiaomi.hardware.misys@2.0.so
+lib64/vendor.xiaomi.hardware.misys@1.0.so
+lib64/vendor.xiaomi.hardware.misys@2.0.so
+vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
+vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
 vendor/bin/tidad@1.1
+vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
+vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
+vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.1.so
+vendor/lib/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
+vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libtida@1.1.so
+vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -3602,7 +3627,6 @@ vendor/bin/iwlist
 vendor/bin/loopbacktest
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3613,7 +3637,6 @@ vendor/bin/nv_mac
 vendor/bin/pktlogconf
 vendor/bin/qdmastatsd
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3645,7 +3668,6 @@ vendor/etc/cit2_Global.xml
 vendor/etc/cit3.xml
 vendor/etc/cit_config.xml
 vendor/etc/ftm_test_config
-vendor/etc/init/init.qti.fm.rc
 vendor/etc/init/rild.rc
 vendor/etc/qc.xml
 vendor/etc/qc_GCF.xml
@@ -3668,7 +3690,6 @@ vendor/lib/libstreamparser.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwapi_cert.so
-vendor/lib/libwvkeybox.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
@@ -3681,4 +3702,3 @@ vendor/lib64/libstreamparser.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libwapi_cert.so
-vendor/lib64/libwvkeybox.so

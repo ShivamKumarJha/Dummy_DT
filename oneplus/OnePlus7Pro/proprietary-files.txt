@@ -122,6 +122,7 @@ vendor/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_workspaceFile.qwsp
+vendor/etc/acdbdata/MTP/acdb_version.xml
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
 # Bluetooth
@@ -252,6 +253,9 @@ vendor/lib/camera/com.qti.sensormodule.semco_imx586.bin
 vendor/lib/camera/com.qti.sensormodule.semco_s5k3m5.bin
 vendor/lib/camera/com.qti.sensormodule.sunny_imx471.bin
 vendor/lib/camera/com.qti.tuned.default.bin
+vendor/lib/camera/com.qti.tuned.ofilm_imx481.bin
+vendor/lib/camera/com.qti.tuned.ofilm_imx586.bin
+vendor/lib/camera/com.qti.tuned.ofilm_s5k3m5.bin
 vendor/lib/camera/com.qti.tuned.semco_imx481.bin
 vendor/lib/camera/com.qti.tuned.semco_imx586.bin
 vendor/lib/camera/com.qti.tuned.semco_s5k3m5.bin
@@ -330,7 +334,6 @@ vendor/lib/libhdrdynamicootf.so
 vendor/lib/libmorpho_image_refiner.so
 vendor/lib/libmpbase.so
 vendor/lib/libopcamera_native_modules.so
-vendor/lib/libst_relighting.so
 vendor/lib/libstdc++.so
 vendor/lib/libtriplecam_image_optical_zoom.so
 vendor/lib/libtriplecam_optical_zoom_control.so
@@ -351,6 +354,9 @@ vendor/lib64/camera/com.qti.sensormodule.semco_imx586.bin
 vendor/lib64/camera/com.qti.sensormodule.semco_s5k3m5.bin
 vendor/lib64/camera/com.qti.sensormodule.sunny_imx471.bin
 vendor/lib64/camera/com.qti.tuned.default.bin
+vendor/lib64/camera/com.qti.tuned.ofilm_imx481.bin
+vendor/lib64/camera/com.qti.tuned.ofilm_imx586.bin
+vendor/lib64/camera/com.qti.tuned.ofilm_s5k3m5.bin
 vendor/lib64/camera/com.qti.tuned.semco_imx481.bin
 vendor/lib64/camera/com.qti.tuned.semco_imx586.bin
 vendor/lib64/camera/com.qti.tuned.semco_s5k3m5.bin
@@ -486,25 +492,14 @@ vendor/bin/hw/vendor.qti.hardware.scve.objecttracker@1.0-service
 vendor/bin/hw/vendor.qti.hardware.scve.panorama@1.0-service
 vendor/etc/init/vendor.qti.hardware.scve.objecttracker@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.scve.panorama@1.0-service.rc
-vendor/etc/scve/facereco/gModel.dat
 vendor/lib/hw/vendor.qti.hardware.scve.objecttracker@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.scve.panorama@1.0-impl.so
 vendor/lib/libscveBlobDescriptor.so
-vendor/lib/libscveBlobDescriptor_stub.so
 vendor/lib/libscveCommon.so
 vendor/lib/libscveCommon_stub.so
-vendor/lib/libscveFaceLandmarks.so
-vendor/lib/libscveFaceRecognition.so
 vendor/lib/libscveObjectSegmentation.so
-vendor/lib/libscveObjectSegmentation_stub.so
 vendor/lib/libscveObjectTracker.so
-vendor/lib/libscveObjectTracker_stub.so
 vendor/lib/libscvePanorama.so
-vendor/lib/libscvePanorama_lite.so
-vendor/lib/libscveScan3D.so
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
-vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
-vendor/lib/rfsa/adsp/libscveT2T_skel.so
 vendor/lib/vendor.qti.hardware.scve.objecttracker@1.0-halimpl.so
 vendor/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
 vendor/lib/vendor.qti.hardware.scve.panorama@1.0-halimpl.so
@@ -512,18 +507,11 @@ vendor/lib/vendor.qti.hardware.scve.panorama@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.scve.objecttracker@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.scve.panorama@1.0-impl.so
 vendor/lib64/libscveBlobDescriptor.so
-vendor/lib64/libscveBlobDescriptor_stub.so
 vendor/lib64/libscveCommon.so
 vendor/lib64/libscveCommon_stub.so
-vendor/lib64/libscveFaceLandmarks.so
-vendor/lib64/libscveFaceRecognition.so
 vendor/lib64/libscveObjectSegmentation.so
-vendor/lib64/libscveObjectSegmentation_stub.so
 vendor/lib64/libscveObjectTracker.so
-vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/libscvePanorama.so
-vendor/lib64/libscvePanorama_lite.so
-vendor/lib64/libscveScan3D.so
 vendor/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
 vendor/lib64/vendor.qti.hardware.scve.panorama@1.0.so
 

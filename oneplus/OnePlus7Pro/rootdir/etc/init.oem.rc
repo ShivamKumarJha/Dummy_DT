@@ -436,6 +436,7 @@ on post-fs
     chown system log /sys/fs/pstore/console-ramoops-0
     chmod 0440 /sys/fs/pstore/console-ramoops-0
     chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+    chown system system /sys/class/kgsl/kgsl-3d0/max_pwrlevel
     chown system system /sys/module/param_read_write/parameters/normal_reboot_count
     chown system system /sys/module/param_read_write/parameters/abnormal_reboot_count
     chown system system /sys/module/param_read_write/parameters/update_count
@@ -450,6 +451,8 @@ on post-fs
     chmod 660 /sys/class/leds/vibrator/rtp
     chmod 660 /sys/class/leds/vibrator/haptic_audio_tp_time
     chmod 644 /sys/class/leds/vibrator/haptic_osc_data
+    chmod 660 /sys/class/leds/vibrator/ram_test
+    chmod 644 /sys/class/leds/vibrator/ram_update
     chown system system /sys/class/leds/vibrator/activate
     chown system system /sys/class/leds/vibrator/brightness
     chown system system /sys/class/leds/vibrator/duration
@@ -466,6 +469,8 @@ on post-fs
     chown system system /sys/class/leds/vibrator/loop
     chown system system /sys/class/leds/vibrator/osc_cali
     chown system system /sys/class/leds/vibrator/haptic_osc_data
+    chown system system /sys/class/leds/vibrator/ram_test
+    chown system system /sys/class/leds/vibrator/ram_update
     /* add for aging apk to set node */
     chown system system /sys/class/power_supply/battery/is_aging_test
 
@@ -599,6 +604,9 @@ on property:sys.boot_completed=1
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
 #endif
+
+on property:sys.boot_completed=1
+   write /sys/class/leds/vibrator/ram_update  1
 
 #william.su add for ulsound
 	restorecon /sys/elliptic/engine/calibration_v2

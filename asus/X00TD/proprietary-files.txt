@@ -272,6 +272,7 @@ vendor/lib/libts_detected_face_hal.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libvideoutils.so
 vendor/lib64/libbase64.so
+vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libts_detected_face_hal.so
 vendor/lib64/libts_face_beautify_hal.so
 vendor/lib64/libvideoutils.so
@@ -312,6 +313,9 @@ vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_hdr.so
 vendor/lib/libarcsoft_night_shot.so
 vendor/lib/libarcsoft_picselfie_algorithm.so
+
+# Camera-bin
+vendor/bin/mm-qcamera-app
 
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
@@ -2193,16 +2197,12 @@ vendor/lib64/libtzplayready.so
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
-vendor/lib/mediadrm/libprmediadrmdecrypt.so
-vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -2421,7 +2421,6 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/vulkan.sdm660.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libadreno_utils.so
@@ -2432,7 +2431,6 @@ vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -2451,7 +2449,6 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/vulkan.sdm660.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/libadreno_utils.so
@@ -2462,7 +2459,6 @@ vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
@@ -3038,18 +3034,6 @@ vendor/lib64/libwfdhdcpcp.so
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
-vendor/lib/libqsap_sdk.so
-vendor/lib/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
-vendor/lib64/libqsap_sdk.so
-vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
-
-
 
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
@@ -3078,13 +3062,11 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/android.hardware.nfc@1.1-service
 vendor/bin/hw/rild
 vendor/bin/icm
 vendor/bin/ipacm-diag
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -3094,7 +3076,6 @@ vendor/bin/myftm
 vendor/bin/nvram_country
 vendor/bin/pktlogconf
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -3118,15 +3099,10 @@ vendor/etc/calmodule.cfg
 vendor/etc/fallback_fonts.xml
 vendor/etc/ftm_test_config
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/android.hardware.nfc@1.1-service.rc
 vendor/etc/init/init.pn8x.nfc.rc
 vendor/etc/init/init.pn8x.se.rc
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/rild.legacy.rc
-vendor/etc/init/vendor.rild.legacy.rc
 vendor/etc/libese-nxp.conf
 vendor/lib/ese_spi_nxp.so
-vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/libUBWC.so
 vendor/lib/libbinder.so
 vendor/lib/libcutils.so
@@ -3141,11 +3117,7 @@ vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libunlock.so
 vendor/lib/nfc_nci_nxp.so
-vendor/lib/vendor.nxp.nxpese@1.0.so
-vendor/lib/vendor.nxp.nxpnfc@1.0.so
-vendor/lib/vendor.nxp.nxpwiredse@1.0.so
 vendor/lib64/ese_spi_nxp.so
-vendor/lib64/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libbinder.so
 vendor/lib64/libcutils.so
@@ -3156,10 +3128,6 @@ vendor/lib64/libgarden.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libsi.so
 vendor/lib64/libstreamparser.so
-vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libunlock.so
 vendor/lib64/nfc_nci_nxp.so
-vendor/lib64/vendor.nxp.nxpese@1.0.so
-vendor/lib64/vendor.nxp.nxpnfc@1.0.so
-vendor/lib64/vendor.nxp.nxpwiredse@1.0.so

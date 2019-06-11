@@ -80,6 +80,8 @@ on post-fs
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
+    exec - system system -- /vendor/bin/init_vendor_property
+
 # Huaqin add for ZQL1830-142  CountryCode by chenlingyu at 2018/08/01 start
 mkdir /mnt/vendor/persist/flag 0771 system system
 chown system system /mnt/vendor/persist/flag

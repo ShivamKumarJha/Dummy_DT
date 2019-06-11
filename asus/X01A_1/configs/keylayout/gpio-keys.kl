@@ -1,4 +1,4 @@
-# Copyright (c) 2014, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,8 +25,28 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-key 115   VOLUME_UP
-key 114   VOLUME_DOWN
+key 17    W
+key 18    E
+key 31    S
+key 44    Z
+key 46    C
+key 47    V
 key 102   HOME
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
 key 528   FOCUS
+key 600   SYSTEM_NAVIGATION_LEFT
+key 601   SYSTEM_NAVIGATION_RIGHT
+key 602   SYSTEM_NAVIGATION_DOWN
+key 603   SYSTEM_NAVIGATION_UP
+key 746   SAR_SENSOR_IN
+key 747   SAR_SENSOR_OUT
+key 748   GESTURE_W
+key 749   GESTURE_E
+key 750   GESTURE_S
+key 751   GESTURE_Z
+key 752   GESTURE_C
+key 753   GESTURE_V
+key 758   GESTURE_SWIPE_UP
+key 759   GESTURE_DOUBLE_CLICK
 key 766   CAMERA

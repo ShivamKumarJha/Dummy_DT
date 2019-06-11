@@ -228,6 +228,8 @@ vendor/lib64/vendor.qti.latency@2.0.so
 # Camera
 vendor/lib/hw/camera.msm8953.so
 vendor/lib/libbase64.so
+vendor/lib/libcapiv2svacnn.so
+vendor/lib/libcapiv2vop.so
 vendor/lib/libdepthmapwrapper.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libgui_vendor.so
@@ -252,6 +254,8 @@ vendor/lib/libts_detected_face_hal.so
 vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libvideoutils.so
 vendor/lib64/libbase64.so
+vendor/lib64/libcapiv2svacnn.so
+vendor/lib64/libcapiv2vop.so
 vendor/lib64/libts_detected_face_hal.so
 vendor/lib64/libts_face_beautify_hal.so
 vendor/lib64/libvideoutils.so
@@ -286,6 +290,9 @@ vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_hdr.so
 vendor/lib/libarcsoft_night_shot.so
 vendor/lib/libarcsoft_picselfie_algorithm.so
+
+# Camera-bin
+vendor/bin/mm-qcamera-app
 
 # Camera-chromatix
 vendor/lib/libchromatix_csidtg_common.so
@@ -1996,8 +2003,6 @@ vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -2652,11 +2657,13 @@ vendor/etc/sensors/sensor_def_qcomdev.conf
 # Sensors
 vendor/bin/sensors.qti
 vendor/lib/hw/activity_recognition.msm8953.so
+vendor/lib/hw/sensors.msm8953_64.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.ssc.so
 vendor/lib64/hw/activity_recognition.msm8953.so
+vendor/lib64/hw/sensors.msm8953_64.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensorndkbridge.so
@@ -2773,17 +2780,6 @@ vendor/lib64/libwfdhdcpcp.so
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
-vendor/lib/libqsap_sdk.so
-vendor/lib/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib/vendor.qti.hardware.wigig.supptunnel@1.0.so
-vendor/lib64/libqsap_sdk.so
-vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
-
-
 
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
@@ -2812,10 +2808,10 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hw/rild
 vendor/bin/icm
+vendor/bin/init_vendor_property
 vendor/bin/ipacm-diag
 vendor/bin/mlid
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -2826,7 +2822,6 @@ vendor/bin/nvram_country
 vendor/bin/pktlogconf
 vendor/bin/ptt_socket_app
 vendor/bin/qjpeg-dma-test
-vendor/bin/qmi-framework-tests/qmi_test_mt_client_init_instance
 vendor/bin/qmi_simple_ril_test
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
@@ -2851,16 +2846,10 @@ vendor/etc/ftm_test_config_msm8953-sku4-snd-card
 vendor/etc/ftm_test_config_mtp
 vendor/etc/ftm_test_config_wcd9335
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/init.qti.fm.rc
-vendor/etc/init/rild.legacy.rc
-vendor/etc/init/vendor.rild.legacy.rc
 vendor/lib/dualcali_dump.bin
-vendor/lib/hw/sensors.msm8953_64.so
 vendor/lib/libUBWC.so
 vendor/lib/libaoa.so
 vendor/lib/libbinder.so
-vendor/lib/libcapiv2svacnn.so
-vendor/lib/libcapiv2vop.so
 vendor/lib/libcutils.so
 vendor/lib/libdiag_system.so
 vendor/lib/libdiagjni.so
@@ -2874,18 +2863,9 @@ vendor/lib/libsi.so
 vendor/lib/libstreamparser.so
 vendor/lib/libtinycompress_vendor.so
 vendor/lib/libunlock.so
-vendor/lib64/android.hardware.wifi.hostapd@1.0.so
-vendor/lib64/android.hardware.wifi.supplicant@1.0.so
-vendor/lib64/android.hardware.wifi.supplicant@1.1.so
-vendor/lib64/android.hardware.wifi@1.0.so
-vendor/lib64/android.hardware.wifi@1.1.so
-vendor/lib64/android.hardware.wifi@1.2.so
-vendor/lib64/hw/sensors.msm8953_64.so
 vendor/lib64/libUBWC.so
 vendor/lib64/libaoa.so
 vendor/lib64/libbinder.so
-vendor/lib64/libcapiv2svacnn.so
-vendor/lib64/libcapiv2vop.so
 vendor/lib64/libcutils.so
 vendor/lib64/libdiag_system.so
 vendor/lib64/libdiagjni.so

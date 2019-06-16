@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright (C) 2014 The CyanogenMod Project
+<!-- Copyright 2018 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,19 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<Included>
-    <Decoders>
-        <MediaCodec name="OMX.ffmpeg.atrial.decoder" type="audio/ffmpeg" >
-            <Limit name="channel-count" max="8" />
-            <Limit name="sample-rate" ranges="8000-192000" />
-        </MediaCodec>
-
-        <MediaCodec name="OMX.ffmpeg.vtrial.decoder" type="video/ffmpeg">
-            <Limit name="size" min="2x2" max="2048x2048" />
-            <Limit name="alignment" value="2x2" />
-            <Feature name="adaptive-playback" />
-        </MediaCodec>
-		
-    </Decoders>
-</Included>
+<MediaCodecs>
+    <Include href="media_codecs_google_c2_audio.xml" />
+    <Include href="media_codecs_google_c2_video.xml" />
+</MediaCodecs>

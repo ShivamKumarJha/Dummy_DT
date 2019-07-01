@@ -100,7 +100,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.at_library=libqti-at.so \
     ro.vendor.qti.core_ctl_max_cpu=4 \
     ro.vendor.qti.core_ctl_min_cpu=2 \
-    ro.vendor.qti.sys.fw.bg_apps_limit=60 \
     DEVICE_PROVISIONED=1 \
     persist.data.df.dev_name=rmnet_usb0 \
     persist.radio.VT_CAM_INTERFACE=2 \

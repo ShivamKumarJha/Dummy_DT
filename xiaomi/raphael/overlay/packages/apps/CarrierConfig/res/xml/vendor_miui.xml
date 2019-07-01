@@ -27,6 +27,10 @@
     <carrier_config mcc="460" mnc="01,06,09">
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_vt_available_bool" value="false" />
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="" />
+        </string-array>
     </carrier_config>
     <carrier_config mcc="460" mnc="01,06,09" sdk="28">
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
@@ -142,6 +146,9 @@
         </string-array>
     </carrier_config>
     <carrier_config mcc="466" mnc="01">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="05">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="2" />
     </carrier_config>

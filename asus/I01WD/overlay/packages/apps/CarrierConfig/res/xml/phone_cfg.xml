@@ -3,6 +3,12 @@
     <carrier_config>
         <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
+    <carrier_config mcc="460">
+        <boolean name="disable_voice_barring_notification_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466">
+        <boolean name="disable_voice_barring_notification_bool" value="true" />
+    </carrier_config>
     <carrier_config mcc="001">
         <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
     </carrier_config>

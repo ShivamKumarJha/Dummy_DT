@@ -179,7 +179,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu=true \
     vendor.iop.enable_uxe=0 \
     vendor.iop.enable_uxe=1 \
-    vendor.power.pasr.enabled=false \
     ro.hardware.nfc_nci=nqx.default \
     ro.nfc.port=I2C \
     persist.backup.ntpServer=0.pool.ntp.org \

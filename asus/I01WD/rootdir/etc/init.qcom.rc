@@ -1378,6 +1378,11 @@ on property:vendor.gpu.available_frequencies=*
 on property:sys.foregroundapp=*
     setprop vendor.foregroundapp ${sys.foregroundapp}
 
+#ASUS_BSP Audio calibration +++
+on property:sys.asus.audiocalibration=1
+    setprop vendor.asus.audiocalibration ${sys.asus.audiocalibration}
+#ASUS_BSP Audio calibration ---
+
 service vendor.wifilearner /system/vendor/bin/wifilearner
     class main
     user wifi

@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2009, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- If true, the screen can be rotated via the accelerometer in all 4
@@ -183,6 +204,9 @@
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
      <bool name="config_wifi_dual_band_support">false</bool>
 
+    <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
+     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
+
     <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
      <bool name="config_wifi_softap_acs_supported">false</bool>
 
@@ -280,6 +304,9 @@
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
 
+    <!-- Regex of wired ethernet ifaces -->
+     <string name="config_ethernet_iface_regex">eth\\d</string>
+
     <!--  Define Google play service package for FRP-->
      <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
@@ -300,29 +327,29 @@
          overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessDisplayValuesNits">
         <item>10</item>
-        <item>14</item>
-        <item>45</item>
-        <item>66</item>
-        <item>83</item>
-        <item>103</item>
-        <item>130</item>
-        <item>148</item>
-        <item>161</item>
-        <item>173</item>
-        <item>188</item>
-        <item>206</item>
-        <item>221</item>
-        <item>285</item>
-        <item>330</item>
-        <item>365</item>
-        <item>380</item>
-        <item>388</item>
-        <item>392</item>
-        <item>400</item>
-        <item>499</item>
+        <item>15</item>
+        <item>58</item>
+        <item>81</item>
+        <item>106</item>
+        <item>135</item>
+        <item>164</item>
+        <item>183</item>
+        <item>198</item>
+        <item>210</item>
+        <item>227</item>
+        <item>245</item>
+        <item>262</item>
+        <item>331</item>
+        <item>379</item>
+        <item>416</item>
+        <item>433</item>
+        <item>441</item>
+        <item>460</item>
+        <item>480</item>
+        <item>500</item>
+        <item>520</item>
+        <item>530</item>
         <item>600</item>
-        <item>699</item>
-        <item>800</item>
         <item>1999</item>
     </integer-array>
 
@@ -379,26 +406,29 @@
          This array should be equal in size to config_screenBrightnessBacklight. -->
     <integer-array name="config_screenBrightnessBacklight">
         <item>2</item>
-        <item>5</item>
-        <item>7</item>
-        <item>28</item>
-        <item>39</item>
-        <item>51</item>
-        <item>65</item>
-        <item>79</item>
-        <item>88</item>
-        <item>95</item>
-        <item>101</item>
-        <item>109</item>
-        <item>118</item>
-        <item>126</item>
-        <item>159</item>
-        <item>182</item>
-        <item>200</item>
-        <item>208</item>
-        <item>212</item>
-        <item>221</item>
-        <item>231</item>
+        <item>4</item>
+        <item>6</item>
+        <item>25</item>
+        <item>35</item>
+        <item>45</item>
+        <item>58</item>
+        <item>70</item>
+        <item>78</item>
+        <item>85</item>
+        <item>90</item>
+        <item>97</item>
+        <item>105</item>
+        <item>112</item>
+        <item>141</item>
+        <item>162</item>
+        <item>178</item>
+        <item>185</item>
+        <item>188</item>
+        <item>197</item>
+        <item>205</item>
+        <item>214</item>
+        <item>222</item>
+        <item>226</item>
         <item>255</item>
     </integer-array>
 
@@ -411,26 +441,29 @@
     <integer-array name="config_screenBrightnessNits">
         <item>4</item>
         <item>10</item>
-        <item>14</item>
-        <item>45</item>
-        <item>66</item>
-        <item>83</item>
-        <item>103</item>
-        <item>130</item>
-        <item>148</item>
-        <item>161</item>
-        <item>173</item>
-        <item>188</item>
-        <item>206</item>
-        <item>221</item>
-        <item>285</item>
-        <item>330</item>
-        <item>365</item>
-        <item>380</item>
-        <item>388</item>
-        <item>392</item>
-        <item>400</item>
-        <item>495</item>
+        <item>15</item>
+        <item>58</item>
+        <item>81</item>
+        <item>106</item>
+        <item>135</item>
+        <item>164</item>
+        <item>183</item>
+        <item>198</item>
+        <item>210</item>
+        <item>227</item>
+        <item>245</item>
+        <item>262</item>
+        <item>331</item>
+        <item>379</item>
+        <item>416</item>
+        <item>433</item>
+        <item>441</item>
+        <item>460</item>
+        <item>480</item>
+        <item>500</item>
+        <item>520</item>
+        <item>530</item>
+        <item>596</item>
     </integer-array>
 
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->

@@ -184,6 +184,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hist.brightness.threshold=7 \
     ro.kernel.qemu.gles=0 \
     ro.logd.size=2M \
+    ro.netd.enable_tcp_rtt=true \
     ro.se.type=eSE,HCE,UICC \
     ro.sys.fw.use_trim_settings=true \
     ro.vendor.df.effect.conflict=1 \

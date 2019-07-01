@@ -72,6 +72,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hist.brightness.threshold=7 \
     ro.kernel.qemu.gles=0 \
     ro.logd.size=2M \
+    ro.netd.enable_tcp_rtt=true \
     ro.sys.fw.use_trim_settings=true \
     ro.whitepoint_calibration_enable=false \
     ro.xiaomi.bl.notify=1 \

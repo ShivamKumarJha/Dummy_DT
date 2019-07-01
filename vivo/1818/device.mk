@@ -4,11 +4,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
+    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1832.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1832.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1832F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1832F_EX.xml \
+    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1832LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1832LG4.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1838.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1838.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1838LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1838LG4.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_qrd.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.PD1832.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.PD1832.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.PD1832F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.PD1832F_EX.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.PD1838.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.PD1838.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -16,13 +19,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration_stub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_stub.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(LOCAL_PATH)/configs/audio/audio_tuning_mixer_tavil.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tavil.txt \
+    $(LOCAL_PATH)/configs/audio/default_volume_tables.PD1832.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.PD1832.xml \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.PD1832F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.PD1832F_EX.xml \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.PD1838.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.PD1838.xml \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(LOCAL_PATH)/configs/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.PD1832.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.PD1832.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.PD1832F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.PD1832F_EX.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.PD1832LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.PD1832LG4.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.PD1838.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.PD1838.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.PD1838LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.PD1838LG4.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_qrd.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_qrd.xml \
@@ -92,8 +98,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
-    frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
+    frameworks/native/data/etc/android.hardware.camera.limited.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.limited.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.light.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \

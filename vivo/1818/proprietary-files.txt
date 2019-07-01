@@ -116,6 +116,14 @@ vendor/etc/acdbdata/IDP/sm6150-tavil-snd-card/IDP_WCD9340_Hdmi_cal.acdb
 vendor/etc/acdbdata/IDP/sm6150-tavil-snd-card/IDP_WCD9340_Headset_cal.acdb
 vendor/etc/acdbdata/IDP/sm6150-tavil-snd-card/IDP_WCD9340_Speaker_cal.acdb
 vendor/etc/acdbdata/IDP/sm6150-tavil-snd-card/IDP_WCD9340_workspaceFile.qwsp
+vendor/etc/acdbdata/PD1832/Bluetooth_cal.acdb
+vendor/etc/acdbdata/PD1832/Codec_cal.acdb
+vendor/etc/acdbdata/PD1832/General_cal.acdb
+vendor/etc/acdbdata/PD1832/Global_cal.acdb
+vendor/etc/acdbdata/PD1832/Handset_cal.acdb
+vendor/etc/acdbdata/PD1832/Hdmi_cal.acdb
+vendor/etc/acdbdata/PD1832/Headset_cal.acdb
+vendor/etc/acdbdata/PD1832/Speaker_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/Bluetooth_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/Codec_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/General_cal.acdb
@@ -124,6 +132,14 @@ vendor/etc/acdbdata/PD1832F_EX/Handset_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/Hdmi_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/Headset_cal.acdb
 vendor/etc/acdbdata/PD1832F_EX/Speaker_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Bluetooth_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Codec_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/General_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Global_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Handset_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Hdmi_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Headset_cal.acdb
+vendor/etc/acdbdata/PD1832LG4/Speaker_cal.acdb
 vendor/etc/acdbdata/PD1838/Bluetooth_cal.acdb
 vendor/etc/acdbdata/PD1838/Codec_cal.acdb
 vendor/etc/acdbdata/PD1838/General_cal.acdb
@@ -498,6 +514,7 @@ vendor/lib64/camera/components/com.qti.node.remosaic.so
 vendor/lib64/camera/components/com.qti.node.stich.so
 vendor/lib64/camera/components/com.qti.node.swcac.so
 vendor/lib64/camera/components/com.qti.node.swregistration.so
+vendor/lib64/camera/components/com.qti.node.vivogpu.so
 vendor/lib64/camera/components/com.qti.stats.aec.so
 vendor/lib64/camera/components/com.qti.stats.af.so
 vendor/lib64/camera/components/com.qti.stats.afd.so
@@ -804,16 +821,12 @@ vendor/lib64/libtzplayready.so
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
-vendor/lib/mediadrm/libprmediadrmdecrypt.so
-vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -879,6 +892,7 @@ vendor/lib64/vendor.vivo.hardware.biometrics.fingerprint@2.0.so
 vendor/lib64/vendor.vivo.hardware.biometrics.fingerprint@2.1.so
 
 # Firmware
+bootimg/ramdisk/vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 vendor/firmware/CAMERA_ICP.elf
 vendor/firmware/a225_pfp.fw
 vendor/firmware/a225_pm4.fw
@@ -961,6 +975,16 @@ vendor/firmware/seedkeeper.b06
 vendor/firmware/seedkeeper.b07
 vendor/firmware/seedkeeper.mbn
 vendor/firmware/seedkeeper.mdt
+vendor/firmware/simauth.b00
+vendor/firmware/simauth.b01
+vendor/firmware/simauth.b02
+vendor/firmware/simauth.b03
+vendor/firmware/simauth.b04
+vendor/firmware/simauth.b05
+vendor/firmware/simauth.b06
+vendor/firmware/simauth.b07
+vendor/firmware/simauth.mbn
+vendor/firmware/simauth.mdt
 vendor/firmware/vivokeymaster.b00
 vendor/firmware/vivokeymaster.b01
 vendor/firmware/vivokeymaster.b02
@@ -1030,6 +1054,7 @@ vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 
 # Gatekeeper
+bootimg/ramdisk/vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
@@ -1108,6 +1133,8 @@ vendor/lib64/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@2.0.so
 
 # Keymaster
+bootimg/ramdisk/vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so
+bootimg/ramdisk/vendor/lib64/libkeymasterdeviceutils.so
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
 vendor/etc/init/android.hardware.keymaster@4.0-service-qti.rc
@@ -1123,6 +1150,7 @@ vendor/lib64/libkeymasterutils.so
 vendor/lib64/libqtikeymaster4.so
 
 # Keystore
+bootimg/ramdisk/vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
 vendor/lib64/libkeystore-engine-wifi-hidl.so
 vendor/lib64/libkeystore-wifi-hidl.so
 vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
@@ -1333,6 +1361,9 @@ vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
 vendor/bin/port-bridge
+vendor/bin/qrtr-cfg
+vendor/bin/qrtr-lookup
+vendor/bin/qrtr-ns
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
@@ -1618,6 +1649,9 @@ vendor/bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
+# UBWC
+vendor/lib/libstreamparser.so
+
 # Vivo
 vendor/bin/hw/vendor.factory.hardware.vivoem@1.0-service
 vendor/bin/hw/vendor.vivo.hardware.atcmd@1.0-service
@@ -1814,22 +1848,40 @@ vendor/lib64/libwfdhdcpcp.so
 bin/iwpriv
 vendor/bin/cnss-daemon
 vendor/bin/fstman
-vendor/lib/libqsap_sdk.so
-vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/libqsap_sdk.so
-vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib64/vendor.qti.hardware.wifi.wifivendorsta@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
+
+# rootdir
+vendor/bin/adpl
+vendor/bin/diag_mdlog
+vendor/bin/ipacm-diag
+vendor/bin/mlid
+vendor/bin/mm-audio-ftm
+vendor/bin/mmid
+vendor/bin/seemp_healthd
+vendor/bin/sscrpcd
+vendor/bin/ssgqmigd
+vendor/bin/ssgtzd
+vendor/bin/tloc_daemon
+vendor/bin/vppservice
+vendor/bin/wigighalsvc
+vendor/bin/wigignpt
 
 # Misc
+bootimg/ramdisk/vendor/etc/sec_config
+bootimg/ramdisk/vendor/lib64/libGPreqcancel.so
+bootimg/ramdisk/vendor/lib64/libQSEEComAPI.so
+bootimg/ramdisk/vendor/lib64/libdiag.so
+bootimg/ramdisk/vendor/lib64/libdrmfs.so
+bootimg/ramdisk/vendor/lib64/libdrmtime.so
+bootimg/ramdisk/vendor/lib64/libqisl.so
+bootimg/ramdisk/vendor/lib64/librpmb.so
+bootimg/ramdisk/vendor/lib64/libssd.so
+bootimg/ramdisk/vendor/lib64/libtime_genoff.so
+bootimg/ramdisk/vendor/manifest.xml
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 vendor/bin/KmInstallKeybox
 vendor/bin/PktRspTest
-vendor/bin/adpl
 vendor/bin/atcid_vendor
 vendor/bin/athdiag
 vendor/bin/cplay
@@ -1837,7 +1889,6 @@ vendor/bin/diag_callback_sample
 vendor/bin/diag_command
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
-vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
 vendor/bin/e_loop
@@ -1850,45 +1901,31 @@ vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/icm
-vendor/bin/ipacm-diag
-vendor/bin/mlid
-vendor/bin/mm-audio-ftm
 vendor/bin/mm-vidc-omx-test
-vendor/bin/mmid
 vendor/bin/myftm
 vendor/bin/npu_launcher
 vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qdcmss
 vendor/bin/qmi_simple_ril_test
-vendor/bin/qrtr-cfg
-vendor/bin/qrtr-lookup
-vendor/bin/qrtr-ns
 vendor/bin/qseecom_sample_client
 vendor/bin/secure_ui_sample_client
 vendor/bin/seedkeeper_client
-vendor/bin/seemp_healthd
 vendor/bin/sigma_dut
 vendor/bin/slad
 vendor/bin/spectraltool
-vendor/bin/sscrpcd
-vendor/bin/ssgqmigd
-vendor/bin/ssgtzd
 vendor/bin/test_diag
-vendor/bin/tloc_daemon
 vendor/bin/vendor_cmd_tool
-vendor/bin/vppservice
 vendor/bin/wdsdaemon
-vendor/bin/wigighalsvc
-vendor/bin/wigignpt
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
 vendor/etc/analysis_rule.xml
+vendor/etc/ftm-mixerpath.PD1832.xml
 vendor/etc/ftm-mixerpath.PD1832F_EX.xml
+vendor/etc/ftm-mixerpath.PD1832LG4.xml
 vendor/etc/ftm-mixerpath.PD1838.xml
 vendor/etc/ftm-mixerpath.PD1838LG4.xml
 vendor/etc/ftm-mixerpath.default.xml
-vendor/etc/ftm_test_config
 vendor/etc/ftm_test_config_qrd
 vendor/etc/ftm_test_config_sm6150-tavil-snd-card
 vendor/etc/ftm_test_config_sm6150-wcd9375qrd-snd-card
@@ -1901,7 +1938,9 @@ vendor/etc/lm/AppClassifierFeature.xml
 vendor/etc/lm/GameOptimizationFeature.xml
 vendor/etc/svfd/svfd_5150.dat
 vendor/etc/system_properties.xml
+vendor/etc/tfa98xx_PD1832.cnt
 vendor/etc/tfa98xx_PD1832F_EX.cnt
+vendor/etc/tfa98xx_PD1832LG4.cnt
 vendor/lib/drm-vts-test-libs/libvtswidevine.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/vibrator_camera.default.so
@@ -1936,7 +1975,7 @@ vendor/lib/libprdrmdecrypt.so
 vendor/lib/libprovidertohal.so
 vendor/lib/libqcbor.so
 vendor/lib/libsdm-colormgr-algo.so
-vendor/lib/libsecurecryptor.so
+vendor/lib/libsecurecryptor.zip
 vendor/lib/libselect_frame_lib.so
 vendor/lib/libsi.so
 vendor/lib/libsns_device_mode_stub.so
@@ -1945,12 +1984,10 @@ vendor/lib/libsns_low_lat_stream_stub.so
 vendor/lib/libsnsapi.so
 vendor/lib/libsnsdiaglog.so
 vendor/lib/libssc.so
-vendor/lib/libstreamparser.so
 vendor/lib/libsv_fd.so
 vendor/lib/libswregistrationalgo.so
 vendor/lib/libswvdec.so
 vendor/lib/libsysmon_cdsp_skel.so
-vendor/lib/libtinycompress_vendor.so
 vendor/lib/libvafx_proc.so
 vendor/lib/libvendor_bigdata_utils.so
 vendor/lib/libvtinyxml.so
@@ -2031,7 +2068,7 @@ vendor/lib64/libprovidertohal.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libreffeature.so
 vendor/lib64/libsdm-colormgr-algo.so
-vendor/lib64/libsecurecryptor.so
+vendor/lib64/libsecurecryptor.zip
 vendor/lib64/libselect_frame_lib.so
 vendor/lib64/libsi.so
 vendor/lib64/libsladhal.so
@@ -2049,7 +2086,6 @@ vendor/lib64/libsv_fd.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libswvdec.so
 vendor/lib64/libthread_blur.so
-vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvafx_proc.so
 vendor/lib64/libvendor_bigdata_utils.so
 vendor/lib64/libvtinyxml.so

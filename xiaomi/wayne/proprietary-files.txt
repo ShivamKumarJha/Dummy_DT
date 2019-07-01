@@ -2346,12 +2346,14 @@ vendor/etc/camera/lavender_s5kgm1_ofilm_i_chromatix.xml
 vendor/etc/camera/lavender_s5kgm1_ofilm_india_i_chromatix.xml
 vendor/etc/camera/lavender_s5kgm1_sunny_ii_chromatix.xml
 vendor/etc/camera/lavender_s5kgm1_sunny_india_ii_chromatix.xml
+vendor/etc/camera/lf_facerank_model.bin
 vendor/etc/camera/male_bg.png
 vendor/etc/camera/male_icon.png
 vendor/etc/camera/model_back.dlc
 vendor/etc/camera/model_front.dlc
 vendor/etc/camera/score_bg.png
 vendor/etc/camera/score_icon.png
+vendor/etc/camera/sdm_ys_32p_120_21_5_perturb50.bin
 vendor/etc/camera/tulip_ov02a10_ofilm_global_ii_chromatix.xml
 vendor/etc/camera/tulip_ov02a10_ofilm_india_ii_chromatix.xml
 vendor/etc/camera/tulip_ov02a10_sunny_global_i_chromatix.xml
@@ -2673,7 +2675,6 @@ vendor/lib/libsecureui.so
 vendor/lib/libsecureui_svcsock.so
 vendor/lib/libssd.so
 vendor/lib/libtzdrmgenprov.so
-vendor/lib/libtzplayready.so
 vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPTEE_vendor.so
 vendor/lib64/libGPreqcancel.so
@@ -2685,7 +2686,6 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/libprdrmdecrypt.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -2694,21 +2694,12 @@ vendor/lib64/libsecureui.so
 vendor/lib64/libsecureui_svcsock.so
 vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib64/libtzplayready.so
 
 # DRM-Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/mediadrm/libprmediadrmdecrypt.so
-vendor/lib/mediadrm/libprmediadrmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmdecrypt_customer.so
-vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libprmediadrmdecrypt.so
-vendor/lib64/mediadrm/libprmediadrmplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-calibration
@@ -3215,6 +3206,9 @@ vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
 vendor/bin/port-bridge
+vendor/bin/qrtr-cfg
+vendor/bin/qrtr-lookup
+vendor/bin/qrtr-ns
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
@@ -3458,6 +3452,12 @@ vendor/bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
+# UBWC
+vendor/lib/libUBWC.so
+vendor/lib/libstreamparser.so
+vendor/lib64/libUBWC.so
+vendor/lib64/libstreamparser.so
+
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
@@ -3523,37 +3523,35 @@ bin/iwpriv
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
-vendor/lib/libqsap_sdk.so
-vendor/lib/vendor.qti.hardware.wigig.netperftuner@1.0.so
-vendor/lib64/libqsap_sdk.so
-vendor/lib64/vendor.qti.hardware.wifi.hostapd@1.0.so
-vendor/lib64/vendor.qti.hardware.wifi.supplicant@2.0.so
-vendor/lib64/vendor.qti.hardware.wigig.netperftuner@1.0.so
 
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
-framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.odex
-framework/oat/arm/vendor.xiaomi.hardware.misys-V1.0-java.vdex
-framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.odex
-framework/oat/arm64/vendor.xiaomi.hardware.misys-V1.0-java.vdex
+etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
+framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
+lib/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
+lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
+vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
 vendor/bin/tidad@1.1
 vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
+vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.1.so
 vendor/lib/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -3561,12 +3559,14 @@ vendor/lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.vsimapp@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
+vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.2.so
 vendor/lib64/libtida@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
+vendor/lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -3575,19 +3575,34 @@ vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.1.so
 
+# rootdir
+vendor/bin/LctDiagSendData
+vendor/bin/adpl
+vendor/bin/adswitch
+vendor/bin/charge_logger
+vendor/bin/hw/rild
+vendor/bin/ipacm-diag
+vendor/bin/mlid
+vendor/bin/mm-audio-ftm
+vendor/bin/mmid
+vendor/bin/myftm
+vendor/bin/qdmastatsd
+vendor/bin/seemp_healthd
+vendor/bin/smart-pa-cal
+vendor/bin/ssgqmigd
+vendor/bin/ssgtzd
+vendor/bin/tcpdump
+vendor/etc/ad_calib.cfg
+
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/QDMA-UI/QDMA-UI.apk
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 vendor/bin/KmInstallKeybox
-vendor/bin/LctDiagSendData
 vendor/bin/LctReadWriteNV
 vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
-vendor/bin/adpl
-vendor/bin/adswitch
 vendor/bin/athdiag
-vendor/bin/charge_logger
 vendor/bin/climax
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
@@ -3604,37 +3619,22 @@ vendor/bin/ftmdaemon
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/rild
 vendor/bin/icm
-vendor/bin/ipacm-diag
 vendor/bin/iwconfig
 vendor/bin/iwlist
-vendor/bin/iwpriv
 vendor/bin/loopbacktest
-vendor/bin/mlid
-vendor/bin/mm-audio-ftm
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
 vendor/bin/mm-qomx-ienc-test
-vendor/bin/mmid
-vendor/bin/myftm
 vendor/bin/pktlogconf
-vendor/bin/qdmastatsd
 vendor/bin/qjpeg-dma-test
 vendor/bin/qmi_simple_ril_test
-vendor/bin/qrtr-cfg
-vendor/bin/qrtr-lookup
-vendor/bin/qrtr-ns
 vendor/bin/qseecom_sample_client
 vendor/bin/secure_ui_sample_client
-vendor/bin/seemp_healthd
 vendor/bin/sigma_dut
-vendor/bin/smart-pa-cal
 vendor/bin/smart-pa-tfa-cal
 vendor/bin/spectraltool
-vendor/bin/ssgqmigd
-vendor/bin/ssgtzd
 vendor/bin/tbaseLoader
 vendor/bin/test_diag
 vendor/bin/test_module_pproc
@@ -3647,12 +3647,8 @@ vendor/bin/xtwifi-inet-agent
 vendor/etc/MIUI_DualCamera_watermark.png
 vendor/etc/MIUI_Time.ttf
 vendor/etc/Miui-Light.ttf
-vendor/etc/ad_calib.cfg
-vendor/etc/ftm_test_config
 vendor/etc/init/rild.rc
 vendor/lib/libLctDiagSendDataApi.so
-vendor/lib/libUBWC.so
-vendor/lib/libbinder.so
 vendor/lib/libbufferhubqueue.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libdiagjni.so
@@ -3669,19 +3665,15 @@ vendor/lib/libpdx_default_transport.so
 vendor/lib/libpng.so
 vendor/lib/libsi.so
 vendor/lib/libsonivox.so
-vendor/lib/libstreamparser.so
 vendor/lib/libteeclientjni.so
-vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwapi_cert.so
 vendor/lib64/libLctDiagSendDataApi.so
-vendor/lib64/libUBWC.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastcrc.so
 vendor/lib64/libgarden.so
+vendor/lib64/libpcap.so
 vendor/lib64/libqdma.so
 vendor/lib64/libsi.so
-vendor/lib64/libstreamparser.so
 vendor/lib64/libteeclientjni.so
-vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libwapi_cert.so

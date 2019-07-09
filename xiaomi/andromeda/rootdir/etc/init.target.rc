@@ -138,6 +138,7 @@ on boot
     chown system system /sys/kernel/hbtp/display_pwr
     chown system system /sys/kernel/qvr_external_sensor/fd
     chown system system /proc/tp_selftest
+    chown system system /sys/class/touch/touch_dev/palm_sensor
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-3
@@ -233,7 +234,7 @@ on charger
     mkdir /mnt/vendor/persist/subsys 0770 root system
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
-    setprop vendor.usb.controller a600000.dwc3
+    setprop sys.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
     mkdir /data/vendor/charge_logger 0771 system system
     start charge_logger

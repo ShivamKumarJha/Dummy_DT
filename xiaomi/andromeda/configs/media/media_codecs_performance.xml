@@ -42,7 +42,7 @@ limitations under the License.
             <Limit name="measured-frame-rate-176x144" range="135-299" />
             <Limit name="measured-frame-rate-352x288" range="113-245" />
             <Limit name="measured-frame-rate-640x480" range="45-99" />
-            <Limit name="measured-frame-rate-1280x720" range="20-44" />
+            <Limit name="measured-frame-rate-1280x720" range="40-88" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.vp8" type="video/x-vnd.on2.vp8" update="true">
             <Limit name="measured-frame-rate-320x180" range="307-676" />

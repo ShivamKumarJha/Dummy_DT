@@ -27,6 +27,11 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-ip link set can0 type can bitrate 250000
-ip link set up can0
+target_type=`getprop ro.hardware.type`
 
+case "$target_type" in
+    "automotive")
+    ip link set can0 type can bitrate 250000
+    ip link set up can0
+    ;;
+esac

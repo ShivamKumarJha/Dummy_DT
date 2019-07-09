@@ -213,7 +213,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/i2c-5                0660   media       media
 /dev/avtimer              0660   system     audio
 /dev/spidev2.0            0660   system     audio
-/dev/cpu_dma_latency      0660   system     audio
 
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
@@ -407,3 +406,7 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # ifaa 2dfa
 /dev/trusty-ipc-dev0        0660    system  system
+
+#QG device
+/dev/qg               0660   system     system
+/dev/qg_battery       0660   system     system

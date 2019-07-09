@@ -7,12 +7,19 @@
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_5g_switch_available_bool" value="false" />
     </carrier_config>
     <carrier_config sdk="26">
         <boolean name="vilte_data_is_metered_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="208" mnc="10" sdk="28">
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
+    </carrier_config>
+    <carrier_config mcc="222" mnc="01">
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="228" mnc="02">
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="268" mnc="06">
         <string name="default_vm_number_string">+351962000000</string>
@@ -23,6 +30,7 @@
     <carrier_config mcc="460">
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="460" mnc="01,06,09">
         <boolean name="carrier_volte_available_bool" value="false" />
@@ -57,6 +65,9 @@
             <item value="" />
         </string-array>
     </carrier_config>
+    <carrier_config mcc="427" mnc="02">
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
+    </carrier_config>
     <carrier_config mcc="525" mnc="05" sdk="28">
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
     </carrier_config>
@@ -70,10 +81,15 @@
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <string-array name="read_only_apn_types_string_array" num="0" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="214" mnc="01">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="214" mnc="04">
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="262" mnc="02,09">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -83,6 +99,7 @@
     <carrier_config mcc="222" mnc="10">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="carrier_5g_switch_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="268" mnc="01">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -143,6 +160,9 @@
     </carrier_config>
     <carrier_config mcc="466" mnc="01">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="05">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="2" />
     </carrier_config>
     <carrier_config mcc="456" mnc="11">
@@ -157,10 +177,16 @@
     <carrier_config mcc="222" mnc="10">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
+    <carrier_config mcc="234" mnc="15">
+        <boolean name="config_support_callbarring_over_ims" value="false" />
+    </carrier_config>
     <carrier_config mcc="214" mnc="04">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
     <carrier_config mcc="510" mnc="28">
         <boolean name="support_video_conference_call_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="222" mnc="01">
+        <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
 </carrier_config_list>

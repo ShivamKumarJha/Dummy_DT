@@ -57,12 +57,10 @@ limitations under the License.
             <Limit name="measured-frame-rate-1920x1080" range="12-26" />
         </MediaCodec>
         <MediaCodec name="OMX.google.h263.encoder" type="video/3gpp" update="true">
-            <Limit name="measured-frame-rate-176x144" range="500-600" />
+            <Limit name="measured-frame-rate-176x144" range="90-199" />
         </MediaCodec>
         <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es" update="true">
-            <!--Limit name="measured-frame-rate-176x144" range="90-199" /-->
-            <!--20180806 fred modified this for cts android.video.cts.VideoEncoderDecoderTest#testMpeg4Goog0Perf0176x0144-->
-            <Limit name="measured-frame-rate-176x144" range="500-500" />
+            <Limit name="measured-frame-rate-176x144" range="300-400" />
         </MediaCodec>
         <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8" update="true">
             <Limit name="measured-frame-rate-320x180" range="24-52" />

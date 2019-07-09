@@ -66,9 +66,6 @@
         <MediaCodec name="OMX.qti.audio.decoder.flac" type="audio/flac" >
             <Limit name="concurrent-instances" max="10" />
         </MediaCodec>
-        <MediaCodec name="OMX.qti.audio.decoder.mpegh" type="audio/mhas" >
-            <Limit name="concurrent-instances" max="10" />
-        </MediaCodec>
     </Decoders>
     <Encoders>
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm">

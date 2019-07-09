@@ -1,4 +1,4 @@
-﻿##################################################################################
+##################################################################################
 ### VENDOR_EDIT, OEM All rights reserved.
 ###
 ### File: - init.oem.rc
@@ -27,6 +27,7 @@ on post-fs-data
     #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     mkdir /data/nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/secure_element/ 0770 secure_element secure_element
     mkdir /data/vendor/oemnvitems  0771 radio radio
     #fingerint, changhua add for fp debug image usage,feature default off
     mkdir /data/fpc_images 0770 system system
@@ -422,10 +423,8 @@ on post-fs
     chown system system /sys/class/leds/vibrator/duration
     chown system system /sys/class/leds/vibrator/state
 
-    /* add for aging apk to set node */
     chown system system /sys/class/power_supply/battery/is_aging_test
 
-    /* create a empty file for wifi hal to write mac address */
     write /mnt/vendor/persist/wlan_mac.bin ""
     chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
     mkdir /mnt/vendor/persist/engineermode
@@ -449,10 +448,14 @@ on post-fs
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared/server_info.txt
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs
-    mkdir /mnt/vendor/persist/OPDiagnose
-    chown system system /mnt/vendor/persist/OPDiagnose
     chown system system /sys/class/power_supply/battery/connect_disable
 #endif /*VENDOR_EDIT*/
+#ifdef VENDOR_EDIT
+#danny.xiao@framework, 20169/02/26, modified for POOS-3698
+    mkdir /mnt/vendor/persist/OPDiagnose 0770 system system
+    chmod 660 /mnt/vendor/persist/OPDiagnose/opdiagnosedata
+    chown system system /mnt/vendor/persist/OPDiagnose/opdiagnosedata
+#endif
 
 #ifdef VENDOR_EDIT
 #niejianan@oneplus.framework , 2015/04/25, add for mmi charging test
@@ -474,6 +477,13 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
 #endif
 
 #ifdef VENDOR_EDIT
+#Bibby Lin, 2018/11/01, remove /data/vendor/media when VT dump disable
+on property:persist.vendor.VT_dump.clean=1
+##  md /data/vendor/media false
+    setprop persist.vendor.VT_dump.clean 0
+#endif
+
+#ifdef VENDOR_EDIT
 #lifei@oneplus.media, 2016/02/14,  add service for CTS and engineer app
 service oem_audio_device /system/bin/chcon u:object_r:oem_audio_device:s0 /dev/snd
     class late_start
@@ -492,25 +502,6 @@ on property:sys.boot_completed=1
 #joseph.huang@oneplus.com, 20180424, add for OnePlusPerfManager
     chown system system /sys/module/lpm_levels/parameters/cluster_prediction
     chmod 0666 /sys/module/lpm_levels/parameters/cluster_prediction
-#endif
-
-#ifdef VENDOR_EDIT
-#kimi, 2016/03/29, trigger systrace
-on property:persist.sys.systrace.enable=true
-    start izanami
-on property:persist.sys.systrace.enable=false
-    start stop_izanami
-service izanami /system/bin/izanami
-    class main
-    user root
-    disabled
-    oneshot
-    keycodes 115 116
-service stop_izanami /system/bin/izanami stop
-    class main
-    user root
-    disabled
-    oneshot
 #endif
 
 #ifdef VENDOR_EDIT
@@ -540,14 +531,6 @@ service ifaadaemon /vendor/bin/ifaadaemon
 class late_start
 user system
 group system
-#endif
-
-#ifdef VENDOR_EDIT
-service atrace /system/bin/op_atrace -t10 -b 20480 res irq hal freq disk gfx sync sched power ss regulators video binder_lock app sm audio wm camera webview workq dalvik database bionic idle input am pagecache rs pm mmc memreclaim load view binder_driver -z --oneplus
-    class core
-    disabled
-    oneshot
-    seclabel u:r:logserver:s0
 #endif
 
 #ifdef VENDOR_EDIT
@@ -621,7 +604,7 @@ on property:persist.sys.gamemode.wifiboost=2
 #huangyu@oneplus.framework, 2017/12/15, add opdiagnose service
 service opdiagnose /system/bin/OPDiagnoseservice
     class core
-    user system
+    user root
     group system
 #endif
 
@@ -695,3 +678,70 @@ service rmkeyboxxml /system/bin/rm /op2/keyboxes_ciphered.xml
     oneshot
     seclabel u:r:vold:s0
 #endif
+
+#ifdef VENDOR_EDIT
+on property:vendor.wlan.sniffer.enabled=1
+    start launch_sniffer
+
+on property:vendor.wlan.sniffer.enabled=0
+    stop launch_sniffer
+    start terminate_sniffer
+
+service launch_sniffer /vendor/bin/sh /vendor/bin/launch_sniffer.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service terminate_sniffer /vendor/bin/sh /vendor/bin/terminate_sniffer.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+#endif
+
+#ifdef VENDOR_EDIT
+#danny.xiao@framework, 2019/01/07, add for copy opdiagnose data to sdcard
+service OPDiagdataCopy /system/bin/OPDiagdataCopy
+    class core
+    user root
+    group system
+    oneshot
+    disabled
+
+on property:vendor.copy.opdiagnose.data=1
+    start OPDiagdataCopy
+#endif
+
+#if VENDOR_EDIT
+#danny.xiao@system, 2019/01/15, add for catching bootcontrol log on OTA
+service bootcontrollog /system/bin/bootcontrollog
+    class core
+    user root
+    group system
+    oneshot
+    disabled
+
+on property:vendor.bootcontrol.log=1
+    start bootcontrollog
+
+on property:vendor.bootcontrol.log=0
+    stop bootcontrollog
+#endif
+
+on property:persist.vendor.oem.dump=1
+    write /sys/module/msm_poweroff/parameters/download_mode 1
+    write /sys/kernel/dload/dload_mode full
+    write /sys/kernel/dload/emmc_dload 0
+    write /proc/otrace_on 7978
+    write /proc/restart_level_all 1
+    write /proc/sys/kernel/printk "4 6 1 7"
+
+on property:persist.vendor.oem.dump=0
+    write /sys/module/msm_poweroff/parameters/download_mode 0
+    write /sys/kernel/dload/emmc_dload 1
+    write /proc/otrace_on 0
+    write /proc/restart_level_all 0
+    write /proc/sys/kernel/printk "1 6 1 7"

@@ -29,55 +29,33 @@
 #
 
 # Set platform variables
-if [ -f /sys/devices/soc0/hw_platform ]; then
-    soc_hwplatform=`cat /sys/devices/soc0/hw_platform` 2> /dev/null
-else
-    soc_hwplatform=`cat /sys/devices/system/soc/soc0/hw_platform` 2> /dev/null
-fi
-
-if [ -f /sys/devices/soc0/machine ]; then
-    soc_machine=`cat /sys/devices/soc0/machine` 2> /dev/null
-else
-    soc_machine=`cat /sys/devices/system/soc/soc0/machine` 2> /dev/null
-fi
+soc_hwplatform=`cat /sys/devices/soc0/hw_platform 2> /dev/null`
+soc_machine=`cat /sys/devices/soc0/machine 2> /dev/null`
+soc_id=`cat /sys/devices/soc0/soc_id 2> /dev/null`
 
 #
-# Check ESOC for external MDM
+# Check ESOC for external modem
 #
-# Note: currently only a single MDM is supported
+# Note: currently only a single MDM/SDX is supported
 #
-if [ -d /sys/bus/esoc/devices ]; then
-for f in /sys/bus/esoc/devices/*; do
-    if [ -d $f ]; then
-    if [ `grep -e "^MDM" -e "^SDX" $f/esoc_name` ]; then
-            esoc_link=`cat $f/esoc_link`
-            break
-        fi
-    fi
-done
-fi
+esoc_name=`cat /sys/bus/esoc/devices/esoc0/esoc_name 2> /dev/null`
 
 target=`getprop ro.board.platform`
 
-# soc_ids for 8937
-if [ -f /sys/devices/soc0/soc_id ]; then
-	soc_id=`cat /sys/devices/soc0/soc_id`
-else
-	soc_id=`cat /sys/devices/system/soc/soc0/id`
+if [ -f /sys/class/android_usb/f_mass_storage/lun/nofua ]; then
+	echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 fi
 
 #
-# Allow USB enumeration with default PID/VID
+# Override USB default composition
 #
-baseband=`getprop ro.baseband`
-
-echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
-usb_config=`getprop persist.vendor.usb.config`
-if [ "$usb_config" == "" ]; then #USB persist config not set, select default configuration
-      if [ "$esoc_link" != "" ]; then
+# If USB persist config not set, set default configuration
+if [ "$(getprop persist.vendor.usb.config)" == "" -a \
+	"$(getprop init.svc.vendor.usb-gadget-hal-1-0)" != "running" ]; then
+    if [ "$esoc_name" != "" ]; then
 	  setprop persist.vendor.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
-      else
-	  case "$baseband" in
+    else
+	  case "$(getprop ro.baseband)" in
 	      "apq")
 	          setprop persist.vendor.usb.config diag,adb
 	      ;;
@@ -106,7 +84,6 @@ if [ "$usb_config" == "" ]; then #USB persist config not set, select default con
 			    else
 			               case "$soc_id" in
 				               "313" | "320")
-						  echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
 				                  setprop persist.vendor.usb.config diag,serial_smd,rmnet_ipa,adb
 				               ;;
 				               *)
@@ -126,12 +103,10 @@ if [ "$usb_config" == "" ]; then #USB persist config not set, select default con
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
 		      ;;
 	              "sdm845" | "sdm710")
-#ifdef VENDOR_EDIT
-#2018/05/14 @bsp Don't enable the full port by default
 		          #setprop persist.sys.usb.config diag,serial_cdev,rmnet,dpl,adb
-#endif
+		          setprop persist.sys.usb.config diag,adb
 		      ;;
-	              "msmnile")
+	              "msmnile" | "sm6150" | "trinket")
 			  setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
 		      ;;
 	              *)
@@ -145,6 +120,19 @@ if [ "$usb_config" == "" ]; then #USB persist config not set, select default con
 	      ;;
 	  esac
       fi
+fi
+
+# set rndis transport to BAM2BAM_IPA for 8920 and 8940
+if [ "$target" == "msm8937" ]; then
+	if [ ! -d /config/usb_gadget ]; then
+	   case "$soc_id" in
+		"313" | "320")
+		   echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
+		;;
+		*)
+		;;
+	   esac
+	fi
 fi
 
 # set device mode notification to USB driver for SA8150 Auto ADP
@@ -165,15 +153,18 @@ if [ -d /config/usb_gadget ]; then
 	msm_serial_hex=`printf %08X $msm_serial`
 	machine_type=`cat /sys/devices/soc0/machine`
 #ifdef VENDOR_EDIT
-#20170505 Fix product name for Android Auto
+#Fix product name for Android Auto/Ubuntu
 	product_string=`getprop ro.product.brand`
+        if [ "$product_string" == "" ]; then
+	        product_string="OnePlus"
+        fi
 #else
 	#product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
 #endif
 	echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
 
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
-	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber` 2> /dev/null
+	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber 2> /dev/null`
 	if [ "$serialnumber" == "" ]; then
 		serialno=1234567
 		echo $serialno > /config/usb_gadget/g1/strings/0x409/serialnumber
@@ -195,17 +186,6 @@ case "$soc_id" in
 		setprop vendor.usb.rps_mask 40
 	;;
 esac
-
-#ifdef VENDOR_EDIT
-#david.liu@bsp, 20171114 Enable diag and adb for FTM
-boot_mode=`getprop ro.boot.ftm_mode`
-echo "boot_mode: $boot_mode" > /dev/kmsg
-case "$boot_mode" in
-    "ftm_at" | "ftm_rf" | "ftm_wlan" | "ftm_mos")
-    setprop sys.usb.config diag,adb
-    echo "AFTER boot_mode: diag,adb" > /dev/kmsg
-esac
-#endif
 
 #
 # Initialize UVC conifguration.
@@ -262,3 +242,13 @@ if [ -d /config/usb_gadget/g1/functions/uvc.0 ]; then
 	ln -s streaming/header/h streaming/class/hs/
 	ln -s streaming/header/h streaming/class/ss/
 fi
+#ifdef VENDOR_EDIT
+#david.liu@bsp, 20171114 Enable diag and adb for FTM
+boot_mode=`getprop ro.boot.ftm_mode`
+echo "boot_mode: $boot_mode" > /dev/kmsg
+case "$boot_mode" in
+    "ftm_at" | "ftm_rf" | "ftm_wlan" | "ftm_mos")
+    setprop sys.usb.config diag,adb
+    echo "AFTER boot_mode: diag,adb" > /dev/kmsg
+esac
+#endif

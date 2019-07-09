@@ -196,15 +196,12 @@
         <ctl name="LSM8 Mixer SLIMBUS_0_TX" value="1" />
     </path>
 
-<!--ifdef VENDOR_EDIT #modified by lifei for SVA in 20180103-->
     <path name="listen-cpe-handset-mic">
-        <ctl name="MAD Input" value="ADC4" />
-        <!--ctl name="MAD Input" value="DMIC2" /-->
+        <ctl name="MAD Input" value="DMIC2" />
         <ctl name="MAD_SEL MUX" value="SPE" />
         <ctl name="MAD_INP MUX" value="MAD" />
         <ctl name="MAD_CPE1 Switch" value="1" />
     </path>
-<!--#endif-->
 
     <path name="listen-cpe-handset-dmic">
         <ctl name="CLK MODE" value="INTERNAL" />

@@ -30,6 +30,8 @@ function enable_main_mic
 {
 	echo "enabling main mic"
 	tinymix 'DEC1 MUX' 'ADC1'
+	tinymix 'ADC1_INP1 Switch' 1
+	tinymix 'DEC1 Volume' 84
 	tinymix 'ADC1 Volume' 6
 }
 
@@ -37,6 +39,8 @@ function disable_main_mic
 {
 	echo "disabling main mic"
 	tinymix 'DEC1 MUX' 'ZERO'
+	tinymix 'ADC1_INP1 Switch' 0
+	tinymix 'DEC1 Volume' 84
 	tinymix 'ADC1 Volume' 4
 }
 
@@ -44,14 +48,18 @@ function enable_top_mic
 {
 	echo "enabling top mic"
 	tinymix 'DEC1 MUX' 'ADC2'
-	tinymix 'ADC2 Volume' 6
+	tinymix 'ADC2 MUX' 'INP3'
+	tinymix 'DEC1 Volume' 84
+	tinymix 'ADC3 Volume' 6
 }
 
 function disable_top_mic
 {
 	echo "disabling top mic"
+	tinymix 'ADC2 MUX' 'INP3'
 	tinymix 'DEC1 MUX' 'ZERO'
-	tinymix 'ADC2 Volume' 4
+	tinymix 'DEC1 Volume' 84
+	tinymix 'ADC3 Volume' 4
 }
 
 function enable_back_mic

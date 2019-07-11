@@ -198,8 +198,6 @@
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="0" />
     <!-- usb headset end -->
     <!-- fm -->
-    <ctl name="PRI_MI2S_RX Port Mixer SLIM_8_TX" value="0" />
-    <ctl name="PRI_MI2S_RX_DL_HL Switch" value="0" />
     <ctl name="SLIMBUS_8 LOOPBACK Volume" value="0" />
     <ctl name="INT4_MI2S_RX Port Mixer SLIM_8_TX" value="0" />
     <ctl name="INT4_MI2S_RX_DL_HL Switch" value="0" />
@@ -592,12 +590,6 @@
         <ctl name="RX2 MIX1 INP2" value="IIR1" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
-    </path>
-
-    <path name="play-fm speaker">
-        <ctl name="SLIMBUS_8 LOOPBACK Volume" value="1" />
-        <ctl name="PRI_MI2S_RX Port Mixer SLIM_8_TX" value="1" />
-        <ctl name="PRI_MI2S_RX_DL_HL Switch" value="1" />
     </path>
 
     <!-- Add the new path end -->

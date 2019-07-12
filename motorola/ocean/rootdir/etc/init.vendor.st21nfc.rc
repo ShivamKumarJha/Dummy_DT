@@ -1,0 +1,17 @@
+on post-fs
+	# Change ownership and permision of st nfc device
+	chown nfc nfc /dev/st21nfc
+	chmod 0660 /dev/st21nfc
+
+	setprop persist.vendor.st_nfc_gsma_support 1
+	setprop persist.vendor.st_nfc_ignore_modem 1
+	setprop persist.vendor.st_nfc_defaut_se SIM1
+
+	start stflashtool
+
+
+service stflashtool /vendor/bin/STFlashTool -c /vendor/etc/st21nfc_conf.txt -P vendor.nfc.fw_status
+	class late_start
+	group nfc
+	user nfc
+	oneshot

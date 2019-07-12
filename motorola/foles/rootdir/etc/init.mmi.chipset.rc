@@ -1,0 +1,68 @@
+# Charge only mode configuration
+import /vendor/etc/init/hw/init.mmi.charge_only.rc
+
+# Chipset-specific init settings
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group fingerp
+
+on post-fs
+    # Change permission for fingerprint sensor
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/nav
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/dev_enable
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+    chmod 0440 /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+    # MOT_LED_CALIBRATION
+    chown cameraserver /mnt/vendor/persist/camera/mot_ledcal
+    restorecon_recursive   /carrier
+    stop logd
+    start logd
+
+on early-init
+    setprop sys.usb.controller "a800000.dwc3"
+    setprop sys.usb.configfs 1
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules exfat utags watchdogtest sensors_class mmi_annotate mmi_info tzlog_dump watchdog_cpu_ctx mmi_sys_temp
+
+
+on early-init
+    insmod /vendor/lib/modules/moto_f_usbnet.ko
+
+on boot
+# Change ownership and permission for laser_sensor
+    chown system system /sys/class/input/input5/enable_sar
+    chmod 0660 /sys/class/input/input5/enable_sar
+    chown system system /sys/class/input/input5/set_delay_ms
+    chmod 0660 /sys/class/input/input5/set_delay_ms
+    chown system system /sys/class/input/input5/do_flush
+    chmod 0660 /sys/class/input/input5/do_flush
+    chown system system /sys/class/input/input5/autonomous_config
+    chmod 0660 /sys/class/input/input5/autonomous_config
+    chown system system /sys/class/input/input5/offset
+    chmod 0660 /sys/class/input/input5/offset
+    # Change ownership and permission for AMPS factory testing
+    chown root mot_tcmd /sys/devices/soc/a800000.ssusb/modusb_enable
+    chmod 0660 /sys/devices/soc/a800000.ssusb/modusb_enable
+    chown root mot_tcmd /sys/class/i2c-adapter/i2c-7/7-0072/irq_enable
+    chmod 0660 /sys/class/i2c-adapter/i2c-7/7-0072/irq_enable
+    chown root mot_tcmd /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
+    chmod 0660 /sys/class/i2c-adapter/i2c-7/7-002d/hsic_vdd
+
+    start ufs_ffu
+
+# Set hub drive strength to +5%
+on property:ro.bootmode=normal
+   write /sys/module/usb3813_hub/parameters/boost_val 2
+
+service ufs_ffu /vendor/bin/ufs_ffu.sh
+    user root
+    class core
+    oneshot
+    disabled
+
+on property:vendor.ufs_need_ffu=1
+    setprop sys.dbg.ufs_ffu_start 1
+
+on property:ro.vendor.build.motfactory=1
+    write /sys/class/power_supply/battery/device/factory_image_mode 1

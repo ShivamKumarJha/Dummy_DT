@@ -1,0 +1,8 @@
+# Create files containing property contents for use by sensor registry parser
+# This must happen before SLPI boots
+on load_persist_props_action
+    # Create path for sensor property config files
+    mkdir /persist/sensors/config 0750 root system
+    write /persist/sensors/config/hw_device ${ro.hw.device}
+    write /persist/sensors/config/hw_rev ${ro.hw.hwrev}
+    write /persist/sensors/config/hw_revision ${ro.hw.revision}

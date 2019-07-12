@@ -1,0 +1,119 @@
+import init.mmi.dtv.rc
+
+service capsense_reset /system/vendor/bin/capsense_reset
+	class core
+	user system
+	group system
+	disabled
+
+on init
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+   # Change ownership for for cabc feature
+   chown system system /sys/class/graphics/fb0/cabc
+
+on property:wc_transport.start_fmhci=true
+    start fmhal_service
+
+on property:wc_transport.start_fmhci=false
+    stop fmhal_service
+
+#net_admin capability needed to write rfkill sysfs entry
+service fmhal_service /system/bin/fmhal_service
+    class late_start
+    user bluetooth
+    group bluetooth net_bt_admin net_admin
+    disabled
+
+on property:ro.carrier=tmo
+    write /sys/class/power_supply/battery/device/force_max_chrg_temp 55
+
+on property:ro.carrier=metropcs
+    write /sys/class/power_supply/battery/device/force_max_chrg_temp 55
+
+service adjust_acdb_path /vendor/bin/init.mmi.acdb.sh
+    seclabel u:r:init_hw:s0
+    class core
+    user root
+    disabled
+    oneshot
+
+on early-boot
+   start adjust_acdb_path
+
+on boot
+       # Change permission for fingerprint sensor
+       chown system mot_tcmd /sys/bus/spi/devices/spi1.0/nav
+       chown system mot_tcmd /sys/bus/spi/devices/spi1.0/clk_enable
+       chown system mot_tcmd /sys/bus/spi/devices/spi1.0/dev_enable
+       chown system mot_tcmd /sys/bus/spi/devices/spi1.0/irq
+       chown system mot_tcmd /sys/bus/spi/devices/spi1.0/irq_cnt
+       chmod 0440 /sys/bus/spi/devices/spi1.0/irq_cnt
+
+       # change permission for rear Psensor
+       chown system system /sys/class/sensors/Rear\ Proximity\ sensor/enable
+       chown system system /sys/class/sensors/Rear\ Proximity\ sensor/poll_delay
+       chmod 0664  /sys/class/sensors/Rear\ Proximity\ sensor/enable
+       chmod 0664  /sys/class/sensors/Rear\ Proximity\ sensor/poll_delay
+
+       #change permission for capsensor
+       chmod 0660 /sys/class/capsense/enable
+       chown system system sys/class/capsense/enable
+       chmod 0660 /sys/class/capsense/reset
+       chown system system sys/class/capsense/reset
+       chmod 0660 /sys/class/capsense/reg
+       chown system system sys/class/capsense/reg
+
+on property:ro.build.motfactory=1
+	write /sys/class/power_supply/battery/device/factory_image_mode 1
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on boot
+
+   # Change ownership and permission for laser_sensor
+   chown system system /sys/kernel/range/enable_sar
+   chmod 0660 /sys/kernel/range/enable_sar
+   chown system system /sys/kernel/range/set_delay_ms
+   chmod 0660 /sys/kernel/range/set_delay_ms
+   chown system system /sys/kernel/range/near
+   chmod 0660 /sys/kernel/range/near
+   chown system system /sys/class/input/input7/enable_ps_sensor
+   chmod 0660 /sys/class/input/input7/enable_ps_sensor
+   chown system system /sys/class/input/input7/set_delay_ms
+   chmod 0660 /sys/class/input/input7/set_delay_ms
+   chown system system /sys/class/input/input7/xtalk
+   chmod 0660 /sys/class/input/input7/xtalk
+   chown system system /sys/class/input/input7/do_flush
+   chmod 0660 /sys/class/input/input7/do_flush
+   chown system system /sys/class/input/input7/offset
+   chmod 0660 /sys/class/input/input7/offset
+
+   chown system system /sys/class/input/input6/enable_ps_sensor
+   chmod 0660 /sys/class/input/input6/enable_ps_sensor
+   chown system system /sys/class/input/input6/set_delay_ms
+   chmod 0660 /sys/class/input/input6/set_delay_ms
+   chown system system /sys/class/input/input6/xtalk
+   chmod 0660 /sys/class/input/input6/xtalk
+   chown system system /sys/class/input/input6/do_flush
+   chmod 0660 /sys/class/input/input6/do_flush
+   chown system system /sys/class/input/input7/offset
+   chmod 0660 /sys/class/input/input6/offset
+
+   chown system system /sys/class/input/input5/enable_ps_sensor
+   chmod 0660 /sys/class/input/input5/enable_ps_sensor
+   chown system system /sys/class/input/input5/set_delay_ms
+   chmod 0660 /sys/class/input/input5/set_delay_ms
+   chown system system /sys/class/input/input5/xtalk
+   chmod 0660 /sys/class/input/input5/xtalk
+   chown system system /sys/class/input/input5/do_flush
+   chmod 0660 /sys/class/input/input5/do_flush
+   chown system system /sys/class/input/input5/offset
+   chmod 0660 /sys/class/input/input5/offset
+
+service mmi-laser-sh /vendor/bin/init.mmi.laser.sh
+    class core
+    user root
+    oneshot
+

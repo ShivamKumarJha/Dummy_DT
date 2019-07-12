@@ -1,0 +1,63 @@
+import init.hidl.sensor.rc
+
+service audiopara-sh /vendor/bin/init.audio.specified_para.sh
+#    seclabel u:r:init_hw:s0
+    class core
+    user root
+    oneshot
+
+on early-init
+	exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules sx932x_sar abov_sar tps61280 focaltech_mmi drv2624_mmi snd_soc_tfa9874 mcDrvModule
+
+on init
+
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+   # Change ownership for for cabc feature
+   chown system system /sys/class/graphics/fb0/cabc
+
+on boot
+    # Change permission for fingerprint sensor
+    chown system vendor_tcmd /sys/devices/platform/soc/soc:fpc_fpc1020/nav
+    chown system vendor_tcmd /sys/devices/platform/soc/soc:fpc_fpc1020/dev_enable
+    chown system vendor_tcmd /sys/devices/platform/soc/soc:fpc_fpc1020/irq
+    chown system vendor_tcmd /sys/devices/platform/soc/soc:fpc_fpc1020/irq_cnt
+    chmod 0440 /sys/devices/platform/soc/soc:fpc_fpc1020/irq_cnt
+
+   # Change ownership and permission for laser_sensor
+   chown system system /sys/kernel/range/enable_sar
+   chmod 0660 /sys/kernel/range/enable_sar
+   chown system system /sys/kernel/range/set_delay_ms
+   chmod 0660 /sys/kernel/range/set_delay_ms
+   chown system system /sys/kernel/range/near
+   chmod 0660 /sys/kernel/range/near
+
+   # Change group for himax TP factory testing
+   chown root vendor_tcmd /proc/android_touch/self_test
+
+   # Change the ownership of display TE files for tcmds
+   chown root vendor_tcmd /sys/class/graphics/fb0/te_test
+   chown root vendor_tcmd /sys/class/graphics/fb0/te_enable
+   chown root vendor_tcmd /sys/class/graphics/fb0/frame_counter
+
+   #change permission for capsensor
+   chmod 0660 /sys/class/capsense/enable
+   chown system system sys/class/capsense/enable
+   chmod 0660 /sys/class/capsense/reset
+   chown system system sys/class/capsense/reset
+   chmod 0660 /sys/class/capsense/reg
+   chown system system sys/class/capsense/reg
+   chmod 0666 /sys/class/capsense/fw_download_status
+   chown system system sys/class/capsense/fw_download_status
+
+service capsense_reset /vendor/bin/capsense_reset
+    class core
+    user system
+    group system input
+    disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on post-fs
+   restorecon_recursive /mnt/vendor/persist/rfs

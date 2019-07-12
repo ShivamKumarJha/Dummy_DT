@@ -1,0 +1,82 @@
+on early-init
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules exfat utags watchdogtest sensors_class mmi_annotate mmi_info tzlog_dump mmi_sys_temp
+
+# Chipset-specific init settings
+on boot
+    # Change permission for type C params
+    chown root vendor_tcmd /sys/devices/soc/78b6000.i2c/i2c-2/2-0022/CC_state
+    chown root vendor_tcmd /sys/devices/soc/78b6000.i2c/i2c-2/2-0022/enable_vconn
+
+    # usb driver parameter permissions
+    chown root vendor_tcmd /sys/module/phy_msm_usb/parameters/host_mode_disable
+    chmod 0660 /sys/module/phy_msm_usb/parameters/host_mode_disable
+
+    # Change ownership and permission for AMPS factory testing
+    chown root vendor_tcmd /sys/class/i2c-adapter/i2c-2/2-002d/enable
+    chmod 0660 /sys/class/i2c-adapter/i2c-2/2-002d/enable
+    chown root vendor_tcmd /sys/class/i2c-adapter/i2c-2/2-002d/hsic_vdd
+    chmod 0660 /sys/class/i2c-adapter/i2c-2/2-002d/hsic_vdd
+
+on init
+    write /dev/cpuctl/cpu.rt_runtime_us 800000
+    write /dev/cpuctl/cpu.rt_period_us 1000000
+    mkdir /dev/cpuctl/bg_non_interactive
+    chown system system /dev/cpuctl/bg_non_interactive/tasks
+    chmod 0666 /dev/cpuctl/bg_non_interactive/tasks
+    # 5.0 %
+    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
+    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 700000
+    write /dev/cpuctl/bg_non_interactive/cpu.rt_period_us 1000000
+
+on post-fs-data
+    #setup folder for WLAN WAPI
+    chmod 0770 /data/wapi_certificate
+
+    # This dir only for preinstall app so libs
+    mkdir /data/app-lib2 0771 system system
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group fingerp
+
+on property:sys.boot_completed=1
+    # For cross-reboot FFU script tracking (unencrypted case)
+    mkdir /data/vendor/ffu 0750 shell shell
+    start emmc_ffu
+
+
+service emmc_ffu /vendor/bin/emmc_ffu.sh
+    user root
+    class late_start
+    oneshot
+    disabled
+
+on property:vendor.need_ffu=1
+    setprop sys.dbg.ffu_start 1
+
+on property:sys.boot_completed=1
+
+    #Configure mtp rx/tx req len for msm8937
+    write /sys/module/g_android/parameters/mtp_rx_req_len 1048576
+    write /sys/module/g_android/parameters/mtp_tx_req_len 16384
+    write /sys/class/android_usb/android0/f_rndis_qc/rndis_transports " "
+
+on moto-charger
+    setprop ro.board.platform msm8937
+    load_system_props
+    trigger firmware_mounts_complete
+    setprop sys.usb.configfs 1
+    setprop sys.usb.config charging
+    start  qcom-post-boot
+    start vendor.gbmodinstall
+    start vendor.charge_only_mode
+    start vendor.batt_health
+    start vendor.thermal-com
+
+# Set hub drive strength to +5%
+on property:ro.bootmode=normal
+   write /sys/module/usb3813_hub/parameters/boost_val 3
+
+on property:ro.vendor.build.motfactory=1
+    write /sys/class/power_supply/battery/device/factory_image_mode 1

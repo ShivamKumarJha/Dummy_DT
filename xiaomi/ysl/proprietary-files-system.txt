@@ -1,4 +1,5 @@
 -app/QtiTelephonyService/QtiTelephonyService.apk
+-app/SoterService/SoterService.apk
 -app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
 -app/imssettings/imssettings.apk
@@ -17,6 +18,7 @@ etc/firmware/ice40.bin
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/init/dpmd.rc
 etc/init/wfdservice.rc
+etc/permissions/audiosphere.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
@@ -34,6 +36,7 @@ etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 framework/QtiTelephonyServicelibrary.jar
+framework/audiosphere.jar
 framework/cneapiclient.jar
 framework/com.qti.dpmframework.jar
 framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
@@ -55,9 +58,13 @@ framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/tcmclient.jar
 framework/vendor.qti.data.factory-V1.0-java.jar
+framework/vendor.qti.hardware.alarm-V1.0-java.jar
+framework/vendor.qti.hardware.data.latency-V1.0-java.jar
 framework/vendor.qti.hardware.data.qmi-V1.0-java.jar
+framework/vendor.qti.hardware.soter-V1.0-java.jar
 framework/vendor.qti.ims.callinfo-V1.0-java.jar
 framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
+framework/vendor.qti.latency-V2.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 lib/com.qualcomm.qti.ant@1.0.so
@@ -101,9 +108,11 @@ lib/libwfduibcsink.so
 lib/libwfduibcsinkinterface.so
 lib/libwfduibcsrc.so
 lib/libwfduibcsrcinterface.so
+lib/vendor.qti.hardware.data.latency@1.0.so
 lib/vendor.qti.hardware.vpp@1.1.so
 lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.ims.rcsconfig@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
+lib/vendor.qti.latency@2.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib/vendor.xiaomi.hardware.misys@2.0.so

@@ -23,6 +23,7 @@ lib/com.qualcomm.qti.ant@1.0.so
 vendor/lib/com.qualcomm.qti.ant@1.0.so
 
 # Alarm
+framework/vendor.qti.hardware.alarm-V1.0-java.jar
 -vendor/app/PowerOffAlarm/PowerOffAlarm.apk
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
@@ -31,13 +32,9 @@ vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/vendor.qti.hardware.alarm@1.0.so
 
-# AptX
-lib/libaptXHD_encoder.so
-lib/libaptX_encoder.so
-vendor/lib/libaptXHD_encoder.so
-vendor/lib/libaptX_encoder.so
-
 # Audio
+etc/permissions/audiosphere.xml
+framework/audiosphere.jar
 vendor/bin/audioflacapp
 vendor/etc/diracvdd.bin
 vendor/lib/libacdb-fts.so
@@ -93,6 +90,13 @@ vendor/etc/acdbdata/QRD/msm8953-sku4-snd-card/QRD_SKU4_Speaker_cal.acdb
 vendor/etc/acdbdata/QRD/msm8953-sku4-snd-card/QRD_SKU4_workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
+# Audio-Hardware
+vendor/lib/hw/audio.primary.msm8953.so
+vendor/lib/libtinycompress_vendor.so
+vendor/lib/soundfx/libqcompostprocbundle.so
+vendor/lib/soundfx/libqcomvisualizer.so
+vendor/lib/soundfx/libqcomvoiceprocessing.so
+
 # Bluetooth
 vendor/bin/btnvtool
 vendor/bin/hci_qcomm_init
@@ -104,6 +108,12 @@ vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib/libbt-hidlclient.so
 vendor/lib/libbt-vendor.so
 vendor/lib/libbtnv.so
+
+# Bluetooth-AptX
+lib/libaptXHD_encoder.so
+lib/libaptX_encoder.so
+vendor/lib/libaptXHD_encoder.so
+vendor/lib/libaptX_encoder.so
 
 # CDSP
 vendor/lib/libcdsprpc.so
@@ -169,9 +179,7 @@ vendor/lib/libwqe.so
 vendor/lib/libxml.so
 vendor/lib/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib/vendor.qti.latency@2.0.so
 
 # Camera
 vendor/lib/hw/camera.msm8953.so
@@ -188,6 +196,7 @@ vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmibokeh_8953.so
 vendor/lib/libmm-qcamera.so
+vendor/lib/libmmcamera_sonyimx135_eeprom.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmjpeg_interface.so
 vendor/lib/libmmqjpeg_codec.so
@@ -204,6 +213,7 @@ vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/libvidhance_gyro.so
 vendor/lib/mibokeh_8953_opencl.bin
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 
 # Camera-actuators
 vendor/lib/libactuator_ad5816g.so
@@ -1671,21 +1681,6 @@ vendor/firmware/cpp_firmware_v1_8_0.fw
 # Camera-ois
 vendor/lib/libois_lc898122.so
 
-# Camera-scve
-vendor/lib/libscveBlobDescriptor.so
-vendor/lib/libscveBlobDescriptor_stub.so
-vendor/lib/libscveCommon.so
-vendor/lib/libscveCommon_stub.so
-vendor/lib/libscveObjectSegmentation.so
-vendor/lib/libscveObjectSegmentation_stub.so
-vendor/lib/libscveObjectTracker.so
-vendor/lib/libscveObjectTracker_stub.so
-vendor/lib/libscvePanorama.so
-vendor/lib/libscvePanorama_lite.so
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
-vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
-vendor/lib/rfsa/adsp/libscveT2T_skel.so
-
 # Camera-sensors
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -1801,7 +1796,6 @@ vendor/lib/libmmcamera_s5k3p8sp.so
 vendor/lib/libmmcamera_sony_imx214_eeprom.so
 vendor/lib/libmmcamera_sony_imx298_eeprom.so
 vendor/lib/libmmcamera_sony_imx378_eeprom.so
-vendor/lib/libmmcamera_sonyimx135_eeprom.so
 vendor/lib/libmmcamera_sunny_8865_eeprom.so
 vendor/lib/libmmcamera_sunny_gt24c64_imx298_eeprom.so
 vendor/lib/libmmcamera_sunny_gt24c64_s5k2l7_eeprom.so
@@ -1877,6 +1871,24 @@ vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
 vendor/lib/mediadrm/libwvdrmengine.so
+
+# Display-Hardware
+vendor/lib/hw/gralloc.msm8953.so
+vendor/lib/hw/hwcomposer.msm8953.so
+vendor/lib/hw/memtrack.msm8953.so
+vendor/lib/libdrm.so
+vendor/lib/libdrmutils.so
+vendor/lib/libgpu_tonemapper.so
+vendor/lib/libgrallocutils.so
+vendor/lib/libqdMetaData.so
+vendor/lib/libqdutils.so
+vendor/lib/libqservice.so
+vendor/lib/libsdmcore.so
+vendor/lib/libsdmextension.so
+vendor/lib/libsdmutils.so
+vendor/lib/vendor.display.config@1.0.so
+vendor/lib/vendor.display.config@1.1.so
+vendor/lib/vendor.display.config@1.2.so
 
 # Display-calibration
 vendor/etc/qdcm_calib_data_auo_ili7807d_hd720_video_mode_dsi_panel.xml
@@ -2003,6 +2015,12 @@ vendor/lib/vendor.qti.gnss@1.2.so
 vendor/lib/vendor.qti.gnss@2.0.so
 vendor/lib/vendor.qti.gnss@2.1.so
 
+# GPS-Hardware
+vendor/lib/libgarden.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
@@ -2035,7 +2053,6 @@ vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
 -vendor/lib/libsdm-disp-vndapis.so
-vendor/lib/libsdmextension.so
 vendor/lib/libtinyxml2_1.so
 
 # IOP
@@ -2060,6 +2077,14 @@ vendor/lib/libkeystore-engine-wifi-hidl.so
 vendor/lib/libkeystore-wifi-hidl.so
 vendor/lib/vendor.qti.hardware.wifi.keystore@1.0.so
 
+# Latency
+framework/vendor.qti.hardware.data.latency-V1.0-java.jar
+framework/vendor.qti.latency-V2.0-java.jar
+lib/vendor.qti.hardware.data.latency@1.0.so
+lib/vendor.qti.latency@2.0.so
+vendor/lib/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib/vendor.qti.latency@2.0.so
+
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8953.so
 vendor/lib/libadpcmdec.so
@@ -2072,7 +2097,11 @@ vendor/lib/liblistensoundmodel2.so
 vendor/lib/libsmwrapper.so
 
 # Media
+lib/extractors/libmmparser.so
+lib/libFileMux.so
+lib/libOmxMux.so
 lib/libmmosal.so
+lib/libmmparser_lite.so
 lib/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
@@ -2105,6 +2134,19 @@ vendor/lib/libvpptestutils.so
 vendor/lib/libvqzip.so
 vendor/lib/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/vendor.qti.hardware.vpp@1.2.so
+
+# Media-Hardware
+vendor/lib/libOmxAacEnc.so
+vendor/lib/libOmxAmrEnc.so
+vendor/lib/libOmxCore.so
+vendor/lib/libOmxEvrcEnc.so
+vendor/lib/libOmxG711Enc.so
+vendor/lib/libOmxQcelp13Enc.so
+vendor/lib/libOmxVdec.so
+vendor/lib/libOmxVenc.so
+vendor/lib/libc2dcolorconvert.so
+vendor/lib/libmm-omxcore.so
+vendor/lib/libstagefrighthw.so
 
 # Perf
 vendor/bin/energy-awareness
@@ -2186,6 +2228,9 @@ vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
 vendor/bin/port-bridge
+vendor/bin/qrtr-cfg
+vendor/bin/qrtr-lookup
+vendor/bin/qrtr-ns
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
@@ -2293,6 +2338,21 @@ vendor/lib/vendor.qti.ims.callinfo@1.0.so
 vendor/lib/vendor.qti.ims.rcsconfig@1.0.so
 vendor/lib/vendor.qti.imsrtpservice@1.0-service-Impl.so
 
+# SCVE
+vendor/lib/libscveBlobDescriptor.so
+vendor/lib/libscveBlobDescriptor_stub.so
+vendor/lib/libscveCommon.so
+vendor/lib/libscveCommon_stub.so
+vendor/lib/libscveObjectSegmentation.so
+vendor/lib/libscveObjectSegmentation_stub.so
+vendor/lib/libscveObjectTracker.so
+vendor/lib/libscveObjectTracker_stub.so
+vendor/lib/libscvePanorama.so
+vendor/lib/libscvePanorama_lite.so
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+
 # SSR
 vendor/bin/ssr_diag
 vendor/bin/ssr_setup
@@ -2316,6 +2376,8 @@ vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.ssc.so
 
 # Soter
+-app/SoterService/SoterService.apk
+framework/vendor.qti.hardware.soter-V1.0-java.jar
 vendor/bin/SoterProvisioningTool
 vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/bin/vendor.qti.hardware.soter@1.0-provision
@@ -2346,6 +2408,16 @@ vendor/lib/libtime_genoff.so
 # Touch-improve
 vendor/lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
 
+# UBWC
+vendor/lib/libUBWC.so
+vendor/lib/libstreamparser.so
+
+# Vibrator
+vendor/bin/hw/android.hardware.vibrator@1.0-service
+vendor/etc/init/android.hardware.vibrator@1.0-service.rc
+vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib/hw/vibrator.default.so
+
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
 
@@ -2356,10 +2428,6 @@ etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-lib/extractors/libmmparser.so
-lib/libFileMux.so
-lib/libOmxMux.so
-lib/libmmparser_lite.so
 lib/libmmrtpdecoder.so
 lib/libmmrtpencoder.so
 lib/libwfdavenhancements.so
@@ -2395,6 +2463,7 @@ vendor/lib/libwfdmodulehdcpsession.so
 bin/iwpriv
 vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
+vendor/bin/iwpriv
 
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
@@ -2422,18 +2491,29 @@ vendor/lib/libmt.so
 vendor/lib/libmt@1.2.so
 vendor/lib/libtida@1.1.so
 
+# rootdir
+vendor/bin/LctDiagSendData
+vendor/bin/adpl
+vendor/bin/charge_logger
+vendor/bin/hw/rild
+vendor/bin/ipacm-diag
+vendor/bin/mlid
+vendor/bin/mm-audio-ftm
+vendor/bin/mmid
+vendor/bin/ptt_socket_app
+vendor/bin/ssgqmigd
+vendor/bin/ssgtzd
+vendor/bin/sviswitch
+
 # Misc
 vendor/Diag.cfg
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 vendor/bin/KmInstallKeybox
-vendor/bin/LctDiagSendData
 vendor/bin/PktRspTest
 vendor/bin/StoreKeybox
-vendor/bin/adpl
 vendor/bin/athdiag
-vendor/bin/charge_logger
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
@@ -2447,33 +2527,20 @@ vendor/bin/fmfactorytest
 vendor/bin/fmfactorytestserver
 vendor/bin/ftmdaemon
 vendor/bin/hal_proxy_daemon
-vendor/bin/hw/rild
 vendor/bin/icm
-vendor/bin/ipacm-diag
 vendor/bin/iwlist
-vendor/bin/iwpriv
-vendor/bin/mlid
-vendor/bin/mm-audio-ftm
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
 vendor/bin/mm-qomx-ienc-test
-vendor/bin/mmid
 vendor/bin/pktlogconf
-vendor/bin/ptt_socket_app
 vendor/bin/qjpeg-dma-test
 vendor/bin/qmi_simple_ril_test
-vendor/bin/qrtr-cfg
-vendor/bin/qrtr-lookup
-vendor/bin/qrtr-ns
 vendor/bin/qseecom_sample_client
 vendor/bin/secure_ui_sample_client
 vendor/bin/sensors_test
 vendor/bin/sigma_dut
 vendor/bin/spectraltool
-vendor/bin/ssgqmigd
-vendor/bin/ssgtzd
-vendor/bin/sviswitch
 vendor/bin/tbaseLoader
 vendor/bin/test_diag
 vendor/bin/vendor_cmd_tool
@@ -2491,7 +2558,6 @@ vendor/etc/cit_config.xml
 vendor/etc/cit_config_GLOBAL.xml
 vendor/etc/cit_config_Global.xml
 vendor/etc/cit_config_India.xml
-vendor/etc/ftm_test_config
 vendor/etc/ftm_test_config_msm8953-sku3-tasha-snd-card
 vendor/etc/ftm_test_config_msm8953-sku4-snd-card
 vendor/etc/ftm_test_config_mtp
@@ -2507,18 +2573,14 @@ vendor/hwprop/L6252A0301.prop
 vendor/hwprop/L6252A0302.prop
 vendor/lib/hw/camera.xiaomi.msm8953.so
 vendor/lib/libLctDiagSendDataApi.so
-vendor/lib/libUBWC.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
-vendor/lib/libgarden.so
 vendor/lib/libhwminijail.so
 vendor/lib/libnetfilter_conntrack.so
 vendor/lib/libnfnetlink.so
 vendor/lib/libscalar.so
 vendor/lib/libsi.so
-vendor/lib/libstreamparser.so
 vendor/lib/libteeclientjni.so
-vendor/lib/libtinycompress_vendor.so
 vendor/lib/libwapi_cert.so
 vendor/lib/libwifi-hal.so

@@ -18,7 +18,7 @@ PRODUCT_MODEL := Redmi S2
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := ysl
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="ysl-user 9 PKQ1.181203.001 V10.3.2.0.PEFCNXM release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="ysl-user 9 PKQ1.181203.001 V10.3.3.0.PEFCNXM release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := xiaomi/ysl/ysl:9/PKQ1.181203.001/V10.3.2.0.PEFCNXM:user/release-keys
+BUILD_FINGERPRINT := xiaomi/ysl/ysl:9/PKQ1.181203.001/V10.3.3.0.PEFCNXM:user/release-keys

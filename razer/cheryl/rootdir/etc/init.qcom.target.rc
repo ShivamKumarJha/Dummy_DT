@@ -1,0 +1,13 @@
+import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+#Fih add for securefs
+import /vendor/etc/init/hw/init.qcom.fs.rc
+
+on early-init
+    setprop ro.bsp.device ${ro.boot.device}
+
+service wireless-init /vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot
+

@@ -1,0 +1,25 @@
+on init
+    chmod 0777 /system/vendor/etc/init/hw/fqcaudioloopback_run.sh
+
+service fqcaudioloopback /system/vendor/bin/sh  /system/vendor/etc/init/hw/fqcaudioloopback_run.sh
+    disabled
+    oneshot
+
+on property:debug.sys.fqcaudio=11
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=10
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=21
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=20
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=31
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=30
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=41
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=40
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=0
+    stop fqcaudioloopback

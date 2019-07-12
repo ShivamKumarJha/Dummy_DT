@@ -1,0 +1,3 @@
+# SD Benchmark
+on property:vold.sd=1
+    write /sys/devices/virtual/bdi/179:0/read_ahead_kb 1024

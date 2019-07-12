@@ -1,0 +1,45 @@
+import /vendor/etc/init/hw/init.cheryl_ckh.rc
+import /vendor/etc/init/hw/init.rcl.smartamp.rc
+import /vendor/etc/init/hw/init.fih.fqcaudio.rc
+import /vendor/etc/init/hw/init.rcl.wbg.rc
+import /vendor/etc/init/hw/init.rcl.led.rc
+import /vendor/etc/init/hw/init.rcl.touch.rc
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+import /vendor/etc/init/hw/init.rcl.sd.rc
+import /vendor/etc/init/hw/init.rcl.lcm.rc
+import /vendor/etc/init/hw/init.qcom.diagtest.rc
+import /vendor/etc/init/hw/init.rcl.battery.rc
+import /vendor/etc/init/hw/init.rcl.poweroff_charging.rc
+import /vendor/etc/init/hw/init.rcl.fingerprint.rc
+import /vendor/etc/init/hw/init.rcl.theme.rc
+import /vendor/etc/init/init.usb.rc
+
+on boot
+    # alex.naidis@paranoidandroid.co Limit msm-core wq to cpumask 0x7
+    write /sys/devices/virtual/workqueue/msm-core_wq/cpumask 7
+    # alex.naidis@paranoidandroid.co Limit devfreq wq to cpumask 0x17
+    write /sys/devices/virtual/workqueue/devfreq_wq/cpumask 17
+
+service wbgtesttool_wifi /vendor/bin/sh /system/etc/wbg_wifi.sh
+    user root
+    disabled
+    oneshot
+
+service wifisar /vendor/bin/sh /vendor/bin/wifisar.sh
+    user root
+    disabled
+    oneshot
+
+on property:persist.sys.wbg.wifi=start
+    start wbgtesttool_wifi
+
+on property:sys.wifi.sar=1
+    start wifisar
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -p -B -z \
+        -o  /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116

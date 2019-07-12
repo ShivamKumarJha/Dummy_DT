@@ -1,0 +1,8 @@
+on init
+    chmod 0777 /system/vendor/etc/init/hw/init.rcl.smartamp_init.sh
+
+service amp-init-sh   /system/vendor/bin/sh /system/vendor/etc/init/hw/init.rcl.smartamp_init.sh
+    class late_start
+    user root
+    oneshot
+

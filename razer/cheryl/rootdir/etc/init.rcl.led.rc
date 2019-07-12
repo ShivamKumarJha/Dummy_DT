@@ -1,0 +1,7 @@
+on post-fs-data
+	chown system system /sys/class/leds/red/blink
+	chown system system /sys/class/leds/green/blink
+	chown system system /sys/class/leds/blue/blink
+
+on init
+	setprop ro.led.status 0

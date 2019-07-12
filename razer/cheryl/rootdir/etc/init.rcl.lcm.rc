@@ -1,0 +1,10 @@
+on boot
+	chown system system /proc/AllHWList/LCM0
+	chown system system /proc/AllHWList/LCM0/AOD
+	chown system system /proc/AllHWList/LCM0/PanelID
+	chown system system /proc/AllHWList/LCM0/setlp
+	chown system system /sys/class/graphics/fb0/blank
+	chmod 777 /proc/AllHWList/LCM0
+	chmod 664 /proc/AllHWList/LCM0/AOD
+	chmod 644 /proc/AllHWList/LCM0/PanelID
+	chmod 664 /proc/AllHWList/LCM0/setlp

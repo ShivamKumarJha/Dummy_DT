@@ -1,0 +1,50 @@
+import init.mmi.dtv.rc
+
+service capsense_reset /system/vendor/bin/capsense_reset
+	class core
+	user system
+	group system
+	disabled
+
+service capsense_set_threshold /system/vendor/bin/capsense_set_threshold
+	class core
+	user system
+	group system
+	disabled
+	oneshot
+
+on property:sys.boot_completed=1
+  start capsense_reset
+  start capsense_set_threshold
+
+on init
+
+   # Change ownership for Dynamic-CABC feature
+   chown system system /sys/class/graphics/fb0/cabc
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+
+service adjust_acdb_path /vendor/bin/init.mmi.acdb.sh
+    seclabel u:r:init_hw:s0
+    class core
+    user root
+    disabled
+    oneshot
+
+on early-boot
+   start adjust_acdb_path
+
+on boot
+
+   # Change the ownership of display TE files for tcmds
+   chown root mot_tcmd /sys/class/graphics/fb0/te_test
+   chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+   chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+   # Wifi firmware reload path
+   chown wifi wifi /sys/module/wlan/parameters/fwpath
+   # capsensor fw path
+   chmod 0666 /sys/class/capsense/fw_download_status
+   chown system system /sys/class/capsense/reset
+   chmod 0660 /sys/class/capsense/reset
+   chown system system /sys/class/capsense/set_threshold
+   chmod 0660 /sys/class/capsense/set_threshold

@@ -1,0 +1,42 @@
+# Moto Mods
+import /vendor/etc/init/hw/init.mods.rc
+
+on early-init
+    setprop sys.usb.controller "a800000.dwc3"
+    setprop sys.usb.configfs 1
+
+on moto-charger
+    setprop ro.board.platform msm8998
+    load_system_props
+    trigger firmware_mounts_complete
+    setprop sys.usb.config charging
+    start  qcom-post-boot
+    start vendor.gbmodinstall
+    start vendor.charge_only_mode
+    start vendor.batt_health
+    start vendor.thermal-com
+
+# Chipset-specific init settings
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group fingerp
+
+on post-fs
+    # Change permission for fingerprint sensor
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/nav
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/dev_enable
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+    chmod 0440 /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+    # MOT_LED_CALIBRATION
+    chown cameraserver /mnt/vendor/persist/camera/ledcal
+
+on property:ro.vendor.build.motfactory=1
+    write /sys/class/power_supply/battery/device/factory_image_mode 1
+
+on boot
+    # in FBE mode, /data is here
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
+    write /sys/module/usb_f_mtp/parameters/mtp_rx_req_len 524288
+    write /sys/module/usb_f_mtp/parameters/mtp_tx_req_len 524288

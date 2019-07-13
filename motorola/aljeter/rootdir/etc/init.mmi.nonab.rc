@@ -1,0 +1,4 @@
+on fs
+    # Mount modem FSG partition
+    wait /dev/block/bootdevice/by-name/fsg
+    mount ext4 /dev/block/bootdevice/by-name/fsg /vendor/fsg ro nosuid nodev context=u:object_r:fsg_file:s0

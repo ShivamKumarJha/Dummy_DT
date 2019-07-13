@@ -1,0 +1,124 @@
+import init.mmi.dtv.rc
+# Egis fps
+import init.ets.rc
+on post-fs-data
+    # AK09912 calibration file directory
+    mkdir /data/misc/akmd 0770 system compass
+
+# Start AKM executable
+service ecompassd /system/bin/akmd09912
+    class main
+    user compass
+    group compass misc input
+    disabled
+
+on init
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+   # Change ownership for for cabc feature
+   chown system system /sys/class/graphics/fb0/cabc
+
+on property:ro.hw.ecompass=true
+    enable ecompassd
+
+on property:ro.carrier=tmo
+    write /sys/class/power_supply/battery/device/force_max_chrg_temp 55
+
+on property:ro.carrier=metropcs
+    write /sys/class/power_supply/battery/device/force_max_chrg_temp 55
+
+service openfactory /system/bin/sh /system/etc/openfactory.sh
+	class main
+	user root
+	oneshot
+	disabled
+
+service capsense_reset /system/vendor/bin/capsense_reset
+	class core
+	user system
+	group system
+	disabled
+
+on property:wc_transport.start_fmhci=true
+    start fmhal_service
+
+on property:wc_transport.start_fmhci=false
+    stop fmhal_service
+
+#net_admin capability needed to write rfkill sysfs entry
+service fmhal_service /system/bin/fmhal_service
+    class late_start
+    user bluetooth
+    group bluetooth net_bt_admin net_admin
+    disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on property:sys.config.factorystart=1
+	start openfactory
+
+on property:ro.build.motfactory=1
+        write /sys/class/power_supply/battery/device/factory_image_mode 1
+
+service adjust_acdb_path /vendor/bin/init.mmi.acdb.sh
+    seclabel u:r:init_hw:s0
+    class core
+    user root
+    disabled
+    oneshot
+
+on early-boot
+   start adjust_acdb_path
+
+on boot
+	#change permission for capsensor
+	chmod 0660 /sys/class/capsense/enable
+	chown system system sys/class/capsense/enable
+	chmod 0660 /sys/class/capsense/reset
+	chown system system sys/class/capsense/reset
+	chmod 0660 /sys/class/capsense/reg
+	chown system system sys/class/capsense/reg
+
+	#change permissions for other sensors
+	chown system system "/sys/class/sensors/bma25x-accel/enable"
+	chown system system "/sys/class/sensors/bma25x-accel/poll_delay"
+	chown system system "/sys/devices/virtual/bst/ACC/int_mode"
+	chown system system "/sys/devices/virtual/bst/ACC/flush"
+	chown system system "/sys/devices/virtual/bst/ACC/flatdown"
+	chown system system "/sys/kernel/range/als_enable"
+	chown system system "/sys/kernel/range/set_delay_ms"
+	chown system system "/sys/kernel/range/enable_sar"
+	chown system system "/sys/kernel/range/enable_stow"
+	chown system system "/sys/kernel/range/near"
+	chown system system "/sys/kernel/range/als_lux"
+	chown system system "/sys/kernel/range/flush"
+	chown system system "/sys/class/sensors/akm09911-mag/enable"
+	chown system system "/sys/class/sensors/akm09911-mag/flush"
+	chown system system "/sys/class/sensors/akm09911-mag/poll_delay"
+	chown system system "/sys/class/sensors/akm09911-mag/self_test"
+	chown system system "/sys/class/sensors/mxg3300_compass/enable"
+	chown system system "/sys/class/sensors/mxg3300_compass/flush"
+	chown system system "/sys/class/sensors/mxg3300_compass/poll_delay"
+	chown system system "/sys/class/sensors/mxg3300_compass/self_test"
+
+	chmod 0664 "/sys/class/sensors/bma25x-accel/enable"
+	chmod 0664 "/sys/class/sensors/bma25x-accel/poll_delay"
+	chmod 0664 "/sys/devices/virtual/bst/ACC/int_mode"
+	chmod 0664 "/sys/devices/virtual/bst/ACC/flush"
+	chmod 0664 "/sys/devices/virtual/bst/ACC/flatdown"
+	chmod 0664 "/sys/kernel/range/als_enable"
+	chmod 0664 "/sys/kernel/range/set_delay_ms"
+	chmod 0664 "/sys/kernel/range/enable_sar"
+	chmod 0664 "/sys/kernel/range/enable_stow"
+	chmod 0664 "/sys/kernel/range/near"
+	chmod 0664 "/sys/kernel/range/als_lux"
+	chmod 0664 "/sys/kernel/range/flush"
+	chmod 0664 "/sys/class/sensors/akm09911-mag/enable"
+	chmod 0664 "/sys/class/sensors/akm09911-mag/flush"
+	chmod 0664 "/sys/class/sensors/akm09911-mag/poll_delay"
+	chmod 0664 "/sys/class/sensors/akm09911-mag/self_test"
+	chmod 0664 "/sys/class/sensors/mxg3300_compass/enable"
+	chmod 0664 "/sys/class/sensors/mxg3300_compass/flush"
+	chmod 0664 "/sys/class/sensors/mxg3300_compass/poll_delay"
+	chmod 0664 "/sys/class/sensors/mxg3300_compass/self_test"

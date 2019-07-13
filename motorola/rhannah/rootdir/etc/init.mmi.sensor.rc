@@ -1,0 +1,9 @@
+
+# rhannah uses qcom sensor service
+
+service sensors /system/vendor/bin/sensors.qcom
+    class core
+    user root
+    group root
+    disabled
+

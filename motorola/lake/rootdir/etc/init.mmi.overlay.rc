@@ -1,0 +1,115 @@
+import init.hidl.sensor.rc
+
+on early-init
+	# Haptic aw869x
+	insmod /vendor/lib/modules/aw869x.ko
+	insmod /vendor/lib/modules/bq2597x_mmi.ko
+	insmod /vendor/lib/modules/mmi_pl_chg_manager.ko
+	insmod /vendor/lib/modules/ets_fps_mmi.ko
+
+on boot
+	insmod /vendor/lib/modules/qca_cld3_wlan.ko
+
+on init
+
+   # Change ownership for Dynamic-CABC feature
+   chown system system /sys/class/graphics/fb0/cabc
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+   setprop sys.usb.ffs.aio_compat 1
+
+on fs
+    # Reloading context for NPI uses /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+
+on boot
+   # change permission for capsensor
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/poll_delay
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/enable
+   chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/poll_delay
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch0/enable
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch0/poll_delay
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch1/enable
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch1/poll_delay
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch2/enable
+   chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch2/poll_delay
+   chown system system /sys/class/capsense/reset
+
+   # Change the ownership of display TE files for tcmds
+   chown root mot_tcmd /sys/class/graphics/fb0/te_test
+   chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+   chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+
+   # Change ownership and permission for AMPS factory testing
+   chown root mot_tcmd /sys/devices/soc/a800000.ssusb/modusb_enable
+   chown root mot_tcmd /sys/devices/soc/a800000.ssusb/modusb_protocol
+   chown root mot_tcmd /sys/module/usb3813_hub/parameters/boost_val
+   chmod 0664 /sys/module/usb3813_hub/parameters/boost_val
+
+   # Wifi firmware reload path
+   chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+   # Change ownership and permission for 27W charge factory testing
+   chown root mot_tcmd /sys/class/power_supply/bq2597x/voltage_now
+   chown root mot_tcmd /sys/class/power_supply/bq2597x/charging_enabled
+   chmod 0664 /sys/class/power_supply/bq2597x/charging_enabled
+
+   # Change group for himax TP factory testing
+   chown root mot_tcmd /proc/android_touch/self_test
+
+   # Change ownership and permission for vibrator awinic with extra functions
+   chown system system /sys/class/leds/vibrator/seq
+   chmod 0660 /sys/class/leds/vibrator/seq
+   chown system system /sys/class/leds/vibrator/extra
+   chmod 0660 /sys/class/leds/vibrator/extra
+
+   # Change ownership and permission for camera dual calibration data
+   chown mot_tcmd mot_tcmd /mnt/vendor/persist/camera/dualcal/dual_cal_data.bin
+   chown mot_tcmd mot_tcmd /mnt/vendor/persist/camera/dualcal/module_id.bin
+   chmod 0666 /mnt/vendor/persist/camera/dualcal/dual_cal_data.bin
+   chmod 0666 /mnt/vendor/persist/camera/dualcal/module_id.bin
+
+service capsense_reset /system/vendor/bin/capsense_reset
+   class core
+   user system
+   group system
+   disabled
+
+on property:sys.boot_completed=1
+    start capsense_reset
+
+on property:ro.bootmode=factory
+    write /sys/class/leds/charging/brightness 10
+
+on property:ro.bootmode=mot-factory
+    write /sys/class/leds/charging/brightness 10
+
+# Set hub drive strength to +15%
+on property:ro.bootmode=normal
+    write /sys/module/usb3813_hub/parameters/boost_val 5
+
+# Change own to system to allow Runin APK to control charging.
+on property:ro.vendor.build.motfactory=1
+    chown system system /d/regmap/spmi0-00/address
+    chown system system /d/regmap/spmi0-00/count
+    chown system system /d/regmap/spmi0-00/data
+
+on property:sys.boot_completed=1
+    start emmc_ffu
+
+on property:vendor.post_boot.parsed=1
+    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/background/cpus 0-2
+    write /dev/cpuset/system-background/cpus 0-2
+
+service emmc_ffu /vendor/bin/emmc_ffu.sh
+    user root
+    class core
+    oneshot
+    disabled
+
+on property:vendor.need_ffu=1
+    setprop sys.dbg.ffu_start 1

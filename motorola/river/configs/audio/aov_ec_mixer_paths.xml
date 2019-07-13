@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mixer>
+	<!-- These are the initial mixer settings -->
+	<!-- AOV default EC REF settings -->
+	<ctl name="ISRC2INT3 Input" value="None" />
+	<ctl name="ISRC1DEC4 Input" value="None" />
+	<ctl name="DSP2 Aux 6" value="None" />
+	<!-- AOV default EC REF settings end -->
+
+	<path name="aov-ec-ref-spkr">
+		<ctl name="ISRC2INT3 Input" value="SLIMRX1" />
+		<ctl name="ISRC1DEC4 Input" value="ISRC2INT3" />
+		<ctl name="DSP2 Aux 6" value="ISRC1DEC4" />
+	</path>
+</mixer>

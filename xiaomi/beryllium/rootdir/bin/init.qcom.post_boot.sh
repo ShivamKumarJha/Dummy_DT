@@ -3433,8 +3433,8 @@ case "$target" in
 	# cpuset parameters
         #echo 0-3 > /dev/cpuset/background/cpus
         #echo 0-3 > /dev/cpuset/system-background/cpus
-        echo 0-1 > /dev/cpuset/background/cpus
-        echo 0-2 > /dev/cpuset/system-background/cpus
+        echo 0-2 > /dev/cpuset/background/cpus
+        echo 0-3 > /dev/cpuset/system-background/cpus
         echo 4-7 > /dev/cpuset/foreground/boost/cpus
         echo 0-2,4-7 > /dev/cpuset/foreground/cpus
         echo 0-7 > /dev/cpuset/top-app/cpus
@@ -3470,6 +3470,20 @@ case "$target" in
 	MemTotal=${MemTotalStr:16:8}
 	if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 5505024 ]; then
 	    echo "18432,23040,27648,32256,85296,120640" > /sys/module/lowmemorykiller/parameters/minfree
+	fi
+
+	# set efficent safty barrier
+	esb=`getprop persist.sys.ext4.dataesb`
+
+	userdata_link=$(ls -l /dev/block/bootdevice/by-name/userdata)
+	userdata_block_name=${userdata_link##*/}
+
+	restorecon /sys/fs/ext4/$userdata_block_name/esb
+
+	if [ "$esb" == "1" ]; then
+		echo 1 > /sys/fs/ext4/$userdata_block_name/esb
+	else
+		echo 0 > /sys/fs/ext4/$userdata_block_name/esb
 	fi
     ;;
 esac

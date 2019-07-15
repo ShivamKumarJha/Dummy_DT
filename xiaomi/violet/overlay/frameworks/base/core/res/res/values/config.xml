@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2009, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- If true, the screen can be rotated via the accelerometer in all 4
@@ -26,7 +47,7 @@
      <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-     <bool name="config_cellBroadcastAppLinks">true</bool>
+     <bool name="config_cellBroadcastAppLinks">false</bool>
 
     <!-- Flag specifying whether VoLTE is available on device -->
      <bool name="config_device_volte_available">true</bool>
@@ -183,6 +204,9 @@
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
      <bool name="config_wifi_dual_band_support">false</bool>
 
+    <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
+     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
+
     <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
      <bool name="config_wifi_softap_acs_supported">false</bool>
 
@@ -194,7 +218,7 @@
      <bool name="skip_restoring_network_selection">false</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">35.0dip</dimen>
+     <dimen name="status_bar_height_portrait">24.0dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -288,24 +312,10 @@
          Specify the component name or an empty string if none.
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
-     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
+     <string name="config_dozeComponent">com.miui.aod/com.miui.aod.doze.DozeService</string>
 
-    <!-- The bounding path of the cutout region of the main built-in display.
-         Must either be empty if there is no cutout region, or a string that is parsable by
-         {@link android.util.PathParser}.
-    
-         The path is assumed to be specified in display coordinates with pixel units and in
-         the display's native orientation, with the origin of the coordinate system at the
-         center top of the display.
-    
-         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
-         appended after the path string to interpret coordinates in dp instead of px units.
-         Note that a physical cutout should be configured in pixels for the best results.
-    -->
-     <string name="config_mainBuiltInDisplayCutout">M-90.2739892,0 L90.2731153,0 C83.5186471,1.78420885e-12 77.7355953,1.16456348 73.7760795,4.49351078 C69.8108829,7.81677729 67.6635414,13.3101084 66.4876163,19.9623222 L65.8116015,23.7798181 C60.9317964,51.4453017 39.2709158,73.1061824 11.6054322,77.9859874 C7.74360047,78.666848 3.7919865,79.9894771 9.09494702e-13,80 C-4.02464577,80.0111685 -7.9902656,78.6692509 -11.8591836,77.9771066 C-38.6524863,73.1838203 -60.8080317,52.1649521 -65.8124754,23.7798181 L-66.4828095,19.9623222 C-67.6587346,13.3101084 -69.806076,7.81677729 -73.7712726,4.49351078 C-77.7364693,1.16456348 -83.5138403,1.78420885e-12 -90.2739892,1.78420885e-12 Z</string>
-
-    <!--  Define Google play service package for FRP-->
-     <string name="config_persistentDataPackageName">com.google.android.gms</string>
+    <!-- Regex of wired ethernet ifaces -->
+     <string name="config_ethernet_iface_regex">eth\\d</string>
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
@@ -436,7 +446,7 @@
 
     <!-- Values for GPS configuration -->
     <string-array name="config_gpsParameters">
-        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_HOST=supl.qxwz.com</item>
         <item>SUPL_PORT=7275</item>
         <item>SUPL_VER=0x20000</item>
         <item>SUPL_MODE=3</item>

@@ -53,6 +53,7 @@ vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 
 # Alarm
+framework/vendor.qti.hardware.alarm-V1.0-java.jar
 -vendor/app/PowerOffAlarm/PowerOffAlarm.apk
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
@@ -65,6 +66,8 @@ vendor/lib64/libalarmservice_jni.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 
 # Audio
+etc/permissions/audiosphere.xml
+framework/audiosphere.jar
 vendor/etc/diracvdd.bin
 vendor/bin/audioflacapp
 vendor/etc/dirac/diracvdd.bin
@@ -145,6 +148,20 @@ vendor/etc/acdbdata/QRD/sdm670-skuw-snd-card/QRD_SKUW_Headset_cal.acdb
 vendor/etc/acdbdata/QRD/sdm670-skuw-snd-card/QRD_SKUW_Speaker_cal.acdb
 vendor/etc/acdbdata/QRD/sdm670-skuw-snd-card/QRD_SKUW_workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
+
+# Audio-Hardware
+vendor/lib/hw/audio.primary.sdm710.so
+vendor/lib/libtinycompress_vendor.so
+vendor/lib/soundfx/libqcompostprocbundle.so
+vendor/lib/soundfx/libqcomvisualizer.so
+vendor/lib/soundfx/libqcomvoiceprocessing.so
+vendor/lib/soundfx/libvolumelistener.so
+vendor/lib64/hw/audio.primary.sdm710.so
+vendor/lib64/libtinycompress_vendor.so
+vendor/lib64/soundfx/libqcompostprocbundle.so
+vendor/lib64/soundfx/libqcomvisualizer.so
+vendor/lib64/soundfx/libqcomvoiceprocessing.so
+vendor/lib64/soundfx/libvolumelistener.so
 
 # Bluetooth
 vendor/bin/btnvtool
@@ -234,9 +251,7 @@ vendor/lib/libwqe.so
 vendor/lib/libxml.so
 vendor/lib/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib/vendor.qti.latency@2.0.so
 -vendor/lib64/com.quicinc.cne.api@1.0.so
 -vendor/lib64/com.quicinc.cne.api@1.1.so
 -vendor/lib64/com.quicinc.cne.constants@1.0.so
@@ -255,11 +270,15 @@ vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib64/vendor.qti.latency@2.0.so
+
+# CVP
+vendor/lib/vendor.qti.hardware.cvp@1.0.so
+vendor/lib64/vendor.qti.hardware.cvp@1.0.so
 
 # Camera
+lib/libchromaflash.so
+lib64/libseemore.so
 vendor/lib/camera/com.qti.sensor.gc5035.so
 vendor/lib/camera/com.qti.sensor.imx316.so
 vendor/lib/camera/com.qti.sensor.imx362.so
@@ -338,12 +357,15 @@ vendor/lib/camera/oppoimx519_bmi26x_eis_720p_30fps.config
 vendor/lib/camera/oppoimx519_eis_1080p_30fps.config
 vendor/lib/camera/oppoimx519_eis_720p_30fps.config
 vendor/lib/hw/camera.qcom.so
+vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/libMegviiHum.so
 vendor/lib/libSNPE.so
+vendor/lib/libSNPE_G.so
 vendor/lib/libSTDualCamCaptureBokeh.so
 vendor/lib/libSTDualCamPreviewBokeh.so
 vendor/lib/libSTdisp.so
 vendor/lib/libSonyIMX471RmscLibrary.so
+vendor/lib/libSonyIMX519MbrLibrary.so
 vendor/lib/libVDBlurlessAPI_v2.so
 vendor/lib/libVDDualCameraBlurlessAPI.so
 vendor/lib/libVDSuperPhotoAPI.so
@@ -356,17 +378,30 @@ vendor/lib/libcamxstatscore.so
 vendor/lib/libcamxtintlessalgo.so
 vendor/lib/libcapiv2svacnn.so
 vendor/lib/libcapiv2vop.so
+vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libcvface_api.so
 vendor/lib/libdepthmap.so
 vendor/lib/libgui_vendor.so
 vendor/lib/libmegface.so
 vendor/lib/libmpbase.so
+vendor/lib/libsnpe_adsp.so
+vendor/lib/libsnpe_cdsp.so
+vendor/lib/libsnpe_cdsp_v65.so
+vendor/lib/libsnpeml.so
+vendor/lib/libsns_device_mode_stub.so
+vendor/lib/libsns_fastRPC_util.so
+vendor/lib/libsns_low_lat_stream_stub.so
+vendor/lib/libsnsapi.so
+vendor/lib/libsnsdiaglog.so
 vendor/lib/libstblur_capture_api.so
 vendor/lib/libstdc++.so
+vendor/lib/libswregistrationalgo.so
+vendor/lib/libswvdec.so
 vendor/lib/libsymphony-cpu.so
 vendor/lib/libsymphonypower.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 vendor/lib64/camera/com.qti.sensormodule.ofilm_gc5035.bin
 vendor/lib64/camera/com.qti.sensormodule.ofilm_imx519.bin
 vendor/lib64/camera/com.qti.sensormodule.sunny_imx586.bin
@@ -388,7 +423,13 @@ vendor/lib64/libcamxstatscore.so
 vendor/lib64/libcamxtintlessalgo.so
 vendor/lib64/libcapiv2svacnn.so
 vendor/lib64/libcapiv2vop.so
+vendor/lib64/libsns_device_mode_stub.so
+vendor/lib64/libsns_fastRPC_util.so
+vendor/lib64/libsns_low_lat_stream_stub.so
+vendor/lib64/libsnsapi.so
+vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libstdc++.so
+vendor/lib64/libswvdec.so
 vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
@@ -429,37 +470,11 @@ vendor/etc/camera/oppo_camera_config.xml
 vendor/etc/camera/skinSeg.model
 vendor/etc/camera/vidhance_calibration
 
-# Camera-scve
-vendor/etc/scve/facereco/gModel.dat
-vendor/lib/libscveBlobDescriptor.so
-vendor/lib/libscveBlobDescriptor_stub.so
-vendor/lib/libscveCommon.so
-vendor/lib/libscveCommon_stub.so
-vendor/lib/libscveFaceRecognition.so
-vendor/lib/libscveObjectSegmentation.so
-vendor/lib/libscveObjectSegmentation_stub.so
-vendor/lib/libscveObjectTracker.so
-vendor/lib/libscveObjectTracker_stub.so
-vendor/lib/libscvePanorama.so
-vendor/lib/libscvePanorama_lite.so
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
-vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
-vendor/lib/rfsa/adsp/libscveT2T_skel.so
-vendor/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
-vendor/lib/vendor.qti.hardware.scve.panorama@1.0.so
-vendor/lib64/libscveBlobDescriptor.so
-vendor/lib64/libscveBlobDescriptor_stub.so
-vendor/lib64/libscveCommon.so
-vendor/lib64/libscveCommon_stub.so
-vendor/lib64/libscveFaceRecognition.so
-vendor/lib64/libscveObjectSegmentation.so
-vendor/lib64/libscveObjectSegmentation_stub.so
-vendor/lib64/libscveObjectTracker.so
-vendor/lib64/libscveObjectTracker_stub.so
-vendor/lib64/libscvePanorama.so
-vendor/lib64/libscvePanorama_lite.so
-vendor/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
-vendor/lib64/vendor.qti.hardware.scve.panorama@1.0.so
+# Camera-firmware
+vendor/firmware/CAMERA_ICP.elf
+
+# Camera-motor
+vendor/etc/init/hw/init.oppo.vendor.motor.rc
 
 # Camera-sensors
 vendor/lib/libmmcamera_faceproc.so
@@ -547,10 +562,59 @@ vendor/lib/qcdrm/playready/lib/mediadrm/libprmediadrmplugin_customer.so
 vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
+# Display-Hardware
+vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
+vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
+vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-qti-display.so
+vendor/lib/hw/gralloc.sdm710.so
+vendor/lib/hw/hwcomposer.sdm710.so
+vendor/lib/hw/memtrack.sdm710.so
+vendor/lib/libdisplaydebug.so
+vendor/lib/libdisplayqos.so
+vendor/lib/libdrm.so
+vendor/lib/libdrmutils.so
+vendor/lib/libgpu_tonemapper.so
+vendor/lib/libgralloccore.so
+vendor/lib/libgrallocutils.so
+vendor/lib/libqdMetaData.so
+vendor/lib/libqdutils.so
+vendor/lib/libqservice.so
+vendor/lib/libsdmcore.so
+vendor/lib/libsdmextension.so
+vendor/lib/libsdmutils.so
+vendor/lib/vendor.display.config@1.0.so
+vendor/lib/vendor.display.config@1.1.so
+vendor/lib/vendor.display.config@1.2.so
+vendor/lib/vendor.display.config@1.3.so
+vendor/lib/vendor.display.config@1.4.so
+vendor/lib/vendor.display.config@1.5.so
+vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-qti-display.so
+vendor/lib64/hw/gralloc.sdm710.so
+vendor/lib64/hw/hwcomposer.sdm710.so
+vendor/lib64/hw/memtrack.sdm710.so
+vendor/lib64/libdisplaydebug.so
+vendor/lib64/libdisplayqos.so
+vendor/lib64/libdrm.so
+vendor/lib64/libdrmutils.so
+vendor/lib64/libgpu_tonemapper.so
+vendor/lib64/libgralloccore.so
+vendor/lib64/libgrallocutils.so
+vendor/lib64/libqdMetaData.so
+vendor/lib64/libqdutils.so
+vendor/lib64/libqservice.so
+vendor/lib64/libsdmcore.so
+vendor/lib64/libsdmextension.so
+vendor/lib64/libsdmutils.so
+vendor/lib64/vendor.display.config@1.0.so
+vendor/lib64/vendor.display.config@1.1.so
+vendor/lib64/vendor.display.config@1.2.so
+vendor/lib64/vendor.display.config@1.3.so
+vendor/lib64/vendor.display.config@1.4.so
+vendor/lib64/vendor.display.config@1.5.so
+
 # Display-calibration
 vendor/etc/qdcm_calib_data_Dual_nt35597_video_mode_dsi_truly_panel_without_DSC.xml
 vendor/etc/qdcm_calib_data_nt35597_cmd_mode_dsi_truly_panel_with_DSC.xml
-vendor/etc/qdcm_calib_data_oppo18081samsung_ams641rw01_1080_2340_cmd_mode_dsi_panel.xml
 vendor/etc/qdcm_calib_data_oppo18621_hx83112a_1080_2340_video_mode_dsi_panel.xml
 
 # ESE-Powermanager
@@ -597,16 +661,38 @@ vendor/lib64/libFIDOKeyProvisioning.so
 vendor/lib64/libFidoCrypto_vendor.so
 
 # Fingerprint
+vendor/bin/hw/vendor.oppo.hardware.biometrics.face@1.0-service
 vendor/bin/hw/vendor.oppo.hardware.biometrics.fingerprint@2.1-service
 vendor/bin/hw/vendor.oppo.hardware.biometrics.fingerprintpay@1.0-service
 vendor/bin/init.oppo.fingerprints.sh
 vendor/bin/qfp-daemon
 vendor/etc/init/hw/init.oppo.vendor.fingerprint.rc
+vendor/etc/init/init_qfp_daemon.rc
+vendor/etc/init/vendor.oppo.hardware.biometrics.face@1.0-service.rc
 vendor/etc/init/vendor.oppo.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/init/vendor.oppo.hardware.biometrics.fingerprintpay@1.0-service.rc
 vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/etc/permissions/vendor-oppo-hardware.biometrics.fingerprintpay.xml
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template1.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template2.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template3.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template4.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template1.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template2.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template3.pgm
+vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template4.pgm
+vendor/etc/qti_fp/image_quality/templates/fan_target/template1.pgm
+vendor/etc/qti_fp/image_quality/templates/fan_target/template2.pgm
+vendor/etc/qti_fp/image_quality/templates/fan_target/template3.pgm
+vendor/etc/qti_fp/image_quality/templates/fan_target/template4.pgm
+vendor/etc/qti_fp/image_quality/templates/slanted_target/template1.pgm
+vendor/etc/qti_fp/image_quality/templates/slanted_target/template2.pgm
+vendor/etc/qti_fp/image_quality/templates/slanted_target/template3.pgm
+vendor/etc/qti_fp/image_quality/templates/slanted_target/template4.pgm
+vendor/etc/qti_fp/wakeup/templates/template_imaginary.bin
+vendor/etc/qti_fp/wakeup/templates/template_real.bin
 vendor/lib/libqfp-service.so
+vendor/lib/vendor.oppo.hardware.biometrics.face@1.0.so
 vendor/lib/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/android.frameworks.fingerprintservice@1.0.so
 vendor/lib64/libqfp-service.so
@@ -615,7 +701,6 @@ vendor/lib64/vendor.oppo.hardware.biometrics.fingerprintpay@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # Firmware
-vendor/firmware/CAMERA_ICP.elf
 vendor/firmware/a225_pfp.fw
 vendor/firmware/a225_pm4.fw
 vendor/firmware/a225p5_pm4.fw
@@ -702,13 +787,6 @@ vendor/firmware/fastchg/18381/oppo_vooc_fw.bin
 vendor/firmware/fastchg/18381/oppo_vooc_fw_n76e.bin
 vendor/firmware/fastchg/18621/oppo_vooc_fw.bin
 vendor/firmware/fastchg/18637/oppo_vooc_fw.bin
-vendor/firmware/ipa_fws.b00
-vendor/firmware/ipa_fws.b01
-vendor/firmware/ipa_fws.b02
-vendor/firmware/ipa_fws.b03
-vendor/firmware/ipa_fws.b04
-vendor/firmware/ipa_fws.elf
-vendor/firmware/ipa_fws.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
 vendor/firmware/ois_bu24218gwl.coeff
@@ -813,6 +891,18 @@ vendor/lib64/vendor.qti.gnss@1.2.so
 vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 
+# GPS-Hardware
+vendor/lib/libaoa.so
+vendor/lib/libgarden.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
+vendor/lib64/libaoa.so
+vendor/lib64/libgarden.so
+vendor/lib64/libgnss.so
+vendor/lib64/libgnsspps.so
+vendor/lib64/libgps.utils.so
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
@@ -845,7 +935,6 @@ vendor/lib/librs_adreno_sha1.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
 -vendor/lib/libsdm-disp-vndapis.so
-vendor/lib/libsdmextension.so
 vendor/lib/libtinyxml2_1.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
@@ -872,7 +961,6 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
 -vendor/lib64/libsdm-disp-vndapis.so
-vendor/lib64/libsdmextension.so
 vendor/lib64/libtinyxml2_1.so
 
 # IOP
@@ -884,6 +972,15 @@ vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
 vendor/lib64/libqti-iopd-client.so
 vendor/lib64/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@2.0.so
+
+# IPA-Firmware
+vendor/firmware/ipa_fws.b00
+vendor/firmware/ipa_fws.b01
+vendor/firmware/ipa_fws.b02
+vendor/firmware/ipa_fws.b03
+vendor/firmware/ipa_fws.b04
+vendor/firmware/ipa_fws.elf
+vendor/firmware/ipa_fws.mdt
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
@@ -901,9 +998,23 @@ vendor/lib64/libkeymasterutils.so
 vendor/lib64/libqtikeymaster4.so
 
 # Keystore
+vendor/lib/libspcom.so
 vendor/lib64/libkeystore-engine-wifi-hidl.so
 vendor/lib64/libkeystore-wifi-hidl.so
+vendor/lib64/libspcom.so
 vendor/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
+
+# Latency
+framework/vendor.qti.hardware.data.latency-V1.0-java.jar
+framework/vendor.qti.latency-V2.0-java.jar
+lib/vendor.qti.hardware.data.latency@1.0.so
+lib/vendor.qti.latency@2.0.so
+lib64/vendor.qti.hardware.data.latency@1.0.so
+lib64/vendor.qti.latency@2.0.so
+vendor/lib/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib/vendor.qti.latency@2.0.so
+vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib64/vendor.qti.latency@2.0.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.sdm710.so
@@ -924,7 +1035,11 @@ vendor/lib64/liblistenjni.so
 vendor/lib64/liblistensoundmodel2.so
 
 # Media
+lib/extractors/libmmparser.so
+lib/libFileMux.so
+lib/libOmxMux.so
 lib/libmmosal.so
+lib/libmmparser_lite.so
 lib/vendor.qti.hardware.vpp@1.1.so
 lib64/libmmosal.so
 lib64/vendor.qti.hardware.vpp@1.1.so
@@ -932,6 +1047,7 @@ vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
 vendor/lib/libFlacSwDec.so
 vendor/lib/libI420colorconvert.so
+vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAlacDec.so
 vendor/lib/libOmxAlacDecSw.so
@@ -963,6 +1079,7 @@ vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/libI420colorconvert.so
+vendor/lib64/libMpeg4SwEncoder.so
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAlacDec.so
 vendor/lib64/libOmxAlacDecSw.so
@@ -985,10 +1102,120 @@ vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 
+# Media-Hardware
+vendor/lib/libOmxAacEnc.so
+vendor/lib/libOmxAmrEnc.so
+vendor/lib/libOmxCore.so
+vendor/lib/libOmxEvrcEnc.so
+vendor/lib/libOmxG711Enc.so
+vendor/lib/libOmxQcelp13Enc.so
+vendor/lib/libOmxSwVdec.so
+vendor/lib/libOmxSwVencMpeg4.so
+vendor/lib/libOmxVdec.so
+vendor/lib/libOmxVenc.so
+vendor/lib/libc2dcolorconvert.so
+vendor/lib/libmm-omxcore.so
+vendor/lib/libplatformconfig.so
+vendor/lib/libstagefrighthw.so
+vendor/lib64/libOmxAacEnc.so
+vendor/lib64/libOmxAmrEnc.so
+vendor/lib64/libOmxCore.so
+vendor/lib64/libOmxEvrcEnc.so
+vendor/lib64/libOmxG711Enc.so
+vendor/lib64/libOmxQcelp13Enc.so
+vendor/lib64/libOmxSwVdec.so
+vendor/lib64/libOmxSwVencMpeg4.so
+vendor/lib64/libOmxVdec.so
+vendor/lib64/libOmxVenc.so
+vendor/lib64/libc2dcolorconvert.so
+vendor/lib64/libmm-omxcore.so
+vendor/lib64/libplatformconfig.so
+vendor/lib64/libstagefrighthw.so
+
+# NFC
+vendor/bin/hw/vendor.qti.secure_element@1.0-service
+vendor/etc/init/vendor.qti.secure_element@1.0-service.rc
+vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
+vendor/lib64/hw/android.hardware.secure_element@1.0-impl.so
+
 # Neural-networks
 vendor/bin/hw/android.hardware.neuralnetworks@1.1-service-qti
 vendor/etc/init/android.hardware.neuralnetworks@1.1-service-qti.rc
 vendor/lib64/libhexagon_nn_stub.so
+
+# Oppo
+vendor/bin/OppoKeybox
+vendor/bin/hw/vendor.oppo.engnative.engineer@1.0-service
+vendor/bin/hw/vendor.oppo.engnative.engsensor@1.0-service
+vendor/bin/hw/vendor.oppo.engnative.messager@1.0-service
+vendor/bin/hw/vendor.oppo.hardware.cryptoeng@1.0-service
+vendor/bin/hw/vendor.oppo.hardware.hypnus@1.0-service
+vendor/bin/hw/vendor.oppo.hardware.ktv@1.0-service
+vendor/bin/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-service
+vendor/bin/hw/vendor.oppo.hardware.oiface@1.0-service
+vendor/bin/hw/vendor.oppo.wifi.sniffer@1.0-service
+vendor/bin/init.oppo.wifi.sh
+vendor/bin/opposysd
+vendor/etc/OPPO_OLED_AD_calib.cfg
+vendor/etc/audio_platform_info_oppo.xml
+vendor/etc/audio_platform_info_oppo_int_codec.xml
+vendor/etc/init/hw/init.oppo.debug.diag.rc
+vendor/etc/init/hw/init.oppo.reserve.rc
+vendor/etc/init/hw/init.oppo.sensor.rc
+vendor/etc/init/vendor.oppo.engnative.engineer@1.0-service.rc
+vendor/etc/init/vendor.oppo.engnative.engsensor@1.0-service.rc
+vendor/etc/init/vendor.oppo.engnative.messager@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.cryptoeng@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.hypnus@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.ktv@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.mmdisplayfeature@1.0-service.rc
+vendor/etc/init/vendor.oppo.hardware.oiface@1.0-service.rc
+vendor/etc/init/vendor.oppo.wifi.sniffer@1.0-service.rc
+vendor/etc/media_codecs_oppo_performance.xml
+vendor/etc/media_codecs_oppo_video.xml
+vendor/etc/permissions/vendor-oppo-engnative-engineer.xml
+vendor/etc/permissions/vendor-oppo-hardware.cryptoeng.xml
+vendor/lib/hw/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0-impl.so
+vendor/lib/hw/vendor.oppo.hardware.camera.oppoHalAssist@1.0-impl.so
+vendor/lib/hw/vendor.oppo.hardware.hypnus@1.0-impl.so
+vendor/lib/hw/vendor.oppo.hardware.ktv@1.0-impl.so
+vendor/lib/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-impl.so
+vendor/lib/hw/vendor.oppo.hardware.oiface@1.0-impl.so
+vendor/lib/libOppoAPSMemMgr.so
+vendor/lib/libOppoAlgoClient.so
+vendor/lib/liboppo_aisd.so
+vendor/lib/liboppo_log_print.so
+vendor/lib/liboppo_platform_hwi.so
+vendor/lib/liboppoalgolib.so
+vendor/lib/liboppocamalgo_daemon.so
+vendor/lib/libopposfr.so
+vendor/lib/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0.so
+vendor/lib/vendor.oppo.hardware.camera.oppoHalAssist@1.0.so
+vendor/lib/vendor.oppo.hardware.commondcs@1.0.so
+vendor/lib/vendor.oppo.hardware.hypnus@1.0.so
+vendor/lib/vendor.oppo.hardware.ktv@1.0.so
+vendor/lib/vendor.oppo.hardware.mmdisplayfeature@1.0.so
+vendor/lib/vendor.oppo.hardware.oiface@1.0.so
+vendor/lib64/hw/vendor.oppo.hardware.hypnus@1.0-impl.so
+vendor/lib64/hw/vendor.oppo.hardware.ktv@1.0-impl.so
+vendor/lib64/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-impl.so
+vendor/lib64/hw/vendor.oppo.hardware.oiface@1.0-impl.so
+vendor/lib64/liboppoalgolib.so
+vendor/lib64/vendor.oppo.engnative.engineer@1.0.so
+vendor/lib64/vendor.oppo.engnative.engsensor@1.0.so
+vendor/lib64/vendor.oppo.engnative.messager@1.0.so
+vendor/lib64/vendor.oppo.engnative.transfer@1.0.so
+vendor/lib64/vendor.oppo.hardware.commondcs@1.0.so
+vendor/lib64/vendor.oppo.hardware.cryptoeng@1.0.so
+vendor/lib64/vendor.oppo.hardware.hypnus@1.0.so
+vendor/lib64/vendor.oppo.hardware.ktv@1.0.so
+vendor/lib64/vendor.oppo.hardware.mmdisplayfeature@1.0.so
+vendor/lib64/vendor.oppo.hardware.oiface@1.0.so
+vendor/lib64/vendor.oppo.hardware.wifi.sniffer@1.0.so
+vendor/lib64/vendor.oppo.hardware.wifi.supplicant@1.0.so
+vendor/oppo/ck.fs
+vendor/oppo/recovery_rootcheck
 
 # Perf
 vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
@@ -1005,6 +1232,8 @@ vendor/lib/libqti-perfd.so
 vendor/lib/libqti-util.so
 vendor/lib/libqti-utils.so
 vendor/lib/vendor.qti.hardware.perf@1.0.so
+vendor/lib64/liblearningmodule.so
+vendor/lib64/libmeters.so
 vendor/lib64/libperfgluelayer.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib64/libqti-perfd.so
@@ -1105,6 +1334,9 @@ vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
 vendor/bin/port-bridge
+vendor/bin/qrtr-cfg
+vendor/bin/qrtr-lookup
+vendor/bin/qrtr-ns
 vendor/bin/qti
 vendor/bin/rmt_storage
 vendor/bin/tftp_server
@@ -1286,6 +1518,38 @@ vendor/lib64/vendor.qti.ims.rcsconfig@1.0.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0.so
 
+# SCVE
+vendor/etc/scve/facereco/gModel.dat
+vendor/lib/libscveBlobDescriptor.so
+vendor/lib/libscveBlobDescriptor_stub.so
+vendor/lib/libscveCommon.so
+vendor/lib/libscveCommon_stub.so
+vendor/lib/libscveFaceRecognition.so
+vendor/lib/libscveObjectSegmentation.so
+vendor/lib/libscveObjectSegmentation_stub.so
+vendor/lib/libscveObjectTracker.so
+vendor/lib/libscveObjectTracker_stub.so
+vendor/lib/libscvePanorama.so
+vendor/lib/libscvePanorama_lite.so
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
+vendor/lib/vendor.qti.hardware.scve.panorama@1.0.so
+vendor/lib64/libscveBlobDescriptor.so
+vendor/lib64/libscveBlobDescriptor_stub.so
+vendor/lib64/libscveCommon.so
+vendor/lib64/libscveCommon_stub.so
+vendor/lib64/libscveFaceRecognition.so
+vendor/lib64/libscveObjectSegmentation.so
+vendor/lib64/libscveObjectSegmentation_stub.so
+vendor/lib64/libscveObjectTracker.so
+vendor/lib64/libscveObjectTracker_stub.so
+vendor/lib64/libscvePanorama.so
+vendor/lib64/libscvePanorama_lite.so
+vendor/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
+vendor/lib64/vendor.qti.hardware.scve.panorama@1.0.so
+
 # SSR
 vendor/bin/ssr_diag
 vendor/bin/ssr_setup
@@ -1354,6 +1618,7 @@ vendor/lib/hw/sensors.sdm710.so
 vendor/lib/libSensorManagerHAL.so
 vendor/lib/libsensorcal.so
 vendor/lib/libsensorslog.so
+vendor/lib/libssc.so
 vendor/lib/libssc_default_listener.so
 vendor/lib/sensors.ap.so
 vendor/lib/sensors.ssc.so
@@ -1361,11 +1626,15 @@ vendor/lib64/hw/sensors.sdm710.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsensorslog.so
+vendor/lib64/libssc.so
 vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ap.so
 vendor/lib64/sensors.ssc.so
 
 # Soter
+-app/SoterService/SoterService.apk
+framework/vendor.qti.hardware.soter-V1.0-java.jar
+lib64/vendor.qti.hardware.soter@1.0.so
 vendor/bin/SoterProvisioningTool
 vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/bin/vendor.qti.hardware.soter@1.0-provision
@@ -1393,6 +1662,17 @@ vendor/bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
+# UBWC
+vendor/lib/libstreamparser.so
+
+# Vibrator
+vendor/bin/hw/android.hardware.vibrator@1.0-service
+vendor/etc/init/android.hardware.vibrator@1.0-service.rc
+vendor/lib/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib/hw/vibrator.default.so
+vendor/lib64/hw/android.hardware.vibrator@1.0-impl.so
+vendor/lib64/hw/vibrator.default.so
+
 # Voice
 vendor/lib/vendor.qti.voiceprint@1.0.so
 vendor/lib64/vendor.qti.voiceprint@1.0.so
@@ -1404,10 +1684,6 @@ etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-lib/extractors/libmmparser.so
-lib/libFileMux.so
-lib/libOmxMux.so
-lib/libmmparser_lite.so
 lib/libmmrtpdecoder.so
 lib/libmmrtpencoder.so
 lib/libwfdavenhancements.so
@@ -1459,22 +1735,39 @@ vendor/bin/cnss-daemon
 vendor/bin/cnss_diag
 vendor/bin/fstman
 
+# rootdir
+vendor/bin/adpl
+vendor/bin/diag_mdlog
+vendor/bin/ipacm-diag
+vendor/bin/mlid
+vendor/bin/mm-audio-ftm
+vendor/bin/mmid
+vendor/bin/self-init
+vendor/bin/sscrpcd
+vendor/bin/ssgqmigd
+vendor/bin/ssgtzd
+vendor/bin/vppservice
+vendor/bin/wifi_diag
+vendor/bin/wififtm
+vendor/bin/wifisar
+vendor/bin/wifistopftmtest
+vendor/bin/wigighalsvc
+vendor/bin/wigignpt
+vendor/etc/fstab-wlan.qcom
+
 # Misc
 -vendor/app/ConnectionSecurityService/ConnectionSecurityService.apk
 -vendor/app/RfToolkit/RfToolkit.apk
 -vendor/app/SSGTelemetryService/SSGTelemetryService.apk
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
 vendor/bin/KmInstallKeybox
-vendor/bin/OppoKeybox
 vendor/bin/PktRspTest
-vendor/bin/adpl
 vendor/bin/athdiag
 vendor/bin/climax
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
-vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
 vendor/bin/e_loop
@@ -1487,50 +1780,20 @@ vendor/bin/ftmtest
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hw/vendor.oppo.engnative.engineer@1.0-service
-vendor/bin/hw/vendor.oppo.engnative.engsensor@1.0-service
-vendor/bin/hw/vendor.oppo.engnative.messager@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.biometrics.face@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.cryptoeng@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.hypnus@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.ktv@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-service
-vendor/bin/hw/vendor.oppo.hardware.oiface@1.0-service
-vendor/bin/hw/vendor.oppo.wifi.sniffer@1.0-service
-vendor/bin/hw/vendor.qti.secure_element@1.0-service
 vendor/bin/hw/vendor_transfer
-vendor/bin/ipacm-diag
-vendor/bin/mlid
-vendor/bin/mm-audio-ftm
 vendor/bin/mm-vidc-omx-test
-vendor/bin/mmid
 vendor/bin/myftm
-vendor/bin/opposysd
 vendor/bin/pcba_diag
 vendor/bin/pktlogconf
 vendor/bin/ppd
 vendor/bin/qmi_simple_ril_test
-vendor/bin/qrtr-cfg
-vendor/bin/qrtr-lookup
-vendor/bin/qrtr-ns
 vendor/bin/rpmbengclient_test
 vendor/bin/secure_ui_sample_client
-vendor/bin/self-init
 vendor/bin/sigma_dut
 vendor/bin/spectraltool
-vendor/bin/sscrpcd
-vendor/bin/ssgqmigd
-vendor/bin/ssgtzd
 vendor/bin/test_diag
 vendor/bin/vendor_cmd_tool
-vendor/bin/vppservice
 vendor/bin/wdsdaemon
-vendor/bin/wifi_diag
-vendor/bin/wififtm
-vendor/bin/wifisar
-vendor/bin/wifistopftmtest
-vendor/bin/wigighalsvc
-vendor/bin/wigignpt
 vendor/etc/18041/audio_policy_configuration.xml
 vendor/etc/18041/audio_policy_volumes.xml
 vendor/etc/18041/default_volume_tables.xml
@@ -1554,94 +1817,42 @@ vendor/etc/18621/audio_policy_volumes.xml
 vendor/etc/18621/default_volume_tables.xml
 vendor/etc/M_Liveness_Antispoofing_General_full_snpe.model
 vendor/etc/M_Verify_MimicRes_Common_snpe.model
-vendor/etc/OPPO_OLED_AD_calib.cfg
 vendor/etc/asd/class.dlc
 vendor/etc/asd/detect.dlc
 vendor/etc/facepp/algo_cache_sdm710
 vendor/etc/facepp/human_model_image
 vendor/etc/facepp/opencl_model_cache_sdm710
 vendor/etc/facepp/relight
-vendor/etc/fstab-wlan.qcom
-vendor/etc/ftm_test_config
 vendor/etc/ftm_test_config_sdm710-skuw-snd-card
 vendor/etc/ftm_test_config_sdm710-tasha-snd-card
 vendor/etc/ftm_test_config_sdm710-tavil-snd-card
 vendor/etc/gpfspath_oem_config.xml
-vendor/etc/init/init_qfp_daemon.rc
 vendor/etc/init/manifest_sku.rc
 vendor/etc/init/self-init.rc
-vendor/etc/init/vendor.oppo.engnative.engineer@1.0-service.rc
-vendor/etc/init/vendor.oppo.engnative.engsensor@1.0-service.rc
-vendor/etc/init/vendor.oppo.engnative.messager@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.biometrics.face@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.cryptoeng@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.hypnus@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.ktv@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.mmdisplayfeature@1.0-service.rc
-vendor/etc/init/vendor.oppo.hardware.oiface@1.0-service.rc
-vendor/etc/init/vendor.oppo.wifi.sniffer@1.0-service.rc
-vendor/etc/init/vendor.qti.secure_element@1.0-service.rc
 vendor/etc/init/vendor_engineermode.rc
 vendor/etc/init/vendor_transfer.rc
 vendor/etc/license.lic
 vendor/etc/lm/AdaptLaunchFeature.xml
-vendor/etc/permissions/vendor-oppo-engnative-engineer.xml
-vendor/etc/permissions/vendor-oppo-hardware.cryptoeng.xml
 vendor/etc/project_info.txt
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template1.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template2.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template3.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_3_6/template4.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template1.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template2.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template3.pgm
-vendor/etc/qti_fp/image_quality/templates/double_fan_target_4_2/template4.pgm
-vendor/etc/qti_fp/image_quality/templates/fan_target/template1.pgm
-vendor/etc/qti_fp/image_quality/templates/fan_target/template2.pgm
-vendor/etc/qti_fp/image_quality/templates/fan_target/template3.pgm
-vendor/etc/qti_fp/image_quality/templates/fan_target/template4.pgm
-vendor/etc/qti_fp/image_quality/templates/slanted_target/template1.pgm
-vendor/etc/qti_fp/image_quality/templates/slanted_target/template2.pgm
-vendor/etc/qti_fp/image_quality/templates/slanted_target/template3.pgm
-vendor/etc/qti_fp/image_quality/templates/slanted_target/template4.pgm
-vendor/etc/qti_fp/wakeup/templates/template_imaginary.bin
-vendor/etc/qti_fp/wakeup/templates/template_real.bin
 vendor/etc/security/ck.fs
 vendor/etc/security/pl.fs
 vendor/etc/self_init_config/common/self_init_config.xml
 vendor/etc/system_properties.xml
 vendor/lib/android.frameworks.faceservice@1.0.so
-vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
-vendor/lib/hw/com.qti.chi.override.so
-vendor/lib/hw/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0-impl.so
-vendor/lib/hw/vendor.oppo.hardware.camera.oppoHalAssist@1.0-impl.so
-vendor/lib/hw/vendor.oppo.hardware.hypnus@1.0-impl.so
-vendor/lib/hw/vendor.oppo.hardware.ktv@1.0-impl.so
-vendor/lib/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-impl.so
-vendor/lib/hw/vendor.oppo.hardware.oiface@1.0-impl.so
 vendor/lib/lib3DSlender.so
 vendor/lib/libGPMTEEC_vendor.so
-vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOccluDetect.so
-vendor/lib/libOmxSwVdec.so
-vendor/lib/libOmxSwVencMpeg4.so
-vendor/lib/libOppoAPSMemMgr.so
-vendor/lib/libOppoAlgoClient.so
 vendor/lib/libPerfectlyClearCrux.so
 vendor/lib/libPolarrRender.so
 vendor/lib/libSCES.so
-vendor/lib/libSNPE_G.so
 vendor/lib/libST3DDepthAlign.so
 vendor/lib/libST3DDepthBlur.so
 vendor/lib/libSTdisp_dep1.so
-vendor/lib/libSonyIMX519MbrLibrary.so
 vendor/lib/libVDEyeEnhance.so
 vendor/lib/libVDImageAdjustment.so
 vendor/lib/libVDPostureDetection.so
 vendor/lib/libVDRTImageAdjustment.so
 vendor/lib/libalipay_factory.so
-vendor/lib/libaoa.so
 vendor/lib/libavcodec_vendor.so
 vendor/lib/libavformat_vendor.so
 vendor/lib/libavutil_vendor.so
@@ -1649,10 +1860,7 @@ vendor/lib/libblur_channel.so
 vendor/lib/libbokehclient.so
 vendor/lib/libcamhidlsensor.so
 vendor/lib/libcert_parse.wpa_s.so
-vendor/lib/libcom.qti.chinodeutils.so
 vendor/lib/libdiagjni.so
-vendor/lib/libdisplaydebug.so
-vendor/lib/libdisplayqos.so
 vendor/lib/libese-sysdeps.so
 vendor/lib/libese.so
 vendor/lib/libfastcrc.so
@@ -1660,9 +1868,7 @@ vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libffmpeg_omx.so
 vendor/lib/libffmpeg_utils_vendor.so
 vendor/lib/libffv.so
-vendor/lib/libgarden.so
 vendor/lib/libgnustl_shared.so
-vendor/lib/libgralloccore.so
 vendor/lib/libhypnusclient.so
 vendor/lib/libiu456_datapath_filt_lib.so
 vendor/lib/libiu456_datapath_processor.so
@@ -1678,13 +1884,6 @@ vendor/lib/libobcdepth_hal.so
 vendor/lib/libocam_common.so
 vendor/lib/libocam_snapshot_intf.so
 vendor/lib/liboddi.so
-vendor/lib/liboppo_aisd.so
-vendor/lib/liboppo_log_print.so
-vendor/lib/liboppo_platform_hwi.so
-vendor/lib/liboppoalgolib.so
-vendor/lib/liboppocamalgo_daemon.so
-vendor/lib/libopposfr.so
-vendor/lib/libplatformconfig.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libqcbor.so
 vendor/lib/libqdma.so
@@ -1693,18 +1892,7 @@ vendor/lib/librpmbengclient.so
 vendor/lib/libsdk_3d.so
 vendor/lib/libsdk_common.so
 vendor/lib/libsi.so
-vendor/lib/libsnpe_adsp.so
-vendor/lib/libsnpe_cdsp.so
-vendor/lib/libsnpe_cdsp_v65.so
-vendor/lib/libsnpeml.so
-vendor/lib/libsns_device_mode_stub.so
-vendor/lib/libsns_fastRPC_util.so
-vendor/lib/libsns_low_lat_stream_stub.so
-vendor/lib/libsnsapi.so
-vendor/lib/libsnsdiaglog.so
-vendor/lib/libspcom.so
 vendor/lib/libspiris.so
-vendor/lib/libssc.so
 vendor/lib/libst_personblur.so
 vendor/lib/libst_scb_dep1.so
 vendor/lib/libst_segmentation.so
@@ -1713,62 +1901,32 @@ vendor/lib/libstface_fd_api.so
 vendor/lib/libstface_seg_ocl.so
 vendor/lib/libstfaceunlock.so
 vendor/lib/libstfaceunlocksnpe.so
-vendor/lib/libstreamparser.so
-vendor/lib/libswregistrationalgo.so
 vendor/lib/libswresample_vendor.so
 vendor/lib/libswscale_vendor.so
-vendor/lib/libswvdec.so
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libthread_blur.so
-vendor/lib/libtinycompress_vendor.so
 vendor/lib/libvoh264enc.so
 vendor/lib/libvslam.so
 vendor/lib/libwapi_cert.so
 vendor/lib/qcom.camera.log.so
-vendor/lib/vendor.oppo.hardware.biometrics.face@1.0.so
-vendor/lib/vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0.so
-vendor/lib/vendor.oppo.hardware.camera.oppoHalAssist@1.0.so
-vendor/lib/vendor.oppo.hardware.commondcs@1.0.so
-vendor/lib/vendor.oppo.hardware.hypnus@1.0.so
-vendor/lib/vendor.oppo.hardware.ktv@1.0.so
-vendor/lib/vendor.oppo.hardware.mmdisplayfeature@1.0.so
-vendor/lib/vendor.oppo.hardware.oiface@1.0.so
-vendor/lib/vendor.qti.hardware.cvp@1.0.so
 vendor/lib/voc.dat.zip
-vendor/lib64/hw/android.hardware.secure_element@1.0-impl.so
-vendor/lib64/hw/vendor.oppo.hardware.hypnus@1.0-impl.so
-vendor/lib64/hw/vendor.oppo.hardware.ktv@1.0-impl.so
-vendor/lib64/hw/vendor.oppo.hardware.mmdisplayfeature@1.0-impl.so
-vendor/lib64/hw/vendor.oppo.hardware.oiface@1.0-impl.so
 vendor/lib64/libGPMTEEC_vendor.so
-vendor/lib64/libMpeg4SwEncoder.so
-vendor/lib64/libOmxSwVdec.so
-vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libalipay_factory.so
-vendor/lib64/libaoa.so
 vendor/lib64/libavcodec_vendor.so
 vendor/lib64/libavformat_vendor.so
 vendor/lib64/libavutil_vendor.so
 vendor/lib64/libbokehclient.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
-vendor/lib64/libdisplaydebug.so
-vendor/lib64/libdisplayqos.so
 vendor/lib64/libese-sysdeps.so
 vendor/lib64/libese.so
 vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libffmpeg_omx.so
 vendor/lib64/libffmpeg_utils_vendor.so
-vendor/lib64/libgarden.so
-vendor/lib64/libgralloccore.so
 vendor/lib64/libhypnusclient.so
-vendor/lib64/liblearningmodule.so
-vendor/lib64/libmeters.so
 vendor/lib64/libnanopb.so
 vendor/lib64/libnativehelpers.so
 vendor/lib64/liboddi.so
-vendor/lib64/liboppoalgolib.so
-vendor/lib64/libplatformconfig.so
 vendor/lib64/libqcbor.so
 vendor/lib64/libqdma.so
 vendor/lib64/libqsee_keybox_ca.so
@@ -1776,36 +1934,12 @@ vendor/lib64/libreffeature.so
 vendor/lib64/librftoolkit.so
 vendor/lib64/librpmbengclient.so
 vendor/lib64/libsi.so
-vendor/lib64/libsns_device_mode_stub.so
-vendor/lib64/libsns_fastRPC_util.so
-vendor/lib64/libsns_low_lat_stream_stub.so
-vendor/lib64/libsnsapi.so
-vendor/lib64/libsnsdiaglog.so
-vendor/lib64/libspcom.so
 vendor/lib64/libspiris.so
-vendor/lib64/libssc.so
 vendor/lib64/libstagefright_soft_voh264enc.so
 vendor/lib64/libstface_fd_api.so
 vendor/lib64/libswresample_vendor.so
 vendor/lib64/libswscale_vendor.so
-vendor/lib64/libswvdec.so
-vendor/lib64/libtinycompress_vendor.so
 vendor/lib64/libvoh264enc.so
 vendor/lib64/libwapi_cert.so
 vendor/lib64/rfsa/adsp/libdsp_streamer_add_constant.so
 vendor/lib64/rfsa/adsp/libdsp_streamer_skel.so
-vendor/lib64/vendor.oppo.engnative.engineer@1.0.so
-vendor/lib64/vendor.oppo.engnative.engsensor@1.0.so
-vendor/lib64/vendor.oppo.engnative.messager@1.0.so
-vendor/lib64/vendor.oppo.engnative.transfer@1.0.so
-vendor/lib64/vendor.oppo.hardware.commondcs@1.0.so
-vendor/lib64/vendor.oppo.hardware.cryptoeng@1.0.so
-vendor/lib64/vendor.oppo.hardware.hypnus@1.0.so
-vendor/lib64/vendor.oppo.hardware.ktv@1.0.so
-vendor/lib64/vendor.oppo.hardware.mmdisplayfeature@1.0.so
-vendor/lib64/vendor.oppo.hardware.oiface@1.0.so
-vendor/lib64/vendor.oppo.hardware.wifi.sniffer@1.0.so
-vendor/lib64/vendor.oppo.hardware.wifi.supplicant@1.0.so
-vendor/lib64/vendor.qti.hardware.cvp@1.0.so
-vendor/oppo/ck.fs
-vendor/oppo/recovery_rootcheck

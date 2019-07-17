@@ -10,7 +10,6 @@ libnpu.so
 liboddi.so
 librftoolkit.so
 libnativehelpers.so
-libaix.so
 libOppoAlgoClient.so
 vendor.oppo.hardware.camera.oppoAlgoProcessService@1.0.so
 libOppoAPSMemMgr.so

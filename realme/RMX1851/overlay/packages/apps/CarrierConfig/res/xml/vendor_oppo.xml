@@ -46,6 +46,7 @@
         <boolean name="default_enhanced_4g_mode_enabled_bool" value="false" />
         <int name="oppo.operator.ringtone" value="1" />
         <boolean name="oppo_ussd_over_ims" value="true" />
+        <boolean name="config_disable_clir_over_ut" value="true" />
         <string-array name="mccmnc" num="28">
             <item value="40404" />
             <item value="40407" />
@@ -79,7 +80,9 @@
     </carrier_config>
     <carrier_config operator="AIRTEL">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
         <int name="oppo.operator.ringtone" value="1" />
+        <boolean name="support_video_conference_call_bool" value="true" />
         <string-array name="mccmnc" num="23">
             <item value="40402" />
             <item value="40403" />

@@ -2,6 +2,22 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := engineer_vendor_shell.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/engineer_vendor_shell.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.class_late.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.class_late.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.class_main.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -22,6 +38,22 @@ LOCAL_MODULE       := init.mdm.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := bin/init.mdm.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.fingerprints.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.oppo.fingerprints.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.wifi.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.oppo.wifi.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -106,6 +138,14 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := init.qti.can.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.qti.can.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.fm.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -118,6 +158,14 @@ LOCAL_MODULE       := init.qti.ims.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := bin/init.qti.ims.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.qti.manifest_sku.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.qti.manifest_sku.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -138,10 +186,58 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := vendor.autochmod.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/vendor.autochmod.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.msm.usb.configfs.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.msm.usb.configfs.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.debug.diag.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.oppo.debug.diag.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.reserve.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.oppo.reserve.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.sensor.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.oppo.sensor.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.vendor.fingerprint.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.oppo.vendor.fingerprint.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.oppo.vendor.motor.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.oppo.vendor.motor.rc
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 
@@ -174,6 +270,22 @@ LOCAL_MODULE       := init.target.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.target.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.wlan.qcom.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.wlan.qcom.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.wlan.target.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.wlan.target.rc
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 

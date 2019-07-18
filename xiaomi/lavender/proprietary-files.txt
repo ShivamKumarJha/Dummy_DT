@@ -236,9 +236,7 @@ vendor/lib/libwms.so
 vendor/lib/libwqe.so
 vendor/lib/libxml.so
 vendor/lib/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib/vendor.qti.latency@2.0.so
 -vendor/lib64/com.quicinc.cne.api@1.0.so
 -vendor/lib64/com.quicinc.cne.api@1.1.so
 -vendor/lib64/com.quicinc.cne.constants@1.0.so
@@ -255,9 +253,7 @@ vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib64/vendor.qti.latency@2.0.so
 
 # Camera
 vendor/lib/hw/camera.sdm660.so
@@ -301,6 +297,7 @@ vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/libvidhance_gyro.so
 vendor/lib/mibokeh_660_opencl.bin
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
 vendor/lib64/libbase64.so
 vendor/lib64/libvideoutils.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
@@ -895,6 +892,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_4k_preview_3a.so
@@ -942,6 +940,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_4k_preview_3a.so
@@ -967,6 +966,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_4k.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_weixin.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_hfr_120.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_hfr_120_3a.so
@@ -981,6 +981,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_preview_cts.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_bokeh.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_hdr.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video_4k.so
@@ -989,6 +990,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_4k_preview_3a.so
@@ -1014,6 +1016,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_4k.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_weixin.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_hfr_120.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_hfr_120_3a.so
@@ -1028,6 +1031,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_preview_cts.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_bokeh.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_hdr.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video_4k.so
@@ -1036,6 +1040,7 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a.so
+vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_video_3a.so
 vendor/lib/libchromatix_tulip_ov02a10_ofilm_global_ii_common.so
@@ -2657,7 +2662,6 @@ vendor/lib/libcpion.so
 vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/librmp.so
 vendor/lib/librpmb.so
@@ -2677,7 +2681,6 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
-vendor/lib64/liboemcrypto.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -2937,6 +2940,16 @@ vendor/lib64/vendor.qti.gnss@1.2.so
 vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 
+# GPS-Hardware
+vendor/lib/libgarden.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
+vendor/lib64/libgarden.so
+vendor/lib64/libgnss.so
+vendor/lib64/libgnsspps.so
+vendor/lib64/libgps.utils.so
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
@@ -3040,6 +3053,10 @@ lib/vendor.qti.hardware.data.latency@1.0.so
 lib/vendor.qti.latency@2.0.so
 lib64/vendor.qti.hardware.data.latency@1.0.so
 lib64/vendor.qti.latency@2.0.so
+vendor/lib/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib/vendor.qti.latency@2.0.so
+vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib64/vendor.qti.latency@2.0.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.sdm660.so
@@ -3156,8 +3173,6 @@ vendor/lib64/libOmxVenc.so
 vendor/lib64/libc2dcolorconvert.so
 vendor/lib64/libmm-omxcore.so
 vendor/lib64/libstagefrighthw.so
-
-# NFC
 
 # Perf
 vendor/bin/energy-awareness
@@ -3498,6 +3513,7 @@ vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsubsystem_control.so
 
 # Sensor-configs
+vendor/etc/sensors/elliptic.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
 
 # Sensors
@@ -3508,6 +3524,7 @@ vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.ssc.so
+vendor/lib/sensors.touch.so
 vendor/lib64/hw/activity_recognition.sdm660.so
 vendor/lib64/libnotifyaudiohal.so
 vendor/lib64/libsensor1.so
@@ -3516,6 +3533,7 @@ vendor/lib64/libsensorndkbridge.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.elliptic.so
 vendor/lib64/sensors.ssc.so
+vendor/lib64/sensors.touch.so
 
 # Soter
 -app/SoterService/SoterService.apk
@@ -3772,18 +3790,14 @@ vendor/hwprop/M6100A0302.prop
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
-vendor/lib/libgarden.so
 vendor/lib/libsi.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libwapi_cert.so
-vendor/lib/libwvkeybox.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastcrc.so
-vendor/lib64/libgarden.so
 vendor/lib64/libpcap.so
 vendor/lib64/libqdma.so
 vendor/lib64/libsi.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libwapi_cert.so
-vendor/lib64/libwvkeybox.so

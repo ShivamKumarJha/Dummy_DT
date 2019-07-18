@@ -91,6 +91,7 @@ on post-fs-data
     mkdir /data/vendor/charge_logger 0771 system system
 
 on boot
+    chown system system /sys/class/touch/touch_dev/palm_sensor
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-7

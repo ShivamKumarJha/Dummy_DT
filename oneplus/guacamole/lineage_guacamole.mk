@@ -18,7 +18,7 @@ PRODUCT_MODEL := OnePlus7Pro
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 TARGET_VENDOR := oneplus
 TARGET_VENDOR_PRODUCT_NAME := guacamole
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="OnePlus7Pro-user 9 PKQ1.190110.001 1906032330 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="OnePlus7Pro-user 9 PKQ1.190110.001 1906160616 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := OnePlus/OnePlus7Pro/OnePlus7Pro:9/PKQ1.190110.001/1906032330:user/release-keys
+BUILD_FINGERPRINT := OnePlus/OnePlus7Pro/OnePlus7Pro:9/PKQ1.190110.001/1906160616:user/release-keys

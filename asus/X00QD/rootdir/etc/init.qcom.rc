@@ -1043,6 +1043,9 @@ service vendor.wigig_hostapd /vendor/bin/hw/hostapd -dd  -j wigighostapd /data/v
 on property:persist.vendor.radio.device.imei=*
     setprop ro.vendor.deviceid ${persist.vendor.radio.device.imei}
 
+on property:persist.radio.multisim.config=none
+    setprop ro.boot.product.hardware.sku single
+
 service ims_regmanager /system/vendor/bin/exe-ims-regmanagerprocessnative
     class late_start
     group net_bt_admin inet radio wifi

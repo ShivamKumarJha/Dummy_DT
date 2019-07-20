@@ -47,8 +47,18 @@
     <carrier_config mcc="454" mnc="19">
         <boolean name="carrier_volte_roaming_available_bool" value="false" />
     </carrier_config>
+    <carrier_config mcc="440" mnc="50" cid="ACJ">
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="emergency" />
+        </string-array>
+    </carrier_config>
     <carrier_config mcc="440" mnc="51" cid="ACJ">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="emergency" />
+        </string-array>
     </carrier_config>
     <carrier_config mcc="460">
         <boolean name="spn_display_rule_use_roaming_from_service_state_bool" value="true" />

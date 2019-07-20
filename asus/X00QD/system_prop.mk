@@ -56,13 +56,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.enable_vds=1 \
     persist.logd.size=1048576 \
     persist.vendor.service.bdroid.iot.enablelogging=true \
-    ro.am.reschedule_service=true \
     ro.build.smartcharging=1 \
     ro.cpufreq.super=1 \
     ro.internal.tcpdump.file \
     /data/logcat_log/capture.pcap \
     ro.logd.kernel=1 \
-    ro.sys.fw.use_trim_settings=true \
     ro.wcg.enable=1 \
     sys.tcpdump.file \
     ro.nfc.port=I2C \

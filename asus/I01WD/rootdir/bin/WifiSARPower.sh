@@ -12,14 +12,14 @@ case "$Wifion" in
     "ok")
         if [ "$ReceiverOn" == "1" ] && [ "$SKU" == "7" ] ; then
             case "$Country" in
-                *"us"* )
+                *"US"* )
                     vendor_cmd_tool -f /vendor/bin/sar-vendor-cmd.xml -i wlan0 --START_CMD --SAR_SET --ENABLE 0 --NUM_SPECS 0 --END_CMD
                     log -t WifiSARPower SAR_SET ENABLE 0
                 ;;
             esac
         elif [ "$ReceiverOn" == "1" ]; then
             case "$Country" in
-                *"in"* )
+                *"IN"* )
                     vendor_cmd_tool -f /vendor/bin/sar-vendor-cmd.xml -i wlan0 --START_CMD --SAR_SET --ENABLE 0 --NUM_SPECS 0 --END_CMD
                     log -t WifiSARPower SAR_SET ENABLE 0
                 ;;

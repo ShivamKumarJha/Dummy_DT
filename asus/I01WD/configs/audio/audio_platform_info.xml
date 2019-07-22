@@ -36,7 +36,9 @@
         <device name="SND_DEVICE_OUT_HEADPHONES_HIGH_IMP" acdb_id="503"/>
         <device name="SND_DEVICE_OUT_HANDSET_VOIP" acdb_id="302"/>
         <device name="SND_DEVICE_OUT_SPEAKER_VOIP" acdb_id="702"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_VOIP_GAME" acdb_id="708"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_VOIP" acdb_id="502"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_VOIP_GAME" acdb_id="711"/>
         <device name="SND_DEVICE_OUT_BT_SCO_WB_PLT_M55" acdb_id="901"/>
         <device name="SND_DEVICE_OUT_BT_SCO_PLT_M55" acdb_id="901"/>
         <device name="SND_DEVICE_OUT_BT_SCO_WB_PLT_M70" acdb_id="903"/>
@@ -110,8 +112,10 @@
         <device name="SND_DEVICE_IN_USB_HEADSET_MIC_NS" acdb_id="53"/>
         <device name="SND_DEVICE_IN_VOIP_DMIC" acdb_id="202"/>
         <device name="SND_DEVICE_IN_SPEAKER_BMIC_VOIP" acdb_id="322"/>
+        <device name="SND_DEVICE_IN_SPEAKER_BMIC_VOIP_GAME" acdb_id="709"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_VOIP" acdb_id="323"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_VOIP" acdb_id="402"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_VOIP_GAME" acdb_id="710"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_VR" acdb_id="403"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_NS" acdb_id="404"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC_PLT_M55" acdb_id="900"/>
@@ -293,10 +297,12 @@
         <device name="SND_DEVICE_OUT_HEADPHONES_THREE_POLES_FM" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_HIGH_IMP" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_VOIP" backend="headphones" interface="SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_VOIP_GAME" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_MONO" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_ANC_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_ANC_FB_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_VOIP" backend="speaker" interface="QUAT_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_VOIP_GAME" backend="speaker" interface="QUAT_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="QUAT_MI2S_RX-and-SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_THREE_POLES" backend="speaker-and-headphones" interface="QUAT_MI2S_RX-and-SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_HIGH_IMP" backend="speaker-and-headphones" interface="QUAT_MI2S_RX-and-SLIMBUS_6_RX"/>
@@ -325,8 +331,10 @@
         <device name="SND_DEVICE_IN_HANDSET_MIC_FLUENCE" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_TMIC_VOIP" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_BMIC_VOIP" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_SPEAKER_BMIC_VOIP_GAME" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_VOIP" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_VOIP" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_VOIP_GAME" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_VR" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_MIC_NS" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_MIC_3" interface="SLIMBUS_0_TX"/>
@@ -492,6 +500,10 @@
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                     </snd_dev>
                     <snd_dev in_snd_device="SND_DEVICE_IN_SPEAKER_BMIC_VOIP">
+                        <mic_info mic_device_id="builtin_mic_2"
+                            channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
+                    </snd_dev>
+                    <snd_dev in_snd_device="SND_DEVICE_IN_SPEAKER_BMIC_VOIP_GAME">
                         <mic_info mic_device_id="builtin_mic_2"
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                     </snd_dev>

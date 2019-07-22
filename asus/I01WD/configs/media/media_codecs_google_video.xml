@@ -90,14 +90,14 @@
             <Limit name="bitrate" range="1-12000000" />
             <Feature name="intra-refresh" />
         </MediaCodec>
-        <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es">
-            <!-- profiles and levels:  ProfileCore : Level2 -->
+        <!-- profiles and levels:  ProfileCore : Level2 -->
+        <!--MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es">
             <Limit name="size" min="16x16" max="176x144" />
             <Limit name="alignment" value="16x16" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" range="12-1485" />
             <Limit name="bitrate" range="1-64000" />
-        </MediaCodec>
+        </MediaCodec-->
         <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8">
             <!-- profiles and levels:  ProfileMain : Level_Version0-3 -->
             <Limit name="size" min="2x2" max="2048x2048" />

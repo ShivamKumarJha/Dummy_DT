@@ -1961,6 +1961,7 @@ case "$target" in
             echo 80 > /proc/sys/kernel/sched_group_downmigrate
             echo 90 > /proc/sys/kernel/sched_group_upmigrate
             echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
+            echo 0 > /proc/sys/kernel/sched_restrict_tasks_spread
 
             # Enable min frequency adjustment for big cluster
             if [ -f /sys/module/big_cluster_min_freq_adjust/parameters/min_freq_cluster ]; then

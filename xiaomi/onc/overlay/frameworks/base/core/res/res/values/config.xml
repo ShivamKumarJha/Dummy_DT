@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2009, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- If true, the screen can be rotated via the accelerometer in all 4
@@ -183,6 +204,9 @@
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
      <bool name="config_wifi_dual_band_support">false</bool>
 
+    <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
+     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
+
     <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
      <bool name="config_wifi_softap_acs_supported">false</bool>
 
@@ -194,7 +218,7 @@
      <bool name="skip_restoring_network_selection">true</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">40.0dip</dimen>
+     <dimen name="status_bar_height_portrait">27.5dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -290,6 +314,12 @@
          Doze dreams will run whenever the power manager is in a dozing state. -->
      <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
 
+    <!-- Regex of wired ethernet ifaces -->
+     <string name="config_ethernet_iface_regex">eth\\d</string>
+
+    <!-- ImsService package name to bind to by default, if config_dynamic_bind_ims is true -->
+     <string name="config_ims_package">org.codeaurora.ims</string>
+
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
          {@link android.util.PathParser}.
@@ -302,7 +332,7 @@
          appended after the path string to interpret coordinates in dp instead of px units.
          Note that a physical cutout should be configured in pixels for the best results.
     -->
-     <string name="config_mainBuiltInDisplayCutout">M299.981023,0 L420.018977,0 C418.943843,0.0559965572 417.861243,0.111993114 416.789842,0.171722776 C416.252275,0.28371589 415.707242,0.391975901 415.169675,0.503969015 C414.374524,0.825015943 413.583106,1.14606287 412.787955,1.4671098 C412.067465,1.96734571 411.343243,2.46384852 410.622754,2.96408443 C410.029191,3.60991139 409.43936,4.25573835 408.842064,4.90156531 C408.412757,5.64445297 407.987183,6.38734063 407.557876,7.12649519 C407.374954,7.64539662 407.188299,8.16429805 407.005377,8.68693258 C406.803789,9.74340096 406.594735,10.7998693 406.389415,11.8563377 C406.29982,12.513364 406.206492,13.1703903 406.116898,13.8311496 C402.910162,36.8420016 383.232972,54 359.998133,54 C336.767028,54 317.089838,36.8420016 313.886835,13.8311496 C313.797241,13.1703903 313.70018,12.513364 313.610585,11.8563377 C313.405265,10.7998693 313.196211,9.74340096 312.99089,8.68693258 C312.811701,8.16429805 312.625046,7.64539662 312.442124,7.12649519 C312.012817,6.38734063 311.587243,5.64445297 311.157936,4.90156531 C310.56064,4.25573835 309.970809,3.60991139 309.377246,2.96408443 C308.656757,2.46384852 307.932535,1.96734571 307.212045,1.4671098 C306.416894,1.14606287 305.625476,0.825015943 304.830325,0.503969015 C304.292758,0.391975901 303.747725,0.28371589 303.210158,0.171722776 C302.135024,0.111993114 301.056157,0.0559965572 299.981023,3.2959755e-16 Z</string>
+     <string name="config_mainBuiltInDisplayCutout">M-60,0 L60,0 C58.925206,0.0560320974 57.8429482,0.112064195 56.7718862,0.171831765 C56.2344892,0.28389596 55.6896284,0.392224682 55.1522314,0.504288877 C54.3573317,0.825539568 53.5661639,1.14679026 52.7712642,1.46804095 C52.051003,1.96859436 51.3270098,2.46541229 50.6067486,2.96596569 C50.0133727,3.61220255 49.4237288,4.2584394 48.8266211,4.90467626 C48.3974499,5.64803542 47.9720106,6.39139458 47.5428394,7.13101826 C47.3599751,7.65024903 47.1733789,8.1694798 46.9905147,8.69244604 C46.7889908,9.74958495 46.5800031,10.8067239 46.3747473,11.8638628 C46.2851812,12.521306 46.1918831,13.1787493 46.1023169,13.8399281 C42.8965946,36.8653846 23.2256259,55 -0.00186596175,55 C-23.2256259,55 -42.8965946,36.8653846 -46.098585,13.8399281 C-46.1881511,13.1787493 -46.2851812,12.521306 -46.3747473,11.8638628 C-46.5800031,10.8067239 -46.7889908,9.74958495 -46.9942466,8.69244604 C-47.1733789,8.1694798 -47.3599751,7.65024903 -47.5428394,7.13101826 C-47.9720106,6.39139458 -48.3974499,5.64803542 -48.8266211,4.90467626 C-49.4237288,4.2584394 -50.0133727,3.61220255 -50.6067486,2.96596569 C-51.3270098,2.46541229 -52.051003,1.96859436 -52.7712642,1.46804095 C-53.5661639,1.14679026 -54.3573317,0.825539568 -55.1522314,0.504288877 C-55.6896284,0.392224682 -56.2344892,0.28389596 -56.7718862,0.171831765 C-57.8466801,0.112064195 -58.925206,0.0560320974 -60,3.29806741e-16 Z</string>
 
     <!-- MMS user agent string -->
      <string name="config_mms_user_agent">Android-Mms/2.0</string>
@@ -323,23 +353,23 @@
         <item>3</item>
         <item>3</item>
         <item>3</item>
-        <item>8</item>
-        <item>13</item>
-        <item>20</item>
-        <item>25</item>
-        <item>33</item>
-        <item>41</item>
-        <item>45</item>
-        <item>45</item>
-        <item>45</item>
-        <item>55</item>
+        <item>3</item>
+        <item>3</item>
+        <item>3</item>
+        <item>5</item>
+        <item>9</item>
+        <item>12</item>
+        <item>15</item>
+        <item>15</item>
+        <item>30</item>
+        <item>48</item>
+        <item>60</item>
         <item>70</item>
-        <item>80</item>
-        <item>88</item>
+        <item>78</item>
+        <item>82</item>
+        <item>86</item>
         <item>100</item>
-        <item>110</item>
         <item>120</item>
-        <item>130</item>
         <item>140</item>
         <item>208</item>
         <item>248</item>
@@ -362,12 +392,12 @@
         <item>8</item>
         <item>13</item>
         <item>17</item>
-        <item>21</item>
-        <item>26</item>
         <item>30</item>
-        <item>34</item>
         <item>39</item>
+        <item>50</item>
         <item>60</item>
+        <item>80</item>
+        <item>100</item>
         <item>140</item>
         <item>310</item>
         <item>400</item>

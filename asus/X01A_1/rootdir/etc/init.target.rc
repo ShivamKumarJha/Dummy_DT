@@ -28,6 +28,7 @@
 #
 
 import init.carrier.rc
+import init.hq.common.rc
 
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_apr audio_adsp_loader audio_q6_notifier audio_q6 audio_usf audio_native audio_pinctrl_wcd audio_swr audio_platform audio_swr_ctrl audio_hdmi audio_wcd9xxx audio_wcd_core audio_wsa881x_analog audio_wsa881x audio_mbhc audio_stub audio_digital_cdc audio_analog_cdc audio_wcd_cpe audio_cpe_lsm audio_tfa9874 audio_wcd9335 audio_machine_sdm450 audio_machine_ext_sdm450
@@ -113,6 +114,20 @@ service nvram_country /vendor/bin/nvram_country
 on property:persist.sys.nvinit=Ready
 start nvram_country
 # Huaqin add for ZQL1830-142  CountryCode by chenlingyu at 2018/08/01 end
+
+#Huaqin add for ZQL1830-50 by lanshiming at 2018/7/19 start
+service emmc_prop_init /vendor/bin/sh /vendor/bin/emmc_prop_init.sh
+    class core
+    user root
+    oneshot
+    disabled
+    seclabel u:r:vendor_init:s0
+#Huaqin add for ZQL1830-50 by lanshiming at 2018/7/19 end
+
+#Huaqin add for ZQL1830-50 by lanshiming at 2018/7/19 start
+on post-fs
+   start emmc_prop_init
+#Huaqin add for ZQL1830-50 by lanshiming at 2018/7/19 end
 
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
@@ -559,3 +574,19 @@ service syncNv /system/bin/syncNv
 on property:sys.hqftm.sync_countrycode=*
     start syncNv
 #Huaqin add for ZQL1830-258 by zhourongrong at 2018/07/31 end
+
+on property:sys.huaqin.camera=1
+    chmod 0777 /data/vendor
+    chmod 0777 /data/vendor/camera
+    chmod 0777 /data/vendor/camera/wide_1600x1200.nv21
+    chmod 0777 /data/vendor/camera/tele_4160x3120.nv21
+    symlink /mnt/vendor/persist/dualcali_dump.bin /data/vendor/camera/dualcali_dump.bin
+    chown system system /data/vendor/camera/dualcali_dump.bin
+on property:sys.huaqin.camera=0
+    chmod 0770 /data/vendor/camera
+    chmod 0770 /data/vendor/camera/wide_1600x1200.nv21
+    chmod 0770 /data/vendor/camera/tele_4160x3120.nv21
+    rm /data/vendor/camera/dualcali_dump.bin
+on property:sys.huaqin.camera_sync=1
+    
+#Huaqin add for ZQL1830-1374 by chenqiang at 2018.10.16 end

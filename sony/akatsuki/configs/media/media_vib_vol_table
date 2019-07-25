@@ -1,0 +1,9 @@
+# Beat enhancer volume (Q16 format)
+# 0.0, 0.5, 1.0, 3.0
+BE_Vol:0,32768,65536,196608,
+# LPF volume (Q16 format)
+# 0.0, 0.8, 0.9, 2.0
+LPF_Vol:0,52429,58982,131072,
+# Level volume (Q16 format)
+# 0.0, 0.5, 1.0, 1.0
+Level_Vol:0,32768,65536,65536,

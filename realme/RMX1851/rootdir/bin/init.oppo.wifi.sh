@@ -393,7 +393,7 @@ if [ ! -s /mnt/vendor/persist/bdwlan.bin -o $system_version -gt $persist_version
 			 "31")
 			 ##18621
 			     case $Modem_version in
-				      "7" )
+				      "7" | "2" )
 						case $pcbVersion in
 							"0" | "1" | "2" | "3" | "4" | "5")
 								cp /vendor/etc/wifi/bdwlan_18621_id3.bin /mnt/vendor/persist/bdwlan.bin

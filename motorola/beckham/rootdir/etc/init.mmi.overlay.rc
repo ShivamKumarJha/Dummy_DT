@@ -1,0 +1,82 @@
+
+on init
+
+   # Change ownership for Dynamic-CABC feature
+   chown system system /sys/class/graphics/fb0/cabc
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+
+on fs
+    # upgrade products launched with OMR1 or before will use /persist
+    restorecon_recursive /persist
+
+on boot
+    # capsensor fw path
+    chmod 0664 /sys/class/capsense/fw_download_status
+    # capsensor
+   chown system system /sys/class/capsense/reset
+   chmod 0660 /sys/class/capsense/reset
+
+    # change permission for capsensor
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/enable
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/poll_delay
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/enable
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch1/poll_delay
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/enable
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch2/poll_delay
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch3/enable
+    chown system system /sys/class/sensors/Moto\ CapSense\ Ch3/poll_delay
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch0/enable
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch0/poll_delay
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch1/enable
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch1/poll_delay
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch2/enable
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch2/poll_delay
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch3/enable
+    chmod 0660 /sys/class/sensors/Moto\ CapSense\ Ch3/poll_delay
+    chown system system /dev/input/event3
+    chown system system /dev/input/event4
+    chown system system /dev/input/event5
+    chown system system /dev/input/event6
+
+   # Change the ownership of display TE files for tcmds
+   chown root mot_tcmd /sys/class/graphics/fb0/te_test
+   chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+   chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+
+   # Change ownership and permission for AMPS factory testing
+   chown root mot_tcmd /sys/devices/soc/a800000.ssusb/modusb_enable
+   chown root mot_tcmd /sys/devices/soc/a800000.ssusb/modusb_protocol
+   chown root mot_tcmd /sys/module/usb3813_hub/parameters/boost_val
+   chmod 0664 /sys/module/usb3813_hub/parameters/boost_val
+
+   # Wifi firmware reload path
+   chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+service capsense_reset /system/vendor/bin/capsense_reset
+   class core
+   user system
+   group system
+   disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on property:ro.bootmode=factory
+    write /sys/class/leds/charging/brightness 255
+
+on property:ro.bootmode=mot-factory
+    write /sys/class/leds/charging/brightness 255
+
+# Set hub drive strength to +15%
+on property:ro.bootmode=normal
+    write /sys/module/usb3813_hub/parameters/boost_val 5
+
+on property:sys.boot_completed=1
+    start emmc_ffu
+
+service emmc_ffu /system/bin/emmc_ffu.sh
+    user root
+    class core
+    oneshot
+    disabled

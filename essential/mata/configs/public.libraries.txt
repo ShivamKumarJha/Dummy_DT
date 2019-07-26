@@ -1,0 +1,5 @@
+libqti-perfd-client.so
+libadsprpc.so
+libcdsprpc.so
+libqvrservice_client.so
+libtzcom.so

@@ -1,0 +1,57 @@
+on post-fs
+    #goodix
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+    chown system system /sys/class/dsi_hbm/hbm/enable
+    chown system system /sys/class/backlight/panel0-hbm/brightness
+    chown audioserver audio /sys/bus/i2c/devices/2-0034/reg
+    chown audioserver audio  /sys/bus/i2c/devices/2-0034/rw
+
+on init
+#added touch gesture wake node permission
+    chown system /sys/devices/virtual/touch/tp_dev/gesture_on
+
+# Add factest service
+service factest /vendor/bin/factest
+	class main
+	user root
+	group root system vendor_qti_diag sdcard_rw cache drmrpc
+
+service rfs_for_fac /vendor/bin/rfs_for_fac
+    class main
+    user vendor_rfs
+    group root system vendor_rfs
+    oneshot
+
+on boot
+	start factest
+# factest end
+
+# for battery & thermal
+on boot
+   chmod 666 /sys/class/power_supply/battery/user_charge_op
+   chmod 666 /sys/class/power_supply/battery/user_charge_soc
+
+# add for secure touch feature
+on boot
+   chmod 0660 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch_enable
+   chmod 0440 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch
+   mkdir /mnt/vendor/persist/factory 0775 system system
+
+on early-init
+   insmod /vendor/lib/modules/audio_tfa9874.ko
+
+#camera tof
+service vl53l1_daemon_main /vendor/bin/vl53l1_daemon_main
+    class late_start
+    user root
+    group root
+    socket vl53l1_daemon stream 660 root system
+
+on boot
+   mkdir /mnt/vendor/persist/tof 0775 system system
+
+# Factory reset start
+on property:vendor.wipe_data=1
+    factory_data_misc
+# Factory reset end

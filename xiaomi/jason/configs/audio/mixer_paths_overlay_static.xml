@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Be careful to write the static overlay xml                             -->
+<!-- 1. do not create the new path name here, the new path name should      -->
+<!--    be created in common mixer path xml                                 -->
+<!-- 2. the new path name should not contain the nested path, and should be -->
+<!--    defined follow after default ctrl                                   -->
+<!-- 3. the default ctl here will override that in common mixer path xml    -->
+<!-- 4. the first level path will replace the path in common mixer path xml -->
+<!-- 5. the max nested path can't exceed 10                                 -->
+
+<mixer>
+    <ctl name="VI_FEED_TX Channels" value="Two" />
+
+    <!-- devices path -->
+    <path name="sidetone-headphones">
+        <path name="sidetone-iir" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <ctl name="RX2 MIX2 INP1" value="IIR1" />
+        <ctl name="IIR1 INP1 Volume" value="0" />
+    </path>
+
+    <path name="headphones">
+        <ctl name="INT0_MI2S_RX Channels" value="Two" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="RDAC2 MUX" value="RX2" />
+        <ctl name="RX HPH Mode" value="HD2" />
+        <ctl name="COMP0 RX1" value="0" />
+        <ctl name="COMP0 RX2" value="0" />
+        <ctl name="HPHL" value="Switch" />
+        <ctl name="HPHR" value="Switch" />
+    </path>
+
+    <path name="handset">
+        <path name="speaker-mono" />
+    </path>
+
+    <path name="voice-handset">
+        <ctl name="RX4 Digital Volume" value="75" />
+        <ctl name="INT4_MI2S_RX Channels" value="One" />
+        <ctl name="RX4 MIX1 INP1" value="RX4" />
+        <ctl name="COMP1 Switch" value="0" />
+        <ctl name="SpkrLeft COMP Switch" value="0" />
+        <ctl name="SpkrLeft WSA PA Gain" value="G_18_DB" />
+        <ctl name="SpkrLeft BOOST Switch" value="1" />
+        <ctl name="SpkrLeft VISENSE Switch" value="1" />
+        <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
+        <ctl name="SpkrLeft WSA PA Mute" value="0" />
+    </path>
+
+    <path name="handset-mic">
+        <ctl name="DEC1 MUX" value="ADC1" />
+        <ctl name="ADC1_INP1 Switch" value="1" />
+        <ctl name="DEC2 MUX" value="ADC2" />
+        <ctl name="ADC2 MUX" value="INP3" />
+        <ctl name="INT3_MI2S_TX Channels" value="Two" />
+    </path>
+
+    <!-- Dual MIC devices -->
+    <path name="handset-dmic-endfire">
+        <path name="handset-mic" />
+    </path>
+
+    <path name="speaker-dmic-endfire">
+        <path name="handset-mic" />
+    </path>
+
+    <path name="speaker-mono-2">
+        <ctl name="INT4_MI2S_RX Channels" value="One" />
+        <!-- reset handset path to default begin-->
+        <ctl name="RX4 MIX1 INP1" value="ZERO" />
+        <ctl name="COMP1 Switch" value="1" />
+        <!-- reset handset path to default end-->
+        <ctl name="RX5 MIX1 INP1" value="RX4" />
+        <ctl name="COMP2 Switch" value="1" />
+        <ctl name="SpkrRight COMP Switch" value="1" />
+        <ctl name="SpkrRight BOOST Switch" value="1" />
+        <ctl name="SpkrRight VISENSE Switch" value="1" />
+        <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
+        <ctl name="SpkrRight WSA PA Mute" value="0" />
+    </path>
+</mixer>

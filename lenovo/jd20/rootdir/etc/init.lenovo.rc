@@ -1,0 +1,78 @@
+on boot
+    # goodix fingerprint
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+    chown system system  /sys/class/backlight/panel0-hbm/brightness
+    chmod 666  /sys/class/backlight/panel0-hbm/brightness
+
+# Factory test --ODM-Huaqin
+#read sw version
+on property:vendor.hq.temp=1
+    setprop vendor.hq.boot_end ${sys.boot_completed}
+    setprop vendor.sw.internal.version ${ro.product.sw.internal.version}
+    start hqread
+
+service hqread /system/bin/hqread
+    class main
+    user root
+    oneshot
+    group root sdcard_rw
+
+service hwdiag /vendor/bin/hwdiag
+    class main
+    user root
+    group root system vendor_qti_diag sdcard_rw cache drmrpc
+
+# Factory resset --ODM-Huaqin
+#for factory reset
+service do_reset /system/bin/hqread do_reset
+    class main
+    user root
+    oneshot
+    group root cache
+    seclabel u:r:hqread:s0
+
+service read_reset /system/bin/hqread read_reset
+    class main
+    user root
+    oneshot
+    group root cache
+    seclabel u:r:hqread:s0
+
+on property:vendor.hq.do_factory_reset=1
+    start do_reset
+
+on property:vendor.hq.read_reset_flag=1
+    start read_reset
+
+service diaginsystem /system/bin/wprod action_insystem
+    disabled
+    user root
+    oneshot
+    seclabel u:r:system_server:s0
+
+on property:vendor.hq.diaginsystem=1
+    start diaginsystem
+on boot
+    setprop vendor.diag.inp 1
+    chmod 664 /persist/.sn.bin
+    chown system:system /persist/.sn.bin
+    chmod 776 /persist/flag
+    chmod 664 /persist/flag/MMI2.FLG
+    chmod 664 /persist/flag/RUNIN.FLG
+    start hwdiag
+
+on init
+#added touch gesture wake node permission
+    chown system /sys/devices/virtual/touch/tp_dev/gesture_on
+    chown system /sys/devices/virtual/touch/tp_dev/finger_match
+    chown system system /sys/class/backlight/panel0-hbm/brightness
+
+#LENOVO_CUSTOM start
+on post-fs-data
+    chmod 0777 /data/vendor/camera
+    copy /vendor/etc/camera/Capture3AData.dat /data/vendor/camera/Capture3AData.dat
+    copy /vendor/etc/camera/Capture3AData.dat /vendor/camera/Capture3AData.dat
+    chmod 0777 /data/vendor/camera/Capture3AData.dat
+    chmod 0777 /vendor/camera/Capture3AData.dat
+#LENOVO_CUSTOM end

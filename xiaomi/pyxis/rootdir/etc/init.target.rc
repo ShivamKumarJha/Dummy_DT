@@ -139,7 +139,7 @@ on boot
     chmod 0770 /dev/dbmdx-1
     chown system system /sys/class/thermal/thermal_message/sconfig
     chown system system /sys/class/touch/tp_dev/fod_status
-
+    chown system system /sys/class/touch/touch_dev/palm_sensor
 # Add a cpuset for the camera daemon
 # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
@@ -677,3 +677,13 @@ on post-fs-data
     restorecon /sys/module/migt/parameters/migt_ms
     chmod 0777 /sys/module/migt/parameters/migt_thresh
     restorecon /sys/module/migt/parameters/migt_thresh
+
+service dc_cal /vendor/bin/dc_cal -b
+    class late_start
+    user system
+    group system
+    oneshot
+    disabled
+
+on property:vendor.camera.boot_complete=true
+    start dc_cal

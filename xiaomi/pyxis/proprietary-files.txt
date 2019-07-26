@@ -72,7 +72,6 @@ vendor/lib/libaudioroute_ext.so
 vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
 vendor/lib/libsurround_3mic_proc.so
-vendor/lib/modules/audio_tfa98xx.ko
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libaudiopreprocessing.so
 vendor/lib/soundfx/libdirac.so
@@ -210,9 +209,7 @@ vendor/lib/libwqe.so
 vendor/lib/libxml.so
 vendor/lib/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib/vendor.qti.latency@2.0.so
 -vendor/lib64/com.quicinc.cne.api@1.0.so
 -vendor/lib64/com.quicinc.cne.api@1.1.so
 -vendor/lib64/com.quicinc.cne.constants@1.0.so
@@ -230,12 +227,10 @@ vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/vendor.qti.hardware.data.connection@1.0.so
 vendor/lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
-vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib64/vendor.qti.latency@2.0.so
 
 # Camera
-vendor/bin/remosaic_daemon
+lib64/libseemore.so
 vendor/lib/camera/com.qti.sensor.pyxis_imx582.so
 vendor/lib/camera/com.qti.sensor.pyxis_imx586.so
 vendor/lib/camera/com.qti.sensor.pyxis_ov02a10.so
@@ -259,7 +254,9 @@ vendor/lib/camera/com.qti.tuned.pyxis_ofilm_imx582_cn_ii.bin
 vendor/lib/camera/com.qti.tuned.pyxis_ofilm_ov02a10_cn_ii.bin
 vendor/lib/camera/com.qti.tuned.pyxis_ofilm_s5k4h7_cn_ii.bin
 vendor/lib/camera/com.qti.tuned.pyxis_ofilm_s5kgd1_cn_ii.bin
+vendor/lib/camera/com.qti.tuned.pyxis_ofilm_s5kgd1_cn_ii_global.bin
 vendor/lib/camera/com.qti.tuned.pyxis_sunny_s5kgd1_cn_i.bin
+vendor/lib/camera/com.qti.tuned.pyxis_sunny_s5kgd1_cn_i_global.bin
 vendor/lib/camera/components/com.altek.node.depurple.so
 vendor/lib/camera/components/com.altek.node.distortioncorrection.so
 vendor/lib/camera/components/com.arcsoft.node.bodyslim.so
@@ -280,7 +277,6 @@ vendor/lib/camera/components/com.qti.node.dummysat.so
 vendor/lib/camera/components/com.qti.node.gpu.so
 vendor/lib/camera/components/com.qti.node.memcpy.so
 vendor/lib/camera/components/com.qti.node.photosolid.so
-vendor/lib/camera/components/com.qti.node.remosaic.so
 vendor/lib/camera/components/com.qti.node.sr.so
 vendor/lib/camera/components/com.qti.node.stich.so
 vendor/lib/camera/components/com.qti.node.swregistration.so
@@ -324,6 +320,7 @@ vendor/lib/libSuperSensorCPU.so
 vendor/lib/libVDClearShot.so
 vendor/lib/libVDSuperPhotoAPI.so
 vendor/lib/libXMFD_AgeGender.so
+vendor/lib/lib_denoiser3.so
 vendor/lib/libalLDC.so
 vendor/lib/libalhLDC.so
 vendor/lib/libbase64.so
@@ -342,8 +339,6 @@ vendor/lib/libmialgo_fs.so
 vendor/lib/libmialgo_sd.so
 vendor/lib/libmibokeh_712.so
 vendor/lib/libmpbase.so
-vendor/lib/libremosaic_daemon.so
-vendor/lib/libremosaiclib.so
 vendor/lib/libsns_device_mode_stub.so
 vendor/lib/libsns_fastRPC_util.so
 vendor/lib/libsns_low_lat_stream_stub.so
@@ -356,10 +351,13 @@ vendor/lib/libsymphonypower.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance.so
 vendor/lib/mibokeh_712_opencl.bin
+vendor/lib/vendor.qti.hardware.camera.device@1.0.so
+vendor/lib/vendor.qti.hardware.camera.device@3.2.so
 vendor/lib64/libHalSuperSensorServer.so
 vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorCPU.so
 vendor/lib64/libVDClearShot.so
+vendor/lib64/libVDDualCameraClearShot.so
 vendor/lib64/libVDSuperPhotoAPI.so
 vendor/lib64/libbase64.so
 vendor/lib64/libcamxfdalgov7.so
@@ -370,8 +368,6 @@ vendor/lib64/libmialgo_fs.so
 vendor/lib64/libmialgoengine.so
 vendor/lib64/libmibokeh_712.so
 vendor/lib64/libmpbase.so
-vendor/lib64/libremosaic_daemon.so
-vendor/lib64/libremosaiclib.so
 vendor/lib64/libsns_device_mode_stub.so
 vendor/lib64/libsns_fastRPC_util.so
 vendor/lib64/libsns_low_lat_stream_stub.so
@@ -381,6 +377,7 @@ vendor/lib64/libswvdec.so
 vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
+vendor/lib64/vendor.qti.hardware.camera.device@3.2.so
 
 # Camera-arcsoft
 vendor/lib/libarcsoft_beautyshot.so
@@ -420,6 +417,7 @@ vendor/etc/camera/beauty_ui9_intelligent_params.config
 vendor/etc/camera/body_slim_ui9_params.config
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/camera/eyelineblush.cng
+vendor/etc/camera/golden_rear_dc_cal_wt.bin
 vendor/etc/camera/lf_facerank_model.bin
 vendor/etc/camera/libalfpc_tuning.bin
 vendor/etc/camera/megviifacepp_0_5_2_model
@@ -428,6 +426,9 @@ vendor/etc/camera/model_front.dlc
 vendor/etc/camera/sceneDetection.xml
 vendor/etc/camera/sdm_ys_32p_120_21_5_perturb50.bin
 vendor/etc/camera/visidon_clearshot_params_algoup.xml
+
+# Camera-firmware
+vendor/firmware/CAMERA_ICP.elf
 
 # Camera-sensors
 vendor/lib/libmmcamera_faceproc.so
@@ -631,7 +632,6 @@ vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 
 # Firmware
-vendor/firmware/CAMERA_ICP.elf
 vendor/firmware/Conf_MultipleTest.ini
 vendor/firmware/a225_pfp.fw
 vendor/firmware/a225_pm4.fw
@@ -658,17 +658,10 @@ vendor/firmware/a615_zap.elf
 vendor/firmware/a615_zap.mdt
 vendor/firmware/a630_gmu.bin
 vendor/firmware/a630_sqe.fw
-vendor/firmware/ipa_fws.b00
-vendor/firmware/ipa_fws.b01
-vendor/firmware/ipa_fws.b02
-vendor/firmware/ipa_fws.b03
-vendor/firmware/ipa_fws.b04
-vendor/firmware/ipa_fws.elf
-vendor/firmware/ipa_fws.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
-vendor/firmware/libpn553_fw.so
-vendor/firmware/libpn553_rec.so
+vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 vendor/bin/DR_AP_Service
@@ -748,6 +741,18 @@ vendor/lib64/vendor.qti.gnss@1.2.so
 vendor/lib64/vendor.qti.gnss@2.0.so
 vendor/lib64/vendor.qti.gnss@2.1.so
 
+# GPS-Hardware
+vendor/lib/libaoa.so
+vendor/lib/libgarden.so
+vendor/lib/libgnss.so
+vendor/lib/libgnsspps.so
+vendor/lib/libgps.utils.so
+vendor/lib64/libaoa.so
+vendor/lib64/libgarden.so
+vendor/lib64/libgnss.so
+vendor/lib64/libgnsspps.so
+vendor/lib64/libgps.utils.so
+
 # Gatekeeper
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
@@ -765,6 +770,7 @@ vendor/lib/egl/libq3dtools_esx.so
 vendor/lib/hw/vulkan.sdm710.so
 vendor/lib/libC2D2.so
 vendor/lib/libCB.so
+vendor/lib/libEGL_adreno.so
 vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libadreno_utils.so
@@ -774,6 +780,7 @@ vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
+vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
@@ -791,6 +798,7 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/hw/vulkan.sdm710.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libCB.so
+vendor/lib64/libEGL_adreno.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/libadreno_utils.so
@@ -800,6 +808,7 @@ vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
+vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
@@ -817,6 +826,60 @@ vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
 vendor/lib64/libqti-iopd-client.so
 vendor/lib64/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@2.0.so
+
+# IPA-Firmware
+vendor/firmware/ipa_fws.b00
+vendor/firmware/ipa_fws.b01
+vendor/firmware/ipa_fws.b02
+vendor/firmware/ipa_fws.b03
+vendor/firmware/ipa_fws.b04
+vendor/firmware/ipa_fws.elf
+vendor/firmware/ipa_fws.mdt
+
+# Kernel-Modules
+vendor/lib/modules/audio_adsp_loader.ko
+vendor/lib/modules/audio_analog_cdc.ko
+vendor/lib/modules/audio_apr.ko
+vendor/lib/modules/audio_cpe_lsm.ko
+vendor/lib/modules/audio_cs35l41.ko
+vendor/lib/modules/audio_dbmdx.ko
+vendor/lib/modules/audio_digital_cdc.ko
+vendor/lib/modules/audio_hdmi.ko
+vendor/lib/modules/audio_machine_sdm710.ko
+vendor/lib/modules/audio_mbhc.ko
+vendor/lib/modules/audio_msm_sdw.ko
+vendor/lib/modules/audio_native.ko
+vendor/lib/modules/audio_pinctrl_lpi.ko
+vendor/lib/modules/audio_pinctrl_wcd.ko
+vendor/lib/modules/audio_platform.ko
+vendor/lib/modules/audio_q6.ko
+vendor/lib/modules/audio_q6_notifier.ko
+vendor/lib/modules/audio_q6_pdr.ko
+vendor/lib/modules/audio_snd-soc-tas2557.ko
+vendor/lib/modules/audio_spk_id.ko
+vendor/lib/modules/audio_stub.ko
+vendor/lib/modules/audio_swr.ko
+vendor/lib/modules/audio_swr_ctrl.ko
+vendor/lib/modules/audio_tas2562.ko
+vendor/lib/modules/audio_tfa98xx.ko
+vendor/lib/modules/audio_usf.ko
+vendor/lib/modules/audio_wcd9335.ko
+vendor/lib/modules/audio_wcd934x.ko
+vendor/lib/modules/audio_wcd9xxx.ko
+vendor/lib/modules/audio_wcd_core.ko
+vendor/lib/modules/audio_wcd_cpe.ko
+vendor/lib/modules/audio_wcd_spi.ko
+vendor/lib/modules/audio_wglink.ko
+vendor/lib/modules/audio_wsa881x.ko
+vendor/lib/modules/exfat.ko
+vendor/lib/modules/fragmentize.ko
+vendor/lib/modules/llcc_perfmon.ko
+vendor/lib/modules/modules.alias
+vendor/lib/modules/modules.dep
+vendor/lib/modules/mpq-adapter.ko
+vendor/lib/modules/mpq-dmx-hw-plugin.ko
+vendor/lib/modules/qca_cld3_wlan.ko
+vendor/lib/modules/rdbg.ko
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
@@ -847,6 +910,10 @@ lib/vendor.qti.hardware.data.latency@1.0.so
 lib/vendor.qti.latency@2.0.so
 lib64/vendor.qti.hardware.data.latency@1.0.so
 lib64/vendor.qti.latency@2.0.so
+vendor/lib/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib/vendor.qti.latency@2.0.so
+vendor/lib64/vendor.qti.hardware.data.latency@1.0.so
+vendor/lib64/vendor.qti.latency@2.0.so
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.sdm710.so
@@ -988,6 +1055,8 @@ vendor/etc/libnfc-qrd_rf1.conf
 vendor/etc/libnfc-qrd_rf2.conf
 vendor/etc/permissions/com.android.nfc_extras.xml
 vendor/etc/permissions/com.nxp.mifare.xml
+vendor/firmware/libpn553_fw.so
+vendor/firmware/libpn553_rec.so
 vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
 vendor/lib/hw/vendor.nxp.hardware.nfc@1.0-impl.so
@@ -1156,6 +1225,7 @@ vendor/lib/libpdmapper.so
 vendor/lib/libpdnotifier.so
 vendor/lib/libqcmaputils.so
 vendor/lib/libqcrilFramework.so
+vendor/lib/libqminvapi.so
 vendor/lib/libqrtr.so
 vendor/lib/libqsocket.so
 vendor/lib/libril-qc-hal-qmi.so
@@ -1194,6 +1264,7 @@ vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libqcrilFramework.so
+vendor/lib64/libqminvapi.so
 vendor/lib64/libqrtr.so
 vendor/lib64/libqsocket.so
 vendor/lib64/libril-qc-hal-qmi.so
@@ -1447,6 +1518,8 @@ vendor/lib64/libssc_default_listener.so
 vendor/lib64/libssccalapi.so
 vendor/lib64/sensors.ssc.so
 
+# Sony
+
 # Soter
 -app/SoterService/SoterService.apk
 framework/vendor.qti.hardware.soter-V1.0-java.jar
@@ -1480,6 +1553,10 @@ vendor/etc/thermal-engine-sdm710.conf
 vendor/etc/thermal-engine.conf
 -vendor/lib/libthermalclient.so
 -vendor/lib64/libthermalclient.so
+
+# Thermal-Hardware
+vendor/lib/hw/thermal.sdm710.so
+vendor/lib64/hw/thermal.sdm710.so
 
 # Time
 -vendor/app/TimeService/TimeService.apk
@@ -1667,6 +1744,7 @@ vendor/bin/adpl
 vendor/bin/audioshell_service
 vendor/bin/charge_logger
 vendor/bin/chre
+vendor/bin/dc_cal
 vendor/bin/hbtp_daemon
 vendor/bin/ipacm-diag
 vendor/bin/minidump64
@@ -1693,7 +1771,6 @@ vendor/bin/PktRspTest
 vendor/bin/athdiag
 vendor/bin/batteryd
 vendor/bin/cplay
-vendor/bin/dc_cal
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
@@ -1724,6 +1801,8 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+-vendor/data-app/SmartHome/SmartHome.apk
+-vendor/data-app/XMRemoteController/XMRemoteController.apk
 vendor/etc/calib.config
 vendor/etc/ftm_test_config_sdm710-skuw-snd-card
 vendor/etc/ftm_test_config_sdm710-tasha-snd-card
@@ -1739,48 +1818,40 @@ vendor/etc/spk_cal_silence.wav
 vendor/etc/spk_cal_sweep.wav
 vendor/etc/spk_cal_whitenoise.wav
 vendor/etc/spk_hp.wav
-vendor/etc/system_properties.xml
 vendor/etc/tzlog.dict
 vendor/lib/hw/displayfeature.default.so
+vendor/lib/libGLESv2_adreno.so
 vendor/lib/libGPMTEEC_vendor.so
-vendor/lib/lib_denoiser3.so
 vendor/lib/libalCFR.so
 vendor/lib/libalRnBRT_GL_GBWRAPPER.so
-vendor/lib/libaoa.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libdiag_jni.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libfastrpc_utf_stub.so
-vendor/lib/libgarden.so
 vendor/lib/libnanopb.so
 vendor/lib/libqcbor.so
-vendor/lib/libqminvapi.so
 vendor/lib/libsi.so
 vendor/lib/libspiris.so
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libwapi_cert.so
 vendor/lib64/hw/displayfeature.default.so
+vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libGPMTEEC_vendor.so
-vendor/lib64/libVDDualCameraClearShot.so
 vendor/lib64/libalCFR.so
 vendor/lib64/libalhLDC.so
-vendor/lib64/libaoa.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiag_jni.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastrpc_utf_stub.so
-vendor/lib64/libgarden.so
 vendor/lib64/libnanopb.so
 vendor/lib64/libpcap.so
 vendor/lib64/libqcbor.so
-vendor/lib64/libqminvapi.so
 vendor/lib64/libreffeature.so
 vendor/lib64/libsi.so
 vendor/lib64/libspiris.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libwapi_cert.so
-vendor/lib64/vendor.qti.hardware.camera.device@3.2.so

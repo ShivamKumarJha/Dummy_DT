@@ -138,6 +138,7 @@ lib64/libmmosal.so
 lib64/libmmparser_lite.so
 lib64/libmmrtpdecoder.so
 lib64/libmmrtpencoder.so
+lib64/libseemore.so
 lib64/libwfdclient.so
 lib64/libwfdnative.so
 lib64/vendor.qti.hardware.data.latency@1.0.so

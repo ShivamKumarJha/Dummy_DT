@@ -35,8 +35,8 @@
     </path>
 
     <path name="headphones">
-        <ctl name="RX1 Digital Volume" value="72" />
-        <ctl name="RX2 Digital Volume" value="72" />
+        <ctl name="RX1 Digital Volume" value="76" />
+        <ctl name="RX2 Digital Volume" value="76" />
     </path>
 
 </mixer>

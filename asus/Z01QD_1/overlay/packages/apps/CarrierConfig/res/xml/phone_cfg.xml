@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config mcc="001">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="208" mnc="20">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="222" mnc="10">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <int name="hide_ims_icon_mask_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="234" mnc="20">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="234" mnc="94">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="01">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="02">
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="03">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="03">
+        <boolean name="carrier_roam_volte_enabled_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_roaming_enabled_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="840">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="854">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="855">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="856">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="857">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="858">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="859">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="860">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="861">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="862">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="863">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="864">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="865">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="866">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="867">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="868">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="869">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="870">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="871">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="872">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="873">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="874">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="02">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="03">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="10">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="16">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="31">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="40">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="45">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="49">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="70">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="90">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="92">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="93">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="94">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="95">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="96">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="97">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="98">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="51">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="52">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="53">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="54">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="55">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="56">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="04">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="07">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="12">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="14">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="19">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="22">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="24">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="44">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="56">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="78">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="82">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="87">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="89">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="70">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="799">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="845">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="846">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="848">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="849">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="850">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="852">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="853">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="01">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="05">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="11">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="13">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="15">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="20">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="27">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="30">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="43">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="46">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="60">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="66">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="67">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="84">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="86">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="404" mnc="88">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="750">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="751">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="752">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="753">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="754">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="755">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="405" mnc="756">
+        <boolean name="is_ims_conference_size_enforced_bool" value="true" />
+        <int name="ims_conference_size_limit_int" value="5" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="12">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="06">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="00">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="19">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="440" mnc="51" country="JP">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="460" mnc="03">
+        <boolean name="world_phone_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="460" mnc="11">
+        <boolean name="world_phone_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="92">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="01">
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="05">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <string name="vowifi_name_override">GT 4G VoWiFi</string>
+    </carrier_config>
+    <carrier_config mcc="525" mnc="05" gid1="0A">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <string name="vowifi_name_override">GT 4G VoWiFi</string>
+    </carrier_config>
+    <carrier_config mcc="466" mnc="97">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="03">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="05">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="01">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="724" mnc="02">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="03">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="04">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="05">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="16">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="24">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="31">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="39">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="10">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="11">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="06">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="23">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+</carrier_config_list>

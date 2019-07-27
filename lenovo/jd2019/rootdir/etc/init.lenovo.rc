@@ -1,0 +1,80 @@
+import /vendor/etc/init/hw/init.lenovo.common.rc
+
+on early-init
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_apr audio_wglink audio_adsp_loader audio_q6_pdr audio_q6_notifier audio_q6 audio_usf audio_native audio_pinctrl_wcd audio_pinctrl_lpi audio_swr audio_cs35l41 audio_platform audio_hdmi audio_wcd_spi audio_stub audio_digital_cdc audio_analog_cdc audio_msm_sdw audio_wcd_cpe audio_cpe_lsm audio_wcd9335 audio_machine_sdm710
+    write /proc/sys/kernel/sched_boost 1
+    mkdir /firmware 0771 system system
+    mkdir /bt_firmware 0771 system system
+    mkdir /dsp 0771 media media
+    symlink /data/tombstones /tombstones
+
+
+on boot
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+
+# add user thermal file
+   chmod 0666 /sys/devices/system/cpu/cpu0/rq-stats/mpctl
+   chown system system /sys/devices/system/cpu/cpu0/rq-stats/mpctl
+
+on init
+#added touch gesture wake node permission
+    chown system /sys/devices/virtual/touch/tp_dev/gesture_on
+    chown system /sys/devices/virtual/touch/tp_dev/tp_screen_switch
+
+# Huaqin hwdiag test start
+on property:vendor.hq.temp=1
+	setprop vendor.hq.boot_end ${sys.boot_completed}
+	setprop vendor.sw.internal.version ${ro.product.sw.internal.version}
+	start hqread
+
+service hqread /system/bin/hqread
+	class main
+	user root
+	oneshot
+	group root sdcard_rw
+
+service do_reset /system/bin/hqread do_reset
+	class main
+	user root
+	oneshot
+	group root cache
+	seclabel u:r:hqread:s0
+
+service read_reset /system/bin/hqread read_reset
+	class main
+	user root
+	oneshot
+	group root cache
+	seclabel u:r:hqread:s0
+
+on property:vendor.hq.do_factory_reset=1
+	start do_reset
+
+on property:vendor.hq.read_reset_flag=1
+	start read_reset
+
+service diaginsystem /system/bin/wprod action_insystem
+	disabled
+	user root
+	oneshot
+	seclabel u:r:system_server:s0
+
+on property:vendor.hq.diaginsystem=1
+	start diaginsystem
+
+service hwdiag /vendor/bin/hwdiag
+	class main
+	user root
+	group root system vendor_qti_diag sdcard_rw cache drmrpc
+
+on boot
+	setprop vendor.diag.inp 1
+	 chmod 664 /persist/.sn.bin
+	 chown system:system /persist/.sn.bin
+	 chmod 776 /persist/flag
+	 chmod 664 /persist/flag/MMI2.FLG
+	 chmod 664 /persist/flag/RUNIN.FLG
+	 start hwdiag
+# Huaqin hwdiag test end
+

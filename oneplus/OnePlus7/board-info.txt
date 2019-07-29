@@ -1,0 +1,3 @@
+require version-baseband=1.0.c6-00075-SM8150_GEN_PACK-1.206278.1.206452.1
+require version-trustzone=TZ.XF.5.2.2-196862
+require version-vendor=1562943868

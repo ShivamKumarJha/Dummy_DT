@@ -1,0 +1,66 @@
+on post-fs
+    #goodix
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+    chown system system /sys/class/dsi_hbm/hbm/enable
+    chown system system /sys/class/backlight/panel0-hbm/brightness
+
+on init
+#added touch gesture wake node permission
+    chown system /sys/devices/virtual/touch/tp_dev/gesture_on
+
+# Add factest service
+service factest /vendor/bin/factest
+	class main
+	user root
+	group root system vendor_qti_diag sdcard_rw cache drmrpc
+
+service rfs_for_fac /vendor/bin/rfs_for_fac
+	class main
+	user vendor_rfs
+	group root system vendor_rfs
+	oneshot
+
+on boot
+	start factest
+# factest end
+
+# add user thermal file
+on boot
+   chmod 0666 /sys/devices/system/cpu/cpu0/rq-stats/mpctl
+   chown system system /sys/devices/system/cpu/cpu0/rq-stats/mpctl
+
+# add for secure touch feature
+on boot
+   chmod 0660 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch_enable
+   chmod 0440 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch
+    insmod /vendor/lib/modules/cirrus_pinctrl.ko
+    insmod /vendor/lib/modules/cirrus_madera-core.ko
+    insmod /vendor/lib/modules/cirrus_irq-madera.ko
+    insmod /vendor/lib/modules/cirrus_madera.ko
+    insmod /vendor/lib/modules/arizona-ldo1.ko
+    insmod /vendor/lib/modules/arizona-micsupp.ko
+    insmod /vendor/lib/modules/extcon-madera.ko
+    insmod /vendor/lib/modules/cirrus_cs47l35.ko
+    insmod /vendor/lib/modules/cirrus_cs35l41_spi.ko
+    mkdir /mnt/vendor/persist/factory 0775 system system
+    mkdir /mnt/vendor/persist/factory/audio 0775 system system
+    mkdir /mnt/vendor/persist/factory/audio/spk 0775 system system
+    mkdir /mnt/vendor/persist/factory/audio/rcv 0775 system system
+    chmod  0664 /mnt/vendor/persist/factory/audio/spk/acc
+    chmod  0664 /mnt/vendor/persist/factory/audio/spk/status
+    chmod  0664 /mnt/vendor/persist/factory/audio/spk/temp
+    chmod  0664 /mnt/vendor/persist/factory/audio/spk/f0
+    chmod  0664 /mnt/vendor/persist/factory/audio/rcv/acc
+    chmod  0664 /mnt/vendor/persist/factory/audio/rcv/status
+    chmod  0664 /mnt/vendor/persist/factory/audio/rcv/temp
+    chmod  0664 /mnt/vendor/persist/factory/audio/rcv/f0
+   chmod 0664 /mnt/vendor/persist/factory/audio/rcv_acc
+   chmod 0664 /mnt/vendor/persist/factory/audio/spk_acc
+   chown system system /mnt/vendor/persist/factory/audio/rcv_acc
+   chown system system /mnt/vendor/persist/factory/audio/spk_acc
+
+# Factory reset start
+on property:vendor.wipe_data=1
+    factory_data_misc
+# Factory reset end

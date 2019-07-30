@@ -1,0 +1,38 @@
+import /vendor/etc/init/hw/init.lenovo.common.rc
+
+on post-fs
+    #goodix
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+    chown system system /sys/class/dsi_hbm/hbm/enable
+    chown system system /sys/class/backlight/panel0-hbm/brightness
+
+on init
+#added touch gesture wake node permission
+    chown system /sys/devices/virtual/touch/tp_dev/gesture_on
+
+# Add factest service
+service factest /system/bin/factest
+	class main
+	user root
+	group root
+
+#on boot
+on property:dev.bootcomplete=1
+	start factest
+# factest end
+
+# add for secure touch feature
+on boot
+   chmod 0660 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch_enable
+   chmod 0440 /sys/devices/platform/soc/a84000.i2c/i2c-3/3-005d/secure_touch
+on boot
+   chmod 0664 /persist/factory/audio/rcv_acc
+   chmod 0664 /persist/factory/audio/spk_acc
+   chown system system /persist/factory/audio/rcv_acc
+   chown system system /persist/factory/audio/spk_acc
+
+# add user thermal file
+on boot
+   chmod 0666 /sys/devices/system/cpu/cpu0/rq-stats/mpctl
+   chown system system /sys/devices/system/cpu/cpu0/rq-stats/mpctl

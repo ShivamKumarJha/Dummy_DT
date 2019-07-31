@@ -1,0 +1,3 @@
+on fs    
+    chown root system /dev/block/mmcblk0p53
+    chmod 0660 /dev/block/mmcblk0p53

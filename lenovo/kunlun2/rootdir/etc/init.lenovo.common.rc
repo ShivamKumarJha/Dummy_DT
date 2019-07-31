@@ -1,0 +1,26 @@
+#common config for all projects.
+
+on post-fs
+    # Set dm-verity property for system partition
+    verity_update_state
+
+#modify for enable diag
+on property:sys.diag.enable=1
+    setprop sys.usb.config ${ro.usb.firstboot.config}
+
+on property:ro.boot.adbon=true
+    setprop persist.sys.zui.dis_adb_auth true
+    setprop persist.sys.usb.config diag,adb
+
+on property:vendor.sys.charging.bl=enable
+	write /sys/class/backlight/panel0-backlight/brightness 255
+
+on property:vendor.sys.charging.bl=disable
+	write /sys/class/backlight/panel0-backlight/brightness 0
+
+on property:persist.vendor.overlay.zui.hdr=enable
+	write /sys/class/leds/wled/hdr_en 1
+
+on property:persist.vendor.overlay.zui.hdr=disable
+	write /sys/class/leds/wled/hdr_en 0
+

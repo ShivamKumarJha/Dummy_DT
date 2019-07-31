@@ -1,0 +1,10 @@
+on post-fs-data
+    chown system system /sys/devices/platform/soc/soc:fpc1020/wakeup_enable
+    chown system system /sys/devices/platform/soc/soc:fpc1020/handle_wakelock
+    chown system system /sys/devices/platform/soc/soc:fpc1020/device_prepare
+    chown system system /sys/devices/platform/soc/soc:fpc1020/hw_reset
+    chown system system /sys/devices/platform/soc/soc:fpc1020/irq
+    chown system system /sys/devices/platform/soc/soc:fpc1020/regulator_enable
+    chown system system /sys/devices/platform/soc/soc:fpc1020/pinctl_set
+    chown system system /sys/devices/platform/soc/soc:fpc1020/clk_enable
+

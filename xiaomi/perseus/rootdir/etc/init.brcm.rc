@@ -30,8 +30,8 @@ chown gps system /dev/bbd_patch
 chmod 0774 /dev/bbd_patch
 chown gps system /dev/bbd_sensor
 chmod 0774 /dev/bbd_sensor
-chown system system /dev/xiaomi_palm_sensor
-chmod 0666 /dev/xiaomi_palm_sensor
+chown system system /sys/class/touch/touch_dev/p_sensor
+chmod 0666 /sys/class/touch/touch_dev/p_sensor
 
 service lhd /vendor/bin/lhd /vendor/etc/lhd.conf
     class late_start

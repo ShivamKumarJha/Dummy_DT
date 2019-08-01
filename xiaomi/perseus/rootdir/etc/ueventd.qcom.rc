@@ -28,6 +28,8 @@
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     oem_2901
 
+/dev/xlog                 0660   system     audio
+
 /dev/genlock              0666   system     system
 /dev/wlan                 0660   wifi       wifi
 /dev/kgsl                 0666   system     system

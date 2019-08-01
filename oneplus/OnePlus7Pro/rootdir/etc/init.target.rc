@@ -79,6 +79,14 @@ on fs && property:ro.boot.mode=ftm_aging
 
 on fs && property:ro.boot.qe=1
     mount ext4 /dev/block/bootdevice/by-name/aging_mod /vendor/lib/modules-aging ro barrier=1 context=u:object_r:vendor_file:s0
+    setprop persist.sys.android.lognum 80
+    setprop persist.sys.event.lognum 30
+    setprop persist.sys.kernel.lognum 30
+    setprop persist.sys.radio.lognum 30
+    setprop persist.sys.android.logsize 102400
+    setprop persist.sys.event.logsize 102400
+    setprop persist.sys.kernel.logsize 102400
+    setprop persist.sys.radio.logsize 102400
 
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB

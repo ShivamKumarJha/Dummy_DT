@@ -167,7 +167,7 @@
             <item value="IFdpZmkgRXh0cmE=,18" />
         </string-array>
         <string name="carrier_name_string">O2 - UK</string>
-        <string name="vendor_carrier_eons_short">O2</string>
+        <string name="vendor_carrier_eons_short">O2-UK</string>
     </carrier_config>
     <carrier_config mcc="234" mnc="10" gid1="99FFFF" />
     <carrier_config mcc="234" mnc="10" gid1="61FFFF" />
@@ -266,7 +266,18 @@
         <boolean name="config_enable_password_callbarring" value="true" />
     </carrier_config>
     <carrier_config mcc="238" mnc="10" />
-    <carrier_config mcc="240" mnc="02" />
+    <carrier_config mcc="240" mnc="02">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="vendor_hide_wfc_preference_ui" value="true" />
+    </carrier_config>
+    <carrier_config mcc="240" mnc="08">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+        <string name="vendor_carrier_eons_short">Telenor</string>
+    </carrier_config>
     <carrier_config mcc="240" mnc="10" />
     <carrier_config mcc="242" mnc="01" />
     <carrier_config mcc="242" mnc="05" />
@@ -288,6 +299,13 @@
     <carrier_config mcc="260" mnc="02" />
     <carrier_config mcc="260" mnc="03" />
     <carrier_config mcc="260" mnc="05" />
+    <carrier_config mcc="260" mnc="06">
+        <string-array name="non_roaming_operator_string_array" num="3">
+            <item value="26001" />
+            <item value="26002" />
+            <item value="26003" />
+        </string-array>
+    </carrier_config>
     <carrier_config mcc="260" mnc="34" />
     <carrier_config mcc="262" mnc="01">
         <boolean name="carrier_volte_available_bool" value="true" />

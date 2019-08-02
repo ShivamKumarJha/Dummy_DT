@@ -1,0 +1,9 @@
+libqti-perfd-client.so
+libadsprpc.so
+libcdsprpc.so
+libsdsprpc.so
+libqvrservice_client.so
+libqvrcamera_client.so
+libOpenCL.so
+libfastcvopt.so
+libmcf-qc-fd-offline.so

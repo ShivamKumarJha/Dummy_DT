@@ -500,14 +500,14 @@ on property:persist.vendor.sys.pil_proxy_timeout=*
 on property:persist.vendor.ssr.restart_level=*
     start vendor.ssr_setup
 
-on property:persist.vendor.ssr.enable_ramdumps=1
+on property:persist.vendor.ssr.enable_ramdumps=1 && property:ro.boot.dp=0xB
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
     mkdir /data/vendor/ramdump_ssr 770 system system
 #   start vendor.ss_ramdump
 
-on property:persist.vendor.ssr.enable_ramdumps=0
+on property:persist.vendor.ssr.enable_ramdumps=0 || property:ro.boot.dp=0x0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    stop vendor.ss_ramdump
+#   stop vendor.ss_ramdump
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
@@ -538,7 +538,7 @@ on property:vendor.bluetooth.dun.status=running
 on property:vendor.bluetooth.dun.status=stopped
     stop vendor.bt-dun
 
-on property:ro.bluetooth.ftm_enabled=true
+on property:ro.boot.factorybuild=1
     start ftmd
 
 on property:vendor.bluetooth.startbtsnoop=true
@@ -654,10 +654,10 @@ service vendor.bt_logger /system/bin/bt_logger
    disabled
    oneshot
 
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
+service ftmd /vendor/bin/ftmdaemon -n -dd
     class late_start
     user root
-    group bluetooth net_bt_admin misc net_bt_stack diag net_bt
+    group root system vendor_qti_diag
     disabled
     oneshot
 

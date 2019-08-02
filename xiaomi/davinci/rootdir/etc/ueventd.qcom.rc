@@ -344,6 +344,12 @@ firmware_directories /vendor/firmware_mnt/image/
 # Kmsg device
 /dev/kmsg                                               0620   root       system
 
+# mius iio devices
+/dev/iio:device*                                        0660   system     system
+/sys/devices/platform/us_prox.0/iio:device* buffer/enable                  0600 system system
+/sys/devices/platform/us_prox.0/iio:device* scan_elements/in_proximity_en  0600 system system
+/sys/devices/platform/us_prox.0/iio:device* scan_elements/in_timestamp_en  0600 system system
+
 # LED class devices
 /sys/class/leds/red      delay_on     0640    system    system
 /sys/class/leds/red      delay_off    0640    system    system
@@ -402,3 +408,7 @@ firmware_directories /vendor/firmware_mnt/image/
 #QG device
 /dev/qg               0660   system     system
 /dev/qg_battery       0660   system     system
+
+# Elliptic
+/dev/elliptic0                 0644   system       system
+/dev/elliptic1                 0644   system       system

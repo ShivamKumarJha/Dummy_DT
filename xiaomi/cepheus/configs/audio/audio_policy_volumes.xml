@@ -84,20 +84,20 @@ volume index from 0 to 100.
         <point>100,0</point>
     </volume>
     <volume stream="AUDIO_STREAM_MUSIC" deviceCategory="DEVICE_CATEGORY_SPEAKER">
-        <point>1,-5200</point>
-        <point>13,-4500</point>
-        <point>20,-4000</point>
-        <point>27,-3500</point>
+        <point>1,-5500</point>
+        <point>13,-4300</point>
+        <point>20,-3800</point>
+        <point>27,-3400</point>
         <point>33,-3000</point>
         <point>40,-2600</point>
-        <point>47,-2300</point>
-        <point>53,-2000</point>
-        <point>60,-1601</point>
-        <point>66,-1600</point>
-        <point>73,-1200</point>
-        <point>80,-900</point>
-        <point>87,-600</point>
-        <point>93,-300</point>
+        <point>47,-2200</point>
+        <point>53,-1900</point>
+        <point>60,-1600</point>
+        <point>66,-1300</point>
+        <point>73,-1000</point>
+        <point>80,-700</point>
+        <point>87,-400</point>
+        <point>93,-200</point>
         <point>100,0</point>
     </volume>
     <volume stream="AUDIO_STREAM_MUSIC" deviceCategory="DEVICE_CATEGORY_EARPIECE"

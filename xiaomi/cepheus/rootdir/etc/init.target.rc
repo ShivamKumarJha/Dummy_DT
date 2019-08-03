@@ -120,6 +120,7 @@ on post-fs-data
     mkdir /data/vendor/nfc 0770 nfc nfc
     chmod 666 /sys/class/drm/card0-DSI-1/disp_count
     mkdir /data/vendor/mqsas_common 0771 system system
+    mkdir /data/vendor/secure_element 0777 system system
 
 # add charge_logger service for dump charge message
 service charge_logger /vendor/bin/charge_logger

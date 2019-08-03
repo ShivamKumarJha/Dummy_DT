@@ -30,6 +30,9 @@
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
      <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- Boolean indicating if current platform supports HFP inband ringing -->
+     <bool name="config_bluetooth_hfp_inband_ringing_support">false</bool>
+
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
      <bool name="config_bluetooth_le_peripheral_mode_supported">false</bool>
 
@@ -162,6 +165,16 @@
     <!-- Whether device supports double tap to wake -->
      <bool name="config_supportDoubleTapWake">false</bool>
 
+    <!-- Boolean indicating if current platform supports HFP inband ringing -->
+     <bool name="config_supportSystemNavigationKeys">false</bool>
+
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+         due to the proximity sensor.  This resource should only be set to true
+         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+         Otherwise, the device may fail to wake out of suspend reliably.
+         The default is false. -->
+     <bool name="config_suspendWhenScreenOffDueToProximity">false</bool>
+
     <!-- True if the device supports Sustained Performance Mode-->
      <bool name="config_sustainedPerformanceModeSupported">false</bool>
 
@@ -218,7 +231,7 @@
      <bool name="skip_restoring_network_selection">false</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">27.269989dip</dimen>
+     <dimen name="status_bar_height_portrait">24.0dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -317,20 +330,6 @@
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
 
-    <!-- The bounding path of the cutout region of the main built-in display.
-         Must either be empty if there is no cutout region, or a string that is parsable by
-         {@link android.util.PathParser}.
-    
-         The path is assumed to be specified in display coordinates with pixel units and in
-         the display's native orientation, with the origin of the coordinate system at the
-         center top of the display.
-    
-         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
-         appended after the path string to interpret coordinates in dp instead of px units.
-         Note that a physical cutout should be configured in pixels for the best results.
-    -->
-     <string name="config_mainBuiltInDisplayCutout">M-76.9985203,12.6526029 C-66.7142769,24.2251334 -58.6436698,34.9109506 -52.7866989,44.7100544 C-41.8225823,63.0604145 -22.0817847,75 0.00269388614,75 C22.0871725,75 41.8225823,63.0604145 52.7920867,44.7100544 C58.6467515,34.9122099 66.7153603,24.2272938 76.9979132,12.6553061 L77,0 L-76.9991414,0 L-76.9985203,12.6526029 Z</string>
-
     <!--  Define Google play service package for FRP-->
      <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
@@ -350,7 +349,6 @@
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessDisplayValuesNits">
-        <item>4</item>
         <item>5</item>
         <item>9</item>
         <item>16</item>
@@ -360,6 +358,7 @@
         <item>48</item>
         <item>61</item>
         <item>83</item>
+        <item>87</item>
         <item>87</item>
         <item>87</item>
         <item>88</item>
@@ -415,16 +414,16 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>17</item>
         <item>21</item>
         <item>40</item>
         <item>77</item>
         <item>111</item>
-        <item>144</item>
+        <item>133</item>
         <item>175</item>
         <item>245</item>
         <item>302</item>
-        <item>348</item>
+        <item>322</item>
+        <item>358</item>
         <item>382</item>
         <item>404</item>
         <item>406</item>
@@ -541,6 +540,60 @@
         <item>3500</item>
         <item>4000</item>
         <item>4500</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The brightening threshold is calculated as
+         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisBrightLevels">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>400</item>
+        <item>600</item>
+        <item>1000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The darkening threshold is calculated as
+         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisDarkLevels">
+        <item>800</item>
+        <item>800</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+         values by calculating the index to use for lookup and then setting the constraint value
+         to the corresponding value of the array. The new brightening hysteresis constraint value
+         is the n-th element of config_dynamicHysteresisBrightLevels, and the new darkening
+         hysteresis constraint value is the n-th element of config_dynamicHysteresisDarkLevels.
+         The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+         condition                      calculated index
+         value < lux[0]                 0
+         lux[n] <= value < lux[n+1]     n+1
+         lux[MAX] <= value              MAX+1 -->
+    <integer-array name="config_dynamicHysteresisLuxLevels">
+        <item>2</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>800</item>
+        <item>2000</item>
+        <item>4000</item>
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->

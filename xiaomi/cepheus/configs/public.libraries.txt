@@ -25,12 +25,11 @@ libarcsoft_portrait_lighting.so
 libarcsoft_portrait_lighting_c.so
 libarcsoft_high_dynamic_range.so
 libarcsoft_low_light_hdr.so
-libarcsoft_supernight.so
 libmibokeh_855.so
 libarcsoft_distortion_correction.so
 libarcsoft_bodyslim.so
-libAlmalenceSrInterface.so
 libalCFR.so
 libcvp.so
 libcvp_stub.so
 libcvp_common.so
+libalhLDC.so

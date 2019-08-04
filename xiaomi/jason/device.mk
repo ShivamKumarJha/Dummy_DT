@@ -100,7 +100,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/system/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/system/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.consumerir.xml \
     frameworks/native/data/etc/system/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.fingerprint.xml \
-    frameworks/native/data/etc/system/android.hardware.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.light.xml \
     frameworks/native/data/etc/system/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.location.gps.xml \
     frameworks/native/data/etc/system/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/system/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/system/android.hardware.nfc.xml \

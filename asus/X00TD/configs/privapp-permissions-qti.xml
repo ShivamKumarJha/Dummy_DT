@@ -225,4 +225,10 @@ It allows additional grants on top of privapp-permissions-platform.xml
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
     </privapp-permissions>
 
+    <!-- Huaqin add by litao for cts fail on 20190617 begin-->
+    <privapp-permissions package="com.google.android.apps.wellbeing">
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+    </privapp-permissions>
+    <!-- Huaqin add by litao for cts fail on 20190617 end-->
+
 </permissions>

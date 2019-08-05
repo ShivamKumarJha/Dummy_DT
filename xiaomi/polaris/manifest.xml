@@ -227,12 +227,12 @@
     <hal format="hidl">
         <name>android.hardware.power</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.2</version>
         <interface>
             <name>IPower</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IPower/default</fqname>
+        <fqname>@1.2::IPower/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio</name>
@@ -987,6 +987,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IMiSys/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.xiaomi.hardware.misys</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IMiSys</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::IMiSys/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mlipay</name>

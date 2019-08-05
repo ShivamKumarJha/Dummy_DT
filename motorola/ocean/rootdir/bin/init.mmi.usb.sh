@@ -181,7 +181,7 @@ case "$target" in
         setprop vendor.usb.rndis.func.name "gsi"
         setprop vendor.usb.rmnet.func.name "gsi"
     ;;
-    "talos")
+    "sm6150")
         qcom_usb_config="diag,serial_cdev,rmnet"
         qcom_adb_usb_config="diag,serial_cdev,rmnet,adb"
         bpt_usb_config="diag,serial,rmnet"

@@ -395,6 +395,8 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/graphics/fb0     msm_cmd_autorefresh_en   0664    system  graphics
 /sys/class/graphics/fb0     dynamic_bitclk           0664    system  graphics
 
+/sys/devices/virtual/hdcp/msm_hdcp  min_level_change 0664    system  graphics
+
 #Egistec fingerprint
 /dev/esfp0                0660   system     system
 
@@ -407,3 +409,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/leds/vibrator activate     0660    system    system
 /sys/class/leds/vibrator extra        0660    system    system
 /sys/class/leds/vibrator seq          0660    system    system
+
+# Trustonic TEE device
+/dev/mobicore             0600   system     system
+/dev/mobicore-user        0666   system     system

@@ -35,11 +35,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-  # create symlink for vendor mount points
-    symlink /vendor/firmware_mnt /firmware
-    symlink /vendor/bt_firmware /bt_firmware
-    symlink /vendor/dsp /dsp
-
   # Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_reg
@@ -163,7 +158,7 @@ on boot
 
 #   Assign TCP buffer thresholds to be ceiling value of technology maximums
 #   Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max 16777216
+    write /proc/sys/net/core/rmem_max  16777216
     write /proc/sys/net/core/wmem_max 16777216
 
     # To prevent out of order acknowledgements from making
@@ -208,6 +203,7 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
     # Create directory used for display
+    # for backward compatibility
     mkdir /mnt/vendor/persist/display 0770 system graphics
 
     # Create vpp directory
@@ -340,9 +336,6 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
-    mkdir /data/hostapd 0770 system wifi
-
     # Create /data/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
 
@@ -395,12 +388,13 @@ on post-fs-data
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/dm-2/queue/read_ahead_kb 2048
 
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
     #Create dir for TUI
-    mkdir /data/vendor/tui 0600 system drmrpc
+    mkdir /data/vendor/tui 0700 system system
 
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
@@ -534,9 +528,15 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
     user root
     oneshot
 
+service qcom-c_late-sh /vendor/bin/init.class_late.sh
+    class late_start
+    user root
+    oneshot
+
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start wcnss-service
+    start qcom-c_late-sh
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -802,8 +802,9 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
 
 #service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
 #    class main
-#    user root
-#    group root
+#    user wifi
+#    group wifi system inet net_admin
+#    capabilities NET_ADMIN
 #    oneshot
 
 #service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
@@ -962,6 +963,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    disabled
 
 service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
     interface android.hardware.wifi.hostapd@1.0::IHostapd default
@@ -1137,23 +1139,15 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     disabled
     oneshot
 
+#Mixed HWC versions among targets
 on property:init.svc.surfaceflinger=restarting
     stop  vendor.hwcomposer-2-1
+    stop  vendor.hwcomposer-2-2
     start vendor.hwcomposer-2-1
+    start vendor.hwcomposer-2-2
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
-
-# Logcat dump daemon, dumps logs to logdump partition
-service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
-    class core
-    writepid /dev/cpuset/system-background/tasks
-    seclabel u:r:logdumpd:s0
-    disabled
-
-# Logdumpd is enabled only for userdebug non-perf build
-on property:ro.logdumpd.enabled=1
-    start logdumpd
 
 service time_daemon /system/vendor/bin/time_daemon
     class main
@@ -1177,7 +1171,7 @@ service seemp_healthd /vendor/bin/seemp_healthd
     user system
     group system
 
-service power_off_alarm /vendor/bin/power_off_alarm
+service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
     disabled
@@ -1223,4 +1217,3 @@ service vendor.wifilearner /system/vendor/bin/wifilearner
     user wifi
     group wifi
     oneshot
-

@@ -9,7 +9,7 @@ service audiopara-sh /vendor/bin/init.audio.specified_para.sh
     oneshot
 
 on early-init
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules snd_soc_tfa9874 st21nfc sx932x_sar abov_sar snd_soc_tfa9874 drv2624_mmi aw8624 tps61280
+    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules snd_soc_tfa9874 st21nfc sx932x_sar abov_sar snd_soc_tfa9874 drv2624_mmi aw8624 tps61280 mcDrvModule
 
 on early-init && property:ro.bootmode=mot-factory
     insmod /vendor/lib/modules/moto_f_usbnet.ko

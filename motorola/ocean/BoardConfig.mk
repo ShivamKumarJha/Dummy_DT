@@ -2,7 +2,7 @@ DEVICE_PATH := device/motorola/ocean
 BOARD_VENDOR := motorola
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-03-01
+VENDOR_SECURITY_PATCH := 2019-06-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

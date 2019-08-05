@@ -35,15 +35,11 @@ service fingerprintd /system/bin/fingerprintd
     user system
     group fingerp
 
-on nonencrypted
+on property:sys.boot_completed=1
     # For cross-reboot FFU script tracking (unencrypted case)
     mkdir /data/vendor/ffu 0750 shell shell
     start emmc_ffu
 
-on property:vold.decrypt=trigger_restart_framework
-    # For cross-reboot FFU script tracking (encrypted case)
-    mkdir /data/vendor/ffu 0750 shell shell
-    start emmc_ffu
 
 service emmc_ffu /vendor/bin/emmc_ffu.sh
     user root

@@ -685,7 +685,6 @@
 	</path>
 
 	<path name="voice-headphones">
-		<ctl name="RX1 Digital Volume" value="77" />
 		<ctl name="RX1 MIX1 INP1" value="RX1" />
 		<ctl name="RDAC2 MUX" value="RX1" />
 		<ctl name="HPHL" value="Switch" />
@@ -806,7 +805,6 @@
 	<!-- TTY devices -->
 	<path name="tty-headphones">
 		<path name="voice-headphones" />
-		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="voice-tty-full-headphones">
@@ -850,7 +848,6 @@
 
 	<path name="voice-line">
 		<path name="voice-headphones" />
-		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="speaker-and-line">

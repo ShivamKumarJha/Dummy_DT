@@ -1,6 +1,7 @@
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/Bluetooth_audio_V1.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/Bluetooth_audio_V1.cfg \
+    $(LOCAL_PATH)/configs/audio/MM_audio_playback_capture_v2.0.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/MM_audio_playback_capture_v2.0.cfg \
     $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_ext_spkr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_ext_spkr.conf \
@@ -115,10 +116,12 @@ PRODUCT_PACKAGES += \
     apanic_copy.sh \
     apanic_save.sh \
     emmc_ffu.sh \
+    emmc_ffu_13.sh \
     emmc_ffu_15.sh \
     emmc_ffu_90.sh \
     hardware_revisions.sh \
     init.audio.specified_para.sh \
+    init.class_late.sh \
     init.class_main.sh \
     init.crda.sh \
     init.gbmods.sh \
@@ -141,8 +144,6 @@ PRODUCT_PACKAGES += \
     init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.syspart_fixup.sh \
-    init.qcom.wifi.sh \
     init.qti.fm.sh \
     init.qti.ims.sh \
     init.qti.qseecomd.sh \

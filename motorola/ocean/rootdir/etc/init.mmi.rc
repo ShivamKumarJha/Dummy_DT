@@ -30,6 +30,7 @@ on early-boot
     write /proc/sys/kernel/poweroff_cmd "/system/bin/reboot -p"
 
 on early-init
+    insmod /vendor/lib/modules/cci_intf.ko
 
 on init
     chown system log /sys/fs/pstore/console-ramoops-0
@@ -80,7 +81,6 @@ on post-fs
     mkdir /mnt/vendor/persist/factory/regulatory 0755 mot_tcmd system
     mkdir /mnt/vendor/persist/public 0755 mot_tcmd mot_tcmd
     mkdir /persist/public/atvc 0770 mot_atvc shell
-    mkdir /mnt/vendor/persist/public/battd 0755 mot_accy mot_tcmd
     mkdir /mnt/vendor/persist/public/att_dm 0775 radio mot_tcmd
     mkdir /mnt/vendor/persist/public/hiddenmenu 0775 radio mot_tcmd
     mkdir /mnt/vendor/persist/public/hiddenmenu/data 0775 system mot_tcmd

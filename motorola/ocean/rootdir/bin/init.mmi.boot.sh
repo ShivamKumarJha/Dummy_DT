@@ -148,16 +148,3 @@ then
 		fi
 	fi
 fi
-
-# ro.vendor.bootreason, which be used to indicate kpanic/wdt boot status.
-# When ro.boot.last_powerup_reason is set, it denotes this is a 2nd reboot
-# after kpanic/wdt, we set ro.bootreason as coldboot to copy logs.
-# Otherwise,we would set ro.bootreason the same as ro.boot.bootreason.
-bootreason=$(getprop ro.boot.bootreason)
-last_power_up=$(getprop ro.boot.last_powerup_reason)
-if [ ! -z "$last_power_up" ]
-then
-	setprop ro.vendor.bootreason "coldboot"
-else
-	setprop ro.vendor.bootreason $bootreason
-fi

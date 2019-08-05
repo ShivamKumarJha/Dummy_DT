@@ -98,6 +98,11 @@
 	<ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
 	<ctl name="MultiMedia8 Mixer AFE_PCM_TX" value="1" />
 	<ctl name="HFP_INT_UL_HL Switch" value="0" />
+
+	<!-- Handset Voice Sidetone -->
+	<ctl name="Voice Sidetone Enable" value="0" />
+	<ctl name="TX1 HPF Switch" value="0" />
+
 	<!-- Voice BTSCO -->
 	<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_8KHZ" />
 	<ctl name="MultiMedia6 Mixer TERT_MI2S_TX" value="0" />
@@ -677,7 +682,6 @@
 
 	<path name="speaker-mic">
 		<path name="adc1" />
-		<ctl name="IIR1 INP1 MUX" value="DEC1" />
 	</path>
 
 	<path name="handset">
@@ -685,8 +689,9 @@
 	</path>
 
 	<path name="handset-mic">
-		<path name="adc1" />
-		<ctl name="IIR1 INP1 MUX" value="DEC1" />
+		<ctl name="ADC1 Volume" value="4" />
+		<ctl name="DEC1 MUX" value="ADC1" />
+		<ctl name="ADC1_INP1 Switch" value="1" />
 	</path>
 
 	<path name="headphones">
@@ -702,21 +707,15 @@
 	<path name="headset-mic">
 		<path name="adc2" />
 		<ctl name="ADC2 MUX" value="INP2" />
-		<ctl name="IIR1 INP1 MUX" value="DEC1" />
-	</path>
-
-	<path name="sidetone-iir">
-		<ctl name="IIR1 Enable Band1" value="1" />
-		<ctl name="IIR1 Enable Band2" value="1" />
-		<ctl name="IIR1 Enable Band3" value="1" />
-		<ctl name="IIR1 Enable Band4" value="1" />
-		<ctl name="IIR1 Enable Band5" value="1" />
 	</path>
 
 	<path name="sidetone-handset">
-		<path name="sidetone-iir" />
-		<ctl name="IIR1 INP1 Volume" value="53" />
-		<ctl name="RX1 MIX2 INP1" value="IIR1" />
+		<ctl name="TX1 HPF Switch" value="1" />
+		<ctl name="Voice Sidetone Enable" value="1" />
+	</path>
+
+	<path name="sidetone-hac-handset">
+		<path name="sidetone-handset" />
 	</path>
 
 	<path name="sidetone-headphones">
@@ -758,7 +757,6 @@
 	</path>
 
 	<path name="voice-headphones">
-		<ctl name="RX1 Digital Volume" value="77" />
 		<ctl name="RX1 MIX1 INP1" value="RX1" />
 		<ctl name="RDAC2 MUX" value="RX1" />
 		<ctl name="HPHL" value="Switch" />
@@ -790,7 +788,7 @@
 	</path>
 
 	<path name="camcorder-mic">
-		<path name="adc3" />
+		<path name="handset-mic" />
 	</path>
 
 	<path name="camcorder-mic-bf">
@@ -831,15 +829,21 @@
 	</path>
 
 	<path name="dmic-endfire">
-		<path name="speaker-dmic-endfire" />
+		<ctl name="MI2S_TX Channels" value="Two" />
+		<ctl name="ADC1 Volume" value="4" />
+		<ctl name="ADC3 Volume" value="4" />
+		<ctl name="DEC1 MUX" value="ADC1" />
+		<ctl name="DEC2 MUX" value="ADC2" />
+		<ctl name="ADC2 MUX" value="INP3" />
+		<ctl name="ADC1_INP1 Switch" value="1" />
 	</path>
 
 	<path name="voice-dmic-ef-tmus">
-		<path name="dmic-endfire" />
+		<path name="speaker-dmic-endfire" />
 	</path>
 
 	<path name="voice-dmic-ef">
-		<path name="dmic-endfire" />
+		<path name="speaker-dmic-endfire" />
 	</path>
 
 	<path name="voice-speaker-dmic-ef">
@@ -883,7 +887,6 @@
 	<!-- TTY devices -->
 	<path name="tty-headphones">
 		<path name="voice-headphones" />
-		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="voice-tty-full-headphones">
@@ -927,7 +930,6 @@
 
 	<path name="voice-line">
 		<path name="voice-headphones" />
-		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="speaker-and-line">

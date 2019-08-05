@@ -114,6 +114,7 @@ PRODUCT_COPY_FILES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.edge_sense.sh \
+    init.firstboot.sh \
     init.insmod.sh \
     init.qcom.devstart.sh \
     init.qcom.ipastart.sh \

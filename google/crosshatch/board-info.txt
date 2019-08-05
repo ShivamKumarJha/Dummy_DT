@@ -1,2 +1,0 @@
-require version-baseband=4.0.c2.17-00017-SDM845_GEN_PACK-1.189646.2.190254.1
-require version-vendor=1558678513

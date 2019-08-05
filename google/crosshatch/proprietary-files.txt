@@ -3,11 +3,13 @@
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libadsprpc.so
+vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libsdsprpc.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
+vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastcvopt.so
 vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
@@ -129,11 +131,13 @@ vendor/etc/acdbdata/OEM/sdm845-tavil-snd-card/Speaker_cal.acdb
 vendor/etc/acdbdata/adsp_avs_config.acdb
 
 # Audio-Hardware
+vendor/lib/hw/audio.primary.default.so
 vendor/lib/hw/audio.primary.sdm845.so
 vendor/lib/soundfx/libqcompostprocbundle.so
 vendor/lib/soundfx/libqcomvisualizer.so
 vendor/lib/soundfx/libqcomvoiceprocessing.so
 vendor/lib/soundfx/libvolumelistener.so
+vendor/lib64/hw/audio.primary.default.so
 vendor/lib64/hw/audio.primary.sdm845.so
 vendor/lib64/soundfx/libqcompostprocbundle.so
 vendor/lib64/soundfx/libqcomvisualizer.so
@@ -224,6 +228,7 @@ vendor/lib/libsns_low_lat_stream_stub.so
 vendor/lib/libsnsdiaglog.so
 vendor/lib/libswregistrationalgo.so
 vendor/lib/libswvdec.so
+vendor/lib/libvd6281.so
 vendor/lib/libvideoutils.so
 vendor/lib64/camera/com.google.tuned.pixel3_imx355_normal.bin
 vendor/lib64/camera/com.google.tuned.pixel3_imx355_wide.bin
@@ -296,6 +301,7 @@ vendor/lib64/libsns_low_lat_stream_stub.so
 vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libswvdec.so
 vendor/lib64/libsysmon_cdsp_skel.so
+vendor/lib64/libvd6281.so
 
 # Camera-configs
 vendor/etc/camera/camera_imu_average_calibration.xml
@@ -354,13 +360,38 @@ vendor/lib64/libtzdrmgenprov.so
 # DRM-Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/firmware/cppf.b00
+vendor/firmware/cppf.b01
+vendor/firmware/cppf.b02
+vendor/firmware/cppf.b03
+vendor/firmware/cppf.b04
+vendor/firmware/cppf.b05
+vendor/firmware/cppf.b06
+vendor/firmware/cppf.b07
+vendor/firmware/cppf.mbn
+vendor/firmware/cppf.mdt
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.b04
+vendor/firmware/widevine.b05
+vendor/firmware/widevine.b06
+vendor/firmware/widevine.b07
+vendor/firmware/widevine.mbn
+vendor/firmware/widevine.mdt
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
 vendor/lib64/libwvhidl.so
+vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
 # Display-Hardware
+-lib/libsdm-disp-apis.so
+-lib64/libsdm-disp-apis.so
 vendor/bin/hw/vendor.qti.hardware.display.allocator@1.0-service
 vendor/etc/init/vendor.qti.hardware.display.allocator@1.0-service.rc
 vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-qti-display.so
+vendor/lib/hw/gralloc.default.so
 vendor/lib/hw/gralloc.sdm845.so
 vendor/lib/hw/hwcomposer.sdm845.so
 vendor/lib/hw/memtrack.sdm845.so
@@ -379,6 +410,7 @@ vendor/lib/libsdmextension.so
 vendor/lib/libsdmutils.so
 vendor/lib/vendor.display.config@1.0.so
 vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-qti-display.so
+vendor/lib64/hw/gralloc.default.so
 vendor/lib64/hw/gralloc.sdm845.so
 vendor/lib64/hw/hwcomposer.sdm845.so
 vendor/lib64/hw/memtrack.sdm845.so
@@ -402,6 +434,8 @@ vendor/etc/qdcm_calib_data_S6E3HA8_6.3_command_mode_panel.xml
 vendor/etc/qdcm_calib_data_sw43408_cmd_mode_dsc_dsi_panel.xml
 
 # ESE-Powermanager
+lib/vendor.qti.esepowermanager@1.0.so
+lib64/vendor.qti.esepowermanager@1.0.so
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
 vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
@@ -412,8 +446,6 @@ vendor/lib64/vendor.qti.esepowermanager@1.0.so
 # FM
 -lib64/vendor.qti.hardware.fm@1.0.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
-
-# Factory
 
 # Fingerprint
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service.fpc
@@ -526,16 +558,6 @@ vendor/firmware/cpe_9340.b16
 vendor/firmware/cpe_9340.b18
 vendor/firmware/cpe_9340.b20
 vendor/firmware/cpe_9340.mdt
-vendor/firmware/cppf.b00
-vendor/firmware/cppf.b01
-vendor/firmware/cppf.b02
-vendor/firmware/cppf.b03
-vendor/firmware/cppf.b04
-vendor/firmware/cppf.b05
-vendor/firmware/cppf.b06
-vendor/firmware/cppf.b07
-vendor/firmware/cppf.mbn
-vendor/firmware/cppf.mdt
 vendor/firmware/crbtfw21.tlv
 vendor/firmware/crnv21.bin
 vendor/firmware/crus_sp_config_b1_rx.bin
@@ -948,16 +970,6 @@ vendor/firmware/venus.b03
 vendor/firmware/venus.b04
 vendor/firmware/venus.mbn
 vendor/firmware/venus.mdt
-vendor/firmware/widevine.b00
-vendor/firmware/widevine.b01
-vendor/firmware/widevine.b02
-vendor/firmware/widevine.b03
-vendor/firmware/widevine.b04
-vendor/firmware/widevine.b05
-vendor/firmware/widevine.b06
-vendor/firmware/widevine.b07
-vendor/firmware/widevine.mbn
-vendor/firmware/widevine.mdt
 vendor/firmware/wil6210.brd
 vendor/firmware/wil6210.fw
 vendor/firmware/wil6210_sparrow_plus_ftm.fw
@@ -1087,6 +1099,11 @@ vendor/lib64/libsdm-diag.so
 -vendor/lib64/libsdm-disp-vndapis.so
 vendor/lib64/libtinyxml2_1.so
 
+# HotwordEnrollment
+-priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
+-priv-app/HotwordEnrollmentTGoogleWCD9340/HotwordEnrollmentTGoogleWCD9340.apk
+-priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
+
 # IOP
 vendor/lib/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@1.0.so
@@ -1098,6 +1115,25 @@ vendor/firmware/ipa_fws.b02
 vendor/firmware/ipa_fws.b03
 vendor/firmware/ipa_fws.b04
 vendor/firmware/ipa_fws.mdt
+
+# Kernel-Modules
+vendor/lib/modules/ftm5.ko
+vendor/lib/modules/heatmap.ko
+vendor/lib/modules/modules.alias
+vendor/lib/modules/modules.dep
+vendor/lib/modules/pinctrl-wcd.ko
+vendor/lib/modules/sec_touch.ko
+vendor/lib/modules/snd-soc-cs35l36.ko
+vendor/lib/modules/snd-soc-sdm845-max98927.ko
+vendor/lib/modules/snd-soc-sdm845.ko
+vendor/lib/modules/snd-soc-wcd-spi.ko
+vendor/lib/modules/snd-soc-wcd934x.ko
+vendor/lib/modules/snd-soc-wcd9xxx.ko
+vendor/lib/modules/videobuf2-memops.ko
+vendor/lib/modules/videobuf2-vmalloc.ko
+vendor/lib/modules/wcd-core.ko
+vendor/lib/modules/wcd-dsp-glink.ko
+vendor/lib/modules/wlan.ko
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
@@ -1219,6 +1255,12 @@ vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # Postprocessing
+lib/vendor.display.color@1.0.so
+lib/vendor.display.color@1.1.so
+lib/vendor.display.postproc@1.0.so
+lib64/vendor.display.color@1.0.so
+lib64/vendor.display.color@1.1.so
+lib64/vendor.display.postproc@1.0.so
 vendor/bin/mm-pp-dpps
 vendor/lib/libdisp-aba.so
 vendor/lib/libmm-hdcpmgr.so
@@ -1284,6 +1326,7 @@ vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 etc/permissions/embms.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
+etc/sysconfig/qti_whitelist.xml
 framework/QtiTelephonyServicelibrary.jar
 framework/embmslibrary.jar
 framework/qcrilhook.jar
@@ -1356,6 +1399,7 @@ vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql
 vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 
 # Radio-IMS
+-app/uceShimService/uceShimService.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
 framework/com.qualcomm.qti.uceservice-V2.0-java.jar
 framework/vendor.qti.ims.callinfo-V1.0-java.jar
@@ -1365,8 +1409,10 @@ lib/lib-imsvideocodec.so
 lib/lib-imsvt.so
 lib/lib-imsvtextutils.so
 lib/lib-imsvtutils.so
+lib/libdiag_system.so
 lib/libimscamera_jni.so
 lib/libimsmedia_jni.so
+lib/librcc.so
 lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
 lib64/com.qualcomm.qti.imscmservice@1.0.so
@@ -1377,6 +1423,7 @@ lib64/lib-imsvtextutils.so
 lib64/lib-imsvtutils.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
+lib64/librcc.so
 lib64/vendor.qti.ims.callinfo@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
 vendor/bin/ims_rtp_daemon
@@ -1606,7 +1653,6 @@ vendor/lib/libdisplayconfig.so
 vendor/lib/libeaselmanager_client.so
 vendor/lib/libelmyraproto-crosshatch.so
 vendor/lib/libfastcrc.so
-vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libgoog_catpipe.so
 vendor/lib/libgoog_llv_gpu.so
 vendor/lib/libgptutils.so
@@ -1648,7 +1694,6 @@ vendor/lib/libstagefright_soft_c2vp8enc.so
 vendor/lib/libstagefright_soft_c2vp9dec.so
 vendor/lib/libstagefright_soft_c2vp9enc.so
 vendor/lib/libsysmon_cdsp_skel.so
-vendor/lib/libvd6281.so
 vendor/lib/libvsc.so
 vendor/lib/soundfx/libmalistener.so
 vendor/lib/soundfx/libqcomvoiceprocessingdescriptors.so
@@ -1659,7 +1704,6 @@ vendor/lib64/libdisplayconfig.so
 vendor/lib64/libeaselmanager_client.so
 vendor/lib64/libeaselsystem.blue.so
 vendor/lib64/libelmyraproto-crosshatch.so
-vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libgoog_catpipe.so
 vendor/lib64/libgoog_flicker.so
 vendor/lib64/libgoog_llv_gpu.so
@@ -1680,7 +1724,6 @@ vendor/lib64/libspiris.so
 vendor/lib64/libstagefright_bufferpool@1.0.so
 vendor/lib64/libstagefright_codec2_vndk.so
 vendor/lib64/libtextclassifier_hash.so
-vendor/lib64/libvd6281.so
 vendor/lib64/libvsc.so
 vendor/lib64/libwlcproto.so
 vendor/lib64/nos_app_avb.so

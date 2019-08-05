@@ -30,6 +30,9 @@
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
      <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- Boolean indicating if current platform supports HFP inband ringing -->
+     <bool name="config_bluetooth_hfp_inband_ringing_support">false</bool>
+
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
      <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
@@ -161,6 +164,16 @@
 
     <!-- Whether device supports double tap to wake -->
      <bool name="config_supportDoubleTapWake">false</bool>
+
+    <!-- Boolean indicating if current platform supports HFP inband ringing -->
+     <bool name="config_supportSystemNavigationKeys">false</bool>
+
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+         due to the proximity sensor.  This resource should only be set to true
+         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+         Otherwise, the device may fail to wake out of suspend reliably.
+         The default is false. -->
+     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
     <!-- True if the device supports Sustained Performance Mode-->
      <bool name="config_sustainedPerformanceModeSupported">false</bool>
@@ -323,6 +336,9 @@
     <!-- MMS user agent string -->
      <string name="config_mms_user_agent">Android-Mms/2.0</string>
 
+    <!-- MMS user agent prolfile url -->
+     <string name="config_mms_user_agent_profile_url">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+
     <!--  Define Google play service package for FRP-->
      <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
@@ -394,6 +410,60 @@
         <item>1500</item>
         <item>3000</item>
         <item>3500</item>
+        <item>4000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The brightening threshold is calculated as
+         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisBrightLevels">
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The darkening threshold is calculated as
+         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisDarkLevels">
+        <item>800</item>
+        <item>800</item>
+        <item>800</item>
+        <item>800</item>
+        <item>800</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+         values by calculating the index to use for lookup and then setting the constraint value
+         to the corresponding value of the array. The new brightening hysteresis constraint value
+         is the n-th element of config_dynamicHysteresisBrightLevels, and the new darkening
+         hysteresis constraint value is the n-th element of config_dynamicHysteresisDarkLevels.
+         The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+         condition                      calculated index
+         value < lux[0]                 0
+         lux[n] <= value < lux[n+1]     n+1
+         lux[MAX] <= value              MAX+1 -->
+    <integer-array name="config_dynamicHysteresisLuxLevels">
+        <item>2</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>800</item>
+        <item>2000</item>
         <item>4000</item>
     </integer-array>
 

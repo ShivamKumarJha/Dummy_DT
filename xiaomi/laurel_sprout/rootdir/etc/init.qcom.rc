@@ -90,6 +90,8 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
+    chown system system /vendor/etc/camera/goldResult_586.bin
+    chown system system /vendor/etc/camera/goldResult_582.bin
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot

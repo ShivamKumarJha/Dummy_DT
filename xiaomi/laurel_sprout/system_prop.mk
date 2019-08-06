@@ -34,6 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.display.wtid.miui=SW_S88512AA1_V001_M13_XM_F9S_USR_MP \
     ro.sf.lcd_density=440 \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \
@@ -48,6 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.coresight.config=stm-events \
     persist.rcs.supported \
     persist.vendor.ctm.disallowed=1 \
+    qemu.hw.mainkeys=0 \
     ro.colorpick_adjust=true \
     ro.df.effect.conflict=1 \
     ro.kernel.qemu.gles=0 \

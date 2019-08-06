@@ -74,9 +74,9 @@ volume index from 0 to 100.
     <volume stream="AUDIO_STREAM_RING" deviceCategory="DEVICE_CATEGORY_HEARING_AID"
                                        ref="DEFAULT_HEARING_AID_VOLUME_CURVE"/>
       <volume stream="AUDIO_STREAM_MUSIC" deviceCategory="DEVICE_CATEGORY_HEADSET">
-        <point>1,-4600</point>
-        <point>33,-2600</point>
-        <point>73,-1100</point>
+        <point>1,-6500</point>
+        <point>33,-3800</point>
+        <point>73,-1500</point>
         <point>100,0</point>
     </volume> 
     <volume stream="AUDIO_STREAM_MUSIC" deviceCategory="DEVICE_CATEGORY_SPEAKER"

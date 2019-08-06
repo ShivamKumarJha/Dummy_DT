@@ -137,4 +137,10 @@
     <carrier_config mcc="226" mnc="01">
         <boolean name="config_support_callbarring_over_ims" value="false" />
     </carrier_config>
+    <carrier_config mcc="214" mnc="01">
+        <boolean name="config_support_callbarring_over_ims" value="false" />
+    </carrier_config>
+    <carrier_config mcc="214" mnc="04">
+        <boolean name="config_support_callbarring_over_ims" value="false" />
+    </carrier_config>
 </carrier_config_list>

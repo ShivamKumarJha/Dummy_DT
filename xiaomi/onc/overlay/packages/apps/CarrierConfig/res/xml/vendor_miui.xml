@@ -116,6 +116,9 @@
             <item value="73009" />
         </string-array>
     </carrier_config>
+    <carrier_config mcc="214" mnc="05,07">
+        <boolean name="hide_ims_apn_bool" value="false" />
+    </carrier_config>
     <carrier_config mcc="730" mnc="09">
         <string-array name="non_roaming_operator_string_array" num="4">
             <item value="73001" />

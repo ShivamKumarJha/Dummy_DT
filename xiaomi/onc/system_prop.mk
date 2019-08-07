@@ -50,6 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.location.osnlp.region.package= \
     media.aac_51_output_enabled=true \
     media.msm8956hw=0 \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     mm.enable.smoothstreaming=true \
     mmp.enable.3g2=true \
     persist.mm.sta.enable=0 \

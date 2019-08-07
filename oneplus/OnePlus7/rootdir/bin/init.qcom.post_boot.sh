@@ -324,41 +324,7 @@ function configure_memplus_parameters() {
             swapoff /dev/block/zram0
             ;;
         *)
-            fsize=`stat -c%s /data/vendor/swap/swapfile`
-            if [ $? -eq 0 ] && [ $fsize -ne 2147483648 ]; then
-                # if swapfile size is wrong, remove it
-                rm /data/vendor/swap/swapfile
-            fi
-            # Create Swap disk - 2GB size
-            if [ ! -f /data/vendor/swap/swapfile ]; then
-                #dd if=/dev/zero of=/data/vendor/swap/swapfile bs=1m count=2048
-                skip=0
-                count=2
-                while [ $skip -lt 1024 ];
-                do
-                    seek=$(($skip*$count))
-                    ((skip++))
-                    dd if=/dev/zero of=/data/vendor/swap/swapfile seek=$seek bs=1m count=$count
-                    if [ $? -ne 0 ]; then
-                        # not enough space - remove swap file
-                        rm -f /data/vendor/swap/swapfile
-                        break
-                    fi
-                    sleep 0.05
-                done
-
-            fi
-            # enable swapspace
-            if [ -f /data/vendor/swap/swapfile ]; then
-                mkswap /data/vendor/swap/swapfile
-                swapon /data/vendor/swap/swapfile
-
-                # raise the bar from 200,600,800 -> 600,750,850
-                # echo "18432,23040,27648,150256,187296,217600" > /sys/module/lowmemorykiller/parameters/minfree
-                if [ $? -eq 0 ]; then
-                    echo 1 > /proc/sys/vm/memory_plus
-                fi
-            fi
+            rm /data/vendor/swap/swapfile
             # reset zram swapspace
             swapoff /dev/block/zram0
             echo 1 > /sys/block/zram0/reset

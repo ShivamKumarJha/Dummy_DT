@@ -2603,6 +2603,8 @@ lib/libFileMux.so
 lib/libOmxMux.so
 lib/libmmosal.so
 lib/libmmparser_lite.so
+lib/libmmrtpdecoder.so
+lib/libmmrtpencoder.so
 lib/vendor.qti.hardware.vpp@1.1.so
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
@@ -2976,8 +2978,6 @@ etc/wfdconfig.xml
 etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
-lib/libmmrtpdecoder.so
-lib/libmmrtpencoder.so
 lib/libwfdavenhancements.so
 lib/libwfdclient.so
 lib/libwfdcodecv4l2.so
@@ -3016,8 +3016,17 @@ vendor/bin/fstman
 # Xiaomi
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
+framework/vendor.xiaomi.hardware.displayfeature-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
+framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
+lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
+lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib/vendor.xiaomi.hardware.misys@2.0.so
 vendor/bin/getsn_xiaomi

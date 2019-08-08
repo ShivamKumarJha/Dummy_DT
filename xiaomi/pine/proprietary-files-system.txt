@@ -40,6 +40,9 @@ etc/permissions/qti_permissions.xml
 etc/permissions/telephonyservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 etc/sysconfig/qti_whitelist.xml
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
@@ -79,8 +82,12 @@ framework/vendor.qti.hardware.soter-V1.0-java.jar
 framework/vendor.qti.ims.callinfo-V1.0-java.jar
 framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 framework/vendor.qti.latency-V2.0-java.jar
+framework/vendor.xiaomi.hardware.displayfeature-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
+framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
 lib/com.qualcomm.qti.ant@1.0.so
 lib/com.qualcomm.qti.dpm.api@1.0.so
 lib/com.qualcomm.qti.imscmservice@1.0.so
@@ -100,6 +107,7 @@ lib/com.quicinc.cne.server@2.2.so
 lib/com.quicinc.cne.server@2.3.so
 lib/extractors/libmmparser.so
 lib/fm_helium.so
+lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 lib/lib-imscamera.so
 lib/lib-imsvideocodec.so
 lib/lib-imsvt.so
@@ -161,5 +169,6 @@ lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.ims.rcsconfig@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
 lib/vendor.qti.latency@2.0.so
+lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib/vendor.xiaomi.hardware.misys@2.0.so

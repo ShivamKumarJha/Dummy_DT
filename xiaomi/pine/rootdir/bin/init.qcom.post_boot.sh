@@ -390,9 +390,9 @@ else
                 echo 1 > /sys/module/lowmemorykiller/parameters/enable_lmk
             fi
             if [ $MemTotal -gt 2097152 ]; then
-                echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
+                echo "18432,23040,27648,32256,55296,100640" > /sys/module/lowmemorykiller/parameters/minfree
             else
-                echo "14746,18432,22118,25805,40000,55000" > /sys/module/lowmemorykiller/parameters/minfree
+                echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
             fi
         echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
         fi

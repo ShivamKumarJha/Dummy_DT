@@ -103,6 +103,9 @@
     <carrier_config mcc="214" mnc="03,04,05,06,07,08,16,17,21,32">
         <string-array name="read_only_apn_types_string_array" num="0" />
     </carrier_config>
+    <carrier_config mcc="214" mnc="05,07">
+        <boolean name="hide_ims_apn_bool" value="false" />
+    </carrier_config>
     <carrier_config mcc="730" mnc="09">
         <string-array name="non_roaming_operator_string_array" num="4">
             <item value="73001" />
@@ -142,5 +145,11 @@
     </carrier_config>
     <carrier_config mcc="214" mnc="04">
         <boolean name="config_support_callbarring_over_ims" value="false" />
+    </carrier_config>
+    <carrier_config mcc="202" mnc="10">
+        <boolean name="config_callbarring_base_on_volte" value="true" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="01">
+        <boolean name="config_callbarring_base_on_volte" value="true" />
     </carrier_config>
 </carrier_config_list>

@@ -40,7 +40,7 @@
         <param max_wdsp_sessions="2" />
         <param max_ape_sessions="8" />
         <param enable_failure_detection="false" />
-        <param support_device_switch="true" />
+        <param support_device_switch="false" />
         <!-- Transition will only occur if execution_type="DYNAMIC" -->
         <param transit_to_adsp_on_playback="true" />
         <param transit_to_adsp_on_battery_charging="false" />

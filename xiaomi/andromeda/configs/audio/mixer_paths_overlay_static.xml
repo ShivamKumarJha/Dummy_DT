@@ -21,7 +21,10 @@
     <ctl name="QUAT_MI2S_TX Channels" value="One" />
     <ctl name="QUAT_MI2S_RX SampleRate" value="KHZ_48" />
     <ctl name="External AMIC2 Mux" value="Dual_ADC" />
-
+    <ctl name="COMP1 Switch" value="0" />
+    <ctl name="COMP2 Switch" value="0" />
+    <ctl name="HPHL Volume" value="20" />
+    <ctl name="HPHR Volume" value="20" />
 
     <path name="deep-buffer-playback speaker-protected">
         <path name="deep-buffer-playback speaker" />
@@ -492,6 +495,15 @@
     </path>
 
     <path name="sidetone-headphones">
+    </path>
+
+    <path name="sidetone-handset">
+        <ctl name="IIR0 INP0 Volume" value="67" />
+        <ctl name="RX INT0 MIX2 INP" value="SRC0" />
+    </path>
+
+    <path name="hph-lowpower-mode">
+        <ctl name="RX HPH Mode" value="CLS_H_LOHIFI" />
     </path>
 
     <path name="camcorder-dmic">

@@ -167,8 +167,6 @@
 
         <device name="SND_DEVICE_IN_REALIME_LOOPBACK_MIC" interface="SLIMBUS_0_TX"/>
         <device name="SND_DEVICE_IN_USB_REALIME_LOOPBACK_MIC" interface="USB_AUDIO_TX"/>
-        <device name="SND_DEVICE_IN_MAIN_MIC" interface="SLIMBUS_0_TX"/>
-        <device name="SND_DEVICE_IN_TOP_MIC" interface="SLIMBUS_0_TX"/>
     </backend_names>
     <!-- below values are for ref purpose to OEM, doesn't contain actual hardware info on MTP -->
     <microphone_characteristics>
@@ -358,13 +356,13 @@
                         <mic_info mic_device_id="builtin_mic_4"
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                     </snd_dev>
-                    <snd_dev in_snd_device="SND_DEVICE_IN_HANDSET_DMIC_STEREO">
+                    <snd_dev in_snd_device="SND_DEVICE_IN_HANDSET_STEREO_DMIC">
                         <mic_info mic_device_id="builtin_mic_1"
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                         <mic_info mic_device_id="builtin_mic_2"
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                     </snd_dev>
-                    <snd_dev in_snd_device="SND_DEVICE_IN_SPEAKER_DMIC_STEREO">
+                    <snd_dev in_snd_device="SND_DEVICE_IN_SPEAKER_STEREO_DMIC">
                         <mic_info mic_device_id="builtin_mic_1"
                             channel_mapping="AUDIO_MICROPHONE_CHANNEL_MAPPING_PROCESSED"/>
                         <mic_info mic_device_id="builtin_mic_2"

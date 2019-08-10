@@ -1,0 +1,23 @@
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit some common Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# Inherit from SHV34 device
+$(call inherit-product, $(LOCAL_PATH)/device.mk)
+
+PRODUCT_BRAND := kddi
+PRODUCT_DEVICE := SHV34
+PRODUCT_MANUFACTURER := kddi
+PRODUCT_NAME := lineage_SHV34
+PRODUCT_MODEL := SHV34
+
+PRODUCT_GMS_CLIENTID_BASE := android-kddi
+TARGET_VENDOR := kddi
+TARGET_VENDOR_PRODUCT_NAME := SHV34
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="SHV34-user 8.0.0 SA220 03.02.05 release-keys"
+
+# Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
+BUILD_FINGERPRINT := KDDI/SHV34_jp_kdi/SHV34:8.0.0/SA220/03.02.05:user/release-keys

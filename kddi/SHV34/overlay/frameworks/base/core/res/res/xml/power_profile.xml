@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="none">0</item>
+    <item name="screen.on">80</item>
+    <item name="bluetooth.active">90</item>
+    <item name="bluetooth.on">0.3</item>
+    <item name="bluetooth.controller.idle">1.5</item>
+    <item name="bluetooth.controller.rx">135</item>
+    <item name="bluetooth.controller.tx">145</item>
+    <item name="bluetooth.controller.voltage">3300</item>
+    <item name="screen.full">305</item>
+    <item name="wifi.on">4</item>
+    <item name="wifi.active">100</item>
+    <item name="wifi.scan">200</item>
+    <item name="wifi.controller.idle">1.5</item>
+    <item name="wifi.controller.rx">600</item>
+    <item name="wifi.controller.tx">400</item>
+    <item name="wifi.controller.voltage">3300</item>
+    <item name="dsp.audio">40</item>
+    <item name="dsp.video">105</item>
+    <item name="camera.flashlight">30</item>
+    <item name="camera.avg">660</item>
+    <item name="radio.active">110</item>
+    <item name="radio.scanning">120</item>
+    <item name="modem.controller.idle">0.35</item>
+    <item name="modem.controller.rx">150</item>
+    <item name="modem.controller.tx">150</item>
+    <item name="modem.controller.voltage">700</item>
+    <item name="gps.on">200</item>
+    <array name="radio.on">
+        <value>7</value>
+    </array>
+    <array name="cpu.speeds.cluster0">
+        <value>1593600</value>
+        <value>1478400</value>
+        <value>1401600</value>
+        <value>1324800</value>
+        <value>1228800</value>
+        <value>1190400</value>
+        <value>1113600</value>
+        <value>1036800</value>
+        <value>960000</value>
+        <value>844800</value>
+        <value>729600</value>
+        <value>652800</value>
+        <value>556800</value>
+        <value>480000</value>
+        <value>422400</value>
+        <value>307200</value>
+    </array>
+    <item name="cpu.idle">4</item>
+    <item name="cpu.awake">50</item>
+    <array name="cpu.active.cluster0">
+        <value>300</value>
+        <value>260</value>
+        <value>235</value>
+        <value>200</value>
+        <value>180</value>
+        <value>170</value>
+        <value>160</value>
+        <value>145</value>
+        <value>135</value>
+        <value>120</value>
+        <value>105</value>
+        <value>95</value>
+        <value>85</value>
+        <value>75</value>
+        <value>70</value>
+        <value>65</value>
+    </array>
+    <item name="battery.capacity">3000</item>
+    <array name="wifi.batchedscan">
+        <value>80</value>
+        <value>80</value>
+        <value>80</value>
+        <value>80</value>
+        <value>80</value>
+    </array>
+    <array name="cpu.clusters.cores">
+        <value>2</value>
+        <value>2</value>
+    </array>
+    <array name="memory.bandwidths">
+        <value>120</value>
+    </array>
+    <array name="cpu.speeds.cluster1">
+        <value>2150400</value>
+        <value>2073600</value>
+        <value>1996800</value>
+        <value>1920000</value>
+        <value>1824000</value>
+        <value>1785600</value>
+        <value>1708800</value>
+        <value>1632000</value>
+        <value>1555200</value>
+        <value>1478400</value>
+        <value>1401600</value>
+        <value>1324800</value>
+        <value>1248000</value>
+        <value>1190400</value>
+        <value>1113600</value>
+        <value>1036800</value>
+        <value>940800</value>
+        <value>883200</value>
+        <value>806400</value>
+        <value>729600</value>
+        <value>652800</value>
+        <value>556800</value>
+        <value>480000</value>
+        <value>403200</value>
+        <value>307200</value>
+    </array>
+    <array name="cpu.active.cluster1">
+        <value>525</value>
+        <value>470</value>
+        <value>425</value>
+        <value>390</value>
+        <value>350</value>
+        <value>335</value>
+        <value>320</value>
+        <value>275</value>
+        <value>250</value>
+        <value>230</value>
+        <value>215</value>
+        <value>205</value>
+        <value>185</value>
+        <value>170</value>
+        <value>165</value>
+        <value>155</value>
+        <value>140</value>
+        <value>125</value>
+        <value>115</value>
+        <value>110</value>
+        <value>105</value>
+        <value>90</value>
+        <value>85</value>
+        <value>80</value>
+        <value>75</value>
+    </array>
+</device>

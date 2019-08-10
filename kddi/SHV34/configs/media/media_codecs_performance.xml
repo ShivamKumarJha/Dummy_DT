@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright (c) 2015, The Linux Foundation. All rights reserved.
+
+Not a Contribution.
+
+Copyright 2015 The Android Open Source Project
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<MediaCodecs>
+    <Encoders>
+        <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="238-238" />
+            <Limit name="measured-frame-rate-720x480" range="123-123" />
+            <Limit name="measured-frame-rate-1280x720" range="50-50" />
+            <Limit name="measured-frame-rate-1920x1080" range="16-40" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.hevc" type="video/hevc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="226-226" />
+            <Limit name="measured-frame-rate-720x480" range="121-121" />
+            <Limit name="measured-frame-rate-1280x720" range="49-49" />
+            <Limit name="measured-frame-rate-1920x1080" range="16-45" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-3840x2160" range="6-24" />
+        -->
+            <Limit name="measured-frame-rate-3840x2160" range="8-24" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.h263" type="video/3gpp" update="true">
+            <Limit name="measured-frame-rate-176x144" range="303-303" />
+            <Limit name="measured-frame-rate-352x288" range="259-259" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.mpeg4" type="video/mp4v-es" update="true">
+            <Limit name="measured-frame-rate-176x144" range="299-299" />
+            <Limit name="measured-frame-rate-352x288" range="245-245" />
+            <Limit name="measured-frame-rate-640x480" range="148-148" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.vp8" type="video/x-vnd.on2.vp8" update="true">
+            <Limit name="measured-frame-rate-320x180" range="266-266" />
+            <Limit name="measured-frame-rate-640x360" range="165-165" />
+            <Limit name="measured-frame-rate-1280x720" range="49-49" />
+            <Limit name="measured-frame-rate-1920x1080" range="16-40" />
+        </MediaCodec>
+        <MediaCodec name="OMX.google.h264.encoder" type="video/avc" update="true">
+        <!-- SHARP_MOD [TONOMA DL90N#305(Redmine #80231)] START 2016.10.26 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="375-430" />
+            <Limit name="measured-frame-rate-720x480" range="156-193" />
+            <Limit name="measured-frame-rate-1280x720" range="84-112" />
+            <Limit name="measured-frame-rate-1920x1080" range="42-57" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="175-175" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-720x480" range="75-75" />
+        -->
+            <Limit name="measured-frame-rate-720x480" range="75-79" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-1280x720" range="45-45" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-1920x1080" range="20-20" />
+        -->
+            <Limit name="measured-frame-rate-1920x1080" range="20-24" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        <!-- SHARP_MOD [TONOMA DL90N#305(Redmine #80231)] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.google.h263.encoder" type="video/3gpp" update="true">
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-176x144" range="200-200" />
+        -->
+            <Limit name="measured-frame-rate-176x144" range="200-244" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es" update="true">
+            <Limit name="measured-frame-rate-176x144" range="411-524" />
+        </MediaCodec>
+        <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8" update="true">
+        <!-- SHARP_MOD [TONOMA DL90N#305(Redmine #80231)] START 2016.10.26 -->
+        <!--
+            <Limit name="measured-frame-rate-320x180" range="240-250" />
+            <Limit name="measured-frame-rate-640x360" range="50-57" />
+            <Limit name="measured-frame-rate-1280x720" range="17-24" />
+            <Limit name="measured-frame-rate-1920x1080" range="8-12" />
+        -->
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-320x180" range="90-90" />
+            <Limit name="measured-frame-rate-640x360" range="45-45" />
+        -->
+            <Limit name="measured-frame-rate-320x180" range="90-114" />
+            <Limit name="measured-frame-rate-640x360" range="45-51" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-1280x720" range="21-30" />
+            <Limit name="measured-frame-rate-1920x1080" range="10-15" />
+        <!-- SHARP_MOD [TONOMA DL90N#305(Redmine #80231)] END -->
+        </MediaCodec>
+    </Encoders>
+    <Decoders>
+        <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" update="true">
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="221-221" />
+            <Limit name="measured-frame-rate-720x480" range="156-156" />
+            <Limit name="measured-frame-rate-1280x720" range="270-270" />
+            <Limit name="measured-frame-rate-1920x1088" range="206-211" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="102-221" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-720x480" range="106-156" />
+            <Limit name="measured-frame-rate-1280x720" range="105-232" />
+            <Limit name="measured-frame-rate-1920x1088" range="80-179" />
+        -->
+            <Limit name="measured-frame-rate-720x480" range="104-156" />
+            <Limit name="measured-frame-rate-1280x720" range="103-227" />
+            <Limit name="measured-frame-rate-1920x1088" range="79-175" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" update="true">
+        <!--
+            <Limit name="measured-frame-rate-352x288" range="222-222" />
+            <Limit name="measured-frame-rate-720x480" range="165-165" />
+            <Limit name="measured-frame-rate-1280x720" range="292-292" />
+            <Limit name="measured-frame-rate-1920x1080" range="240-240" />
+            <Limit name="measured-frame-rate-3840x2160" range="68-68" />
+        -->
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-352x288" range="113-222" />
+        -->
+            <Limit name="measured-frame-rate-352x288" range="104-222" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-720x480" range="64-144" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-1280x720" range="108-239" />
+        -->
+            <Limit name="measured-frame-rate-1280x720" range="107-237" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-1920x1080" range="86-194" />
+            <Limit name="measured-frame-rate-3840x2160" range="68-68" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" update="true">
+        <!--
+            <Limit name="measured-frame-rate-176x144" range="356-356" />
+            <Limit name="measured-frame-rate-352x288" range="292-292" />
+        -->
+            <Limit name="measured-frame-rate-176x144" range="64-146" />
+            <Limit name="measured-frame-rate-352x288" range="67-152" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" update="true">
+            <Limit name="measured-frame-rate-176x144" range="146-146" />
+            <Limit name="measured-frame-rate-480x360" range="145-145" />
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.vp8" type="video/x-vnd.on2.vp8" update="true">
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="337-337" />
+            <Limit name="measured-frame-rate-640x360" range="337-337" />
+            <Limit name="measured-frame-rate-1280x720" range="337-337" />
+            <Limit name="measured-frame-rate-1920x1080" range="248-248" />
+        -->
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="94-212" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="94-210" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-640x360" range="101-222" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-1280x720" range="121-266" />
+            <Limit name="measured-frame-rate-1920x1080" range="248-248" />
+        -->
+            <Limit name="measured-frame-rate-1280x720" range="120-263" />
+            <Limit name="measured-frame-rate-1920x1080" range="188-248" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.decoder.vp9" type="video/x-vnd.on2.vp9" update="true">
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="377-377" />
+            <Limit name="measured-frame-rate-640x360" range="323-323" />
+            <Limit name="measured-frame-rate-1280x720" range="262-262" />
+            <Limit name="measured-frame-rate-1920x1080" range="220-220" />
+            <Limit name="measured-frame-rate-3840x2160" range="19-19" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="71-162" />
+            <Limit name="measured-frame-rate-640x360" range="90-197" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-1280x720" range="113-246" />
+            <Limit name="measured-frame-rate-1920x1080" range="220-220" />
+        -->
+            <Limit name="measured-frame-rate-1280x720" range="112-246" />
+            <Limit name="measured-frame-rate-1920x1080" range="202-220" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            <Limit name="measured-frame-rate-3840x2160" range="19-42" />
+        </MediaCodec>
+        <MediaCodec name="OMX.google.h264.decoder" type="video/avc" update="true">
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] START 2016.10.26 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="577-847" />
+            <Limit name="measured-frame-rate-720x480" range="248-248" />
+            <Limit name="measured-frame-rate-1280x720" range="84-84" />
+            <Limit name="measured-frame-rate-1920x1080" range="46-46" />
+        -->
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="320-320" />
+            <Limit name="measured-frame-rate-720x480" range="150-150" />
+            <Limit name="measured-frame-rate-1280x720" range="45-45" />
+            <Limit name="measured-frame-rate-1920x1080" range="12-20" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="320-374" />
+            <Limit name="measured-frame-rate-720x480" range="150-162" />
+            <Limit name="measured-frame-rate-1280x720" range="45-50" />
+            <Limit name="measured-frame-rate-1920x1080" range="12-21" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] END -->
+        </MediaCodec>
+        <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" update="true">
+            <Limit name="measured-frame-rate-176x144" range="104-279" />
+            <Limit name="measured-frame-rate-352x288" range="200-200" />
+        </MediaCodec>
+        <!-- SHARP_DEL [Redmine #61984 H265 switching support] START 2016.09.16 -->
+        <!--
+        <MediaCodec name="OMX.google.hevc.decoder" type="video/hevc" update="true">
+            <Limit name="measured-frame-rate-352x288" range="170-170" />
+            <Limit name="measured-frame-rate-640x360" range="209-209" />
+            <Limit name="measured-frame-rate-720x480" range="190-190" />
+            <Limit name="measured-frame-rate-1280x720" range="32-32" />
+            <Limit name="measured-frame-rate-1920x1080" range="21-21" />
+        </MediaCodec>
+        -->
+        <!-- SHARP_DEL [Redmine #61984 H265 switching support] END -->
+        <MediaCodec name="OMX.google.mpeg4.decoder" update="true">
+            <Type name="video/mp4v-es">
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+                <Limit name="measured-frame-rate-176x144" range="430-450" />
+        -->
+                <Limit name="measured-frame-rate-176x144" range="271-450" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+            </Type>
+        </MediaCodec>
+        <MediaCodec name="OMX.google.vp8.decoder" type="video/x-vnd.on2.vp8" update="true">
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] START 2016.10.26 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="330-381" />
+            <Limit name="measured-frame-rate-640x360" range="139-185" />
+            <Limit name="measured-frame-rate-1280x720" range="22-38" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="342-395" />
+            <Limit name="measured-frame-rate-640x360" range="150-200" />
+            <Limit name="measured-frame-rate-1280x720" range="26-45" />
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] END -->
+            <Limit name="measured-frame-rate-1920x1080" range="9-18" />
+        </MediaCodec>
+        <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9" update="true">
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] START 2016.10.26 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="200-230" />
+            <Limit name="measured-frame-rate-640x360" range="315-360" />
+            <Limit name="measured-frame-rate-1280x720" range="143-146" />
+            <Limit name="measured-frame-rate-1920x1080" range="84-87" />
+        -->
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] START 2018.03.07 -->
+        <!--
+            <Limit name="measured-frame-rate-320x240" range="222-255" />
+            <Limit name="measured-frame-rate-640x360" range="144-160" />
+            <Limit name="measured-frame-rate-1280x720" range="48-60" />
+            <Limit name="measured-frame-rate-1920x1080" range="29-35" />
+        -->
+            <Limit name="measured-frame-rate-320x240" range="222-273" />
+            <Limit name="measured-frame-rate-640x360" range="144-165" />
+            <Limit name="measured-frame-rate-1280x720" range="48-64" />
+            <Limit name="measured-frame-rate-1920x1080" range="29-37" />
+        <!-- SHARP_MOD [Redmine#137767][Adjust framerate range for CTS] END -->
+        <!-- SHARP_MOD [TONOMA DL90N#304(Redmine #80231)] END -->
+        </MediaCodec>
+    </Decoders>
+</MediaCodecs>

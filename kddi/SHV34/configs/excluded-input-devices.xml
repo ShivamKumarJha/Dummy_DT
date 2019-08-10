@@ -1,0 +1,5 @@
+<devices>
+    <device name="shgrip"/>
+    <device name="lightsensor"/>
+    <device name="shub_linearacc"/>
+</devices>

@@ -17,7 +17,7 @@ PRODUCT_MODEL := Mi Note 3
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := jason
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="jason-user 9 PKQ1.181007.001 9.8.1 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="jason-user 9 PKQ1.181007.001 9.8.8 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/jason/jason:9/PKQ1.181007.001/9.8.1:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/jason/jason:9/PKQ1.181007.001/9.8.8:user/release-keys

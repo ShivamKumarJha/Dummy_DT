@@ -24,6 +24,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=440 \
     vendor.display.enable_default_color_mode=1 \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_V1_0.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \

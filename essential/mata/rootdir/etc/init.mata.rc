@@ -324,7 +324,7 @@ on fs
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     start qseecomd
-    wait_for_prop vendor.sys.listeners.registered true
+    wait_for_prop sys.listeners.registered true
     write /dev/ipa 1
 
 # msm specific files that need to be created on /data
@@ -1178,7 +1178,7 @@ on property:persist.touch.smoothness=*
 
 # Fastboot needs to be root for access to /data/local/tmp
 # Needs to be part of system group to access OTA files
-service update_neko /system/bin/fastboot_target update /data/ota_package/update_neko.zip
+service update_neko /system/bin/fastboot update /data/ota_package/update_neko.zip
 	class main
 	user root
 	group system shell cache

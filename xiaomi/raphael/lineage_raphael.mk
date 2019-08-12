@@ -19,4 +19,4 @@ TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := raphael
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/raphael/raphael:10/QKQ1.190716.003/9.8.8:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/raphael/raphael:10/QKQ1.190716.003/9.8.12:user/release-keys

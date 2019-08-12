@@ -1,6 +1,7 @@
 -app/SoterService/SoterService.apk
 -framework/WfdCommon.jar
 -priv-app/WfdService/WfdService.apk
+-priv-app/WfdService/lib/arm64/libwfdnative.so
 -product/app/QtiTelephonyService/QtiTelephonyService.apk
 -product/app/datastatusnotification/datastatusnotification.apk
 -product/app/embms/embms.apk

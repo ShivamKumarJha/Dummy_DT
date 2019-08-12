@@ -35,3 +35,4 @@ libhta_controller.so
 libhta_hexagon_runtime.so
 unnhal-acc-hta.so
 libalhLDC.so
+libalAILDC.so

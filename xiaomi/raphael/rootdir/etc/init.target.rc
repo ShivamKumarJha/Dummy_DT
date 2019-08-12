@@ -29,7 +29,7 @@
 
 import init.mishow.ctl.rc
 import init.batteryd.rc
-import init.mi_thermald.rc
+import /vendor/etc/init/init.mi_thermald.rc
 
 on early-init
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules audio_wglink audio_q6_pdr audio_q6_notifier audio_apr audio_adsp_loader audio_q6 audio_native audio_usf audio_pinctrl_wcd audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub audio_wcd_core audio_wsa881x audio_wcd9360 audio_hdmi audio_cs35l41 audio_tas2557 audio_tfa98xx audio_machine_msmnile
@@ -71,6 +71,8 @@ on fs
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/audio 0755 system system
     chmod 644 /mnt/vendor/persist/audio/us_manual_cal
+    #+ add for watermark
+    mkdir /mnt/vendor/persist/camera 0777 root root
     mkdir /dev/logfs 0771 system system
     mount vfat /dev/block/bootdevice/by-name/logfs /dev/logfs noatime umask=006,uid=1000,gid=1000
     chown system system /dev/tiload_node
@@ -277,11 +279,6 @@ service vendor.imsdatadaemon /vendor/bin/imsdatadaemon
     group radio wifi inet log diag
     disabled
 
-service vendor.lowi /vendor/bin/sscrpcd
-   class core
-   user system
-   group system
-
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
     group system wakelock
@@ -383,3 +380,22 @@ service remosaic_daemon /system/vendor/bin/remosaic_daemon
    class late_start
    user camera
    group camera
+
+
+on post-fs-data
+    chmod 0666 /dev/migt
+    restorecon /dev/migt
+    chmod 0777 /sys/module/migt/parameters/migt_freq
+    restorecon /sys/module/migt/parameters/migt_freq
+    chmod 0777 /sys/module/migt/parameters/migt_ms
+    restorecon /sys/module/migt/parameters/migt_ms
+    chmod 0777 /sys/module/migt/parameters/migt_thresh
+    restorecon /sys/module/migt/parameters/migt_thresh
+    chmod 0777 /sys/module/migt/parameters/boost_policy
+    restorecon /sys/module/migt/parameters/boost_policy
+    chmod 0777 /sys/module/migt/parameters/fps_variance_ratio
+    restorecon /sys/module/migt/parameters/fps_variance_ratio
+    chmod 0777 /sys/module/migt/parameters/super_task_max_num
+    restorecon /sys/module/migt/parameters/super_task_max_num
+    chmod 0777 /sys/module/migt/parameters/migt_ceiling_freq
+    restorecon /sys/module/migt/parameters/migt_ceiling_freq

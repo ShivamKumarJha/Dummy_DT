@@ -428,7 +428,6 @@ vendor/lib/libmmcamera_thread_services.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_trueportrait_lib.so
-vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_tuning_lookup.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
@@ -481,8 +480,8 @@ vendor/lib64/libssd.so
 vendor/lib64/libtzdrmgenprov.so
 
 # DRM-Widevine
-vendor/bin/hw/android.hardware.drm@1.1-service.widevine
-vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/bin/hw/android.hardware.drm@1.2-service.widevine
+vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
@@ -644,7 +643,6 @@ vendor/lib64/hw/gatekeeper.msm8998.so
 
 # Google
 vendor/etc/permissions/com.google.android.feature.TURBO_PRELOAD.xml
-vendor/etc/permissions/com.google.android.feature.WELLBEING.xml
 
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -721,14 +719,8 @@ vendor/bin/hw/android.hardware.keymaster@3.0-service
 vendor/etc/init/android.hardware.keymaster@3.0-service.rc
 vendor/lib/hw/android.hardware.keymaster@3.0-impl.so
 vendor/lib/libkeymaster3device.so
-vendor/lib/libkeymasterdeviceutils.so
-vendor/lib/libkeymasterprovision.so
-vendor/lib/libkeymasterutils.so
 vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so
 vendor/lib64/libkeymaster3device.so
-vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libkeymasterprovision.so
-vendor/lib64/libkeymasterutils.so
 
 # Keystore
 vendor/lib/hw/keystore.msm8998.so
@@ -794,6 +786,7 @@ vendor/lib/libdsd2pcm.so
 -vendor/lib/libgpustats.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal_proprietary.so
+vendor/lib/libstagefright_soft_mpeg2dec.so
 vendor/lib/libvpphvx.so
 vendor/lib/libvpplibrary.so
 vendor/lib/libvqzip.so
@@ -835,6 +828,9 @@ vendor/lib64/libstagefrighthw.so
 # NFC
 vendor/bin/hw/android.hardware.nfc@1.1-service
 vendor/etc/init/android.hardware.nfc@1.1-service.rc
+vendor/etc/libnfc-nci.conf
+vendor/etc/libnfc-nxp.conf
+vendor/etc/permissions/android.sofware.nfc.beam.xml
 vendor/etc/permissions/com.android.nfc_extras.xml
 vendor/etc/permissions/com.nxp.mifare.xml
 vendor/lib/libpn548ad_fw.so
@@ -1084,7 +1080,6 @@ vendor/lib64/libscvePanorama_lite.so
 # SSR
 vendor/bin/ssr_diag
 vendor/bin/ssr_setup
-vendor/bin/subsystem_ramdump
 
 # Sensor-configs
 vendor/etc/sensors/sensor_def_qcomdev.conf
@@ -1183,28 +1178,13 @@ lib/libwfduibcsink.so
 lib/libwfduibcsinkinterface.so
 lib/libwfduibcsrc.so
 lib/libwfduibcsrcinterface.so
-lib64/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib64/libwfdclient.so
-lib64/libwfdcodecv4l2.so
-lib64/libwfdcommonutils.so
-lib64/libwfdmminterface.so
-lib64/libwfdmmsink.so
-lib64/libwfdmmsrc.so
 lib64/libwfdnative.so
-lib64/libwfdrtsp.so
-lib64/libwfdservice.so
-lib64/libwfdsm.so
-lib64/libwfduibcinterface.so
-lib64/libwfduibcsink.so
-lib64/libwfduibcsinkinterface.so
-lib64/libwfduibcsrc.so
-lib64/libwfduibcsrcinterface.so
 -priv-app/WfdService/WfdService.apk
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
 vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
-vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
-vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
+vendor/lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
 vendor/lib/libwfdcommonutils_proprietary.so
@@ -1212,17 +1192,10 @@ vendor/lib/libwfdhaldsmanager.so
 vendor/lib/libwfdhdcpcp.so
 vendor/lib/libwfdmmservice.so
 vendor/lib/libwfdmodulehdcpsession.so
-vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-halimpl.so
-vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0-impl.so
-vendor/lib64/com.qualcomm.qti.wifidisplayhal@1.0_vendor.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhdcpsrm.so
-vendor/lib64/libwfdcommonutils_proprietary.so
-vendor/lib64/libwfdhaldsmanager.so
 vendor/lib64/libwfdhdcpcp.so
-vendor/lib64/libwfdmmservice.so
-vendor/lib64/libwfdmodulehdcpsession.so
 
 # WiFi
 vendor/bin/cnss-daemon
@@ -1239,24 +1212,50 @@ vendor/bin/spdaemon
 vendor/etc/fstab.mata
 
 # Misc
-vendor/[SYS]/Journal
+vendor/app/QtiTelephonyService/oat/arm64/QtiTelephonyService.odex
+vendor/app/QtiTelephonyService/oat/arm64/QtiTelephonyService.vdex
+vendor/app/TimeService/oat/arm64/TimeService.odex
+vendor/app/TimeService/oat/arm64/TimeService.vdex
+vendor/app/datastatusnotification/oat/arm64/datastatusnotification.odex
+vendor/app/datastatusnotification/oat/arm64/datastatusnotification.vdex
+vendor/app/radioconfig/oat/arm64/radioconfig.odex
+vendor/app/radioconfig/oat/arm64/radioconfig.vdex
 -vendor/app/radioconfig/radioconfig.apk
 vendor/bin/StoreKeybox
 vendor/bin/athdiag
+vendor/bin/bc
 vendor/bin/chamomile_provision
+vendor/bin/devmem
 vendor/bin/diag_klog
 vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
+vendor/bin/dumpsys
+vendor/bin/fsync
+vendor/bin/getconf
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hw/vendor.essential.hardware.sidecar@1.0-service
+vendor/bin/i2cdetect
+vendor/bin/i2cdump
+vendor/bin/i2cget
+vendor/bin/i2cset
 vendor/bin/icm
+vendor/bin/iconv
+vendor/bin/install
 vendor/bin/myftm
+vendor/bin/nc
+vendor/bin/netcat
+vendor/bin/nproc
+vendor/bin/nsenter
 vendor/bin/qmi_tsext_hook
 vendor/bin/tbaseLoader
+vendor/bin/unlink
+vendor/bin/unshare
+vendor/bin/uuidgen
 vendor/bin/vendor_cmd_tool
+vendor/bin/watch
 vendor/etc/gps_softbank.conf
 vendor/etc/init/init.mata.diag.rc
 vendor/etc/init/vendor.essential.hardware.sidecar@1.0-service.rc
@@ -1273,7 +1272,19 @@ vendor/etc/permissions/com.essential.feature.ESSENTIAL_EXPERIENCE.xml
 vendor/etc/permissions/qti-vzw-ims-internal.xml
 vendor/etc/permissions/radioconfig.xml
 vendor/etc/permissions/radioconfiginterface.xml
+vendor/framework/oat/arm/qcrilhook.odex
+vendor/framework/oat/arm/qcrilhook.vdex
+vendor/framework/oat/arm/qti-vzw-ims-internal.odex
+vendor/framework/oat/arm/qti-vzw-ims-internal.vdex
+vendor/framework/oat/arm64/qcrilhook.odex
+vendor/framework/oat/arm64/qcrilhook.vdex
+vendor/framework/oat/arm64/qti-vzw-ims-internal.odex
+vendor/framework/oat/arm64/qti-vzw-ims-internal.vdex
 -vendor/framework/vendor.essential.hardware.sidecar-V1.0-java.jar
+vendor/lib/android.hardware.audio.common-util.so
+vendor/lib/android.hardware.audio.common@2.0-util.so
+vendor/lib/android.hardware.camera.provider@2.4-external.so
+vendor/lib/android.hardware.camera.provider@2.4-legacy.so
 vendor/lib/hw/vendor.essential.hardware.sidecar@1.0-impl.so
 vendor/lib/libChamomilePA.so
 vendor/lib/libdiagjni.so
@@ -1284,10 +1295,42 @@ vendor/lib/libhdaudio.so
 vendor/lib/libllvm-qgl.so
 vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-qdcm.so
+vendor/lib/libopus.so
 vendor/lib/libsi.so
 vendor/lib/libsmemlog.so
+vendor/lib/libstagefright_amrnb_common.so
+vendor/lib/libstagefright_enc_common.so
+vendor/lib/libstagefright_flacdec.so
+vendor/lib/libstagefright_soft_aacdec.so
+vendor/lib/libstagefright_soft_aacenc.so
+vendor/lib/libstagefright_soft_amrdec.so
+vendor/lib/libstagefright_soft_amrnbenc.so
+vendor/lib/libstagefright_soft_amrwbenc.so
+vendor/lib/libstagefright_soft_avcdec.so
+vendor/lib/libstagefright_soft_avcenc.so
+vendor/lib/libstagefright_soft_flacdec.so
+vendor/lib/libstagefright_soft_flacenc.so
+vendor/lib/libstagefright_soft_g711dec.so
+vendor/lib/libstagefright_soft_gsmdec.so
+vendor/lib/libstagefright_soft_hevcdec.so
+vendor/lib/libstagefright_soft_mp3dec.so
+vendor/lib/libstagefright_soft_mpeg4dec.so
+vendor/lib/libstagefright_soft_mpeg4enc.so
+vendor/lib/libstagefright_soft_opusdec.so
+vendor/lib/libstagefright_soft_rawdec.so
+vendor/lib/libstagefright_soft_vorbisdec.so
+vendor/lib/libstagefright_soft_vpxdec.so
+vendor/lib/libstagefright_soft_vpxenc.so
+vendor/lib/libstagefright_softomx.so
+vendor/lib/libstagefright_softomx_plugin.so
 vendor/lib/libtsext_inf.so
+vendor/lib/libvorbisidec.so
+vendor/lib/libvpx.so
 vendor/lib/vendor.essential.hardware.sidecar@1.0.so
+vendor/lib64/android.hardware.audio.common-util.so
+vendor/lib64/android.hardware.audio.common@2.0-util.so
+vendor/lib64/android.hardware.camera.provider@2.4-external.so
+vendor/lib64/android.hardware.camera.provider@2.4-legacy.so
 vendor/lib64/hw/vendor.essential.hardware.sidecar@1.0-impl.so
 vendor/lib64/libChamomilePA.so
 vendor/lib64/libdiagjni.so

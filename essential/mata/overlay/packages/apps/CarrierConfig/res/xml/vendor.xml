@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="config_ims_package_override_string">com.google.android.ims</string>
+    </carrier_config>
+</carrier_config_list>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="none">0</item>
+    <item name="screen.on">120</item>
+    <item name="screen.full">770</item>
+    <item name="bluetooth.active">34</item>
+    <item name="bluetooth.on">0.5</item>
+    <item name="wifi.on">0.5</item>
+    <item name="wifi.active">185</item>
+    <item name="wifi.scan">45</item>
+    <item name="dsp.audio">35</item>
+    <item name="dsp.video">55</item>
+    <item name="camera.flashlight">150</item>
+    <item name="camera.avg">481</item>
+    <item name="gps.on">21</item>
+    <item name="radio.active">140</item>
+    <item name="radio.scanning">9</item>
+    <array name="radio.on">
+        <value>2.4</value>
+        <value>1.6</value>
+    </array>
+    <item name="modem.controller.idle">0</item>
+    <item name="modem.controller.rx">0</item>
+    <item name="modem.controller.tx">0</item>
+    <item name="modem.controller.voltage">0</item>
+    <array name="cpu.clusters.cores">
+        <value>1</value>
+    </array>
+    <array name="cpu.speeds.cluster0">
+        <value>400000</value>
+    </array>
+    <array name="cpu.active.cluster0">
+        <value>0.1</value>
+    </array>
+    <item name="cpu.idle">6.5</item>
+    <array name="memory.bandwidths">
+        <value>22.7</value>
+    </array>
+    <item name="battery.capacity">7000</item>
+    <item name="wifi.controller.idle">0</item>
+    <item name="wifi.controller.rx">0</item>
+    <item name="wifi.controller.tx">0</item>
+    <array name="wifi.controller.tx_levels" />
+    <item name="wifi.controller.voltage">0</item>
+    <array name="wifi.batchedscan">
+        <value>.0002</value>
+        <value>.002</value>
+        <value>.02</value>
+        <value>.2</value>
+        <value>2</value>
+    </array>
+</device>

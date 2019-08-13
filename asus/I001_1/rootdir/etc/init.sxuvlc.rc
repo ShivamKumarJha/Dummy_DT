@@ -1,0 +1,23 @@
+# Copyright (C) 2015 silex techonology, inc.
+#
+# Start up SX UVL client applications
+#
+##
+on post-fs-data
+    mkdir /data/vendor/misc/sxuvlcd 0755 sxuvlcd sxuvlcd
+
+on boot
+    insmod /vendor/lib/modules/ghci-hcd.ko
+    insmod /vendor/lib/modules/gxhci-hcd.ko
+
+service sxuvlcd /vendor/bin/sxuvlcd
+    class late_start
+    seclabel u:r:sxuvlcd:s0
+    oneshot
+
+service sxuvl /vendor/bin/sxuvl_auto -i wigig0 &
+    class late_start
+    user root
+    group wakelock
+    seclabel u:r:sxuvl:s0
+    oneshot

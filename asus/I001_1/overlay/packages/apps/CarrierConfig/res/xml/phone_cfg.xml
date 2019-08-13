@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="config_ims_package_override_string">com.google.android.ims</string>
+    </carrier_config>
+    <carrier_config mcc="460">
+        <boolean name="disable_voice_barring_notification_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466">
+        <boolean name="disable_voice_barring_notification_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="001">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="208" mnc="20">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="222" mnc="10">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <int name="hide_ims_icon_mask_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="234" mnc="20">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="234" mnc="94">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="01">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="02">
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="editable_wfc_roaming_mode_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="286" mnc="03">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="03">
+        <boolean name="carrier_roam_volte_enabled_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_roaming_enabled_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="12">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="06">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="00">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="454" mnc="19">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="440" mnc="50" country="JP">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="emergency" />
+        </string-array>
+    </carrier_config>
+    <carrier_config mcc="440" mnc="51" country="JP">
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <string-array name="apn_hide_rule_strings_array" num="2">
+            <item value="type" />
+            <item value="emergency" />
+        </string-array>
+    </carrier_config>
+    <carrier_config mcc="460">
+        <boolean name="spn_display_rule_use_roaming_from_service_state_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="460" mnc="03">
+        <boolean name="world_phone_bool" value="false" />
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="460" mnc="11">
+        <boolean name="world_phone_bool" value="false" />
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="92">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="01">
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="466" mnc="05">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <string name="vowifi_name_override">GT WiFi</string>
+    </carrier_config>
+    <carrier_config mcc="525" mnc="05" gid1="0A">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="hide_ims_apn_bool" value="true" />
+        <string name="vowifi_name_override">GT WiFi</string>
+    </carrier_config>
+    <carrier_config mcc="466" mnc="97">
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="03">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_roaming_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="05">
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="525" mnc="01">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <boolean name="carrier_volte_roaming_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config mcc="724" mnc="02">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="03">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="04">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="05">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="16">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="24">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="31">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="39">
+        <string name="default_vm_number_string">*100</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="10">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="11">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="06">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+    <carrier_config mcc="724" mnc="23">
+        <string name="default_vm_number_string">*555</string>
+    </carrier_config>
+</carrier_config_list>

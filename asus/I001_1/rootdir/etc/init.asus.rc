@@ -1,0 +1,1721 @@
+#################################################################
+#								#
+#   	              ASUS USER RC				#
+#								#
+#################################################################
+
+#################################
+#
+#   	booting on trigger
+#
+# ****DO NOT insert any services***     
+#
+#################################
+
+# For IMS TwinApps
+import init.asus.twinapps.rc
+
+# for ssn/sp tool
+on firmware_mounts_complete
+    start sp
+    start ssn
+
+on boot
+
+
+on init
+    export PATH /sbin:/system/bin:/system/xbin:/system/sbin:/bin:/vendor/bin:
+
+# mount asus partition
+    mkdir /ADF 0775 system system
+    mkdir /APD 0775 system system
+    
+on fs
+#ASUS_BSP Clay_Wang: for misc ioctl +++
+    chmod 0777 /dev/sentons_grip_sensor
+#ASUS_BSP Clay_Wang: for misc ioctl ---
+
+#ASUS_BSP Deeo : chown Aura sync attribute +++
+    chmod 0666 /sys/class/leds/aura_sync/VDD
+    chmod 0664 /sys/class/leds/aura_sync/red_pwm
+    chmod 0664 /sys/class/leds/aura_sync/green_pwm
+    chmod 0664 /sys/class/leds/aura_sync/blue_pwm
+    chmod 0664 /sys/class/leds/aura_sync/mode
+    chmod 0664 /sys/class/leds/aura_sync/apply
+    chmod 0664 /sys/class/leds/aura_sync/fw_ver
+    chmod 0666 /sys/class/leds/aura_sync/fw_update
+    chmod 0664 /sys/class/leds/aura_sync/frame
+    chmod 0664 /sys/class/leds/aura_sync/speed
+    chmod 0664 /sys/class/leds/aura_sync/led_on
+    chmod 0664 /sys/class/leds/aura_sync/bumper_enable
+    chmod 0664 /sys/class/leds/bumper/VDD
+
+    chown root system /sys/class/leds/aura_sync/VDD
+    chown system system /sys/class/leds/aura_sync/red_pwm
+    chown system system /sys/class/leds/aura_sync/green_pwm
+    chown system system /sys/class/leds/aura_sync/blue_pwm
+    chown root system /sys/class/leds/aura_sync/mode
+    chown root system /sys/class/leds/aura_sync/apply
+    chown system system /sys/class/leds/aura_sync/fw_ver
+    chown system system /sys/class/leds/aura_sync/fw_update
+    chown system system /sys/class/leds/aura_sync/frame
+    chown system system /sys/class/leds/aura_sync/speed
+    chown system system /sys/class/leds/aura_sync/led_on
+    chown system system /sys/class/leds/aura_sync/bumper_enable
+    chown system system /sys/class/leds/bumper/VDD
+#ASUS_BSP Deeo : chown Aura sync attribute ---
+
+on post-fs
+    chown system root /dev/goodix_fp
+    chmod 0760 /dev/goodix_fp
+
+on post-fs-data
+
+# ASUS_BSP +++ ShawnHuang "frgb sensor permission & symlink"
+    chown root camera /dev/asusFRGBSensor
+    chmod 0666 /dev/asusFRGBSensor
+# ASUS_BSP --- ShawnHuang "frgb sensor permission & symlink"
+# ASUS_BSP_Fingerprint +++
+    mkdir /data/vendor/goodix 0777 system system
+# ASUS_BSP_Fingerprint +++
+
+# ASUS_BSP +++ Gavin_Chang "mount asus partition"
+#    wait /dev/block/bootdevice/by-name/factory
+#    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/factory
+#    mount ext4 /dev/block/bootdevice/by-name/factory /vendor/factory nosuid nodev noatime barrier=1 noauto_da_alloc
+#    restorecon_recursive /vendor/factory
+#    mount ext4 /dev/block/bootdevice/by-name/factory /vendor/factory ro remount noatime
+#    chmod 0775 /vendor/factory
+#    chown root shell /vendor/factory
+     chmod 0777 /mnt/vendor/persist
+
+# mount logfs
+#    wait /dev/block/bootdevice/by-name/logfs
+#    mount vfat /dev/block/bootdevice/by-name/logfs /vendor/logfs nosuid nodev noatime
+#    restorecon_recursive /vendor/logfs
+#    chmod 0777 /vendor/logfs
+#    chown root shell /vendor/logfs
+# ASUS_BSP --- Gavin_Chang "mount asus partition"
+
+# +++ ASUS_BSP : add for asus boot animation partition
+# mount ADF
+    wait /dev/block/bootdevice/by-name/ADF
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/ADF
+    mount ext4 /dev/block/bootdevice/by-name/ADF /ADF nosuid nodev noatime barrier=1
+    chmod 0775 /ADF
+    chmod 0775 /ADF/boot
+    chown system system /ADF
+    restorecon_recursive /ADF
+
+#mount APD
+    wait /dev/block/bootdevice/by-name/APD
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev noatime barrier=1
+    chmod 0775 /APD
+    chown system system /APD
+    restorecon_recursive /APD
+# --- ASUS_BSP : add for asus boot animation partition
+
+# +++ ASUS_BSP : add for asus battery safety upgrade and health partition
+#mount batinfo
+    wait /dev/block/bootdevice/by-name/batinfo
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/batinfo
+    mount ext4 /dev/block/bootdevice/by-name/batinfo /batinfo nosuid nodev noatime barrier=1
+    chown shell root /batinfo
+    chmod 0775 /batinfo
+    restorecon_recursive /batinfo
+# --- ASUS_BSP : add for asus battery safety upgrade and health partition
+
+# ASUS_BSP : add for trigger ftm mode
+    setprop ro.boot.ftm  ${ro.boot.pre-ftm}
+
+# +++ ASUS_BSP : adb enable property
+    setprop factory.adbon ${ro.boot.adb.enable}
+    setprop factory.adbon2 ${ro.boot.adb.enable}
+# --- ASUS_BSP : adb enable property
+
+# +++ ASUS_BSP : add persist.asus.serialno for CSCMMI
+    setprop persist.asus.serialno ${ro.boot.serialno}
+# --- ASUS_BSP : add persist.asus.serialno for CSCMMI
+
+# +++ ASUS_BSP : add ro.boot.id.prj_2 for loading different BDF
+    setprop ro.boot.id.prj_2 ${ro.boot.id.prj}
+# --- ASUS_BSP : add ro.boot.id.prj_2 for loading different BDF
+
+# +++ ASUS_BSP : add ro.boot.id.prj_wigig for wigig
+    setprop ro.boot.id.prj_wigig ${ro.boot.id.prj}
+# --- ASUS_BSP : add ro.boot.id.prj_wigig for wigig
+
+# ASUS_BSP  Deeo : add facotry tool & info for AMAX +++
+    symlink /sys/devices/platform/soc/1d84000.ufshc/ufs_total_size /data/data/emmc_total_size
+    chmod 0664 /data/data/emmc_total_size
+# ASUS_BSP  Deeo : add facotry tool & info for AMAX ---
+
+    chmod 0666 /dev/audio
+
+#ASUS_BSP Lotta : chown EC_HID attribute +++
+    chmod 0664 /sys/class/ec_hid/dongle/device/gDongleEvent
+    chown root system /sys/class/ec_hid/dongle/device/gDongleEvent
+    chmod 0664 /sys/class/ec_hid/dongle/device/gDongleType
+    chown root system /sys/class/ec_hid/dongle/device/gDongleType
+    chmod 0664 /sys/class/ec_hid/dongle/device/lock
+    chown root system /sys/class/ec_hid/dongle/device/lock
+    chmod 0664 /sys/class/ec_hid/dongle/device/start_ec_adc_tm5
+    chown root system /sys/class/ec_hid/dongle/device/start_ec_adc_tm5
+    chmod 0664 /sys/class/ec_hid/dongle/device/sync_state
+    chown root system /sys/class/ec_hid/dongle/device/sync_state
+    chmod 0664 /sys/class/ec_hid/dongle/device/pogo_sleep
+    chown root system /sys/class/ec_hid/dongle/device/pogo_sleep
+    chmod 0664 /sys/class/ec_hid/dongle/device/is_ec_has_removed
+    chown root system /sys/class/ec_hid/dongle/device/is_ec_has_removed
+#ASUS_BSP Lotta : chown EC_HID attribute ---
+
+#ASUS_BSP Deeo : chown LED attribute +++
+    chmod 0664 /sys/class/leds/red/brightness
+    chmod 0664 /sys/class/leds/green/brightness
+    chmod 0664 /sys/class/leds/red/delay_on
+    chmod 0664 /sys/class/leds/green/delay_on
+    chmod 0664 /sys/class/leds/red/delay_off
+    chmod 0664 /sys/class/leds/green/delay_off
+#ASUS_BSP Deeo : chown LED attribute ---
+
+#camera
+		setprop persist.camera.capture.sll.dump 0
+#ASUS_BSP Bryant "dng file save path"
+     chmod 0777 /data/vendor/camera/
+
+#ASUS_BSP +++ Jason
+on property:sys.boot_completed=1
+
+    # ASUS_BSP +++ Copy dualcam cali data to /data/vendor/camera because AP cannot read /proc and /vendor/facotry
+    copy /proc/driver/dualcam_cali /data/vendor/camera/dualcam_cali
+    chmod 755 /data/vendor/camera/dualcam_cali
+    copy /vendor/factory/dualcam_cali.bin /data/vendor/camera/dualcam_cali.bin
+    chmod 755 /data/vendor/camera/dualcam_cali.bin
+    # ASUS_BSP --- Copy dualcam cali data end
+#ASUS_BSP --- Jason
+
+#ASUS_BSP +++ Bryant "For ATD camera test."
+# Add Camera sensors symlink for ATD
+    rm /data/data/CameraTest
+    symlink /vendor/bin/CameraTest /data/data/CameraTest
+    chmod 0777 /data/data/CameraTest
+
+    rm /data/data/camera_status
+    symlink /vendor/bin/camera_status /data/data/camera_status
+    chmod 0777 /data/data/camera_status
+
+    rm /data/data/vga_status
+    symlink /vendor/bin/vga_status /data/data/vga_status
+    chmod 0777 /data/data/vga_status
+
+    rm /data/data/CameraResolution
+    symlink /vendor/bin/CameraResolution /data/data/CameraResolution
+    chmod 0777 /data/data/CameraResolution
+
+    rm /data/data/CameraModule
+    symlink /vendor/bin/CameraModule /data/data/CameraModule
+    chmod 0777 /data/data/CameraModule
+
+    rm /data/data/camera_flash
+    symlink /vendor/bin/camera_flash /data/data/camera_flash
+    chmod 0777 /data/data/camera_flash
+
+    rm /data/data/camera_flash2
+    symlink /vendor/bin/camera_flash2 /data/data/camera_flash2
+    chmod 0777 /data/data/camera_flash2
+
+    rm /data/data/KillMediaserver
+    symlink /vendor/bin/KillMediaserver /data/data/KillMediaserver
+    chmod 0777 /data/data/KillMediaserver
+    chown system shell /data/data/KillMediaserver
+
+    rm /data/data/CameraOTP
+    symlink /vendor/bin/CameraOTP /data/data/CameraOTP
+    chmod 0777 /data/data/CameraOTP
+
+    rm /data/data/Camera_Unique_ID
+    symlink /vendor/bin/Camera_Unique_ID /data/data/Camera_Unique_ID
+    chmod 0777 /data/data/Camera_Unique_ID
+    chown system shell /data/data/Camera_Unique_ID
+
+    chmod 0777 /vendor/bin/dit_af_cali
+    chmod 0777 /vendor/bin/test_afCaliDB
+
+    rm /data/data/BackupCalibrationData
+    symlink /vendor/bin/BackupCalibrationData /data/data/BackupCalibrationData
+    chmod 0777 /data/data/BackupCalibrationData
+    chown system shell /data/data/BackupCalibrationData
+
+    rm /data/data/RestoreCalibrationData
+    symlink /vendor/bin/RestoreCalibrationData /data/data/RestoreCalibrationData
+    chmod 0777 /data/data/RestoreCalibrationData
+    chown system shell /data/data/RestoreCalibrationData
+
+    rm /data/data/Camera_OIS_Write_DAC
+    symlink /vendor/bin/Camera_OIS_Write_DAC /data/data/Camera_OIS_Write_DAC
+    chmod 0777 /data/data/Camera_OIS_Write_DAC
+#ASUS_BSP --- Bryant "For ATD camera test."
+
+#ASUS_BSP +++ "for A/B update"
+    restorecon_recursive /dev/block/bootdevice/by-name
+    mkdir /vendor/asdf/recovery
+    restorecon_recursive /vendor/asdf/recovery
+    chmod 0644 /vendor/asdf/recovery
+#ASUS_BSP --- "for A/B update"
+
+
+#ASUS_BSP Clay : Grip debug directory +++
+    mkdir /data/misc/grip 0777 shell shell
+    mkdir /vendor/factory/grip 0777 shell shell
+    mkdir /data/data/grip 0777 shell shell
+    symlink /vendor/bin/grip_cal_touch_test /data/data/GripSensor_Test
+    chmod 0777 /data/data/GripSensor_Test
+    symlink /vendor/bin/Grip_Cal /data/data/GripSensor_Cal
+    chmod 0777 /data/data/GripSensor_Cal
+    symlink /vendor/bin/grip_i2c_status /data/data/GripSensor_I2C_Status
+    chmod 0777 /data/data/GripSensor_I2C_Status
+    symlink /vendor/bin/grip_switch_onoff /data/data/GripSensor_Switch
+    chmod 0777 /data/data/GripSensor_Switch
+    symlink /vendor/bin/grip_fpc_status /data/data/GripSensor_SelfTest
+    chmod 0777 /data/data/GripSensor_SelfTest
+    chmod 755 /system/etc/Grip_Cal.sh
+#ASUS_BSP Clay : Grip debug directory ---
+
+#ASUS_BSP_Vibrator +++, mark_guo
+#driver node
+    chown system shell /sys/class/leds/vibrator/hwReset
+    chown system shell /sys/class/leds/vibrator/channel
+    chown system shell /sys/class/leds/vibrator/pwm
+    chown system shell /sys/class/leds/vibrator/vd_clamp
+    chown system shell /sys/class/leds/vibrator/mem_play
+    chown system shell /sys/class/leds/vibrator/rtp_play
+    chown system shell /sys/class/leds/vibrator/rtp_break
+    chown system shell /sys/class/leds/vibrator/status_reg
+    chown system shell /sys/class/leds/vibrator/trigger_gpio
+    chown system shell /sys/class/leds/vibrator/trigger_test
+    chown system shell /sys/class/leds/vibrator/trigger_level
+    chown system shell /sys/class/leds/vibrator/trigger_waveform
+    chown system shell /sys/class/leds/vibrator/vib_enable
+    chown system shell /sys/dongwoon_haptic_drv
+    chown system shell /sys/dongwoon_haptic_drv/enableVIB
+    chown system shell /sys/dongwoon_haptic_drv/enableVIB_0832
+    chown system shell /sys/asus_vib_ctrl
+    chown system shell /sys/asus_vib_ctrl/top_vib_control
+    chown system shell /sys/asus_vib_ctrl/bot_vib_control
+    chmod 0777 /sys/class/leds/vibrator/channel
+    chmod 0777 /sys/dongwoon_haptic_drv
+    chmod 0777 /sys/class/leds/vibrator/pwm
+    chmod 0777 /sys/class/leds/vibrator/mem_play
+    chmod 0777 /sys/class/leds/vibrator/rtp_play
+    chmod 0777 /sys/class/leds/vibrator/rtp_break
+    chmod 0777 /sys/class/leds/vibrator/vd_clamp
+    chmod 0777 /sys/class/leds/vibrator/status_reg
+    chmod 0777 /sys/class/leds/vibrator/trigger_gpio
+    chmod 0777 /sys/class/leds/vibrator/trigger_test
+    chmod 0777 /sys/class/leds/vibrator/trigger_level
+    chmod 0777 /sys/class/leds/vibrator/trigger_waveform
+    chmod 0777 /sys/class/leds/vibrator/vib_enable
+    chmod 0777 /sys/dongwoon_haptic_drv/enableVIB
+    chmod 0777 /sys/dongwoon_haptic_drv/enableVIB_0832
+    chmod 0777 /sys/asus_vib_ctrl
+    chmod 0777 /sys/asus_vib_ctrl/top_vib_control
+    chmod 0777 /sys/asus_vib_ctrl/bot_vib_control
+#factory test program    
+    symlink /vendor/bin/VibratorPatternTest /data/data/VibratorPatternTest
+    chmod 0777 /data/data/VibratorPatternTest
+    symlink /system/bin/tstest /data/data/tstest
+    chmod 0777 /data/data/tstest
+    #symlink /vendor/bin/Vibrator_Cal /data/data/Vibrator_Cal
+    #chmod 0777 /data/data/Vibrator_Cal
+#ASUS_BSP_Vibrator ---
+
+# ASUS_BSP Austin_T+++ "gauge BMMI"
+	rm /data/data/battery_status
+	rm /data/data/BatteryCapacity
+	rm /data/data/StationBatteryCurrent
+	rm /data/data/BatteryVoltage
+	rm /data/data/BatteryCurrent
+	rm /data/data/gaugeIC_status
+	rm /data/data/read_battery_id_status
+	rm /data/data/BatteryTemperature
+
+	chown system shell /sys/class/power_supply/bms/capacity
+	chown system shell /sys/class/power_supply/bms/voltage_now
+	chown system shell /sys/class/power_supply/bms/current_now
+
+	symlink /vendor/bin/battery_status /data/data/battery_status
+	symlink /vendor/bin/BatteryCapacity /data/data/BatteryCapacity
+	symlink /vendor/bin/StationBatteryCurrent /data/data/StationBatteryCurrent
+	symlink /vendor/bin/BatteryVoltage /data/data/BatteryVoltage
+	symlink /vendor/bin/BatteryCurrent /data/data/BatteryCurrent
+	symlink /vendor/bin/gaugeIC_status /data/data/gaugeIC_status
+	symlink /vendor/bin/read_battery_id_status /data/data/read_battery_id_status
+	symlink /vendor/bin/BatteryTemperature /data/data/BatteryTemperature
+
+	chmod 0777 /data/data/battery_status
+	chmod 0777 /data/data/BatteryCapacity
+	chmod 0777 /data/data/StationBatteryCurrent
+	chmod 0777 /data/data/BatteryVoltage
+	chmod 0777 /data/data/BatteryCurrent
+	chmod 0777 /data/data/gaugeIC_status
+	chmod 0777 /data/data/read_battery_id_status
+	chmod 0777 /data/data/BatteryTemperature
+
+	chown system shell /data/data/battery_status
+	chown system shell /data/data/BatteryCapacity
+	chown system shell /data/data/StationBatteryCurrent
+	chown system shell /data/data/BatteryVoltage
+	chown system shell /data/data/BatteryCurrent
+	chown system shell /data/data/gaugeIC_status
+	chown system shell /data/data/read_battery_id_status
+	chown system shell /data/data/BatteryTemperature
+# ASUS_BSP Austin_T--- "gauge BMMI"
+
+# ASUS_BSP Austin_T +++ "Charger BMMI"
+	rm /data/data/USB_Thermal_Alert
+	symlink /vendor/bin/USB_Thermal_Alert /data/data/USB_Thermal_Alert
+	chmod 0777 /data/data/USB_Thermal_Alert
+	chown system shell /data/data/USB_Thermal_Alert
+
+	rm /data/data/Thermal_GPIO
+	symlink /vendor/bin/Thermal_GPIO /data/data/Thermal_GPIO
+	chmod 0777 /data/data/Thermal_GPIO
+	chown system shell /data/data/Thermal_GPIO
+
+	chmod 0777 /sys/class/power_supply/battery/device/asus_usb_suspend
+	chown system shell /sys/class/power_supply/battery/device/asus_usb_suspend
+
+	rm /data/data/DisableCharging
+	symlink /vendor/bin/DisableCharging /data/data/DisableCharging
+	chmod 0777 /data/data/DisableCharging
+	chown system shell /data/data/DisableCharging
+
+	rm /data/data/EnableCharging
+	symlink /vendor/bin/EnableCharging /data/data/EnableCharging
+	chmod 0777 /data/data/EnableCharging
+	chown system shell /data/data/EnableCharging
+
+	rm /data/data/Charger_NTC_Value
+	symlink /vendor/bin/Charger_NTC_Value /data/data/Charger_NTC_Value
+	chmod 0777 /data/data/Charger_NTC_Value
+	chown system shell /data/data/Charger_NTC_Value
+
+	rm /data/data/CHG_TYPE_now
+	symlink /vendor/bin/CHG_TYPE_now /data/data/CHG_TYPE_now
+	chmod 0777 /data/data/CHG_TYPE_now
+	chown system shell /data/data/CHG_TYPE_now
+
+	rm /data/data/CHG_TYPE_now2
+	symlink /vendor/bin/CHG_TYPE_now2 /data/data/CHG_TYPE_now2
+	chmod 0777 /data/data/CHG_TYPE_now2
+	chown system shell /data/data/CHG_TYPE_now2
+
+	rm /data/data/InboxCHG_TYPE_now
+	symlink /vendor/bin/InboxCHG_TYPE_now /data/data/InboxCHG_TYPE_now
+	chmod 0777 /data/data/InboxCHG_TYPE_now
+	chown system shell /data/data/InboxCHG_TYPE_now
+
+	rm /data/data/StationCHG_TYPE_now
+	symlink /vendor/bin/StationCHG_TYPE_now /data/data/StationCHG_TYPE_now
+	chmod 0777 /data/data/StationCHG_TYPE_now
+	chown system shell /data/data/StationCHG_TYPE_now
+
+	rm /data/data/TypeC_Side_Detect2
+	symlink /vendor/bin/TypeC_Side_Detect2 /data/data/TypeC_Side_Detect2
+	chmod 0777 /data/data/TypeC_Side_Detect2
+	chown system shell /data/data/TypeC_Side_Detect2
+
+	rm /data/data/InboxTypeC_Side_Detect
+	symlink /vendor/bin/InboxTypeC_Side_Detect /data/data/InboxTypeC_Side_Detect
+	chmod 0777 /data/data/InboxTypeC_Side_Detect
+	chown system shell /data/data/InboxTypeC_Side_Detect
+
+	rm /data/data/Adapter_ADC
+	symlink /vendor/bin/Adapter_ADC /data/data/Adapter_ADC
+	chmod 0777 /data/data/Adapter_ADC
+	chown system shell /data/data/Adapter_ADC
+
+	rm /data/data/CheckPTCtool
+	symlink /vendor/bin/CheckPTCtool /data/data/CheckPTCtool
+	chmod 0777 /data/data/CheckPTCtool
+	chown system shell /data/data/CheckPTCtool
+
+	chmod 0777 /sys/class/power_supply/battery/device/disable_input_suspend
+	chown system shell /sys/class/power_supply/battery/device/disable_input_suspend
+
+	chmod 0777 /sys/class/power_supply/battery/device/INOV_enable
+	chown system shell /sys/class/power_supply/battery/device/INOV_enable
+
+	chmod 0777 /sys/class/power_supply/battery/device/charger_limit_percent
+	chown system shell /sys/class/power_supply/battery/device/charger_limit_percent
+
+	rm /data/data/charger_limit
+	symlink /vendor/bin/charger_limit /data/data/charger_limit
+	chmod 0777 /data/data/charger_limit
+	chown system shell /data/data/charger_limit
+
+	chmod 0777 /sys/class/power_supply/battery/device/charger_limit_enable
+	chown system shell /sys/class/power_supply/battery/device/charger_limit_enable
+
+	rm /data/data/charger_limit_enable
+	symlink /sys/class/power_supply/battery/device/charger_limit_enable /data/data/charger_limit_enable
+	chmod 0777 /data/data/charger_limit_enable
+	chown system shell /data/data/charger_limit_enable
+	
+	rm /data/data/chargerIC_status
+	symlink /vendor/bin/chargerIC_status /data/data/chargerIC_status
+	chmod 0777 /data/data/chargerIC_status
+	chown system shell /data/data/chargerIC_status
+
+	chmod 0777 /sys/kernel/debug/charger-pca9468/address
+	chown system shell /sys/kernel/debug/charger-pca9468/address
+# ASUS_BSP Austin_T --- "Charger BMMI"
+
+#ASUS_BSP+++ "modify about wifi node for antenna"
+    chmod 0666 /sys/kernel/debug/icnss/stats
+    chmod 0666 /sys/module/icnss/parameters/do_wifi_antenna_switch
+    chmod 0666 /sys/module/icnss/parameters/do_antenna_switch
+#ASUS_BSP--- "modify about wifi node for antenna"
+
+# ASUS BSP Display +++
+    chmod 0666 /sys/class/drm/hdr_mode
+    chmod 0666 /sys/class/backlight/panel0-backlight/brightness
+    symlink /sys/class/backlight/panel0-backlight/brightness /data/data/BLTest
+    chmod 777 /data/data/BLTest
+# ASUS BSP Display ---
+
+#ASUS_BSP Beryl +++ "touch"
+     chmod 0775 /sys/devices/platform/goodix_ts.0/chip_info
+     chmod 0777 /sys/devices/platform/goodix_ts.0/airtrigger_touch
+     chown system system /sys/devices/platform/goodix_ts.0/airtrigger_touch
+     chmod 0777 /sys/devices/platform/goodix_ts.0/keymapping_touch
+     chown system system /sys/devices/platform/goodix_ts.0/keymapping_touch     
+     chmod 0777 /sys/devices/platform/goodix_ts.0/game_settings
+     chown system system /sys/devices/platform/goodix_ts.0/game_settings 
+#ASUS_BSP Beryl ---
+
+#ASUS_BSP Jacob +++ "checkpay"
+     chmod 0644 /vendor/factory/IFAA
+     chmod 0644 /vendor/factory/SOTER
+#ASUS_BSP Jacob ---
+
+#ASUS_BSP Lydia +++
+    chmod 0666 /sys/class/drm/dp_connect
+#ASUS_BSP Lydia ---
+
+#####################################################
+#####################################################
+#####################################################
+
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+#        FTM Mode property trigger (start)
+#          ( trigger on ro.boot.ftm=1 )
+#
+#       ****DO NOT insert any services***     
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+on property:ro.boot.ftm=1
+    setprop ro.setupwizard.mode DISABLED
+
+###-----------------------------------------------###
+#         FTM Mode property trigger (end)
+#          ( trigger on ro.boot.ftm=1 )
+#
+#       ****DO NOT insert any services***     
+###-----------------------------------------------###
+
+
+
+#####################################################
+#####################################################
+#####################################################
+
+
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+#         ROG dongle property trigger (end)
+#          ( trigger on sys.asus.dongletype=* )
+# service
+#           ****DO NOT insert service***     
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+#        ROG dongle property trigger (start)
+#          ( trigger on sys.asus.dongletype=* )
+#
+#       ****DO NOT insert any services***
+#
+#       0 : No Dongle
+#       1 : InBox
+#       2 : Station
+#       3 : DT
+#       4 : Error type
+#
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+
+on property:sys.asus.dongletype=*
+	start YodaDongleSwitch
+	start UsbHostSwitch
+#	start StationTouch
+#	start VibratorSwitch
+	start Usbpdrt1715
+	start dongle_state_fortouch
+
+on property:sys.asus.dongletype=0
+	start YodaDongleRemove
+
+on property:sys.asus.usb.speed=*
+	start UsbSpeedSwitch
+
+on property:sys.asus.ec_i2c_trigger=100
+	start ec_i2c_insmod
+
+on property:sys.asus.ec_i2c_trigger=200
+	start ec_i2c_rmmod
+
+###-----------------------------------------------###
+#         ROG dongle property trigger (end)
+#          ( trigger on sys.asus.dongletype=* )
+# 
+#            ****DO NOT insert service***     
+###-----------------------------------------------###
+
+
+
+#####################################################
+#####################################################
+#####################################################
+
+
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+#               ALL ASUS service (start)
+#
+#         ****DO NOT insert any on property***
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+
+#ASUS_BSP +++ "for A/B update"
+service updateEngineLogcat /system/bin/logcat -s update_engine bootcontrolhal -b all -r 500 -n 2 -v threadtime -f /vendor/asdf/updateEngineLogcat.txt 
+    class late_start
+    user root
+    disabled
+    seclabel u:r:asuslogcat:s0
+
+# BT WIFI MAC, BT WIFI firmware version
+service btwifimac /vendor/bin/btwifimac.sh
+    class core
+    user root
+    group root
+    seclabel u:r:vendor_init:s0
+    oneshot
+
+service WifiAntennaSwitch /vendor/bin/WifiAntenna.sh
+    class core
+    user root
+    group root
+    disabled
+    seclabel u:r:vendor_init:s0
+    oneshot
+
+service WiFiFWTool /vendor/bin/WiFiFWTool.sh
+    class core
+    user root
+    group root
+    disabled
+    seclabel u:r:vendor_init:s0
+    oneshot
+
+# for sp tool
+service sp /vendor/bin/sp
+    seclabel u:r:vendor_init:s0
+    disabled
+    oneshot
+
+# for ssn tool
+service ssn /vendor/bin/ssn
+    seclabel u:r:vendor_init:s0
+    disabled
+    oneshot
+
+# for devinfo service
+#service devinfo /vendor/bin/devinfo
+#    user root
+#    group root
+#    seclabel u:r:vendor_init:s0
+#    disabled
+#    oneshot
+
+# +++ ASUS_BSP : add for write OS Info
+service writeOsInfo /vendor/bin/writeosinfo
+    class core
+    user root
+    seclabel u:r:vendor_init:s0
+    oneshot
+    disabled
+# --- ASUS_BSP : add for write OS Info
+
+
+# +++ ASUS BSP : User unlock tool +++
+service writekey /vendor/bin/writekey
+        class core
+	user root
+	group root
+	seclabel u:r:vendor_init:s0
+        oneshot
+        disabled
+# --- ASUS BSP : User unlock tool ---
+
+# ASUS_BSP +++ RTC
+service set_deftime /vendor/bin/sh /vendor/etc/init.asus.set_time.sh
+        class core
+        user root
+        oneshot
+        disabled
+        seclabel u:r:vendor_init:s0
+# ASUS_BSP --- RTC
+
+# unmount APD service
+service umount_apd /vendor/bin/umount_apd.sh
+    seclabel u:r:demoapp:s0
+    user root
+    group root  
+    disabled
+    oneshot
+
+# Begin Immersion changes
+# TouchSense Player Service
+service immvibed /system/bin/immvibed -p 99 -u 1000
+class main
+user root
+group root
+ioprio rt 4
+# End Immersion changes
+
+# ASUS_SZ_BSP Bevis : EC Uevent Monitor Service +++
+service ec_ueventd /system/vendor/bin/ecUeventd
+        class core
+        user system
+	group system
+
+# ASUS_SZ_BSP Bevis : EC Uevent Monitor Service ---
+
+# ASUS_SZ_BSP Bevis : ACCY Triggle Service +++
+service YodaDongleRemove /vendor/bin/sh /vendor/etc/yoda_dongle_remove.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service YodaDongleSwitch /vendor/bin/sh /vendor/etc/yoda_dongle_switch.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service ec_i2c_insmod /vendor/bin/sh /vendor/etc/ec_i2c_insmod.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service ec_i2c_rmmod /vendor/bin/sh /vendor/etc/ec_i2c_rmmod.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+# ASUS_SZ_BSP Bevis : ACCY Triggle Service ---
+
+# ASUS_BSP YuHeng : usb host switch +++
+service UsbHostSwitch /vendor/bin/sh /vendor/etc/usb_host_switch.sh
+        seclabel u:r:asus_usb_host:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP YuHeng : usb host switch ---
+
+# ASUS_BSP YuHeng : usb speed switch +++
+service UsbSpeedSwitch /vendor/bin/sh /vendor/etc/usb_speed_switch.sh
+        seclabel u:r:asus_usb_host:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP YuHeng : usb speed switch ---
+
+# ASUS_BSP Cumo : usb pd rt1715 +++
+service Usbpdrt1715 /vendor/bin/sh /vendor/etc/usb_pd_rt1715.sh
+        seclabel u:r:asus_usb_host:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP Cumo : usb pd rt1715 ---
+
+# ASUS_SZ_BSP Cassie : add GetDtMAC Service +++
+service GetDtMAC /vendor/bin/sh /vendor/etc/get_dt_mac.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Cassie : add GetDtMAC Service ---
+
+# ASUS_SZ_BSP Cassie : gamepad related Service +++
+service YodaGamepadSwitch /vendor/bin/sh /vendor/etc/yoda_gamepad_switch.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+service YodaGamepadRemove /vendor/bin/sh /vendor/etc/yoda_gamepad_remove.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+service GamepadFWupdate /vendor/bin/sh /vendor/etc/fw_gamepad_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Cassie : gamepad related Service ---
+
+# ASUS_SZ_BSP Cassie : add ACCYShutdownNotify Service +++
+service ACCYShutdownNotify /vendor/bin/sh /vendor/etc/shutdown_notify.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Cassie : add ACCYShutdownNotify Service ---
+
+# ASUS_SZ_BSP Cassie:  user fan +++
+service InboxUserFan /vendor/bin/sh /vendor/etc/inbox_user_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service StationUserFan /vendor/bin/sh /vendor/etc/station_user_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service DtUserFan /vendor/bin/sh /vendor/etc/dt_user_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Cassie:  user fan ---
+
+# ASUS_SZ_BSP Cassie: thermal fan +++
+service InboxThermalFan /vendor/bin/sh /vendor/etc/inbox_thermal_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service StationThermalFan /vendor/bin/sh /vendor/etc/station_thermal_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service DtThermalFan /vendor/bin/sh /vendor/etc/dt_thermal_fan.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Cassie: thermal fan ---
+
+# ASUS_SZ_BSP Lotta: Station ec(ene6k7750) fw update +++
+service StationFWupdate /vendor/bin/sh /vendor/etc/station_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Lotta: Station ec(ene6k7750) fw update ---
+
+# ASUS_SZ_BSP Sid: Station pd fw update +++
+service StationPDFWupdate /vendor/bin/sh /vendor/etc/station_pdfw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_SZ_BSP Sid: Station pd fw update ---
+
+# ASUS_BSP Deeo : Phone Aura FW update +++
+service AuraSyncFWupdate /vendor/bin/sh /vendor/etc/aura_sync_fw_update.sh
+        seclabel u:r:aura_sync:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP Deeo : Phone Aura FW update ---
+
+
+
+## ASUS_SZ_BSP Sid +++
+#  DT PD FW update
+service DTPDFWupdate /vendor/bin/sh /vendor/etc/dt_pdfw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#  DT PD FW update
+
+#  DT hub version Detect and fw detect
+service DTHubDetect /vendor/bin/sh /vendor/etc/DT_hub_Detect.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service DTHub1Update /vendor/bin/sh /vendor/etc/dt_hub1_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+service DTHub2Update /vendor/bin/sh /vendor/etc/dt_hub2_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#  DT hub version Detect && fw detect
+
+#  DT status update
+service DTStatusUpdate /vendor/bin/sh /vendor/etc/update_accy_status2.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        group system
+        oneshot
+        disabled
+#  DT status update
+## ASUS_SZ_BSP Sid ---
+
+# ASUS_BSP Deeo : Check internal storage info +++
+service StorageStatus /vendor/bin/storage_status.sh
+        seclabel u:r:vendor_init:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP Deeo : Check internal storage info ---
+
+# ASUS_BSP Mark : vibrator control+++
+service VibratorControl /vendor/bin/sh /vendor/etc/vibrator_control.sh
+        seclabel u:r:vibrate_control:s0
+        class core
+        user root
+        oneshot
+        disabled
+# ASUS_BSP Mark : vibrator control---
+
+#ASUS_SZ_BSP Cassie: set version properties as expected +++
+service CheckAccyAsusfwVer /vendor/bin/sh /vendor/etc/check_accy_asusfw_ver.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#ASUS_SZ_BSP Cassie: set version properties as expected ---
+
+#ASUS_SZ_BSP Cassie : DT FW update +++
+service DtAuraSyncFWupdate /vendor/bin/sh /vendor/etc/dt_aura_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+service DTPowerFWupdate /vendor/bin/sh /vendor/etc/dt_power_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#ASUS_SZ_BSP Cassie : DT FW update ---
+
+#ASUS_SZ_BSP Cassie : inbox FW update +++
+service InboxAuraSyncFWupdate /vendor/bin/sh /vendor/etc/inbox_aura_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#ASUS_SZ_BSP Cassie : inbox FW update ---
+
+#ASUS_SZ_BSP Cassie : station FW update +++
+service StationAuraSyncFWupdate /vendor/bin/sh /vendor/etc/station_aura_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#ASUS_SZ_BSP Cassie : station FW update ---
+
+#ASUS_BSP Beryl "touch config" +++
+service touch_cfg /vendor/bin/touch_cfg.sh
+    seclabel u:r:vendor_init:s0
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    
+service glove_mode /vendor/bin/glove_mode.sh
+    seclabel u:r:vendor_init:s0
+    class core
+    user root
+    group root
+    oneshot
+    disabled    
+    
+service dongle_state_fortouch /vendor/bin/dongle_state.sh
+    seclabel u:r:vendor_init:s0
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+    
+service asusgesture /vendor/bin/sh /vendor/bin/init.asus.gesture.sh
+    seclabel u:r:asus_touch:s0
+    user root
+    group root
+    oneshot
+    disabled 
+
+service gamemode /vendor/bin/init.asus.gamemode.sh
+    seclabel u:r:asus_touch:s0
+    class core
+    group system
+    user root
+    oneshot
+    disabled
+
+#ASUS_BSP Beryl "touch config" ---
+
+# ASUS BSP Display, dfps +++
+service dfps60 /vendor/bin/dfps-60.sh
+    seclabel u:r:asus_display:s0 
+    user root
+    group root
+    oneshot
+    disabled
+    
+service dfps90 /vendor/bin/dfps-90.sh
+    seclabel u:r:asus_display:s0 
+    user root
+    group root
+    oneshot
+    disabled
+
+service dfps120 /vendor/bin/dfps-120.sh
+    seclabel u:r:asus_display:s0 
+    user root
+    group root
+    oneshot
+    disabled
+# ASUS BSP Display, dfps ---
+
+#ASUS_SZ_BSP Joyce : station goodix touch fw update +++
+service StationGoodixTouchFWupdate /vendor/bin/sh /vendor/etc/station_goodix_touch_fw_update.sh
+        seclabel u:r:yoda_dongle:s0
+        class core
+        user root
+        oneshot
+        disabled
+#ASUS_SZ_BSP Joyce : station goodix touch fw update ---
+
+#jacob +++
+service checkpay /vendor/bin/paycheck
+        class core
+        user root
+        oneshot
+        disabled
+#jacob ---
+
+###-----------------------------------------------###
+#                ALL ASUS service (end)
+# 
+#         ***DO NOT insert any on property***   
+###-----------------------------------------------###
+
+#####################################################
+#####################################################
+#####################################################
+
+
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+#               ALL ASUS on property  (start)
+# 
+#           ****DO NOT insert service***     
+###+++++++++++++++++++++++++++++++++++++++++++++++###
+
+## +++ ASUS_BSP : remove golbal system
+# +++ASUS_BSP : add for SP ASUS Country config
+#on property:persist.asus.ship_location=*
+#    start ssn
+#    start devinfo
+
+#on property:persist.asus.ship_loc2=*
+#    start ssn
+#    start devinfo
+## --- ASUS_BSP : remove golbal system
+
+on property:persist.asus.setupwizard_country=*
+    start ssn
+#    start devinfo
+
+## +++ ASUS_BSP : remove golbal system
+#on property:vendor.asus.operator.iso-country=*
+#    start ssn
+#    start devinfo
+## --- ASUS_BSP : remove golbal system
+
+on property:debug.update.deviceinfo=1
+    start ssn
+    start sp
+#    start devinfo
+    start writeOsInfo
+
+#on property:persist.sys.setupwizard.active=*
+#    start devinfo
+# ---ASUS_BSP : add for SP ASUS Country config
+
+# +++ ASUS_BSP : add for write OS Info
+on property:sys.boot_completed=1
+    start writeOsInfo
+on property:persist.sys.setupwizard.active=*
+    start writeOsInfo
+# --- ASUS_BSP : add for write OS Info
+
+# +++ ASUS BSP : User unlock tool +++
+on property:vendor.debug.write.asuskey=1
+        chmod 0644 /ADF/asuskey.bin
+        start writekey
+# --- ASUS BSP : User unlock tool ---
+
+# ASUS_BSP +++ RTC
+on property:sys.boot_completed=1
+	start set_deftime
+    start checkpay
+# ASUS_BSP --- RTC
+
+# +++ ASUS_BSP : add for asus boot animation partition
+#mount APD
+on property:persist.sys.enableAPD=1
+    wait /dev/block/bootdevice/by-name/APD
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev noatime barrier=1
+    chmod 0775 /APD
+    chown system system /APD
+    restorecon_recursive /APD
+
+#unmount APD
+on property:persist.sys.enableAPD=0
+    start umount_apd
+
+# instant camera setting
+on property:persist.asus.instant_camera=0
+    write /sys/module/gpio_keys/parameters/volume_key_wake_en 0
+on property:persist.asus.instant_camera=1
+    write /sys/module/gpio_keys/parameters/volume_key_wake_en 1
+
+# ASUS_BSP Deeo : Update Phone Aura FW +++
+on property:sys.boot_completed=1
+    start AuraSyncFWupdate
+
+on property:sys.phone.aura_fwupdate=1
+    start AuraSyncFWupdate
+# ASUS_BSP Deeo : Update Phone Aura FW ---
+
+on property:persist.asus.accy.fw_debug=1
+	setprop sys.asus.accy.fw_debug 1
+
+on property:persist.asus.accy.fw_debug=0
+	setprop sys.asus.accy.fw_debug 0
+
+# ASUS_BSP Deeo : Check internal storage info
+on property:sys.boot_completed=1
+    start StorageStatus
+
+# ASUS_BSP Deeo : Bumper LED switch +++
+on property:sys.phone.aura.bumper_enable=1
+    write /sys/class/leds/aura_sync/bumper_enable 1
+    write /sys/class/leds/bumper/VDD 1
+
+on property:sys.phone.aura.bumper_enable=0
+    write /sys/class/leds/aura_sync/bumper_enable 0
+    write /sys/class/leds/bumper/VDD 0
+# ASUS_BSP Deeo : Bumper LED switch ---
+
+# ASUS_SZ_BSP Lotta : Add station key in charger mode +++
+on charger
+    start ec_ueventd
+    write /sys/class/ec_hid/dongle/device/start_ec_adc_tm5 1
+# ASUS_SZ_BSP Lotta : Add station key in charger mode ---
+
+# ASUS_SZ_BSP Lotta : Add start ec adc tm +++
+on property:sys.boot_completed=1
+	write /sys/class/ec_hid/dongle/device/start_ec_adc_tm5 1
+# ASUS_SZ_BSP Lotta : Add start ec adc tm ---
+
+#ASUS_SZ_BSP Cassie: set version properties as expected +++
+on property:sys.boot_completed=1
+    start CheckAccyAsusfwVer
+#ASUS_SZ_BSP Cassie: set version properties as expected ---
+
+#ASUS_SZ_BSP Cassie: run GetDtMAC +++
+on property:vendor.dt.landetect=1
+    start GetDtMAC
+#ASUS_SZ_BSP Cassie: run GetDtMAC ---
+
+#ASUS_SZ_BSP Cassie:run ACCYShutdownNotify +++
+on property:sys.shutdown.requested=*
+    start ACCYShutdownNotify
+#ASUS_SZ_BSP Cassie:run ACCYShutdownNotify ---
+
+# ASUS_SZ_BSP Cassie: chmod and chown for inbox node +++
+on property:sys.aura.donglechmod=1
+    chmod 0666 /sys/class/leds/aura_inbox/VDD
+    chmod 0666 /sys/class/leds/aura_inbox/red_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/green_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/blue_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/mode
+    chmod 0666 /sys/class/leds/aura_inbox/apply
+    chmod 0666 /sys/class/leds/aura_inbox/fw_ver
+    chmod 0666 /sys/class/leds/aura_inbox/fw_update
+    chmod 0666 /sys/class/leds/aura_inbox/frame
+    chmod 0666 /sys/class/leds/aura_inbox/speed
+    chmod 0666 /sys/class/leds/aura_inbox/red1_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/green1_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/blue1_pwm
+    chmod 0666 /sys/class/leds/aura_inbox/unique_id
+    chmod 0666 /sys/class/leds/aura_inbox/fw_mode
+    chmod 0666 /sys/class/leds/aura_inbox/ap2ld
+    chmod 0666 /sys/class/leds/aura_inbox/led_on
+    chmod 0666 /sys/class/leds/aura_inbox/led2_on
+    chmod 0666 /sys/class/leds/aura_inbox/mode2
+    chmod 0666 /sys/class/leds/aura_inbox/aura_fan_en
+
+    chown root system /sys/class/leds/aura_inbox/VDD
+    chown root system /sys/class/leds/aura_inbox/red_pwm
+    chown root system /sys/class/leds/aura_inbox/green_pwm
+    chown root system /sys/class/leds/aura_inbox/blue_pwm
+    chown root system /sys/class/leds/aura_inbox/mode
+    chown root system /sys/class/leds/aura_inbox/apply
+    chown root system /sys/class/leds/aura_inbox/fw_ver
+    chown root system /sys/class/leds/aura_inbox/fw_update
+    chown root system /sys/class/leds/aura_inbox/frame
+    chown root system /sys/class/leds/aura_inbox/speed
+    chown root system /sys/class/leds/aura_inbox/red1_pwm
+    chown root system /sys/class/leds/aura_inbox/green1_pwm
+    chown root system /sys/class/leds/aura_inbox/blue1_pwm
+    chown root system /sys/class/leds/aura_inbox/unique_id
+    chown root system /sys/class/leds/aura_inbox/fw_mode
+    chown root system /sys/class/leds/aura_inbox/ap2ld
+    chown root system /sys/class/leds/aura_inbox/led_on
+    chown root system /sys/class/leds/aura_inbox/led2_on
+    chown root system /sys/class/leds/aura_inbox/mode2
+    chown root system /sys/class/leds/aura_inbox/aura_fan_en
+
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/VDD
+    chmod 0664 /sys/class/hwmon/Inbox_Fan/device/RPM
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/inbox_user_type
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/inbox_thermal_type
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/dt_user_type
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/dt_thermal_type
+    chmod 0666 /sys/class/hwmon/Inbox_Fan/device/debug_write_to_reg
+
+    chown root system /sys/class/hwmon/Inbox_Fan/device/VDD
+    chown root system /sys/class/hwmon/Inbox_Fan/device/RPM
+    chown root system /sys/class/hwmon/Inbox_Fan/device/inbox_user_type
+    chown root system /sys/class/hwmon/Inbox_Fan/device/inbox_thermal_type
+    chown root system /sys/class/hwmon/Inbox_Fan/device/dt_user_type
+    chown root system /sys/class/hwmon/Inbox_Fan/device/dt_thermal_type
+    chown root system /sys/class/hwmon/Inbox_Fan/device/debug_write_to_reg
+
+
+
+# ASUS_SZ_BSP Cassie: chmod and chown for inbox node ---
+
+# ASUS_SZ_BSP Cassie: chmod and chown DT +++
+on property:sys.aura.donglechmod=3
+     chmod 0664 /sys/class/leds/aura_dock/VDD
+    chmod 0664 /sys/class/leds/aura_dock/red_pwm
+    chmod 0664 /sys/class/leds/aura_dock/green_pwm
+    chmod 0664 /sys/class/leds/aura_dock/blue_pwm
+    chmod 0664 /sys/class/leds/aura_dock/mode
+    chmod 0664 /sys/class/leds/aura_dock/apply
+    chmod 0664 /sys/class/leds/aura_dock/fw_ver
+    chmod 0664 /sys/class/leds/aura_dock/fw_update
+    chmod 0664 /sys/class/leds/aura_dock/frame
+    chmod 0664 /sys/class/leds/aura_dock/speed
+    chmod 0664 /sys/class/leds/aura_dock/led_en
+    chmod 0664 /sys/class/leds/aura_dock/led_on
+    chmod 0664 /sys/class/leds/aura_dock/Calibration
+    chmod 0664 /sys/class/leds/aura_dock/IC_status
+
+    chown root system /sys/class/leds/aura_dock/VDD
+    chown root system /sys/class/leds/aura_dock/red_pwm
+    chown root system /sys/class/leds/aura_dock/green_pwm
+    chown root system /sys/class/leds/aura_dock/blue_pwm
+    chown root system /sys/class/leds/aura_dock/mode
+    chown root system /sys/class/leds/aura_dock/apply
+    chown root system /sys/class/leds/aura_dock/fw_ver
+    chown root system /sys/class/leds/aura_dock/fw_update
+    chown root system /sys/class/leds/aura_dock/frame
+    chown root system /sys/class/leds/aura_dock/speed
+    chown root system /sys/class/leds/aura_dock/led_en
+    chown root system /sys/class/leds/aura_dock/led_on
+    chown root system /sys/class/leds/aura_dock/Calibration
+    chown root system /sys/class/leds/aura_dock/IC_status
+
+    chmod 0664 /sys/class/leds/DT_power/fw_ver
+    chmod 0664 /sys/class/leds/DT_power/fw_update
+    chmod 0664 /sys/class/leds/DT_power/pause
+    chmod 0664 /sys/class/leds/DT_power/pd_switch
+
+    chown root system /sys/class/leds/DT_power/fw_ver
+    chown root system /sys/class/leds/DT_power/fw_update
+    chown root system /sys/class/leds/DT_power/pause
+    chown root system /sys/class/leds/DT_power/pd_switch
+# ASUS_SZ_BSP Cassie: chmod and chown DT ---
+
+# ASUS_BPS Deeo : Add for AuraLight HAL control +++
+on property:sys.asus.donglestate_GV_PD=1
+	setprop vendor.asus.aura.gamepad bumper
+
+on property:sys.asus.donglestate_GV_PD=3
+	setprop vendor.asus.aura.gamepad bumper
+
+on property:sys.asus.donglestate_GV_PD=0
+	setprop vendor.asus.aura.gamepad none
+
+on property:sys.asus.donglestate_GV_PD=2
+	setprop vendor.asus.aura.gamepad none
+# ASUS_BPS Deeo : Add for AuraLight HAL control ---
+
+#ASUS_SZ_BSP Cassie: add fan+++
+on property:persist.asus.userfan=*
+    start InboxUserFan
+    start StationUserFan
+    start DtUserFan
+
+on property:persist.asus.thermalfan=*
+    start InboxThermalFan
+    start StationThermalFan
+    start DtThermalFan
+
+on property:persist.asus.micfansettings=*
+    start InboxUserFan
+    start StationUserFan
+    start DtUserFan
+    start InboxThermalFan
+    start StationThermalFan
+    start DtThermalFan
+
+on property:sys.asus.fan.mic=*
+    start InboxUserFan
+    start StationUserFan
+    start DtUserFan
+    start InboxThermalFan
+    start StationThermalFan
+    start DtThermalFan
+
+on property:persist.asus.tempfan=*
+    start InboxThermalFan
+    start StationThermalFan
+    start DtThermalFan
+
+#ASUS_SZ_BSP Cassie: add fan---
+
+#ASUS_SZ_BSP Cassie: dt fw update +++
+on property:sys.dt.aura_fwupdate=1
+    start DtAuraSyncFWupdate
+on property:sys.dt.power_fwupdate=1
+    start DTPowerFWupdate
+#ASUS_SZ_BSP Cassie: dt fw update ---
+
+#ASUS_SZ_BSP Cassie: inbox fw update +++
+on property:sys.inbox.aura_fwupdate=1
+    start InboxAuraSyncFWupdate
+#ASUS_SZ_BSP Cassie: inbox fw update ---
+
+#ASUS_SZ_BSP Cassie: station fw update +++
+on property:sys.station.aura_fwupdate=1
+    start StationAuraSyncFWupdate
+#ASUS_SZ_BSP Cassie: station fw update ---
+
+#mark+++ for vibrator control
+on property:vendor.asus.vibrator_control=*
+	start VibratorControl
+#mark--- for vibrator control
+
+#ASUS_SZ_BSP Lotta: station ec(ene6k7750) fw update +++
+on property:sys.station.fwupdate=1
+    start StationFWupdate
+#ASUS_SZ_BSP Lotta: station ec(ene6k7750) fw update ---
+
+# ASUS_SZ_BSP Lotta: chmod and chown station ec +++
+on property:sys.ec_i2c.donglechmod=1
+    chmod 0664 /sys/class/ec_i2c/dongle/device/u0504
+    chown root system /sys/class/ec_i2c/dongle/device/u0504
+    chmod 0664 /sys/class/ec_i2c/dongle/device/set_gpio
+    chown root system /sys/class/ec_i2c/dongle/device/set_gpio  
+    chmod 0664 /sys/class/ec_i2c/dongle/device/get_gpio
+    chown root system /sys/class/ec_i2c/dongle/device/get_gpio 
+    chmod 0664 /sys/class/ec_i2c/dongle/device/fw_ver
+    chown root system /sys/class/ec_i2c/dongle/device/fw_ver
+    chmod 0664 /sys/class/ec_i2c/dongle/device/pwm
+    chown root system /sys/class/ec_i2c/dongle/device/pwm
+    chmod 0664 /sys/class/ec_i2c/dongle/device/rpm
+    chown root system /sys/class/ec_i2c/dongle/device/rpm
+    chmod 0664 /sys/class/ec_i2c/dongle/device/freq
+    chown root system /sys/class/ec_i2c/dongle/device/freq
+    chmod 0664 /sys/class/ec_i2c/dongle/device/duty
+    chown root system /sys/class/ec_i2c/dongle/device/duty
+    chmod 0664 /sys/class/ec_i2c/dongle/device/enable_mipi
+    chown root system /sys/class/ec_i2c/dongle/device/enable_mipi
+    chmod 0664 /sys/class/ec_i2c/dongle/device/charger_type
+    chown root system /sys/class/ec_i2c/dongle/device/charger_type
+    chmod 0664 /sys/class/ec_i2c/dongle/device/battery_cap
+    chown root system /sys/class/ec_i2c/dongle/device/battery_cap
+    chmod 0664 /sys/class/ec_i2c/dongle/device/battery_vol
+    chown root system /sys/class/ec_i2c/dongle/device/battery_vol
+    chmod 0664 /sys/class/ec_i2c/dongle/device/battery_cur
+    chown root system /sys/class/ec_i2c/dongle/device/battery_cur
+    chmod 0664 /sys/class/ec_i2c/dongle/device/thermal_alert
+    chown root system /sys/class/ec_i2c/dongle/device/thermal_alert
+    chmod 0664 /sys/class/ec_i2c/dongle/device/factory_mode
+    chown root system /sys/class/ec_i2c/dongle/device/factory_mode
+    chmod 0664 /sys/class/ec_i2c/dongle/device/StationPDO_voltage_max
+    chown root system /sys/class/ec_i2c/dongle/device/StationPDO_voltage_max
+    chmod 0664 /sys/class/ec_i2c/dongle/device/StationPDO_current_max
+    chown root system /sys/class/ec_i2c/dongle/device/StationPDO_current_max
+    chmod 0664 /sys/class/ec_i2c/dongle/device/sd_power
+    chown root system /sys/class/ec_i2c/dongle/device/sd_power
+    chmod 0664 /sys/class/ec_i2c/dongle/device/INT_check
+    chown root system /sys/class/ec_i2c/dongle/device/INT_check
+    chmod 0664 /sys/class/ec_i2c/dongle/device/DP_FW
+    chown root system /sys/class/ec_i2c/dongle/device/DP_FW
+    chmod 0664 /sys/class/ec_i2c/dongle/device/FPS
+    chown root system /sys/class/ec_i2c/dongle/device/FPS
+    chmod 0664 /sys/class/ec_i2c/dongle/device/uart
+    chown root system /sys/class/ec_i2c/dongle/device/uart
+    chmod 0664 /sys/class/ec_i2c/dongle/device/init_state
+    chown root system /sys/class/ec_i2c/dongle/device/init_state
+    chmod 0664 /sys/class/ec_i2c/dongle/device/pwm_freq_duty
+    chown root system /sys/class/ec_i2c/dongle/device/pwm_freq_duty
+    chmod 0664 /sys/class/ec_i2c/dongle/device/battery_48_hours_state
+    chown root system /sys/class/ec_i2c/dongle/device/battery_48_hours_state
+    chmod 0664 /sys/class/ec_i2c/dongle/device/set_color_temp
+    chown root system /sys/class/ec_i2c/dongle/device/set_color_temp
+# ASUS_SZ_BSP Lotta: chmod and chown station ec ---
+
+# ASUS_SZ_BSP cassie: chmod and chown station aura +++
+on property:sys.ec_i2c.donglechmod=1
+    chmod 0666 /sys/class/leds/aura_station/VDD
+    chmod 0666 /sys/class/leds/aura_station/red_pwm
+    chmod 0666 /sys/class/leds/aura_station/green_pwm
+    chmod 0666 /sys/class/leds/aura_station/blue_pwm
+    chmod 0666 /sys/class/leds/aura_station/mode
+    chmod 0666 /sys/class/leds/aura_station/apply
+    chmod 0666 /sys/class/leds/aura_station/fw_ver
+    chmod 0666 /sys/class/leds/aura_station/fw_update
+    chmod 0666 /sys/class/leds/aura_station/frame
+    chmod 0666 /sys/class/leds/aura_station/speed
+    chmod 0666 /sys/class/leds/aura_station/red1_pwm
+    chmod 0666 /sys/class/leds/aura_station/green1_pwm
+    chmod 0666 /sys/class/leds/aura_station/blue1_pwm
+    chmod 0666 /sys/class/leds/aura_station/led_on
+    chmod 0666 /sys/class/leds/aura_station/led2_on
+    chmod 0666 /sys/class/leds/aura_station/mode2
+
+
+    chown root system /sys/class/leds/aura_station/VDD
+    chown root system /sys/class/leds/aura_station/red_pwm
+    chown root system /sys/class/leds/aura_station/green_pwm
+    chown root system /sys/class/leds/aura_station/blue_pwm
+    chown root system /sys/class/leds/aura_station/mode
+    chown root system /sys/class/leds/aura_station/apply
+    chown root system /sys/class/leds/aura_station/fw_ver
+    chown root system /sys/class/leds/aura_station/fw_update
+    chown root system /sys/class/leds/aura_station/frame
+    chown root system /sys/class/leds/aura_station/speed
+    chown root system /sys/class/leds/aura_station/red1_pwm
+    chown root system /sys/class/leds/aura_station/green1_pwm
+    chown root system /sys/class/leds/aura_station/blue1_pwme
+    chown root system /sys/class/leds/aura_station/led_on
+    chown root system /sys/class/leds/aura_station/led2_on
+    chown root system /sys/class/leds/aura_station/mode2
+
+# ASUS_SZ_BSP cassie: chmod and chown station aura  ---
+
+
+# ASUS_SZ_BSP cassie: chmod and chown gamepad aura +++
+on property:sys.asus.donglestate_GV_PD=1
+
+    chmod 0666 /sys/class/leds/aura_gamepad/red_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/green_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/blue_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/mode
+    chmod 0666 /sys/class/leds/aura_gamepad/apply
+    chmod 0666 /sys/class/leds/aura_gamepad/fw_ver
+    chmod 0666 /sys/class/leds/aura_gamepad/frame
+    chmod 0666 /sys/class/leds/aura_gamepad/speed
+    chmod 0666 /sys/class/leds/aura_gamepad/led_on
+    chmod 0666 /sys/class/leds/aura_gamepad/mode2
+
+
+    chown root system /sys/class/leds/aura_gamepad/red_pwm
+    chown root system /sys/class/leds/aura_gamepad/green_pwm
+    chown root system /sys/class/leds/aura_gamepad/blue_pwm
+    chown root system /sys/class/leds/aura_gamepad/mode
+    chown root system /sys/class/leds/aura_gamepad/apply
+    chown root system /sys/class/leds/aura_gamepad/fw_ver
+    chown root system /sys/class/leds/aura_gamepad/frame
+    chown root system /sys/class/leds/aura_gamepad/speed
+    chown root system /sys/class/leds/aura_gamepad/led_on
+    chown root system /sys/class/leds/aura_gamepad/mode2
+
+on property:sys.asus.donglestate_GV_PD=3
+
+    chmod 0666 /sys/class/leds/aura_gamepad/red_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/green_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/blue_pwm
+    chmod 0666 /sys/class/leds/aura_gamepad/mode
+    chmod 0666 /sys/class/leds/aura_gamepad/apply
+    chmod 0666 /sys/class/leds/aura_gamepad/fw_ver
+    chmod 0666 /sys/class/leds/aura_gamepad/frame
+    chmod 0666 /sys/class/leds/aura_gamepad/speed
+    chmod 0666 /sys/class/leds/aura_gamepad/led_on
+    chmod 0666 /sys/class/leds/aura_gamepad/mode2
+
+
+    chown root system /sys/class/leds/aura_gamepad/red_pwm
+    chown root system /sys/class/leds/aura_gamepad/green_pwm
+    chown root system /sys/class/leds/aura_gamepad/blue_pwm
+    chown root system /sys/class/leds/aura_gamepad/mode
+    chown root system /sys/class/leds/aura_gamepad/apply
+    chown root system /sys/class/leds/aura_gamepad/fw_ver
+    chown root system /sys/class/leds/aura_gamepad/frame
+    chown root system /sys/class/leds/aura_gamepad/speed
+    chown root system /sys/class/leds/aura_gamepad/led_on
+    chown root system /sys/class/leds/aura_gamepad/mode2
+# ASUS_SZ_BSP cassie: chmod and chown gamepad aura  ---
+
+#ASUS_SZ_BSP Cassie gamepad related trigger+++
+on property:sys.boot_completed=1
+    start YodaGamepadSwitch
+on property:sys.asus.donglestate_GV_PD=1
+    start YodaGamepadSwitch
+on property:sys.asus.donglestate_GV_PD=3
+    start YodaGamepadSwitch
+on property:sys.asus.donglestate_GV_PD=0
+    start YodaGamepadRemove
+on property:sys.gamepad.left_fwupdate=1
+    start GamepadFWupdate
+on property:sys.gamepad.holder_fwupdate=1
+    start GamepadFWupdate
+on property:sys.gamepad.wireless_fwupdate=1
+    start GamepadFWupdate
+#ASUS_SZ_BSP Cassie gamepad related trigger---
+
+
+#ASUS_SZ_BSP Sid: station PD fw update +++
+on property:sys.station.pd_fwupdate=1
+    start StationPDFWupdate
+#ASUS_SZ_BSP Sid: station PD fw update ---
+
+## ASUS_SZ_BSP Sid Add for DT_PD and DT Hub+++
+
+on property:sys.dt.pd_fwupdate=1
+    start DTPDFWupdate
+
+on property:sys.dt.hubdetect=0
+	stop DTHubDetect
+on property:sys.dt.hubdetect=1
+	start DTHubDetect
+
+on property:sys.dt.hub1_fwupdate=*
+	start DTHub1Update
+on property:sys.dt.hub2_fwupdate=*
+	start DTHub2Update
+
+on property:sys.dt.accy_statusupdate=1
+	start DTStatusUpdate
+
+## ASUS_SZ_BSP Sid Add for DT_PD and DT Hub---
+
+#+++ ASUS_BSP yunchung: Btsnoop debug tool
+on property:persist.bluetooth.btsnoopenable=true
+setprop debug.bluetooth.btsnoop_status start
+
+on property:persist.bluetooth.btsnoopenable=false
+setprop debug.bluetooth.btsnoop_status stop
+#--- ASUS_BSP yunchung: Btsnoop debug tool
+
+#+++ASUS_BSP : add for charger mode to enable uart console , adb and mount asdf, cache folder
+on charger
+#mount asdf 
+    wait /dev/block/bootdevice/by-name/asdf
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/asdf
+    mount ext4 /dev/block/bootdevice/by-name/asdf /asdf nosuid nodev noatime barrier=1
+    chmod 0777 /asdf
+    restorecon_recursive /asdf
+
+    write /proc/asusevtlog  "ASDF: Check LastShutdown log."
+    write /proc/asusdebug  get_asdf_log
+    write /proc/asusevtlog "charger: enter charger mode"
+    write /asdf/CHGLimit 0
+    echo 1 > /sys/fs/selinux/log
+
+    start logd
+    start logcat-charger
+#---ASUS_BSP : add for charger mode to enable uart console , adb and mount asdf folder
+
+## ASUS BSP Austin_T Add for charger boot_complete +++
+on property:sys.boot_completed=1
+	write /sys/class/power_supply/battery/device/boot_completed 1
+## ASUS BSP Austin_T Add for charger boot_complete ---
+
+# ASUS BSP Austin_Tseng : add for smart charging +++
+on property:persist.sys.stopcharging=1
+	write /sys/class/power_supply/battery/device/smartchg_stop_charging 1
+on property:persist.sys.stopcharging=0
+	write /sys/class/power_supply/battery/device/smartchg_stop_charging 0
+# ASUS BSP Austin_Tseng : add for smart charging ---
+
+# ASUS BSP Austin_Tseng : add for ultra battery life +++
+on property:persist.sys.ultrabatterylife=1
+	write /sys/class/power_supply/battery/device/ultra_bat_life 1
+on property:persist.sys.ultrabatterylife=0
+	write /sys/class/power_supply/battery/device/ultra_bat_life 0
+# ASUS BSP Austin_Tseng : add for ultra battery life ---
+
+# ASUS BSP Austin_Tseng : add for demo app +++
+on property:persist.sys.enableAPD=1
+	write /sys/class/power_supply/battery/device/demo_app_property 1
+on property:persist.sys.enableAPD=0
+	write /sys/class/power_supply/battery/device/demo_app_property 0
+on property:sys.asus.cndemo=1
+	write /sys/class/power_supply/battery/device/cn_demo_app 1
+on property:sys.asus.cndemo=0
+	write /sys/class/power_supply/battery/device/cn_demo_app 0
+# ASUS BSP Austin_Tseng : add for demo app ---
+
+## ASUS BSP ChiaYuan Add for station balance mode +++
+on property:persist.odm.asus.batpolicy=0
+	write /proc/driver/bat_policy 0
+on property:persist.odm.asus.batpolicy=1
+	write /proc/driver/bat_policy 1
+on property:persist.odm.asus.batpolicy=2
+	write /proc/driver/bat_policy 2
+## ASUS BSP ChiaYuan Add for station balance mode ---
+
+# ASUS_BSP+++ for wlan miracast log
+on property:persist.vendor.asus.miracastlog=1
+    setprop vendor.debug.mmosal.config "6013:63"
+    setprop debug.wfd.uibcevents 1
+    setprop sys.tcpdump.size 100
+    setprop sys.tcpdump.num 20
+
+on property:persist.vendor.asus.miracastlog=0
+    setprop vendor.debug.mmosal.config ""
+    setprop debug.wfd.uibcevents 0
+    setprop sys.tcpdump.size 20
+    setprop sys.tcpdump.num 2
+# ASUS_BSP--- for wlan miracast log
+
+on property:vendor.asus.wifiantennamode=*
+	restart WifiAntennaSwitch
+
+on property:persist.vendor.asus.wlanfwdbg=*
+    start WiFiFWTool
+
+# ASUS BSP Display +++
+on property:vendor.asus.dfps=60
+    start dfps60
+
+on property:vendor.asus.dfps=90
+    start dfps90
+    
+on property:vendor.asus.dfps=120
+    start dfps120
+# ASUS BSP Display ---
+
+#ASUS_BSP Beryl +++
+on property:persist.asus.gesture.type=*
+    start asusgesture
+    
+on property:sys.asus.gamingtype=*
+   start gamemode
+on property:sys.screen.rotation=*
+   start gamemode
+
+on property:sys.boot_completed=1
+   start touch_cfg
+   
+on property:persist.asus.dclick=0
+    write sys/devices/platform/goodix_ts.0/gesture/dclick 0
+on property:persist.asus.dclick=1
+    write sys/devices/platform/goodix_ts.0/gesture/dclick 1
+on property:persist.asus.swipeup=0
+    write sys/devices/platform/goodix_ts.0/gesture/swipeup 0
+on property:persist.asus.swipeup=1
+    write sys/devices/platform/goodix_ts.0/gesture/swipeup 1
+on property:persist.asus.glove=0
+   write sys/devices/platform/goodix_ts.0/glove_mode 0
+   start glove_mode
+on property:persist.asus.glove=1
+   write sys/devices/platform/goodix_ts.0/glove_mode 1
+   start glove_mode
+on property:persist.asus.fp.wakeup=true
+   write sys/devices/platform/goodix_ts.0/gesture/aod_enable 1
+on property:persist.asus.fp.wakeup=false   
+   write sys/devices/platform/goodix_ts.0/gesture/aod_enable 0
+on property:vendor.asus.touch_in_call=true
+   write sys/devices/platform/goodix_ts.0/phone_state_on 1
+on property:vendor.asus.touch_in_call=false
+   write sys/devices/platform/goodix_ts.0/phone_state_on 0   
+#ASUS_BSP Beryl ---
+
+# ASUS_SZ_BSP Joyce: station goodix touch test +++
+on property:sys.ec_i2c.donglechmod=1
+	chmod 0777 /sys/devices/platform/goodix_ts_station.0/goodix_init
+	chmod 0777 /sys/devices/platform/goodix_ts_station.0/chip_info
+	chmod 0777 /sys/devices/platform/goodix_ts_station.0/fw_update
+	chmod 0777 /sys/devices/platform/goodix_ts_station.0/fwupdate/progress
+# ASUS_SZ_BSP Joyce: station goodix touch test ---
+
+# ASUS_SZ_BSP Joyce: station focaltech touch fw update +++
+on property:sys.station.tp_fwupdate=1
+    start StationGoodixTouchFWupdate
+# ASUS_SZ_BSP Joyce: station focaltech touch fw update ---
+###-----------------------------------------------###
+#              ALL ASUS on property (end)
+# 
+#            ****DO NOT insert service***     
+###-----------------------------------------------###

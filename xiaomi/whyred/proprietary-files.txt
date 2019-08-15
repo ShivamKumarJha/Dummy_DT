@@ -53,7 +53,6 @@ vendor/lib64/vendor.qti.hardware.alarm@1.0.so
 etc/permissions/audiosphere.xml
 framework/audiosphere.jar
 vendor/bin/audioflacapp
-vendor/etc/audio.scd
 vendor/etc/diracvdd.bin
 vendor/etc/speaker.ftcfg
 vendor/firmware/dbmd4_va_fw.bin
@@ -887,7 +886,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_i_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_4k_preview_3a.so
@@ -935,7 +933,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_ofilm_india_i_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_4k_preview_3a.so
@@ -961,7 +958,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_4k.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_weixin.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_cpp_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_default_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_hfr_120.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_hfr_120_3a.so
@@ -976,7 +972,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_preview_cts.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_bokeh.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_hdr.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_snapshot_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video_4k.so
@@ -985,7 +980,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_ii_zsl_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_4k_preview_3a.so
@@ -1011,7 +1005,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_4k.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_weixin.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_cpp_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_default_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_hfr_120.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_hfr_120_3a.so
@@ -1026,7 +1019,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_preview_cts.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_bokeh.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_hdr.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_snapshot_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video_4k.so
@@ -1035,7 +1027,6 @@ vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_video_weixin_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_weixin_video_3a.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_weixin_video_3a_res1.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a.so
-vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a_its.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_preview_3a_sn.so
 vendor/lib/libchromatix_lavender_s5kgm1_sunny_india_ii_zsl_video_3a.so
 vendor/lib/libchromatix_tulip_ov02a10_ofilm_global_ii_common.so
@@ -2789,9 +2780,12 @@ vendor/lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
 
 # Fingerprint
 -vendor/app/FingerprintExtensionService/FingerprintExtensionService.apk
+-vendor/app/QFingerprintService/QFingerprintService.apk
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+vendor/bin/qfp-daemon
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/permissions/com.fingerprints.extension.xml
+vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/firmware/fpctzappfingerprint.b00
 vendor/firmware/fpctzappfingerprint.b01
 vendor/firmware/fpctzappfingerprint.b02
@@ -2810,6 +2804,7 @@ vendor/lib64/hw/fingerprint.fpc.default.so
 vendor/lib64/hw/fingerprint.goodix.default.so
 vendor/lib64/libgf_ca.so
 vendor/lib64/libgf_hal.so
+vendor/lib64/libqfp-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
@@ -3097,16 +3092,12 @@ vendor/lib/libgcs-calwrapper.so
 vendor/lib/libgcs-ipc.so
 vendor/lib/libgcs-osal.so
 vendor/lib/libgcs.so
-vendor/lib/libnwa.so
 vendor/lib/libsmwrapper.so
-vendor/lib/libsse.so
 vendor/lib64/hw/sound_trigger.primary.sdm660.so
 vendor/lib64/libgcs-calwrapper.so
 vendor/lib64/libgcs-ipc.so
 vendor/lib64/libgcs-osal.so
 vendor/lib64/libgcs.so
-vendor/lib64/libnwa.so
-vendor/lib64/libsse.so
 
 # Media
 lib/extractors/libmmparser.so
@@ -3628,7 +3619,6 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 vendor/bin/thermal-engine
 vendor/etc/thermal-engine-map.conf
 vendor/etc/thermal-engine-normal.conf
-vendor/etc/thermal-engine-sgame.conf
 vendor/etc/thermal-engine.conf
 -vendor/lib/libthermalclient.so
 vendor/lib/libthermalfeature.so
@@ -3839,9 +3829,6 @@ vendor/bin/vsimd
 vendor/bin/wdsdaemon
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
--vendor/data-app/SmartHome/SmartHome.apk
--vendor/data-app/aiasst_service/aiasst_service.apk
--vendor/data-app/wps-lite/wps-lite.apk
 vendor/etc/MIUI_DualCamera_watermark.png
 vendor/etc/MIUI_DualCamera_watermark_in.png
 vendor/etc/MIUI_Time.ttf

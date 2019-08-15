@@ -2385,8 +2385,8 @@ case "$target" in
 
             # cpuset settings
             echo 0-7 > /dev/cpuset/top-app/cpus
-            echo 0-2 > /dev/cpuset/background/cpus
-            echo 0-3 > /dev/cpuset/system-background/cpus
+            echo 0-1 > /dev/cpuset/background/cpus
+            echo 0-2 > /dev/cpuset/system-background/cpus
             echo 0-2,4-7 > /dev/cpuset/foreground/cpus
 
             # disable thermal bcl hotplug to switch governor
@@ -2458,9 +2458,8 @@ case "$target" in
 
             #Enable input boost configuration
             echo "0:1401600" > /sys/module/cpu_boost/parameters/input_boost_freq
-            echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
-            echo "0:0 1:0 2:0 3:0 4:1747200 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-            echo 400 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
+            echo 60 > /sys/module/cpu_boost/parameters/input_boost_ms
+
             # Set Memory parameters
             configure_memory_parameters
 

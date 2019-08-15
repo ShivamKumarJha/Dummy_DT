@@ -26,7 +26,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.sat.enable=1 \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.miui.cit,com.qualcomm.qti.qmmi \
-    vendor.camera.hal1.packagelist=com.tencent.mm,com.eg.android.AlipayGphone \
     persist.chg.max_volt_mv=9000 \
     ro.cutoff_voltage_mv=3400 \
     persist.vendor.dpm.feature=1 \

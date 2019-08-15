@@ -5,8 +5,10 @@
 -app/imssettings/imssettings.apk
 -app/uceShimService/uceShimService.apk
 -framework/WfdCommon.jar
+-lib/libsdm-disp-apis.so
 -lib/vendor.qti.hardware.fm@1.0.so
 -lib64/com.quicinc.cne.server@1.0.so
+-lib64/libsdm-disp-apis.so
 -lib64/vendor.qti.hardware.fm@1.0.so
 -priv-app/CNEService/CNEService.apk
 -priv-app/WfdService/WfdService.apk

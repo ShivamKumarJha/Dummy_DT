@@ -1975,6 +1975,8 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-Hardware
+-lib/libsdm-disp-apis.so
+-lib64/libsdm-disp-apis.so
 vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so
 vendor/lib/hw/gralloc.default.so
 vendor/lib/hw/gralloc.sdm660.so
@@ -2570,6 +2572,16 @@ vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
 vendor/lib64/vendor.display.postproc@1.0.so
+
+# Power-Hardware
+vendor/bin/hw/android.hardware.power@1.0-service
+vendor/etc/init/android.hardware.power@1.0-service.rc
+vendor/lib/hw/android.hardware.power@1.0-impl.so
+vendor/lib/hw/power.default.so
+vendor/lib/hw/power.qcom.so
+vendor/lib64/hw/android.hardware.power@1.0-impl.so
+vendor/lib64/hw/power.default.so
+vendor/lib64/hw/power.qcom.so
 
 # QMI
 etc/permissions/qti_libpermissions.xml
@@ -3184,7 +3196,6 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
--vendor/data-app/SmartHome/SmartHome.apk
 vendor/etc/hdr_config.cfg
 vendor/etc/jdi_fhd_cmd_incell_dsi_panel_mi.xml
 vendor/etc/pinknoise_wsa.wav

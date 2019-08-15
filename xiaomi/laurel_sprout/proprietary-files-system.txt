@@ -135,6 +135,7 @@ lib/libwfdcodecv4l2.so
 lib/libwfdcommonutils.so
 lib/libwfdconfigutils.so
 lib/libwfdmminterface.so
+lib/libwfdmmservice.so
 lib/libwfdmmsink.so
 lib/libwfdmmsrc.so
 lib/libwfdnative.so
@@ -166,10 +167,13 @@ lib/vendor.qti.hardware.scve.objecttracker@1.0.so
 lib/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 lib/vendor.qti.hardware.scve.panorama@1.0.so
 lib/vendor.qti.hardware.vpp@1.1.so
+lib/vendor.qti.hardware.vpp@1.2.so
 lib/vendor.qti.ims.callinfo@1.0.so
 lib/vendor.qti.ims.rcsconfig@1.0.so
 lib/vendor.qti.imsrtpservice@1.0.so
 lib/vendor.qti.latency@2.0.so
+lib/vendor.xiaomi.hardware.displayfeature@1.0.so
+lib/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib/vendor.xiaomi.hardware.misys@2.0.so
 lib64/com.qualcomm.qti.ant@1.0.so
@@ -225,9 +229,12 @@ lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 lib64/vendor.qti.hardware.scve.panorama@1.0.so
 lib64/vendor.qti.hardware.soter@1.0.so
 lib64/vendor.qti.hardware.vpp@1.1.so
+lib64/vendor.qti.hardware.vpp@1.2.so
 lib64/vendor.qti.ims.callinfo@1.0.so
 lib64/vendor.qti.ims.rcsconfig@1.0.so
 lib64/vendor.qti.imsrtpservice@1.0.so
 lib64/vendor.qti.latency@2.0.so
+lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
+lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
 lib64/vendor.xiaomi.hardware.misys@2.0.so

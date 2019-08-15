@@ -1,0 +1,3 @@
+require version-baseband=4.3.1.c1-00007-NICOBAR_GEN_PACK-1
+require version-trustzone=TZ.XF.5.1.1.C1-00009
+require version-vendor=1564075953

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="none">0</item>
+    <item name="aod.on">22</item>
+    <item name="screen.on">53</item>
+    <item name="screen.full">252</item>
+    <item name="bluetooth.active">60</item>
+    <item name="bluetooth.on">1.5</item>
+    <item name="wifi.on">2.17</item>
+    <item name="wifi.active">250</item>
+    <item name="wifi.scan">78</item>
+    <item name="dsp.audio">43</item>
+    <item name="dsp.video">59</item>
+    <item name="camera.avg">412</item>
+    <item name="camera.flashlight">108</item>
+    <item name="gps.on">32</item>
+    <item name="radio.active">95</item>
+    <item name="radio.scanning">109</item>
+    <array name="radio.on">
+        <value>2.3</value>
+        <value>2.3</value>
+        <value>2.3</value>
+        <value>2.3</value>
+        <value>2.3</value>
+        <value>2.3</value>
+    </array>
+    <array name="cpu.clusters.cores">
+        <value>4</value>
+        <value>4</value>
+    </array>
+    <array name="cpu.active.cluster0">
+        <value>24</value>
+        <value>38</value>
+        <value>57</value>
+        <value>77</value>
+        <value>102</value>
+    </array>
+    <array name="cpu.speeds.cluster0">
+        <value>652800</value>
+        <value>1036800</value>
+        <value>1401600</value>
+        <value>1689600</value>
+        <value>1804800</value>
+    </array>
+    <array name="cpu.active.cluster1">
+        <value>24</value>
+        <value>38</value>
+        <value>57</value>
+        <value>77</value>
+        <value>102</value>
+    </array>
+    <array name="cpu.speeds.cluster1">
+        <value>652800</value>
+        <value>1036800</value>
+        <value>1401600</value>
+        <value>1689600</value>
+        <value>1804800</value>
+    </array>
+    <item name="cpu.idle">3.4</item>
+    <item name="cpu.awake">13</item>
+    <item name="wakeup.power">0.15</item>
+    <item name="battery.capacity">3500</item>
+    <array name="wifi.batchedscan">
+        <value>.0002</value>
+        <value>.002</value>
+        <value>.02</value>
+        <value>.2</value>
+        <value>2</value>
+    </array>
+</device>

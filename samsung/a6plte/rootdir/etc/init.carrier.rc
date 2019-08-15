@@ -1,0 +1,105 @@
+on post-fs-data
+
+# Samsung Pay
+    mkdir /efs/pfw_data 0760 spay spay
+
+# MST/NFC Switch
+    chown spay system /dev/mst_ctrl
+    chmod 0660 /dev/mst_ctrl
+
+#SystemFramework
+    chown system system /data/cache/backup
+    chmod 0711 /data/cache/backup
+    chown system system /data/cache/backup_stage
+    chmod 0711 /data/cache/backup_stage
+
+# OLAF setup cgroup freezer
+    mkdir /dev/freezer
+    mount cgroup none /dev/freezer freezer
+    mkdir /dev/freezer/olaf
+    write /dev/freezer/olaf/freezer.state THAWED
+    mkdir /dev/cpuset/olaf
+    copy /dev/cpuset/cpus /dev/cpuset/olaf/cpus
+    copy /dev/cpuset/mems /dev/cpuset/olaf/mems
+    chown system system /dev/freezer/olaf
+    chown system system /dev/freezer/olaf/tasks
+    chown system system /dev/freezer/olaf/cgroup.procs
+    chown system system /dev/freezer/olaf/freezer.state
+    chown system system /dev/cpuset/olaf
+    chown system system /dev/cpuset/olaf/tasks
+    chown system system /dev/cpuset/olaf/cpus
+    chmod 0644 /dev/freezer/olaf/tasks
+    chmod 0644 /dev/freezer/olaf/cgroup.procs
+    chmod 0644 /dev/freezer/olaf/freezer.state
+    chmod 0664 /dev/cpuset/olaf
+    chmod 0664 /dev/cpuset/olaf/tasks
+    chmod 0664 /dev/cpuset/olaf/cpus
+
+on boot
+
+# SSWAP
+    write /proc/sys/vm/swappiness 130
+
+on init
+    # Add preload partition.
+    mkdir /preload 0771 system system
+
+# Move 2 SD card
+service extSdUFSVold /system/bin/extSDCardServiceVold
+    class main
+    user system
+    group system mount radio net_bt sdcard_rw shell media media_rw
+	
+# SSWAP
+service swapon /sbin/sswap -s -f 2048
+    class core
+    user root
+    group root
+    seclabel u:r:sswap:s0
+    oneshot
+
+# Remosaic daemon works with mm-camera daemon
+#service remosaic_daemon /vendor/bin/remosaic_daemon
+#    class core
+#    user camera
+#    group camera
+
+# Move 2 SD card
+service extSdUFSVold /system/bin/extSDCardServiceVold
+    class main
+    user system
+    group system mount radio net_bt sdcard_rw shell media media_rw
+	
+	#Bluetooth
+    # for BT MAC address
+    mkdir /efs/bluetooth 0770 system bluetooth
+    # if already exist
+    chown system bluetooth /efs/bluetooth
+    chown system bluetooth /efs/bluetooth/bt_addr
+    chmod 0770 /efs/bluetooth
+    chmod 0660 /efs/bluetooth/bt_addr
+
+    # permissions for bluetooth.
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo	
+
+# umount service
+service umount_service /system/bin/umount -D /preload
+    disabled
+    seclabel u:r:umount_service:s0
+    oneshot
+
+# Support Preload install apks
+on property:persist.sys.storage_preload=1
+    mount ext4 /dev/block/bootdevice/by-name/hidden /preload nosuid nodev ro barrier=1
+    setprop storage.preload.complete 1
+
+on property:persist.sys.storage_preload=0
+    start umount_service

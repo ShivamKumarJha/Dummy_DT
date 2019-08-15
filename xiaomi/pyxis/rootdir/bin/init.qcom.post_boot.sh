@@ -2812,11 +2812,13 @@ case "$target" in
             echo N > /sys/module/lpm_levels/L3/cpu7/ret/idle_enabled
 
             # cpuset parameters
-            #echo 0-5 > /dev/cpuset/background/cpus
+            echo 0-2 > /dev/cpuset/background/cpus
             #echo 0-5 > /dev/cpuset/system-background/cpus
 
             # Turn off scheduler boost at the end
             echo 0 > /proc/sys/kernel/sched_boost
+            # Turn on scheduler boost for top app main
+            echo 1 > /proc/sys/kernel/sched_boost_top_app
 
             # Turn on sleep modes.
             echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled

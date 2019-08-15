@@ -139,7 +139,7 @@ on boot
     chmod 0770 /dev/dbmdx-1
     chown system system /sys/class/thermal/thermal_message/sconfig
     chown system system /sys/class/touch/tp_dev/fod_status
-
+    chown system system /sys/class/touch/touch_dev/palm_sensor
 # Add a cpuset for the camera daemon
 # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
@@ -261,6 +261,7 @@ on charger
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
+    shutdown critical
     class core
     user root
     group root

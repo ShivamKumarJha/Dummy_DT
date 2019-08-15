@@ -12,12 +12,12 @@ PRODUCT_BRAND := lenovo
 PRODUCT_DEVICE := kunlun2
 PRODUCT_MANUFACTURER := lenovo
 PRODUCT_NAME := lineage_kunlun2
-PRODUCT_MODEL := Lenovo Z6 青春版
+PRODUCT_MODEL := Lenovo K10 Note
 
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 TARGET_VENDOR := lenovo
 TARGET_VENDOR_PRODUCT_NAME := kunlun2
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="kunlun2-user 9 PKQ1.190127.001 11.1.021_190629 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="kunlun2_row-user 9 PKQ1.190127.001 11.0.092_190719 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Lenovo/kunlun2/kunlun2:9/PKQ1.190127.001/11.1.021_190629:user/release-keys
+BUILD_FINGERPRINT := Lenovo/kunlun2_row/kunlun2:9/PKQ1.190127.001/11.0.092_190719:user/release-keys

@@ -14,10 +14,6 @@ on early-init
 on boot
     chown system system /dev/goodix_fp
     chmod 666 /dev/goodix_fp
-    chown gps gps /sys/ontim_bootinfo/gps_lna
-    chown gps gps /sys/ontim_bootinfo/gps_avdd_en
-    chown gps gps /sys/ontim_bootinfo/gps_reset
-    chown gps gps /sys/ontim_bootinfo/gps_prtrg
 
 
 on init

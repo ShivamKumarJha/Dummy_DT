@@ -513,30 +513,7 @@
     <path name="deep-buffer-playback headphones">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
-    <path name="deep-buffer-playback jzwcombo">
-        <path name="deep-buffer-playback usb-headphones" />
-	<ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-	<path name="headphones" />
-    </path>
-	
-    <path name="deep-buffer-playback jzwcombo1">
-	<path name="bt-a2dp" />
-        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia1" value="1" />
-	<ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="1" />
-    </path>
-    <path name="deep-buffer-playback jzwcombo2">
-        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-	<ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="1" />
-	<path name="headphones" />
-	<path name="bt-a2dp" />
-    </path>
-    <path name="deep-buffer-playback jzwcombo3">
-	<ctl name="USB_AUDIO_RX Audio Mixer MultiMedia1" value="1" />
-	<ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-	<ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="1" />
-	<path name="headphones" />
-	<path name="bt-a2dp" />
-    </path>
+
     <path name="deep-buffer-playback speaker-and-headphones">
         <path name="deep-buffer-playback headphones" />
         <path name="deep-buffer-playback" />
@@ -551,7 +528,6 @@
         <path name="deep-buffer-playback bt-sco-wb" />
         <path name="deep-buffer-playback" />
     </path>
-
 
     <path name="low-latency-playback">
         <ctl name="INT4_MI2S_RX Audio Mixer MultiMedia5" value="1" />

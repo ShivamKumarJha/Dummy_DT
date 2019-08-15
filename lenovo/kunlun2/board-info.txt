@@ -1,3 +1,2 @@
-require version-baseband=4.0.2-00546-SDM710_GEN_PACK-1
-require version-modem=2019-06-2904:19:41
-require version-vendor=1561753933
+require version-baseband=4.0.2-00546-SDM710_GEN_PACK-1.202393.1.203784.1
+require version-vendor=1563535362

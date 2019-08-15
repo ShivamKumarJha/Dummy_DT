@@ -28,7 +28,7 @@
 
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-     <bool name="config_automatic_brightness_available">false</bool>
+     <bool name="config_automatic_brightness_available">true</bool>
 
     <!-- Boolean indicating if current platform supports HFP inband ringing -->
      <bool name="config_bluetooth_hfp_inband_ringing_support">false</bool>
@@ -223,7 +223,7 @@
      <bool name="config_wifi_batched_scan_supported">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-     <bool name="config_wifi_dual_band_support">true</bool>
+     <bool name="config_wifi_dual_band_support">false</bool>
 
     <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
      <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
@@ -344,6 +344,9 @@
          Note that a physical cutout should be configured in pixels for the best results.
     -->
      <string name="config_mainBuiltInDisplayCutout">M -80,0 L -50,90 L 50,90 L 80,0 Z</string>
+
+    <!--  Define Google play service package for FRP-->
+     <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
@@ -530,9 +533,6 @@
         <item>SUPL_PORT=7275</item>
         <item>NTP_SERVER=asia.pool.ntp.org</item>
         <item>SUPL_VER=0x20000</item>
-        <item>XTRA_SERVER_1=http://aclient.allystar.com/ephemeris/HD_GPS_BDS.hdb</item>
-        <item>XTRA_SERVER_2=http://aclient.allystar.com/ephemeris/HD_GPS_BDS.hdb</item>
-        <item>XTRA_SERVER_3=http://aclient.allystar.com/ephemeris/HD_GPS_BDS.hdb</item>
     </string-array>
 
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],

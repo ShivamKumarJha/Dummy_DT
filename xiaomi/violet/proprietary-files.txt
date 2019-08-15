@@ -530,7 +530,6 @@ vendor/lib64/camera/components/com.qtistatic.stats.pdlib.so
 vendor/lib64/camera/components/com.vidhance.node.eis.so
 vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so
 vendor/lib64/camera/components/com.xiaomi.node.mibokeh.so
-vendor/lib64/camera/components/com.xiaomi.node.misegment.so
 vendor/lib64/camera/components/libdepthmapwrapper.so
 vendor/lib64/camera/components/libmmcamera_cac3.so
 vendor/lib64/camera/components/model_back.dlc
@@ -652,6 +651,7 @@ vendor/lib/libcpion.so
 vendor/lib/libcppf.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/librmp.so
 vendor/lib/librpmb.so
@@ -671,6 +671,7 @@ vendor/lib64/libcpion.so
 vendor/lib64/libcppf.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
+vendor/lib64/liboemcrypto.so
 vendor/lib64/libqisl.so
 vendor/lib64/librmp.so
 vendor/lib64/librpmb.so
@@ -685,7 +686,9 @@ vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib/libwvhidl.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
+vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display-Hardware
 -lib/libsdm-disp-apis.so
@@ -1758,11 +1761,8 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 # Thermal
 vendor/bin/thermal-engine
 vendor/etc/thermal-engine-camera.conf
-vendor/etc/thermal-engine-high.conf
 vendor/etc/thermal-engine-map.conf
 vendor/etc/thermal-engine-normal.conf
-vendor/etc/thermal-engine-pubgmhd.conf
-vendor/etc/thermal-engine-sgame.conf
 vendor/etc/thermal-engine-studio.conf
 vendor/etc/thermal-engine-tgame.conf
 vendor/etc/thermal-engine.conf
@@ -1854,12 +1854,10 @@ etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
-etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
-framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
 lib/vendor.xiaomi.hardware.misys@1.0.so
 lib/vendor.xiaomi.hardware.misys@2.0.so
 lib/vendor.xiaomi.hardware.touchfeature@1.0.so
@@ -1979,8 +1977,6 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
--vendor/data-app/SmartHome/SmartHome.apk
--vendor/data-app/wps-lite/wps-lite.apk
 vendor/etc/Conf_MultipleTest.ini
 vendor/etc/PN_m28dB.wav
 vendor/etc/cit1.xml
@@ -2008,6 +2004,7 @@ vendor/lib/libsi.so
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libwapi_cert.so
+vendor/lib/libwvkeybox.so
 vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libGPMTEEC_vendor.so
 vendor/lib64/libSEESalt.so
@@ -2023,3 +2020,4 @@ vendor/lib64/libreffeature.so
 vendor/lib64/libsi.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libwapi_cert.so
+vendor/lib64/libwvkeybox.so

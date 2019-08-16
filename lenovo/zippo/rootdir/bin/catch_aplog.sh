@@ -1,7 +1,7 @@
 #!/vendor/bin/sh
 
 # Add by wangwq14@zuk
-# This shell catch system cached log info, system prop.
+# This shell catch system cached log info, system prop, dumpsys.
 # The logs will be saved at '/sdcard/log' as a tar, size less than 10M.
 
 # Let /vendor/bin/sh can use tools in '/system/bin'
@@ -55,10 +55,11 @@ BT_ETC_DIR=/system/etc/bluetooth
 
 Log "Start catch_aplog"
 
+mkdir -p $CURLOG_DIR
 
 # mkdir for dumpsys, this dir will lable by media_rw_data_file
 # to make dumpsys can write log to.
-#mkdir -p $CURLOG_DIR/dumpsys
+mkdir -p $CURLOG_DIR/dumpsys
 
 cat /proc/interrupts > $CURLOG_DIR/interrupts.txt
 cat /proc/meminfo > $CURLOG_DIR/meminfo.txt
@@ -75,7 +76,7 @@ getprop > $CURLOG_DIR/prop.txt
 [ -d $BT_ETC_DIR ] && cp -a $BT_ETC_DIR/ $CURLOG_DIR/bluetooth
 [ -e $TMLOG_DIR ] && cp -a $TMLOG_DIR $CURLOG_DIR
 
-#[ -d $DUMPSYS_DIR ] && cp -a $DUMPSYS_DIR/ $CURLOG_DIR/dumpsys
+[ -d $DUMPSYS_DIR ] && cp -a $DUMPSYS_DIR/ $CURLOG_DIR/dumpsys
 
 vendor_logcat -d -b main -b system -b crash -v threadtime -f $CURLOG_DIR/logcat
 vendor_logcat -d -b radio -v threadtime -f $CURLOG_DIR/radio
@@ -162,17 +163,15 @@ wait
 Log "make tar package done"
 
 #rm -rf $CURLOG_DIR
+#Log "remove currunt history log done"
 
 #clean anr, recovery, tombstones history files
-rm -rf $CURLOG_DIR/tombstones/*
-rm -rf $CURLOG_DIR/bluetooth/*
-rm -rf $CURLOG_DIR/anr/*
-rm -rf $CURLOG_DIR/recovery/*
-rm -rf $CURLOG_DIR/wlan/*
-rm -rf $CURLOG_DIR/tcps/*
-rm -rf $CURLOG_DIR/pstore/*
-rm -rf $CURLOG_DIR/dropbox/*
-rm -rf $CURLOG_DIR/dumpsys/*
-rm -f  $CURLOG_DIR/*
-#Log "remove currunt history log done"
+#rm -f /cache/recovery/*
+#rm -f /data/anr/*
+#rm -f /data/tombstones/*
+#rm -rf /data/tombstones/dsps/*
+#rm -rf /data/tombstones/lpass/*
+#rm -rf /data/tombstones/modem/*
+#rm -rf /data/tombstones/wcnss/*
+#Log "clean anr, tombstones history files done"
 Log "catch_aplog done, tar package is ${FILENAME}.tgz"

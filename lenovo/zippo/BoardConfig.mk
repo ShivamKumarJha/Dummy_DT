@@ -2,7 +2,7 @@ DEVICE_PATH := device/lenovo/zippo
 BOARD_VENDOR := lenovo
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-06-01
+VENDOR_SECURITY_PATCH := 2019-07-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

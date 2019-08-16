@@ -566,6 +566,7 @@
     </path>
 
     <path name="echo-reference-voip speaker">
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUAT_MI2S_RX" />
     </path>
 
     <path name="echo-reference-voip headphones">

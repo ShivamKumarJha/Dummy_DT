@@ -37,13 +37,17 @@ on property:persist.vendor.usb.dmcomp=nubia,adb && property:sys.usb.configfs=1
 on property:sys.usb.config=nubia,adb && property:sys.usb.configfs=1
     start adbd
 
+on property:persist.adb.secure=*
+    stop adbd
+    start adbd
+
 on property:persist.vendor.usb.fixedserialno=1 && property:sys.usb.configfs=1
-    write /cache/usb/usb_fixed_serialno 1
+    write /persist/property/persist.vendor.usb.fixedserialno 1
     write /config/usb_gadget/g1/strings/0x409/serialnumber 0123456789ABCDEF
     setprop sys.usb.config ${sys.usb.config}
 
 on property:persist.vendor.usb.fixedserialno=0 && property:sys.usb.configfs=1
-    write /cache/usb/usb_fixed_serialno 0
+    write /persist/property/persist.vendor.usb.fixedserialno 0
     write /config/usb_gadget/g1/strings/0x409/serialnumber ${ro.serialno}
     setprop sys.usb.config ${sys.usb.config}
 

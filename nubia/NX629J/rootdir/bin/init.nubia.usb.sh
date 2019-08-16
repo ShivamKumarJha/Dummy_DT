@@ -241,8 +241,8 @@ if [ -d /config/usb_gadget ]; then
 	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
 	echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
 
-        # Use fixed serialno if in ffbm mode or /cache/usb/usb_fixed_serialno is set
-        serialnomode=`cat /cache/usb/usb_fixed_serialno`
+        # Use fixed serialno if in ffbm mode or /persist/property/persist.vendor.usb.fixedserialno is set
+        serialnomode=`cat /persist/property/persist.vendor.usb.fixedserialno`
         if [ "$bootmode" = "ffbm-01" ] || [ "$serialnomode" -eq 1 ]; then
                 setprop persist.vendor.usb.fixedserialno 1
         else

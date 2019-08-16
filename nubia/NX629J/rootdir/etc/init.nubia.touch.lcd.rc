@@ -55,9 +55,12 @@ on boot
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/f54
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/ic_ver
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/gamemode
+    chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/tptest
+    chomd 664 /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/tptest
+
     symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/ic_ver /data/vendor/tp/ic_ver
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/f54/autotest
-    symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/f54/autotest /data/vendor/tp/ic_detect
+    symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/tptest /data/vendor/tp/ic_detect
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/start_update
     symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/start_update /data/vendor/tp/start_update
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/f54/rawdata

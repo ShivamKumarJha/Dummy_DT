@@ -1709,8 +1709,11 @@
         <path name="hfp-sco headphones" />
     </path>
 
+    <path name="voice-echo-reference">
+        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+    </path>
     <path name="compress-voip-call">
-		<ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <!-- <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" /> -->
         <ctl name="QUAT_MI2S_RX_Voice Mixer Voip" value="1" />
         <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
     </path>
@@ -1761,7 +1764,7 @@
     </path>
 
     <path name="voicemmode1-call">
-		<ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <!-- <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" /> -->
         <ctl name="QUAT_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
         <ctl name="VoiceMMode1_Tx Mixer SLIM_0_TX_MMode1" value="1" />
     </path>
@@ -1818,7 +1821,7 @@
     </path>
 
     <path name="voicemmode2-call">
-		<ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
+        <!-- <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" /> -->
         <ctl name="QUAT_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
         <ctl name="VoiceMMode2_Tx Mixer SLIM_0_TX_MMode2" value="1" />
     </path>

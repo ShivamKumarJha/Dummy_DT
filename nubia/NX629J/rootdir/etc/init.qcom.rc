@@ -288,11 +288,10 @@ on post-fs-data
     chown cameraserver cameraserver /sys/kernel/camera/file_dump
     chown cameraserver cameraserver /sys/kernel/camera/torch_switch
     chown cameraserver cameraserver /sys/kernel/camera/ois_switch
-    chown cameraserver cameraserver /sys/kernel/camera/eeprom_calibration
     chmod 0666 /sys/kernel/camera/file_dump
     chmod 0666 /sys/kernel/camera/torch_switch
     chmod 0666 /sys/kernel/camera/ois_switch
-    chmod 0666 /sys/kernel/camera/eeprom_calibration
+
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
 

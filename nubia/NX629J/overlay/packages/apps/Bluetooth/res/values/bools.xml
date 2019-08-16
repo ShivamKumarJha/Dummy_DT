@@ -21,7 +21,7 @@
     <bool name="profile_supported_hs_hfp">true</bool>
     <bool name="profile_supported_map">true</bool>
     <bool name="profile_supported_mapmce">false</bool>
-    <bool name="profile_supported_opp">false</bool>
+    <bool name="profile_supported_opp">true</bool>
     <bool name="profile_supported_pan">true</bool>
     <bool name="profile_supported_pbap">true</bool>
     <bool name="profile_supported_pbapclient">false</bool>

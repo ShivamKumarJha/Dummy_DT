@@ -1,0 +1,1 @@
+require version-baseband=2.5.c1.3-00074-8998_GEN_PACK-1

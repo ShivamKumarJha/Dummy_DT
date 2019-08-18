@@ -1,0 +1,45 @@
+on init
+
+   # Change ownership for Dynamic-CABC feature
+   chown system system /sys/class/graphics/fb0/cabc
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+
+service capsense_reset /system/vendor/bin/capsense_reset
+   class core
+   user system
+   group system
+   disabled
+
+on property:sys.boot_completed=1
+  start capsense_reset
+
+on boot
+
+   # Change the ownership of display TE files for tcmds
+   chown root mot_tcmd /sys/class/graphics/fb0/te_test
+   chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+   chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+   # Wifi firmware reload path
+   chown wifi wifi /sys/module/wlan/parameters/fwpath
+   # capsensor
+   chown system system /sys/class/capsense/reset
+   chmod 0660 /sys/class/capsense/reset
+
+on post-fs-data
+    #req,zhangdanfeng.wt,add,20180309,store dualled calibration data
+    mkdir /persist/camera 0771 system camera
+    chmod 0770 /persist/camera/led_cal.cfg
+    chmod 0770 /persist/camera/led_cal.cfg.tmp
+
+on property:ro.bootmode=factory && property:sys.boot_completed=1
+    write /sys/class/leds/red/brightness 255
+
+on property:ro.bootmode=mot-factory && property:sys.boot_completed=1
+    write /sys/class/leds/red/brightness 255
+
+on property:ro.bootmode=factory && property:sys.boot_completed=1
+    write /sys/class/leds/charging/brightness 255
+
+on property:ro.bootmode=mot-factory && property:sys.boot_completed=1
+    write /sys/class/leds/charging/brightness 255

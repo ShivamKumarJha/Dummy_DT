@@ -269,12 +269,6 @@
     <carrier_config mcc="262" mnc="01">
         <int name="smsToMmsTextThreshold" value="-1" />
     </carrier_config>
-    <carrier_config mcc="262" mnc="03">
-        <int name="smsToMmsTextThreshold" value="-1" />
-    </carrier_config>
-    <carrier_config mcc="262" mnc="07">
-        <int name="smsToMmsTextThreshold" value="-1" />
-    </carrier_config>
     <carrier_config mcc="268">
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
@@ -782,10 +776,6 @@
         <int name="maxImageWidth" value="2592" />
         <int name="recipientLimit" value="20" />
         <int name="smsToMmsTextThreshold" value="6" />
-        <string-array name="carrier_additional_cbs_channels_strings" num="2">
-            <item value="911:emergency=true,type=other" />
-            <item value="919:emergency=true,type=other" />
-        </string-array>
     </carrier_config>
     <carrier_config mcc="467">
         <int name="maxImageHeight" value="1944" />
@@ -1457,8 +1447,5 @@
     </carrier_config>
     <carrier_config customerid="3uk" mcc="234" mnc="20">
         <boolean name="moto_hide_non_user_apn_edit_delete_bool" value="true" />
-    </carrier_config>
-    <carrier_config device="deen">
-        <boolean name="sim_lock_is_valid_sim_bool" value="true" />
     </carrier_config>
 </carrier_config_list>

@@ -35,6 +35,11 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
+  # create symlink for vendor mount points
+    symlink /vendor/firmware_mnt /firmware
+    symlink /vendor/bt_firmware /bt_firmware
+    symlink /vendor/dsp /dsp
+
   # Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_reg
@@ -86,13 +91,8 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
     chown system system /mnt/vendor/persist/sensors/sensors_settings
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
-    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
-
-on property:ro.hardware.type=automotive
-    wait /sys/class/net/can0
-    start can
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -141,7 +141,7 @@ on boot
     mkdir /mnt/vendor/persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
     mkdir /persist/misc 0770 system system
-    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
 
@@ -157,6 +157,9 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
+    #enable camera read sensors data
+    setprop persist.vendor.camera.gyro.disable 0
+
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
@@ -165,8 +168,8 @@ on boot
 
 #   Assign TCP buffer thresholds to be ceiling value of technology maximums
 #   Increased technology maximums should be reflected here.
-    write /proc/sys/net/core/rmem_max  134217728
-    write /proc/sys/net/core/wmem_max  134217728
+    write /proc/sys/net/core/rmem_max  16777216
+    write /proc/sys/net/core/wmem_max  16777216
 
 #   Assign UDP default read buffer to get expected UDP data throughput
     write /proc/sys/net/ipv4/udp_rmem_min 10240
@@ -213,8 +216,6 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
     # Create directory used for display
-    # for backward compatibility
-    mkdir /persist/display 0770 system graphics
     mkdir /mnt/vendor/persist/display 0770 system graphics
 
     # Create vpp directory
@@ -243,8 +244,8 @@ on post-fs-data
     # create QDMA dropbox
     mkdir /data/vendor/qdmastats 0700 system system
     mkdir /data/vendor/qdma 0770 system system
-    mkdir /dev/socket/qdma 0777 system system
-    chmod 2777 /dev/socket/qdma
+    mkdir /dev/socket/qdma 0770 system system
+    chmod 2770 /dev/socket/qdma
 
     # Create /data/vendor/tzstorage directory for SFS listener
     mkdir /data/vendor/tzstorage 0770 system system
@@ -346,6 +347,9 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
+    #Create directory for hostapd
+    mkdir /data/hostapd 0770 system wifi
+
     # Create /data/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
 
@@ -362,8 +366,6 @@ on post-fs-data
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd
     rm /data/vendor/perfd/default_values
-
-    #mkdir /data/vendor/secure_element 0777 system system
 
     #Create IOP  deamon related dirs
     mkdir /data/vendor/iop 0700 root system
@@ -400,13 +402,12 @@ on post-fs-data
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
 
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
     #Create dir for TUI
-    mkdir /data/vendor/tui 0700 system system
+    mkdir /data/vendor/tui 0600 system drmrpc
 
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
@@ -542,15 +543,9 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
     user root
     oneshot
 
-service qcom-c_late-sh /vendor/bin/init.class_late.sh
-    class late_start
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start wcnss-service
-    start qcom-c_late-sh
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -816,9 +811,8 @@ service iprenew_p2p /system/bin/dhcpcd -n
 
 #service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
 #    class main
-#    user wifi
-#    group wifi system inet net_admin
-#    capabilities NET_ADMIN
+#    user root
+#    group root
 #    oneshot
 
 #service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
@@ -958,7 +952,6 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
-    disabled
 
 service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
     interface android.hardware.wifi.hostapd@1.0::IHostapd default
@@ -1013,12 +1006,6 @@ service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
 #    user root
 #    group root
 #    disabled
-
-service can /vendor/bin/init.qti.can.sh
-   class late_start
-   user root
-   disabled
-   oneshot
 
 #service charger /charger
 #    class charger
@@ -1142,15 +1129,23 @@ service esepmdaemon /system/vendor/bin/esepmdaemon
 #    disabled
 #    oneshot
 
-#Mixed HWC versions among targets
 on property:init.svc.surfaceflinger=restarting
     stop  vendor.hwcomposer-2-1
-    stop  vendor.hwcomposer-2-2
     start vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-2
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
+
+# Logcat dump daemon, dumps logs to logdump partition
+service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
+    class core
+    writepid /dev/cpuset/system-background/tasks
+    seclabel u:r:logdumpd:s0
+    disabled
+
+# Logdumpd is enabled only for userdebug non-perf build
+on property:ro.logdumpd.enabled=1
+    start logdumpd
 
 service time_daemon /system/vendor/bin/time_daemon
     class main
@@ -1174,7 +1169,7 @@ service seemp_healthd /vendor/bin/seemp_healthd
     user system
     group system
 
-service vendor.power_off_alarm /vendor/bin/power_off_alarm
+service power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
     disabled
@@ -1201,10 +1196,6 @@ service chre /vendor/bin/chre
     socket chre seqpacket 0660 root system
     shutdown critical
 
-
-on property:vendor.chre.enabled=0
-   stop chre
-
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
     disabled
@@ -1224,3 +1215,4 @@ service vendor.wifilearner /system/vendor/bin/wifilearner
     user wifi
     group wifi
     oneshot
+

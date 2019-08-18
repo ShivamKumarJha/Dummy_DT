@@ -50,7 +50,7 @@ if [ -f /sys/class/drm/card0-DSI-1/modes ]; then
     echo "detect" > /sys/class/drm/card0-DSI-1/status
     mode_file=/sys/class/drm/card0-DSI-1/modes
     while read line; do
-        fb_width=${line%%x*};
+        fb_width=${line%x*};
         break;
     done < $mode_file
 elif [ -f /sys/class/graphics/fb0/virtual_size ]; then
@@ -119,27 +119,11 @@ case "$target" in
         esac
         ;;
 
-    "sm6150")
+    "talos")
         case "$soc_hwplatform" in
             "ADP")
                 setprop vendor.display.lcd_density 160
                 ;;
-        esac
-        case "$soc_hwid" in
-            365|366)
-                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc1/sku_version` 2> /dev/null
-                if [ $sku_ver -eq 1 ]; then
-                    setprop vendor.media.sdmmagpie.version 1
-                fi
-                ;;
-            355)
-                setprop vendor.media.sm6150.version 1
-                setprop vendor.chre.enabled 0
-                ;;
-            369|377|384)
-                setprop vendor.chre.enabled 0
-                ;;
-            *)
         esac
         ;;
 
@@ -314,6 +298,13 @@ case "$target" in
                 ;;
         esac
         ;;
+    "talos")
+        case "$soc_hwplatform" in
+            *)
+                    setprop vendor.display.lcd_density 480
+                    setprop dalvik.vm.heapgrowthlimit 256m
+        esac
+        ;;
     "sdm660")
         if [ -f /vendor/firmware_mnt/verinfo/ver_info.txt ]; then
             modem=`cat /vendor/firmware_mnt/verinfo/ver_info.txt |
@@ -361,6 +352,20 @@ case "$target" in
                 ;;
         esac
         ;;
+    "talos")
+        case "$soc_hwid" in
+            365|366)
+                sku_ver=`cat /sys/devices/platform/soc/aa00000.qcom,vidc1/sku_version` 2> /dev/null
+                if [ $sku_ver -eq 1 ]; then
+                    setprop vendor.media.sm7150.version 1
+                fi
+                ;;
+            355)
+                setprop vendor.media.sm6150.version 1
+                ;;
+            *)
+        esac
+        ;;
     "msm8953")
         cap_ver = 1
                 if [ -e "/sys/devices/platform/soc/1d00000.qcom,vidc/capability_version" ]; then
@@ -405,28 +410,10 @@ product=`getprop ro.build.product`
 case "$product" in
         "msmnile_au")
          setprop vendor.display.lcd_density 160
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
-         ;;
-        *)
-        ;;
-esac
-case "$product" in
-        "msmnile_gvmq")
-         setprop vendor.display.lcd_density 160
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
-         ;;
-        *)
-        ;;
-esac
-case "$product" in
-        "sm6150_au")
-         setprop vendor.display.lcd_density 160
+         echo 1344000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
+         echo 1344000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
+         echo 1344000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
+         echo 1344000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
          ;;
         *)
         ;;

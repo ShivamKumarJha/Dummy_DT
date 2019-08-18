@@ -18,10 +18,6 @@ on init
    chown system system /sys/class/graphics/fb0/hbm
    setprop sys.usb.ffs.aio_compat 1
 
-on fs
-    # Reloading context for NPI uses /mnt/vendor/persist
-    restorecon_recursive /mnt/vendor/persist
-
 on boot
    # change permission for capsensor
    chown system system /sys/class/sensors/Moto\ CapSense\ Ch0/enable
@@ -65,12 +61,6 @@ on boot
    chmod 0660 /sys/class/leds/vibrator/seq
    chown system system /sys/class/leds/vibrator/extra
    chmod 0660 /sys/class/leds/vibrator/extra
-
-   # Change ownership and permission for camera dual calibration data
-   chown mot_tcmd mot_tcmd /mnt/vendor/persist/camera/dualcal/dual_cal_data.bin
-   chown mot_tcmd mot_tcmd /mnt/vendor/persist/camera/dualcal/module_id.bin
-   chmod 0666 /mnt/vendor/persist/camera/dualcal/dual_cal_data.bin
-   chmod 0666 /mnt/vendor/persist/camera/dualcal/module_id.bin
 
 service capsense_reset /system/vendor/bin/capsense_reset
    class core

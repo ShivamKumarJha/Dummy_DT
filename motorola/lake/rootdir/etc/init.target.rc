@@ -29,6 +29,9 @@
 import /vendor/etc/init/hw/init.mmi.rc
 
 on early-init
+    mkdir /firmware 0771 system system
+    mkdir /bt_firmware 0771 system system
+    mkdir /dsp 0771 media media
 
 on init
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
@@ -48,8 +51,7 @@ on fs
     chmod 0771 /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/bms 0700 root system
-    # Moto product specific in init.mmi.overlay.rc
-    # restorecon_recursive /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
     write /sys/kernel/boot_adsp/boot 1
 
 on post-fs
@@ -99,7 +101,7 @@ on boot
     mkdir /data/vendor/camera 0770 camera camera
 
 #Load WLAN driver
-   insmod /vendor/lib/modules/qca_cld3_wlan.ko
+   insmod /vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "rndis_bam"
@@ -133,7 +135,6 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop vendor.per_proxy
-    stop vendor.ims_rtp_daemon
 
 #start camera server as daemon
 #service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -431,7 +432,7 @@ on property:init.svc.zygote=restarting
 on charger
     start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
-    start vendor.power_off_alarm
+    start power_off_alarm
 
 #
 #service nqs /system/bin/nqs

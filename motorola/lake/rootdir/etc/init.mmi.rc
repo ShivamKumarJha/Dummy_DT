@@ -30,7 +30,6 @@ on early-boot
     write /proc/sys/kernel/poweroff_cmd "/system/bin/reboot -p"
 
 on early-init
-    insmod /vendor/lib/modules/cci_intf.ko
 
 on init
     chown system log /sys/fs/pstore/console-ramoops-0
@@ -39,8 +38,6 @@ on init
     chmod 0640 /sys/fs/pstore/annotate-ramoops-0
     chown system log /sys/fs/pstore/dmesg-ramoops-0
     chmod 0640 /sys/fs/pstore/dmesg-ramoops-0
-    chown system log /proc/driver/mmi_annotate
-    chmod 0640 /proc/driver/mmi_annotate
 
 on fs
     wait /dev/block/bootdevice/by-name/hw
@@ -63,7 +60,6 @@ on fs
     setprop ro.vendor.hw.nav_keys ${ro.boot.nav_keys}
     setprop ro.product.vendor.device ${ro.vendor.product.device}
     setprop ro.product.vendor.name ${ro.vendor.product.name}
-    setprop ro.product.vendor.model ${ro.vendor.product.model}
     setprop ro.vendor.boot.cid ${ro.boot.cid}
     setprop ro.vendor.boot.powerup_reason ${ro.boot.powerup_reason}
     setprop ro.vendor.boot.bl_state ${ro.boot.bl_state}
@@ -75,7 +71,6 @@ on post-fs
     mkdir /mnt/vendor/persist/camera/dualcal 0775 camera mot_tcmd
     mkdir /mnt/vendor/persist/camera/focus 0775 camera mot_tcmd
     mkdir /mnt/vendor/persist/camera/ledcal 0775 camera mot_tcmd
-    mkdir /mnt/vendor/persist/camera/mot_ledcal 0775 camera camera
     mkdir /mnt/vendor/persist/batt_health 0775 mot_pwric mot_pwric
     mkdir /mnt/vendor/persist/mdm 0770 radio radio
     mkdir /mnt/vendor/persist/factory 0755 mot_tcmd mot_tcmd
@@ -84,6 +79,7 @@ on post-fs
     mkdir /mnt/vendor/persist/factory/regulatory 0755 mot_tcmd system
     mkdir /mnt/vendor/persist/public 0755 mot_tcmd mot_tcmd
     mkdir /persist/public/atvc 0770 mot_atvc shell
+    mkdir /mnt/vendor/persist/public/battd 0755 mot_accy mot_tcmd
     mkdir /mnt/vendor/persist/public/att_dm 0775 radio mot_tcmd
     mkdir /mnt/vendor/persist/public/hiddenmenu 0775 radio mot_tcmd
     mkdir /mnt/vendor/persist/public/hiddenmenu/data 0775 system mot_tcmd

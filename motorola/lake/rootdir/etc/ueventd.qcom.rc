@@ -141,7 +141,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/sec_nvm_*            0660   system     system
 /dev/cryptoapp            0660   system     system
 /dev/spdaemon_ssr         0660   system     system
-/dev/cam-hyp-intf*        0660   system     camera
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
 /dev/jpeg1                0660   system     camera
@@ -388,8 +387,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/graphics/fb0     msm_cmd_autorefresh_en   0664    system  graphics
 /sys/class/graphics/fb0     dynamic_bitclk           0664    system  graphics
 
-/sys/devices/virtual/hdcp/msm_hdcp  min_level_change 0664    system  graphics
-
 # I2C
 /dev/i2c-*                0660   system     system
 
@@ -444,8 +441,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # RAW device
 /dev/gbraw*             0660   root   mot_mod
-/dev/gbsys              0660   root   mot_mod
-
 # Audio device
 /sys/devices/platform/mods_codec.0 uevent 0660 root mot_mod
 /sys/devices/platform/mods_codec.0/* uevent 0660 root mot_mod

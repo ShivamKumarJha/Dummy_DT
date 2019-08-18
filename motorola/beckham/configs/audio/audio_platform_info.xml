@@ -6,8 +6,6 @@
 	<device name="SND_DEVICE_OUT_VOICE_HANDSET" acdb_id="7" />
 	<device name="SND_DEVICE_OUT_VOICE_HANDSET_TMUS" acdb_id="7" />
 	<device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="9" />
-	<device name="SND_DEVICE_OUT_USB_HEADSET" acdb_id="9" />
-	<device name="SND_DEVICE_OUT_USB_HEADPHONES" acdb_id="9" />
 	<device name="SND_DEVICE_OUT_MOD_HEADPHONES" acdb_id="9" />
 	<device name="SND_DEVICE_OUT_MOD_SPKR_MOD_HEADPHONES" acdb_id="9" />
 	<device name="SND_DEVICE_OUT_INT_SPKR_MOD_HEADPHONES" acdb_id="9" />
@@ -46,7 +44,6 @@
 	<device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" acdb_id="4" />
 	<device name="SND_DEVICE_IN_HANDSET_MIC_NS" acdb_id="4" />
 	<device name="SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC" acdb_id="4" />
-	<device name="SND_DEVICE_IN_USB_HEADSET_MIC" acdb_id="8" />
 	<device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" acdb_id="11" />
 	<device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" acdb_id="11" />
 	<device name="SND_DEVICE_IN_SPEAKER_MIC_NS" acdb_id="11" />

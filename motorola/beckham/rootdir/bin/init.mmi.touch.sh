@@ -50,14 +50,14 @@ notice()
 sanity_check()
 {
 	read_touch_property flashprog || return 1
-	[[ ( -z "$property" ) || ( "$property" == "1" ) ]] && return 2
+	[[ ( -z "$property" ) || ( "$property" == "1" ) ]] && return 1
 	read_touch_property productinfo || return 1
-	[[ ( -z "$property" ) || ( "$property" == "0" ) ]] && return 2
+	[[ ( -z "$property" ) || ( "$property" == "0" ) ]] && return 1
 	read_touch_property buildid || return 1
 	config_id=${property#*-}
-	[[ ( -z "$config_id" ) || ( "$config_id" == "0" ) ]] && return 2
+	[[ ( -z "$config_id" ) || ( "$config_id" == "0" ) ]] && return 1
 	build_id=${property%-*}
-	[[ ( -z "$build_id" ) || ( "$build_id" == "0" ) ]] && return 2
+	[[ ( -z "$build_id" ) || ( "$build_id" == "0" ) ]] && return 1
 	return 0
 }
 
@@ -74,7 +74,6 @@ error_msg()
 		6)  err_msg="Error: Touch driver is not running";;
 		7)  err_msg="Warning: Touch firmware is not the latest";;
 		8)  err_msg="Info: Touch class does not exist";;
-		9)  err_msg="Error: Touch IC is not ready to flash";;
 	esac
 	notice "$err_msg"
 }
@@ -85,18 +84,15 @@ error_and_leave()
 	local touch_status="unknown"
 	error_msg $err_code
 	case $err_code in
-		1|4)  touch_status="dead";;
-		5|6|8)  touch_status="absent";;
+		1|4|5)  touch_status="dead";;
+		6)  touch_status="absent";;
 	esac
 
 	# perform sanity check and declare touch ready if error is not fatal
 	if [ "$touch_status" == "unknown" ]; then
+		touch_status="ready"
 		sanity_check
-		case "$?" in
-			0) touch_status="ready";;
-			2) touch_status="dead";;
-			1) touch_status="absent";;
-		esac
+		[ "$?" == "1" ] && touch_status="dead"
 	fi
 
 	# perform recovery if touch is declared dead
@@ -111,15 +107,14 @@ error_and_leave()
 	notice "property [$touch_status_prop] set to [`getprop $touch_status_prop`]"
 
 	if [ "$touch_status" == "dead" ]; then
-		notice "Touch is not responding; no further action!!!"
-		#if [ $((reboot_cnt)) -lt 2 ]; then
-		#	notice "Touch is not working; rebooting..."
-		#	debug "sleep 3s to allow touch-dead-sh service to run"
-		#	sleep 3
-		#	[ -z "$dbg_on" ] && setprop sys.powerctl reboot
-		#else
-		#	notice "Although touch is not working, no more reboots"
-		#fi
+		if [ $((reboot_cnt)) -lt 2 ]; then
+			notice "Touch is not working; rebooting..."
+			debug "sleep 3s to allow touch-dead-sh service to run"
+			sleep 3
+			[ -z "$dbg_on" ] && setprop sys.powerctl reboot
+		else
+			notice "Although touch is not working, no more reboots"
+		fi
 	fi
 
 	exit $err_code
@@ -144,11 +139,23 @@ dump_statistics()
 	return 0
 }
 
-wait_for_poweron()
+check_required_interfaces()
 {
 	local wait_nomore
 	local readiness
 	local count
+	touch_vendor=$(cat $touch_class_path/$touch_product_string/vendor)
+	debug "touch vendor [$touch_vendor]"
+	touch_path=/sys$(cat $touch_class_path/$touch_product_string/path)
+	debug "sysfs touch path: $touch_path"
+	if [ ! -f $touch_path/doreflash ] ||
+		[ ! -f $touch_path/poweron ] ||
+		[ ! -f $touch_path/flashprog ] ||
+		[ ! -f $touch_path/productinfo ] ||
+		[ ! -f $touch_path/buildid ]; then
+		error_msg 5
+		return 1
+	fi
 	debug "wait until driver reports <ready to flash>..."
 	wait_nomore=60
 	count=0
@@ -164,7 +171,7 @@ wait_for_poweron()
 		debug "not ready; keep waiting..."
 	done
 	if [ $count -eq $wait_nomore ]; then
-		error_msg 9
+		error_msg 5
 		return 1
 	fi
 	return 0
@@ -347,7 +354,6 @@ search_firmware_file()
 run_firmware_upgrade()
 {
 	local recovery
-	wait_for_poweron
 	recovery=0
 	if [ "$bl_mode" == "1" ] || [ "$build_id_boot" == "0" ]; then
 		recovery=1
@@ -390,7 +396,6 @@ run_firmware_upgrade()
 }
 
 # Main starts here
-[ -d $touch_class_path ] || error_and_leave 8
 debug "sysfs panel path: $panel_path"
 product_id=$(getprop $device_property 2> /dev/null)
 [ -z "$product_id" ] && error_and_leave 2 $device_property
@@ -400,34 +405,18 @@ debug "product id: $product_id"
 hwrev_id=$(getprop $hwrev_property 2> /dev/null)
 [ -z "$hwrev_id" ] && notice "hw revision undefined"
 debug "hw revision: $hwrev_id"
+[ -d $touch_class_path ] || error_and_leave 8
 cd $firmware_path
-# Run asynchronous operations first
 for touch_product_string in $(ls $touch_class_path); do
-	notice "Handling touch ID [$touch_product_string] permissions"
-	touch_vendor=$(cat $touch_class_path/$touch_product_string/vendor)
-	debug "touch vendor [$touch_vendor]"
-	touch_path=/sys$(cat $touch_class_path/$touch_product_string/path)
-	debug "sysfs touch path: $touch_path"
-	if [ ! -f $touch_path/doreflash ] ||
-		[ ! -f $touch_path/poweron ] ||
-		[ ! -f $touch_path/flashprog ] ||
-		[ ! -f $touch_path/productinfo ] ||
-		[ ! -f $touch_path/buildid ]; then
-		error_msg 5
-		continue
-	fi
-	setup_permissions
+	debug "handling touch ID [$touch_product_string]..."
+	check_required_interfaces
+	# proceed to the next device if integrity check fails
+	[ "$?" == "0" ] || continue
 	if [ $dump_statistics ]; then
 		dump_statistics
+		continue;
 	fi
-done
-# Now run operations that might block
-for touch_product_string in $(ls $touch_class_path); do
-	notice "Checking touch ID [$touch_product_string] FW upgrade"
-	touch_vendor=$(cat $touch_class_path/$touch_product_string/vendor)
-	debug "touch vendor [$touch_vendor]"
-	touch_path=/sys$(cat $touch_class_path/$touch_product_string/path)
-	debug "sysfs touch path: $touch_path"
+	setup_permissions
 	query_touch_info
 	query_panel_info
 	search_firmware_file

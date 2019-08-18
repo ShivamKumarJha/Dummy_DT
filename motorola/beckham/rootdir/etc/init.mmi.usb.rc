@@ -38,6 +38,7 @@ on init
     mkdir /config/usb_gadget/g1/functions/mtp.gs0
     mkdir /config/usb_gadget/g1/functions/ptp.gs1
     mkdir /config/usb_gadget/g1/functions/accessory.gs2
+    mkdir /config/usb_gadget/g1/functions/audio_source.gs2
     mkdir /config/usb_gadget/g1/functions/audio_source.gs3
     mkdir /config/usb_gadget/g1/functions/midi.gs5
     mkdir /config/usb_gadget/g1/functions/ffs.adb
@@ -71,13 +72,6 @@ on load_persist_props_action
     setprop persist.vendor.mot.usb.config  ${persist.sys.usb.config}
     setprop persist.sys.usb.config  " "
     setprop persist.vendor.usb.config  ${persist.sys.usb.config}
-
-on property:ro.boot.console=ttyGS0 && property:sys.usb.configfs=1 && property:sys.usb.state=*
-    write /config/usb_gadget/g1/UDC "none"
-    mkdir /config/usb_gadget/g1/functions/acm.0
-    # "f0" is used here so that we won't take anything from f1 ~ f9
-    symlink /config/usb_gadget/g1/functions/acm.0 /config/usb_gadget/g1/configs/b.1/f0
-    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
 
 on property:ro.vendor.bootreason=watchdog
     setprop persist.vendor.usb.config  ${persist.vendor.mot.usb.config}

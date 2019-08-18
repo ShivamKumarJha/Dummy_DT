@@ -7,6 +7,7 @@ liblistenjni.so
 liblistensoundmodel2.so
 libOpenCL.so
 libnpu.so
+libaix.so
 libfastcvopt.so
 libmcf-qc-fd-offline.so
 libadspd.so

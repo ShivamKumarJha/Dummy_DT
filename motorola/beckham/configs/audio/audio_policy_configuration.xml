@@ -28,7 +28,7 @@
     -->
     <modules>
         <!-- Primary Audio HAL -->
-        <module name="primary" halVersion="2.0">
+        <module name="primary" halVersion="3.0">
             <attachedDevices>
                 <item>Earpiece</item>
                 <item>Speaker</item>
@@ -44,7 +44,6 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="44100,48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
-                <mixPort name="hifi_playback" role="source" />
                 <mixPort name="deep_buffer" role="source"
                         flags="AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -78,7 +77,6 @@
                              samplingRates="8000,16000,48000"
                              channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
-                <mixPort name="hifi_input" role="sink" />
                 <mixPort name="primary input" role="sink">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
@@ -112,10 +110,6 @@
                 </devicePort>
                 <devicePort tagName="Telephony Tx" type="AUDIO_DEVICE_OUT_TELEPHONY_TX" role="sink">
                 </devicePort>
-                <devicePort tagName="USB Device Out" type="AUDIO_DEVICE_OUT_USB_DEVICE" role="sink">
-                </devicePort>
-                <devicePort tagName="USB Headset Out" type="AUDIO_DEVICE_OUT_USB_HEADSET" role="sink">
-                </devicePort>
 
                 <devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
                 </devicePort>
@@ -128,10 +122,6 @@
                 <devicePort tagName="Telephony Rx" type="AUDIO_DEVICE_IN_TELEPHONY_RX" role="source">
                 </devicePort>
                 <devicePort tagName="FM tuner" type="AUDIO_DEVICE_IN_FM_TUNER" role="source">
-                </devicePort>
-                <devicePort tagName="USB Device In" type="AUDIO_DEVICE_IN_USB_DEVICE" role="source">
-                </devicePort>
-                <devicePort tagName="USB Headset In" type="AUDIO_DEVICE_IN_USB_HEADSET" role="source">
                 </devicePort>
             </devicePorts>
             <!-- route declaration, i.e. list all available sources for a given sink -->
@@ -152,21 +142,16 @@
                        sources="primary output,deep_buffer,compressed_offload"/>
                 <route type="mix" sink="HDMI Out"
                        sources="primary output,deep_buffer,compressed_offload"/>
-                <route type="mix" sink="USB Device Out"
-                       sources="primary output,deep_buffer,compressed_offload,hifi_playback"/>
-                <route type="mix" sink="USB Headset Out"
-                       sources="primary output,deep_buffer,compressed_offload,hifi_playback"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="voice_tx,incall_music_uplink"/>
                 <route type="mix" sink="primary input"
-                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,FM tuner,USB Device In,USB Headset In"/>
-                <route type="mix" sink="hifi_input" sources="USB Device In,USB Headset In" />
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,FM tuner"/>
                 <route type="mix" sink="voice_rx"
                        sources="Telephony Rx"/>
             </routes>
         </module>
 
-        <module name="vx_motvr" halVersion="2.0">
+        <module name="vx_motvr" halVersion="3.0">
             <mixPorts>
                 <mixPort name="primary input" role="sink" flags="AUDIO_INPUT_FLAG_HW_HOTWORD">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
@@ -196,24 +181,8 @@
         <!-- A2dp Audio HAL -->
         <xi:include href="a2dp_audio_policy_configuration.xml"/>
 
-        <module name="usb" halVersion="2.0">
-            <mixPorts>
-                <mixPort name="usb_accessory output" role="source">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
-            </mixPorts>
-            <devicePorts>
-                <devicePort tagName="USB Host Out" type="AUDIO_DEVICE_OUT_USB_ACCESSORY" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="44100" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </devicePort>
-            </devicePorts>
-            <routes>
-                <route type="mix" sink="USB Host Out"
-                       sources="usb_accessory output"/>
-            </routes>
-        </module>
+        <!-- Usb Audio HAL -->
+        <xi:include href="usb_audio_policy_configuration.xml"/>
 
         <!-- Remote Submix Audio HAL -->
         <xi:include href="r_submix_audio_policy_configuration.xml"/>

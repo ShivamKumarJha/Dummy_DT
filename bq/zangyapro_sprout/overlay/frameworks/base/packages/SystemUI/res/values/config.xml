@@ -1,0 +1,3 @@
+<resources>
+    <bool name="doze_proximity_check_before_pulse">true</bool>
+</resources>

@@ -1,5 +1,4 @@
 -app/QtiTelephonyService/QtiTelephonyService.apk
--app/SoterService/SoterService.apk
 -app/aptxals/aptxals.apk
 -app/aptxalsOverlay/aptxalsOverlay.apk
 -app/datastatusnotification/datastatusnotification.apk

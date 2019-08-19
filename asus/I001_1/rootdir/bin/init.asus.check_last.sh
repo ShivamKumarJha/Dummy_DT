@@ -15,7 +15,7 @@ then
 	#echo Found Raw Ram Dump!
 	#echo Start to dump...
 	fext="$(date +%Y%m%d-%H%M%S).txt"
-	dd if=/dev/block/bootdevice/by-name/ftm of=/asdf/LastShutdownCrash_$fext skip=34509396 ibs=1 count=262144 
+	dd if=/dev/block/bootdevice/by-name/ftm of=/asdf/LastShutdownCrash_$fext skip=4519288 ibs=1 count=262144 
 	dd if=/dev/block/bootdevice/by-name/ftm of=/asdf/LastShutdownLogcat_$fext skip=34771540 ibs=1 count=1048576 
 	dd if=/dev/block/bootdevice/by-name/ftm of=/asdf/LastTZLogCrash_$fext skip=47715988 ibs=1 count=13312 
 	

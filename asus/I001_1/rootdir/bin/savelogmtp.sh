@@ -65,6 +65,9 @@ fi
 	cat /proc/cmdline > $SAVE_LOG_PATH/cmdline.txt
 	echo "cat /proc/cmdline > $SAVE_LOG_PATH/cmdline.txt"	
 ############################################################################################
+	cat /sys/kernel/dload/dload_mode > $SAVE_LOG_PATH/dload_mode.txt
+	cat /sys/module/msm_poweroff/parameters/download_mode > $SAVE_LOG_PATH/download_mode.txt
+############################################################################################
 	cat /d/wakeup_sources  > $SAVE_LOG_PATH/wakeup_sources.txt
 ###########################################################################################
 	# save mount table
@@ -323,33 +326,10 @@ echo "cp -r /data/misc/bluetooth/logs $SAVE_LOG_PATH/logcat_log/btsnoop/"
 
 ##############################################################################################
 
-	cp /data/misc/update_engine_log $SAVE_LOG_PATH/
+	cp -r /data/misc/update_engine_log $SAVE_LOG_PATH/
 ##############################################################################################
-	mkdir $SAVE_LOG_PATH/tencent
-	chmod 777 $SAVE_LOG_PATH/tencent
-	
-
-	for pid in `ps -ef | grep "tencent"| awk '{print $2}'` ; do 
-		name=`cat /proc/$pid/comm`
-		pmap $pid > $SAVE_LOG_PATH/tencent/${name}_pmap.txt
-		cat /proc/$pid/maps > $SAVE_LOG_PATH/tencent/${name}_maps.txt
-		cat /proc/$pid/smaps > $SAVE_LOG_PATH/tencent/${name}_smaps.txt
-	done
-
-	for pid in `ps -ef | grep "audioserver"| awk '{print $2}'` ; do 
-		name=`cat /proc/$pid/comm`
-		pmap $pid > $SAVE_LOG_PATH/tencent/${name}_pmap.txt
-		cat /proc/$pid/maps > $SAVE_LOG_PATH/tencent/${name}_maps.txt
-		cat /proc/$pid/smaps > $SAVE_LOG_PATH/tencent/${name}_smaps.txt
-	done
-	
-	for pid in `ps -ef | grep "system_server"| awk '{print $2}'` ; do 
-		name=`cat /proc/$pid/comm`
-		pmap $pid > $SAVE_LOG_PATH/tencent/${name}_pmap.txt
-		cat /proc/$pid/maps > $SAVE_LOG_PATH/tencent/${name}_maps.txt
-		cat /proc/$pid/smaps > $SAVE_LOG_PATH/tencent/${name}_smaps.txt
-	done
-
+	AudioServerPid=`ps -ef | grep "audioserver " | sed '1d' | awk '{print $2}'`
+	pmap $AudioServerPid > $SAVE_LOG_PATH/AudioServerMap.txt
 ##############################################################################################
 dd if=/dev/block/bootdevice/by-name/rawdump  of=/data/vendor/ramdump/ramdump_header.txt bs=4 count=2
 

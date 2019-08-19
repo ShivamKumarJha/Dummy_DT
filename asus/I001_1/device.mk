@@ -138,6 +138,8 @@ PRODUCT_PACKAGES += \
     UpdateAttestationKey.sh \
     WiFiFWTool.sh \
     WifiAntenna.sh \
+    WifiL13A.sh \
+    WifiSARPower.sh \
     antennaSwitchSvc.sh \
     audio_codec_status.sh \
     btwifimac.sh \
@@ -167,6 +169,7 @@ PRODUCT_PACKAGES += \
     init.asus.kernelmessage.sh \
     init.asus.piq.sh \
     init.asus.ramdump.sh \
+    init.asus.rotation.sh \
     init.asus.thermal_conf.sh \
     init.class_late.sh \
     init.class_main.sh \
@@ -203,6 +206,7 @@ PRODUCT_PACKAGES += \
     ssr_cfg.sh \
     storage_status.sh \
     systrace.sh \
+    test_cfg.sh \
     touch_cfg.sh \
     umount_apd.sh \
     init.asus.debugtool.rc \

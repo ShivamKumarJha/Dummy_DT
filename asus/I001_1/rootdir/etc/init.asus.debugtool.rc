@@ -259,12 +259,12 @@ on property:sys.boot_completed=1
 	
 #ASUS_BSP: [DEBUG] Power On/Off; Restart ---
 #ASUS_BSP: [DEBUG] CPU Performance Mode +++
-service pmodechange /system/vendor/bin/pmodechange.sh
+service pmodechange /system/vendor/bin/sh /system/vendor/bin/pmodechange.sh
     user root
     group root
     disabled
     oneshot
-seclabel u:r:vendor_init:s0
+seclabel u:r:savelogmtp:s0
 
 on property:sys.foregroundapp=*
     start pmodechange

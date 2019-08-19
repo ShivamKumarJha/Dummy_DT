@@ -33,6 +33,9 @@ save_general_log() {
 	cat /proc/cmdline > $GENERAL_LOG/cmdline.txt
 	echo "cat /proc/cmdline > $GENERAL_LOG/cmdline.txt"	
 	############################################################################################
+	cat /sys/kernel/dload/dload_mode > $GENERAL_LOG/dload_mode.txt
+	cat /sys/module/msm_poweroff/parameters/download_mode > $GENERAL_LOG/download_mode.txt
+	############################################################################################
 	cat /d/wakeup_sources  > $GENERAL_LOG/wakeup_sources.txt
 	############################################################################################
 	# save mount table
@@ -174,7 +177,7 @@ save_general_log() {
 		echo "cp -r /data/misc/wifi/p2p_supplicant.conf $GENERAL_LOG"
 	fi
 	############################################################################################
-	cp /data/misc/update_engine_log $GENERAL_LOG
+	cp -r /data/misc/update_engine_log $GENERAL_LOG
 	############################################################################################
 	# mv /data/anr to data/media
 	ls -R -l /data/anr > $GENERAL_LOG/ls_data_anr.txt
@@ -207,33 +210,6 @@ save_general_log() {
 #	    cp $filename  $GENERAL_LOG/$name
 #	    rm $filename
 #	done
-	############################################################################################
-
-        mkdir $GENERAL_LOG/tencent
-        chmod 777 $GENERAL_LOG/tencent
-
-
-        for pid in `ps -ef | grep "tencent"| awk '{print $2}'` ; do
-                name=`cat /proc/$pid/comm`
-                pmap $pid > $GENERAL_LOG/tencent/${name}_pmap.txt
-                cat /proc/$pid/maps > $GENERAL_LOG/tencent/${name}_maps.txt
-                cat /proc/$pid/smaps > $GENERAL_LOG/tencent/${name}_smaps.txt
-        done
-
-        for pid in `ps -ef | grep "audioserver"| awk '{print $2}'` ; do
-                name=`cat /proc/$pid/comm`
-                pmap $pid > $GENERAL_LOG/tencent/${name}_pmap.txt
-                cat /proc/$pid/maps > $GENERAL_LOG/tencent/${name}_maps.txt
-                cat /proc/$pid/smaps > $GENERAL_LOG/tencent/${name}_smaps.txt
-        done
-
-        for pid in `ps -ef | grep "system_server"| awk '{print $2}'` ; do
-                name=`cat /proc/$pid/comm`
-                pmap $pid > $GENERAL_LOG/tencent/${name}_pmap.txt
-                cat /proc/$pid/maps > $GENERAL_LOG/tencent/${name}_maps.txt
-                cat /proc/$pid/smaps > $GENERAL_LOG/tencent/${name}_smaps.txt
-        done
-
 
 	############################################################################################
     micropTest=`cat /sys/class/switch/pfs_pad_ec/state`

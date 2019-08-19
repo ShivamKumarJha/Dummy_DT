@@ -502,6 +502,7 @@ on property:sys.boot_completed=1
 
 #ASUS_BSP Lydia +++
     chmod 0666 /sys/class/drm/dp_connect
+    chmod 0666 /sys/class/drm/station_sleep
 #ASUS_BSP Lydia ---
 
 #####################################################
@@ -604,6 +605,14 @@ service btwifimac /vendor/bin/btwifimac.sh
     class core
     user root
     group root
+    seclabel u:r:vendor_init:s0
+    oneshot
+
+service WifiL13ASwitch /vendor/bin/WifiL13A.sh
+    class core
+    user root
+    group root
+    disabled
     seclabel u:r:vendor_init:s0
     oneshot
 
@@ -849,6 +858,15 @@ service StationFWupdate /vendor/bin/sh /vendor/etc/station_fw_update.sh
         disabled
 # ASUS_SZ_BSP Lotta: Station ec(ene6k7750) fw update ---
 
+# ASUS_SZ_BSP Yadong : Station Uart Debug +++
+service StationUartSwitch /vendor/bin/sh /vendor/etc/station_uart_switch.sh
+	seclabel u:r:yoda_dongle:s0
+	class core
+	user root
+	oneshot
+	disabled
+# ASUS_SZ_BSP Yadong : Station Uart Debug ---
+
 # ASUS_SZ_BSP Sid: Station pd fw update +++
 service StationPDFWupdate /vendor/bin/sh /vendor/etc/station_pdfw_update.sh
         seclabel u:r:yoda_dongle:s0
@@ -857,6 +875,15 @@ service StationPDFWupdate /vendor/bin/sh /vendor/etc/station_pdfw_update.sh
         oneshot
         disabled
 # ASUS_SZ_BSP Sid: Station pd fw update ---
+
+#ASUS_BSP_WIFI +++ SAR Reduce wifi power
+service SARPower-sh /system/vendor/bin/sh /system/vendor/bin/WifiSARPower.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+#ASUS_BSP_WIFI +++ SAR Reduce wifi power
 
 # ASUS_BSP Deeo : Phone Aura FW update +++
 service AuraSyncFWupdate /vendor/bin/sh /vendor/etc/aura_sync_fw_update.sh
@@ -990,6 +1017,14 @@ service glove_mode /vendor/bin/glove_mode.sh
     oneshot
     disabled    
     
+service touch_test_cfg /vendor/bin/test_cfg.sh
+    seclabel u:r:vendor_init:s0
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
 service dongle_state_fortouch /vendor/bin/dongle_state.sh
     seclabel u:r:vendor_init:s0
     class core
@@ -1012,7 +1047,14 @@ service gamemode /vendor/bin/init.asus.gamemode.sh
     user root
     oneshot
     disabled
-
+    
+service rotationmode /vendor/bin/init.asus.rotation.sh
+    seclabel u:r:asus_touch:s0
+    class core
+    group system
+    user root
+    oneshot
+    disabled  
 #ASUS_BSP Beryl "touch config" ---
 
 # ASUS BSP Display, dfps +++
@@ -1378,6 +1420,11 @@ on property:sys.station.fwupdate=1
     start StationFWupdate
 #ASUS_SZ_BSP Lotta: station ec(ene6k7750) fw update ---
 
+# ASUS_SZ_BSP : Yadong : Station Uart Debug +++
+on property:persist.asus.audbg_station=*
+	start StationUartSwitch
+# ASUS_SZ_BSP : Yadong : Station Uart Debug ---
+
 # ASUS_SZ_BSP Lotta: chmod and chown station ec +++
 on property:sys.ec_i2c.donglechmod=1
     chmod 0664 /sys/class/ec_i2c/dongle/device/u0504
@@ -1549,6 +1596,17 @@ on property:sys.station.pd_fwupdate=1
     start StationPDFWupdate
 #ASUS_SZ_BSP Sid: station PD fw update ---
 
+#ASUS_BSP_WIFI +++ SAR Reduce wifi power
+on property:vendor.asus.operator.iso-country=*
+    restart SARPower-sh
+
+on property:vendor.asus.sar.audio=*
+    restart SARPower-sh
+
+on property:vendor.wlan.softap.driver.status=*
+    restart SARPower-sh
+#ASUS_BSP_WIFI --- SAR Reduce wifi power
+
 ## ASUS_SZ_BSP Sid Add for DT_PD and DT Hub+++
 
 on property:sys.dt.pd_fwupdate=1
@@ -1655,6 +1713,18 @@ on property:vendor.asus.wifiantennamode=*
 on property:persist.vendor.asus.wlanfwdbg=*
     start WiFiFWTool
 
+on property:persist.vendor.radio.airplane_mode_on=*
+	restart WifiL13ASwitch
+
+on property:vendor.bluetooth.status=*
+	restart WifiL13ASwitch
+
+on property:wlan.driver.status=*
+	restart WifiL13ASwitch
+
+on property:persist.vendor.L13Aswitch=*
+	restart WifiL13ASwitch
+
 # ASUS BSP Display +++
 on property:vendor.asus.dfps=60
     start dfps60
@@ -1673,7 +1743,7 @@ on property:persist.asus.gesture.type=*
 on property:sys.asus.gamingtype=*
    start gamemode
 on property:sys.screen.rotation=*
-   start gamemode
+   start rotationmode
 
 on property:sys.boot_completed=1
    start touch_cfg
@@ -1700,6 +1770,13 @@ on property:vendor.asus.touch_in_call=true
    write sys/devices/platform/goodix_ts.0/phone_state_on 1
 on property:vendor.asus.touch_in_call=false
    write sys/devices/platform/goodix_ts.0/phone_state_on 0   
+#debug 
+on property:debug.asus.touch_update_cfg=1
+   write sys/devices/platform/goodix_ts.0/test_cfg 1
+   start touch_test_cfg
+on property:debug.asus.touch_update_cfg=0
+   write sys/devices/platform/goodix_ts.0/test_cfg 0
+   start touch_test_cfg
 #ASUS_BSP Beryl ---
 
 # ASUS_SZ_BSP Joyce: station goodix touch test +++
@@ -1714,6 +1791,15 @@ on property:sys.ec_i2c.donglechmod=1
 on property:sys.station.tp_fwupdate=1
     start StationGoodixTouchFWupdate
 # ASUS_SZ_BSP Joyce: station focaltech touch fw update ---
+
+# ASUS_SZ_BSP Lydia: station sleep +++
+on property:persist.odm.asus.station_sleep=false
+    write /sys/class/drm/station_sleep 0
+on property:persist.odm.asus.station_sleep=true
+    write /sys/class/drm/station_sleep 1
+on property:sys.boot_completed=1
+    write /proc/boot_comp 1
+# ASUS_SZ_BSP Lydia: station sleep +++
 ###-----------------------------------------------###
 #              ALL ASUS on property (end)
 # 

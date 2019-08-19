@@ -92,6 +92,7 @@ on early-boot
     setprop vendor.wlan.softap.driver.status unloaded
     setprop persist.debug.wifi_user_list 1
     setprop wlan.driver.config /vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+    setprop vendor.bluetooth.status off
 
     # for backward compatibility
     chown system system /persist/sensors

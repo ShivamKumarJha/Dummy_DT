@@ -1,0 +1,23 @@
+import /vendor/etc/init/hw/init.rc2.ramdump.rc
+import /vendor/etc/init/hw/init.rc2.fingerprint.rc
+import /vendor/etc/init/hw/init.rc2.touch.rc
+import /vendor/etc/init/hw/init.rc2.audio.rc
+import /vendor/etc/init/hw/init.rc2.wbg.rc
+import /vendor/etc/init/hw/init.rc2.sensor.rc
+import /vendor/etc/init/hw/init.rc2.diagtest.rc
+import /vendor/etc/init/init.usb.rc
+import /vendor/etc/init/hw/init.razer.common.rc
+
+service led-init /vendor/bin/sh /vendor/bin/init.aura.led_init.sh
+    class main
+    user root
+    oneshot
+
+# Fred Yu add for WBGTestTool Wi-Fi test
+service wbgtesttool_wifi /system/vendor/bin/sh /system/vendor/etc/wbg_wifi.sh
+    user root
+    oneshot
+    disabled
+
+on property:persist.sys.wbg.wifi=start
+    start wbgtesttool_wifi

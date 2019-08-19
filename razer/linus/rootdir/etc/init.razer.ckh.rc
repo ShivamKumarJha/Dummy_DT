@@ -1,0 +1,5 @@
+# Copyright (C) 2017 Razer Inc.
+
+on property:gsm.sim.operator.iso-country=*
+    setprop ro.com.google.clientidbase.am android-h3g-${gsm.sim.operator.iso-country}
+    setprop ro.com.google.clientidbase.ms android-h3g-${gsm.sim.operator.iso-country}-revc

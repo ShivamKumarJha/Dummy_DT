@@ -1,0 +1,21 @@
+on post-fs-data && property:ro.treble.enabled=true
+    # Mounting of securefs is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /vendor/securefs again so because mount is run as root + defaults
+    chown system system /vendor/securefs
+    chmod 0771 /vendor/securefs
+    restorecon_recursive /vendor/securefs
+
+on late-fs
+  # boot time fs tune
+    # boot time fs tune
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+
+on property:sys.boot_completed=1
+    # end boot time fs tune
+    # alex.naidis@paranoidandroid.co Use 128kb to prevent page thrashing
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128

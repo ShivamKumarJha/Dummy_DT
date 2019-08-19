@@ -25,14 +25,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="false">
-        <name>android.hardware.wifi.supplicant</name>
-        <version>1.2</version>
-        <interface>
-            <name>ISupplicant</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl" optional="true">
         <name>com.qualcomm.qti.uceservice</name>
         <version>2.0</version>
@@ -55,14 +47,6 @@
         <interface>
             <name>IServer</name>
             <instance>cnd</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>hardware.google.light</name>
-        <version>1.0</version>
-        <interface>
-            <name>ILight</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -127,6 +111,7 @@
         <interface>
             <name>IQcRilAudio</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -135,6 +120,7 @@
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
+            <instance>imsradio1</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -151,6 +137,7 @@
         <interface>
             <name>IQtiOemHook</name>
             <instance>oemhook0</instance>
+            <instance>oemhook1</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">

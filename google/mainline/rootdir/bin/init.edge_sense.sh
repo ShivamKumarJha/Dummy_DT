@@ -41,20 +41,10 @@ gpio_num=${2}
 hw_platform=`cat /sys/devices/soc0/hw_platform`
 platform_version=`cat /sys/devices/soc0/platform_version`
 
-# If using default values, check if platform needs Edge Sense to be initialized.
-if [ ${use_defaults} -ne 0 ]; then
-  if [ "${hw_platform}" != "OEM" ] || \
-     [ "${platform_version}" == "65538" ]; then
-    log -t "${prog_name}" "Platform \"${hw_platform}\" version" \
-        "${platform_version} does not need Edge Sense to be initialized."
-    exit
-  fi
-fi
-
 # Set default values if using them.
 if [ ${use_defaults} -ne 0 ]; then
-  chip_name=pm8998
-  gpio_num=2
+  chip_name=pm660@
+  gpio_num=3
 fi
 
 # Validate chip name and gpio number.

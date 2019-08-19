@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# The modem image is mounted at /vendor/firmware_mnt
-firmware_directories /vendor/firmware_mnt/image/
-
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     diag
 
@@ -92,6 +89,10 @@ firmware_directories /vendor/firmware_mnt/image/
 # Ramdump devices
 /dev/ramdump_*            0640   system     system
 
+#ImproveTouch device
+/dev/hbtp_input           0660   system     system
+/dev/hbtp_vm              0660   system     system
+
 # BT
 /dev/ttyMSM0              0600   bluetooth  bluetooth
 /dev/ttyHS0               0660   bluetooth  net_bt
@@ -116,7 +117,4 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/mnh_sm               0666   cameraserver camera
 
 # Storage: for factory reset protection feature
-/dev/block/platform/soc/1d84000.ufshc/by-name/frp       0660   system     system
-
-# fuel gauge history
-/dev/maxfg_history        0644   system system
+/dev/block/platform/soc/7c4000.sdhci/by-name/frp       0660   system     system

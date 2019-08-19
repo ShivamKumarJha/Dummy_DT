@@ -22,24 +22,23 @@ import /vendor/etc/init/hw/init.${ro.boot.hardware.platform}.mpssrfs.rc
 
 
 on property:init.svc.vendor.charger=running
+    # Lock to lowest freqency on charger mode
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor powersave
     # keep one LITTLE and one big
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
     write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu6/online 0
     write /sys/devices/system/cpu/cpu7/online 0
-    # Enable UFS powersaving
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 1
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 1
+    wait /dev/block/bootdevice
     write /sys/class/typec/port0/port_type sink
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     # Disable sched_boost
     write /proc/sys/kernel/sched_boost 0
     # Enable thermal mitigation
     write /sys/devices/virtual/thermal/tz-by-name/backup-charge/mode enabled
-    # Ensure 100% reporting is sticky
-    write /sys/class/power_supply/maxfg/offmode_charger 1
 
 service vendor.charger /charger
     class charger
@@ -57,7 +56,6 @@ on early-init
     chmod 0755 /sys/kernel/debug
     # Enable sched_boost
     write /proc/sys/kernel/sched_boost 1
-    mount_all /vendor/etc/fstab.persist --early
 
 # Skip init trigger for charger mode
 on early-init && property:ro.boot.mode=charger
@@ -82,28 +80,6 @@ on init && property:vendor.skip.init=0
     # start Citadel keymaster (StrongBox) early
     start vendor.citadeld
     start vendor.keymaster-4-0-citadel
-
-    # Boot time fs tune
-    write /sys/block/sda/queue/iostats 0
-    write /sys/block/sda/queue/scheduler cfq
-    write /sys/block/sda/queue/iosched/slice_idle 0
-    write /sys/block/sda/queue/read_ahead_kb 2048
-    write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/sdf/queue/iostats 0
-    write /sys/block/sdf/queue/scheduler cfq
-    write /sys/block/sdf/queue/iosched/slice_idle 0
-    write /sys/block/sdf/queue/read_ahead_kb 2048
-    write /sys/block/sdf/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
-    write /sys/block/dm-3/queue/read_ahead_kb 2048
-    write /sys/block/dm-4/queue/read_ahead_kb 2048
-    write /sys/block/dm-5/queue/read_ahead_kb 2048
-
-    # Disable UFS powersaving
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 0
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 0
 
     # Disable powersaving
     write /sys/module/lpm_levels/parameters/sleep_disabled 1
@@ -131,23 +107,14 @@ on init && property:vendor.skip.init=0
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 20000
 
     # configure governor settings for big cluster
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor schedutil
-    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor schedutil
+    write /sys/devices/system/cpu/cpu6/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu6/cpufreq/schedutil/down_rate_limit_us 20000
 
     # set default schedTune value for foreground/top-app
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 10
     write /dev/stune/top-app/schedtune.prefer_idle 1
-
-    # Setup cpusets used by the VR services.
-    mkdir /dev/cpuset/kernel 0750 root system
-    write /dev/cpuset/kernel/cpus 0
-    write /dev/cpuset/kernel/mems 0
-    chown system system /dev/cpuset/kernel/tasks
-    chown system system /dev/cpuset/kernel/cpus
-    chmod 0660 /dev/cpuset/kernel/tasks
-    chmod 0660 /dev/cpuset/kernel/cpus
 
     mkdir /dev/cpuset/camera-daemon
     write /dev/cpuset/camera-daemon/cpus 0-7
@@ -155,52 +122,6 @@ on init && property:vendor.skip.init=0
     chown system system /dev/cpuset/camera-daemon
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
-
-    mkdir /dev/cpuset/system 0750 root system
-    write /dev/cpuset/system/cpus 0
-    write /dev/cpuset/system/mems 0
-    chown system system /dev/cpuset/system/tasks
-    chmod 0660 /dev/cpuset/system/tasks
-
-    mkdir /dev/cpuset/system/performance 0750 root system
-    write /dev/cpuset/system/performance/cpus 0
-    write /dev/cpuset/system/performance/mems 0
-    chown system system /dev/cpuset/system/performance/tasks
-    chmod 0660 /dev/cpuset/system/performance/tasks
-
-    mkdir /dev/cpuset/system/background 0750 root system
-    write /dev/cpuset/system/background/cpus 0
-    write /dev/cpuset/system/background/mems 0
-    chown system system /dev/cpuset/system/background/tasks
-    chmod 0660 /dev/cpuset/system/background/tasks
-
-    mkdir /dev/cpuset/application 0750 root system
-    write /dev/cpuset/application/cpus 0
-    write /dev/cpuset/application/mems 0
-    chown system system /dev/cpuset/application/tasks
-    chmod 0660 /dev/cpuset/application/tasks
-
-    mkdir /dev/cpuset/application/performance 0750 root system
-    write /dev/cpuset/application/performance/cpus 0
-    write /dev/cpuset/application/performance/mems 0
-    chown system system /dev/cpuset/application/performance/tasks
-    chmod 0660 /dev/cpuset/application/performance/tasks
-
-    mkdir /dev/cpuset/application/background 0750 root system
-    write /dev/cpuset/application/background/cpus 0
-    write /dev/cpuset/application/background/mems 0
-    chown system system /dev/cpuset/application/background/tasks
-    chmod 0660 /dev/cpuset/application/background/tasks
-
-    # Create UDS structure for base VR services.
-    mkdir /dev/socket/pdx 0775 system system
-    mkdir /dev/socket/pdx/system 0775 system system
-    mkdir /dev/socket/pdx/system/buffer_hub 0775 system system
-    mkdir /dev/socket/pdx/system/performance 0775 system system
-    mkdir /dev/socket/pdx/system/vr 0775 system system
-    mkdir /dev/socket/pdx/system/vr/display 0775 system system
-    mkdir /dev/socket/pdx/system/vr/pose 0775 system system
-    mkdir /dev/socket/pdx/system/vr/sensors 0775 system system
 
     # b/37682684 Enable suspend clock reporting
     write /sys/kernel/debug/clk/debug_suspend 1
@@ -212,62 +133,61 @@ on init && property:vendor.skip.init=0
     # Some user code relies on ro.boot.hardware.revision
     setprop ro.boot.hardware.revision ${ro.revision}
 
+    # Thermal config file per product
+    setprop vendor.sys.qcom.thermalcfg /vendor/etc/thermal-engine-${ro.hardware}.conf
+
     # Allow PAI targeting per hardware SKU
     setprop ro.oem.key1 ${ro.boot.hardware.sku}
 
     # Property used by vintf for sku specific manifests
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
 
-    # Property used by pointing to thermal-engine config file
-    setprop vendor.thermal.vr_mode -novr
-    setprop vendor.thermal.hw_mode -prod
-    setprop vendor.thermal.config "thermal_info_config.json"
-
 on late-init
-    write /sys/devices/virtual/thermal/tz-by-name/fps-therm-adc/mode enabled
-    chown system system /sys/devices/virtual/thermal/tz-by-name/fps-therm-monitor/trip_point_0_temp
-    chown system system /sys/devices/virtual/thermal/tz-by-name/fps-therm-monitor/trip_point_0_hyst
+    setprop vendor.thermal.config thermal_info_config.json
+    chown system system /sys/devices/virtual/thermal/tz-by-name/mb-therm-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/mb-therm-monitor/trip_point_0_hyst
     chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_temp
     chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_hyst
 
 on fs
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --early
 
-    mkdir /persist/data 0700 system system
-    mkdir /persist/display 0770 system graphics
-    mkdir /persist/rfs 0770 root system
-    mkdir /persist/hlos_rfs 0770 root system
-    chmod 0770 /persist/rfs
-    chmod 0770 /persist/rfs/shared
-    chmod 0770 /persist/rfs/msm
-    chmod 0770 /persist/rfs/msm/adsp
-    chmod 0770 /persist/rfs/msm/mpss
-    chmod 0770 /persist/rfs/msm/slpi
-    chmod 0770 /persist/rfs/mdm
-    chmod 0770 /persist/rfs/mdm/adsp
-    chmod 0770 /persist/rfs/mdm/mpss
-    chmod 0770 /persist/rfs/mdm/slpi
-    chmod 0770 /persist/rfs/mdm/tn
-    chmod 0770 /persist/rfs/apq
-    chmod 0770 /persist/rfs/apq/gnss
-    chmod 0770 /persist/hlos_rfs
+    mkdir /mnt/vendor/persist/audio 0770 media audio
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+    mkdir /mnt/vendor/persist/rfs 0770 root system
+    mkdir /mnt/vendor/persist/hlos_rfs 0770 root system
+    chmod 0770 /mnt/vendor/persist/rfs
+    chmod 0770 /mnt/vendor/persist/rfs/shared
+    chmod 0770 /mnt/vendor/persist/rfs/msm
+    chmod 0770 /mnt/vendor/persist/rfs/msm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/msm/mpss
+    chmod 0770 /mnt/vendor/persist/rfs/msm/slpi
+    chmod 0770 /mnt/vendor/persist/rfs/mdm
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/mpss
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/slpi
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/tn
+    chmod 0770 /mnt/vendor/persist/rfs/apq
+    chmod 0770 /mnt/vendor/persist/rfs/apq/gnss
+    chmod 0770 /mnt/vendor/persist/hlos_rfs
+    restorecon /mnt/vendor/persist/rfs
+    restorecon /mnt/vendor/persist/hlos_rfs
+    restorecon_recursive /mnt/vendor/persist/
+
     # for cycle count backup
-    mkdir /persist/battery 0700 system system
-    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/battery 0700 system system
 
 on late-fs
-    # Start devices by sysfs trigger, including SLPI. SLPI waits for sscrpcd to
-    # read /persist, so to prevent SLPI startup delays, start both here.
+    # Start devices by sysfs trigger, including sensor related script.
     start devstart_sh
-    start vendor.sscrpcd
 
     # Start services for bootanim
     start surfaceflinger
     start bootanim
-    start vendor.hwcomposer-2-3
+    start vendor.hwcomposer-2-2
     start vendor.configstore-hal
     start vendor.qti.hardware.display.allocator
-    start vendor.light-1-0
 
     # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
     # In such case, init won't responce the property_set from hwservicemanager and then
@@ -279,13 +199,9 @@ on late-fs
 
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --late
-    # Boot time fs tune
-    write /sys/block/dm-3/queue/read_ahead_kb 2048
-    write /sys/block/dm-4/queue/read_ahead_kb 2048
-    write /sys/block/dm-6/queue/read_ahead_kb 2048
 
     # Required for time_daemon
-    mkdir /persist/time 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
 
     # Start time daemon early so that the system time can be set early
     start time_daemon
@@ -331,8 +247,6 @@ on post-fs-data
     # This must be started when vendor.sys.listeners.registered is true
     start ipastart_sh
 
-    mkdir /data/vendor/nnhal 0700 system system
-
 # zygote need to be started after otapreopt which will be done on post-fs-data
 on zygote-start
     # zygote is started in common init.rc
@@ -345,7 +259,10 @@ on zygote-start
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
-    chown system system /persist/WCNSS_qcom_wlan_nv.bin
+    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /mnt/vendor/persist/ again so because mount is run as root + defaults
+    chown root system /mnt/vendor/persist/
+    chmod 0771 /mnt/vendor/persist/
 
     # Trigger WLAN driver load
     write /sys/kernel/boot_wlan/boot_wlan 1
@@ -375,28 +292,28 @@ on zygote-start
     chmod 0664 /data/vendor/modem_stat/debug.txt
 
     # Set up sensors-related directories and permissions
-    chmod 775 /persist/sensors
-    chmod 664 /persist/sensors/sensors_settings
-    chown root system /persist/sensors/registry
-    chmod 775 /persist/sensors/registry
-    chown root system /persist/sensors/registry/registry
-    chmod 775 /persist/sensors/registry/registry
+    chmod 775 /mnt/vendor/persist/sensors
+    chmod 664 /mnt/vendor/persist/sensors/sensors_settings
+    chown root system /mnt/vendor/persist/sensors/registry
+    chmod 775 /mnt/vendor/persist/sensors/registry
+    chown root system /mnt/vendor/persist/sensors/registry/registry
+    chmod 775 /mnt/vendor/persist/sensors/registry/registry
 
-    chown system root /persist/sensors/sensors_settings
-    chown root root /persist/sensors/registry/registry/sensors_settings
+    chown system root /mnt/vendor/persist/sensors/sensors_settings
+    chown root root /mnt/vendor/persist/sensors/registry/registry/sensors_settings
 
     mkdir /data/vendor/sensors 0770
     chown system system /data/vendor/sensors
 
-    chmod 770 /persist/audio
-    chmod 660 /persist/audio/audio.cal
-    chown media audio /persist/audio
-    chown audioserver audio /persist/audio/audio.cal
+    chmod 770 /mnt/vendor/persist/audio
+    chmod 660 /mnt/vendor/persist/audio/audio.cal
+    chown media audio /mnt/vendor/persist/audio
+    chown audioserver audio /mnt/vendor/persist/audio/audio.cal
 
-    chmod 770 /persist/haptics
-    chmod 440 /persist/haptics/cs40l20.cal
-    chown system system /persist/haptics
-    chown system system /persist/haptics/cs40l20.cal
+    chmod 770 /mnt/vendor/persist/haptics
+    chmod 440 /mnt/vendor/persist/haptics/drv2624.cal
+    chown system system /mnt/vendor/persist/haptics
+    chown system system /mnt/vendor/persist/haptics/drv2624.cal
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -449,16 +366,17 @@ on early-boot
     chmod 0660 /dev/vd6281
 
     # Permission for Vibrator
-    chown system system /sys/class/leds/vibrator/device/comp_enable
-    chown system system /sys/class/leds/vibrator/device/cp_dig_scale
-    chown system system /sys/class/leds/vibrator/device/cp_trigger_index
-    chown system system /sys/class/leds/vibrator/device/cp_trigger_queue
-    chown system system /sys/class/leds/vibrator/device/dig_scale
-    chown system system /sys/class/leds/vibrator/device/f0_stored
-    chown system system /sys/class/leds/vibrator/device/heartbeat
-    chown system system /sys/class/leds/vibrator/device/num_waves
-    chown system system /sys/class/leds/vibrator/device/redc_stored
-    chown system system /sys/class/leds/vibrator/device/standby_timeout
+    chown system system /sys/class/leds/vibrator/device/mode
+    chown system system /sys/class/leds/vibrator/device/od_clamp
+    chown system system /sys/class/leds/vibrator/device/rtp_input
+    chown system system /sys/class/leds/vibrator/device/scale
+    chown system system /sys/class/leds/vibrator/device/set_sequencer
+    chown system system /sys/class/leds/vibrator/device/autocal_result
+    chown system system /sys/class/leds/vibrator/device/ctrl_loop
+    chown system system /sys/class/leds/vibrator/device/ol_lra_period
+    chown system system /sys/class/leds/vibrator/device/autocal
+    chown system system /sys/class/leds/vibrator/device/lp_trigger_effect
+    chown system system /sys/class/leds/vibrator/device/lra_wave_shape
 
     # Permission for LED driver
     chown system system /sys/class/leds/red/on_off_ms
@@ -469,36 +387,21 @@ on early-boot
     chown system system /sys/class/leds/blue/rgb_start
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/vr_mode
-    chown system system /sys/class/backlight/panel0-backlight/hbm_mode
 
     # Permission for Wireless charger
     chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/rxdata
     chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/txdata
     chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/txlen
     chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/ccreset
-    chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/status
-    chown system system /sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/version
-    chown system system /sys/class/power_supply/wireless/capacity
-
-    # FG cycle counts read from dumpstate + backup restore from health HAL
-    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qpnp,fg/cycle_counts_bins
-    chown system system /sys/devices/platform/soc/a90000.i2c/i2c-4/4-0036/power_supply/maxfg/cycle_counts_bins
-
-    # HardwareInfo needs to be able to read CC bins
-    chmod 644 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qpnp,fg/cycle_counts_bins
-    chmod 644 /sys/devices/platform/soc/a90000.i2c/i2c-4/4-0036/power_supply/maxfg/cycle_counts_bins
 
     # Permission for Pixelstats
-    chown system system /sys/class/misc/msm_cirrus_playback/resistance_left_right
-    chown system system /sys/devices/platform/soc/1d84000.ufshc/slowio_read_cnt
-    chown system system /sys/devices/platform/soc/1d84000.ufshc/slowio_write_cnt
-    chown system system /sys/devices/platform/soc/1d84000.ufshc/slowio_unmap_cnt
-    chown system system /sys/devices/platform/soc/1d84000.ufshc/slowio_sync_cnt
-    chown system system /sys/devices/platform/soc/soc:qcom,wcd-dsp-mgr/wdsp_stat
-
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_read_cnt
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_write_cnt
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_discard_cnt
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_flush_cnt
 
     # Permission for Health Storage HAL
-    chown system system /sys/devices/platform/soc/1d84000.ufshc/manual_gc
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/manual_gc
 
 on boot
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -519,17 +422,6 @@ on boot
     # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
-
-    # Update DVR cpusets to boot-time values.
-    write /dev/cpuset/kernel/cpus 0-7
-    write /dev/cpuset/system/cpus 0-7
-    write /dev/cpuset/system/performance/cpus 0-7
-    write /dev/cpuset/system/background/cpus 0-7
-    write /dev/cpuset/system/cpus 0-7
-    write /dev/cpuset/application/cpus 0-7
-    write /dev/cpuset/application/performance/cpus 0-7
-    write /dev/cpuset/application/background/cpus 0-7
-    write /dev/cpuset/application/cpus 0-7
 
     # Bluetooth
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -553,11 +445,7 @@ service init-radio-sh /vendor/bin/init.radio.sh
     group root radio
     oneshot
 
-# reset thermal-engine when changed profile
-on property:vendor.thermal.vr_mode=*
-    restart vendor.thermal-engine
-
-service vendor.thermal-engine /vendor/bin/thermal-engine -c /vendor/etc/thermal-engine-${ro.hardware}${vendor.thermal.vr_mode}${vendor.thermal.hw_mode}.conf
+service vendor.thermal-engine /vendor/bin/thermal-engine -c ${vendor.sys.qcom.thermalcfg}
    class main
    user root
    group root system
@@ -584,7 +472,7 @@ service vendor.per_mgr /vendor/bin/pm-service
     group system
     ioprio rt 4
 
-service per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
@@ -592,15 +480,18 @@ service per_proxy /vendor/bin/pm-proxy
 
 on property:sys.boot_completed=1
     # Set the default IRQ affinity to the silver cluster.
-    write /proc/irq/default_smp_affinity f
-
-    # Enable UFS powersaving
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 1
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 1
+    write /proc/irq/default_smp_affinity 3f
 
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.${ro.boot.hardware.platform}
     write /proc/sys/vm/swappiness 100
+
+    # Setup final cpuset
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-5,7
+    write /dev/cpuset/background/cpus 4-5
+    write /dev/cpuset/system-background/cpus 2-5
+    write /dev/cpuset/restricted/cpus 2-5
 
     # Setup final blkio
     # value for group_idle is us
@@ -609,55 +500,32 @@ on property:sys.boot_completed=1
     write /dev/blkio/blkio.group_idle 2000
     write /dev/blkio/background/blkio.group_idle 0
 
-    # Setup final cpuset
-    write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/boost/cpus 0-3,6-7
-    write /dev/cpuset/foreground/cpus 0-3,6-7
-    write /dev/cpuset/background/cpus 0-1
-    write /dev/cpuset/system-background/cpus 0-3
-    write /dev/cpuset/restricted/cpus 0-3
-
-    # Update DVR cpusets to runtime values.
-    # Kernel cpuset will be apply on PowerHAL
-    write /dev/cpuset/system/performance/cpus 6-7
-    write /dev/cpuset/system/background/cpus 0-1
-    write /dev/cpuset/system/cpus 0-1,6-7
-    write /dev/cpuset/application/performance/cpus 4-5
-    write /dev/cpuset/application/background/cpus 0-1
-    write /dev/cpuset/application/cpus 0-1,4-5
-
-    # Runtime fs tuning: as we have init boottime setting and kernel patch setting
-    # default readahead to 2048KB. We should adjust the setting upon boot_complete
-    # for runtime performance
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sdf/queue/read_ahead_kb 128
-    write /sys/block/sdf/queue/nr_requests 128
-    write /sys/block/sdf/queue/iostats 1
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
-    write /sys/block/dm-2/queue/read_ahead_kb 128
-    write /sys/block/dm-3/queue/read_ahead_kb 128
-    write /sys/block/dm-4/queue/read_ahead_kb 128
-    write /sys/block/dm-5/queue/read_ahead_kb 128
-    write /sys/block/dm-6/queue/read_ahead_kb 128
-
     # QCOM FG SRAM dump for dumpstate
     chown system system /d/fg/sram/data
     chown system system /d/fg/sram/count
     chown system system /d/fg/sram/address
 
-    # Maxim FG dump for dumpstate
-    chown system system /d/regmap/4-0036/registers
-    chown system system /d/regmap/4-000b/registers
+    # Dump QCOM FG cycle counts for dumpstate
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qpnp,fg/cycle_counts_bins
 
-    # UFS health
-    chmod 755 /sys/kernel/debug/ufshcd0
-    chmod 644 /sys/kernel/debug/ufshcd0/show_hba
-    chmod 644 /sys/kernel/debug/ufshcd0/stats/err_stats
-    chmod 644 /sys/kernel/debug/ufshcd0/stats/io_stats
-    chmod 644 /sys/kernel/debug/ufshcd0/stats/req_stats
+    # HardwareInfo needs to be able to read CC bins
+    chmod 644 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qpnp,fg/cycle_counts_bins
+
+    # dumpstate needs to read, vendor.health-hal needs to be able to RW
+    chown system system /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qpnp,fg/power_supply/bms/charge_full
+
+    # HardwareInfo needs to be able to read charge_full
+    chmod 644 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:qpnp,fg/power_supply/bms/charge_full
+
+    # eMMC health
+    chmod 755 /sys/kernel/debug/mmc0
+    chmod 755 /sys/kernel/debug/mmc0/mmc0:0001
+    chmod 644 /sys/kernel/debug/mmc0/mmc0:0001/ext_csd
+    chmod 644 /sys/kernel/debug/mmc0/ring_buffer
+    chmod 644 /sys/kernel/debug/mmc0/err_stats
+    chmod 644 /sys/kernel/debug/mmc0/show_host
+    chmod 644 /sys/kernel/debug/mmc0/io_stats
+    chmod 644 /sys/kernel/debug/mmc0/req_stats
 
     # Disable sched_boost
     write /proc/sys/kernel/sched_boost 0
@@ -665,21 +533,32 @@ on property:sys.boot_completed=1
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
 
-    start per_proxy
-
     # Create pixel-trace.
     # At this moment, only mm_event is available. If others want to put more,
     # it should get hard review from pixel-perf-team.
-    mkdir /sys/kernel/debug/tracing/instances/pixel-trace 0755 system system
-    chown system system /sys/kernel/debug/tracing/instances/pixel-trace/trace
-    chmod 0660 /sys/kernel/debug/tracing/instances/pixel-trace/trace
-    chown system system /sys/kernel/debug/tracing/instances/pixel-trace/tracing_on
-    chmod 0660 /sys/kernel/debug/tracing/instances/pixel-trace/tracing_on
+
+    mkdir /sys/kernel/debug/tracing/instances/pixel-trace 600
     write /sys/kernel/debug/tracing/instances/pixel-trace/buffer_size_kb 64
     write /sys/kernel/debug/tracing/instances/pixel-trace/events/mm_event/enable 1
 
+# turns off tracing right before bugreporting to keep more traces
+on property:init.svc.dumpstatez=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.dumpstatez=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
+
+on property:init.svc.bugreport=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.bugreport=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
+
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
+
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
 service vendor.qseecomd /vendor/bin/qseecomd
    class core
@@ -716,17 +595,22 @@ service sensors.qti /vendor/bin/sensors.qti
     # register QMI services
     capabilities NET_BIND_SERVICE
 
-service vendor.sscrpcd  /vendor/bin/sscrpcd
-    class core
-    user system
-    group system
+service adsprpcd /vendor/bin/adsprpcd rootpd
+   class main
+   user system
+   group system
 
-service adsprpcd /vendor/bin/adsprpcd
+service cdsprpcd /vendor/bin/cdsprpcd
+   class main
+   user system
+   group system
+
+service adsprpcd_audiopd /vendor/bin/adsprpcd audiopd
    class main
    user media
    group media
 
-service cdsprpcd /vendor/bin/cdsprpcd
+service adsprpcd_sensorspd /vendor/bin/adsprpcd sensorspd
    class main
    user system
    group system
@@ -736,13 +620,13 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /vendor/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     ioprio rt 0
     shutdown critical
 
-service tftp_server /vendor/bin/tftp_server
+service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
    group root system
@@ -826,25 +710,17 @@ service ipacm /vendor/bin/ipacm
     user radio
     group radio inet
 
+service qti /vendor/bin/qti
+    class main
+    user radio
+    group radio net_raw diag usb net_admin
+
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet diag wifi
 
 service pd_mapper /vendor/bin/pd-mapper
      class core
-
-# turns off tracing right before bugreporting to keep more traces
-on property:init.svc.dumpstatez=running
-    write /d/tracing/instances/pixel-trace/tracing_on 0
-
-on property:init.svc.dumpstatez=stopped
-    write /d/tracing/instances/pixel-trace/tracing_on 1
-
-on property:init.svc.bugreport=running
-    write /d/tracing/instances/pixel-trace/tracing_on 0
-
-on property:init.svc.bugreport=stopped
-    write /d/tracing/instances/pixel-trace/tracing_on 1
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B -z \
@@ -857,8 +733,7 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
 service vendor.chre /vendor/bin/chre
     class late_start
     user system
-    group system wakelock
-    capabilities BLOCK_SUSPEND
+    group system
     socket chre seqpacket 0660 root system
     shutdown critical
 
@@ -866,6 +741,13 @@ service devstart_sh /vendor/bin/init.qcom.devstart.sh
     class main
     user root
     group root system
+    disabled
+    oneshot
+
+service vendor.wlan_sh /vendor/bin/init.qcom.wlan.sh
+    class main
+    user root
+    group root
     disabled
     oneshot
 
@@ -903,10 +785,10 @@ service wait_for_strongbox /vendor/bin/hw/wait_for_strongbox
     priority -20
     ioprio rt 0
 
-on property:init.svc.vendor.hwcomposer-2-3=stopped
+on property:init.svc.vendor.hwcomposer-2-2=stopped
     stop ppd
 
-on property:init.svc.vendor.hwcomposer-2-3=running
+on property:init.svc.vendor.hwcomposer-2-2=running
     start ppd
 
 # b/70518189 vDSO experiments
@@ -924,24 +806,42 @@ on property:sys.vdso=64
 on property:sys.vdso=32
     write /sys/module/vdso/parameters/enable_64 0
 
+on property:wlan.driver.status=ok
+    # Get the wlan driver/fw version
+    start vendor.wlan_sh
+
 on property:ro.boot.mode=sota
     setprop ro.boot.sota enabled
 
-on property:ro.boot.hardware.sku=G013A
+on property:ro.boot.hardware.sku=G020A
     setprop persist.vendor.nfc.uicc_enabled true
-on property:ro.boot.hardware.sku=G013B
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020B
+    setprop persist.vendor.nfc.uicc_enabled true
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020C
+    setprop persist.vendor.nfc.uicc_enabled true
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020D
     setprop persist.vendor.nfc.uicc_enabled false
     setprop persist.vendor.radio.uicc_se_enabled false
     interface_start android.hardware.secure_element@1.1::ISecureElement/eSE1
-on property:ro.boot.hardware.sku=G013C
+on property:ro.boot.hardware.sku=G020E
     setprop persist.vendor.nfc.uicc_enabled true
-on property:ro.boot.hardware.sku=G013D
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020F
+    setprop persist.vendor.nfc.uicc_enabled true
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020G
+    setprop persist.vendor.nfc.uicc_enabled true
+    setprop persist.vendor.radio.uicc_se_enabled true
+on property:ro.boot.hardware.sku=G020H
     setprop persist.vendor.nfc.uicc_enabled false
     setprop persist.vendor.radio.uicc_se_enabled false
     interface_start android.hardware.secure_element@1.1::ISecureElement/eSE1
 
 # charger driver exposes now finer grain control, map demo mode to those properties
-# demo mode can only be exit wipping data which will also reset the persist properties
+# demo mode can only be exited by wiping data which will also reset the persist properties
 on property:sys.retaildemo.enabled=1
     setprop persist.vendor.charge.stop.level 35
     setprop persist.vendor.charge.start.level 30
@@ -955,8 +855,19 @@ on property:persist.vendor.charge.start.level=*
 # For Japan radio builds, always enforce camera shutter sound
 # Since this property is read by the audio server in system service,
 # it should be written by the system init.
-on property:ro.boot.hardware.radio.subtype=1
+on property:ro.boot.hardware.radio.subtype=0
     setprop audio.camerasound.force true
+
+# Touch
+on property:vendor.all.modules.ready=1
+    wait /sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input2/read_report
+    chown system system /sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input2/read_report
+    chown system system /sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input2/suspend
+
+# DSDS feature
+# Enable 2nd qcrild when the property set to dsds
+on property:persist.radio.multisim.config=dsds
+    start vendor.qcrild2
 
 on property:sys.boot_completed=1 && property:ro.boot.mode=firstboot
     start init-firstboot-sh
@@ -982,14 +893,6 @@ on property:sys.boot_completed=1
 
 on property:vendor.fps.init.succeed=true && property:init.svc.vendor.fps_hal=stopped
     start init-fingerprint-sh
-
-on boot && property:persist.radio.multisim.config=dsds && property:persist.vendor.radio.multisim_switch_support=true
-    start vendor.qcrild2
-
-# Disable DSDS if multisim_switch_support is not enabled
-on boot && property:persist.radio.multisim.config=dsds && property:persist.vendor.radio.multisim_switch_support=false
-    setprop persist.radio.multisim.config ""
-    stop vendor.qcrild2
 
 # Write the dark theme magic (`theme-dark`, or 0x7468656d652d6461726b in hex string) to /misc
 # partition. Offset 0 in vendor space is effectively offset 2048 in /misc partition.

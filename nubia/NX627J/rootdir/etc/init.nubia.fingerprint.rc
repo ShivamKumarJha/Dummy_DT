@@ -1,0 +1,15 @@
+# Copyright (c) 2019, nubia. All rights reserved.
+#
+# init.nubia.fingerprint.rc
+# For fingerprint only
+
+
+#fingerprint
+on post-fs-data
+	# for goodix double fp
+    chown system system /dev/goodix_fp_l
+	chmod 0777 /dev/goodix_fp_l
+    chown system system /dev/goodix_fp_r
+	chmod 0777 /dev/goodix_fp_r
+    setprop ro.hardware.fingerprint goodix
+    setprop sys.fp.auth_ta nofinger

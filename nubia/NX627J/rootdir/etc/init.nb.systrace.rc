@@ -1,0 +1,18 @@
+#add for systrace
+on post-fs-data
+    mkdir /data/anr 0775 system system
+    mkdir /data/anr/systrace 0775 system system
+    setprop persist.sys.systrace.success 1
+
+    chown system system /sys/kernel/debug/tracing/tracing_on_bm
+    chmod 0666 /sys/kernel/debug/tracing/tracing_on_bm
+    echo 0 > /sys/kernel/debug/tracing/tracing_on_bm
+
+#remove systrace deamon from Android P with traceur socket
+#service systrace /system/bin/systrace
+#    class core
+#    user root
+#    group root
+#    critical
+#    socket systrace seqpacket 0660 system system
+#add for systrace end

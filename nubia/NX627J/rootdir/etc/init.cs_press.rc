@@ -1,0 +1,33 @@
+# nubia multicolor led
+on boot
+	chown system system /sys/cs_press/cs_press/fw_info
+        chown system system /sys/cs_press/cs_press/force_update_fw
+        chown system system /sys/cs_press/cs_press/switch_irq
+        chown system system /sys/cs_press/cs_press/reset
+        chown system system /sys/cs_press/cs_press/get_diff
+        chown system system /sys/cs_press/cs_press/debug_th
+        chown system system /sys/cs_press/cs_press/cali_param
+        chown system system /sys/cs_press/cs_press/sorf_hard_reset
+        chown system system /sys/cs_press/cs_press/read_fw_rom
+        chown system system /sys/cs_press/cs_press/get_raw
+        chown system system /sys/cs_press/cs_press/rw_reg
+        chown system system /sys/cs_press/cs_press/power_stat
+        chown system system /sys/cs_press/cs_press/press_thd
+
+	chown system system /dev/ndt
+
+        chmod 664  /sys/cs_press/cs_press/fw_info
+        chmod 664  /sys/cs_press/cs_press/force_update_fw
+        chmod 664  /sys/cs_press/cs_press/switch_irq
+        chmod 664  /sys/cs_press/cs_press/reset
+        chmod 664  /sys/cs_press/cs_press/get_diff
+        chmod 664  /sys/cs_press/cs_press/debug_th
+        chmod 664  /sys/cs_press/cs_press/cali_param
+        chmod 664  /sys/cs_press/cs_press/sorf_hard_reset
+        chmod 664  /sys/cs_press/cs_press/read_fw_rom
+        chmod 664  /sys/cs_press/cs_press/get_raw
+        chmod 664  /sys/cs_press/cs_press/rw_reg        
+        chmod 664  /sys/cs_press/cs_press/power_stat
+        chmod 664  /sys/cs_press/cs_press/press_thd
+
+	chmod 664  /dev/ndt

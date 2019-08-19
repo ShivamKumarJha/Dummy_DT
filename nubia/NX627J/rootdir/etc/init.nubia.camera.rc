@@ -1,0 +1,6 @@
+#ZTEMT:wangyongwu add for tof
+service vl53l1_daemon_main /vendor/bin/vl53l1_daemon_mains
+    class late_start
+    user root
+    group root
+    socket vl53l1_daemon stream 660 root system

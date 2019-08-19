@@ -1,0 +1,17 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.dmapp.rc
+
+
+
+#NUBIA: dm instructions
+service dmapp  /vendor/bin/dmapp
+    class main
+    seclabel u:r:dm:s0
+    group  system diag oem_2901 usb bluetooth
+
+#Start Dmapp Services
+on boot
+    chmod 0666 /mnt/vendor/persist/wlan_mac.bin
+    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
+    start dmapp

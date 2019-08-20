@@ -1,0 +1,16 @@
+# ADDED BY ZTEMT
+# add the nfc sysfs permission
+# NFC permission
+on post-fs-data
+# NFC
+    chmod 777 /dev/bcm2079x
+    chown nfc nfc /dev/bcm2079x
+
+# NFC: create data/nfc for nv storage
+    mkdir /data/nfc 770 nfc nfc
+    mkdir /data/vendor/nfc 770 nfc nfc
+
+# NFC HAL suffix
+    setprop ro.hardware.nfc_nci bcm2079x.default
+
+# ADDED BY ZTEMT Lvsen END

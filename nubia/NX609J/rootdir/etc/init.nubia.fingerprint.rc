@@ -1,0 +1,28 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.nubia.fingerprint.rc
+# For fingerprint only
+
+
+# goodix fingerprint
+on post-fs-data
+    chown system system /dev/goodix_fp
+    chmod 0777 /dev/goodix_fp
+
+    setprop ro.hardware.fingerprint goodix
+	
+	# for silead
+    #chown system system /dev/silead_fp
+    #chmod 0660 /dev/silead_fp
+    #chown system system /dev/spidev1.0
+    #chmod 0660 /dev/spidev1.0
+    #chown system system /dev/spidev0.0
+    #chmod 0660 /dev/spidev0.0
+	
+	#for fpc
+	mkdir /dev/fpcSocket 0770 system system
+	chmod -R 0777 /dev/fpcSocket
+	chown system system /sys/bus/platform/devices/1.fpc1020/irq
+	chmod 0660 /sys/bus/platform/devices/1.fpc1020/irq
+	chown system system /sys/bus/platform/devices/1.fpc1020/wakeup_enable
+	chmod 0660 /sys/bus/platform/devices/1.fpc1020/wakeup_enable

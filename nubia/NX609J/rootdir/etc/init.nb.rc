@@ -1,0 +1,22 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.nb.rc
+# For all nubia projects defined in device/zte
+
+import /vendor/etc/init/hw/init.project.rc
+import /vendor/etc/init/hw/init.nubia.platform.rc
+import /vendor/etc/init/hw/init.nb.core.rc
+import /vendor/etc/init/hw/init.dmapp.rc
+import /vendor/etc/init/hw/init.nubia.fingerprint.rc
+import /vendor/etc/init/hw/init.nb.systrace.rc
+import /vendor/etc/init/hw/init.nb.exfat.rc
+import /vendor/etc/init/hw/init.multicolor.led.rc
+import /vendor/etc/init/hw/init.nubia.Light.rc
+import /vendor/etc/init/hw/init.nubia.usb.rc
+import /vendor/etc/init/hw/init.nubia.usb.configfs.rc
+import /vendor/etc/init/hw/init.nubia.sensors.rc
+import /vendor/etc/init/hw/init.dmapp.rc
+import /vendor/etc/init/hw/init.nubia.vibrator.rc
+import /vendor/etc/init/hw/init.nubia.nfc.rc
+import /vendor/etc/init/hw/init.nubia.camera.rc
+

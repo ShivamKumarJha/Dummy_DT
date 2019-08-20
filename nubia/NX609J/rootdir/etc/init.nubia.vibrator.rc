@@ -1,0 +1,7 @@
+    # vibrator
+on post-fs-data
+    #chown system system /sys/class/leds/vibrator/debug
+    chown system system /sys/class/timed_output/vibrator_drv2605/enable
+    chmod 664  /sys/class/timed_output/vibrator_drv2605/enable
+    chmod 664 /dev/drv2605
+    chown system system /dev/drv2605

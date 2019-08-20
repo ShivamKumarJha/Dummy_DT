@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -27,12 +27,10 @@
 #
 #
 
+# nubia customization
+import /vendor/etc/init/hw/init.nb.rc
+
 on early-init
-    mkdir /system 0777 root root
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    symlink /data/tombstones /tombstones
-    mkdir /dsp 0771 media media
     write /proc/sys/kernel/sched_boost 1
 
 on init
@@ -48,28 +46,20 @@ on init
 on fs
     wait /dev/block/platform/soc/1da4000.ufshc
     symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
-# modify for boot mount persist partition fix reformat partition issue
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid noatime nodev barrier=1
-    mkdir /persist/data 0700 system system
-    mkdir /persist/bms 0700 root system
-    restorecon_recursive /persist
     mount_all /vendor/etc/fstab.qcom
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
     swapon_all /vendor/etc/fstab.qcom
-
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    # add nubia embedlog
-    wait /dev/block/bootdevice/by-name/embedlog
-    mount ext3 /dev/block/bootdevice/by-name/embedlog /embedlog rw nosuid noatime nodev barrier=1 context=u:object_r:embedlog_file:s0
-
-    mkdir /persist/data 0700 system system
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
     write /sys/kernel/boot_adsp/boot 1
 
 on post-fs
-    start qseecomd
+    start vendor.qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
@@ -113,6 +103,11 @@ on boot
    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
    chmod 0660 /dev/cpuset/camera-daemon/tasks
 
+    #nubia begin add for TGPA
+    write /dev/cpuset/bigcluster/cpus 4-7
+    write /dev/cpuset/littlecluster/cpus 0-3
+    #nubia add for TGPA end
+
    ####Regionalization config and prop files####
    chmod 0644 /persist/speccfg/spec
    chmod 0644 /persist/speccfg/devicetype
@@ -131,11 +126,9 @@ on boot
    chown system system /persist/speccfg/submask
    chown system system /persist/speccfg/partition
 
-#Tuxera exFAT kernel module
-   insmod /vendor/lib/modules/texfat.ko
-
    #for audio driver to read
-   chmod 0644 /persist/tas2555_cal.bin
+   copy /persist/tas2555_cal.bin /data/vendor/audio/tas2555_cal.bin
+   chmod 0644 /data/vendor/audio/tas2555_cal.bin
 #install video modules
    insmod /system/lib/modules/msm-vidc-vmem.ko
    insmod /system/lib/modules/msm-vidc.ko
@@ -145,27 +138,34 @@ on boot
 #Load WLAN driver
    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
+#USB controller configuration
+    setprop vendor.usb.rndis.func.name "gsi"
+    setprop vendor.usb.rmnet.func.name "gsi"
+    setprop vendor.usb.rmnet.inst.name "rmnet"
+    setprop vendor.usb.dpl.inst.name "dpl"
+    setprop sys.usb.configfs 1
+
 #Peripheral manager
-service per_mgr /vendor/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system
     ioprio rt 4
 
-service per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
 on charger
-    start hvdcp_opti
+    start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
 
 #on post-fs
@@ -193,7 +193,7 @@ on charger
 #on property:sys.boot_completed=1
 #    start qrngp
 #
-service qseecomd /vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
@@ -219,7 +219,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
-   group root
+   group root system
 
 #service security-check1 /sbin/security_boot_check system
 #    class core
@@ -307,13 +307,16 @@ service audiod /system/vendor/bin/audiod
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
 #
 #
-service imsqmidaemon /system/vendor/bin/imsqmidaemon
+#
+## imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
-service imsdatadaemon /system/vendor/bin/imsdatadaemon
+# imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
+service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -360,7 +363,7 @@ service imsdatadaemon /system/vendor/bin/imsdatadaemon
 #service gnss-detect /system/vendor/bin/gnss.qca1530.sh detect
 #   class core
 #   oneshot
-service pd_mapper /system/vendor/bin/pd-mapper
+service vendor.pd_mapper /vendor/bin/pd-mapper
      class core
 
 #
@@ -377,33 +380,69 @@ service pd_mapper /system/vendor/bin/pd-mapper
 #   disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
+    start vendor.imsdatadaemon
 
-service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
-   class main
-   user system
-   group radio diag inet log
-   disabled
+on property:vold.decrypt=trigger_restart_framework
+#   start cnss_diag
 
-service vendor.imsrcsservice /system/vendor/bin/imsrcsd
-   class main
-   user system
-   group radio diag inet log
-   disabled
-
-service powerofflog /system/bin/sh /system/etc/fg_logs_start.sh /cache/nubialog
+#service cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
+#   class main
+#   user system
+#   group system wifi inet sdcard_rw media_rw diag
+#   oneshot
+#nubia add for poweroff&&poweroffcharge log
+service powerofflog /system/bin/sh /system/etc/fg_logs_start.sh /persist/nubialog
     disabled
     oneshot
     group root shell
     seclabel u:r:powerofflog:s0
-
 on property:sys.poweroffcharge.control=on
     start powerofflog
 
+	
+	
+service powercharge_property   /system/vendor/bin/poweroffcharge-getprop
+    disabled
+    oneshot
+    user root
+
+on property:persist.vendor.poweroffchargeproperty.control=on
+    start powercharge_property
+
+on charger
+    wait /dev/block/platform/soc/1da4000.ufshc
+    symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
+    mkdir /mnt/vendor/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist  /mnt/vendor/persist  nosuid nodev barrier=1
+    mount_all fstab.qcom
+    restorecon_recursive /persist
+    restorecon_recursive /sys/kernel/debug
+    rm /sdcard
+    symlink /persist /sdcard
+    load_system_props
+    start qcom-post-boot
+    mkdir /mnt/vendor/persist/settings 0777 system system
+    #write /mnt/vendor/persist/settings/persist.vendor.game.lamps.charge.enable on
+    #touch /mnt/vendor/persist/misc/settings/persist.sys.game.lamps.charge.enable
+    setprop persist.vendor.poweroffchargeproperty.control on
+    chown  system system /mnt/vendor/persist/factory/lamps_charge_enable
+    chmod 777 /mnt/vendor/persist/factory/lamps_charge_enable
+    mkdir /persist/nubialog 0755 system system
+    chmod 755 /system/etc/fg_logs_start.sh
+    chown root shell /system/etc/fg_logs_start.sh
+#nubia add end
+service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio diag inet log
+
+service vendor.imsrcsservice /system/vendor/bin/imsrcsd
+   class main
+   user system
+   group radio diag inet log wakelock
+
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
-    start vendor.imsrcsservice
-#
+    restart vendor.ims_rtp_daemon
 
 service ppd /vendor/bin/mm-pp-dpps
     class late_start
@@ -412,31 +451,24 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     disabled
 
-on property:init.svc.hwcomposer-2-1=stopped
+on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-on property:init.svc.hwcomposer-2-1=running
+on property:init.svc.surfaceflinger=running
     start ppd
 
-on property:init.svc.hwcomposer-2-1=restarting
+on property:init.svc.surfaceflinger=restarting
     stop ppd
 
-on charger
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
-    mount_all fstab.qcom
-    restorecon_recursive /persist
-    restorecon_recursive /cache
-    restorecon_recursive /sys/kernel/debug
-    rm /sdcard
-    symlink /cache /sdcard
-    load_system_props
-    start qcom-post-boot
-    mkdir /cache/nubialog 0755 system system
-    chmod 755 /system/etc/fg_logs_start.sh
-    chown root shell /system/etc/fg_logs_start.sh
+on property:init.svc.zygote=stopped
+    stop ppd
+
+on property:init.svc.zygote=running
+    start ppd
+
+on property:init.svc.zygote=restarting
+    stop ppd
+
 #
 #service nqs /system/bin/nqs
 #    class late_start
@@ -467,12 +499,7 @@ service mdtpd /system/vendor/bin/mdtpd
     user root
     group system radio drmrpc
 
-#dm instructions added by nubia
-service dmapp /vendor/bin/dmapp
-    class main
-    seclabel u:r:dm:s0
-
-service hvdcp_opti /system/vendor/bin/hvdcp_opti
+service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
@@ -483,20 +510,3 @@ service qvrd /system/bin/qvrservice
     group system camera graphics
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
-
-on late-fs
-# boot time fs tune
-   write /sys/block/sda/queue/iostats 0
-   write /sys/block/sda/queue/read_ahead_kb 2048
-   write /sys/block/sda/queue/nr_requests 256
-   write /sys/block/dm-0/queue/read_ahead_kb 2048
-   write /sys/block/dm-1/queue/read_ahead_kb 2048
-
-on property:sys.boot_completed=1
-# end boot time fs tune
-   write /sys/block/sda/queue/iostats 1
-   write /sys/block/sda/queue/read_ahead_kb 128
-   write /sys/block/sda/queue/nr_requests 128
-   write /sys/block/dm-0/queue/read_ahead_kb 512
-   write /sys/block/dm-1/queue/read_ahead_kb 512
-

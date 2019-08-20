@@ -27,19 +27,22 @@
 #
 
 # Define fastmmi
-service nubia_fastmmi /vendor/bin/nubia_mmi
+service nubia_fastmmi /system/bin/nubia_mmi
     user root
     group root
     disabled
 
-on property:sys.boot_mode=ffbm
+on property:vendor.sys.boot_mode=ffbm
     write ${persist.vendor.mmi.misc_dev_path} "ffbm-01"
 
-on property:sys.boot_mode=qmmi
+on property:vendor.sys.boot_mode=qmmi
     write ${persist.vendor.mmi.misc_dev_path} "ffbm-02"
 
-on property:sys.boot_mode=normal
+on property:vendor.sys.boot_mode=normal
     write ${persist.vendor.mmi.misc_dev_path} "normal"
+
+on property:ro.bootmode=ffbm-01 && property:init.svc.adbd=running
+    setprop sys.usb.ffs.ready 1
 
 # Creating a scratch storage on /data for factory testing.
 on factory-fs
@@ -58,14 +61,19 @@ on mmi && property:ro.bootmode=ffbm-01
     # A/B update verifier that marks a successful boot.
 #    exec - root cache -- /system/bin/update_verifier nonencrypted
 
+    # Tuxera exFAT kernel module
+    setprop debug.sf.nobootanimation 1
+    insmod /system/lib/modules/texfat.ko
+
     #mkdir for factory data files.
-    #mkdir /persist/FTM_AP 0750 root root
+#    mkdir /mnt/vendor/persist/FTM_AP 0750 root root
     mkdir /cache/FTM_AP 0750 root root
 
     #set property for sys.usb.config
-    setprop persist.sys.usb.config nubia,adb
+    setprop persist.vendor.usb.config nubia,adb
+    setprop sys.usb.config diag,adb
     setprop persist.adb.secure 0
-    start qcom-usb-sh
+    start vendor.qcom-usb-sh
 
     #Start the following services needed for fftm
     start servicemanager
@@ -90,7 +98,6 @@ on mmi && property:ro.bootmode=ffbm-01
     start ptt_ffbm
     start tftp_server
     start cnss-daemon
-    start dmapp
 
 on ffbm
     setprop debug.sf.nobootanimation 1

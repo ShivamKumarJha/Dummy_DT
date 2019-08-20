@@ -1,0 +1,6 @@
+# Copyright (c) 2016, nubia. All rights reserved.
+#
+# init.project.rc
+# For the specific project only
+
+import /vendor/etc/init/hw/init.nubia.touch.lcd.rc

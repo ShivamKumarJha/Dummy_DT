@@ -54,6 +54,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
     media.aac_51_output_enabled=true \
     media.msm8956hw=0 \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     mm.enable.smoothstreaming=true \
     mmp.enable.3g2=true \
     persist.mm.sta.enable=0 \

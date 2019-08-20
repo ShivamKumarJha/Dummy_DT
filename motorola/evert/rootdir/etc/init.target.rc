@@ -51,9 +51,8 @@ on fs
     chmod 0771 /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/bms 0700 root system
-    restorecon_recursive /mnt/vendor/persist
-    # upgrade products launched with OMR1 or before will use /persist
-    restorecon_recursive /persist
+    # Moto product specific in init.mmi.overlay.rc
+    # restorecon_recursive /mnt/vendor/persist
     write /sys/kernel/boot_adsp/boot 1
 
 on post-fs

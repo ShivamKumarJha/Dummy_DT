@@ -24,6 +24,10 @@ on init
    # Change ownership for for HBM feature
    chown system system /sys/class/graphics/fb0/hbm
 
+on fs
+    # upgrade products launched with OMR1 or before will use /persist
+    restorecon_recursive /persist
+
 service adjust_acdb_path /vendor/bin/init.mmi.acdb.sh
     seclabel u:r:init_hw:s0
     class core

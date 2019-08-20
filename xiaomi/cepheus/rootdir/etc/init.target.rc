@@ -109,6 +109,7 @@ on post-fs-data
     chmod 0644 /dev/elliptic0
     chmod 0644 /dev/elliptic1
     mkdir /data/vendor/misc/display 0771 system system
+    mkdir /data/vendor/nfc 0770 nfc nfc
     chmod 666 /sys/class/drm/card0-DSI-1/disp_count
     mkdir /data/vendor/mqsas_common 0771 system system
 

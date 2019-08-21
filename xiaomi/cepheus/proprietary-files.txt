@@ -1744,8 +1744,6 @@ vendor/lib/libsubsystem_control.so
 vendor/lib64/libSubSystemShutdown.so
 vendor/lib64/libsubsystem_control.so
 
-# Samsung
-
 # Sensor-calibrate
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc

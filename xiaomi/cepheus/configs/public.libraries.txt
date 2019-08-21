@@ -15,6 +15,7 @@ libHalSuperSensorServer.so
 libSuperSensor.so
 libSuperSensorCPU.so
 libSuperSensor_skel.so
+libdspCV_skel.so
 libarcsoft_beautyshot.so
 libarcsoft_dualcam_refocus.so
 libarcsoft_dualcam_refocus_rear_t.so

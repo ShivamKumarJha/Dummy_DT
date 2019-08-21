@@ -183,6 +183,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.sys.fp.fod.size.width_height=173,173 \
     persist.vendor.uspsensor=default \
     qemu.hw.mainkeys=0 \
+    ro.apex.updatable=false \
     ro.cit.nonrootbuild=true \
     ro.cit.stablebuild=true \
     ro.colorpick_adjust=true \

@@ -1,0 +1,35 @@
+# Vibration strength for BEX rev 3.1(description): Off, Soft, Standard, Powerful
+#
+# 1. Input Vol(spec): 0.0, 7.2, 8.0, 4.0 (Q16 format)
+Input_Vol:0,471859,524288,262144
+#
+# 2. L_BEAT Input Vol(spec): 0.0, 1.41, 1.58, 1.58 (Q16 format)
+L_BEAT_Input_Vol:0,92406,103547,103547
+#
+# 3. R_BASS Input Vol(spec): 0.0, 2.0, 2.0, 1.77 (Q16 format)
+R_BASS_Input_Vol:0,131072,131072,115998
+#
+# 4. L_BEAT Output Vol(spec): 0.0, 2.82, 5.62, 5.62 (Q16 format)
+L_BEAT_Output_Vol:0,184812,368312,368312
+#
+# 5. R_BASS Output Vol(spec): 0.0, 1.0, 1.0, 0.8 (Q16 format)
+R_BASS_Output_Vol:0,65536,65536,52429
+#
+# 6. Level Vol(spec): 0.0, 0.5, 0.8, 1.0 (Q16 format)
+Level_Vol:0,32768,52429,65536
+#
+# 7. HPF(spec): thru, 70Hz, 70Hz, 20Hz (Disable/Enable)
+HPF_A:0,1,1,0
+HPF_B:0,0,0,1
+#
+# 8_1. L_BEAT Filter(spec): thru, thru, Add(-0.2), Log10 (Disable/Enable)
+L_BEAT_Log10:0,1,1,1
+L_BEAT_Add1:0,1,1,1
+L_BEAT_AddX:0,1,1,1
+L_BEAT_NegativeCut:0,1,1,1
+#
+# 8_2. R_BASS Filter(spec): thru, thru, Add(-0.2), Log10 (Disable/Enable)
+R_BASS_Log10:0,1,1,1
+R_BASS_Add1:0,1,1,1
+R_BASS_AddX:0,1,1,0
+R_BASS_NegativeCut:0,1,1,0

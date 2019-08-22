@@ -1,0 +1,4 @@
+# diagtest
+on post-fs-data
+	chmod 644 /dev/diagtest
+	chown root root /dev/diagtest

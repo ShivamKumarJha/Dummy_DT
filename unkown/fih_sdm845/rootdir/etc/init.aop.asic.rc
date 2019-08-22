@@ -1,0 +1,50 @@
+import /vendor/etc/init/hw/init.aop.tlogd.rc
+import /vendor/etc/init/hw/init.aop.lightcal.rc
+import /vendor/etc/init/hw/init.aop.fcatsvc.rc
+import /vendor/etc/init/hw/init.aop.autoupdate.rc
+import /vendor/etc/init/hw/init.aop.fqcrangefinder.rc
+
+on post-fs-data
+    #Update asic environment
+    #For store camera result
+    mkdir /data/vendor/camera/
+    chmod 775 /data/vendor/camera/
+    copy /vendor/bin/prog_app_p2 /data/vendor/prog_app_p2
+    chown system system /data/vendor/prog_app_p2
+    chmod 0755 /data/vendor/prog_app_p2
+    copy /vendor/bin/lcc /data/vendor/lcc
+    chown system system /data/vendor/lcc
+    chmod 0755 /data/vendor/lcc
+    copy /vendor/bin/fcat1.sh /data/vendor/camera/fcat1.sh
+    chown system system /data/vendor/camera/fcat1.sh
+    chmod 0755 /data/vendor/camera/fcat1.sh
+    copy /vendor/bin/fl5_i2c.json /data/vendor/camera/fl5_i2c.json
+    chown system system /data/vendor/camera/fl5_i2c.json
+    chmod 0755 /data/vendor/camera/fl5_i2c.json
+    #Upate asic_power sysfs for use
+    chown root system /sys/class/i2c-adapter/i2c-5/5-0010/asic_power
+    chmod 0664 /sys/class/i2c-adapter/i2c-5/5-0010/asic_power
+    #Upate led_switch sysfs for use
+    chown camera camera /sys/devices/platform/soc/soc:led_switch/control/mode
+    chmod 0664 /sys/devices/platform/soc/soc:led_switch/control/mode
+    copy /vendor/bin/fcat2.sh /data/vendor/camera/fcat2.sh
+    chown system system /data/vendor/camera/fcat2.sh
+    chmod 0755 /data/vendor/camera/fcat2.sh
+    copy /vendor/bin/hot_pixel_1.sh /data/vendor/camera/hot_pixel_1.sh
+    chown system system /data/vendor/camera/hot_pixel_1.sh
+    chmod 0755 /data/vendor/camera/hot_pixel_1.sh
+    copy /vendor/bin/hot_pixel_2.sh /data/vendor/camera/hot_pixel_2.sh
+    chown system system /data/vendor/camera/hot_pixel_2.sh
+    chmod 0755 /data/vendor/camera/hot_pixel_2.sh
+    copy /vendor/bin/tilt.sh /data/vendor/camera/tilt.sh
+    chown system system /data/vendor/camera/tilt.sh
+    chmod 0755 /data/vendor/camera/tilt.sh
+    copy /vendor/bin/gm.sh /data/vendor/camera/gm.sh
+    chown system system /data/vendor/camera/gm.sh
+    chmod 0755 /data/vendor/camera/gm.sh
+    copy /vendor/bin/pm.sh /data/vendor/camera/pm.sh
+    chown system system /data/vendor/camera/pm.sh
+    chmod 0755 /data/vendor/camera/pm.sh
+    #Update i2c_w for system-app (fqc) use
+    chown root system /sys/class/i2c-adapter/i2c-5/5-0010/i2c_w
+    chmod 0664 /sys/class/i2c-adapter/i2c-5/5-0010/i2c_w

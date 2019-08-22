@@ -1,0 +1,12 @@
+service asic_update /vendor/bin/autoupdate_asicfw.sh
+    oneshot
+    disabled
+    user root
+    group system
+    seclabel u:r:asicupdate:s0
+
+on property:ro.crypto.state=* && property:persist.vendor.light.asic.update=enable
+    start asic_update
+
+on post-fs-data
+    mkdir /data/vendor/asic 0770 system system

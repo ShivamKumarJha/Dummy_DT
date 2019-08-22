@@ -1,0 +1,2 @@
+on fs
+	setprop ro.vendor.build.fingerprint Nokia/Beholder_00EEA/AOP_sprout:9/PPR1.180610.011/00WW_4_27D:user/release-keys

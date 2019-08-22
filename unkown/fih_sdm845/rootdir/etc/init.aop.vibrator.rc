@@ -1,0 +1,5 @@
+on boot
+    chown system system /sys/android_vibratorDW/enableVIB
+    chown system system /sys/android_vibratorDW/patternVIB
+    chmod 644 /sys/android_vibratorDW/enableVIB
+    chmod 644 /sys/android_vibratorDW/patternVIB

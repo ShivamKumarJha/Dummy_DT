@@ -1,0 +1,22 @@
+service tlogd_1 /vendor/bin/tlogd -f /data/vendor/light -t tlogd_1 /dev/ttyHS1
+    disabled
+    class main
+    user system
+    group system
+    console
+    seclabel u:r:tlogd:s0
+
+# New encryption method thus change ro.crypto.state property to check encryption readiness
+on property:ro.crypto.state=* && property:persist.vendor.light.asic.debug=enable
+    start tlogd_1
+
+on property:ro.crypto.state=* && property:persist.vendor.light.asic.debug=disabled
+    stop tlogd_1
+
+on post-fs-data
+    chown system system /dev/ttyHS1
+    mkdir /data/vendor/light 0775 system system
+    setprop vendor.light.asic1.opencount 0
+
+# enable virtual key
+    setprop qemu.hw.mainkeys 0

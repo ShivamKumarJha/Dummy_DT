@@ -1,0 +1,13 @@
+service lightcal /vendor/bin/lightcalibration -o /data/vendor/camera/light_lscwb.bin
+    oneshot
+    disabled
+    user root
+    group camera
+    seclabel u:r:lightcalibration:s0
+
+# New encryption method thus change ro.crypto.state property to check encryption readiness
+on property:ro.crypto.state=*
+    exec_start lightcal
+    chmod 0664 /data/vendor/camera/light_lscwb.bin
+    chmod 0644 /data/vendor/camera/light_wb.txt
+    chmod 0644 /data/vendor/camera/light_lsc.txt

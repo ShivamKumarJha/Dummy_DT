@@ -1,0 +1,38 @@
+
+on boot
+    chown system system /proc/AllHWList/tp_self_test
+    chown system system /proc/AllHWList/tp_upgrade
+    chown system system /proc/AllHWList/tp_alt_rst
+    chown system system /proc/AllHWList/tp_alt_st_count
+    chown system system /proc/AllHWList/tp_alt_st_enable
+    chown system system /proc/AllHWList/tp_double_tap
+    chown system system /proc/AllHWList/tp_prox_status
+    chown system system /proc/AllHWList/tp_long_press
+    chown system system /proc/AllHWList/tp_long_press_time
+    chown system system /proc/AllHWList/tp_fp_en
+    chown system system /sys/devices/platform/soc/a98000.i2c/i2c-6/6-004a/mem_access
+    chown system system /sys/devices/platform/soc/a98000.i2c/i2c-6/6-004a/debug_v2_enable
+
+
+    chmod 644 /proc/AllHWList/tp_self_test
+    chmod 444 /proc/AllHWList/tp_fw_ver
+    chmod 644 /proc/AllHWList/tp_upgrade
+    chmod 644 /proc/AllHWList/tp_alt_rst
+    chmod 644 /proc/AllHWList/tp_alt_st_count
+    chmod 644 /proc/AllHWList/tp_alt_st_enable
+    chmod 644 /proc/AllHWList/tp_double_tap
+    chmod 644 /proc/AllHWList/tp_prox_status
+    chmod 644 /proc/AllHWList/tp_long_press
+    chmod 644 /proc/AllHWList/tp_long_press_time
+    chmod 644 /proc/AllHWList/tp_fp_en
+
+on post-fs-data
+    mkdir /data/vendor/misc/touch 0770 system system
+
+service fqctouchpanel /vendor/bin/atmel_tpselftest.sh
+    user system
+    oneshot
+    disabled
+
+on property:vendor.sys.fqctouchpanel=1
+    start fqctouchpanel

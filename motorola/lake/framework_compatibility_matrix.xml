@@ -2,7 +2,6 @@
     Input:
         vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
 -->
 <compatibility-matrix version="1.0" type="framework">
     <hal format="hidl" optional="true">
@@ -524,14 +523,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.keystore</name>
-        <version>1.0</version>
-        <interface>
-            <name>IKeystoreExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.wifi.supplicant</name>
         <version>2.0</version>
         <interface>
@@ -600,14 +591,6 @@
         <version>1.0</version>
         <interface>
             <name>ICameraImageTunerServices</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.zui.hardware.ifaa</name>
-        <version>1.0</version>
-        <interface>
-            <name>IIFAADevice</name>
             <instance>default</instance>
         </interface>
     </hal>

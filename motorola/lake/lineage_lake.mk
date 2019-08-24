@@ -12,11 +12,11 @@ PRODUCT_BRAND := motorola
 PRODUCT_DEVICE := lake
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_NAME := lineage_lake
-PRODUCT_MODEL := XT1965-6
+PRODUCT_MODEL := moto g(7) plus
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 TARGET_VENDOR := motorola
 TARGET_VENDOR_PRODUCT_NAME := lake
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := 9/PCW29.27-73/6b55:user/release-keys
+BUILD_FINGERPRINT := 9/PPW29.98-111/bc251:user/release-keys

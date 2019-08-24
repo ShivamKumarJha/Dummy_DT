@@ -190,6 +190,7 @@
 	<!-- AOV default sample rate settings -->
 	<ctl name="Sample Rate 2" value="16kHz" />
 	<ctl name="Sample Rate 3" value="96kHz" />
+	<ctl name="In Rate" value="SYNCCLK rate 3" />
 	<ctl name="FX Rate" value="SYNCCLK rate 2" />
 	<ctl name="ISRC1 FSH" value="SYNCCLK rate 3" />
 	<ctl name="ISRC1 FSL" value="SYNCCLK rate 2" />
@@ -803,7 +804,9 @@
 	</path>
 
 	<path name="handset-mic">
-		<path name="mic1" />
+		<path name="AOV" />
+		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC1" />
+		<ctl name="IN1L Volume" value="12" />
 	</path>
 
 	<path name="headphones">
@@ -827,7 +830,7 @@
 	<path name="headset-mic">
 		<path name="AOV" />
 		<ctl name="IN1R Mux" value="B" />
-		<ctl name="IN1R Digital Volume" value="128" />
+		<ctl name="IN1R Digital Volume" value="142" />
 		<ctl name="IN1R Volume" value="16" />
 		<ctl name="ISRC2DEC4 Input 1" value="IN1R" />
 		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC4" />
@@ -927,6 +930,7 @@
 
 	<path name="camcorder-mic">
 		<path name="speaker-mic" />
+		<ctl name="IN2L Volume" value="12" />
 	</path>
 
 	<path name="bt-sco-headset">
@@ -969,7 +973,12 @@
 	</path>
 
 	<path name="dmic-endfire">
-		<path name="voice-dmic-ef" />
+		<path name="AOV" />
+		<ctl name="SLIM_0_TX Channels" value="Two" />
+		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC1" />
+		<ctl name="SLIMTX2 Input 1" value="ISRC2DEC2" />
+		<ctl name="IN1L Volume" value="12" />
+		<ctl name="IN2L Volume" value="12" />
 	</path>
 
 	<path name="voice-speaker-dmic-ef">
@@ -981,11 +990,11 @@
 	</path>
 
 	<path name="voice-rec-dmic-ef">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="voice-rec-dmic-ef-fluence">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="camcorder-mic-bf">

@@ -1,6 +1,6 @@
 -app/QtiTelephonyService/QtiTelephonyService.apk
--app/SoterService/SoterService.apk
 -app/datastatusnotification/datastatusnotification.apk
+-app/embms/embms.apk
 -app/uceShimService/uceShimService.apk
 -lib/libsdm-disp-apis.so
 -lib/vendor.qti.hardware.fm@1.0.so
@@ -8,6 +8,9 @@
 -lib64/libsdm-disp-apis.so
 -lib64/vendor.qti.hardware.fm@1.0.so
 -priv-app/CNEService/CNEService.apk
+-priv-app/HotwordEnrollmentOKGoogleCS47L35/HotwordEnrollmentOKGoogleCS47L35.apk
+-priv-app/HotwordEnrollmentTGoogleCS47L35/HotwordEnrollmentTGoogleCS47L35.apk
+-priv-app/HotwordEnrollmentXGoogleCS47L35/HotwordEnrollmentXGoogleCS47L35.apk
 -priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 etc/firmware/upd-00000126-00001001-fed70128-fffe0001-02.tftf
@@ -20,6 +23,7 @@ etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 etc/permissions/com.qualcomm.qti.imscmservice.xml
 etc/permissions/com.quicinc.cne.xml
+etc/permissions/embms.xml
 etc/permissions/izat.xt.srv.xml
 etc/permissions/privapp-permissions-com.qualcomm.location.xml
 etc/permissions/privapp-permissions-qti.xml

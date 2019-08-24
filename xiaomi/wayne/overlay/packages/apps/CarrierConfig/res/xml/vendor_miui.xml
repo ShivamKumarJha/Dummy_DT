@@ -111,7 +111,15 @@
     <carrier_config mcc="214" mnc="03,04,05,06,07,08,16,17,21,32">
         <string-array name="read_only_apn_types_string_array" num="0" />
     </carrier_config>
+    <carrier_config mcc="730" mnc="03">
+        <string-array name="non_roaming_operator_string_array" num="1">
+            <item value="73009" />
+        </string-array>
+        <string name="default_vm_number_string">*20</string>
+    </carrier_config>
     <carrier_config mcc="730" mnc="09">
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
         <string-array name="non_roaming_operator_string_array" num="4">
             <item value="73001" />
             <item value="73002" />
@@ -157,6 +165,10 @@
         </string-array>
         <boolean name="carrier_use_ims_first_for_emergency_bool" value="true" />
     </carrier_config>
+    <carrier_config mcc="525" mnc="05" gid1="0A">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+    </carrier_config>
     <carrier_config mcc="456" mnc="11">
         <boolean name="editable_enhanced_4g_lte_bool" value="false" />
     </carrier_config>
@@ -188,5 +200,17 @@
     </carrier_config>
     <carrier_config mcc="202" mnc="01">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="732" mnc="101">
+        <string name="default_vm_number_string">*123</string>
+    </carrier_config>
+    <carrier_config mcc="716" mnc="10">
+        <string name="default_vm_number_string">131</string>
+    </carrier_config>
+    <carrier_config mcc="250" mnc="01">
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="732" mnc="103,111">
+        <string name="default_vm_number_string">*123</string>
     </carrier_config>
 </carrier_config_list>

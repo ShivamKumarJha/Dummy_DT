@@ -92,13 +92,12 @@
             <Limit name="measured-frame-rate-1280x720" range="35-35" />
             <Limit name="measured-frame-rate-1920x1080" range="15-15" />
         </MediaCodec>
-        <!-- xiongshigui@wind-mobi.com 20180211 mod measured-frame-rate-1920x1080 from 11-11 to 16-16 to pass cts-reference-aosp -->
         <MediaCodec name="OMX.google.hevc.decoder" type="video/hevc" update="true">
             <Limit name="measured-frame-rate-352x288" range="226-226" />
             <Limit name="measured-frame-rate-640x360" range="146-132" />
-            <Limit name="measured-frame-rate-720x480" range="137-134" />
-            <Limit name="measured-frame-rate-1280x720" range="27-27" />
-            <Limit name="measured-frame-rate-1920x1080" range="16-16" />
+            <Limit name="measured-frame-rate-720x480" range="183-183" />
+            <Limit name="measured-frame-rate-1280x720" range="83-83" />
+            <Limit name="measured-frame-rate-1920x1080" range="11-11" />
         </MediaCodec>
         <MediaCodec name="OMX.google.mpeg4.decoder" update="true">
             <Type name="video/mp4v-es">

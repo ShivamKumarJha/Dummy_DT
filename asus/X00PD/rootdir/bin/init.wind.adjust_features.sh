@@ -1,12 +1,15 @@
 #!/vendor/bin/sh
 
 product_prop=`getprop ro.target_product`
-platform_prop=`getprop ro.boot.platformtype`
-boardid_prop=`getprop ro.boot.board_id`
+board_prop=`getprop ro.product.board`
+device_prop=`getprop ro.product.device`
 
-if [ ".$product_prop" == ".ZA555KL" ] && [ ".$boardid_prop" == ".4" ]; then
+
+if [ ".$product_prop" == ".ZB555KL" ] && [ ".$board_prop" == ".MSM8937" ] && [ ".$device_prop" == ".ASUS_X00P_4" ]; then
     echo "do nothing"
-elif [ ".$product_prop" == ".ZB555KL" ] && [ ".$boardid_prop" == ".7" ]; then
+elif [ ".$product_prop" == ".ZB555KL" ] && [ ".$board_prop" == ".MSM8937" ] && [ ".$device_prop" == ".ASUS_X00P_6" ]; then
+    echo "do nothing"
+elif [ ".$product_prop" == ".ZB555KL" ] && [ ".$board_prop" == ".MSM8917" ] && [ ".$device_prop" == ".ASUS_X00P_8" ]; then
     echo "do nothing"
 else
     #support gyroscope sensor

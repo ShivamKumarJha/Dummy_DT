@@ -35,6 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.location.osnlp.package=com.google.android.gms \
     ro.location.osnlp.region.package= \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \

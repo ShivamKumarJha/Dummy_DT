@@ -2098,7 +2098,16 @@
         <ctl name="DEC1 MUX" value="ADC1" />
         <ctl name="ADC1_INP1 Switch" value="1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="INT3_MI2S_TX Channels" value="Two" />
+        <ctl name="INT3_MI2S_TX Channels" value="One" />
+    </path>
+
+    <path name="handset-single-mic">
+        <ctl name="MicBias_V_Switch" value="V_1P80" />
+        <ctl name="ADC1 Volume" value="4" />
+        <ctl name="DEC1 MUX" value="ADC2" />
+        <ctl name="ADC2 MUX" value="INP3" />
+        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+        <ctl name="INT3_MI2S_TX Channels" value="One" />
     </path>
 
     <path name="handset-mic-db">

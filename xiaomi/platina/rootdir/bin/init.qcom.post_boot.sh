@@ -2393,11 +2393,12 @@ case "$target" in
             echo 1 > /proc/sys/kernel/sched_prefer_sync_wakee_to_waker
             echo 20 > /proc/sys/kernel/sched_small_wakee_task_load
 
-            # cpuset settings
-            echo 0-1 > /dev/cpuset/background/cpus
-            echo 0-2 > /dev/cpuset/system-background/cpus
+            # cpuset parameters
+            echo 0-2 > /dev/cpuset/background/cpus
+            echo 0-3 > /dev/cpuset/system-background/cpus
             echo 4-7 > /dev/cpuset/foreground/boost/cpus
             echo 0-2,4-7 > /dev/cpuset/foreground/cpus
+            echo 0-7 > /dev/cpuset/top-app/cpus
 
             # disable thermal bcl hotplug to switch governor
             echo 0 > /sys/module/msm_thermal/core_control/enabled

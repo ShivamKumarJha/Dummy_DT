@@ -17,7 +17,7 @@ PRODUCT_MODEL := Redmi Note 6 Pro
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := tulip
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="tulip-user 9 PKQ1.180904.001 V10.3.5.0.PEKMIXM release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="tulip-user 9 PKQ1.180904.001 9.6.27 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := xiaomi/tulip/tulip:9/PKQ1.180904.001/V10.3.5.0.PEKMIXM:user/release-keys
+BUILD_FINGERPRINT := xiaomi/tulip/tulip:9/PKQ1.180904.001/9.6.27:user/release-keys

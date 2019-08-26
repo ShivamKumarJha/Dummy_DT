@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="carrier_volte_available_bool" value="false" />
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <string name="config_ims_package_override_string">com.google.android.ims</string>
+    </carrier_config>
+</carrier_config_list>

@@ -17,7 +17,7 @@ PRODUCT_MODEL := MIX 2S
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := polaris
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="polaris-user 9 PKQ1.180729.001 9.8.1 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="polaris-user 9 PKQ1.180729.001 9.8.22 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/polaris/polaris:9/PKQ1.180729.001/9.8.1:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/polaris/polaris:9/PKQ1.180729.001/9.8.22:user/release-keys

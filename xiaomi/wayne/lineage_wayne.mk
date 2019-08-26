@@ -17,7 +17,7 @@ PRODUCT_MODEL := MI 6X
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := wayne
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="wayne-user 9 PKQ1.180904.001 V10.3.6.0.PDCCNXM release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="wayne-user 9 PKQ1.180904.001 9.8.22 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := xiaomi/wayne/wayne:9/PKQ1.180904.001/V10.3.6.0.PDCCNXM:user/release-keys
+BUILD_FINGERPRINT := xiaomi/wayne/wayne:9/PKQ1.180904.001/9.8.22:user/release-keys

@@ -14,5 +14,5 @@
 /dev/block/bootdevice/by-name/bluetooth  /vendor/bt_firmware       vfat   ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait
 /dev/block/bootdevice/by-name/dsp        /vendor/dsp               ext4   ro,nosuid,nodev,barrier=1                        wait
 /dev/block/bootdevice/by-name/persist    /mnt/vendor/persist       ext4   noatime,nosuid,nodev,barrier=1                   wait,check,forceformat
-/dev/block/bootdevice/by-name/cust       /cust              ext4   noatime,nosuid,nodev,barrier=1                   wait,check
+/dev/block/bootdevice/by-name/cust       /cust              ext4   ro,noatime,nosuid,nodev,barrier=1                   wait,check
 /dev/block/bootdevice/by-name/cache      /cache             ext4   noatime,nosuid,nodev,barrier=1                   wait

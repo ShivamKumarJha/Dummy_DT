@@ -312,8 +312,8 @@
 
     <!-- Integer parameters of the wifi to cellular handover feature
          wifi should not stick to bad networks -->
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-82</integer>
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-79</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
 
@@ -372,21 +372,22 @@
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
     <array name="config_autoBrightnessDisplayValuesNits">
-        <item>2.0487</item>
-        <item>4.8394</item>
-        <item>17.2619</item>
-        <item>39.2619</item>
-        <item>50.671</item>
-        <item>92.3019</item>
-        <item>94.2512</item>
-        <item>98.37</item>
-        <item>100.152</item>
-        <item>105.297</item>
-        <item>120.385</item>
-        <item>142.064</item>
-        <item>216.5179</item>
-        <item>330.0267</item>
-        <item>427.2814</item>
+        <item>3.5077</item>
+        <item>6.8394</item>
+        <item>15.2619</item>
+        <item>30.2619</item>
+        <item>40.671</item>
+        <item>52.3019</item>
+        <item>65.2512</item>
+        <item>77.37</item>
+        <item>90.152</item>
+        <item>100.297</item>
+        <item>110.385</item>
+        <item>135.064</item>
+        <item>160.5179</item>
+        <item>195.0267</item>
+        <item>380.2814</item>
+        <item>409.2867</item>
         <item>427.6287</item>
     </array>
     <array name="config_autoBrightnessKeyboardBacklightValues" />
@@ -407,6 +408,7 @@
         <item>2000</item>
         <item>3300</item>
         <item>6000</item>
+        <item>10000</item>
     </integer-array>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
@@ -433,6 +435,7 @@
         <item>2000</item>
         <item>3300</item>
         <item>6000</item>
+        <item>10000</item>
     </integer-array>
 
     <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
@@ -442,22 +445,23 @@
          the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
          description for how the constraint value is chosen. -->
     <integer-array name="config_dynamicHysteresisBrightLevels">
-        <item>1000</item>
-        <item>1000</item>
-        <item>1000</item>
-        <item>1000</item>
-        <item>1000</item>
-        <item>1500</item>
-        <item>1500</item>
-        <item>2000</item>
-        <item>2000</item>
-        <item>2000</item>
-        <item>2000</item>
-        <item>1500</item>
-        <item>1500</item>
-        <item>1000</item>
-        <item>1000</item>
-        <item>1000</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
     </integer-array>
 
     <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
@@ -467,20 +471,21 @@
          the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
          description for how the constraint value is chosen. -->
     <integer-array name="config_dynamicHysteresisDarkLevels">
-        <item>500</item>
-        <item>500</item>
-        <item>500</item>
-        <item>500</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>600</item>
-        <item>500</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
         <item>500</item>
         <item>500</item>
     </integer-array>
@@ -511,6 +516,7 @@
         <item>2000</item>
         <item>3300</item>
         <item>6000</item>
+        <item>10000</item>
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->

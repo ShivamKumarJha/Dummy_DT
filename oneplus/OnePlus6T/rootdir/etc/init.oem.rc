@@ -27,6 +27,7 @@ on post-fs-data
     #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
     mkdir /data/nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/secure_element/ 0770 secure_element secure_element
     mkdir /data/vendor/oemnvitems  0771 radio radio
     #fingerint, changhua add for fp debug image usage,feature default off
     mkdir /data/fpc_images 0770 system system
@@ -96,9 +97,8 @@ on boot
     chmod 0666 /dev/dash/
     restorecon  /dev/dash
 
- #ifdef VENDOR_EDIT
-    #joseph.huang@oneplus.com, 2018/08/28, add for GamingCore
     chmod 0666 /sys/module/opchain/parameters/boost_tl
+ #ifdef VENDOR_EDIT
     #wulaibin@bsp , 2015/11/18, Modify for RGB light support
     chown system system /sys/class/leds/red/pause_lo
     chown system system /sys/class/leds/blue/pause_lo
@@ -359,7 +359,7 @@ service engineer_native /system/bin/engineer_native
     group system sdcard_r sdcard_rw
     
 
-service wifisocket /system/bin/sh -c "diag_socket_log -a 181.157.1.200 -p 2500 -r 10000"
+service wifisocket /system/bin/diag_socket_log -a 181.157.1.200 -p 2500 -r 10000
     user root
     group root system oem_2901
     disabled
@@ -423,6 +423,9 @@ on post-fs
     chown system system /sys/class/leds/vibrator/duration
     chown system system /sys/class/leds/vibrator/state
 
+    /* add for aging apk to set node */
+    chown system system /sys/class/power_supply/battery/is_aging_test
+
     /* create a empty file for wifi hal to write mac address */
     write /mnt/vendor/persist/wlan_mac.bin ""
     chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
@@ -447,14 +450,10 @@ on post-fs
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs/shared/server_info.txt
     chown vendor_rfs vendor_rfs /mnt/vendor/persist/rfs
+    mkdir /mnt/vendor/persist/OPDiagnose
+    chown system system /mnt/vendor/persist/OPDiagnose
     chown system system /sys/class/power_supply/battery/connect_disable
 #endif /*VENDOR_EDIT*/
-#ifdef VENDOR_EDIT
-#danny.xiao@framework, 20169/02/26, modified for POOS-3698
-    mkdir /mnt/vendor/persist/OPDiagnose 0770 system system
-    chmod 660 /mnt/vendor/persist/OPDiagnose/opdiagnosedata
-    chown system system /mnt/vendor/persist/OPDiagnose/opdiagnosedata
-#endif
 
 #ifdef VENDOR_EDIT
 #niejianan@oneplus.framework , 2015/04/25, add for mmi charging test
@@ -630,7 +629,7 @@ on property:persist.sys.gamemode.wifiboost=2
 #huangyu@oneplus.framework, 2017/12/15, add opdiagnose service
 service opdiagnose /system/bin/OPDiagnoseservice
     class core
-    user root
+    user system
     group system
 #endif
 
@@ -651,6 +650,12 @@ on property:sys.boot_completed=1 && property:persist.sys.oiface.enable=1
 
 on property:sys.boot_completed=1 && property:persist.sys.oiface.enable=2
     start oiface
+#endif
+
+#ifdef VENDOR_EDIT
+#@bsp 2018/09/05 FAT-4556 fix the audio heaset pop issue when shutdown(trigger faster)
+on property:sys.shutdown.requested=*
+    write /sys/module/oneplus_fastchg/parameters/mcu_reset 1
 #endif
 
 #ifdef VENDOR_EDIT
@@ -699,18 +704,6 @@ service rmkeyboxxml /system/bin/rm /op2/keyboxes_ciphered.xml
     seclabel u:r:vold:s0
 #endif
 
-#ifdef VENDOR_EDIT
-#danny.xiao@framework, 2019/01/07, add for copy opdiagnose data to sdcard
-service OPDiagdataCopy /system/bin/OPDiagdataCopy
-    class core
-    user root
-    group system
-    oneshot
-    disabled
-
-on property:vendor.copy.opdiagnose.data=1
-    start OPDiagdataCopy
-#endif
 #if VENDOR_EDIT
 #danny.xiao@system, 2019/01/15, add for catching bootcontrol log on OTA
 service bootcontrollog /system/bin/bootcontrollog

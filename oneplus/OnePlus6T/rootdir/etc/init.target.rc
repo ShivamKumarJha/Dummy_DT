@@ -90,9 +90,6 @@ on post-fs-data
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
-    mount_india ext4 loop@/data/india/india.img /system/india ro context=u:object_r:system_file:s0
-    overlay_india overlay overlay /system/app lowerdir=/system/app:/system/india/app,context=u:object_r:system_file:s0
-    overlay_india overlay overlay /system/priv-app lowerdir=/system/priv-app:/system/india/priv-app,context=u:object_r:system_file:s0
     chown system system /sys/kernel/hbtp/display_pwr
     start rmt_storage
     start rfs_access

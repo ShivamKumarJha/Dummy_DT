@@ -12,6 +12,7 @@
     <bool name="profile_supported_avrcp_controller">true</bool>
     <bool name="profile_supported_avrcp_target">true</bool>
     <bool name="profile_supported_ba">true</bool>
+    <bool name="profile_supported_fastpair">true</bool>
     <bool name="profile_supported_gatt">true</bool>
     <bool name="profile_supported_hdp">true</bool>
     <bool name="profile_supported_hearing_aid">false</bool>
@@ -25,7 +26,7 @@
     <bool name="profile_supported_pan">true</bool>
     <bool name="profile_supported_pbap">true</bool>
     <bool name="profile_supported_pbapclient">false</bool>
-    <bool name="profile_supported_sap">true</bool>
+    <bool name="profile_supported_sap">false</bool>
     <bool name="reload_supported_profiles_when_enabled">true</bool>
     <bool name="strict_location_check">true</bool>
 </resources>

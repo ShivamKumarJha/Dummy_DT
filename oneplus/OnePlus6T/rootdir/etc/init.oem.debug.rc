@@ -34,18 +34,6 @@ on property:sys.oem.long_pwr_dump=1
 on property:sys.oem.long_pwr_dump=0
     write /sys/module/qpnp_power_on/parameters/pwr_dump_enabled  0
 
-on property:vendor.sys.oem.long_pwr_dump=1
-    write /sys/module/qpnp_power_on/parameters/pwr_dump_enabled 1
-
-on property:vendor.sys.oem.long_pwr_dump=0
-    write /sys/module/qpnp_power_on/parameters/pwr_dump_enabled 0
-
-on property:vendor.sys.oem.long_debug_suspend=1
-    write /d/clk/debug_suspend 1
-
-on property:vendor.sys.oem.long_debug_suspend=0
-    write /d/clk/debug_suspend 0
-
 on charger
     mount ext4 /dev/block/bootdevice/by-name/cache /cache
     start charger_logkit

@@ -50,7 +50,7 @@
      <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-     <bool name="config_cellBroadcastAppLinks">false</bool>
+     <bool name="config_cellBroadcastAppLinks">true</bool>
 
     <!-- Flag specifying whether VoLTE is available on device -->
      <bool name="config_device_volte_available">true</bool>
@@ -337,6 +337,9 @@
 
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
+
+    <!--  Define Google play service package for FRP-->
+     <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->

@@ -123,7 +123,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.sensor.hw.binder.size=8 \
     ro.build.version.security_patch=2018-12-12 \
     ro.config.max_starting_bg=8 \
-    ro.control_privapp_permissions=log \
     ro.vendor.build.security_patch=2018-12-11 \
     ro.vendor.df.effect.conflict=1 \
     sys.auo_ili7807d_length=67 \

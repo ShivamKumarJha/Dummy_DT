@@ -320,7 +320,6 @@ vendor/lib/camera/components/com.qti.node.memcpy.so
 vendor/lib/camera/components/com.qti.node.remosaic.so
 vendor/lib/camera/components/com.qti.node.stich.so
 vendor/lib/camera/components/com.qti.node.swregistration.so
-vendor/lib/camera/components/com.qti.node.watermark.so
 vendor/lib/camera/components/com.qti.node.xiaomigenderage.so
 vendor/lib/camera/components/com.qti.stats.aec.so
 vendor/lib/camera/components/com.qti.stats.af.so
@@ -445,7 +444,6 @@ vendor/lib64/camera/components/com.qti.node.photosolid.so
 vendor/lib64/camera/components/com.qti.node.remosaic.so
 vendor/lib64/camera/components/com.qti.node.stich.so
 vendor/lib64/camera/components/com.qti.node.swregistration.so
-vendor/lib64/camera/components/com.qti.node.watermark.so
 vendor/lib64/camera/components/com.qti.node.xiaomigenderage.so
 vendor/lib64/camera/components/com.qti.stats.aec.so
 vendor/lib64/camera/components/com.qti.stats.af.so
@@ -573,8 +571,6 @@ vendor/etc/camera/CFR_para_UW.bin
 vendor/etc/camera/CFR_para_W.bin
 vendor/etc/camera/eisoverridesettings.txt
 vendor/etc/camera/eyelineblush.cng
-vendor/etc/camera/female_bg.png
-vendor/etc/camera/female_icon.png
 vendor/etc/camera/golden_rear_dc_cal_wu.bin
 vendor/etc/camera/GpuKernelRepo.pb
 vendor/etc/camera/LDC_packdata_xiaomi_F11_src1.dat
@@ -583,18 +579,11 @@ vendor/etc/camera/LDC_table_src1.dat
 vendor/etc/camera/LDC_table_src2.dat
 vendor/etc/camera/lf_facerank_model.bin
 vendor/etc/camera/libalfpc_tuning.bin
-vendor/etc/camera/male_bg.png
-vendor/etc/camera/male_icon.png
 vendor/etc/camera/megviifacepp_0_5_2_model
-vendor/etc/camera/Miui-Light.ttf
-vendor/etc/camera/MIUI_Time.ttf
 vendor/etc/camera/model_back.dlc
 vendor/etc/camera/model_front.dlc
 vendor/etc/camera/sceneDetection.xml
-vendor/etc/camera/score_bg.png
-vendor/etc/camera/score_icon.png
 vendor/etc/camera/sdm_ys_32p_120_21_5_perturb50.bin
-vendor/etc/camera/watermark_font_2300_3199.dat
 
 # Camera-firmware
 vendor/firmware/CAMERA_ICP.elf
@@ -872,8 +861,6 @@ vendor/firmware/a640_zap.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
 vendor/firmware/mono.cnt
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -980,14 +967,12 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -1005,14 +990,12 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -1970,7 +1953,6 @@ vendor/bin/adpl
 vendor/bin/audioshell_service
 vendor/bin/charge_logger
 vendor/bin/chre
-vendor/bin/dc_cal
 vendor/bin/displaycount
 vendor/bin/hbtp_daemon
 vendor/bin/ipacm-diag
@@ -2000,6 +1982,7 @@ vendor/etc/ultrasound.wav
 vendor/bin/athdiag
 vendor/bin/batteryd
 vendor/bin/cplay
+vendor/bin/dc_cal
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
@@ -2062,11 +2045,8 @@ vendor/lib/libarcsat.so
 vendor/lib/libcert_parse.wpa_s.so
 vendor/lib/libdiagjni.so
 vendor/lib/libdiag_jni.so
-vendor/lib/libdng_sdk.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
-vendor/lib/libft2vendor.so
-vendor/lib/libGLESv2_adreno.so
 vendor/lib/libGPMTEEC_vendor.so
 vendor/lib/libnanopb.so
 vendor/lib/libnbl_trusty.so
@@ -2087,11 +2067,8 @@ vendor/lib64/libarcsat.so
 vendor/lib64/libcert_parse.wpa_s.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libdiag_jni.so
-vendor/lib64/libdng_sdk.so
 vendor/lib64/libfastrpc_utf_stub.so
-vendor/lib64/libft2vendor.so
 vendor/lib64/libgameoptfeature.so
-vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libGPMTEEC_vendor.so
 vendor/lib64/libmdmimgload.so
 vendor/lib64/libnanopb.so

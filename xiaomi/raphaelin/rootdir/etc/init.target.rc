@@ -361,10 +361,6 @@ service displaycount /vendor/bin/displaycount
     user system
     group system
     oneshot
-    disabled
-
-on property:sys.boot_completed=1
-    start displaycount
 
 on property:init.svc.surfaceflinger=stopped
     stop displayfeature
@@ -478,13 +474,3 @@ service nbl_daemon_nss /vendor/bin/nbl_daemon --nss-srv /data/vendor/gr/nss
 on property:ro.boot.hypvm=enable
     start storageproxyd
     start nbl_daemon_nss
-
-service dc_cal /vendor/bin/dc_cal -b
-    class late_start
-    user system
-    group system
-    oneshot
-    disabled
-
-on property:vendor.camera.boot_complete=true
-    start dc_cal

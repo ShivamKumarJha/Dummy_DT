@@ -56,7 +56,6 @@ echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 usb_config=`getprop persist.vendor.usb.config`
 debuggable=`getprop ro.debuggable`
 buildvariant=`getprop ro.build.type`
-factorybuild=`getprop ro.boot.factorybuild`
 
 #
 # Override USB default composition
@@ -76,24 +75,13 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 	          "Dragon" | "SBC")
 	              setprop persist.vendor.usb.config diag,adb
 	          ;;
-		  "DAVINCI" | "TUCANA")
-                      if [ "$buildvariant" = "eng" -o "$factorybuild" = "1" ]; then
+		  "DAVINCI")
+                      if [ "$buildvariant" = "eng" ]; then
                          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
                       elif [ -z "$debuggable" -o "$debuggable" = "1"  ]; then
                          setprop persist.vendor.usb.config adb
                       else
                          setprop persist.vendor.usb.config none
-                      fi
-                  ;;
-                  "TUCANA")
-                      if [ "$(getprop ro.boot.factorybuild)" == "1" ]; then
-                          setprop persist.sys.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
-                      else
-                          if [ -z "$debuggable" -o "$debuggable" = "1"  ]; then
-                              setprop persist.vendor.usb.config adb
-                          else
-                              setprop persist.vendor.usb.config none
-                          fi
                       fi
                   ;;
                   *)

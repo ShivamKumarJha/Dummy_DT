@@ -68,11 +68,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=cherokee \
     persist.vendor.cne.feature=1 \
     camera.disable_zsl_mode=1 \
-    persist.camera.sat.fallback.dist.d=10 \
-    persist.camera.sat.fallback.dist=40 \
-    persist.camera.sat.fallback.lux.d=50 \
-    persist.camera.sat.fallback.luxindex=330 \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.miui.cit,com.xiaomi.cameratest,com.xiaomi.factory.mmi \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.miui.cit,com.android.camera \
     ro.crypto.allow_encrypt_override=true \
     ro.crypto.volume.filenames_mode=aes-256-cts \
     persist.vendor.dpm.feature=1 \
@@ -132,12 +128,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     config.disable_rtt=true \
     debug.mdpcomp.logs=0 \
     keyguard.no_require_sim=true \
-    persist.bg.dexopt.enable=true \
     persist.debug.coresight.config=stm-events \
     persist.rcs.supported=0 \
     persist.sys.job_delay=true \
-    persist.sys.offlinelog.kernel=false \
-    persist.sys.offlinelog.logcat=false \
+    persist.sys.offlinelog.kernel \
+    persist.sys.offlinelog.logcat \
     persist.sys.qseelogd=true \
     persist.sys.sf.color_saturation=1.0 \
     persist.sys.strictmode.disable=true \

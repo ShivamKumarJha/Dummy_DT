@@ -538,7 +538,7 @@ on property:vendor.bluetooth.dun.status=running
 on property:vendor.bluetooth.dun.status=stopped
     stop vendor.bt-dun
 
-on property:ro.boot.factorybuild=1
+on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
 on property:vendor.bluetooth.startbtsnoop=true
@@ -654,10 +654,10 @@ service vendor.bt_logger /system/bin/bt_logger
    disabled
    oneshot
 
-service ftmd /vendor/bin/ftmdaemon -n -dd
+service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
     user root
-    group root system vendor_qti_diag
+    group bluetooth net_bt_admin misc net_bt_stack diag net_bt
     disabled
     oneshot
 

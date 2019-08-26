@@ -17,7 +17,7 @@ PRODUCT_MODEL := Lenovo Z5 Pro
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 TARGET_VENDOR := lenovo
 TARGET_VENDOR_PRODUCT_NAME := zap
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="zap-user 8.1.0 OPM1.171019.026 10.0.355_190109 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="zap-user 9 PKQ1.190127.001 11.1.093_190725 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Lenovo/zap/zap:8.1.0/OPM1.171019.026/10.0.355_190109:user/release-keys
+BUILD_FINGERPRINT := Lenovo/zap/zap:9/PKQ1.190127.001/11.1.093_190725:user/release-keys

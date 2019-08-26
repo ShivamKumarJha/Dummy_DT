@@ -1,14 +1,16 @@
 #!/vendor/bin/sh
 
 ######################################################################
-# 0              1    2      3           4         5           6           7       8            9
+# 0             1    2      3           4         5           6           7       8            9
 # batterylog.sh date uptime output_file dumper_en dumper_flag prop_length log_cnt record_count pause_time
 ######################################################################
+# Version  Date        Author         Description
+# 11	   2018-11-05  Lenovo         Make new battery log tool
 
-VER=10
+VER=11
 
 if [ -n "$1" ] && [ -n "$2" ] && [ -n "$3" ] && [ -n "$4" ] && [ -n "$5" ] && [ -n "$6" ] && [ -n "$7" ] && [ -n "$8" ] && [ -n "$9" ]; then
-    bc_date="$1"
+    bc_time="$1"
     bc_uptime="$2"
     out_file="$3"
     out_dumper="$3.qc"
@@ -25,147 +27,181 @@ fi
 
 product=""
 platform=""
-tz_num=0
 cpu_num=0
 no_len=0
 cpu_buf=""
-total_module=9
 local utime
 local ktime
 
-PROP_PRODUCT_NANME='ro.product.name'
-PROP_PLATFORM='ro.board.platform'
-
 get_product() {
-    a=`getprop|grep ${PROP_PRODUCT_NANME}`
+    a=`getprop|grep ro.product.name`
     b=`echo ${a##*\[}`
     product=`echo ${b%]*}`
 }
 
 get_platform() {
-    a=`getprop|grep ${PROP_PLATFORM}`
+    a=`getprop|grep ro.board.platform`
     b=`echo ${a##*\[}`
     platform=`echo ${b%]*}`
 }
 get_product
 get_platform
 
-if [[ "$product" == "zap" ]]; then
-	GPU_PATH="/sys/class/kgsl/kgsl-3d0/gpuclk"
-	ADC_PATH="/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:vadc@3100/"
-	BACKLIGHT_PATH="/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight/panel0-backlight/brightness"
-	CHR_DIE_PATH="/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:rradc@4500/iio:device0/in_temp_chg_temp_input"
-	CHR_SKIN_PATH="/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm660@0:rradc@4500/iio:device0/in_temp_skin_temp_input"
+# GPU PATH
+if [[ "$platform" == "sdm710" ]]; then
+    GPU_CUR_PATH="/sys/class/kgsl/kgsl-3d0/gpuclk"
+    GPU_MAX_PATH="/sys/class/kgsl/kgsl-3d0/max_gpuclk"
+elif [[ "$platform" == "msmnile" ]]; then
+    GPU_CUR_PATH="/sys/devices/platform/soc/*.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk"
+    GPU_MAX_PATH="/sys/devices/platform/soc/*.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk"
 else
-	GPU_PATH="/sys/devices/soc/*.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk"
-	ADC_PATH="/sys/devices/soc/qpnp-vadc-*"
+    GPU_CUR_PATH="/sys/devices/soc/*.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk"
+    GPU_MAX_PATH="/sys/devices/soc/*.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk"
 fi
-THERMAL_ZONE_PATH="/sys/devices/virtual/thermal"
-CPU_PATH="/sys/devices/system/cpu/"
 
-get_tz_max_num() {
-    i=0
-    for dir in $(ls ${THERMAL_ZONE_PATH})
-    do
-        if [[ "$dir" == "thermal_zone"* ]]; then
-			if [[ "$platform" == "sdm660" ]]; then
-				if [[ "$dir" == "thermal_zone22" ]] || [[ "$dir" == "thermal_zone23" ]]; then
-					continue
-				fi
-			fi
-            let i=${i}+1
-        fi
-        if [[ "$dir" == "cooling_device"* ]] && [ -f ${THERMAL_ZONE_PATH}/"$dir/cur_state" ]; then
-            let i=${i}+1
-        fi
-    done
-    tz_num=$i
+# CPU PATH
+CPU_PATH="/sys/devices/system/cpu/"
+PRF_CPU_CUR_PATH="/d/clk/perfcl_clk/clk_measure"
+PWR_CPU_CUR_PATH="/d/clk/pwrcl_clk/clk_measure"
+if [[ "$platform" == "sdm710" ]]; then
+    PRF_CPU_MAX_PATH="/sys/devices/platform/soc/*.qcom,cpucc/*.qcom,cpucc:qcom,limits-dcvs@1/lmh_freq_limit"
+    PWR_CPU_MAX_PATH="/sys/devices/platform/soc/*.qcom,cpucc/*.qcom,cpucc:qcom,limits-dcvs@0/lmh_freq_limit"
+elif [[ "$platform" == "msmnile" ]]; then
+    PRF_CPU_MAX_PATH="/sys/devices/platform/soc/*.qcom,cpucc/*.qcom,cpucc:qcom,limits-dcvs@18350800/lmh_freq_limit"
+    PWR_CPU_MAX_PATH="/sys/devices/platform/soc/*.qcom,cpucc/*.qcom,cpucc:qcom,limits-dcvs@18358800/lmh_freq_limit"
+    PRF_P_CPU_CUR_PATH="/d/clk/perfpcl_clk/clk_measure"
+fi
+
+# Charge Pump
+CHARGE_DUMP_EN_PATH="/sys/class/charge_pump/enable"
+CHARGE_DUMP_DIE_TEMP_PATH="/sys/class/charge_pump/die_temp"
+CHARGE_DUMP_ISNS_PATH="/sys/class/charge_pump/isns"
+CHARGE_DUMP_STAT1_PATH="/sys/class/charge_pump/stat1"
+CHARGE_DUMP_STAT2_PATH="/sys/class/charge_pump/stat2"
+
+# Backlight PATH
+BACKLIGHT_PATH="/sys/class/backlight/panel0-backlight/brightness"
+
+# Thermal PATH
+THERMAL_ZONE_PATH="/sys/devices/virtual/thermal"
+
+get_charge_pump_prop() {
+    if [[ "$product" == "zippo" ]]; then
+	prop="pump_en,pump_die_temp,pump_isns,pump_stat1,pump_stat2"
+    else
+	prop=""
+    fi
+}
+
+get_charge_pump_value() {
+    local p1=
+    if [[ "$product" == "zippo" ]]; then
+	p1=" "${CHARGE_DUMP_EN_PATH}
+	p1+=" "${CHARGE_DUMP_DIE_TEMP_PATH}
+	p1+=" "${CHARGE_DUMP_ISNS_PATH}
+	p1+=" "${CHARGE_DUMP_STAT1_PATH}
+	p1+=" "${CHARGE_DUMP_STAT2_PATH}
+    fi
+    value=`cat $p1 | tr '\n' ','`
+    value=`echo ${value%,*}`
 }
 
 get_cpu_max_num() {
     cpu_num=`cat ${CPU_PATH}/kernel_max`
     i=0
     cpu_buf=
-    while true
-    do
-        if [ $i -gt $cpu_num ]; then
-            break
-        fi
-        cpu_buf=${cpu_buf}",cpu${i}_max"
-        let i=${i}+1
-    done
-    i=0
-    while true
-    do
-        if [ $i -gt $cpu_num ]; then
-            break
-        fi
-        cpu_buf=${cpu_buf}",cpu${i}_cur"
-        let i=${i}+1
-    done
-}
+    if [[ "$platform" == "sdm710" ]]; then
+	cpu_buf="perf_cur,pwr_cur,perf_max,pwr_max"
+    elif [[ "$platform" == "msmnile" ]]; then
+        cpu_buf="perf_cur,perfp_cur,pwr_cur,perf_max,pwr_max"
+    else
+	while true
+	do
+            if [ $i -gt $cpu_num ]; then
+		break
+            fi
+            cpu_buf=${cpu_buf}",cpu${i}_max"
+	    let i=${i}+1
+	done
 
-get_tz_max_num
+	i=0
+	while true
+	do
+            if [ $i -gt $cpu_num ]; then
+		break
+	    fi
+            cpu_buf=${cpu_buf}",cpu${i}_cur"
+	    let i=${i}+1
+	done
+    fi
+}
 get_cpu_max_num
 
-get_temp_prop() {
+get_cooling_dev_prop() {
     local p1=
-    local p2=
     for dir in $(ls ${THERMAL_ZONE_PATH})
     do
-        if [[ "$dir" == "cooling_device"* ]] && [ -f ${THERMAL_ZONE_PATH}/"$dir/cur_state" ]; then
-            p2+="cooling_"`cat ${THERMAL_ZONE_PATH}/${dir}/type`"_cur_state,"
+        if [[ "$dir" == "cooling_device"* ]] && [ -r ${THERMAL_ZONE_PATH}/"$dir/cur_state" ]; then
+            a=`cat ${THERMAL_ZONE_PATH}/${dir}/type`
+	    # WR for sdm710 modem devices
+	    if [[ "$platform" == "sdm710" ]] && [[ "$a" == "modem_"* ]]; then
+		continue
+	    else
+		p1+=$a","
+	    fi
         fi
     done
-    for dir in $(ls ${THERMAL_ZONE_PATH})
-    do
-        if [[ "$dir" == "cooling_device"* ]] && [ -f ${THERMAL_ZONE_PATH}/"$dir/max_state" ]; then
-            p2+="cooling_"`cat ${THERMAL_ZONE_PATH}/${dir}/type`"_max_state,"
-        fi
-    done
-    for dir in $(ls ${THERMAL_ZONE_PATH})
-    do
-        if [[ "$dir" == "thermal_zone"* ]]; then
-			if [[ "$platform" == "sdm660" ]]; then
-				if [[ "$dir" == "thermal_zone22" ]] || [[ "$dir" == "thermal_zone23" ]]; then
-					continue
-				fi
-			fi
-            p1+=" "${THERMAL_ZONE_PATH}/$dir/type
-        fi
-	done
-    prop=`cat $p1 | tr '\n' ','`
+    prop=$p1
     prop=`echo ${prop%,*}`
-    prop=$p2$prop
+
+    # WR for sdm710 modem devices
+    if [[ "$platform" == "sdm710" ]]; then
+	prop+=",modem_pa,modem_proc,modem_vdd,modem_current"
+   fi
 }
 
-get_temp_value() {
+# WR for sdm710 modem devices
+sdm710_modem_pa_path=${tmp_file}
+sdm710_modem_proc_path=${tmp_file}
+sdm710_modem_vdd_path=${tmp_file}
+sdm710_modem_modem_current=${tmp_file}
+
+get_cooling_dev_value() {
     local p1=
+    echo -1 >${tmp_file}
     for dir in $(ls ${THERMAL_ZONE_PATH})
     do
-        if [[ "$dir" == "cooling_device"* ]] && [ -f ${THERMAL_ZONE_PATH}/"$dir/cur_state" ]; then
-            p1+=" "${THERMAL_ZONE_PATH}/${dir}/cur_state
+        if [[ "$dir" == "cooling_device"* ]] && [ -r ${THERMAL_ZONE_PATH}/"$dir/cur_state" ]; then
+            a=`cat ${THERMAL_ZONE_PATH}/${dir}/type`
+	    # WR for sdm710 modem devices
+	    if [[ "$platform" == "sdm710" ]]; then
+                if [[ "$a" == "modem_pa" ]]; then
+                    sdm710_modem_pa_path=${THERMAL_ZONE_PATH}/${dir}/cur_state
+                elif [[ "$a" == "modem_proc" ]]; then
+                    sdm710_modem_proc_path=${THERMAL_ZONE_PATH}/${dir}/cur_state
+                elif [[ "$a" == "modem_vdd" ]]; then
+                    sdm710_modem_vdd_path=${THERMAL_ZONE_PATH}/${dir}/cur_state
+                elif [[ "$a" == "modem_current" ]]; then
+                    sdm710_modem_modem_current=${THERMAL_ZONE_PATH}/${dir}/cur_state
+                else
+                    p1+=" "${THERMAL_ZONE_PATH}/${dir}/cur_state
+                fi
+	    else
+	        p1+=" "${THERMAL_ZONE_PATH}/${dir}/cur_state
+	    fi
         fi
     done
-    for dir in $(ls ${THERMAL_ZONE_PATH})
-    do
-        if [[ "$dir" == "cooling_device"* ]] && [ -f ${THERMAL_ZONE_PATH}/"$dir/max_state" ]; then
-            p1+=" "${THERMAL_ZONE_PATH}/${dir}/max_state
-        fi
-    done
-    for dir in $(ls ${THERMAL_ZONE_PATH})
-    do
-        if [[ "$dir" == "thermal_zone"* ]]; then
-			if [[ "$platform" == "sdm660" ]]; then
-				if [[ "$dir" == "thermal_zone22" ]] || [[ "$dir" == "thermal_zone23" ]]; then
-					continue
-				fi
-			fi
-            p1+=" "${THERMAL_ZONE_PATH}/$dir/temp
-        fi
-    done
+
+    # WR for sdm710 modem devices
+    if [[ "$platform" == "sdm710" ]]; then
+	p1+=" "${sdm710_modem_pa_path}
+	p1+=" "${sdm710_modem_proc_path}
+	p1+=" "${sdm710_modem_vdd_path}
+	p1+=" "${sdm710_modem_modem_current}
+    fi
     value=`cat $p1 | tr '\n' ','`
     value=`echo ${value%,*}`
+    rm $tmp_file
 }
 
 get_value_len() {
@@ -177,60 +213,110 @@ get_value_len() {
     IFS=$OLD_IFS
 }
 
-get_freq_value() {
+get_cpu_value() {
     local p1=
     local i=0
-    echo 0 >$tmp_file
-
-    if [ -f "${CPU_PATH}/online" ]; then
-        p1+=" "${CPU_PATH}/online
+    echo -1 >${tmp_file}
+    if [ -r "${CPU_PATH}/online" ]; then
+	p1=${CPU_PATH}/online
+    else
+	p1=-${tmp_file}
     fi
 
-    while [ $i -le ${cpu_num} ]
-    do
-        if [ -f "${CPU_PATH}/cpu$i/cpufreq/scaling_max_freq" ]; then
-            p1+=" "${CPU_PATH}/cpu$i/cpufreq/scaling_max_freq
-        else
-            p1+=" "$tmp_file
-        fi
-        i=$(($i+1))
-    done
+    if [[ "$platform" == "sdm710" ]] || [[ "$platform" == "msmnile" ]]; then
+	if [ -r ${PRF_CPU_CUR_PATH} ]; then
+	    p1+=" "${PRF_CPU_CUR_PATH}
+	else
+	    p1+=" "$tmp_file
+	fi
 
-    i=0
-    while [ $i -le ${cpu_num} ]
-    do
-        if [ -f "${CPU_PATH}/cpu$i/cpufreq/scaling_cur_freq" ]; then
-            p1+=" "${CPU_PATH}/cpu$i/cpufreq/scaling_cur_freq
-        else
-            p1+=" "$tmp_file
-        fi
-        i=$(($i+1))
-    done
-    p1+=" ""${GPU_PATH}"
+	if [[ "$platform" == "msmnile" ]]; then
+	    if [ -r ${PRF_P_CPU_CUR_PATH} ]; then
+		p1+=" "${PRF_P_CPU_CUR_PATH}
+	    else
+		p1+=" "$tmp_file
+	    fi
+	fi
+
+	if [ -r ${PWR_CPU_CUR_PATH} ]; then
+	    p1+=" "${PWR_CPU_CUR_PATH}
+	else
+	    p1+=" "$tmp_file
+	fi
+
+	if [ -r ${PRF_CPU_MAX_PATH} ]; then
+	    p1+=" "${PRF_CPU_MAX_PATH}
+	else
+	    p1+=" "$tmp_file
+	fi
+
+	if [ -r ${PWR_CPU_MAX_PATH} ]; then
+	    p1+=" "${PWR_CPU_MAX_PATH}
+	else
+	    p1+=" "$tmp_file
+	fi
+    else
+	while [ $i -le ${cpu_num} ]
+	do
+	    if [ -r "${CPU_PATH}/cpu$i/cpufreq/scaling_max_freq" ]; then
+		p1+=" "${CPU_PATH}/cpu$i/cpufreq/scaling_max_freq
+	    else
+		p1+=" "$tmp_file
+	    fi
+	    i=$(($i+1))
+	done
+
+	i=0
+	while [ $i -le ${cpu_num} ]
+	do
+	    if [ -r "${CPU_PATH}/cpu$i/cpufreq/scaling_cur_freq" ]; then
+		p1+=" "${CPU_PATH}/cpu$i/cpufreq/scaling_cur_freq
+	    else
+		p1+=" "$tmp_file
+	    fi
+	    i=$(($i+1))
+	done
+    fi
 
     value=`cat $p1  | tr '\n' ','`
     value=`echo ${value%,*}`
     rm $tmp_file
 }
 
-get_usbin_value() {
-    value=`cat ${ADC_PATH}/chg_temp ${ADC_PATH}/usb_dm ${ADC_PATH}/usb_dp ${ADC_PATH}/usbin | tr '\n' ',' | tr ' ' ',' |  tr ':' ',' | cut -d "," -f  2,6,10,14`","
+get_gpu_value() {
+    local p1=
+    echo -1 >$tmp_file
+
+    if [ -r ${GPU_CUR_PATH} ]; then
+	p1+=${GPU_CUR_PATH}
+    else
+	p1+=${tmp_file}
+    fi
+
+    if [ -r ${GPU_MAX_PATH} ]; then
+	p1+=" "${GPU_MAX_PATH}
+    else
+	p1+=" "${tmp_file}
+    fi
+
+    value=`cat $p1  | tr '\n' ','`
     value=`echo ${value%,*}`
+    rm $tmp_file
 }
 
-get_vph_pwr_value() {
-    value=`cat ${ADC_PATH}/vph_pwr | tr '\n' ',' | tr ' ' ',' |  tr ':' ',' | cut -d "," -f  2,6,10,14`","
-    value=`echo ${value%,*}`
-}
+get_backlight_value() {
+    local p1=
+    echo -1 >$tmp_file
 
-get_misc_value() {
-    value=`cat ${BACKLIGHT_PATH} | tr '\n' ','`
-    value=`echo ${value%,*}`
-}
+    if [ -r ${BACKLIGHT_PATH} ]; then
+	p1+=${BACKLIGHT_PATH}
+    else
+	p1+=${tmp_file}
+    fi
 
-get_chr_temp_value() {
-    value=`cat  ${CHR_SKIN_PATH} ${CHR_DIE_PATH} | tr '\n' ','`
+    value=`cat $p1  | tr '\n' ','`
     value=`echo ${value%,*}`
+    rm $tmp_file
 }
 
 get_ps_prop() {
@@ -242,12 +328,21 @@ get_ps_prop() {
     arr=($a)
     for i in ${arr[@]}
     do
+	# WR for charger_temp
+	if [[ "$1" == "/sys/class/power_supply/battery/uevent" ]] && [[ "${i}" == *"CHARGER_TEMP="* ]]; then
+	    continue
+	fi
         c=${i%=*}
         b=$b"${c:13},"
     done
+
     IFS=$OLD_IFS
     prop=`echo $(echo $b | tr '[A-Z]' '[a-z]')`
     prop=`echo ${prop%,*}`
+    # WR for charger_temp
+    if [[ "$1" == "/sys/class/power_supply/battery/uevent" ]]; then
+	prop=${prop},charger_temp
+    fi
     IFS=$OLD_IFS
 }
 
@@ -260,8 +355,27 @@ get_ps_value() {
     arr=($a)
     for i in ${arr[@]}
     do
-        value=$value${i#*=}","
+	# WR for charger_temp
+	if [[ "$1" == "/sys/class/power_supply/battery/uevent" ]] && [[ "${i}" == *"CHARGER_TEMP="* ]]; then
+	    continue
+	fi
+        value+=${i#*=}","
     done;
+
+    # WR for charger_temp
+    if [[ "$1" == "/sys/class/power_supply/battery/uevent" ]]; then
+	if [ -r /sys/class/power_supply/battery/charger_temp ]; then
+	    a=`cat /sys/class/power_supply/battery/charger_temp`
+	    if [ $? -eq 0 ]; then
+		value+=$a,
+	    else
+		value+=-1,
+	    fi
+	else
+	    value+=-1,
+	fi
+    fi
+
     IFS=$OLD_IFS
     value=`echo ${value%,*}`
 }
@@ -276,11 +390,11 @@ get_new_prop() {
 
     for i in ${prop_arr[@]}
     do
-		if [[ "$1" == "" ]]; then
-			raw_prop="$raw_prop"",""$i"
-		else
-			raw_prop="$raw_prop"",$1""_$i"
-		fi
+	if [[ "$1" == "" ]]; then
+	    raw_prop="$raw_prop"",""$i"
+	else
+	    raw_prop="$raw_prop"",$1""_$i"
+	fi
     done
     return ${#prop_arr[@]}
 }
@@ -316,162 +430,68 @@ dump_smbchg_fg_regs () {
 
 build_dumper_log() {
     if [ ! -s $out_dumper ] || [ ! -e $out_dumper ]; then
-        qc_buf="Starting dumps! flag = $log_cnt""\n"
-        qc_buf="$qc_buf""Dump path = $dump_path, pause time = $pause_time""\n"
-
-        qc_buf="$qc_buf""Time is $bc_date""\n"
-        qc_buf="$qc_buf""SRAM and SPMI Dump""\n"
-        dump_smbchg_fg_regs 0 "/proc/fg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        echo "$qc_buf" >$out_dumper
-    fi
-
-    qc_buf="Time is $bc_date""\n"
-    if [ $dumper_flag -eq 1 ]; then
-        qc_buf="$qc_buf""Charger Dump Started at $bc_uptime""\n"
-        dump_smbchg_fg_regs 0 "/proc/smbchg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        dump_smbchg_fg_regs 1 "/proc/smbchg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        qc_buf="$qc_buf""Charger Dump done at $bc_uptime""\n"
-        qc_buf="$qc_buf""FG Dump Started at $bc_uptime""\n"
-        dump_smbchg_fg_regs 2 "/proc/smbchg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        qc_buf="$qc_buf""FG Dump done at $bc_uptime""\n"
-        qc_buf="$qc_buf""PS Capture Started at $bc_uptime""\n"
-        qc_buf="$qc_buf"`cat /sys/class/power_supply/bms/uevent`"\n"
-        qc_buf="$qc_buf"`cat /sys/class/power_supply/battery/uevent`"\n"
-        qc_buf="$qc_buf""PS Capture done at $bc_uptime""\n"
-
-        qc_buf="$qc_buf""SRAM Dump Started at $bc_uptime""\n"
-        dump_smbchg_fg_regs 1 "/proc/fg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        qc_buf="$qc_buf""SRAM Dump done at $bc_uptime""\n"
-    else
-        qc_buf="$qc_buf""SRAM Dump Started at $bc_uptime""\n"
-        dump_smbchg_fg_regs 1 "/proc/fg_regs"
-        qc_buf="$qc_buf""$value""\n"
-        qc_buf="$qc_buf""SRAM Dump done at $bc_uptime""\n"
-    fi
-    echo "$qc_buf" >>$out_dumper
-}
-
-build_dumper_log_new() {
-    if [ ! -s $out_dumper ] || [ ! -e $out_dumper ]; then
         qc_buf="Starting dumps!""\n"
         qc_buf="$qc_buf""Dump path = $dump_path, pause time = $pause_time""\n"
     fi
 	utime=($(cat /proc/uptime))
 	ktime=${utime[0]}
-	qc_buf="$qc_buf""FG SRAM Dump Started at ${ktime}""\n"
-	dump_smbchg_fg_regs 0 "/proc/fg_regs"
-	qc_buf="$qc_buf""$value""\n"
+	qc_buf+="System Time is ${bc_time}\n"
+	qc_buf+="FG SRAM Dump Started at ${ktime}\n"
+	dump_peripheral 0 $1 "/sys/kernel/debug/fg/sram"
+	qc_buf+="$value\n"
 	uptime=($(cat /proc/uptime))
 	ktime=${utime[0]}
-	qc_buf="$qc_buf""FG SRAM Dump done at ${ktime}"
+	qc_buf+="FG SRAM Dump done at ${ktime}"
     echo "$qc_buf" >>$out_dumper
 }
 
+prop_list=("battery" "bms" "usb" "main" "pc_port" "cpu" "gpu" "backlight" "charge_pump" "cooling_dev" "temp" )
+type_list=(0          0    0     0      0         1     1     1           1             1             1      )
+
 build_battery_log() {
     if [ ! -s $out_file ] || [ ! -e $out_file ]; then
-        raw_prop="version,log_cnt,rec_cnt,platform,product,date,uptime"
+        raw_prop="time,uptime,version,log_cnt,rec_cnt,platform,product"
 
-        # battery
-        get_ps_prop "/sys/class/power_supply/battery/uevent"
-        get_new_prop "battery"
-        ps_battery_len=$?
-        raw_prop_len="$ps_battery_len"
+	index=0
+	for name in ${prop_list[@]}
+	do
+	    if [ ${type_list[$index]} -eq 0 ]; then
+		if [ -f /sys/class/power_supply/${prop_list[$index]}/uevent ]; then
+		    get_ps_prop "/sys/class/power_supply/${prop_list[$index]}/uevent"
+		    get_new_prop ${prop_list[$index]}
+		    len=$?
+		    if [ $index -eq 0 ]; then
+			raw_prop_len=${len}
+		    else
+			raw_prop_len=${raw_prop_len},${len}
+		    fi
+		fi
+	    else
+		if [ ${prop_list[$index]} == "cpu" ]; then
+		    prop="online,${cpu_buf}"
+		elif [ ${prop_list[$index]} == "gpu" ]; then
+		    prop="gpu_clk,gpu_max"
+		elif [ ${prop_list[$index]} == "backlight" ]; then
+		    prop="backlight"
+		elif [ ${prop_list[$index]} == "cooling_dev" ]; then
+		    get_cooling_dev_prop
+		elif [ ${prop_list[$index]} == "charge_pump" ]; then
+		    get_charge_pump_prop
+		else
+		    prop=""
+		fi
+	        get_new_prop ""
+	        raw_prop_len=${raw_prop_len},$?
+	    fi
+	    let index=${index}+1
+	done
 
-        # bms
-        get_ps_prop "/sys/class/power_supply/bms/uevent"
-        get_new_prop "bms"
-        ps_bms_len=$?
-        raw_prop_len="$raw_prop_len"",$ps_bms_len"
-
-        # usb
-        get_ps_prop "/sys/class/power_supply/usb/uevent"
-        get_new_prop "usb"
-        ps_usb_len=$?
-        raw_prop_len="$raw_prop_len"",$ps_usb_len"
-
-        # cpu
-        prop="online,${cpu_buf:1},gpu"
-        get_new_prop ""
-        freq_len=$?
-        raw_prop_len="$raw_prop_len"",$freq_len"
-
-        if [[ "$product" == "zap" ]]; then
-            # usbin
-            prop=""
-            get_new_prop ""
-            usbin_len=$?
-            raw_prop_len="$raw_prop_len"",$usbin_len"
-
-            # vPhone_Power
-            prop="vph_pwr"
-            get_new_prop ""
-            vph_pwr_len=$?
-            raw_prop_len="$raw_prop_len"",$vph_pwr_len"
-        elif [[ "$product" != "jd2018" ]]; then
-            # usbin
-            prop="chg_temp,usb_dm,usb_dp,usbin"
-            get_new_prop ""
-            usbin_len=$?
-            raw_prop_len="$raw_prop_len"",$usbin_len"
-
-            # vPhone_Power
-            prop="vph_pwr"
-            get_new_prop ""
-            vph_pwr_len=$?
-            raw_prop_len="$raw_prop_len"",$vph_pwr_len"
-        else
-            # usbin
-            prop=""
-            get_new_prop ""
-            usbin_len=$?
-            raw_prop_len="$raw_prop_len"",$usbin_len"
-
-            # vPhone_Power
-            prop=""
-            get_new_prop ""
-            vph_pwr_len=$?
-            raw_prop_len="$raw_prop_len"",$vph_pwr_len"
-        fi
-
-        # Temp
-        get_temp_prop
-        get_new_prop "tz"
-        temp_len=$?
-        raw_prop_len="$raw_prop_len"",$temp_len"
-
-		# Misc
-        if [[ "$product" == "zap" ]]; then
-            prop="backlight"
-            get_new_prop ""
-            misc_len=$?
-            raw_prop_len="$raw_prop_len"",$misc_len"
-        else
-            prop=""
-            get_new_prop ""
-            misc_len=$?
-            raw_prop_len="$raw_prop_len"",$misc_len"
-        fi
-
-		# Chr temp
-        if [[ "$product" == "zap" ]]; then
-            prop="skin_temp,die_temp"
-            get_new_prop ""
-            chr_temp_len=$?
-            raw_prop_len="$raw_prop_len"",$chr_temp_len"
-        else
-            prop=""
-            get_new_prop ""
-            chr_temp_len=$?
-            raw_prop_len="$raw_prop_len"",$chr_temp_len"
-        fi
-		
         echo "$raw_prop" >$out_file
-        raw_prop_len="$total_module,$raw_prop_len"
+
+	OLD_IFS="$IFS"
+	IFS=$','
+	arr=($raw_prop_len)
+	IFS=$OLD_IFS
     else
         if [[ "$raw_prop_len" == "0" ]]; then
             no_len=1
@@ -488,119 +508,56 @@ build_battery_log() {
                     break
                 fi
             done
-
-            if [ $no_len -eq 0 ]; then
-                ((j = ${arr[@]} - 1))
-                if [ $j -ne ${arr[0]} ] || [ $j -ne $total_module ]; then
-                    no_len=1
-                fi
-            fi
-        fi
-
-        if [ $no_len -eq 0 ]; then
-            ps_battery_len=${arr[1]}
-            ps_bms_len=${arr[2]}
-            ps_usb_len=${arr[3]}
-            freq_len=${arr[4]}
-            usbin_len=${arr[5]}
-            vph_pwr_len=${arr[6]}
-            temp_len=${arr[7]}
-            misc_len=${arr[8]}
-            chr_temp_len=${arr[9]}
         fi
     fi
 
-    raw_value="$VER,$log_cnt,$rec_cnt,${platform},${product},$bc_date,$bc_uptime"
+    raw_value="$bc_time,$bc_uptime,$VER,$log_cnt,$rec_cnt,${platform},${product}"
 
     if [ $no_len -eq 1 ]; then
         echo $raw_value >>$out_file
         return
     fi
 
-    get_ps_value "/sys/class/power_supply/battery/uevent"
-    if [[ `get_value_len` -eq $ps_battery_len ]]; then
-        raw_value="$raw_value"",$value"
-    else
-        raw_value="$raw_value"",`get_virtual_value $ps_battery_len`"
-    fi
-
-    get_ps_value "/sys/class/power_supply/bms/uevent"
-    if [[ `get_value_len` -eq $ps_bms_len ]]; then
-        raw_value="$raw_value"",$value"
-    else
-        raw_value="$raw_value"",`get_virtual_value $ps_bms_len`"
-    fi
-
-    get_ps_value "/sys/class/power_supply/usb/uevent"
-    if [[ `get_value_len` -eq $ps_usb_len ]]; then
-        raw_value="$raw_value"",$value"
-    else
-        raw_value="$raw_value"",`get_virtual_value $ps_usb_len`"
-    fi
-
-    get_freq_value
-    if [[ `get_value_len` -eq $freq_len ]]; then
-        raw_value="$raw_value"",$value"
-    else
-        raw_value="$raw_value"",`get_virtual_value $freq_len`"
-    fi
-
-    if [[ "$product" == "zap" ]]; then
-        get_vph_pwr_value
-        if [[ `get_value_len` -eq $vph_pwr_len ]]; then
-            raw_value="$raw_value"",$value"
-        else
-            raw_value="$raw_value"",`get_virtual_value $vph_pwr_len`"
-        fi
-    elif [[ "$product" != "jd2018" ]]; then
-        get_usbin_value
-        if [[ `get_value_len` -eq $usbin_len ]]; then
-            raw_value="$raw_value"",$value"
-        else
-            raw_value="$raw_value"",`get_virtual_value $usbin_len`"
+    index=0
+    for name in ${prop_list[@]}
+    do
+        if [ ${type_list[$index]} -eq 0 ]; then
+	    if [ -f /sys/class/power_supply/${prop_list[$index]}/uevent ]; then
+                get_ps_value "/sys/class/power_supply/${prop_list[$index]}/uevent"
+	    fi
+	else
+	    if [ ${prop_list[$index]} == "cpu" ]; then
+                get_cpu_value
+	    elif [ ${prop_list[$index]} == "gpu" ]; then
+		get_gpu_value
+	    elif [ ${prop_list[$index]} == "backlight" ]; then
+	        get_backlight_value
+	    elif [ ${prop_list[$index]} == "cooling_dev" ]; then
+	        get_cooling_dev_value
+	    elif [ ${prop_list[$index]} == "charge_pump" ]; then
+	        get_charge_pump_value
+	    elif [ ${arr[$index]} -eq 0 ]; then
+	        continue
+	    fi
         fi
 
-        get_vph_pwr_value
-        if [[ `get_value_len` -eq $vph_pwr_len ]]; then
-            raw_value="$raw_value"",$value"
+        if [[ `get_value_len` -eq ${arr[$index]} ]]; then
+	    raw_value="$raw_value"",$value"
         else
-            raw_value="$raw_value"",`get_virtual_value $vph_pwr_len`"
-        fi
-    fi
-
-    get_temp_value
-    if [[ `get_value_len` -eq $temp_len ]]; then
-        raw_value="$raw_value"",$value"
-    else
-        raw_value="$raw_value"",`get_virtual_value $temp_len`"
-    fi
-
-	# Misc
-    if [[ "$product" == "zap" ]]; then
-        get_misc_value
-        if [[ `get_value_len` -eq $misc_len ]]; then
-            raw_value="$raw_value"",$value"
-        else
-            raw_value="$raw_value"",`get_virtual_value $misc_len`"
-        fi
+	    raw_value="$raw_value"",`get_virtual_value ${arr[$index]}`"
 	fi
+	let index=${index}+1
+    done
 
-	# chr temp
-    if [[ "$product" == "zap" ]]; then
-        get_chr_temp_value
-        if [[ `get_value_len` -eq $chr_temp_len ]]; then
-            raw_value="$raw_value"",$value"
-        else
-            raw_value="$raw_value"",-1,-1"
-        fi
-	fi
-	
     echo $raw_value >>$out_file
 }
 
 build_battery_log
 if [[ $dumper_en -eq 1 ]]; then
-	build_dumper_log_new
+    if [[ "$platform" == "sdm710" ]]; then
+	build_dumper_log 500
+    elif [[ "$platform" == "msmnile" ]]; then
+	build_dumper_log 960
+    fi
 fi
 echo "prop_len=[""$raw_prop_len""]=prop_len"
-

@@ -21,7 +21,7 @@ fi
 if [ "$enable_mdm_log" == "0" ]; then
     for i in $(seq 0 9)
     do
-        if [ -e /data/local/newlog/aplog/modemlog.enable ]; then
+        if [ $(getprop persist.sys.aplog.modemlog) = "true" ]; then
             enable_mdm_log=1
             Log "find file modemlog.enable"
             break

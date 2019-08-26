@@ -40,7 +40,7 @@ CollectIpinfo(){
     Log "end collection info"
 }
 
-APLOG_DIR=/data/local/newlog/aplog
+APLOG_DIR=/data/vendor/newlog/aplog
 
 TMLOG_DIR=/persist/testmode
 TMLOG_ALL_DIR=/persist/testmode.*
@@ -68,10 +68,10 @@ getprop > $APLOG_DIR/prop.txt
 
 [ -e /system/build.prop ] && cp /system/build.prop $APLOG_DIR/
 [ -e /system/etc/version.conf ] && cp /system/etc/version.conf $APLOG_DIR/
-[ -d $GPSLOG_DIR ] && cp -a $GPSLOG_DIR $APLOG_DIR/gps
-[ -d $ANR_DIR ] &&  cp -a $ANR_DIR $APLOG_DIR/anr
-[ -d $RECOVERY_DIR ] && cp -a $RECOVERY_DIR $APLOG_DIR/recovery
-[ -d $CRASH_DIR ] && cp -a $CRASH_DIR $APLOG_DIR/tombstones
+#[ -d $GPSLOG_DIR ] && cp -a $GPSLOG_DIR $APLOG_DIR/gps
+#[ -d $ANR_DIR ] &&  cp -a $ANR_DIR $APLOG_DIR/anr
+#[ -d $RECOVERY_DIR ] && cp -a $RECOVERY_DIR $APLOG_DIR/recovery
+#[ -d $CRASH_DIR ] && cp -a $CRASH_DIR $APLOG_DIR/tombstones
 
 # copy bluetooth data
 if [ $(getprop persist.bluetooth.btsnoopenable) = true ]; then
@@ -99,10 +99,10 @@ fi
 [ -e $DDR_ID ] && cat $DDR_ID > $APLOG_DIR/ddr_id
 
 # add for settings info.
-[ -e /data/system/users/0/settings_global.xml ] && cp /data/system/users/0/settings_global.xml $APLOG_DIR/
-[ -e /data/system/users/0/settings_secure.xml ] && cp /data/system/users/0/settings_secure.xml $APLOG_DIR/
-[ -e /data/system/users/0/settings_system.xml ] && cp /data/system/users/0/settings_system.xml $APLOG_DIR/
-Log "Collecting settings info done"
+#[ -e /data/system/users/0/settings_global.xml ] && cp /data/system/users/0/settings_global.xml $APLOG_DIR/
+#[ -e /data/system/users/0/settings_secure.xml ] && cp /data/system/users/0/settings_secure.xml $APLOG_DIR/
+#[ -e /data/system/users/0/settings_system.xml ] && cp /data/system/users/0/settings_system.xml $APLOG_DIR/
+#Log "Collecting settings info done"
 
 if [ -e /d/le_rkm ]; then
     date > $LASTKMSG_LOGFILE
@@ -131,6 +131,12 @@ echo "" >> $BL_LOGFILE
 cat /dev/block/bootdevice/by-name/logfs >> $BL_LOGFILE
 Log "Collecting bootdevice logs done"
 
+RAWDUMP_LOGFILE=$APLOG_DIR/rawdump
+if [ $(getprop persist.vendor.dloadmode.config) = 0 ]; then
+   cat /dev/block/bootdevice/by-name/rawdump >> $RAWDUMP_LOGFILE
+   Log "Collecting rawdump logs done"
+fi
+
 # collect package list generate by feedback
 if [ -e /sdcard/log/packagelist.txt ]; then
     cp /sdcard/log/packagelist.txt $APLOG_DIR/
@@ -142,9 +148,6 @@ if [ -e /sdcard/log/packagelist_SecretCode.txt ]; then
     cp /sdcard/log/packagelist_SecretCode.txt $APLOG_DIR/
     Log "Collecting packagelist_SecretCode.txt"
 fi
-
-df -h >  $APLOG_DIR/df.txt
-Log "collecting df done"
 
 ps -A > $APLOG_DIR/ps.txt
 Log "collecting ps done"
@@ -179,11 +182,12 @@ done
 # wait for stop services done.
 wait
 Log "Stop log services done"
-
+chmod -R 777 $APLOG_DIR
+Log "chmod -R 777 aplog dir"
 mkdir -p /sdcard/log
 Log "make tar package start"
 FILENAME=aplog_$(date +%Y_%m_%d_%H_%M_%S)
-tar zcf /sdcard/log/${FILENAME}.tgz -C ${APLOG_DIR}/../ aplog
+tar zcf /data/vendor/newlog/${FILENAME}.tgz -C ${APLOG_DIR}/../ aplog
 wait
 Log "make tar package done"
 
@@ -198,6 +202,7 @@ rm -rf $APLOG_DIR/tcps/*
 rm -rf $APLOG_DIR/logcats/*
 rm -rf $APLOG_DIR/dumpsys/*
 rm -rf $APLOG_DIR/pstore/*
+rm -rf $APLOG_DIR/dropbox/*
 
 # remove files except '*.enable'
 rm -f $APLOG_DIR/!(*.enable)
@@ -210,14 +215,14 @@ Log "Remove history logs done"
 #Log "clean logcat buffer done"
 
 #clean anr, recovery, tombstones history files
-rm -f /cache/recovery/*
-rm -f /data/anr/*
-rm -f /data/tombstones/*
-rm -rf /data/tombstones/dsps/*
-rm -rf /data/tombstones/lpass/*
-rm -rf /data/tombstones/modem/*
-rm -rf /data/tombstones/wcnss/*
-Log "clean anr, tombstones history files done"
+#rm -f /cache/recovery/*
+#rm -f /data/anr/*
+#rm -f /data/tombstones/*
+#rm -rf /data/tombstones/dsps/*
+#rm -rf /data/tombstones/lpass/*
+#rm -rf /data/tombstones/modem/*
+#rm -rf /data/tombstones/wcnss/*
+#Log "clean anr, tombstones history files done"
 
 for svc in batterylog mainlog mainlog_big radiolog radiolog_big kernellog eventslog eventslog_big; do
     if eval [ "\$$svc" = "running" ]; then

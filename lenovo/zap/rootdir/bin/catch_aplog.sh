@@ -42,9 +42,9 @@ CollectIpinfo(){
     Log "end collection info"
 }
 
-APLOG_DIR=/data/local/newlog/aplog
-CURLOG_DIR=/data/local/newlog/curlog
-DUMPSYS_DIR=/data/local/newlog/aplog/dumpsys
+APLOG_DIR=/data/vendor/newlog/aplog
+CURLOG_DIR=/data/vendor/newlog/curlog
+DUMPSYS_DIR=/data/vendor/newlog/aplog/dumpsys
 TMLOG_DIR=/persist/testmode
 GPSLOG_DIR=/data/gps/log
 ANR_DIR=/data/anr
@@ -153,16 +153,17 @@ CollectIpinfo
 #done
 #Log "collecting dumpsys logs done"
 #wait
-
+chmod -R 777 $CURLOG_DIR
+Log "chmod -R 777 curlog dir"
 mkdir -p /sdcard/log
 Log "make tar package start"
 FILENAME=curlog_$(date +%Y_%m_%d_%H_%M_%S)
-tar zcf /sdcard/log/${FILENAME}.tgz -C $CURLOG_DIR/../ curlog
+tar zcf /data/vendor/newlog/${FILENAME}.tgz -C $CURLOG_DIR/../ curlog
 wait
 Log "make tar package done"
 
-rm -rf $CURLOG_DIR
-Log "remove currunt history log done"
+#rm -rf $CURLOG_DIR
+#Log "remove currunt history log done"
 
 #clean anr, recovery, tombstones history files
 #rm -f /cache/recovery/*

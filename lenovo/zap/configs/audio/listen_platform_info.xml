@@ -28,7 +28,9 @@
 <listen_platform_info>
     <device name="DEVICE_HANDSET_APE_ACDB_ID" acdb_id="100" />
     <device name="DEVICE_HANDSET_CPE_ACDB_ID" acdb_id="128" />
-    <ctrl name="execution_type" value="CPE" /> <!-- value: "CPE" "APE" -->
+    <!-- huaqin add for vts fail by xudayi at 2018/09/05 start  -->
+    <ctrl name="execution_type" value="APE" /> <!-- value: "CPE" "APE" -->
+    <!-- huaqin add for vts fail by xudayi at 2018/09/05 end  -->
     <ctrl name="max_cpe_sessions" value="1" />
     <ctrl name="max_cpe_keywords" value="6" />
     <ctrl name="max_cpe_kw_user_pairs" value="6" />

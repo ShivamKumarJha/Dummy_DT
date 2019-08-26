@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright (C) 2014 The Android Open Source Project
+<!-- Copyright (C) 2015 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -34,41 +34,41 @@
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.google.h264.decoder" type="video/avc">
-            <!-- profiles and levels:  ProfileHigh : Level52 -->
-            <Limit name="size" min="2x2" max="4080x4080" />
+            <!-- profiles and levels:  ProfileHigh : Level51 -->
+            <Limit name="size" min="2x2" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-32768" /> <!-- max 4096x2048 equivalent -->
-            <Limit name="blocks-per-second" range="1-1966080" />
-            <Limit name="bitrate" range="1-48000000" />
+            <Limit name="block-count" range="1-16384" />
+            <Limit name="blocks-per-second" range="1-108000" />
+            <Limit name="bitrate" range="1-40000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.google.hevc.decoder" type="video/hevc">
             <!-- profiles and levels:  ProfileMain : MainTierLevel51 -->
-            <Limit name="size" min="2x2" max="4096x4096" />
+            <Limit name="size" min="2x2" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="8x8" />
-            <Limit name="block-count" range="1-196608" /> <!-- max 4096x3072 -->
-            <Limit name="blocks-per-second" range="1-2000000" />
-            <Limit name="bitrate" range="1-10000000" />
+            <Limit name="block-count" range="1-65536" />
+            <Limit name="blocks-per-second" range="1-491520" />
+            <Limit name="bitrate" range="1-5000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.google.vp8.decoder" type="video/x-vnd.on2.vp8">
             <Limit name="size" min="2x2" max="2048x2048" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-16384" />
-            <Limit name="blocks-per-second" range="1-1000000" />
+            <Limit name="block-count" range="1-8192" /> <!-- max 2048x1024 -->
+            <Limit name="blocks-per-second" range="1-500000" />
             <Limit name="bitrate" range="1-40000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
         <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9">
-            <Limit name="size" min="2x2" max="2048x2048" />
+            <Limit name="size" min="2x2" max="1280x1280" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-16384" />
-            <Limit name="blocks-per-second" range="1-500000" />
-            <Limit name="bitrate" range="1-40000000" />
+            <Limit name="block-count" range="1-3600" /> <!-- max 1280x720 -->
+            <Limit name="blocks-per-second" range="1-108000" />
+            <Limit name="bitrate" range="1-5000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
     </Decoders>
@@ -81,13 +81,13 @@
             <Limit name="bitrate" range="1-128000" />
         </MediaCodec>
         <MediaCodec name="OMX.google.h264.encoder" type="video/avc">
-            <!-- profiles and levels:  ProfileBaseline : Level41 -->
-            <Limit name="size" min="16x16" max="2048x2048" />
+            <!-- profiles and levels:  ProfileBaseline : Level3 -->
+            <Limit name="size" min="16x16" max="1808x1808" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <Limit name="block-count" range="1-8192" /> <!-- max 2048x1024 -->
-            <Limit name="blocks-per-second" range="1-245760" />
-            <Limit name="bitrate" range="1-12000000" />
+            <Limit name="block-count" range="1-1620" />
+            <Limit name="blocks-per-second" range="1-40500" />
+            <Limit name="bitrate" range="1-2000000" />
             <Feature name="intra-refresh" />
         </MediaCodec>
         <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es">
@@ -100,22 +100,11 @@
         </MediaCodec>
         <MediaCodec name="OMX.google.vp8.encoder" type="video/x-vnd.on2.vp8">
             <!-- profiles and levels:  ProfileMain : Level_Version0-3 -->
-            <Limit name="size" min="2x2" max="2048x2048" />
+            <Limit name="size" min="2x2" max="1280x1280" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
-            <!-- 2016 devices can encode at about 10fps at this block count -->
-            <Limit name="block-count" range="1-16384" />
-            <Limit name="bitrate" range="1-40000000" />
-            <Feature name="bitrate-modes" value="VBR,CBR" />
-        </MediaCodec>
-        <MediaCodec name="OMX.google.vp9.encoder" type="video/x-vnd.on2.vp9">
-            <!-- profiles and levels:  ProfileMain : Level_Version0-3 -->
-            <Limit name="size" min="2x2" max="2048x2048" />
-            <Limit name="alignment" value="2x2" />
-            <Limit name="block-size" value="16x16" />
-            <!-- 2016 devices can encode at about 8fps at this block count -->
             <Limit name="block-count" range="1-3600" /> <!-- max 1280x720 -->
-            <Limit name="bitrate" range="1-40000000" />
+            <Limit name="bitrate" range="1-20000000" />
             <Feature name="bitrate-modes" value="VBR,CBR" />
         </MediaCodec>
     </Encoders>

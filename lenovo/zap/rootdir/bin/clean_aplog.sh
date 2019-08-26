@@ -7,7 +7,7 @@ export PATH=$PATH:/system/bin
 
 umask 022
 
-APLOG_DIR=/data/local/newlog/aplog
+APLOG_DIR=/data/vendor/newlog/aplog
 
 Log(){
     log -p d -t clean_aplog $1

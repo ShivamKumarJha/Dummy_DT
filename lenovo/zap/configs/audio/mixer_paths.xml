@@ -45,7 +45,6 @@
     <ctl name="Voip Evrc Min Max Rate Config" id="1" value="4" />
     <ctl name="Voip Dtx Mode" value="0" />
     <ctl name="TTY Mode" value="OFF" />
-    <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INT4_MI2S_RX Port Mixer INT3_MI2S_TX" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia4" value="0" />
@@ -157,7 +156,6 @@
     <ctl name="INT4_MI2S_RX Channels" value="One" />
     <ctl name="INT0_MI2S_RX Channels" value="One" />
     <ctl name="INT3_MI2S_TX Channels" value="One" />
-	<ctl name="PRI_MI2S_RX Channels" value="One" />
     <ctl name="I2S TX2 INP1" value="ZERO" />
     <ctl name="I2S TX2 INP2" value="ZERO" />
     <ctl name="ADC1_INP1 Switch" value="0" />
@@ -176,6 +174,7 @@
     <!-- HFP end -->
     <!-- echo reference -->
     <ctl name="AUDIO_REF_EC_UL1 MUX" value="None" />
+    <ctl name="AUDIO_REF_EC_UL10 MUX" value="None" />
     <!-- usb headset -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0" />
@@ -204,7 +203,6 @@
     <!-- Multimode Voice1 -->
     <ctl name="INT4_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="INT0_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
-    <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="VoiceMMode1_Tx Mixer INT3_MI2S_TX_MMode1" value="0" />
     <!-- Multimode Voice1 HDMI -->
     <ctl name="HDMI_RX_Voice Mixer VoiceMMode1" value="0" />
@@ -235,7 +233,7 @@
     <!-- Multimode Voice2 end-->
 
     <!-- Voice external ec. reference -->
-    <ctl name="VOC_EXT_EC MUX PRI_MI2S_TX" value="0"/>
+    <ctl name="VOC_EXT_EC MUX" value="NONE" />
     <!-- Voice external ec. reference end -->
 
     <!-- RT Proxy Cal -->
@@ -421,19 +419,19 @@
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="INT0_MI2S_RX" />
     </path>
 
-    <path name="echo-reference smartpa">
-    	<ctl name="VOC_EXT_EC MUX PRI_MI2S_TX" value="1"/>
+    <path name="echo-reference headphones-44.1">
     </path>
 
-    <path name="echo-reference headphones-44.1">
+    <path name="echo-reference-voip">
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="INT4_MI2S_RX" />
+    </path>
+
+    <path name="echo-reference-voip headphones">
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="INT0_MI2S_RX" />
     </path>
 
     <path name="deep-buffer-playback">
         <ctl name="INT4_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-    </path>
-
-    <path name="deep-buffer-playback smartpa">
-        <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="deep-buffer-playback speaker-protected">
@@ -1530,12 +1528,6 @@
         <path name="voicemmode1-call"/>
     </path>
 
-    <path name="voicemmode1-call voice-speaker smartpa">
-        <path name="echo-reference smartpa" />
-        <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode1" value="1" />
-        <ctl name="VoiceMMode1_Tx Mixer PRI_MI2S_TX_MMode1" value="1" />
-    </path>
-
     <path name="voicemmode1-call voice-speaker-2-vbat">
         <path name="echo-reference speaker-vbat-mono-2" />
         <path name="voicemmode1-call"/>
@@ -1579,12 +1571,6 @@
     <path name="voicemmode2-call usb-headset">
         <ctl name="USB_AUDIO_RX_Voice Mixer VoiceMMode2" value="1" />
         <ctl name="VoiceMMode2_Tx Mixer USB_AUDIO_TX_MMode2" value="1" />
-    </path>
-
-    <path name="voicemmode2-call voice-speaker smartpa">
-        <path name="echo-reference smartpa" />
-        <ctl name="PRI_MI2S_RX_Voice Mixer VoiceMMode2" value="1" />
-        <ctl name="VoiceMMode2_Tx Mixer PRI_MI2S_TX_MMode2" value="1" />
     </path>
 
     <path name="voicemmode2-call voice-speaker-vbat">
@@ -1657,14 +1643,6 @@
         <ctl name="SpkrLeft WSA PA Mute" value="0" />
         <ctl name="SpkrRight WSA PA Mute" value="0" />
     </path>
-  
-    <path name="speaker smartpa">
-        <ctl name="PRI_MI2S_RX Channels" value="Two" />
-		<ctl name="SPK AMP PCM Gain" value="17" />
-        <ctl name="SPK PCM Source" value="ASP" />
-		<ctl name="RCV AMP PCM Gain" value="12" />
-        <ctl name="RCV PCM Source" value="ASP" />
-    </path>
 
     <path name="speaker-mono">
         <ctl name="INT4_MI2S_RX Channels" value="One" />
@@ -1675,12 +1653,6 @@
         <ctl name="SpkrLeft VISENSE Switch" value="1" />
         <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
         <ctl name="SpkrLeft WSA PA Mute" value="0" />
-    </path>
-
-    <path name="speaker-mono smartpa">
-        <ctl name="PRI_MI2S_RX Channels" value="One" />
-		<ctl name="RCV AMP PCM Gain" value="4" />
-        <ctl name="RCV PCM Source" value="ASP" />
     </path>
 
     <path name="speaker-mono-2">
@@ -1792,7 +1764,8 @@
     </path>
 
     <path name="handset">
-        <path name="speaker-mono smartpa" />
+        <ctl name="EAR SPKR PA Gain" value="G_3_DB" />
+        <path name="speaker-mono" />
     </path>
 
     <path name="handset-mic">
@@ -1865,10 +1838,6 @@
         <path name="speaker-mono" />
     </path>
 
-    <path name="voice-speaker smartpa">
-        <path name="speaker-mono smartpa" />
-    </path>
-
     <path name="voice-speaker-2">
         <path name="speaker-mono-2" />
     </path>
@@ -1903,7 +1872,7 @@
 
     <path name="speaker-and-headphones">
         <path name="headphones" />
-        <path name="speaker smartpa" />
+        <path name="speaker" />
     </path>
 
     <path name="speaker-and-line">

@@ -4,7 +4,11 @@
 
 umask 022
 
-APLOG_DIR=/data/local/newlog/aplog
+if [ -d /data/vendor/newlog/aplog ]; then
+	APLOG_DIR=/data/vendor/newlog/aplog
+else
+	APLOG_DIR=/data/local/newlog/aplog
+fi
 
 BATT_LOGSHELL="/vendor/bin/batterylog.sh"
 BATT_LOGFILE=${APLOG_DIR}"/batterylog"
@@ -48,29 +52,7 @@ file_count=0
 count=1
 prop_len=0
 pause_time=10
-
-PROP_PRODUCT_NANME='ro.product.name'
-PROP_PLATFORM='ro.board.platform'
-
-get_product() {
-    a=`getprop|grep ${PROP_PRODUCT_NANME}`
-    b=`echo ${a##*\[}`
-    product=`echo ${b%]*}`
-}
-
-get_platform() {
-    a=`getprop|grep ${PROP_PLATFORM}`
-    b=`echo ${a##*\[}`
-    platform=`echo ${b%]*}`
-}
-get_product
-get_platform
-
-if [[ "$product" == "zap" ]]; then
-	dumper_en=1
-else
-	dumper_en=0
-fi
+dumper_en=1
 
 mv_files $BATT_LOGFILE
 if [ $dumper_en -eq 1 ]; then
@@ -88,8 +70,8 @@ do
         dumper_flag=0
     fi
 
-    #      0              1         2        3             4          5            6           7           8      9
-    buf=`. $BATT_LOGSHELL "$(date)" ${ktime} $BATT_LOGFILE $dumper_en $dumper_flag "$prop_len" $file_count $count $pause_time`
+    #      0              1                                  2        3             4          5            6           7           8      9
+    buf=`. $BATT_LOGSHELL "$(date "+%Y-%m-%d %H:%M:%S.%3N")" ${ktime} $BATT_LOGFILE $dumper_en $dumper_flag "$prop_len" $file_count $count $pause_time`
 
     buf=`echo ${buf##*prop_len=\[}`
     prop_len=`echo ${buf%\]=prop_len*}`

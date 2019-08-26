@@ -1,7 +1,7 @@
 #!/vendor/bin/sh
 
 umask 022
-APLOG_DIR=/data/local/newlog/aplog
+APLOG_DIR=/data/vendor/newlog/aplog
 
 TZ_LOGFILE=${APLOG_DIR}"/tzlog"
 

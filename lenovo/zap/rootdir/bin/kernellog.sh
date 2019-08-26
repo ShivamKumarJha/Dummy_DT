@@ -2,7 +2,7 @@
 
 umask 022
 
-APLOG_DIR=/data/local/newlog/aplog
+APLOG_DIR=/data/vendor/newlog/aplog
 
 KERNEL_LOGFILE=${APLOG_DIR}"/kernellog"
 KERNEL_LOGFILE_MAX_SIZE=104857600

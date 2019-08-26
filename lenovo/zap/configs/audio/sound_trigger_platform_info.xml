@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!--- Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.       -->
+<!--- Copyright (c) 2013-2019, The Linux Foundation. All rights reserved.       -->
 <!---                                                                           -->
 <!--- Redistribution and use in source and binary forms, with or without        -->
 <!--- modification, are permitted provided that the following conditions are    -->
@@ -28,6 +28,7 @@
 <sound_trigger_platform_info>
     <param version="0x0101" /> <!-- this must be the first param -->
     <common_config>
+        <param implementer_version="0x0100" />
         <param max_cpe_sessions="1" />
         <param max_wdsp_sessions="2" />
         <param max_ape_sessions="8" />
@@ -37,28 +38,57 @@
         <param transit_to_adsp_on_playback="false" />
         <!-- Below backend params must match with port used in mixer path file -->
         <!-- param used to configure backend sample rate, format and channels -->
+        <!-- uncomment INT3_MI2S_TX values for internal codec and comment SLIM_0_TX values -->
         <param backend_port_name="SLIM_0_TX" />
-        <param backend_port_name="INT3_MI2S_TX" />
+        <!-- <param backend_port_name="INT3_MI2S_TX" /> -->
         <!-- Param used to match and obtain device backend index -->
         <param backend_dai_name="SLIMBUS_0_TX" />
-        <param backend_dai_name="INT3_MI2S_TX" />
+        <!-- <param backend_dai_name="INT3_MI2S_TX" /> -->
+        <!-- Enable concurrent VA & audio capture excluding voip/voice call     -->
+        <!-- using concurrent_capture param.                                    -->
+        <!-- Enable VA & voip/voice call concurrency using concurrent_capture   -->
+        <!-- param along with concurrent_voip_call/concurrent_voice_call params -->
+        <param concurrent_capture="false" />
+        <param concurrent_voip_call="false" />
+        <param concurrent_voice_call="false" />
     </common_config>
     <acdb_ids>
         <param DEVICE_HANDSET_MIC_APE="100" />
         <param DEVICE_HANDSET_MIC_CPE="128" />
         <param DEVICE_HANDSET_MIC_ECPP_CPE="128" />
-        <param DEVICE_HANDSET_TMIC_CPE="130" />
+        <param DEVICE_HANDSET_TMIC_CPE="138" />
         <param DEVICE_HANDSET_MIC_PP_APE="135" />
         <param DEVICE_HANDSET_QMIC_APE="137" />
         <param DEVICE_HEADSET_MIC_CPE="139" />
         <param DEVICE_HANDSET_DMIC_APE="149" />
+        <param DEVICE_HANDSET_QMIC_ARM="140" />
     </acdb_ids>
     <!-- Multiple sound_model_config tags can be listed, each with unique   -->
     <!-- vendor_uuid. The below tag represents QTI SVA engine sound model   -->
     <!-- configuration. ISV must use their own unique vendor_uuid.          -->
+    <!-- ARM based SVA sound_model_config -->
+    <sound_model_config>
+        <param vendor_uuid="67fabb70-79e8-4e1c-a202-bcb050243a70" />
+        <param execution_type="ARM" />
+        <!-- ec reference loopback params -->
+        <!-- split_ec_ref_data - true if ec ref is packed with mic captured data -->
+        <param split_ec_ref_data="false"/>
+        <param ec_ref_channel_count="4"/>
+
+        <!-- Profile specific data which the algorithm can support -->
+        <param sample_rate="16000" />
+        <param bit_width="16" />
+        <param channel_count="4"/>
+        <!-- adm_cfg_profile should match with the one defined under adm_config -->
+        <!-- Set it to NONE if LSM directly connects to AFE -->
+        <param adm_cfg_profile="DEFAULT" />
+    </sound_model_config>
+    <!-- Sound model config for Hotword !-->
     <sound_model_config>
         <param vendor_uuid="68ab2d40-e860-11e3-95ef-0002a5d5c51b" />
-        <param execution_type="WDSP" /> <!-- value: "WDSP" "ADSP" "DYNAMIC" -->
+        <!-- huaqin add for vts fail by xudayi at 2018/09/05 start -->
+        <param execution_type="ADSP" /> <!-- value: "WDSP" "ADSP" "DYNAMIC" -->
+        <!-- huaqin add for vts fail by xudayi at 2018/09/05 end -->
         <param app_type="2" /> <!-- app type used in ACDB -->
         <param library="libsmwrapper.so" />
         <param max_cpe_phrases="6" />
@@ -78,6 +108,23 @@
         <!-- wdsp_fluence_type: fluence disabled: "NONE" -->
         <!-- fluence enabled: "FLUENCE_DMIC", "FLUENCE_TMIC", "FLUENCE_QMIC" -->
         <param wdsp_fluence_type="NONE" />
+        <arm_ss_usecase>
+            <!-- Options are "KEYWORD_DETECTION", "USER_VERIFICATION", "CUSTOM_DETECTION"  -->
+            <param sm_detection_type= "KEYWORD_DETECTION" />
+            <param sm_id="0x2" />
+            <param module_lib="libcapiv2svacnn.so"/>
+            <param sample_rate="16000"/>
+            <param bit_wdith="16"/>
+            <param channel_count="1"/>
+        </arm_ss_usecase>
+        <arm_ss_usecase>
+            <param sm_detection_type= "USER_VERIFICATION" />
+            <param sm_id="0x4" />
+            <param module_lib="libcapiv2vop.so"/>
+            <param sample_rate="16000"/>
+            <param bit_wdith="16"/>
+            <param channel_count="1"/>
+        </arm_ss_usecase>
         <gcs_usecase>
             <param uid="0x1" />
             <!-- module_id, instance_id, param_id -->

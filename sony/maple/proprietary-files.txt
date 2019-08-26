@@ -2004,7 +2004,6 @@ vendor/charge/chargemon/data/scale/ic_battery_level_invalid_icon_07.png
 
 # DPM
 bin/dpmd
-etc/dpm/dpm.conf
 etc/init/dpmd.rc
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/dpmapi.xml
@@ -2280,12 +2279,8 @@ vendor/firmware/a540_zap.elf
 vendor/firmware/a540_zap.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
-vendor/firmware/msadp
 vendor/firmware/touch_module_id_0xd0.img
 vendor/firmware/touch_module_id_0xd1.img
-vendor/firmware/wlan/qca_cld/bdwlan.bin
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -2408,14 +2403,12 @@ vendor/lib/libbccQTI.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/librs_adreno.so
@@ -2437,14 +2430,12 @@ vendor/lib64/libbccQTI.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/librs_adreno.so
@@ -3193,7 +3184,6 @@ vendor/bin/pktlogconf
 vendor/bin/PktRspTest
 vendor/bin/qjpeg-dma-test
 vendor/bin/qns
-vendor/bin/replayevents
 vendor/bin/sct_service
 vendor/bin/setflafla
 vendor/bin/sigma_dut

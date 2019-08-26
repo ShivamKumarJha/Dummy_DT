@@ -19,7 +19,6 @@
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/dpmd
 bin/wfdservice
-etc/dpm/dpm.conf
 etc/firmware/cmnlib.b00
 etc/firmware/cmnlib.b01
 etc/firmware/cmnlib.b02

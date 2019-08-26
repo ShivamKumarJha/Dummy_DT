@@ -129,10 +129,10 @@ on boot
     write /dev/cpuset/top-app/boost/mems 0
 
 
-    write /dev/cpuset/foreground/cpus 0-2,4-7
     write /dev/cpuset/foreground/boost/cpus 4-7
-    write /dev/cpuset/background/cpus 0-1
-    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/background/cpus 0-2
+    write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/top-app/boost/cpus 4-7
 
@@ -566,10 +566,6 @@ service display_count /system/vendor/bin/display_count
     user root
     group root
 
-service gpu_monitor /system/vendor/bin/gpu_monitor
-    class late_start
-    user system
-    group sdcard_rw
 
 on property:vendor.audio.speaker.id=*
    start audio_info

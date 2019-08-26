@@ -1,0 +1,8 @@
+-app/AptxNotifier/AptxNotifier.apk
+-app/AptxNotifier/oat/arm/AptxNotifier.odex
+-app/AptxNotifier/oat/arm/AptxNotifier.vdex
+-app/AptxNotifier/oat/arm64/AptxNotifier.odex
+-app/AptxNotifier/oat/arm64/AptxNotifier.vdex
+etc/permissions/com.nxp.nfc.xml
+framework/com.nxp.nfc.jar
+lib64/libaptX_encoder.so

@@ -1,0 +1,55 @@
+on post-fs-data
+    mkdir /data/aee_exp 0755 root root
+    mkdir /data/vendor/mtklog 0755 root root
+    mkdir /data/vendor/mtklog/aee_exp 0755 root root
+    mkdir /data/dumpsys 0775 system system
+    mkdir /data/vendor/dumpsys 0775 system system
+    mkdir /data/core 0775 system system
+    mkdir /data/vendor/core 0775 system system
+    mkdir /data/vendor/tombstones 0775 system system
+    mkdir /data/misc/aee_interim 0755 system system
+
+on post-fs
+    start aee_aed
+    start aee_aed64
+    start aee_aedv
+    start aee_aedv64
+
+on property:vold.decrypt=trigger_load_persist_props
+    restart aee_aedv
+    restart aee_aedv64
+    restart aee_aed
+    restart aee_aed64
+
+on property:debug.mtk.aee.reinit=done
+    restart aee_aedv
+    restart aee_aedv64
+    restart aee_aed
+    restart aee_aed64
+
+on property:ro.build.type=eng
+    write /proc/sys/fs/suid_dumpable 1
+    write /proc/sys/kernel/core_pattern "|/vendor/bin/aee_core_forwarder /data/vendor/core/ %p %s UID=%u GID=%g"
+    setprop ro.aee.enforcing no
+
+on property:ro.build.type=userdebug
+    write /proc/sys/fs/suid_dumpable 1
+    write /proc/sys/kernel/core_pattern "|/vendor/bin/aee_core_forwarder /data/vendor/core/ %p %s UID=%u GID=%g"
+    setprop ro.aee.enforcing no
+
+on property:persist.aee.core.dump=enable
+    write /proc/sys/fs/suid_dumpable 2
+    write /proc/sys/kernel/core_pattern "|/vendor/bin/aee_core_forwarder /data/vendor/core/ %p %s UID=%u GID=%g"
+
+on init
+    export LD_PRELOAD libdirect-coredump.so
+    write /proc/self/coredump_filter 39
+    setprop ro.aee.enperf off
+    setprop ro.aee.enforcing no
+    setprop persist.mtk.aee.filter 0
+
+on property:sys.boot_completed=1
+    start aee-reinit
+    start aeev-reinit
+
+import /init.preload.rc

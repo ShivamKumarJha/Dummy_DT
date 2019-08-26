@@ -69,6 +69,9 @@
         <device name="SND_DEVICE_OUT_HEADPHONES_44_1" acdb_id="20012"/>
         <device name="SND_DEVICE_OUT_USB_HEADSET" acdb_id="20012"/>
         <device name="SND_DEVICE_OUT_USB_HEADPHONES" acdb_id="20012"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="11"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC_DUO" acdb_id="10013"/>
+        <device name="SND_DEVICE_IN_HANDFREE_SUB_MIC" acdb_id="114"/>
     </acdb_ids>
 
     <backend_names>

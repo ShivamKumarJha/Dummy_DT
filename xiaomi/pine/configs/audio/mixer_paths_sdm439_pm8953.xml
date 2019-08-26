@@ -1330,6 +1330,10 @@
         <path name="adc3" />
     </path>
 
+    <path name="handfree-sub-mic">
+        <path name="sub-mic" />
+    </path>
+
     <path name="headphones">
         <ctl name="MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />

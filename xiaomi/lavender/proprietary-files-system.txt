@@ -52,6 +52,9 @@ etc/permissions/qti_permissions.xml
 etc/permissions/telephonyservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 etc/sysconfig/qti_whitelist.xml
 etc/wfdconfig.xml
 etc/wfdconfigsink.xml
@@ -90,6 +93,9 @@ framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 framework/vendor.qti.latency-V2.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
+framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
 lib/com.qualcomm.qti.ant@1.0.so
 lib/com.qualcomm.qti.dpm.api@1.0.so
 lib/com.qualcomm.qti.imscmservice@1.0.so

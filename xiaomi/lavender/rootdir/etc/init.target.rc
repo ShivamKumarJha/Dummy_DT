@@ -55,6 +55,7 @@ on fs
 #+ add for watermark
     mkdir /mnt/vendor/persist/camera 0777 root root
     restorecon_recursive /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist/camera
     write /sys/kernel/boot_adsp/boot 1
     chown system system /dev/goodix_fp
     #chmod 0644 /dev/goodix_fp

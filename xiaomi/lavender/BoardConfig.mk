@@ -2,7 +2,7 @@ DEVICE_PATH := device/xiaomi/lavender
 BOARD_VENDOR := xiaomi
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-08-05
+VENDOR_SECURITY_PATCH := 2019-09-05
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

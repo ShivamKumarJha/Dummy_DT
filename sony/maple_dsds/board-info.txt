@@ -1,0 +1,2 @@
+require version-baseband=2.0.c4.3-00278-8998_GEN_PACK-1
+require version-modem=2019-07-2315:22:36

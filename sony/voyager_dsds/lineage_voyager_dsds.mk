@@ -17,7 +17,7 @@ PRODUCT_MODEL := Xperia XA2 Plus
 PRODUCT_GMS_CLIENTID_BASE := android-sony
 TARGET_VENDOR := sony
 TARGET_VENDOR_PRODUCT_NAME := voyager_dsds
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="voyager_dsds-user 9 P-NILE-CAF-190516-1703 1 dev-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="voyager_dsds-user 9 P-NILE-CAF-190723-0742 1 dev-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Sony/voyager_dsds/voyager_dsds:9/P-NILE-CAF-190516-1703/1:user/dev-keys
+BUILD_FINGERPRINT := Sony/voyager_dsds/voyager_dsds:9/P-NILE-CAF-190723-0742/1:user/dev-keys

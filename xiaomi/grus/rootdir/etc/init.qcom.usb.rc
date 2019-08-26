@@ -129,6 +129,11 @@ service vendor.qcom-usb-sh /vendor/bin/init.qcom.usb.sh
 on property:persist.vendor.usb.config=*
     setprop persist.sys.usb.config ${persist.vendor.usb.config}
 
+# Used to set USB configuration at boot and to switch the configuration
+# when changing the default configuration
+on boot && property:persist.sys.usb.config=*
+     setprop sys.usb.config ${persist.sys.usb.config}
+
 on boot && property:ro.boot.usbconfigfs=true
         setprop sys.usb.configfs 1
 

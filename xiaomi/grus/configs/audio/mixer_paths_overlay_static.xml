@@ -1,6 +1,10 @@
 <mixer>
     <ctl name="PRIM_MI2S_RX Channels" value="Two" />
+    <ctl name="PRIM_MI2S_RX Format" value="S24_LE" />
+    <ctl name="PRIM_MI2S_RX SampleRate" value="KHZ_48" />
     <ctl name="PRIM_MI2S_TX Channels" value="Two" />
+    <ctl name="PRIM_MI2S_TX Format" value="S24_LE" />
+    <ctl name="PRIM_MI2S_TX SampleRate" value="KHZ_48" />
     <ctl name="PRI_MI2S_RX_VI_FB_MUX" value="ZERO" />
     <ctl name="PRIM_MI2S_RX SampleRate" value="KHZ_48" />
 +<!--
@@ -16,7 +20,7 @@
     <ctl name="EAR_S" value="ZERO" />
     <ctl name="AMP PCM Gain" value="16" />
     <ctl name="PCM Soft Ramp" value="4ms" />
-    <ctl name="INT0_MI2S_RX SampleRate" value="KHZ_48" />
+    <ctl name="INT0_MI2S_RX SampleRate" value="KHZ_96" />
 
 
     <path name="deep-buffer-playback">

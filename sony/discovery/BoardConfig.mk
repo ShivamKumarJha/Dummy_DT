@@ -2,7 +2,7 @@ DEVICE_PATH := device/sony/discovery
 BOARD_VENDOR := sony
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-05-01
+VENDOR_SECURITY_PATCH := 2019-08-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

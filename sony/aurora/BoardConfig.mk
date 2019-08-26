@@ -2,7 +2,7 @@ DEVICE_PATH := device/sony/aurora
 BOARD_VENDOR := sony
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-07-01
+VENDOR_SECURITY_PATCH := 2019-08-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

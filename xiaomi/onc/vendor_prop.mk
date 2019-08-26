@@ -121,6 +121,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcomsysd.enabled=1 \
     persist.vendor.qg.log_level=1 \
     ro.colorpick_adjust=true \
+    ro.control_privapp_permissions=log \
     ro.hardware.keystore_desede=true \
     ro.logd.size=1M \
     ro.vendor.df.effect.conflict=1 \

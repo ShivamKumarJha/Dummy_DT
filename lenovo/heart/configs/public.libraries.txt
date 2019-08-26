@@ -7,4 +7,3 @@ liblistenjni.so
 liblistensoundmodel2.so
 libOpenCL.so
 libnpu.so
-libaix.so

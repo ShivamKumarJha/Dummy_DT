@@ -44,6 +44,7 @@
     <ctl name="FSA4480 Demux" value="disable" />
     <ctl name="IN1L Mux" value="B" />
     <ctl name="IN1R Mux" value="B" />
+    <ctl name="HPOUT1 Demux" value="HPOUT" />
     <ctl name="IN1L Volume" value="18" />
     <ctl name="IN1R Volume" value="18" />
     <ctl name="IN2L Volume" value="18" />
@@ -76,12 +77,12 @@
     <ctl name="AIF1TX2 Input 1 Volume" value="0" />
     <ctl name="AIF1TX2 Input 2 Volume" value="0" />
     <ctl name="AIF1TX2 Input 3 Volume" value="0" />
-    <ctl name="HPOUT1L Input 1" value="None" />
-    <ctl name="HPOUT1R Input 1" value="None" />
-    <ctl name="HPOUT1 Digital Volume" id="0" value="0" />
-    <ctl name="HPOUT1 Digital Volume" id="1" value="0" />
-    <ctl name="HPOUT1 Digital Switch" id="0" value="0" />
-    <ctl name="HPOUT1 Digital Switch" id="1" value="0" />
+    <ctl name="HPOUT1L Input 1" value="SLIMRX5" />
+    <ctl name="HPOUT1R Input 1" value="SLIMRX6" />
+    <ctl name="HPOUT1 Digital Volume" id="0" value="128" />
+    <ctl name="HPOUT1 Digital Volume" id="1" value="128" />
+    <ctl name="HPOUT1 Digital Switch" id="0" value="1" />
+    <ctl name="HPOUT1 Digital Switch" id="1" value="1" />
     <ctl name="Sample Rate 2" value="48kHz" />
     <ctl name="Sample Rate 3" value="48kHz" />
     <ctl name="In Rate" value="SYNCCLK rate 3" />
@@ -139,7 +140,6 @@
     <ctl name="SPK AMP PCM Gain" value="0" />
     <ctl name="SPK PCM Source" value="ASP" />
     <ctl name="SPK DSP1 Input2 Source" value="ASPRX1" />
-    <ctl name="SPK PCM Soft Ramp" value="4ms" />
     <ctl name="SPK AMP Enable Switch" value="1" />
 
     <!-- Start of KTV & HD-Recording init -->
@@ -735,7 +735,7 @@
     <path name="deep-buffer-playback speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="deep-buffer-playback" />
     </path>
@@ -805,7 +805,7 @@
     <path name="low-latency-playback speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Ringtone" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="low-latency-playback" />
     </path>
@@ -879,7 +879,7 @@
     <path name="audio-ull-playback speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="audio-ull-playback" />
     </path>
@@ -952,7 +952,7 @@
     <path name="compress-offload-playback speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="compress-offload-playback" />
     </path>
@@ -1034,7 +1034,7 @@
     <path name="compress-offload-playback2 speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="compress-offload-playback2" />
     </path>
@@ -1783,7 +1783,7 @@
     <path name="compress-voip-call speaker">
         <ctl name="SPK AMP Enable Switch" value="0" />
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK AMP Enable Switch" value="1" />
         <path name="compress-voip-call" />
     </path>
@@ -2156,7 +2156,7 @@
 
     <path name="speaker-mono-2">
         <ctl name="SPK DSP Booted" value="0" />
-        <ctl name="SPK DSP1 Firmware" value="SP Voice" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Voice" />
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="SPK PCM Source" value="DSP" />
         <ctl name="SPK AMP PCM Gain" value="17" />
@@ -2366,7 +2366,6 @@
         <ctl name="HPOUT1L Input 1" value="SLIMRX5" />
         <ctl name="HPOUT1R Input 1" value="SLIMRX6" />
         <ctl name="HPOUT1 Digital Switch" value="1 1" />
-        <ctl name="SLIMBUS_6_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="headphones-44.1">
@@ -3343,7 +3342,7 @@
     </path>
 
     <path name="spk_cal_reset2">
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="SPK PCM Source" value="ASP" />
     </path>
 
@@ -3358,7 +3357,7 @@
         <ctl name="AIF1TX1 Input 1 Volume" value="0" />
         <ctl name="SPK PCM Source" value="DSP" />
         <ctl name="SPK AMP PCM Gain" value="17" />
-        <ctl name="SPK DSP1 Firmware" value="SP Music" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Music" />
         <ctl name="AIF1TX1 Input 1" value="Noise Generator" />
         <ctl name="SPK AMP Enable Switch" value="1" />
     </path>
@@ -3370,7 +3369,7 @@
         <ctl name="AIF1TX1 Input 1 Volume" value="0" />
         <ctl name="SPK PCM Source" value="DSP" />
         <ctl name="SPK AMP PCM Gain" value="17" />
-        <ctl name="SPK DSP1 Firmware" value="SP Voice" />
+        <ctl name="SPK DSP1 Firmware" value="Speaker Protection Voice" />
         <ctl name="AIF1TX1 Input 1" value="Noise Generator" />
         <ctl name="SPK AMP Enable Switch" value="1" />
     </path>

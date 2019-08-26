@@ -32,6 +32,7 @@ import /vendor/etc/init/hw/init.qcom.factory.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.lenovo.rc
 import /vendor/etc/init/hw/init.lenovo.usb.configfs.rc
+import /vendor/etc/init/hw/init.lenovo.common.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -88,6 +89,10 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
+
+on property:ro.hardware.type=automotive
+    wait /sys/class/net/can0
+    start can
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -373,6 +378,8 @@ on post-fs-data
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd
     rm /data/vendor/perfd/default_values
+
+    mkdir /data/vendor/secure_element 0777 system system
 
     #Create IOP  deamon related dirs
     mkdir /data/vendor/iop 0700 root system
@@ -1028,6 +1035,12 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
+service can /vendor/bin/init.qti.can.sh
+   class late_start
+   user root
+   disabled
+   oneshot
+
 service charger /charger
     class charger
     group system graphics
@@ -1212,6 +1225,10 @@ service vendor.move_time_data /system/bin/move_time_data.sh
 #    group system
 #    socket chre seqpacket 0660 root system
 #    shutdown critical
+
+
+on property:vendor.chre.enabled=0
+   stop chre
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main

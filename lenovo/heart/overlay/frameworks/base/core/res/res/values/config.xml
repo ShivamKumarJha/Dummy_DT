@@ -108,7 +108,7 @@
      <bool name="config_hotswapCapable">false</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-     <bool name="config_intrusiveNotificationLed">false</bool>
+     <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
@@ -117,6 +117,9 @@
 
     <!-- Should the pinner service pin the Camera application? -->
      <bool name="config_pinnerCameraApp">false</bool>
+
+    <!-- Should the pinner service pin the Home application? -->
+     <bool name="config_pinnerHomeApp">false</bool>
 
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
@@ -185,6 +188,11 @@
          state changes. Voice radio tech change will always trigger an update of
          phone object irrespective of this config -->
      <bool name="config_switch_phone_on_voice_reg_state_change">true</bool>
+
+    <!-- When true, the tethering upstream network follows the current default
+         Internet network (except when the current default network is mobile,
+         in which case a DUN network will be used if required). -->
+     <bool name="config_tether_upstream_automatic">false</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
      <bool name="config_unplugTurnsOnScreen">false</bool>

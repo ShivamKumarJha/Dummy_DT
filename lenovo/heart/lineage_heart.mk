@@ -17,7 +17,7 @@ PRODUCT_MODEL := Lenovo Z5 Pro GT
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 TARGET_VENDOR := lenovo
 TARGET_VENDOR_PRODUCT_NAME := heart
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="heart-user 9 PKQ1.181121.001 10.5.078_190126 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="heart-user 9 PKQ1.190110.001 10.5.304_190710 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Lenovo/heart/heart:9/PKQ1.181121.001/10.5.078_190126:user/release-keys
+BUILD_FINGERPRINT := Lenovo/heart/heart:9/PKQ1.190110.001/10.5.304_190710:user/release-keys

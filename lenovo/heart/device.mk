@@ -100,6 +100,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
     frameworks/native/data/etc/android.hardware.wifi.aware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.aware.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
@@ -127,6 +128,7 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
+    init.mlvm_boot.sh \
     init.qcom.class_core.sh \
     init.qcom.coex.sh \
     init.qcom.crashdata.sh \
@@ -137,8 +139,10 @@ PRODUCT_PACKAGES += \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.sh \
+    init.qti.can.sh \
     init.qti.fm.sh \
     init.qti.ims.sh \
+    init.qti.manifest_sku.sh \
     init.qti.qseecomd.sh \
     kernellog.sh \
     modemlog.sh \
@@ -149,6 +153,7 @@ PRODUCT_PACKAGES += \
     init.lenovo.common.rc \
     init.lenovo.rc \
     init.lenovo.usb.configfs.rc \
+    init.mlvm_boot.rc \
     init.msm.usb.configfs.rc \
     init.qcom.factory.rc \
     init.qcom.rc \

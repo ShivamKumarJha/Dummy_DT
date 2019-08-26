@@ -2,7 +2,7 @@ DEVICE_PATH := device/lenovo/heart
 BOARD_VENDOR := lenovo
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2018-12-01
+VENDOR_SECURITY_PATCH := 2019-05-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

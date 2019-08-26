@@ -2016,7 +2016,7 @@ case "$target" in
                 echo 0 > /proc/sys/kernel/sched_boost
 
 		# core_ctl is not needed for 8917. Disable it.
-		echo 1 > /sys/devices/system/cpu/cpu0/core_ctl/disable
+                disable_core_ctl
 
                 for devfreq_gov in /sys/class/devfreq/qcom,mincpubw*/governor
                 do
@@ -3059,6 +3059,9 @@ case "$target" in
 	            echo 400 > $memlat/mem_latency/ratio_ceil
                 done
 
+                #Gold L3 ratio ceil
+                echo 4000 > /sys/class/devfreq/soc:qcom,cpu6-cpu-l3-lat/mem_latency/ratio_ceil
+
                 #Enable cdspl3 governor for L3 cdsp nodes
                 for l3cdsp in $device/*cdsp-cdsp-l3-lat/devfreq/*cdsp-cdsp-l3-lat
                 do
@@ -3129,6 +3132,7 @@ case "$target" in
             esac
 
       # Core control parameters on silver
+      echo 0 0 0 0 1 1 > /sys/devices/system/cpu/cpu0/core_ctl/not_preferred
       echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
       echo 60 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
       echo 40 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
@@ -3948,6 +3952,11 @@ case "$target" in
                     start_hbtp
                     ;;
             esac
+        ;;
+        "HDK" )
+            if [ -d /sys/kernel/hbtpsensor ] ; then
+                start_hbtp
+            fi
         ;;
     esac
 

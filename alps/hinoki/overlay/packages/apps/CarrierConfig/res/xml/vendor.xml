@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config mcc="460" mnc="11">
+        <int name="mtk_cdma_sms_7bit_encoding_type_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="460" mnc="03">
+        <int name="mtk_cdma_sms_7bit_encoding_type_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="455" mnc="02">
+        <int name="mtk_cdma_sms_7bit_encoding_type_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="455" mnc="07">
+        <int name="mtk_cdma_sms_7bit_encoding_type_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="120">
+        <int name="mtk_ems_waiting_missing_segment_time" value="90" />
+    </carrier_config>
+</carrier_config_list>

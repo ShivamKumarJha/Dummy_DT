@@ -133,6 +133,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.enable_default_color_mode=0 \
     vendor.display.enable_default_color_mode=1 \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \
@@ -160,7 +161,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.df.extcolor.proc=0 \
     persist.vendor.ims.disableUserAgent \
     persist.vendor.max.brightness=0 \
+    persist.vendor.overlay.izat.optin=rro \
     persist.vendor.qcomsysd.enabled=1 \
+    qemu.hw.mainkeys=0 \
     ro.cit.nonrootbuild=true \
     ro.cit.stablebuild=true \
     ro.colorpick_adjust=true \

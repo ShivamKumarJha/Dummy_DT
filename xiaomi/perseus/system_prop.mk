@@ -56,6 +56,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sys.displayfeature_hidl=true \
     vendor.display.enable_default_color_mode=1 \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \
@@ -76,6 +77,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rcs.supported=0 \
     persist.sys.force_sw_gles=1 \
     persist.vendor.ims.disableUserAgent \
+    persist.vendor.overlay.izat.optin=rro \
+    qemu.hw.mainkeys=0 \
     ro.colorpick_adjust=true \
     ro.eyecare.brightness.level=5 \
     ro.eyecare.brightness.threshold=7 \

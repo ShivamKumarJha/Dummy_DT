@@ -14,8 +14,6 @@
 -priv-app/dpmserviceapp/dpmserviceapp.apk
 -priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
--system_other/app/AptxNotifier/oat/arm64/AptxNotifier.odex
--system_other/app/AptxNotifier/oat/arm64/AptxNotifier.vdex
 bin/dpmd
 bin/wfdservice
 etc/init/dpmd.rc

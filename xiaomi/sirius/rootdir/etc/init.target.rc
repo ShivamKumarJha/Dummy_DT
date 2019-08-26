@@ -261,6 +261,7 @@ on charger
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
+    shutdown critical
     class core
     user root
     group root

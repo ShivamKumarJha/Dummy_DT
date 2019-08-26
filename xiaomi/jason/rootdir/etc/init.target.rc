@@ -220,6 +220,7 @@ on property:sys.boot_completed=1
     start charge_logger
 
 service vendor.qseecomd /vendor/bin/qseecomd
+   shutdown critical
    class core
    user root
    group root

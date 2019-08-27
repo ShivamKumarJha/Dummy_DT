@@ -1,2 +1,3 @@
 require version-baseband=3.1-00766-SDM660_GEN_PACK-1.179488.2.202939.3
-require version-vendor=1557857873
+require version-modem=2019-06-1012:22:52
+require version-vendor=1560166039

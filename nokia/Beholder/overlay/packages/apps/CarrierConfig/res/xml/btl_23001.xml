@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="oem_key_wfc_show_roaming_dynamically_bool" value="true" />
+        <boolean name="oem_key_wfc_roaming_mode_not_follow_home_bool" value="true" />
+        <boolean name="oem_key_set_provisioning_wfc_roaming_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

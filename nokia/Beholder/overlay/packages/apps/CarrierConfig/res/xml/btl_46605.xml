@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="oem_key_vowifi_spn_string">GT WiFi</string>
+        <string-array name="gsm_nonroaming_networks_string_array" num="1">
+            <item value="46697" />
+        </string-array>
+    </carrier_config>
+</carrier_config_list>

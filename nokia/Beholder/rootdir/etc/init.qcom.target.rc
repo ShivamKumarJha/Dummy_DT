@@ -1,0 +1,12 @@
+import /vendor/etc/init/hw/init.ftm.rc
+import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+import /vendor/etc/init/hw/init.qcom.cda.rc
+import /vendor/etc/init/hw/init.qcom.fs.rc
+import /vendor/etc/init/hw/init.egis.fingerprint.rc
+
+service wireless-init /system/vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot
+

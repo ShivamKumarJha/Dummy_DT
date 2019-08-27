@@ -1,0 +1,79 @@
+service fcatsvc_1 /vendor/bin/fcat_apk_svc.sh 1
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_2 /vendor/bin/fcat_apk_svc.sh 2
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_3 /vendor/bin/fcat_apk_svc.sh 3
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_4 /vendor/bin/fcat_apk_svc.sh 4
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_5 /vendor/bin/fcat_apk_svc.sh 5
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_6 /vendor/bin/fcat_apk_svc.sh 6
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+service fcatsvc_7 /vendor/bin/fcat_apk_svc.sh 7
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:fcatsvc:s0
+
+# New encryption method thus change ro.crypto.state property to check encryption readiness
+on property:ro.crypto.state=* && property:sys.fcat.enable=1
+    start fcatsvc_1
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=2
+    start fcatsvc_2
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=3
+    start fcatsvc_3
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=4
+    start fcatsvc_4
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=5
+    start fcatsvc_5
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=6
+    start fcatsvc_6
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=7
+    start fcatsvc_7
+
+on property:ro.crypto.state=* && property:sys.fcat.enable=-1
+    stop fcatsvc_1
+    stop fcatsvc_2
+    stop fcatsvc_3
+    stop fcatsvc_4
+    stop fcatsvc_5
+    stop fcatsvc_6
+    stop fcatsvc_7

@@ -1,0 +1,9 @@
+service fqcrangefinder /vendor/bin/fqc_rangefinder
+    user root
+    group system shell
+    oneshot
+    disabled
+    seclabel u:r:fqcrangefinder:s0
+
+on property:vendor.sys.fqcrangefinder.test=*
+    start fqcrangefinder

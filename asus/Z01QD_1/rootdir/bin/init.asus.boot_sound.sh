@@ -30,7 +30,7 @@ if [ "$enabled" == "1" ]; then
         i=$(($i+1))
     done
 
-    if [ -n "$card" ] ; then
+    if [ -n "$card" ] && [ "$vol_index" -ne 0 ]; then
         echo "play boot sound with volume index $vol_index" > /dev/kmsg
         sleep 1.9
         /system/bin/tinymix -D ${card} 'TFA_CHIP_SELECTOR' '0'

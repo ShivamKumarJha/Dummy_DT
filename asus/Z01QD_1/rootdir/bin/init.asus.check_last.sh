@@ -32,15 +32,15 @@ if test "$DownloadMode_flag" -eq 1; then
 		echo full > /sys/kernel/dload/dload_mode
 else
 
-	if test "$startlog_flag" -eq 1; then
+#	if test "$startlog_flag" -eq 1; then
 		echo 1 > /sys/module/msm_poweroff/parameters/download_mode
 		#echo 1 > /sys/module/printk/parameters/ramdump_enabled
 		echo mini > /sys/kernel/dload/dload_mode
-	else
-		echo 0 > /sys/module/msm_poweroff/parameters/download_mode
+#	else
+#		echo 0 > /sys/module/msm_poweroff/parameters/download_mode
 		#echo 0 > /sys/module/printk/parameters/ramdump_enabled
-		echo mini > /sys/kernel/dload/dload_mode
-	fi
+#		echo mini > /sys/kernel/dload/dload_mode
+#	fi
 fi
 
 

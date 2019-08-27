@@ -79,6 +79,11 @@ on property:persist.asus.kernelmessage=0
 on property:persist.asus.kernelmessage=7
 	start asus_kernelmsg
 
+on property:debug.asus.clearlog=1 
+	start cscclearlog 
+	
+   
+
 # ASUS_BSP--- [thomas]Add asus_ramdump and asus_kernelmsg services
 
 # ASUS_BSP+++ [thomas]Add savelogmtp services
@@ -127,7 +132,7 @@ service saveramdump /system/vendor/bin/saveramdump.sh
     disabled
 
 #log_main log_system
-service logcat /system/bin/logcat  -b main -b system -b crash -b kernel -r 10000 -n 40 -v threadtime -f /data/logcat_log/logcat.txt  -N -a
+service logcat /system/bin/logcat  -b main -b system -b crash -b kernel -r 10000 -n 40 -v threadtime -f /data/logcat_log/logcat.txt  -N
 	class late_start
 	user root
 	disabled

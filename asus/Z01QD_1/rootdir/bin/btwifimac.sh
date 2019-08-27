@@ -10,6 +10,6 @@ setprop ro.wifimac_2 $wifi_mac
 wigig_mac=`cat /vendor/factory/wigig_mac.bin`
 setprop ro.wigigmac $wigig_mac
 
-setprop wifi.version.driver WLAN.HL.2.0.c10-00094-QCAHLSWMTPLZ-1.163752.1
-setprop wigig.version.driver 5.3.0.63
-setprop wigig.dock.version.driver v0.0.0.7
+setprop wifi.version.driver WLAN.HL.2.0.c10-00094-QCAHLSWMTPLZ-1.170764.2.177441.1
+setprop wigig.version.driver 5.3.0.72
+setprop wigig.dock.version.driver v0.0.0.8

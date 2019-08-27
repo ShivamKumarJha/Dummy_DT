@@ -48,6 +48,8 @@ save_general_log() {
 	echo "cat /proc/net/route > $GENERAL_LOG/route.txt"
 	netcfg > $GENERAL_LOG/ifconfig.txt
 	echo "ifconfig -a > $GENERAL_LOG/ifconfig.txt"
+	netstat -anlp > $GENERAL_LOG/netstat.txt
+	echo "netstat -anlp > $GENERAL_LOG/netstat.txt"
 	############################################################################################
 	# save software version
 	echo "AP_VER: `getprop ro.build.display.id`" > $GENERAL_LOG/version.txt
@@ -127,6 +129,14 @@ save_general_log() {
 	done
 
 	############################################################################################
+	# save charger information
+	mkdir $GENERAL_LOG/charger_debug/
+	echo 3600 > /d/regmap/spmi0-02/count
+	echo 0x1000 > /d/regmap/spmi0-02/address
+	cat /d/regmap/spmi0-02/data > $GENERAL_LOG/charger_debug/pmic_reg.txt
+	cat /d/pmic-votable/*/status > $GENERAL_LOG/charger_debug/pmic_voter.txt
+	cat /sys/class/power_supply/*/uevent > $GENERAL_LOG/charger_debug/uevent.txt
+	############################################################################################
 	# copy /sdcard/wlan_logs/
 	cp -r /sdcard/wlan_logs/cnss_fw_logs_current.txt $GENERAL_LOG
 	echo "cp -r /sdcard/wlan_logs/cnss_fw_logs_current.txt $GENERAL_LOG"
@@ -152,12 +162,12 @@ save_general_log() {
 	############################################################################################
 	# save system information
 	mkdir $DUMPSYS_DIR
-    for x in SurfaceFlinger window activity input_method alarm power battery batterystats; do
-        dumpsys $x > $DUMPSYS_DIR/$x.txt
+    for x in SurfaceFlinger window activity input_method alarm power battery meminfo batterystats sensorservice; do
+        dumpsys -t 30 $x > $DUMPSYS_DIR/$x.txt
         echo "dumpsys $x > $DUMPSYS_DIR/$x.txt"
     done
 
-        dumpsys -t 30 > $GENERAL_LOG/dumpsys.txt
+        dumpsys -t 50 > $GENERAL_LOG/dumpsys.txt
 	
     ############################################################################################
     # [BugReporter]Save ps.txt to Dumpsys folder
@@ -231,7 +241,7 @@ save_general_log() {
 
 
 
-        bugreportz
+        bugreportz > $GENERAL_LOG/bugreportz_log.txt
         for filename in $BUGREPORT_PATH/*; do
             name=${filename##*/}
            cp $filename  $GENERAL_LOG/$name

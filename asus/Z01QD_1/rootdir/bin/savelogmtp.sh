@@ -39,6 +39,14 @@ fi
 	echo dump >/proc/driver/audio_debug
 	echo "echo dump >/proc/driver/audio_debug"
 ############################################################################################
+# mount logfs
+#	chmod 777 /dev/block/bootdevice/by-name/logfs
+#	chmod 777 /vendor/logfs
+#	log "wei +++++"
+#    	mount -t vfat /dev/block/bootdevice/by-name/logfs /vendor/logfs  
+#	log "wei -----" 
+
+###########################################################################################
 	#add to stop and then capture modem log problem
 	enableQXDM=`getprop persist.asus.qxdmlog.enable`
 	if [ "${enableQXDM}" = "1" ]; then
@@ -62,11 +70,17 @@ fi
 	df > $SAVE_LOG_PATH/df.txt
 	echo "df > $SAVE_LOG_PATH/df.txt"
 ############################################################################################
+	# cp ec_update log file
+	cp -r /data/local/tmp/ec_update.log $SAVE_LOG_PATH
+	echo "cp -r /data/local/tmp/ec_update.log $SAVE_LOG_PATH"
+############################################################################################
 	# save network info
 	cat /proc/net/route > $SAVE_LOG_PATH/route.txt
 	echo "route -n > $SAVE_LOG_PATH/route.txt"
 	ifconfig -a > $SAVE_LOG_PATH/ifconfig.txt
 	echo "ifconfig -a > $SAVE_LOG_PATH/ifconfig.txt"
+	netstat -anlp > $SAVE_LOG_PATH/netstat.txt
+	echo "netstat -anlp > $SAVE_LOG_PATH/netstat.txt"
 ############################################################################################
 	# save software version
 	echo "AP_VER: `getprop ro.build.display.id`" > $SAVE_LOG_PATH/version.txt
@@ -209,6 +223,7 @@ fi
 	echo "dumpsys power > $SAVE_LOG_PATH/power.dump.txt"
 	dumpsys input_method > $SAVE_LOG_PATH/input_method.dump.txt
 	echo "dumpsys input_method > $SAVE_LOG_PATH/input_method.dump.txt"
+	dumpsys meminfo > $SAVE_LOG_PATH/meminfo.dump.txt
 	date > $SAVE_LOG_PATH/date.txt
 	echo "date > $SAVE_LOG_PATH/date.txt"
 ############################################################################################	
@@ -345,7 +360,7 @@ fi
 	# sync data to disk 
 	# 1015 sdcard_rw
 
-        bugreportz
+        bugreportz > $SAVE_LOG_PATH/bugreportz_log.txt
         for filename in $BUGREPORT_PATH/*; do
             name=${filename##*/}
         #   cp $filename  $GENERAL_LOG/$name
@@ -357,7 +372,7 @@ fi
 	chmod -R 777 $SAVE_LOG_PATH
 	chmod -R 777 $SAVE_LOG_ROOT
 	sync
-am broadcast -a android.intent.action.MEDIA_MOUNTED --ez read-only false -d file:///storage/emulated/0/ -p com.android.providers.media
+am broadcast -a android.intent.action.MEDIA_MOUNTED --ez read-only false -d file:///storage/emulated/0/ -p com.android.providers.media -f 0x01000000
 
 ############################################################################################
 for i in 1 2 3

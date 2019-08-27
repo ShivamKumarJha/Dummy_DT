@@ -18,6 +18,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.emb_wp_mode=false \
     ro.bluetooth.wipower=false \
     persist.cne.feature=1 \
+    persist.asus.instant_camera = 0 \
+    ro.asus.camera.cam0.eis_invn.sup_list=4K@30,FHD18TO9@30,FHD@60,FHD@30,HD@30,TV@30 \
+    ro.asus.camera.cam0.video_eis=invn \
+    ro.asus.camera.cam0.video_fps=HD@240,FHD@240,4K@60 \
+    ro.asus.camera.cam1.eis_invn.sup_list=FHD18TO9@30,FHD@30,HD@30,TV@30 \
+    ro.asus.camera.cam1.video_eis=invn \
+    ro.asus.camera.cam1.video_fps= \
+    ro.asus.camera.cam2.eis_invn.sup_list=FHD18TO9@30,FHD@30,HD@30,TV@30 \
+    ro.asus.camera.cam2.video_eis=invn \
+    ro.asus.camera.cam2.video_fps= \
+    ro.asus.camera.cam3.video_fps= \
+    ro.asus.camera.dual_bokeh=0:0;1:0;2:0;3:1 \
+    ro.asus.camera.lens_type=0:standard;1:standard;2:wide-angle;3:virtual \
+    ro.asus.camera.preview_beauty=0:1;1:1;2:1;3:0 \
+    ro.asus.camera.preview_portrait=0:1;1:1;2:1;3:0 \
+    ro.asus.camera.scene_mode=0:1;1:1;2:1;3:1 \
+    ro.asus.camera.use_frame_processor=0 \
+    ro.asus.camera.video_beauty=0:1;1:1;2:1;3:0 \
     vendor.camera.aux.asus.package_contain=com.asus \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam \
     persist.vendor.dpm.feature = 10 \
@@ -34,6 +52,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.demo.hdmirotationlock=false \
     ro.sf.lcd_density=440 \
     media.aac_51_output_enabled=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-http=true \
     media.stagefright.enable-player=true \
@@ -51,13 +70,36 @@ PRODUCT_PROPERTY_OVERRIDES += \
     logd.kernel=true \
     logtool.class=com.asus.csclogtool.LogService \
     logtool.package=com.asus.csclogtool \
+    persist.asus.airtriggerstationtouch \
+    000000000000000000 \
+    persist.asus.airtriggertouch \
+    persist.asus.dclick \
+    persist.asus.flipcovermode \
+    persist.asus.fp.wakeup=true \
+    persist.asus.fp.wakeup_support=true \
+    persist.asus.gesture.type \
+    0000000 \
+    persist.asus.glove \
+    persist.asus.isoktocall.qc=1 \
+    persist.asus.logcat.filenum=20 \
+    persist.asus.pwrdbg=0 \
+    persist.asus.startlog=0 \
+    persist.asus.swipeup \
+    persist.asus.wigig.support=1 \
     persist.rcs.supported=0 \
     persist.rmnet.data.enable=true \
     persist.sys.downloadmode.enable=0 \
     persist.sys.force_sw_gles=0 \
+    persist.vendor.overlay.izat.optin=rro \
     persist.vendor.wigig.enable=1 \
     persist.vendor.wigig.npt.enable=1 \
     persist.vendor.wigig.npt.rps=0xEE \
+    qemu.hw.mainkeys=0 \
+    ro.asus.hdr=1 \
+    ro.asus.network.types=9 \
+    ro.asus.phone.dualLte=1 \
+    ro.asus.phone.dualVoWiFi=1 \
+    ro.asus.phone.dual_nt_sup=4 \
     ro.build.smartcharging=1 \
     ro.cpufreq.game=1 \
     ro.hardware.fp_position=back \
@@ -65,6 +107,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.internal.tcpdump.file \
     /data/logcat_log/capture.pcap \
     ro.kernel.qemu.gles=0 \
+    ro.lineage.build.vendor_security_patch=2019-03-01 \
     sdm.debug.disable_dest_scalar=1 \
     sdm.debug.disable_inline_rotator=1 \
     sdm.debug.disable_inline_rotator_secure=1 \

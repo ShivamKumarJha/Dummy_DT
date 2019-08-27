@@ -106,7 +106,7 @@ else
     if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 2097152 ]; then
         echo 10 > /sys/module/process_reclaim/parameters/pressure_min
         echo 1024 > /sys/module/process_reclaim/parameters/per_swap_size
-        echo "48432,63040,70648,116608,123200,142144" > /sys/module/lowmemorykiller/parameters/minfree
+        echo "48432,63040,100648,166608,213200,242144" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
     elif [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 1048576 ]; then
         echo 10 > /sys/module/process_reclaim/parameters/pressure_min
@@ -2671,13 +2671,14 @@ case "$target" in
 	echo 95 > /proc/sys/kernel/sched_upmigrate
 	echo 85 > /proc/sys/kernel/sched_downmigrate
 	echo 100 > /proc/sys/kernel/sched_group_upmigrate
-	echo 95 > /proc/sys/kernel/sched_group_downmigrate
+	echo 90 > /proc/sys/kernel/sched_group_downmigrate
 	echo 0 > /proc/sys/kernel/sched_select_prev_cpu_us
 	echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
 	echo 400000 > /proc/sys/kernel/sched_freq_dec_notify
 	echo 5 > /proc/sys/kernel/sched_spill_nr_run
 	echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
 	echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
+    echo 0 > /proc/sys/kernel/sched_initial_task_util
 
 	# configure governor settings for little cluster
 	echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
@@ -2784,7 +2785,7 @@ case "$target" in
 	echo N > /sys/module/lpm_levels/L3/l3-dyn-ret/idle_enabled
         # Turn on sleep modes.
         echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
-	echo 100 > /proc/sys/vm/swappiness
+	echo 85 > /proc/sys/vm/swappiness
 	echo 120 > /proc/sys/vm/watermark_scale_factor
 	
 	
@@ -2797,10 +2798,10 @@ case "$target" in
     chown system.system /sys/block/dm-0/queue/nr_requests
     chmod 0666 /sys/block/dm-0/queue/nr_requests
     
-    echo 1024 > /sys/block/dm-0/queue/read_ahead_kb
-    echo 1024 > /sys/block/dm-1/queue/read_ahead_kb
-	echo 1024 > /sys/block/sda/queue/read_ahead_kb
-	echo 1024 > /sys/block/sda/bdi/read_ahead_kb
+    echo 512 > /sys/block/dm-0/queue/read_ahead_kb
+    echo 512 > /sys/block/dm-1/queue/read_ahead_kb
+	echo 512 > /sys/block/sda/queue/read_ahead_kb
+	echo 512 > /sys/block/sda/bdi/read_ahead_kb
 
 	echo 512 > /sys/block/dm-0/queue/nr_requests
     echo 512 > /sys/block/dm-1/queue/nr_requests

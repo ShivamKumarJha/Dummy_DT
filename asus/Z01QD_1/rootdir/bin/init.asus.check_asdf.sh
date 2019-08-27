@@ -253,6 +253,29 @@ elif [ ".$android_boot" == ".1" ]; then
 		echo "[Debug]: Android restart....($android_reboot)" > /proc/asusevtlog
 	fi
 fi
+
+
+# dex_delete
+if [  ! -f "/data/local/tmp/vdex_to_delete" ]; then
+	echo "0" > /data/local/tmp/vdex_to_delete
+    chmod 0666 /data/local/tmp/vdex_to_delete
+    echo "create vdex delete file" > /proc/kmsg
+fi
+chown shell:shell /data/local/tmp/vdex_to_delete
+restorecon /data/local/tmp/
+# dex_delete
+file_to_delete=`cat /data/local/tmp/vdex_to_delete`
+if test "$file_to_delete" = "0"; then
+    echo "no vdex dammaged" > /proc/kmsg
+else
+    if test -e "/data/local/tmp/vdex_to_delete"; then
+        echo $file_to_delete >/proc/kmsg
+        rm $file_to_delete
+        echo "0" > /data/local/tmp/vdex_to_delete
+    fi
+fi
+
+
 echo 0 > /sys/fs/selinux/log
 
 

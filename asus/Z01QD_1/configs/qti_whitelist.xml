@@ -40,4 +40,5 @@
     <allow-in-power-save package="com.qualcomm.qti.server.wigigapp" />
     <allow-in-power-save package="com.qualcomm.qti.StatsPollManager" />
     <allow-in-power-save package="com.qualcomm.qti.gsma.services.nfc" />
+    <allow-in-power-save package="com.qualcomm.qti.seemp.service" />
 </config>

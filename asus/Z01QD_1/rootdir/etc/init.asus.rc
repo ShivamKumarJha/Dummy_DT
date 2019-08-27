@@ -164,6 +164,11 @@ on post-fs-data
     chmod 0664 /sys/class/leds/aura_sync/frame
     chmod 0664 /sys/class/leds/aura_sync/speed
     chmod 0664 /sys/class/leds/aura_sync/led_en
+    chmod 0664 /sys/class/leds/aura_sync/Calibration
+    chmod 0664 /sys/class/leds/aura_sync/IC_status
+    chmod 0664 /sys/class/leds/aura_sync/blink_set
+    chmod 0664 /sys/class/leds/aura_sync/emulate
+    chmod 0664 /sys/class/leds/aura_sync/suspend_vdd
 
     chown system system /sys/class/leds/aura_sync/VDD
     chown system system /sys/class/leds/aura_sync/red_pwm
@@ -176,6 +181,11 @@ on post-fs-data
     chown system system /sys/class/leds/aura_sync/frame
     chown system system /sys/class/leds/aura_sync/speed
     chown system system /sys/class/leds/aura_sync/led_en
+    chown system system /sys/class/leds/aura_sync/Calibration
+    chown system system /sys/class/leds/aura_sync/IC_status
+    chown system system /sys/class/leds/aura_sync/blink_set
+    chown system system /sys/class/leds/aura_sync/emulate
+    chown system system /sys/class/leds/aura_sync/suspend_vdd
 #ASUS_BSP Deeo : chown Aura sync attribute ---
 
 # ASUS Nancy add for BMMI test ++++
@@ -288,6 +298,11 @@ on post-fs-data
     chmod 0777 /data/data/GripSensor_SelfTest
 	chmod 755 /system/etc/Grip_Cal.sh
 #ASUS_BSP Clay : Grip debug directory ---
+
+#ASUS_BSP_WIFI +++ Reduce wifi power when receiver on
+    symlink /system/vendor/bin/sar-vendor-cmd.xml /data/data/sar-vendor-cmd.xml
+#ASUS_BSP_WIFI --- Reduce wifi power when receiver on
+
 #ASUS_BSP Stimber_Hsueh +++
 	rm /data/data/camera_status
     symlink /proc/driver/camera_status /data/data/camera_status
@@ -369,6 +384,14 @@ on post-fs-data
     chmod 0777 /data/data/Camera_VCM_data
 #ASUS_BSP --- bill_chen "Implement ois"
 
+# ASUS_BSP Austin_T +++ "BurnInTest"
+	chmod 0777 /sys/class/power_supply/battery/device/disable_input_suspend
+	chown system shell /sys/class/power_supply/battery/device/disable_input_suspend
+
+	chmod 0777 /sys/class/power_supply/battery/device/INOV_enable
+	chown system shell /sys/class/power_supply/battery/device/INOV_enable
+# ASUS_BSP Austin_T --- "BurnInTest"
+
     mkdir /vendor/asdf/recovery
     restorecon_recursive /vendor/asdf/recovery
     chmod 0644 /vendor/asdf/recovery
@@ -387,6 +410,13 @@ service asusgesture /vendor/bin/sh /vendor/etc/init.asus.gesture.sh
     group system
     user root
     class core
+    oneshot
+
+service gamemode /vendor/bin/sh /vendor/etc/init.asus.gamemode.sh
+    seclabel u:r:asus_touch:s0
+    class core
+    group system
+    user root
     oneshot
 
 service airtrigger /vendor/bin/sh /vendor/etc/init.airtrigger.sh
@@ -464,6 +494,14 @@ service StationSDSwitch /vendor/bin/sh /vendor/etc/station_sd_switch.sh
 # ASUS_BSP Deeo : station SD switch ---
 
 service ECShutdownNotify /vendor/bin/sh /vendor/etc/shutdown_notify.sh
+        seclabel u:r:aura_sync:s0
+        class core
+        user root
+        oneshot
+        disabled
+
+# ASUS_BSP Deeo : aura emulate mode
+service AuraEmulate /vendor/bin/sh /vendor/etc/aura_emulate.sh
         seclabel u:r:aura_sync:s0
         class core
         user root
@@ -891,6 +929,11 @@ on property:persist.asus.glove=0
 on property:persist.asus.glove=1
 	write /sys/bus/i2c/devices/i2c-4/4-0038/glove_mode 1
 
+# ASUS Nancy add for game mode switch
+on property:sys.asus.gamingtype=*
+	start gamemode
+on property:sys.screen.rotation=*
+	start gamemode
 
 # ASUS Nancy add for double click mode switch
 on property:persist.asus.dclick=0
@@ -941,6 +984,10 @@ on property:sys.asus.station.sd_power=*
 
 on property:sys.shutdown.requested=*
 	start ECShutdownNotify
+
+# ASUS_BSP Deeo : Aura Emulate
+on property:vendor.aura.emulate=*
+    start AuraEmulate
 
 # ASUS_BSP Deeo : fw update +++
 on property:sys.phone.aura_fwupdate=1
@@ -1080,6 +1127,8 @@ on property:FP_savelog=1
 
 on property:ro.hardware.fingerprint=*
     start fpservice
+
+on property:goodix.fp.service.ready=1
     start fps_hal
     
 #ASUS_BSP Beryl BT +++
@@ -1111,6 +1160,8 @@ on property:sys.aura.donglechmod=1
     chmod 0664 /sys/class/leds/aura_sync_inbox/frame
     chmod 0664 /sys/class/leds/aura_sync_inbox/speed
     chmod 0664 /sys/class/leds/aura_sync_inbox/led_en
+    chmod 0664 /sys/class/leds/aura_sync_inbox/Calibration
+    chmod 0664 /sys/class/leds/aura_sync_inbox/IC_status
 
     chown system system /sys/class/leds/aura_sync_inbox/VDD
     chown system system /sys/class/leds/aura_sync_inbox/red_pwm
@@ -1123,6 +1174,8 @@ on property:sys.aura.donglechmod=1
     chown system system /sys/class/leds/aura_sync_inbox/frame
     chown system system /sys/class/leds/aura_sync_inbox/speed
     chown system system /sys/class/leds/aura_sync_inbox/led_en
+    chown system system /sys/class/leds/aura_sync_inbox/Calibration
+    chown system system /sys/class/leds/aura_sync_inbox/IC_status
 
 #ASUS_BSP : inbox fan chmod +++
     chmod 0664 /sys/class/hwmon/Inbox_Fan/device/i2c_write_reg
@@ -1144,6 +1197,8 @@ on property:sys.aura.donglechmod=2
     chmod 0664 /sys/class/leds/aura_sync_station/fw_update
     chmod 0664 /sys/class/leds/aura_sync_station/frame
     chmod 0664 /sys/class/leds/aura_sync_station/speed
+    chmod 0664 /sys/class/leds/aura_sync_station/Calibration
+    chmod 0664 /sys/class/leds/aura_sync_station/IC_status
 
     chown system system /sys/class/leds/aura_sync_station/VDD
     chown system system /sys/class/leds/aura_sync_station/red_pwm
@@ -1155,6 +1210,8 @@ on property:sys.aura.donglechmod=2
     chown system system /sys/class/leds/aura_sync_station/fw_update
     chown system system /sys/class/leds/aura_sync_station/frame
     chown system system /sys/class/leds/aura_sync_station/speed
+    chown system system /sys/class/leds/aura_sync_station/Calibration
+    chown system system /sys/class/leds/aura_sync_station/IC_status
 
 # ASUS Nancy add for station touch SMMI test ++++
 	chmod 0777 /sys/bus/i2c/devices/i2c-1/1-0038/ftinitstatus 
@@ -1207,6 +1264,8 @@ on property:sys.aura.donglechmod=3
     chmod 0664 /sys/class/leds/aura_sync_inbox/frame
     chmod 0664 /sys/class/leds/aura_sync_inbox/speed
     chmod 0664 /sys/class/leds/aura_sync_inbox/led_en
+    chmod 0664 /sys/class/leds/aura_sync_inbox/Calibration
+    chmod 0664 /sys/class/leds/aura_sync_inbox/IC_status
 
     chown system system /sys/class/leds/aura_sync_inbox/VDD
     chown system system /sys/class/leds/aura_sync_inbox/red_pwm
@@ -1219,6 +1278,8 @@ on property:sys.aura.donglechmod=3
     chown system system /sys/class/leds/aura_sync_inbox/frame
     chown system system /sys/class/leds/aura_sync_inbox/speed
     chown system system /sys/class/leds/aura_sync_inbox/led_en
+    chown system system /sys/class/leds/aura_sync_inbox/Calibration
+    chown system system /sys/class/leds/aura_sync_inbox/IC_status
 
     chmod 0664 /sys/class/leds/DT_power/fw_ver
     chmod 0664 /sys/class/leds/DT_power/fw_update
@@ -1273,13 +1334,9 @@ on property:persist.odm.asus.station_sleep=true
 on property:sys.asus.dongletype=3
 	write /sys/module/msm_rtb/parameters/enable 1
 
-on property:sys.asus.dongletype=0 && property:persist.asus.startlog=0
+on property:sys.asus.hpd=0 && property:persist.asus.startlog=0
 	write /sys/module/msm_rtb/parameters/enable 0
 # ASUS BSP Display ---
-
-#ASUS_BSP_WIFI +++ Reduce wifi power when receiver on
-    symlink /system/vendor/bin/sar-vendor-cmd.xml /data/data/sar-vendor-cmd.xml
-#ASUS_BSP_WIFI --- Reduce wifi power when receiver on
 
 #+++ASUS_BSP : add for charger mode to enable uart console , adb and mount asdf, cache folder
 on charger
@@ -1307,6 +1364,15 @@ on charger
     start logd
     start logcat-charger
 #---ASUS_BSP : add for charger mode to enable uart console , adb and mount asdf folder
+
+##+++ASUS_BSP : add for factory burn in test
+on property:debug.burnin.test=1
+    write /sys/class/power_supply/battery/device/disable_input_suspend 1
+    write /sys/class/power_supply/battery/device/INOV_enable 0
+on property:debug.burnin.test=0
+    write /sys/class/power_supply/battery/device/disable_input_suspend 0
+    write /sys/class/power_supply/battery/device/INOV_enable 1
+##---ASUS_BSP : add for factory burn in test
 
 ###-----------------------------------------------###
 #              ALL ASUS on property (end)

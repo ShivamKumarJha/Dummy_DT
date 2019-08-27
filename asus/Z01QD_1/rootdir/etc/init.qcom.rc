@@ -961,6 +961,12 @@ on property:sys.shutdown.requested=*
 on property:sys.asus.sar.audio=*
     restart SARPower-sh
 
+on property:vendor.wigig.driver.status=*
+    restart SARPower-sh
+
+on property:wlan.softap.driver.status=*
+    restart SARPower-sh
+
 service SARPower-sh /system/vendor/bin/sh /system/vendor/bin/WifiSARPower.sh
 #Set class as core to avoid be killed when Cryptfs running
     class core
@@ -1200,6 +1206,9 @@ on property:sys.asus.sar.lte1=*
 on property:wlan.softap.driver.status=*
     restart sar_setting
 
+on property:vendor.wigig.driver.status=*
+    restart sar_setting
+
 service sar_setting /system/vendor/bin/sar_setting
 #Set class as core to avoid be killed when Cryptfs running
     class core
@@ -1373,6 +1382,16 @@ service hostapd_cmd /vendor/bin/hostapd_cmd
 
 on property:persist.sys.wifi.hostapd.cmd=*
     start hostapd_cmd
+
+on property:persist.asus.wigig.support=0
+    start sxuvl_cmd
+
+service sxuvl_cmd /vendor/bin/sxuvl_cmd
+    class main
+    group system wifi
+    user root
+    disabled
+    oneshot
 
 # ASUS_BSP Paul +++
 service asus_audbg /vendor/bin/init.asus.audbg.sh

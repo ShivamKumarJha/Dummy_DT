@@ -23,6 +23,11 @@ if [ "$pmode" == "tw.com.joybomb.pi2017" ]; then
 	echo N > /sys/module/lpm_levels/L3/cpu5/pc/idle_enabled
 	echo N > /sys/module/lpm_levels/L3/cpu6/pc/idle_enabled
 	echo N > /sys/module/lpm_levels/L3/cpu7/pc/idle_enabled
+elif [ "$pmode" == "net.gamon.loveliveTW" ]; then
+	setprop sys.cpu.gmodeset 1
+
+	echo performance > /sys/class/kgsl/kgsl-3d0/devfreq/governor
+	echo 0 > /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 else
 	pmodeset=`getprop sys.cpu.pmodeset`
 
@@ -46,6 +51,15 @@ else
 		echo Y > /sys/module/lpm_levels/L3/cpu5/pc/idle_enabled
 		echo Y > /sys/module/lpm_levels/L3/cpu6/pc/idle_enabled
 		echo Y > /sys/module/lpm_levels/L3/cpu7/pc/idle_enabled
+	fi
+
+	gmodeset=`getprop sys.cpu.gmodeset`
+
+	if [ "$gmodeset" == "1" ]; then
+		setprop sys.cpu.gmodeset 0
+	
+		echo msm-adreno-tz > /sys/class/kgsl/kgsl-3d0/devfreq/governor
+		echo 6 > /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 	fi
 fi
 echo 0 > /sys/fs/selinux/log

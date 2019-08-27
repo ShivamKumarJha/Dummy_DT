@@ -14,14 +14,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_volumes_ZS600KL.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_ZS600KL.xml \
     $(LOCAL_PATH)/configs/audio/audio_tuning_mixer_tavil.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer_tavil.txt \
-    $(LOCAL_PATH)/configs/audio/boot_sound_0.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_0.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_1.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_1.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_2.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_2.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_3.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_3.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_4.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_4.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_5.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_5.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_6.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_6.wav \
-    $(LOCAL_PATH)/configs/audio/boot_sound_7.wav:$(TARGET_COPY_OUT_VENDOR)/etc/boot_sound_7.wav \
     $(LOCAL_PATH)/configs/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_ZS600KL.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_ZS600KL.xml \

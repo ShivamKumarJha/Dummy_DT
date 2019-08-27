@@ -1,0 +1,8 @@
+on fs
+    setprop ro.product.vendor.brand Nokia
+    setprop ro.product.vendor.device A1N_sprout
+    setprop ro.product.vendor.name Avenger_00WW
+    setprop ro.product.vendor.model "Nokia 8 Sirocco"
+    setprop ro.product.vendor.manufacturer  "HMD Global"
+on fs
+	setprop ro.vendor.build.fingerprint Nokia/Avenger_00WW/A1N_sprout:9/PPR1.180610.011/00WW_4_14B:user/release-keys

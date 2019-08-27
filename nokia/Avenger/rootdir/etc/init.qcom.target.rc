@@ -1,0 +1,23 @@
+import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+#Fih add for securefs
+import /vendor/etc/init/hw/init.qcom.fs.rc
+import /vendor/etc/init/hw/init.qcom.cda.rc
+
+on early-init
+        setprop ro.bsp.device ${ro.boot.device}
+
+service wireless-init /system/vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot
+
+on property:vold.decrypt=trigger_restart_framework
+    start cnss_diag_LA11
+
+service cnss_diag_LA11 /system/vendor/bin/cnss_diag_LA11 -q -f
+    class main
+    user system
+    group system wifi inet net_admin sdcard_rw media_rw diag
+    oneshot
+

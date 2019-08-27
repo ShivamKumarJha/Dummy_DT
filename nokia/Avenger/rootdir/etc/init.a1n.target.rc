@@ -1,0 +1,52 @@
+import /vendor/etc/init/hw/init.nb1.smartamp.rc
+import /vendor/etc/init/hw/init.fih.fqcaudio.rc
+import /vendor/etc/init/hw/init.nb1.wbg.rc
+import /vendor/etc/init/hw/init.nb1.led.rc
+import /vendor/etc/init/hw/init.nb1.touch.rc
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+import /vendor/etc/init/hw/init.nb1.sd.rc
+import /vendor/etc/init/hw/init.nb1.lcm.rc
+import /vendor/etc/init/hw/init.a1n.camera.rc
+import /vendor/etc/init/hw/init.qcom.diagtest.rc
+import /vendor/etc/init/hw/init.a1n.battery.rc
+import /vendor/etc/init/hw/init.a1n.poweroff_charging.rc
+import /vendor/etc/init/hw/init.a1n.fingerprint.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+import /vendor/etc/init/hw/init.a1n.dbg.rc
+
+on init
+    setprop persist.vendor.fih.dbg.dev.info 2
+
+on early-boot
+    rm /persist/bluetooth/.bt_nv.bin
+
+on zygote-start
+    mkdir /data/preloads 0775 system system
+    mkdir /data/preloads/media 0775 system system
+    mkdir /data/preloads/demo 0775 system system
+
+service wifisar /system/vendor/bin/sh /system/vendor/bin/wifisar.sh
+    user root
+    disabled
+    oneshot
+
+on property:sys.wifi.sar=1
+    start wifisar
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABDKL
+class main
+disabled
+oneshot
+
+on property:sys.boot_completed=1
+    #Set fqc xml path for fqc test
+    setprop fqc.xmlpath vendor/etc/fqc_A1N.xml
+
+on property:vendor.wifi.mtu=true
+   write /sys/class/net/wlan0/mtu 1440
+
+on property:vendor.wifi.mtu=false
+   write /sys/class/net/wlan0/mtu 1500
+
+on property:vendor.wifi.ommtu=true
+   write /sys/class/net/wlan0/mtu 1390

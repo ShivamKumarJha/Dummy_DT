@@ -1,0 +1,22 @@
+# WBG Bluetooth
+on boot
+    setprop vendor.wbg.bt.service false
+    setprop vendor.wbg.bt btstop
+
+service wbg_bt /system/bin/sh /vendor/etc/wbg_bt.sh
+    user root
+    disabled
+    oneshot
+    seclabel u:object_r:wbg_bt_exec:s0
+
+on property:vendor.wbg.bt.service=true
+    start wbg_bt
+
+# WBGTestTool Wi-Fi Test
+service wbgtesttool_wifi /system/vendor/bin/sh /system/vendor/etc/wbg_wifi.sh
+    user root
+    oneshot
+    disabled
+
+on property:vendor.wbg.wifi=start
+    start wbgtesttool_wifi

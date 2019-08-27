@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <int-array name="wcdma_rscp_thresholds_int_array" num="4">
+            <item value="-109" />
+            <item value="-100" />
+            <item value="-95" />
+            <item value="-85" />
+        </int-array>
+        <int-array name="lte_rsrp_thresholds_int_array" num="4">
+            <item value="-119" />
+            <item value="-109" />
+            <item value="-99" />
+            <item value="-89" />
+        </int-array>
+    </carrier_config>
+</carrier_config_list>

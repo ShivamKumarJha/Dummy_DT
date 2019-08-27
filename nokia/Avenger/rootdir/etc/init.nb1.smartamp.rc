@@ -1,0 +1,6 @@
+service amp-init-sh  /vendor/bin/init.nb1.smartamp_init.sh
+         class late_start
+         user system
+         oneshot
+
+

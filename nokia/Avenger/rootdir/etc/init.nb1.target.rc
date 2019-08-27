@@ -1,0 +1,33 @@
+import /vendor/etc/init/hw/init.nb1.smartamp.rc
+import /vendor/etc/init/hw/init.fih.fqcaudio.rc
+import /vendor/etc/init/hw/init.nb1.wbg.rc
+import /vendor/etc/init/hw/init.nb1.led.rc
+import /vendor/etc/init/hw/init.nb1.touch.rc
+import /vendor/etc/init/hw/init.nb1.vibrator.rc
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+import /vendor/etc/init/hw/init.nb1.sd.rc
+import /vendor/etc/init/hw/init.nb1.lcm.rc
+import /vendor/etc/init/hw/init.nb1.camera.rc
+import /vendor/etc/init/hw/init.qcom.diagtest.rc
+import /vendor/etc/init/hw/init.nb1.battery.rc
+import /vendor/etc/init/hw/init.nb1.poweroff_charging.rc
+import /vendor/etc/init/hw/init.nb1.fingerprint.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+import /vendor/etc/init/hw/init.nb1.dbg.rc
+
+service wbgtesttool_wifi /system/vendor/bin/sh /system/etc/wbg_wifi.sh
+    user root
+    disabled
+    oneshot
+
+service wifisar /system/vendor/bin/sh /system/vendor/bin/wifisar.sh
+    user root
+    disabled
+    oneshot
+
+on property:persist.sys.wbg.wifi=start
+    start wbgtesttool_wifi
+
+on property:sys.wifi.sar=1
+    start wifisar
+

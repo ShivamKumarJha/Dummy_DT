@@ -1,0 +1,26 @@
+
+on boot
+    chown system system /proc/AllHWList/tp_self_test
+    chown system system /proc/AllHWList/tp_self_test_U0
+    chown system system /proc/AllHWList/tp_upgrade
+    chown system system /proc/AllHWList/tp_alt_rst
+    chown system system /proc/AllHWList/tp_alt_st_count
+    chown system system /proc/AllHWList/tp_alt_st_enable
+    chown system system /proc/AllHWList/tp_double_tap
+    chown system system /proc/AllHWList/tp_prox_status
+    chown system system /sys/devices/virtual/input/siw_touch_input/lpwg_notify
+    chown system system /sys/devices/virtual/input/siw_touch_input/glove_status
+
+    
+    chmod 644 /proc/AllHWList/tp_self_test 
+    chmod 644 /proc/AllHWList/tp_self_test_U0 
+    chmod 444 /proc/AllHWList/tp_fw_ver 
+    chmod 644 /proc/AllHWList/tp_upgrade
+    chmod 644 /proc/AllHWList/tp_alt_rst
+    chmod 644 /proc/AllHWList/tp_alt_st_count
+    chmod 644 /proc/AllHWList/tp_alt_st_enable
+    chmod 644 /proc/AllHWList/tp_double_tap
+    chmod 644 /proc/AllHWList/tp_prox_status
+
+on post-fs-data
+    mkdir /data/vendor/misc/touch 0770 system system

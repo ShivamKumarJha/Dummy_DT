@@ -1,0 +1,3 @@
+on property:persist.vendor.fih.dbg.dev.info=*
+    write /sys/module/tick_sched_ext/parameters/debug_cpu_usage_enable ${persist.vendor.fih.dbg.dev.info}
+

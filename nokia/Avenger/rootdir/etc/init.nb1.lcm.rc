@@ -1,0 +1,74 @@
+on boot
+	chown system system /proc/AllHWList/LCM0
+	chown system system /proc/AllHWList/LCM0/AOD
+	chown system system /proc/AllHWList/LCM0/PanelID
+	chown system system /proc/AllHWList/LCM0/setlp
+	chown system system /sys/class/graphics/fb0/blank
+	chown system system /proc/AllHWList/LCM0/glance
+	chown system system /proc/AllHWList/LCM0/cm
+	chown system system /proc/AllHWList/LCM0/hbm
+
+	chmod 777 /proc/AllHWList/LCM0
+	chmod 664 /proc/AllHWList/LCM0/AOD
+	chmod 644 /proc/AllHWList/LCM0/PanelID
+	chmod 664 /proc/AllHWList/LCM0/setlp
+	chmod 664 /proc/AllHWList/LCM0/glance
+	chmod 664 /proc/AllHWList/LCM0/cm
+	chmod 664 /proc/AllHWList/LCM0/hbm
+
+	chown system system /proc/AllHWList/LCM0/awer_cnt
+	chown system system /proc/AllHWList/LCM0/awer_status
+	chmod 664 /proc/AllHWList/LCM0/awer_cnt
+	chmod 664 /proc/AllHWList/LCM0/awer_status
+#Glance mode main switch
+on property:persist.glance.enable=1
+	write /proc/AllHWList/LCM0/glance 1
+
+on property:persist.glance.enable=0
+	write /proc/AllHWList/LCM0/glance 0
+
+#High Brightness mode
+on property:persist.vendor.hbm.enable=0
+	write /proc/AllHWList/LCM0/hbm 0
+
+on property:persist.vendor.hbm.enable=1
+	write /proc/AllHWList/LCM0/hbm 1
+
+#Color Manager
+on property:persist.sys.screenmode=0
+	write /proc/AllHWList/LCM0/cm 0x0
+
+on property:persist.sys.screenmode=4
+	write /proc/AllHWList/LCM0/cm 0x4
+
+on property:persist.sys.screenmode=8
+	write /proc/AllHWList/LCM0/cm 0x8
+
+on property:persist.sys.screenmode=c
+	write /proc/AllHWList/LCM0/cm 0xc
+
+on property:sys.boot_completed=1
+	start qdcm_script
+	write /proc/AllHWList/LCM0/cm 0x1
+
+on property:sys.qdcm.loadxml=1
+	copy /vendor/bin/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+	chown system system /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+
+on property:sys.qdcm.configxml=1
+	chown system system /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+
+on property:persist.qdcm.uninstall=1
+	rm /data/vendor/display/qdcm_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+	rm /data/vendor/display/disp_user_calib_data_LGD_cmd_mode_dsc_dsi_panel.xml
+
+service qdcm_script /vendor/bin/sh /vendor/bin/init.nb1.lcm.sh
+   disabled
+   class main
+   user root
+   group shell
+   oneshot
+
+

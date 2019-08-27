@@ -1,0 +1,4 @@
+require version-baseband=2.0.c4-00984-8998_GEN_PACK-1.177141.6
+require version-modem=2019-04-0402:18:54
+require version-trustzone=TZ.BF.4.0.6-00161
+require version-vendor=1554281229

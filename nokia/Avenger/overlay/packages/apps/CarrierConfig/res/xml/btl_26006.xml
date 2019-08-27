@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="oem_data_roaming_info_string">1,1</string>
+    </carrier_config>
+</carrier_config_list>

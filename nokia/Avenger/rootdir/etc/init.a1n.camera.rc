@@ -1,0 +1,20 @@
+on init
+       setprop persist.camera.FIH_FTM 0
+#setprop persist.vendor.camera.HAL3.enabled 0
+
+       #force HAL1 for below packages,[PL2O-4926][Camera]Camera is confused when record video in the com.dw.btime APK
+       setprop camera.hal1.packagelist com.dw.btime
+
+#Fih Add for 3A information mobicat
+       #disable for CTS verifier ITS test item temporarily {
+       #fix me if test_param_noise_reduction & test_reprocess_noise_reduction can be passed
+       setprop persist.vendor.camera.mobicat 0
+       setprop persist.camera.mobicat 0
+       setprop persist.vendor.camera.stats.debugexif 0
+       setprop persist.camera.stats.debugexif 0
+       #disable for CTS verifier ITS test item temporarily }
+#Fih Add for 3A information mobicat
+#MM-MC-ModifyExifForModelAndMake-00+{
+on property:ro.product.nickname=*
+	setprop persist.sys.exif.model ${ro.product.nickname}
+#MM-MC-ModifyExifForModelAndMake-00+}

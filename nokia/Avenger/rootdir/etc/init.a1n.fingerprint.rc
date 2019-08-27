@@ -1,0 +1,29 @@
+on boot
+    setprop sys.fp.navigation.enable 1
+
+on fs
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+
+on post-fs-data
+    mkdir /data/system/fingerprint 0770 system system
+
+service fqcfingerprint /vendor/bin/fqcfingerprint
+    user system
+    oneshot
+    disabled
+
+on property:vendor.sys.fqcfingerprint=1
+    start fqcfingerprint
+
+on property:vendor.sys.fqcfingerprint=2
+    start fqcfingerprint
+
+on property:vendor.sys.fqcfingerprint=3
+    start fqcfingerprint
+
+on property:vendor.sys.fqcfingerprint=4
+    start fqcfingerprint
+
+on property:sys.boot_completed=1
+    restorecon_recursive /data/system/fingerprint/

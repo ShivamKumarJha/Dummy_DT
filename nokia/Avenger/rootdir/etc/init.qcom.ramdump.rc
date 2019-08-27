@@ -1,0 +1,73 @@
+#For SSR ramdump
+#Check whether need do ssr ramdump
+on property:persist.vendor.fih.ramdump_ssr=1
+  write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
+  start ssr_ramdump
+
+on property:persist.vendor.fih.ramdump_ssr=0
+  write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
+  stop ssr_ramdump
+
+on property:persist.vendor.fih.ramdump_host=1
+  write /sys/module/msm_poweroff/parameters/download_mode 1
+
+on property:persist.vendor.fih.ramdump_host=0
+  write /sys/module/msm_poweroff/parameters/download_mode 0
+ 
+#backdoor to gerenal user
+#on property:debug.sys.fih.ramdump_ssr=1
+#  setprop persist.sys.fih.ramdump_ssr 1
+
+#on property:debug.sys.fih.ramdump_ssr=0
+#  setprop persist.sys.fih.ramdump_ssr 0
+
+#subsystem_ramdump as a SSR restart monitor & ramdump generator
+service ssr_ramdump /system/vendor/bin/subsystem_ramdump 1 0 0
+  user root
+  group root system
+  disabled
+  
+
+# Default Sub System Restart (SSR) Level
+#   SYSTEM: Do host reboot when ssr
+#  RELATED: No host reboot when ssr
+on boot
+  write /sys/bus/msm_subsys/devices/subsys0/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys1/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys2/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys3/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys4/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys5/restart_level RELATED
+  write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
+
+  #start ssr_diag
+
+#on post-fs-data
+ mkdir /data/vendor/diag_logs 770 system system
+
+# Enable / disable diag_mdlog
+on property:persist.vendor.fih.mdlog=1
+  start mdlog_start
+
+on property:persist.vendor.fih.mdlog=0
+  start mdlog_stop
+
+service mdlog_start /system/vendor/bin/diag_mdlog -c -f /data/vendor/diag_logs/diag.cfg &
+  user system
+  group system oem_2901 sdcard_rw sdcard_r media_rw
+  disabled
+  oneshot
+
+service mdlog_stop /system/vendor/bin/diag_mdlog -k
+  user system
+  group system oem_2901 sdcard_rw sdcard_r media_rw
+  disabled
+  oneshot
+
+# Host RamDump into raw partition
+on property:persist.debug.host.ramdump_raw=1
+  write /sys/kernel/dload/emmc_dload 1
+on property:persist.debug.host.ramdump_raw=0
+  write /sys/kernel/dload/emmc_dload 0
+on boot
+  write /sys/kernel/dload/emmc_dload ${persist.debug.host.ramdump_raw}

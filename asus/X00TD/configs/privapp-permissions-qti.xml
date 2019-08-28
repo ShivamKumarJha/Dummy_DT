@@ -231,4 +231,10 @@ It allows additional grants on top of privapp-permissions-platform.xml
     </privapp-permissions>
     <!-- Huaqin add by litao for cts fail on 20190617 end-->
 
+    <!-- Huaqin add by litao for cts fail on 20190814 begin-->
+    <privapp-permissions package="com.google.android.gms">
+        <permission name="android.permission.MODIFY_DAY_NIGHT_MODE"/>
+    </privapp-permissions>
+    <!-- Huaqin add by litao for cts fail on 20190814 end-->
+
 </permissions>

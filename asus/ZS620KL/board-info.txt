@@ -1,0 +1,4 @@
+require version-baseband=4.0.c2-01247-SDM845_GEN_PACK-1
+require version-modem=2019-04-2220:40:12
+require version-trustzone=TZ.XF.5.0.1.C5-00058
+require version-vendor=1556725999

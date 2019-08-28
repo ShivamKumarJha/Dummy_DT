@@ -17,7 +17,6 @@ PRODUCT_MODEL := ASUS_ZS620KL
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 TARGET_VENDOR := asus
 TARGET_VENDOR_PRODUCT_NAME := ZS620KL
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC=""
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := asus/ZS620KL:10/52:user/release-keys

@@ -1,0 +1,6 @@
+on fs
+    # mount elabel
+    wait /dev/block/bootdevice/by-name/elabel
+    mount ext4 /dev/block/bootdevice/by-name/elabel /vendor/elabel noatime nosuid nodev barrier=1
+    chown system system /vendor/elabel
+    restorecon_recursive /vendor/elabel

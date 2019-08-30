@@ -1,0 +1,52 @@
+#POWER ON/OFF
+#power on 4 cores, using highest frequency
+on property:sys.boost.enable=1
+    write /sys/devices/system/cpu/cpu0/online  1
+    write /sys/devices/system/cpu/cpu1/online  1
+    write /sys/devices/system/cpu/cpu2/online  1
+    write /sys/devices/system/cpu/cpu3/online  1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
+
+on property:sys.boost.enable=0
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+
+on early-init
+    setprop sys.boost.enable 1
+
+#emm will disable it for better performance when power on
+#on property:service.bootanim.exit=1
+#    setprop sys.boost.enable 0
+
+on charger
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
+
+#CPU GOVERNOR
+on property:sys.sysctl.cpu_governor=*
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ${sys.sysctl.cpu_governor}
+
+#GPU GOVERNOR
+on property:sys.sysctl.gpu_governor=*
+   write /sys/class/kgsl/kgsl-3d0/devfreq/governor ${sys.sysctl.gpu_governor}
+
+#DROPCACHE & SYNC
+on property:sys.sysctl.drop_caches=*
+   write /proc/sys/vm/drop_caches ${sys.sysctl.drop_caches}
+
+on property:sys.sysctl.sync=*
+   exec /system/bin/sync
+
+#LMK
+on property:sys.sysctl.min_free_kbytes=*
+   write /proc/sys/vm/min_free_kbytes ${sys.sysctl.min_free_kbytes}
+
+on property:sys.sysctl.lmk_minfree=*
+   write /sys/module/lowmemorykiller/parameters/minfree ${sys.sysctl.lmk_minfree}
+
+on property:sys.sysctl.lmk_adj=*
+   write /sys/module/lowmemorykiller/parameters/adj ${sys.sysctl.lmk_adj}
+
+on property:sys.boot_completed=1
+   write /sys/module/lowmemorykiller/parameters/adj "0,100,200,300,900,906"
+   write /sys/module/lowmemorykiller/parameters/minfree "9216,12288,15360,18432,51200,74240"
+   write /proc/sys/vm/min_free_kbytes 2815
+   write /proc/sys/vm/extra_free_kbytes 0

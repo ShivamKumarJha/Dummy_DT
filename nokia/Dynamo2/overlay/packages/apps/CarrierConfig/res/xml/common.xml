@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="uaProfTagName">x-wap-profile</string>
+        <string name="uaProfUrl">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+        <string name="userAgent">Android-Mms/2.0</string>
+        <int name="maxImageHeight" value="480" />
+        <int name="maxImageWidth" value="640" />
+        <int name="maxSubjectLength" value="40" />
+        <int name="recipientLimit" value="200" />
+        <int name="maxMessageSize" value="307200" />
+        <int name="maxMessageTextSize" value="2000" />
+        <int name="smsToMmsTextLengthThreshold" value="-1" />
+        <int name="smsToMmsTextThreshold" value="-1" />
+        <boolean name="enableSMSDeliveryReports" value="true" />
+        <boolean name="enableMMSDeliveryReports" value="true" />
+        <boolean name="enableMMSReadReports" value="true" />
+        <boolean name="enabledMMS" value="true" />
+        <boolean name="enableGroupMms" value="true" />
+        <boolean name="config_cellBroadcastAppLinks" value="true" />
+        <boolean name="enableMultipartSMS" value="true" />
+        <boolean name="sendMultipartSmsAsSeparateMessages" value="false" />
+        <boolean name="APNVisibility" value="true" />
+        <boolean name="MMSAPNVisibility" value="true" />
+        <boolean name="APNIPTypeVisibility" value="true" />
+        <boolean name="MMSAPNIPTypeVisibility" value="true" />
+        <boolean name="allow_emergency_numbers_in_call_log_bool" value="true" />
+        <boolean name="show_cdma_choices_bool" value="false" />
+        <boolean name="smsUsesSimpleCharactersOnly" value="false" />
+        <boolean name="oem_overlay_resource" value="false" />
+        <boolean name="allowEnablingWapPushSI" value="true" />
+        <boolean name="enableWapPushSI" value="true" />
+        <boolean name="dtmf_type_enabled_bool" value="false" />
+        <boolean name="carrier_volte_available_bool" value="false" />
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="groupChatDefaultsToMMS" value="false" />
+        <int name="oem_key_plmn_with_short_name_int" value="1" />
+        <boolean name="config_enable_display_14digit_imei" value="false" />
+        <string-array name="apn_hide_rule_strings_array" num="0" />
+        <boolean name="oem_enable_att_call_waiting_tone" value="false" />
+        <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
+    </carrier_config>
+    <carrier_config mcc="260">
+        <boolean name="smsUsesSimpleCharactersOnly" value="true" />
+        <boolean name="groupChatDefaultsToMMS" value="false" />
+    </carrier_config>
+    <carrier_config mcc="286">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="454">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="460">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="disable_voice_barring_notification_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="466">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="404">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="405">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="505">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="716">
+        <boolean name="oem_allow_show_volte_icon_bool" value="true" />
+        <boolean name="oem_allow_show_vowifi_icon_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

@@ -1,0 +1,2 @@
+on fs
+	setprop ro.vendor.build.fingerprint Nokia/Dynamo2_00RU/E2M:9/PKQ1.181105.001/00WW_1_13F:user/release-keys

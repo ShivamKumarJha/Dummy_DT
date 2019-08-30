@@ -1,0 +1,3 @@
+on boot
+    setprop ro.vendor.sensors.gravity false
+    setprop ro.vendor.sensors.laccel false

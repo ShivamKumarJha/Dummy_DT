@@ -1,0 +1,4 @@
+on early-boot
+
+#disable uicc se
+        setprop persist.vendor.radio.uicc_se_enabled false

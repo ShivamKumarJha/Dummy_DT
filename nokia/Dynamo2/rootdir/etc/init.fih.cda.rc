@@ -1,0 +1,6 @@
+on fs
+# Mount CDA image.
+    mkdir /hidden/data 0777 system system
+    mount ext4 /dev/block/bootdevice/by-name/cda /hidden/data noatime nosuid nodev barrier=1
+    chown system system /hidden/data
+    restorecon_recursive /hidden/data

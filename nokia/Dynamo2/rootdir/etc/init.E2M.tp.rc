@@ -1,0 +1,24 @@
+on boot
+    chown system system /proc/AllHWList/tp_self_test
+    chown system system /proc/AllHWList/tp_upgrade
+    chown system system /proc/AllHWList/tp_smart_cover
+    chown system system /proc/AllHWList/tp_gesture
+    chown system system /proc/AllHWList/tp_gesture_available
+    chmod 644 /proc/AllHWList/tp_self_test
+    chmod 444 /proc/AllHWList/tp_fw_ver
+    chmod 644 /proc/AllHWList/tp_upgrade
+    chmod 644 /proc/AllHWList/tp_smart_cover
+    chmod 664 /proc/AllHWList/tp_gesture
+    chmod 664 /proc/AllHWList/tp_gesture_available
+    chown system system /proc/AllHWList/tp_alt_rst
+    chown system system /proc/AllHWList/tp_alt_st_count
+    chown system system /proc/AllHWList/tp_alt_st_enable
+    chown system system /proc/AllHWList/tp_double_tap
+    chmod 644 /proc/AllHWList/tp_alt_rst
+    chmod 644 /proc/AllHWList/tp_alt_st_count
+    chmod 644 /proc/AllHWList/tp_alt_st_enable
+    chmod 644 /proc/AllHWList/tp_double_tap
+    write /proc/AllHWList/tp_upgrade 1
+
+on post-fs-data
+    mkdir /data/misc/touch 0770 system system

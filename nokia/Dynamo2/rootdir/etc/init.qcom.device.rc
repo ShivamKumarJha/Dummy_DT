@@ -1,0 +1,23 @@
+import /vendor/etc/init/hw/init.qcom.cda.rc
+#import /vendor/etc/init/hw/init.qcom.theme.rc
+import /system/etc/init/init.qcom.log.rc
+#import /vendor/etc/init/hw/init.qcom.util.rc
+import /vendor/etc/init/hw/init.fih.check.rc
+#import /vendor/etc/init/hw/init.qcom.poweroff_charging.rc
+#import /vendor/etc/init/hw/init.fih.tmpfs.rc
+import /vendor/etc/init/hw/init.fih.daemon.rc
+import /vendor/etc/init/hw/init.qcom.dischgdaemon.rc
+#add by EddieKHChang for app-overlay(overlay apk) B
+import /system/etc/init/init.fih.app_overlay.rc
+#add by EddieKHChang for app-overlay(overlay apk) E
+
+#20150330 FAO-537 IsonYHHung add
+service fih_cpufreq /system/bin/sh /system/etc/init.fih.cpufreq.sh
+    class core
+    oneshot
+    
+on post-fs-data
+    # added by KellyKLHuang for SKT sim block
+    mkdir /securefs/simblock 0771 system system
+    restorecon_recursive /securefs/simblock
+    # added by KellyKLHuang for SKT sim block

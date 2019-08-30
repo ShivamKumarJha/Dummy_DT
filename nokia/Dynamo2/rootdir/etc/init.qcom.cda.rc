@@ -1,0 +1,68 @@
+import /vendor/etc/init/hw/init.sku.${ro.boot.skuid}.${ro.boot.hwmodel}.${ro.boot.simslot}.rc
+import /vendor/etc/init/hw/init.sku.${ro.boot.skuid}.${ro.boot.hwmodel}.rc
+import /vendor/etc/init/hw/init.sku.${ro.boot.skuid}.rc
+import /vendor/etc/init/hw/init.sku.rc
+import /system/etc/init/hw/init.sku.${ro.boot.skuid}.${ro.boot.hwmodel}.${ro.boot.simslot}.rc
+import /system/etc/init/hw/init.sku.${ro.boot.skuid}.${ro.boot.hwmodel}.rc
+import /system/etc/init/hw/init.sku.${ro.boot.skuid}.rc
+import /system/etc/init/hw/init.sku.rc
+
+on fs
+#   /*+++FIH:StanleyCheng 2011/12/20+++*/
+# Mount virtual cd-rom.
+    chown system hidden /hidden
+    chown system hidden /vendor/hidden
+    restorecon_recursive /hidden
+    restorecon_recursive /vendor/hidden
+
+# Mount CDA image.
+    chown system system /hidden/data
+    chown system system /vendor/hidden/data
+    restorecon_recursive /hidden/data
+    restorecon_recursive /vendor/hidden/data
+
+# Set /vendor/hidden /vendor/hidden/data directory permission
+    chmod 0551 /hidden
+    chmod 0551 /vendor/hidden
+    chmod 0551 /hidden/data
+    chmod 0551 /vendor/hidden/data
+    mkdir /hidden/data/CDALog 0755 system system
+    mkdir /vendor/hidden/data/CDALog 0755 system system
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.pre-cda.sh
+    setprop vendor.cda.checkmultisim 0
+
+on property:sys.boot_completed=1
+    losetup /dev/block/cdrom-loop /hidden/custom.iso
+    losetup /dev/block/cdrom-loop2 /vendor/hidden/custom.iso
+    write /sys/devices/soc/78db000.usb/msm_hsusb/gadget/lun0/file /dev/block/cdrom-loop
+    write /sys/devices/soc/78db000.usb/msm_hsusb/gadget/lun0/file /dev/block/cdrom-loop2
+    write /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file /dev/block/cdrom-loop
+    write /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file /dev/block/cdrom-loop2
+    restorecon_recursive /dev/block/cdrom-loop
+    mkdir /data/app/preload 0771 system system
+
+# persist.radio.multisim.config is set by default
+on property:persist.radio.multisim.config=* && property:vendor.cda.checkmultisim=0
+    setprop vendor.cda.checkmultisim 1
+
+# persist.radio.multisim.config is not set by default
+on property:vold.decrypt=trigger_restart_framework && property:vendor.cda.checkmultisim=0
+    setprop persist.radio.multisim.config "dsds"
+    setprop vendor.cda.checkmultisim 1
+
+on property:vendor.cda.checkmultisim=1 && property:ro.boot.simslot=1
+    setprop persist.radio.multisim.config "ssss"
+    setprop vendor.cda.checkmultisim 2
+
+on property:vendor.cda.checkmultisim=1 && property:ro.boot.simslot=2
+    setprop persist.radio.multisim.config "dsds"
+    setprop vendor.cda.checkmultisim 2
+
+on property:ro.boot.skuid=*
+    setprop ro.cda.skuid.id ${ro.boot.skuid}
+    setprop ro.cda.skuid.id_final ${ro.boot.skuid}
+
+# /data/misc/cust
+    mkdir /data/misc/cust 0771 system system
+    chown system system /data/misc/cust
+    restorecon_recursive /data/misc/cust

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <int name="oem_key_plmn_with_short_name_int" value="0" />
+        <boolean name="oem_maunal_search_consider_spn_first_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

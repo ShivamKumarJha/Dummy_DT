@@ -1,0 +1,20 @@
+#import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+import /vendor/etc/init/hw/init.E2M.tp.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+import /vendor/etc/init/hw/init.fih.cda.rc
+#import /vendor/etc/init/hw/init.alt.rc
+import /vendor/etc/init/hw/init.E2M.nose.rc
+
+#For SSR ramdump
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+
+#import /vendor/etc/init/hw/init.e2m.poweroff_charging.rc
+
+import /vendor/etc/init/hw/init.E2M.lcm.rc
+
+import /vendor/etc/init/hw/init.E2M.sensor.rc
+
+#import /vendor/etc/init/hw/init.vibrator.rc
+
+import /vendor/etc/init/hw/init.fih.fqcaudio.rc
+

@@ -1,0 +1,35 @@
+# Add start FQC audio loopback qiujie 2018.01.22
+
+service fqcaudioloopback /vendor/bin/fqcaudioloopback_run.sh
+    oneshot
+    user system
+    disabled
+
+on property:debug.sys.fqcaudio=11
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=10
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=21
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=20
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=31
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=30
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=41
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=40
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=51
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=50
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=61
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=60
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=0
+    stop fqcaudioloopback
+
+# Add end FQC audio loopback qiujie 2018.01.22

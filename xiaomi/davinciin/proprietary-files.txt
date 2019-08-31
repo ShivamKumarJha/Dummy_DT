@@ -740,8 +740,8 @@ vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Display
-vendor/etc/dsi_ss_fhd_ea8076_f10_cmd_display_mi.xml
-vendor/etc/dsi_ss_fhd_r66456_f10_cmd_display_mi.xml
+vendor/etc/dsi_ss_fhd_ea_f10_cmd_display_mi.xml
+vendor/etc/dsi_ss_fhd_eb_f10_cmd_display_mi.xml
 
 # Display-Hardware
 -lib/libsdm-disp-apis.so
@@ -813,8 +813,8 @@ vendor/etc/qdcm_calib_data_Dual_Sharp_wqhd_video_mode_dsi_panel.xml
 vendor/etc/qdcm_calib_data_hx83112a_video_mode_dsi_truly_panel.xml
 vendor/etc/qdcm_calib_data_nt35695b_truly_fhd_command_mode_dsi_panel.xml
 vendor/etc/qdcm_calib_data_nt35695b_truly_fhd_video_mode_dsi_panel.xml
-vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml
-vendor/etc/qdcm_calib_data_ss_r66456_fhd_cmd_dsi_panel.xml
+vendor/etc/qdcm_calib_data_ss_ea_fhd_cmd_dsi_panel.xml
+vendor/etc/qdcm_calib_data_ss_eb_fhd_cmd_dsi_panel.xml
 vendor/etc/qdcm_calib_data_sw43404_amoled_boe_fhd+_panel_with_DSC.xml
 vendor/etc/qdcm_calib_data_sw43404_amoled_cmd_mode_dsi_boe_panel_with_DSC.xml
 vendor/etc/qdcm_calib_data_sw43404_amoled_video_mode_dsi_boe_panel_with_DSC.xml

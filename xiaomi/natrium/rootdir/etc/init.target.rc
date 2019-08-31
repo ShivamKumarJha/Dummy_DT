@@ -1,0 +1,566 @@
+# Copyright (c) 2013-2017, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+
+on early-init
+    mkdir /firmware 0771 system system
+    mkdir /bt_firmware 0771 system system
+    symlink /data/tombstones /tombstones
+    mkdir /dsp 0771 media media
+    mkdir /persist 0771 system system
+    chown system root  /sys/module/msm_thermal/core_control/cpus_offlined
+    chmod 666 /sys/module/msm_thermal/core_control/cpus_offlined
+
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mount_all /vendor/etc/fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
+
+    # Keeping following partitions outside fstab file. As user may not have
+    # these partition flashed on the device. Failure to mount any partition in fstab file
+    # results in failure to launch late-start class.
+
+    mkdir /persist/data 0700 system system
+    mkdir /persist/bms 0700 root system
+    mkdir /persist/subsys 0700 system system
+    mkdir /persist/wlan_bt 0700 system system
+    mkdir /persist/bms 0700 root system
+    restorecon_recursive /persist
+    mkdir /persist/audio 0777 media audio
+
+    chmod 644 /persist/audio/us_manual_cal
+
+on init
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
+on post-fs-data
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /persist/data/sfs 0700 system system
+    mkdir /persist/data/tz 0700 system system
+    mkdir /persist/qc_senseid 0700 system system
+    mkdir /data/misc/dts 0770 media audio
+    mkdir /data/misc/seemp 0700 system system
+    mkdir /data/usf 0700 system system
+    mkdir /data/misc/tloc/ 0700 system drmrpc
+    mkdir /data/misc/qvr 0770 system system
+    mkdir /data/misc/audio_pp 0771 media audio
+    mkdir /data/audio_cal 0771 system system
+    mkdir /data/thermal 0771 system system
+    mkdir /data/thermal/config 0771 system system
+
+   # Add a cpuset for the camera daemon
+   # We want all cores for camera
+   mkdir /dev/cpuset/camera-daemon
+   write /dev/cpuset/camera-daemon/cpus 0-3
+   write /dev/cpuset/camera-daemon/mems 0
+   chown cameraserver cameraserver /dev/cpuset/camera-daemon
+   chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+   chmod 0660 /dev/cpuset/camera-daemon/tasks
+
+#Create folder for mm-qcamera-daemon
+mkdir /data/vendor/camera 0770 camera camera
+
+    #QDCM config file for gemini
+    copy /system/etc/calib.cfg /data/vendor/display/calib.cfg
+    copy /system/etc/qdcm_calib_data_jdi_fhd_cmd_incell_dsi_panel.xml /data/vendor/display/qdcm_calib_data_jdi_fhd_cmd_incell_dsi_panel.xml
+    copy /system/etc/qdcm_calib_data_jdi_j1_fhd_cmd_incell_dsi_panel.xml /data/vendor/display/qdcm_calib_data_jdi_j1_fhd_cmd_incell_dsi_panel.xml
+    copy /system/etc/qdcm_calib_data_lgd_fhd_cmd_incell_dsi_panel.xml /data/vendor/display/qdcm_calib_data_lgd_fhd_cmd_incell_dsi_panel.xml
+    copy /system/etc/qdcm_calib_data_sharp_fhd_cmd_incell_dsi_panel.xml /data/vendor/display/qdcm_calib_data_sharp_fhd_cmd_incell_dsi_panel.xml
+    chmod 0644 /data/vendor/display/calib.cfg
+    chmod 0644 /data/vendor/display/qdcm_calib_data_jdi_fhd_cmd_incell_dsi_panel.xml
+    chmod 0644 /data/vendor/display/qdcm_calib_data_jdi_j1_fhd_cmd_incell_dsi_panel.xml
+    chmod 0644 /data/vendor/display/qdcm_calib_data_lgd_fhd_cmd_incell_dsi_panel.xml
+    chmod 0644 /data/vendor/display/qdcm_calib_data_sharp_fhd_cmd_incell_dsi_panel.xml
+    #QDCM config file for scorpio
+    copy /system/etc/calib.cfg /data/vendor/display/calib.cfg
+    copy /system/etc/qdcm_calib_data_lgd_sw43101_video_fhd_oled_panel.xml /data/vendor/display/qdcm_calib_data_lgd_sw43101_video_fhd_oled_panel.xml
+    copy /system/etc/qdcm_calib_data_lgd_sw43101_p2_video_fhd_oled_panel.xml /data/vendor/display/qdcm_calib_data_lgd_sw43101_p2_video_fhd_oled_panel.xml
+    chmod 0644 /data/vendor/display/calib.cfg
+    chmod 0644 /data/vendor/display/qdcm_calib_data_lgd_sw43101_video_fhd_oled_panel.xml
+    chmod 0644 /data/vendor/display/qdcm_calib_data_lgd_sw43101_p2_video_fhd_oled_panel.xml
+    #QDCM config file for lithium
+    copy /system/etc/calib.cfg /data/vendor/display/calib.cfg
+    copy /system/etc/qdcm_calib_data_auo_fte716_1080p_video_mode_dsi_panel.xml /data/vendor/display/qdcm_calib_data_auo_fte716_1080p_video_mode_dsi_panel.xml
+    copy /system/etc/qdcm_calib_data_sharp_fte716_1080p_video_mode_dsi_panel.xml /data/vendor/display/qdcm_calib_data_sharp_fte716_1080p_video_mode_dsi_panel.xml
+    chmod 0644 /data/vendor/display/calib.cfg
+    chmod 0644 /data/vendor/display/qdcm_calib_data_auo_fte716_1080p_video_mode_dsi_panel.xml
+    chmod 0644 /data/vendor/display/qdcm_calib_data_sharp_fte716_1080p_video_mode_dsi_panel.xml
+
+
+# on property:init.svc.bootanim=running
+#    write /sys/class/leds/wled/brightness 4095
+
+on boot
+    start rmt_storage
+    start rfs_access
+    # nfc init config
+    chmod 0660 /dev/pn548
+    chown nfc nfc /dev/pn548
+
+# access permission for secure touch
+    chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch_enable
+    chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch_enable
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-004a/secure_touch
+    write /proc/sys/kernel/sched_boost 1
+    write /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/input/input0/update_fw 1
+# access permission for smartPA
+    chmod 0666 /dev/i2c-3
+    chmod 0666 /dev/i2c-9
+
+# audio smart pa cold boot
+service tfa_cold_boot /system/bin/sh /system/bin/tfa_coldboot.sh /etc/silence_short.wav 15 1
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:service.soundcard.detected=1
+    start tfa_cold_boot
+
+# access permission for led torch
+    chmod 0666 /sys/class/leds/led:torch_0/brightness
+    chmod 0666 /sys/class/leds/led:torch_1/brightness
+    chmod 0666 /sys/class/leds/led:switch/brightness
+
+#start camera server as daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+    class late_start
+    user camera
+    group camera system inet input graphics
+
+#fingerprint service
+#service fingerprintd /system/vendor/bin/fingerprintd
+#    class late_start
+#    user system
+#    group system
+
+#service qfp-daemon /system/vendor/bin/qfp-daemon
+#    class late_start
+#    user system
+#    group system drmrpc diag input
+
+#service fps_hal /system/vendor/bin/fingerprint.qcom
+#    class late_start
+#    user system
+#    group system input
+
+service qvrd /system/vendor/bin/qvrservice
+    class late_start
+    user system
+    group system camera graphics
+    socket qvrservice stream 0666 system system
+
+#Start up peripheral manager
+service per_mgr /vendor/bin/pm-service
+    class core
+    user system
+    group system net_raw
+    ioprio rt 4
+
+service per_proxy /vendor/bin/pm-proxy
+    class core
+    user system
+    group system
+    disabled
+
+on property:init.svc.per_mgr=running
+    start per_proxy
+
+on property:sys.shutdown.requested=*
+    stop per_proxy
+
+service mdm_launcher /system/bin/sh init.mdm.sh
+     class core
+     oneshot
+
+service mdm_helper /system/bin/mdm_helper
+     class core
+     group root system
+     disabled
+## Allow usb charging to be disabled peristently
+#on property:persist.usb.chgdisabled=1
+#    write /sys/class/power_supply/battery/charging_enabled 0
+#
+#on property:persist.usb.chgdisabled=0
+#    write /sys/class/power_supply/battery/charging_enabled 1
+#
+#service qrngd /system/bin/qrngd -f
+#   class main
+#   user root
+#   group root
+#
+#service qrngp /system/bin/qrngp
+#    class main
+#    user root
+#    group root
+#    oneshot
+#    disabled
+#
+#on property:sys.boot_completed=1
+#    start qrngp
+
+service qseecomd /vendor/bin/qseecomd
+   class core
+   user root
+   group root
+
+service gamed /system/vendor/bin/gamed
+   class main
+   user system
+   group system
+   disabled
+   socket gamed seqpacket 0640 system system
+
+service seempd /system/vendor/bin/seempd
+   class late_start
+   user system
+   group system
+   socket seempdw dgram 0666 system system
+
+service secotad /system/vendor/bin/secotad
+   class late_start
+   user system
+   group system
+
+#service mpdecision /system/vendor/bin/mpdecision --avg_comp
+#   user root
+#   disabled
+#
+#service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
+#   user system
+#   group system
+#   disabled
+#
+service thermal-engine /system/vendor/bin/thermal-engine -T
+   class main
+   user root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
+   socket thermal-send-rule stream 0660 system system
+   group root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
+
+#service security-check1 /sbin/security_boot_check system
+#    class core
+#    oneshot
+#
+#service security-check2 /sbin/security_boot_check recovery
+#    class core
+#    oneshot
+#
+service time_daemon /system/vendor/bin/time_daemon
+   class late_start
+   user root
+   group root
+
+service adsprpcd /system/vendor/bin/adsprpcd
+   class main
+   user media
+   group media
+
+service audiod /system/vendor/bin/audiod
+   class late_start
+   user system
+   group system
+
+
+service usf_tester /system/vendor/bin/usf_tester
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_epos /system/vendor/bin/usf_epos
+    class main
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_gesture /system/vendor/bin/usf_gesture
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_sync_gesture /system/vendor/bin/usf_sync_gesture
+    user system
+    group system inet audio
+    disabled
+    oneshot
+
+service usf_p2p /system/vendor/bin/usf_p2p
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_hovering /system/vendor/bin/usf_hovering
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_proximity /system/vendor/bin/usf_proximity
+    class late_start
+    user system
+    group system inet audio
+
+service usf_pairing /system/vendor/bin/usf_pairing
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf_sw_calib /system/vendor/bin/usf_sw_calib
+    user system
+    group system inet
+    disabled
+    oneshot
+
+service usf-post-boot /system/vendor/bin/sh /system/etc/usf_post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=stopped
+    start usf-post-boot
+
+service imsqmidaemon /system/vendor/bin/imsqmidaemon
+    class main
+    user system
+    socket ims_qmid stream 0660 system radio
+    group radio log diag
+
+service imsdatadaemon /system/vendor/bin/imsdatadaemon
+    class main
+    user system
+    socket ims_datad stream 0660 system radio
+    group system wifi radio inet log diag
+    disabled
+
+service pd_mapper /system/vendor/bin/pd-mapper
+     class core
+     disabled
+
+on property:persist.sys.pd_enable=1
+     start pd_mapper
+     write /sys/class/service_locator/service_locator_status 1
+
+on property:persist.sys.pd_enable=0
+     write /sys/class/service_locator/service_locator_status 0
+
+#
+## QCA1530 SoC late_start group trigger
+#service gnss-init /system/vendor/bin/gnss.qca1530.sh init
+#   class late_start
+#   oneshot
+#
+on property:vendor.ims.QMI_DAEMON_STATUS=1
+    start imsdatadaemon
+
+service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
+   class main
+   user system
+   group radio diag inet log
+   disabled
+
+service vendor.imsrcsservice /system/vendor/bin/imsrcsd
+   class main
+   user system
+   group radio diag inet log
+   disabled
+
+on property:vendor.ims.DATA_DAEMON_STATUS=1
+   start ims_rtp_daemon
+   start vendor.imsrcsservice
+
+service dts_configurator /system/vendor/bin/dts_configurator
+    class late_start
+    user system
+    group system media audio
+    oneshot
+
+service dtseagleservice /system/vendor/bin/dts_eagle_service
+    class late_start
+    user system
+    group audio media
+    disabled
+
+on property:init.svc.dts_configurator=stopped
+    start dtseagleservice
+
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
+on property:init.svc.surfaceflinger=running
+    start ppd
+
+on property:init.svc.surfaceflinger=restarting
+    stop ppd
+
+on property:init.svc.zygote=stopped
+    stop ppd
+
+on property:init.svc.zygote=running
+    start ppd
+
+on property:init.svc.zygote=restarting
+    stop ppd
+
+service tlocd /system/bin/tloc_daemon
+    class late_start
+    user system
+    group drmrpc gps net_raw
+
+service energy-awareness /system/vendor/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
+
+service hvdcp_opti /system/vendor/bin/hvdcp_opti
+    class main
+    user root
+    group system wakelock
+
+service mdtpd /system/vendor/bin/mdtpd
+   class late_start
+   user root
+   group system radio drmrpc
+
+service nv_mac /vendor/bin/nv_mac
+    class main
+    user root
+    group net_raw
+    oneshot
+
+service nv_fem /vendor/bin/nv_fem
+    class main
+    user root
+    group net_raw
+    oneshot
+
+on property:slpi.restart=1
+    write /sys/kernel/debug/msm_subsys/slpi restart
+
+on charger
+    wait /dev/block/bootdevice
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    write /sys/class/input/input0/enabled 0
+    write /sys/class/input/input1/enabled 0
+    write /sys/class/input/input2/enabled 0
+    write /sys/class/input/input3/enabled 0
+    write /sys/class/input/input4/enabled 0
+    write /sys/class/input/input5/enabled 0
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+    write /sys/module/lpm_levels/system/system-cci-pc/idle_enabled 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "userspace"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed 300000
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "userspace"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed 300000
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/module/msm_thermal/parameters/enabled "N"
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    start hvdcp_opti
+    start qcom-sh
+
+service dhcpcd_eth0 /system/vendor/bin/dhcpcd -ABKLG
+	class late_start
+	disabled
+	oneshot
+
+service iprenew_eth0 /system/vendor/bin/dhcpcd -n
+	class late_start
+	disabled
+	oneshot
+
+service ppd /vendor/bin/mm-pp-dpps
+    class late_start
+    user system
+    group system graphics
+    socket pps stream 0660 system system
+    disabled
+
+#fingerprint service
+service qfp-daemon /system/vendor/bin/qfp-daemon
+    class late_start
+    user system
+    group system drmrpc diag input
+
+service panel-info-sh /system/vendor/bin/init.panel_info.sh
+    class core
+    user root
+    oneshot
+
+service leds-sh /system/vendor/bin/init.leds.sh
+    class core
+    user root
+    oneshot
+
+service mmbn-daemon /system/bin/mmbn-daemon
+    class main
+    oneshot
+
+on property:init.svc.zygote=stopped
+    stop hal_displayfeature
+
+on property:init.svc.zygote=running
+    start hal_displayfeature
+
+on property:init.svc.zygote=restarting
+    stop hal_displayfeature
+
+on property:init.svc.zygote=stopped
+    stop light-hal-2-0
+
+on property:init.svc.zygote=running
+    start light-hal-2-0
+
+on property:init.svc.zygote=restarting
+    stop light-hal-2-0
+
+service captouch-sh /system/vendor/bin/init.captouch.sh
+  class late_start
+  user root
+  oneshot

@@ -1,0 +1,3 @@
+require version-baseband=2.0.C1.9-145243
+require version-modem=2019-04-2414:42:16
+require version-trustzone=TZ.BF.4.0.1-100589

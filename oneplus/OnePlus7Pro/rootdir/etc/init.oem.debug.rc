@@ -40,6 +40,12 @@ on property:persist.vendor.enable.powerkey.dump=1
 on property:persist.vendor.enable.powerkey.dump=0
     write /sys/module/qpnp_power_on/parameters/long_pwr_dump_enabled  0
 
+on property:vendor.sys.oem.long_debug_suspend=1
+    write /d/clk/debug_suspend 1
+
+on property:vendor.sys.oem.long_debug_suspend=0
+    write /d/clk/debug_suspend 0
+
 on charger
     mount ext4 /dev/block/bootdevice/by-name/cache /cache
     start charger_logkit

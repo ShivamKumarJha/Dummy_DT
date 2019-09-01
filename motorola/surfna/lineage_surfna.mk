@@ -19,4 +19,4 @@ TARGET_VENDOR := motorola
 TARGET_VENDOR_PRODUCT_NAME := surfna
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := 9/PCB29.73-65/20bc:user/release-keys
+BUILD_FINGERPRINT := 9/PPB29.73-59/32afb4:user/release-keys

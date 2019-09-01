@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="carrier_volte_available_bool" value="false" />
+        <boolean name="carrier_vt_available_bool" value="false" />
+    </carrier_config>
+</carrier_config_list>

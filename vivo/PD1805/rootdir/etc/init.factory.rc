@@ -1,0 +1,70 @@
+service atcid-daemon /vendor/bin/atcid_factory
+	class late_start
+	user root
+	group system radio cache audio
+	disabled
+
+service atcid_vendor_init /vendor/bin/atcid_vendor -init
+	class late_start
+	user root
+	group system
+	oneshot
+
+service atcid_vendor_socket /vendor/bin/atcid_vendor -socket
+	socket atcid_vendor_socket stream 660 radio system
+	user root
+	group system
+	disabled
+
+on property:persist.sys.bbkem=1
+	start atcid-daemon
+	start atcid_vendor_socket
+
+on property:persist.sys.bbkem=0
+	stop atcid-daemon
+	stop atcid_vendor_socket
+
+service vivo_em_svr /vendor/bin/vivo_em_svr -init
+	class late_start
+	user root
+	group system cache audio
+	oneshot
+
+service vivo_em_float /vendor/bin/vivo_em_svr -floating
+	user root
+	group system cache
+	disabled
+	oneshot
+
+on property:sys.boot_completed=1
+    start vivo_em_float
+
+service vivo_em_dpdt /vendor/bin/vivo_em_svr -dpdt
+	user root
+	group system
+	disabled
+	oneshot
+
+on property:sys.dpdt.control=1
+    start vivo_em_dpdt
+
+on property:sys.boot_completed=1 && property:persist.sys.atm.flag=1
+    start meta_tst
+    start loghidlvendorservice
+    start loghidlsysservice
+
+service factory_logcat /system/bin/atcid_common -log
+	user root
+	group system cache
+	disabled
+	oneshot
+
+on property:sys.factory.log=1
+    start factory_logcat
+
+on post-fs-data
+    mkdir /data/engineermode 0774
+    mkdir /data/vendor/engineermode 0774
+    chown system system /data/vendor/engineermode
+    restorecon /data/vendor/engineermode
+

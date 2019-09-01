@@ -109,60 +109,6 @@
         <value>204</value>
     </array>
     <item name="cpu.idle">5</item>
-    <item name="cpu.cluster_power.cluster0">0.1</item>
-    <array name="cpu.core_speeds.cluster0">
-        <value>300000</value>
-        <value>576000</value>
-        <value>748800</value>
-        <value>998400</value>
-        <value>1209600</value>
-        <value>1324800</value>
-        <value>1516800</value>
-        <value>1612800</value>
-        <value>1708800</value>
-    </array>
-    <array name="cpu.core_power.cluster0">
-        <value>11</value>
-        <value>12</value>
-        <value>16</value>
-        <value>18</value>
-        <value>24</value>
-        <value>28</value>
-        <value>30</value>
-        <value>37</value>
-        <value>41</value>
-    </array>
-    <item name="cpu.cluster_power.cluster1">0.1</item>
-    <array name="cpu.core_speeds.cluster1">
-        <value>300000</value>
-        <value>652800</value>
-        <value>825600</value>
-        <value>979200</value>
-        <value>1132800</value>
-        <value>1363200</value>
-        <value>1536000</value>
-        <value>1747200</value>
-        <value>1843200</value>
-        <value>1996800</value>
-        <value>2054400</value>
-        <value>2169600</value>
-        <value>2208000</value>
-    </array>
-    <array name="cpu.core_power.cluster1">
-        <value>44</value>
-        <value>54</value>
-        <value>59</value>
-        <value>66</value>
-        <value>74</value>
-        <value>87</value>
-        <value>97</value>
-        <value>110</value>
-        <value>131</value>
-        <value>144</value>
-        <value>171</value>
-        <value>194</value>
-        <value>204</value>
-    </array>
     <array name="memory.bandwidths">
         <value>22.7</value>
     </array>

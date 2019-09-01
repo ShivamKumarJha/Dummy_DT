@@ -36,9 +36,6 @@ audio_vivo_codec_common audio_vivo_codec_TD1704 audio_vivo_codec_ak4376 audio_vi
 audio_vivo_codec_tfa9894 audio_vivo_codec_aw87319 audio_vivo_codec_ia610 audio_vivo_codec_ak4377a_common \
 audio_machine_sdm710
     write /proc/sys/kernel/sched_boost 1
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    mkdir /dsp 0771 media media
     symlink /data/tombstones /tombstones
 
 on init
@@ -59,7 +56,7 @@ on fs
     mount_all /vendor/etc/fstab.qcom
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
-    restorecon_recursive /mnt/vendor/persist
+    restorecon_recursive --force /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
 
 on post-fs
@@ -69,6 +66,8 @@ on post-fs
     start vendor.qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
+    setprop sys.serialno ${ro.serialno}
+    start vivo_defend
 
 service sec_nvm /vendor/bin/sec_nvm
     class core
@@ -81,14 +80,12 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
-    mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/tloc 0700 system drmrpc
     mkdir /data/vendor/nnhal 0700 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
-    chown system system /sys/kernel/hbtp/display_pwr
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-7
@@ -97,32 +94,39 @@ on boot
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
 
-    # Add by vivo sensor team For HALL SENSOR
-    chmod 0666 /sys/class/input/input1/enable
-    chmod 0666 /sys/class/input/input1/data
-    chmod 0666 /sys/class/input/input2/enable
-    chmod 0666 /sys/class/input/input2/data
-    chown system system /sys/class/input/input1/enable
-    chown system system /sys/class/input/input2/enable
-    chown system system /sys/class/input/input1/data
-    chown system system /sys/class/input/input2/data
 
+    # Add by vivo sensor team For HALL SENSOR
     chmod 0666 /sys/class/vivo_hall/up_hall/enable
     chmod 0666 /sys/class/vivo_hall/up_hall/data
     chmod 0666 /sys/class/vivo_hall/up_hall/plan
     chmod 0666 /sys/class/vivo_hall/down_hall/enable
     chmod 0666 /sys/class/vivo_hall/down_hall/data
-    chmod 0666 /sys/class/timed_output/motor/enable
-    chmod 0666 /sys/class/timed_output/motor/cali_data
 
     chown system system /sys/class/vivo_hall/up_hall/enable
     chown system system /sys/class/vivo_hall/up_hall/data
     chown system system /sys/class/vivo_hall/up_hall/plan
     chown system system /sys/class/vivo_hall/down_hall/enable
     chown system system /sys/class/vivo_hall/down_hall/data
+
+
+    chmod 0666 /sys/class/input/input1/enable
+    chmod 0666 /sys/class/input/input1/data
+    chmod 0666 /sys/class/input/input2/enable
+    chmod 0666 /sys/class/input/input2/data
+    chmod 0666 /sys/class/timed_output/motor/enable
+    chmod 0666 /sys/class/timed_output/motor/cali_data
+    chown system system /sys/class/input/input1/enable
+    chown system system /sys/class/input/input2/enable
+    chown system system /sys/class/input/input1/data
+    chown system system /sys/class/input/input2/data
     chown system system /sys/class/timed_output/motor/enable
     chown system system /sys/class/timed_output/motor/cali_data
     # Add by vivo sensor team For HALL SENSOR
+
+    # Add by vivo factory team For LCM_IMEI
+    chmod 0664 /sys/lcm/imei_ctl
+    chown root system /sys/lcm/imei_ctl
+    # Add by vivo factory team For LCM_IMEI
 
 # Add a cpuset for the camera daemon
 # We want all cores for camera
@@ -134,7 +138,8 @@ on boot
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
 #Load WLAN driver
-    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+#    insmod /vendor/lib/modules/qca_cld3_wlan.ko
+#    setprop wlan.driver.status "ok"
 
     ####Regionalization config and prop files####
     chmod 0644 /persist/speccfg/spec
@@ -221,6 +226,10 @@ service spdaemon /vendor/bin/spdaemon
     user system
     group system
 
+#service mpdecision /system/vendor/bin/mpdecision --avg_comp
+#   user root
+#   disabled
+#
 #service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
 #   user system
 #   group system
@@ -249,7 +258,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #   group root
 
 service adsprpcd /vendor/bin/adsprpcd rootpd
-   class main
+   class core
    user system
    group system
 
@@ -465,12 +474,6 @@ on property:init.svc.vendor.hwcomposer-2-1=restarting
 on charger
      setprop sys.usb.configfs 1
 
-service hbtp /system/vendor/bin/hbtp_daemon
-     class main
-     user system
-     group system
-     disabled
-
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
     user system
@@ -482,12 +485,24 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     user root
     group system wakelock
 
-service tlocd /vendor/bin/tloc_daemon
-    class late_start
-    user system
-    group drmrpc gps net_raw
+## delete by vivo yanglinjun 
+#service tlocd /vendor/bin/tloc_daemon
+#    class late_start
+#    user system
+#    group drmrpc gps net_raw
 
 service smcinvoked /system/bin/smcinvoked
     class main
     user system
     group system
+    
+    
+#vivo lizonglin add start
+service vivo_defend /vendor/bin/vivo_defend 
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+#vivo lizonglin add end
+    

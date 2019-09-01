@@ -1,4 +1,4 @@
-# Copyright (c) 2009-2012, 2014-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, 2014-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -86,8 +86,6 @@ on early-boot
     chmod 0664 /persist/sensors/sensors_settings
 
     chown system system /mnt/vendor/persist/sensors
-    chown system system /mnt/vendor/persist/sensors/sns.reg
-    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
     chown system system /mnt/vendor/persist/sensors/registry
     chown system system /mnt/vendor/persist/sensors/registry/registry
     chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
@@ -143,7 +141,7 @@ on boot
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
     mkdir /persist/misc 0770 system system
     mkdir /persist/alarm 0770 system system
-    mkdir /mnt/vendor/persist/time 0770 system system
+    mkdir /persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
 
     #Create NETMGR daemon socket area
@@ -206,17 +204,19 @@ on boot
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
     # Allow access to emmc rawdump block partition and dload sysfs node
-    chown root system /dev/block/bootdevice/by-name/rawdump
-    chmod 0660 /dev/block/bootdevice/by-name/rawdump
+    chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
+    chmod 0660 /dev/block/bootdevice/by-name/rawdump -p /dev/block/
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
-    chown root system /dev/block/bootdevice/by-name/ramdump
-    chmod 0660 /dev/block/bootdevice/by-name/ramdump
+    chown root system /dev/block/bootdevice/by-name/ramdump -p /dev/block/
+    chmod 0660 /dev/block/bootdevice/by-name/ramdump -p /dev/block/
     chown root system /sys/kernel/dload/dload_mode
     chmod 0660 /sys/kernel/dload/dload_mode
 
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    chown system system /sys/class/backlight/panel1-backlight/brightness
+    chown system system /sys/class/backlight/panel1-backlight/max_brightness
 
     # Allow access to sensors device attributes
     chown system system /sys/class/sensors/MPU6050-accel/enable
@@ -229,13 +229,10 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
     # Create directory used for display
-    # for backward compatibility
     mkdir /persist/display 0770 system graphics
-    mkdir /mnt/vendor/persist/display 0770 system graphics
 
     # Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
-
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
@@ -278,6 +275,8 @@ on post-fs-data
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
     mkdir /persist/camera 0770 cameraserver cameraserver
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -311,6 +310,10 @@ on post-fs-data
     #Create QTI dir for logs
     mkdir /data/vendor/dataqti 0770 radio radio
     chmod 0770 /data/vendor/dataqti
+
+    # Create the directories used by CnE subsystem
+    mkdir /data/connectivity 0771 system system
+    chown system system /data/connectivity
 
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
@@ -424,8 +427,11 @@ on post-fs-data
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
+    #Create FTM_AP dir for factory test
+    mkdir /data/FTM_AP 0775 system system
+
     #Create dir for TUI
-    mkdir /data/vendor/tui 0700 system drmrpc
+    mkdir /data/vendor/tui 0600 system drmrpc
 
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
@@ -570,11 +576,11 @@ service dpmQmiMgr /system/vendor/bin/dpmQmiMgr
     user system
     group system
 
-service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
+service vendor.qrtr-ns /vendor/bin/qrtr-ns -f -i 1
     class core
-    user vendor_qrtr
-    group vendor_qrtr
-    capabilities NET_BIND_SERVICE
+    user system
+    group system net_admin
+    capabilities NET_BIND_SERVICE NET_ADMIN
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
@@ -628,7 +634,7 @@ service vendor.bt_logger /system/bin/bt_logger
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
     user root
-    group bluetooth net_bt_admin misc diag net_bt
+    group bluetooth net_bt_admin misc net_bt_stack diag net_bt
     disabled
     oneshot
 
@@ -734,14 +740,6 @@ service vendor.wigig_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-# Data Migration
-service vendor.move_wifi_data /system/bin/move_wifi_data.sh
-    class main
-    user  wifi
-    group wifi
-    disabled
-    oneshot
-
 # FST Manager with hostapd (softap) - all settings inside ini file
 service fstman /vendor/bin/fstman -B -ddd -c /data/vendor/wifi/fstman.ini -a 1
     user wifi
@@ -821,9 +819,8 @@ service iprenew_wigig0 /system/bin/dhcpcd -n
 
 service ptt_socket_app /system/vendor/bin/ptt_socket_app -d
     class main
-    user wifi
-    group wifi system inet net_admin
-    capabilities NET_ADMIN
+    user root
+    group root
     oneshot
 
 service ptt_ffbm /system/vendor/bin/ptt_socket_app -f -d
@@ -853,6 +850,20 @@ on property:persist.vendor.data.perf_ko_load=1
 
 on property:persist.vendor.data.perf_ko_load=0
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules rmnet_perf
+
+
+service cnss_diag /system/vendor/bin/cnss_diag -q -f
+    class main
+    user system
+    group system wifi inet net_admin sdcard_rw media_rw diag
+    disabled
+
+on property:persist.sys.is_wlan_log=2
+    stop cnss_diag
+    start cnss_diag
+
+on property:persist.sys.is_wlan_log=0
+    stop cnss_diag
 
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
@@ -1102,12 +1113,6 @@ service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/ms
     group root
     disabled
 
-#service vendor.msm_irqbl_sdm630 /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_sdm630.conf
-#    class core
-#    user root
-#    group root
-#    disabled
-
 # service for USERDEBUG
 service vendor.LKCore-dbg /vendor/bin/LKCore
     class late_start
@@ -1149,11 +1154,7 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
 
 on property:init.svc.surfaceflinger=restarting
     stop  vendor.hwcomposer-2-1
-    stop  vendor.hwcomposer-2-2
-    stop  vendor.hwcomposer-2-3
     start vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-2
-    start vendor.hwcomposer-2-3
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
@@ -1209,7 +1210,7 @@ service vendor.move_time_data /system/bin/move_time_data.sh
     disabled
     oneshot
 
-service vendor.hbtp /vendor/bin/hbtp_daemon
+ service vendor.hbtp /vendor/bin/hbtp_daemon
      class main
      user system
      group system
@@ -1235,4 +1236,4 @@ on property:vendor.opengles.version=*
 
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
-    setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
+    setprop ro.gpu.available_frequencies ${vendor.gpu.available_frequencies}

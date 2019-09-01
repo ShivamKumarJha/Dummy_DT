@@ -1,16 +1,12 @@
 <!--
     Input:
         vendor_framework_compatibility_matrix.xml
-        compatibility_matrix.xml
-        common_compatibility_matrix.xml
-        qcom_common_compatibility_matrix.xml
-        project_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
 -->
 <compatibility-matrix version="1.0" type="framework">
     <hal format="hidl" optional="true">
         <name>android.hardware.gnss</name>
         <version>1.0-1</version>
-        <version>2.0</version>
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
@@ -18,25 +14,10 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.gnss</name>
-        <version>1.0-1</version>
-        <version>2.0</version>
+        <version>1.0</version>
         <interface>
             <name>IGnss</name>
             <instance>gnss_vendor</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.media.c2</name>
-        <version>1.0</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>default</instance>
-            <instance>software</instance>
-        </interface>
-        <interface>
-            <name>IConfigurable</name>
-            <instance>default</instance>
-            <instance>software</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -49,7 +30,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.radio</name>
-        <version>1.0-4</version>
+        <version>1.0-2</version>
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
@@ -59,14 +40,6 @@
             <name>ISap</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.radio.config</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IRadioConfig</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -130,24 +103,8 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>com.quicinc.cne.api</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IApiService</name>
-            <instance>cnd</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>com.quicinc.cne.server</name>
-        <version>2.0-2</version>
-        <interface>
-            <name>IServer</name>
-            <instance>cnd</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.display.color</name>
-        <version>1.0-3</version>
+        <version>1.0-2</version>
         <interface>
             <name>IDisplayColor</name>
             <instance>default</instance>
@@ -155,7 +112,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.display.config</name>
-        <version>1.0-8</version>
+        <version>1.0-5</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
@@ -166,14 +123,6 @@
         <version>1.0</version>
         <interface>
             <name>IDisplayPostproc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="false">
-        <name>vendor.factory.hardware.vivoatcmd</name>
-        <version>1.0</version>
-        <interface>
-            <name>IVivoAtcmd</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -194,9 +143,16 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpnfc</name>
+        <version>1.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.data.factory</name>
         <version>1.0</version>
-        <version>2.0</version>
         <interface>
             <name>IFactory</name>
             <instance>default</instance>
@@ -213,8 +169,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.gnss</name>
         <version>1.0-2</version>
-        <version>2.0-1</version>
-        <version>3.0</version>
+        <version>2.0</version>
         <interface>
             <name>ILocHidlGnss</name>
             <instance>gnss_vendor</instance>
@@ -229,75 +184,10 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.audiohalext</name>
-        <version>1.0</version>
-        <interface>
-            <name>IAudioHalExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.bluetooth_audio</name>
-        <version>2.0</version>
-        <interface>
-            <name>IBluetoothAudioProvidersFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.bluetooth_sar</name>
-        <version>1.0</version>
-        <interface>
-            <name>IBluetoothSar</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.btconfigstore</name>
-        <version>1.0</version>
-        <interface>
-            <name>IBTConfigStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.cacert</name>
-        <version>1.0</version>
-        <interface>
-            <name>IService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.capabilityconfigstore</name>
-        <version>1.0</version>
-        <interface>
-            <name>ICapabilityConfigStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.cvp</name>
-        <version>1.0</version>
-        <interface>
-            <name>ICvp</name>
-            <instance>cvphalservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.data.connection</name>
         <version>1.0</version>
         <interface>
             <name>IDataConnection</name>
-            <instance>slot1</instance>
-            <instance>slot2</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.data.iwlan</name>
-        <version>1.0</version>
-        <interface>
-            <name>IIWlan</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
@@ -311,34 +201,10 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.display.allocator</name>
-        <version>1.0</version>
-        <interface>
-            <name>IQtiAllocator</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.display.mapper</name>
-        <version>1.1</version>
-        <interface>
-            <name>IQtiMapper</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.factory</name>
         <version>1.0</version>
         <interface>
             <name>IFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.fingerprint</name>
-        <version>1.0</version>
-        <interface>
-            <name>IQtiExtendedFingerprint</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -351,30 +217,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.blobmanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IBlobManager</name>
-            <instance>BlobManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.gesturemanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IGestureManager</name>
-            <instance>GestureManagerService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.improvetouch.touchcompanion</name>
-        <version>1.0</version>
-        <interface>
-            <name>ITouchCompanion</name>
-            <instance>TouchCompanionService</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.iop</name>
         <version>2.0</version>
         <interface>
@@ -383,24 +225,8 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.mlshal</name>
-        <version>1.0</version>
-        <interface>
-            <name>IMlsDap</name>
-            <instance>mlsdaphal</instance>
-        </interface>
-        <interface>
-            <name>IMlsIon</name>
-            <instance>mlsionhal</instance>
-        </interface>
-        <interface>
-            <name>IMlsVnc</name>
-            <instance>mlsvnchal</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.perf</name>
-        <version>2.0</version>
+        <version>1.0</version>
         <interface>
             <name>IPerf</name>
             <instance>default</instance>
@@ -437,7 +263,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.ims</name>
-        <version>1.0-5</version>
+        <version>1.0-4</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
@@ -465,7 +291,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.qtiradio</name>
         <version>1.0</version>
-        <version>2.0-2</version>
+        <version>2.0</version>
         <interface>
             <name>IQtiRadio</name>
             <instance>slot1</instance>
@@ -500,34 +326,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.scve.objecttracker</name>
-        <version>1.0</version>
-        <interface>
-            <name>IObjectTracker</name>
-            <instance>objectTracker</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.scve.panorama</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPanoramaStitching</name>
-            <instance>panoStitching</instance>
-        </interface>
-        <interface>
-            <name>IPanoramaTracking</name>
-            <instance>panoTracking</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.seccam</name>
-        <version>1.0</version>
-        <interface>
-            <name>ISecCam</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.sensorscalibrate</name>
         <version>1.0</version>
         <interface>
@@ -553,7 +351,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.vpp</name>
-        <version>1.0-2</version>
+        <version>1.0-1</version>
         <interface>
             <name>IHidlVppService</name>
             <instance>vppService</instance>
@@ -576,23 +374,19 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifidisplaysession</name>
+        <name>vendor.qti.hardware.wifi.wifilearner</name>
         <version>1.0</version>
         <interface>
-            <name>IWifiDisplaySession</name>
-            <instance>wifidisplaysession</instance>
+            <name>IWifiStats</name>
+            <instance>wifiStats</instance>
         </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.wifi.wifivendorsta</name>
+        <version>1.0</version>
         <interface>
-            <name>IWifiDisplaySessionAudioTrack</name>
-            <instance>wifidisplaysessionaudiotrack</instance>
-        </interface>
-        <interface>
-            <name>IWifiDisplaySessionImageTrack</name>
-            <instance>wifidisplaysessionimagetrack</instance>
-        </interface>
-        <interface>
-            <name>IWifiDisplaySessionVideoTrack</name>
-            <instance>wifidisplaysessionvideotrack</instance>
+            <name>IWifiVendorStaIface</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -630,18 +424,9 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.imsrtpservice</name>
         <version>1.0</version>
-        <version>2.0</version>
         <interface>
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.power.pasrmanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -653,6 +438,22 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.atcmd</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAtcmdFramework</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.atcmd</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAtcmdFramework</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.vivo.hardware.bbkts</name>
         <version>1.0</version>
         <interface>
@@ -660,7 +461,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="false">
+    <hal format="hidl" optional="true">
         <name>vendor.vivo.hardware.biometrics.analysis</name>
         <version>1.0</version>
         <interface>
@@ -669,14 +470,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.vivo.hardware.biometrics.face</name>
-        <version>2.0</version>
-        <interface>
-            <name>IBiometricsFace</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="false">
         <name>vendor.vivo.hardware.biometrics.fingerprint</name>
         <version>2.1</version>
         <interface>
@@ -709,10 +502,42 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.dualleds</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDualleds</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.dualleds</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDualleds</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.faceunlock</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFaceUnlockNative</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.vivo.hardware.nativecamera.provider</name>
         <version>1.0</version>
         <interface>
             <name>INativeCameraProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.offlinetimezone</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOfflinetimezone</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -725,10 +550,26 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.ringleds</name>
+        <version>1.0</version>
+        <interface>
+            <name>IRingleds</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.vivo.hardware.sectee</name>
         <version>1.0</version>
         <interface>
             <name>ISecTee</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.vivo.hardware.sensorfactory</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensorFactory</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -748,20 +589,11 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.vivo.hardware.wifi.wifivendorsta</name>
-        <version>1.0</version>
-        <interface>
-            <name>IVivoWifiVendorStaIface</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <sepolicy>
         <kernel-sepolicy-version>30</kernel-sepolicy-version>
         <sepolicy-version>26.0</sepolicy-version>
         <sepolicy-version>27.0</sepolicy-version>
         <sepolicy-version>28.0</sepolicy-version>
-        <sepolicy-version>10000.0</sepolicy-version>
     </sepolicy>
     <avb>
         <vbmeta-version>1.0</vbmeta-version>

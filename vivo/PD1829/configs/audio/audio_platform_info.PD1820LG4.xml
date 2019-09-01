@@ -149,6 +149,7 @@
         <device name="SND_DEVICE_OUT_VOICE_HANDSET" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_ANC_HANDSET" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_AUDIO_LIGHT" backend="audio-light" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_44.1" backend="headphones-44.1" interface="SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_DSD" backend="headphones-dsd" interface="SEC_MI2S_RX"/>
@@ -165,7 +166,6 @@
         <device name="SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET" backend="headphones" interface="SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_MINISPEAKER" backend="voice-minispeaker" interface="PRI_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_KTV" backend="speaker" interface="PRI_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO_WB" backend="bt-sco-wb" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO" backend="bt-sco" interface="SLIMBUS_7_RX"/>
@@ -181,7 +181,6 @@
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_ANC_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_FB_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_HANDSET_SPEAKER" interface="INT0_MI2S_RX-and-PRI_MI2S_RX"/>
         <device name="SND_DEVICE_IN_HDMI_MIC" interface="HDMI"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC" interface="SLIMBUS_7_TX"/>
         <device name="SND_DEVICE_IN_BT_SCO_MIC_NREC" interface="SLIMBUS_7_TX"/>
@@ -254,8 +253,6 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_QUAD_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_REC_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_REC_MAIN_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_REC_SUB_HANDSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_REC_HEADSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VR_HANDSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VR_HEADSET" interface="INT3_MI2S_TX"/>

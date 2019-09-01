@@ -486,10 +486,6 @@
     <ctl name="IA6xx CVQ Stream on I2S" value="OFF" />
     <ctl name="MultiMedia1 Mixer TERT_MI2S_TX" value="0" />
     <ctl name="TERT_MI2S_TX Channels" value="One" />
-    <ctl name="Audio Stream Capture 1 App Type Cfg" id="0" value="0" />
-    <ctl name="Audio Stream Capture 1 App Type Cfg" id="1" value="0" />
-    <ctl name="Audio Stream Capture 1 App Type Cfg" id="2" value="48000" />
-    <ctl name="Audio Stream Capture 1 App Type Cfg" id="3" value="0" />
     <!-- Knowles streaming over i2s controls end -->
 
     <!-- Knowles i2s echo ref controls start -->
@@ -516,9 +512,6 @@
         <ctl name="IA6xx CVQ Stream on I2S" value="ON" />
         <ctl name="MultiMedia2 Mixer TERT_MI2S_TX" value="1" />
         <ctl name="TERT_MI2S_TX Channels" value="One" />
-        <ctl name="Audio Stream Capture 1 App Type Cfg" id="1" value="610" />
-        <ctl name="Audio Stream Capture 1 App Type Cfg" id="2" value="192000" />
-        <ctl name="Audio Stream Capture 1 App Type Cfg" id="3" value="46" />
     </path>
     <!-- Knowles cvq over i2s end -->
 
@@ -533,8 +526,6 @@
     <!-- Knowles bargein path start -->
     <path name="IA6xx-bargein">
         <ctl name="MultiMedia2 Mixer TERT_MI2S_TX" value="1" />
-        <ctl name="Audio Stream Capture 1 App Type Cfg" id="1" value="610" />
-        <ctl name="Audio Stream Capture 1 App Type Cfg" id="3" value="46" />
     </path>
     <!-- Knowles bargein path end -->
 

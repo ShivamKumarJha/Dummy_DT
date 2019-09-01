@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Copyright (c) 2014, 2016-2018, The Linux Foundation. All rights reserved.   -->
+<!-- Copyright (c) 2014, 2016-2017, The Linux Foundation. All rights reserved. -->
 <!--                                                                        -->
 <!-- Redistribution and use in source and binary forms, with or without     -->
 <!-- modification, are permitted provided that the following conditions are -->
@@ -77,10 +77,6 @@
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
     </bit_width_configs>
-    <interface_names>
-        <device name="AUDIO_DEVICE_IN_BUILTIN_MIC" interface="INT3_MI2S" codec_type="internal"/>
-        <device name="AUDIO_DEVICE_IN_BACK_MIC" interface="INT3_MI2S" codec_type="internal"/>
-    </interface_names>
     <pcm_ids>
         <usecase name="USECASE_AUDIO_PLAYBACK_LOW_LATENCY" type="out" id="13"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_OFFLOAD" type="out" id="8"/>
@@ -97,27 +93,21 @@
         <usecase name="USECASE_VOICEMMODE2_CALL" type="out" id="19"/>
         <usecase name="USECASE_VOWLAN_CALL" type="in" id="-1"/>
         <usecase name="USECASE_VOWLAN_CALL" type="out" id="-1"/>
-        <usecase name="USECASE_AUDIO_PLAYBACK_FM" type="out" id="36"/>
+        <usecase name="USECASE_AUDIO_PLAYBACK_FM" type="out" id="5"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_FM" type="in" id="34"/>
         <usecase name="USECASE_AUDIO_SPKR_CALIB_RX" type="out" id="5"/>
-        <usecase name="USECASE_AUDIO_SPKR_CALIB_TX" type="in" id="40"/>
+        <usecase name="USECASE_AUDIO_SPKR_CALIB_TX" type="in" id="37"/>
         <usecase name="USECASE_AUDIO_PLAYBACK_AFE_PROXY" type="out" id="6"/>
         <usecase name="USECASE_AUDIO_RECORD_AFE_PROXY" type="in" id="7"/>
         <usecase name="USECASE_AUDIO_RECORD_LOW_LATENCY" type="in" id="17" />
         <usecase name="USECASE_AUDIO_PLAYBACK_ULL" type="out" id="17" />
-        <usecase name="USECASE_AUDIO_PLAYBACK_SILENCE" type="out" id="27" />
+        <usecase name="USECASE_AUDIO_PLAYBACK_EXT_DISP_SILENCE" type="out" id="27" />
         <usecase name="USECASE_AUDIO_PLAYBACK_MMAP" type="out" id="33" />
         <usecase name="USECASE_AUDIO_RECORD_MMAP" type="in" id="33" />
-        <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="12" />
-        <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="12" />
+        <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="35" />
+        <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="35" />
         <usecase name="USECASE_AUDIO_PLAYBACK_VOIP" type="out" id="16" />
         <usecase name="USECASE_AUDIO_RECORD_VOIP" type="in" id="16" />
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS2" type="in" id="41"/>
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS3" type="in" id="42"/>
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS4" type="in" id="43"/>
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS5" type="in" id="44"/>
-        <usecase name="USECASE_AUDIO_RECORD_COMPRESS6" type="in" id="45"/>
-        <usecase name="USECASE_AUDIO_A2DP_ABR_FEEDBACK" type="in" id="12"/>
     </pcm_ids>
     <config_params>
         <!--param key="spkr_1_tz_name" value="wsatz.13"/>
@@ -145,48 +135,38 @@
         <gain_level_map db="0" level="1"/>
     </gain_db_to_level_mapping>
     <backend_names>
-        <device name="SND_DEVICE_OUT_HANDSET" interface="INT0_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_HANDSET" interface="INT0_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_ANC_HANDSET" interface="INT0_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" interface="INT0_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_HEADPHONES_44.1" backend="headphones-44.1" interface="SEC_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES_44.1" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONES_DSD" backend="headphones-dsd" interface="SEC_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_HEADPHONE_HIFI" backend="headphone-hifi" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_HEADPHONE_KTV" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_LINE" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_LINE" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_ANC_HEADSET" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_ANC_FB_HEADSET" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_ANC_HEADSET" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET" backend="headphones" interface="SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker" interface="PRI_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_MINISPEAKER" backend="voice-minispeaker" interface="PRI_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_KTV" backend="speaker" interface="PRI_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_HEADPHONE_KTV" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO_WB" backend="bt-sco-wb" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_SCO" backend="bt-sco" interface="SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_BT_A2DP" backend="bt-a2dp" interface="SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" backend="speaker-and-hdmi" interface="PRI_MI2S_RX-and-HDMI"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_DISPLAY_PORT" backend="speaker-and-display-port" interface="PRI_MI2S_RX-and-DISPLAY_PORT"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_A2DP" backend="speaker-and-bt-a2dp" interface="PRI_MI2S_RX-and-SLIMBUS_7_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_ANC_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_FB_HEADSET" backend="speaker-and-headphones" interface="PRI_MI2S_RX-and-SEC_MI2S_RX"/>
-        <device name="SND_DEVICE_OUT_VOICE_HANDSET_SPEAKER" interface="INT0_MI2S_RX-and-PRI_MI2S_RX"/>
-        <device name="SND_DEVICE_IN_HDMI_MIC" interface="HDMI"/>
-        <device name="SND_DEVICE_IN_BT_SCO_MIC" interface="SLIMBUS_7_TX"/>
-        <device name="SND_DEVICE_IN_BT_SCO_MIC_NREC" interface="SLIMBUS_7_TX"/>
-        <device name="SND_DEVICE_IN_BT_SCO_MIC_WB" interface="SLIMBUS_7_TX"/>
-        <device name="SND_DEVICE_IN_BT_SCO_MIC_WB_NREC" interface="SLIMBUS_7_TX"/>
+        <!--device name="SND_DEVICE_OUT_LINE" backend="headphones" interface="SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_ANC_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/-->
+        <!--device name="SND_DEVICE_OUT_ANC_FB_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/-->
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" interface="INT0_MI2S_RX"/>
+		<device name="SND_DEVICE_OUT_VOICE_SPEAKER_AND_VOICE_HEADPHONES" backend="speaker-and-headphones" interface="INT0_MI2S_RX"/>
+        <!--device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-headphones" interface="SLIMBUS_0_RX-and-SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET" backend="speaker-and-headphones" interface="SLIMBUS_0_RX-and-SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_FB_HEADSET" backend="speaker-and-headphones" interface="SLIMBUS_0_RX-and-SLIMBUS_6_RX"/-->
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" interface="INT0_MI2S_RX"/>
+        <!--device name="SND_DEVICE_OUT_VOICE_ANC_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET" backend="headphones" interface="SLIMBUS_6_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_LINE" backend="headphones" interface="SLIMBUS_6_RX"/-->
+        <device name="SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="INT0_MI2S_RX-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="INT0_MI2S_RX-and-SLIMBUS_7_RX"/>
+		<device name="SND_DEVICE_OUT_HANDSET" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" interface="INT0_MI2S_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" interface="INT0_MI2S_RX-and-HDMI"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_DISPLAY_PORT" interface="INT0_MI2S_RX-and-DISPLAY_PORT"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_A2DP" interface="INT0_MI2S_RX-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" interface="INT0_MI2S_RX"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" interface="INT3_MI2S_TX"/>
@@ -227,26 +207,12 @@
         <device name="SND_DEVICE_IN_AANC_HANDSET_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_QUAD_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" interface="INT5_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_1" interface="INT5_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK_MONO_2" interface="INT5_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC_BROADSIDE" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_BROADSIDE" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_BROADSIDE" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS_BROADSIDE" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS_BROADSIDE" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_VOICE_FLUENCE_DMIC_AANC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_QMIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_QMIC_NS" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC_NS" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_THREE_MIC" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_TMIC_FLUENCE_PRO" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_TMIC" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_TMIC_AEC" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_TMIC_NS" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_HANDSET_TMIC_AEC_NS" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VOICE_REC_TMIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" interface="INT3_MI2S_TX"/>
@@ -254,14 +220,9 @@
         <device name="SND_DEVICE_IN_UNPROCESSED_QUAD_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_REC_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_REC_MAIN_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_REC_SUB_HANDSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_REC_HEADSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VR_HANDSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VR_HEADSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_SUB_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_MAIN_HANDSET" interface="INT3_MI2S_TX"/>
-        <device name="SND_DEVICE_IN_JOVI_HANDSET" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HANDSET_KTV" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_KTV" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_HEADSET_SPEAKER_KTV" interface="INT3_MI2S_TX"/>

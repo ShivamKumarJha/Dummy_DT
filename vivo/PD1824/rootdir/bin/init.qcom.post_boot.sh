@@ -313,6 +313,54 @@ function enable_swap() {
     fi
 }
 
+function configure_lmk_param_for_rms() {
+    MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+    MemTotal=${MemTotalStr:16:8}
+
+    if [ $MemTotal -le 2097152 ]; then #1G, 2G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "30000,50000,60000,70000,90000,100000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 110000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    elif [ $MemTotal -le 3145728 ]; then #3G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "40000,60000,70000,90000,105000,125000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 150000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    elif [ $MemTotal -le 4194304 ]; then #4G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "50000,65000,80000,100000,120000,150000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 170000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    elif [ $MemTotal -le 6291456 ]; then #5G, 6G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "50000,70000,90000,110000,140000,175000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 200000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    elif [ $MemTotal -le 8388608 ]; then #7G, 8G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "60000,80000,100000,120000,150000,200000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 250000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    elif [ $MemTotal -le 10485760 ]; then #9G, 10G
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "60000,80000,100000,120000,150000,200000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 250000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    else #11G or more
+        echo "0,100,200,300,501,900" > /sys/module/lowmemorykiller/parameters/adj
+        echo 501 > /sys/module/lowmemorykiller/parameters/adj_max_shift
+        echo 501 > /sys/module/process_reclaim/parameters/min_score_adj
+        echo "80000,100000,120000,150000,200000,250000" > /sys/module/lowmemorykiller/parameters/minfree
+        echo 300000 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+    fi
+}
 function configure_memory_parameters() {
     # Set Memory parameters.
     #
@@ -431,6 +479,9 @@ else
             ;;
         esac
     fi
+
+    # Set lmk minfree/vmpressure_file_min for the case when RMS was disabled.
+    configure_lmk_param_for_rms
 
     # Set allocstall_threshold to 0 for all targets.
     # Set swappiness to 100 for all targets

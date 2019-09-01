@@ -2528,8 +2528,8 @@
 
     <path name="ktv-headset-mic">
         <path name="headset-mic" />
-        <ctl name="DEC1 Volume" value="84"/>
-        <ctl name="ADC2 Volume" value="8"/>
+        <ctl name="DEC0 Volume" value="102"/>
+        <ctl name="ADC2 Volume" value="2"/>
     </path>
 
     <path name="speaker-and-headphones">

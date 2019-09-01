@@ -32,7 +32,7 @@
 #<src>                                                 <mnt_point>            <type>  <mnt_flags and options>                            <fs_mgr_flags>
 #/dev/block/bootdevice/by-name/system                    /                      ext4    ro,barrier=1,discard                                 wait,slotselect,avb
 # /dev/block/bootdevice/by-name/oem                       /oem                   ext4    ro,barrier=1,discard                                 wait
-/dev/block/bootdevice/by-name/userdata                  /data                  ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard latemount,wait,resize,check,wrappedkey,fileencryption=ice,quota,reservedsize=128M
+/dev/block/bootdevice/by-name/userdata                  /data                  ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard,errors=panic,journal_checksum latemount,wait,resize,check,wrappedkey,fileencryption=ice,quota,reservedsize=128M
 /dev/block/bootdevice/by-name/cache     		        /cache                 ext4    noatime,nosuid,nodev,barrier=1                       wait
 /dev/block/bootdevice/by-name/persist                   /mnt/vendor/persist    ext4    noatime,nosuid,nodev,barrier=1                       wait,check
 

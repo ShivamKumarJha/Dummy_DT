@@ -265,7 +265,7 @@
         <point>1,-4950</point>
         <point>85,-3300</point>
         <point>170,-1750</point>
-        <point>255,0</point>
+        <point>255,-800</point>
     </reference>
     <reference name="NOTIFICATION_VOLUME_SPEAKER">
         <point>1,-5000</point>

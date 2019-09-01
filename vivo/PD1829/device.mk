@@ -1,6 +1,7 @@
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/configs/audio/audio_configs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_configs.xml \
     $(LOCAL_PATH)/configs/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/configs/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
@@ -8,22 +9,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1806B.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1806B.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1806BLG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1806BLG4.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1806LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1806LG4.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1809.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1809.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1809F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1809F_EX.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1809LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1809LG4.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1813DF_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1813DF_EX.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1820.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1820.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1820F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1820F_EX.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1820LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1820LG4.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1829.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1829.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1829LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1829LG4.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1836.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1836.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.PD1836LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.PD1836LG4.xml \
-    $(LOCAL_PATH)/configs/audio/audio_platform_info.TD1704.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.TD1704.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info_i2s.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_i2s.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
     $(LOCAL_PATH)/configs/audio/audio_platform_info_skuw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_skuw.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.PD1829.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.PD1829.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration_generic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration_generic.xml \
@@ -37,23 +29,20 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(LOCAL_PATH)/configs/audio/graphite_ipc_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/graphite_ipc_platform_info.xml \
     $(LOCAL_PATH)/configs/audio/listen_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/listen_platform_info.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_360cam.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_360cam.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_i2s.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_i2s.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1806.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1806.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1806B.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1806B.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1806BLG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1806BLG4.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1806LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1806LG4.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1809.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1809.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1809F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1809F_EX.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1809LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1809LG4.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1813DF_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1813DF_EX.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1820.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1820.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1820F_EX.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1820F_EX.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1820LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1820LG4.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1829.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1829.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1829LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1829LG4.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1836.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1836.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.PD1836LG4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.PD1836LG4.xml \
-    $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.TD1704.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.TD1704.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_mtp.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_skuw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_skuw.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_tashalite.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tashalite.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_tavil.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tavil.xml \
     $(LOCAL_PATH)/configs/audio/primary_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/primary_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
@@ -66,6 +55,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps/apdr.conf:$(TARGET_COPY_OUT_VENDOR)/etc/apdr.conf \
     $(LOCAL_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
     $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
     $(LOCAL_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
@@ -93,6 +83,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml \
@@ -107,6 +100,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_front4K.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_front4K.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
+    $(LOCAL_PATH)/configs/media/system_properties.xml:$(TARGET_COPY_OUT_VENDOR)/etc/system_properties.xml \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -114,13 +108,14 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.camera.limited.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.limited.xml \
+    frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
+    frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
-    frameworks/native/data/etc/android.hardware.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.light.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -128,10 +123,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
@@ -156,7 +150,6 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.class_late.sh \
     init.class_main.sh \
     init.crda.sh \
     init.mdm.sh \
@@ -176,8 +169,10 @@ PRODUCT_PACKAGES += \
     init.vivo.crashdata.sh \
     init.vivo.fingerprint.sh \
     init.vivo.fingerprint_restart_counter.sh \
-    init.vivo.nfc.sh \
     qca6234-service.sh \
+    init.at.dl.rc \
+    init.at.rc \
+    init.factory.rc \
     init.msm.usb.configfs.rc \
     init.qcom.dl.rc \
     init.qcom.factory.rc \
@@ -192,7 +187,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/seccomp/configstore@1.1.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/configstore@1.1.policy \
     $(LOCAL_PATH)/configs/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/configs/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
 
 # Sensors
 PRODUCT_COPY_FILES += \

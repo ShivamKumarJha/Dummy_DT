@@ -84,7 +84,7 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "338" | "313" |"353")
+		    "239" | "293" | "294" | "295" | "304" | "313" |"353")
 			start vendor.msm_irqbalance;;
 		    "349" | "350" )
 			start vendor.msm_irqbal_lb;;
@@ -99,22 +99,29 @@ start_msm_irqbalance_msmnile()
          fi
 }
 
-start_msm_irqbalance660()
+start_msm_irqbalance_kona()
 {
-	if [ -f /vendor/bin/msm_irqbalance ]; then
-		case "$platformid" in
-		    "317" | "324" | "325" | "326" | "345" | "346")
-			start vendor.msm_irqbalance;;
-		    "318" | "327" | "385")
-			start vendor.msm_irqbl_sdm630;;
-		esac
-	fi
+         if [ -f /vendor/bin/msm_irqbalance ]; then
+                start vendor.msm_irqbalance
+         fi
+}
+
+start_msm_irqbalance_lito()
+{
+         if [ -f /vendor/bin/msm_irqbalance ]; then
+                start vendor.msm_irqbalance
+         fi
 }
 
 start_msm_irqbalance()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
-		start vendor.msm_irqbalance
+		case "$platformid" in
+		    "317" | "324" | "325" | "326" | "336" | "345" | "346")
+			start vendor.msm_irqbalance;;
+		    "318" | "327" | "385")
+			start vendor.msm_irqbl_sdm630;;
+		esac
 	fi
 }
 
@@ -197,7 +204,7 @@ case "$target" in
         fi
 
         case "$soc_id" in
-             "317" | "324" | "325" | "326" | "318" | "327" | "385" )
+             "317" | "324" | "325" | "326" | "318" | "327" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -214,7 +221,7 @@ case "$target" in
                   esac
                   ;;
        esac
-        start_msm_irqbalance660
+        start_msm_irqbalance
         ;;
     "apq8084")
         platformvalue=`cat /sys/devices/soc0/hw_platform`
@@ -296,6 +303,12 @@ case "$target" in
         ;;
     "msmnile")
         start_msm_irqbalance_msmnile
+        ;;
+    "kona")
+        start_msm_irqbalance_kona
+        ;;
+    "lito")
+        start_msm_irqbalance_lito
         ;;
     "msm8937")
         start_msm_irqbalance_8939
@@ -417,9 +430,7 @@ if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "
     # the group must be root, otherwise this script could not add "W" for group recursively
     chown -hR radio.root /data/vendor/modem_config/*
 fi
-#vivo<jishanjin>delete at 18109,for [B180912-783]
-#chmod g-w /data/vendor/modem_config
-#vivo<jishanjin>delete end
+chmod g-w /data/vendor/modem_config
 setprop ro.vendor.ril.mbn_copy_completed 1
 
 #check build variant for printk logging

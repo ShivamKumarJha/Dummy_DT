@@ -50,6 +50,8 @@ on init
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+    # add for audio by zhengguobing
+    chmod 0666 /dev/ttyHS1
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -79,12 +81,14 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+    mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/tloc 0700 system drmrpc
     mkdir /data/vendor/nnhal 0700 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
+    chown system system /sys/kernel/hbtp/display_pwr
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-7
@@ -104,7 +108,7 @@ on boot
 
 #Load WLAN driver
 #   insmod /vendor/lib/modules/qca_cld3_wlan.ko
-    setprop wlan.driver.status "ok"
+
 
     ####Regionalization config and prop files####
     chmod 0644 /persist/speccfg/spec
@@ -191,10 +195,6 @@ service spdaemon /vendor/bin/spdaemon
     user system
     group system
 
-#service mpdecision /system/vendor/bin/mpdecision --avg_comp
-#   user root
-#   disabled
-#
 #service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
 #   user system
 #   group system
@@ -438,6 +438,12 @@ on property:init.svc.vendor.hwcomposer-2-1=restarting
 
 on charger
      setprop sys.usb.configfs 1
+
+service hbtp /system/vendor/bin/hbtp_daemon
+     class main
+     user system
+     group system
+     disabled
 
 service energy-awareness /system/vendor/bin/energy-awareness
     class main

@@ -103,6 +103,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.dev_ori=true \
     ro.vendor.sensors.mot_detect=true \
     ro.vendor.sensors.pmd=true \
+    ro.vendor.sensors.pug = true \
     ro.vendor.sensors.sta_detect=true \
     sdm.debug.disable_skip_validate=1 \
     persist.timed.enable=true \

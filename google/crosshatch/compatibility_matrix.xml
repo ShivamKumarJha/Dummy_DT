@@ -1,3 +1,7 @@
+<!--
+    Input:
+        compatibility_matrix.xml
+-->
 <compatibility-matrix version="1.0" type="device">
     <hal format="hidl" optional="false">
         <name>android.frameworks.schedulerservice</name>
@@ -55,18 +59,10 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>hardware.google.pixelstats</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPixelStats</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <vendor-ndk>
-        <version>28</version>
+        <version>29</version>
     </vendor-ndk>
     <system-sdk>
-        <version>28</version>
+        <version>29</version>
     </system-sdk>
 </compatibility-matrix>

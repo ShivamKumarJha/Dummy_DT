@@ -16,9 +16,6 @@
 
 import /vendor/etc/init/hw/init.${ro.boot.hardware.platform}.rc
 
-on init
-    setprop ro.sf.lcd_density 400
-
 on property:sys.boot_completed=1
     # HardwareInfo needs to be able to read display info
     chmod 444 /sys/devices/platform/soc/soc:qcom,dsi-display@50/panel_info/panel0/serial_number

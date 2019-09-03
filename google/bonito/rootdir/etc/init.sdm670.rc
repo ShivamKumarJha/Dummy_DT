@@ -43,29 +43,19 @@ on property:init.svc.vendor.charger=running
 service vendor.charger /charger
     class charger
     seclabel u:r:charger:s0
+    user system
+    group system wakelock input
+    capabilities SYS_BOOT
+    file /dev/kmsg w
+    file /sys/fs/pstore/console-ramoops-0 r
+    file /sys/fs/pstore/console-ramoops r
+    file /proc/last_kmsg r
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
     # Enable sched_boost
     write /proc/sys/kernel/sched_boost 1
-
-    # mount schedtune and blkio together in "on early-init",
-    # so that mount schedtune in init.rc will fail
-    mkdir /dev/stune
-    mount cgroup none /dev/stune nodev noexec nosuid schedtune,blkio
-
-    mkdir /dev/stune/foreground
-    mkdir /dev/stune/background
-    mkdir /dev/stune/top-app
-    mkdir /dev/stune/rt
-
-    # blkio init setting
-    write /dev/stune/blkio.group_idle 0
-    write /dev/stune/foreground/blkio.group_idle 0
-    write /dev/stune/background/blkio.group_idle 0
-    write /dev/stune/top-app/blkio.group_idle 0
-    write /dev/stune/rt/blkio.group_idle 0
 
 # Skip init trigger for charger mode
 on early-init && property:ro.boot.mode=charger
@@ -88,7 +78,6 @@ on init && property:vendor.skip.init=0
     start keymaster-4-0
 
     # start Citadel keymaster (StrongBox) early
-    start vndservicemanager
     start vendor.citadeld
     start vendor.keymaster-4-0-citadel
 
@@ -153,9 +142,14 @@ on init && property:vendor.skip.init=0
     # Property used by vintf for sku specific manifests
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
 
+on late-init
+    setprop vendor.thermal.config thermal_info_config.json
+    chown system system /sys/devices/virtual/thermal/tz-by-name/mb-therm-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/mb-therm-monitor/trip_point_0_hyst
+    chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_hyst
+
 on fs
-    # Start HW service manager early
-    start hwservicemanager
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --early
 
     mkdir /mnt/vendor/persist/audio 0770 media audio
@@ -291,7 +285,7 @@ on zygote-start
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
     # Create directory for radio
-    mkdir /data/vendor/radio 0771 system radio
+    mkdir /data/vendor/radio 0773 system radio
     mkdir /data/vendor/modem_stat 0771 system radio
     write /data/vendor/modem_stat/debug.txt ""
     chown system radio /data/vendor/modem_stat/debug.txt
@@ -406,6 +400,9 @@ on early-boot
     chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_discard_cnt
     chown system system /sys/devices/platform/soc/7c4000.sdhci/mmc_host/mmc0/slowio_flush_cnt
 
+    # Permission for Health Storage HAL
+    chown system system /sys/devices/platform/soc/7c4000.sdhci/manual_gc
+
 on boot
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -497,17 +494,11 @@ on property:sys.boot_completed=1
     write /dev/cpuset/restricted/cpus 2-5
 
     # Setup final blkio
-    write /dev/stune/blkio.group_idle 0
-    write /dev/stune/foreground/blkio.group_idle 1
-    write /dev/stune/background/blkio.group_idle 0
-    write /dev/stune/top-app/blkio.group_idle 2
-    write /dev/stune/rt/blkio.group_idle 2
-
-    write /dev/stune/blkio.weight 1000
-    write /dev/stune/foreground/blkio.weight 1000
-    write /dev/stune/background/blkio.weight 10
-    write /dev/stune/top-app/blkio.weight 1000
-    write /dev/stune/rt/blkio.weight 1000
+    # value for group_idle is us
+    write /dev/blkio/blkio.weight 1000
+    write /dev/blkio/background/blkio.weight 10
+    write /dev/blkio/blkio.group_idle 2000
+    write /dev/blkio/background/blkio.group_idle 0
 
     # QCOM FG SRAM dump for dumpstate
     chown system system /d/fg/sram/data
@@ -533,12 +524,35 @@ on property:sys.boot_completed=1
     chmod 644 /sys/kernel/debug/mmc0/ring_buffer
     chmod 644 /sys/kernel/debug/mmc0/err_stats
     chmod 644 /sys/kernel/debug/mmc0/show_host
+    chmod 644 /sys/kernel/debug/mmc0/io_stats
+    chmod 644 /sys/kernel/debug/mmc0/req_stats
 
     # Disable sched_boost
     write /proc/sys/kernel/sched_boost 0
 
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
+
+    # Create pixel-trace.
+    # At this moment, only mm_event is available. If others want to put more,
+    # it should get hard review from pixel-perf-team.
+
+    mkdir /sys/kernel/debug/tracing/instances/pixel-trace 600
+    write /sys/kernel/debug/tracing/instances/pixel-trace/buffer_size_kb 64
+    write /sys/kernel/debug/tracing/instances/pixel-trace/events/mm_event/enable 1
+
+# turns off tracing right before bugreporting to keep more traces
+on property:init.svc.dumpstatez=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.dumpstatez=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
+
+on property:init.svc.bugreport=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.bugreport=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
 
 on property:init.svc.vendor.per_mgr=running
     start vendor.per_proxy
@@ -617,6 +631,12 @@ service vendor.tftp_server /vendor/bin/tftp_server
    user root
    group root system
 
+service modem_svc /vendor/bin/modem_svc -q
+   class core
+   user root
+   group system
+   capabilities NET_BIND_SERVICE
+
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 -dd \
     -g@android:wpa_wlan0
@@ -626,6 +646,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     #   group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+    interface android.hardware.wifi.supplicant@1.2::ISupplicant default
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
@@ -793,31 +814,31 @@ on property:ro.boot.mode=sota
     setprop ro.boot.sota enabled
 
 on property:ro.boot.hardware.sku=G020A
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020B
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020C
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020D
-    setprop persist.nfc.uicc_enabled false
+    setprop persist.vendor.nfc.uicc_enabled false
     setprop persist.vendor.radio.uicc_se_enabled false
-    interface_start android.hardware.secure_element@1.0::ISecureElement/eSE1
+    interface_start android.hardware.secure_element@1.1::ISecureElement/eSE1
 on property:ro.boot.hardware.sku=G020E
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020F
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020G
-    setprop persist.nfc.uicc_enabled true
+    setprop persist.vendor.nfc.uicc_enabled true
     setprop persist.vendor.radio.uicc_se_enabled true
 on property:ro.boot.hardware.sku=G020H
-    setprop persist.nfc.uicc_enabled false
+    setprop persist.vendor.nfc.uicc_enabled false
     setprop persist.vendor.radio.uicc_se_enabled false
-    interface_start android.hardware.secure_element@1.0::ISecureElement/eSE1
+    interface_start android.hardware.secure_element@1.1::ISecureElement/eSE1
 
 # charger driver exposes now finer grain control, map demo mode to those properties
 # demo mode can only be exited by wiping data which will also reset the persist properties
@@ -843,6 +864,11 @@ on property:vendor.all.modules.ready=1
     chown system system /sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input2/read_report
     chown system system /sys/devices/platform/soc/a84000.i2c/i2c-2/2-0020/input/input2/suspend
 
+# DSDS feature
+# Enable 2nd qcrild when the property set to dsds
+on property:persist.radio.multisim.config=dsds
+    start vendor.qcrild2
+
 on property:sys.boot_completed=1 && property:ro.boot.mode=firstboot
     start init-firstboot-sh
 
@@ -850,3 +876,44 @@ service init-firstboot-sh /vendor/bin/init.firstboot.sh
     user nobody
     disabled
     oneshot
+
+# init-fingerprint-sh is for stopping fps_hal after init retry fail serval times
+# It keeps running until max init retry or fps_hal running successfully
+# vendor.fps_hal restarts until max init retry times
+#
+# /vendor/bin/init.fingerprint.sh [max_init_retry_times]
+service init-fingerprint-sh /vendor/bin/init.fingerprint.sh 10
+    group root
+    user root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start init-fingerprint-sh
+
+on property:vendor.fps.init.succeed=true && property:init.svc.vendor.fps_hal=stopped
+    start init-fingerprint-sh
+
+# Write the dark theme magic (`theme-dark`, or 0x7468656d652d6461726b in hex string) to /misc
+# partition. Offset 0 in vendor space is effectively offset 2048 in /misc partition.
+service vendor.theme_set /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x7468656d652d6461726b
+    disabled
+    oneshot
+
+# Clear the 10-byte dark theme magic in /misc partition. Offset 0 in vendor space is effectively
+# offset 2048 in /misc partition.
+service vendor.theme_clear /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x00000000000000000000
+    disabled
+    oneshot
+
+# Set dark boot flag on dark mode (UiModeManager.MODE_NIGHT_YES == 2).
+on property:persist.sys.theme=2
+    start vendor.theme_set
+
+# Clear the dark boot flag on light mode (UiModeManager.MODE_NIGHT_NO == 1) or auto mode
+# (UiModeManager.MODE_NIGHT_AUTO == 0).
+on property:persist.sys.theme=1
+    start vendor.theme_clear
+
+on property:persist.sys.theme=0
+    start vendor.theme_clear

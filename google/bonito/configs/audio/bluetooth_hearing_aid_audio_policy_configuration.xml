@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Hearing aid Audio HAL Audio Policy Configuration file -->
-<module name="hearing_aid" halVersion="2.0">
+<!-- Bluetooth Audio HAL Audio Policy Configuration file -->
+<module name="bluetooth" halVersion="2.0">
     <mixPorts>
+        <!-- Hearing AIDs Audio Ports -->
         <mixPort name="hearing aid output" role="source">
             <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                      samplingRates="24000,16000"
@@ -9,9 +10,11 @@
         </mixPort>
     </mixPorts>
     <devicePorts>
+        <!-- Hearing AIDs Audio Ports -->
         <devicePort tagName="BT Hearing Aid Out" type="AUDIO_DEVICE_OUT_HEARING_AID" role="sink"/>
     </devicePorts>
     <routes>
-        <route type="mix" sink="BT Hearing Aid Out" sources="hearing aid output"/>
+        <route type="mix" sink="BT Hearing Aid Out"
+               sources="hearing aid output"/>
     </routes>
 </module>

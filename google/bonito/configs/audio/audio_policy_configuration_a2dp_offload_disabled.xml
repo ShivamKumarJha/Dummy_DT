@@ -112,6 +112,12 @@
                 </devicePort>
                 <devicePort tagName="Speaker Safe" type="AUDIO_DEVICE_OUT_SPEAKER_SAFE" role="sink">
                 </devicePort>
+                <devicePort tagName="Wired Headset" type="AUDIO_DEVICE_OUT_WIRED_HEADSET" role="sink">
+                </devicePort>
+                <devicePort tagName="Wired Headphones" type="AUDIO_DEVICE_OUT_WIRED_HEADPHONE" role="sink">
+                </devicePort>
+                <devicePort tagName="Line Out" type="AUDIO_DEVICE_OUT_LINE" role="sink">
+                </devicePort>
                 <devicePort tagName="BT SCO" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO" role="sink">
                 </devicePort>
                 <devicePort tagName="BT SCO Headset" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET" role="sink">
@@ -127,6 +133,8 @@
                 <devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
                 </devicePort>
                 <devicePort tagName="Built-In Back Mic" type="AUDIO_DEVICE_IN_BACK_MIC" role="source">
+                </devicePort>
+                <devicePort tagName="Wired Headset Mic" type="AUDIO_DEVICE_IN_WIRED_HEADSET" role="source">
                 </devicePort>
                 <devicePort tagName="BT SCO Headset Mic" type="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET" role="source">
                 </devicePort>
@@ -145,6 +153,12 @@
                        sources="primary output,raw,deep_buffer,compressed_offload,mmap_no_irq_out,voip_rx"/>
                 <route type="mix" sink="Speaker Safe"
                        sources="primary output,raw,deep_buffer,compressed_offload,mmap_no_irq_out,voip_rx"/>
+                <route type="mix" sink="Wired Headset"
+                       sources="primary output,raw,deep_buffer,compressed_offload,mmap_no_irq_out,voip_rx"/>
+                <route type="mix" sink="Wired Headphones"
+                       sources="primary output,raw,deep_buffer,compressed_offload,mmap_no_irq_out,voip_rx"/>
+                <route type="mix" sink="Line Out"
+                       sources="primary output,raw,deep_buffer,compressed_offload,mmap_no_irq_out,voip_rx"/>
                 <route type="mix" sink="BT SCO"
                        sources="primary output,raw,deep_buffer,voip_rx"/>
                 <route type="mix" sink="BT SCO Headset"
@@ -158,21 +172,21 @@
                 <route type="mix" sink="Telephony Tx"
                        sources="voice_tx,incall_music_uplink"/>
                 <route type="mix" sink="primary input"
-                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
                 <route type="mix" sink="fast input"
-                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
                 <route type="mix" sink="voice_rx"
                        sources="Telephony Rx"/>
                 <route type="mix" sink="hifi_input" sources="USB Device In,USB Headset In" />
                 <route type="mix" sink="mmap_no_irq_in"
-                       sources="Built-In Mic,Built-In Back Mic,USB Device In,USB Headset In"/>
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,USB Device In,USB Headset In"/>
                 <route type="mix" sink="voip_tx"
-                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
+                       sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
             </routes>
         </module>
 
-        <!-- A2DP Audio HAL -->
-        <xi:include href="a2dp_audio_policy_configuration.xml"/>
+        <!-- A2DP Input Audio HAL -->
+        <xi:include href="a2dp_in_audio_policy_configuration.xml"/>
 
         <!-- Usb Audio HAL -->
         <module name="usb" halVersion="2.0">
@@ -197,8 +211,8 @@
         <!-- Remote Submix Audio HAL -->
         <xi:include href="r_submix_audio_policy_configuration.xml"/>
 
-        <!-- Hearing aid Audio HAL -->
-        <xi:include href="hearing_aid_audio_policy_configuration.xml"/>
+        <!-- Bluetooth Audio HAL -->
+        <xi:include href="bluetooth_audio_policy_configuration.xml"/>
 
     </modules>
 

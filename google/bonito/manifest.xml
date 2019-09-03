@@ -1,23 +1,27 @@
+<!--
+    Input:
+        manifest.xml
+-->
 <manifest version="1.0" type="device" target-level="3">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
-        <version>4.0</version>
+        <version>5.0</version>
         <interface>
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@4.0::IDevicesFactory/default</fqname>
+        <fqname>@5.0::IDevicesFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
         <transport>hwbinder</transport>
-        <version>4.0</version>
+        <version>5.0</version>
         <interface>
             <name>IEffectsFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@4.0::IEffectsFactory/default</fqname>
+        <fqname>@5.0::IEffectsFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.authsecret</name>
@@ -60,6 +64,16 @@
         <fqname>@1.0::IBluetoothAudioOffload/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.bluetooth.audio</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IBluetoothAudioProvidersFactory</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::IBluetoothAudioProvidersFactory/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.boot</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -78,16 +92,6 @@
             <instance>legacy/0</instance>
         </interface>
         <fqname>@2.4::ICameraProvider/legacy/0</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.cas</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IMediaCasService</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IMediaCasService/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.configstore</name>
@@ -133,10 +137,10 @@
         </interface>
         <fqname>@1.0::ICryptoFactory/default</fqname>
         <fqname>@1.0::IDrmFactory/default</fqname>
-        <fqname>@1.1::ICryptoFactory/clearkey</fqname>
-        <fqname>@1.1::ICryptoFactory/widevine</fqname>
-        <fqname>@1.1::IDrmFactory/clearkey</fqname>
-        <fqname>@1.1::IDrmFactory/widevine</fqname>
+        <fqname>@1.2::ICryptoFactory/clearkey</fqname>
+        <fqname>@1.2::ICryptoFactory/widevine</fqname>
+        <fqname>@1.2::IDrmFactory/clearkey</fqname>
+        <fqname>@1.2::IDrmFactory/widevine</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.dumpstate</name>
@@ -231,6 +235,16 @@
         <fqname>@2.0::ILight/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.media.c2</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IComponentStore/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.media.omx</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -258,22 +272,18 @@
     <hal format="hidl">
         <name>android.hardware.neuralnetworks</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IDevice</name>
-            <instance>paintbox</instance>
-        </interface>
         <fqname>@1.0::IDevice/paintbox</fqname>
+        <fqname>@1.1::IDevice/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.nfc</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>INfc</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::INfc/default</fqname>
+        <fqname>@1.2::INfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.oemlock</name>
@@ -286,30 +296,31 @@
         <fqname>@1.0::IOemLock/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.power</name>
+        <name>android.hardware.power.stats</name>
         <transport>hwbinder</transport>
-        <version>1.3</version>
+        <version>1.0</version>
         <interface>
-            <name>IPower</name>
+            <name>IPowerStats</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.3::IPower/default</fqname>
+        <fqname>@1.0::IPowerStats/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
-        <fqname>@1.2::IRadio/slot1</fqname>
         <fqname>@1.2::ISap/slot1</fqname>
+        <fqname>@1.3::IRadio/slot1</fqname>
+        <fqname>@1.3::IRadio/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IRadioConfig</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IRadioConfig/default</fqname>
+        <fqname>@1.1::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
@@ -334,12 +345,12 @@
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
         <transport>hwbinder</transport>
-        <version>2.1</version>
+        <version>2.2</version>
         <interface>
             <name>ISoundTriggerHw</name>
             <instance>default</instance>
         </interface>
-        <fqname>@2.1::ISoundTriggerHw/default</fqname>
+        <fqname>@2.2::ISoundTriggerHw/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.tetheroffload.config</name>
@@ -360,16 +371,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IOffloadControl/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.thermal</name>
-        <transport>hwbinder</transport>
-        <version>1.1</version>
-        <interface>
-            <name>IThermal</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.1::IThermal/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.usb</name>
@@ -414,32 +415,32 @@
     <hal format="hidl">
         <name>android.hardware.wifi</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.3</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.2::IWifi/default</fqname>
+        <fqname>@1.3::IWifi/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.wifi.hostapd</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IHostapd</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IHostapd/default</fqname>
+        <fqname>@1.1::IHostapd/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.wifi.supplicant</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>ISupplicant</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::ISupplicant/default</fqname>
+        <fqname>@1.2::ISupplicant/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.uceservice</name>
@@ -472,25 +473,6 @@
         <fqname>@2.1::IServer/cnd</fqname>
     </hal>
     <hal format="hidl">
-        <name>hardware.google.media.c2</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>default</instance>
-            <instance>software</instance>
-        </interface>
-        <interface>
-            <name>IConfigurable</name>
-            <instance>default</instance>
-            <instance>software</instance>
-        </interface>
-        <fqname>@1.0::IComponentStore/default</fqname>
-        <fqname>@1.0::IComponentStore/software</fqname>
-        <fqname>@1.0::IConfigurable/default</fqname>
-        <fqname>@1.0::IConfigurable/software</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
         <version>1.3</version>
@@ -503,12 +485,12 @@
     <hal format="hidl">
         <name>vendor.google.radioext</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IRadioExt</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IRadioExt/default</fqname>
+        <fqname>@1.1::IRadioExt/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.nxp.nxpnfc</name>
@@ -527,8 +509,10 @@
         <interface>
             <name>IQcRilAudio</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
         <fqname>@1.0::IQcRilAudio/slot1</fqname>
+        <fqname>@1.0::IQcRilAudio/slot2</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
@@ -537,8 +521,10 @@
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
+            <instance>imsradio1</instance>
         </interface>
         <fqname>@1.2::IImsRadio/imsradio0</fqname>
+        <fqname>@1.2::IImsRadio/imsradio1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.lpa</name>
@@ -557,18 +543,10 @@
         <interface>
             <name>IQtiOemHook</name>
             <instance>oemhook0</instance>
+            <instance>oemhook1</instance>
         </interface>
         <fqname>@1.0::IQtiOemHook/oemhook0</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.radio.uim</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IUim</name>
-            <instance>Uim0</instance>
-        </interface>
-        <fqname>@1.0::IUim/Uim0</fqname>
+        <fqname>@1.0::IQtiOemHook/oemhook1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim_remote_client</name>
@@ -621,6 +599,6 @@
         <fqname>@1.0::IRTPService/imsrtpservice</fqname>
     </hal>
     <sepolicy>
-        <version>28.0</version>
+        <version>29.0</version>
     </sepolicy>
 </manifest>

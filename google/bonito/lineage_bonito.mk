@@ -12,12 +12,12 @@ PRODUCT_BRAND := google
 PRODUCT_DEVICE := bonito
 PRODUCT_MANUFACTURER := google
 PRODUCT_NAME := lineage_bonito
-PRODUCT_MODEL := Pixel 3a XL
+PRODUCT_MODEL := mainline
 
 PRODUCT_GMS_CLIENTID_BASE := android-google
 TARGET_VENDOR := google
 TARGET_VENDOR_PRODUCT_NAME := bonito
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="bonito-user 9 PQ3B.190801.002 5674421 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="bonito-user 10 QP1A.190711.020 5800535 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := google/bonito/bonito:9/PQ3B.190801.002/5674421:user/release-keys
+BUILD_FINGERPRINT := google/bonito/bonito:10/QP1A.190711.020/5800535:user/release-keys

@@ -12,6 +12,7 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
+
 -->
 
 <Included>
@@ -32,6 +33,11 @@
             <Limit name="bitrate" range="6600-23850" />
         </MediaCodec>
         <MediaCodec name="OMX.google.aac.decoder" type="audio/mp4a-latm">
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="7350,8000,11025,12000,16000,22050,24000,32000,44100,48000" />
+            <Limit name="bitrate" range="8000-960000" />
+        </MediaCodec>
+        <MediaCodec name="OMX.google.xaac.decoder" type="audio/mp4a-latm">
             <Limit name="channel-count" max="8" />
             <Limit name="sample-rate" ranges="7350,8000,11025,12000,16000,22050,24000,32000,44100,48000" />
             <Limit name="bitrate" range="8000-960000" />

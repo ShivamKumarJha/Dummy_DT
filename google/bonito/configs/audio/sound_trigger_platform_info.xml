@@ -36,6 +36,7 @@
         <param enable_failure_detection="false" />
         <param support_device_switch="false" />
         <param transit_to_adsp_on_playback="true" />
+        <param concurrent_capture="true" />
         <!-- Below backend params must match with port used in mixer path file -->
         <!-- param used to configure backend sample rate, format and channels -->
         <param backend_port_name="PRI_TDM_TX_0" />

@@ -33,6 +33,10 @@
         <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" acdb_id="512"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_USB_HEADSET" acdb_id="45"/>
         <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_USB_HEADSET" acdb_id="514"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="143"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="143"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_AEC" acdb_id="143"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_AEC_NS" acdb_id="143"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" acdb_id="143"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" acdb_id="144"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" acdb_id="145"/>
@@ -66,6 +70,8 @@
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_LANDSCAPE" acdb_id="61"/>
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" acdb_id="61"/>
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" acdb_id="61"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEARING_AID" acdb_id="10"/>
+        <device name="SND_DEVICE_IN_VOICE_HEARING_AID" acdb_id="19"/>
 
         <!-- TTY -->
         <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" acdb_id="14"/>
@@ -102,6 +108,7 @@
         <usecase name="USECASE_AUDIO_RECORD_VOIP" type="in" id="16"/>
         <usecase name="USECASE_AUDIO_RECORD_VOIP" type="out" id="-1"/>
         <usecase name="USECASE_INCALL_MUSIC_UPLINK" type="out" id="27"/>
+        <usecase name="USECASE_INCALL_MUSIC_UPLINK2" type="out" id="27"/>
         <usecase name="USECASE_AUDIO_A2DP_ABR_FEEDBACK" type="in" id="12" />
         <usecase name="USECASE_AUDIO_HFP_SCO" type="in" id="12" />
         <usecase name="USECASE_AUDIO_HFP_SCO_WB" type="in" id="12" />
@@ -124,6 +131,11 @@
         <param key="operator_info" value="tmus;310210"/>
         <param key="operator_info" value="tmus;310200"/>
         <param key="operator_info" value="tmus;310160"/>
+        <param key="operator_info" value="tmus;20404"/>
+        <param key="operator_info" value="tmus;311220"/>
+        <param key="operator_info" value="tmus;310066"/>
+        <param key="operator_info" value="tmus;310730"/>
+        <param key="operator_info" value="tmus;00101"/>
     </config_params>
 
     <operator_specific>
@@ -200,6 +212,7 @@
         <device name="SND_DEVICE_IN_VOICE_TTY_FULL_HEADSET_MIC" backend="headset-mic" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_VOICE_REC_HEADSET_MIC" backend="headset-mic" interface="INT3_MI2S_TX"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_HEADSET_MIC" backend="headset-mic" interface="INT3_MI2S_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_HEARING_AID" backend="speaker-mic" interface="PRI_TDM_TX_0"/>
 
     </backend_names>
     <app_types>

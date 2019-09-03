@@ -144,8 +144,11 @@ volume index from 0 to 100.
         <point>66,-2200</point>
         <point>100,-1800</point>
     </volume>
-    <volume stream="AUDIO_STREAM_ENFORCED_AUDIBLE" deviceCategory="DEVICE_CATEGORY_SPEAKER"
-                                                   ref="DEFAULT_SYSTEM_VOLUME_CURVE"/>
+    <volume stream="AUDIO_STREAM_ENFORCED_AUDIBLE" deviceCategory="DEVICE_CATEGORY_SPEAKER">
+        <point>1,-3100</point>
+        <point>71,-2100</point>
+        <point>100,-1700</point>
+    </volume>
     <volume stream="AUDIO_STREAM_ENFORCED_AUDIBLE" deviceCategory="DEVICE_CATEGORY_EARPIECE"
                                                    ref="DEFAULT_SYSTEM_VOLUME_CURVE"/>
     <volume stream="AUDIO_STREAM_ENFORCED_AUDIBLE" deviceCategory="DEVICE_CATEGORY_EXT_MEDIA"

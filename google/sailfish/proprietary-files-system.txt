@@ -1,10 +1,9 @@
 -app/ims/lib/arm64/libimscamera_jni.so
 -app/ims/lib/arm64/libimsmedia_jni.so
 -priv-app/CNEService/CNEService.apk
--priv-app/HotwordEnrollmentOKGoogleWCD9335/HotwordEnrollmentOKGoogleWCD9335.apk
--priv-app/HotwordEnrollmentTGoogleWCD9335/HotwordEnrollmentTGoogleWCD9335.apk
--priv-app/HotwordEnrollmentXGoogleWCD9335/HotwordEnrollmentXGoogleWCD9335.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-product/priv-app/HotwordEnrollmentOKGoogleWCD9335/HotwordEnrollmentOKGoogleWCD9335.apk
+-product/priv-app/HotwordEnrollmentXGoogleWCD9335/HotwordEnrollmentXGoogleWCD9335.apk
 etc/firmware/wcd9320/wcd9320_anc.bin
 etc/firmware/wcd9320/wcd9320_mad_audio.bin
 etc/firmware/wcd9320/wcd9320_mbhc.bin
@@ -21,8 +20,8 @@ lib64/lib-imsvideocodec.so
 lib64/lib-imsvt.so
 lib64/lib-imsvtextutils.so
 lib64/lib-imsvtutils.so
-lib64/libaptXHD_encoder.so
-lib64/libaptX_encoder.so
 lib64/libimscamera_jni.so
 lib64/libimsmedia_jni.so
 lib64/librcc.so
+product/lib64/libaptXHD_encoder.so
+product/lib64/libaptX_encoder.so

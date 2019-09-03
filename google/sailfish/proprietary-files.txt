@@ -70,17 +70,25 @@ vendor/lib64/soundfx/libvolumelistener.so
 
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/audio_policy_configuration_bluetooth_legacy_hal.xml
+vendor/etc/bluetooth_audio_policy_configuration.xml
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib/hw/android.hardware.bluetooth.audio@2.0-impl.so
+vendor/lib/hw/audio.bluetooth.default.so
+vendor/lib/libbluetooth_audio_session.so
 vendor/lib/libbt-vendor.so
+vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/hw/audio.bluetooth.default.so
+vendor/lib64/libbluetooth_audio_session.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/libbtnv.so
 
 # Bluetooth-AptX
 lib/libaptXHD_encoder.so
 lib/libaptX_encoder.so
-lib64/libaptXHD_encoder.so
-lib64/libaptX_encoder.so
+product/lib64/libaptXHD_encoder.so
+product/lib64/libaptX_encoder.so
 
 # CDSP
 
@@ -304,10 +312,11 @@ vendor/firmware/widevine.b06
 vendor/firmware/widevine.mdt
 vendor/lib/libwvhidl.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 
 # Display-Hardware
-vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so
+vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
 vendor/lib/hw/gralloc.default.so
 vendor/lib/hw/gralloc.msm8996.so
 vendor/lib/hw/hwcomposer.msm8996.so
@@ -318,7 +327,7 @@ vendor/lib/libqservice.so
 -vendor/lib/libsdm-disp-apis.so
 vendor/lib/libsdmcore.so
 vendor/lib/libsdmutils.so
-vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl.so
+vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
 vendor/lib64/hw/gralloc.default.so
 vendor/lib64/hw/gralloc.msm8996.so
 vendor/lib64/hw/hwcomposer.msm8996.so
@@ -495,6 +504,14 @@ vendor/lib/hw/gatekeeper.msm8996.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl.so
 vendor/lib64/hw/gatekeeper.msm8996.so
 
+# Google
+vendor/lib/libgooglecamerahal.so
+vendor/lib/libgooglecamerahalutils.so
+vendor/lib/libgoogle_camera_hal_tests.so
+vendor/lib64/libgooglecamerahal.so
+vendor/lib64/libgooglecamerahalutils.so
+vendor/lib64/libgoogle_camera_hal_tests.so
+
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
@@ -548,9 +565,8 @@ vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
 
 # HotwordEnrollment
--priv-app/HotwordEnrollmentOKGoogleWCD9335/HotwordEnrollmentOKGoogleWCD9335.apk
--priv-app/HotwordEnrollmentTGoogleWCD9335/HotwordEnrollmentTGoogleWCD9335.apk
--priv-app/HotwordEnrollmentXGoogleWCD9335/HotwordEnrollmentXGoogleWCD9335.apk
+-product/priv-app/HotwordEnrollmentOKGoogleWCD9335/HotwordEnrollmentOKGoogleWCD9335.apk
+-product/priv-app/HotwordEnrollmentXGoogleWCD9335/HotwordEnrollmentXGoogleWCD9335.apk
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@3.0-service
@@ -732,11 +748,9 @@ vendor/bin/ssr_setup
 vendor/bin/subsystem_ramdump
 
 # Sensors
-vendor/lib/hw/activity_recognition.sailfish.so
 vendor/lib/hw/sensors.sailfish.so
 vendor/lib/hw/sensors.vl530l0.tof.so
 vendor/lib/libsensorndkbridge.so
-vendor/lib64/hw/activity_recognition.sailfish.so
 vendor/lib64/hw/sensors.sailfish.so
 vendor/lib64/libsensorndkbridge.so
 
@@ -744,6 +758,7 @@ vendor/lib64/libsensorndkbridge.so
 vendor/bin/thermal-engine
 vendor/etc/thermal-engine-vr.conf
 vendor/etc/thermal-engine.conf
+vendor/etc/thermal_info_config.json
 -vendor/lib/libthermalclient.so
 -vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
@@ -777,31 +792,68 @@ vendor/qcril.db
 
 # Misc
 -vendor/app/atfwd/atfwd.apk
+vendor/app/atfwd/oat/arm64/atfwd.odex
+vendor/app/atfwd/oat/arm64/atfwd.vdex
 -vendor/app/colorservice/colorservice.apk
+vendor/app/colorservice/oat/arm64/colorservice.odex
+vendor/app/colorservice/oat/arm64/colorservice.vdex
+vendor/app/datastatusnotification/oat/arm64/datastatusnotification.odex
+vendor/app/datastatusnotification/oat/arm64/datastatusnotification.vdex
+vendor/app/embms/oat/arm64/embms.odex
+vendor/app/embms/oat/arm64/embms.vdex
 vendor/app/embms/oem/config_params.xml
 vendor/app/embms/oem/provisioning_params.xml
 vendor/app/embms/oem/verizon_config_params.txt
 -vendor/app/fastdormancy/fastdormancy.apk
+vendor/app/fastdormancy/oat/arm64/fastdormancy.odex
+vendor/app/fastdormancy/oat/arm64/fastdormancy.vdex
+vendor/app/imssettings/oat/arm64/imssettings.odex
+vendor/app/imssettings/oat/arm64/imssettings.vdex
 -vendor/app/QAS_DVC_MSP/QAS_DVC_MSP.apk
+vendor/app/QtiTelephonyService/oat/arm64/QtiTelephonyService.odex
+vendor/app/QtiTelephonyService/oat/arm64/QtiTelephonyService.vdex
+vendor/app/radioconfig/oat/arm64/radioconfig.odex
+vendor/app/radioconfig/oat/arm64/radioconfig.vdex
 -vendor/app/radioconfig/radioconfig.apk
+vendor/app/RCSBootstraputil/oat/arm64/RCSBootstraputil.odex
+vendor/app/RCSBootstraputil/oat/arm64/RCSBootstraputil.vdex
 -vendor/app/RCSBootstraputil/RCSBootstraputil.apk
+vendor/app/SecureExtAuthService/oat/arm64/SecureExtAuthService.odex
+vendor/app/SecureExtAuthService/oat/arm64/SecureExtAuthService.vdex
 -vendor/app/SecureExtAuthService/SecureExtAuthService.apk
+vendor/app/shutdownlistener/oat/arm64/shutdownlistener.odex
+vendor/app/shutdownlistener/oat/arm64/shutdownlistener.vdex
 -vendor/app/shutdownlistener/shutdownlistener.apk
+vendor/app/TimeService/oat/arm64/TimeService.odex
+vendor/app/TimeService/oat/arm64/TimeService.vdex
 -vendor/app/vzw_msdc_api/vzw_msdc_api.apk
 vendor/bin/athdiag
+vendor/bin/bc
 vendor/bin/cplay
+vendor/bin/devmem
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
+vendor/bin/dumpsys
+vendor/bin/fsync
 vendor/bin/ftmdaemon
+vendor/bin/getconf
 vendor/bin/gptest
 vendor/bin/hdcp1prov
+vendor/bin/hw/android.hardware.atrace@1.0-service
 vendor/bin/hw/rild
+vendor/bin/i2cdetect
+vendor/bin/i2cdump
+vendor/bin/i2cget
+vendor/bin/i2cset
+vendor/bin/iconv
+vendor/bin/install
 vendor/bin/mct-unit-test-app
 vendor/bin/mdm_helper
 vendor/bin/mdm_helper_proxy
+vendor/bin/misc_writer
 vendor/bin/mm-qjpeg-dec-test
 vendor/bin/mm-qjpeg-enc-test
 vendor/bin/mm-qomx-idec-test
@@ -809,7 +861,12 @@ vendor/bin/mm-qomx-ienc-test
 vendor/bin/myftm
 vendor/bin/nanoapp_cmd
 vendor/bin/nanohub_slpi
+vendor/bin/nanotool
+vendor/bin/nc
+vendor/bin/netcat
 vendor/bin/nl_listener
+vendor/bin/nproc
+vendor/bin/nsenter
 vendor/bin/perfd
 vendor/bin/PktRspTest
 vendor/bin/qfipsverify
@@ -822,8 +879,13 @@ vendor/bin/tbaseLoader
 vendor/bin/test_bet_8996
 vendor/bin/test_diag
 vendor/bin/test_module_pproc
+vendor/bin/unlink
+vendor/bin/unshare
+vendor/bin/uuidgen
+vendor/bin/watch
 vendor/bin/wdsdaemon
 vendor/bin/WifiLogger_app
+vendor/etc/a2dp_in_audio_policy_configuration.xml
 vendor/etc/aanc_tuning_mixer.txt
 vendor/etc/default-permissions/default-permissions.xml
 vendor/etc/diag/CHRE.cfg
@@ -832,21 +894,28 @@ vendor/etc/diag/MarlinSailfish_Radio-generic.cfg
 vendor/etc/diag/wlan.cfg
 vendor/etc/fstab.sailfish
 vendor/etc/hearing_aid_audio_policy_configuration.xml
+vendor/etc/init/android.hardware.atrace@1.0-service.rc
 vendor/etc/init/init.diag.rc
 vendor/etc/init/init.nanohub.rc
 vendor/etc/init/init.rc
 vendor/etc/init/init.usb.rc
 vendor/etc/modem_stat.conf
 vendor/etc/perf-profile0.conf
-vendor/etc/permissions/LowPowerMonitorDeviceInterface.xml
-vendor/etc/permissions/LowPowerMonitorDeviceStub.xml
-vendor/etc/permissions/PowerAnomalyDataModemInterface.xml
-vendor/etc/permissions/PowerAnomalyStub.xml
 vendor/etc/permissions/qti-vzw-ims-internal.xml
 vendor/etc/permissions/rcsservice.xml
 vendor/etc/qfipsverify/bootimg.hmac
 vendor/etc/qfipsverify/qfipsverify.hmac
+vendor/framework/oat/arm/qti-vzw-ims-internal.odex
+vendor/framework/oat/arm/qti-vzw-ims-internal.vdex
+vendor/framework/oat/arm/QtiTelephonyServicelibrary.odex
+vendor/framework/oat/arm/QtiTelephonyServicelibrary.vdex
+vendor/framework/oat/arm64/qti-vzw-ims-internal.odex
+vendor/framework/oat/arm64/qti-vzw-ims-internal.vdex
+vendor/framework/oat/arm64/QtiTelephonyServicelibrary.odex
+vendor/framework/oat/arm64/QtiTelephonyServicelibrary.vdex
 -vendor/framework/rcsservice.jar
+vendor/lib/android.hardware.camera.provider@2.4-external.so
+vendor/lib/android.hardware.camera.provider@2.4-legacy.so
 vendor/lib/dsp/EtsiEaacPlusEncAndCmnModule.so.1
 vendor/lib/dsp/fastrpc_shell_0
 vendor/lib/dsp/fluence_voiceplus_module.so.1
@@ -872,6 +941,8 @@ vendor/lib/libhidparser.so
 vendor/lib/libhubconnection.so
 vendor/lib/libllvd_smore.so
 vendor/lib/libmm-disp-apis.so
+vendor/lib/libmm-dspp-utils.so
+vendor/lib/libmm-qdcm-diag.so
 vendor/lib/libmm-qdcm.so
 vendor/lib/libq3dtools_esx.so
 vendor/lib/libSampleAuthJNI.so
@@ -891,6 +962,8 @@ vendor/lib/test_suite_all_modules.so
 vendor/lib/test_suite_no_sensor.so
 vendor/lib/test_suite_pproc.so
 vendor/lib/test_suite_vfe.so
+vendor/lib64/android.hardware.camera.provider@2.4-external.so
+vendor/lib64/android.hardware.camera.provider@2.4-legacy.so
 vendor/lib64/eglSubDriverAndroid.so
 vendor/lib64/hw/flp.default.so
 vendor/lib64/hw/gps.default.so
@@ -905,6 +978,8 @@ vendor/lib64/libhidparser.so
 vendor/lib64/libhubconnection.so
 vendor/lib64/libmdmimgload.so
 vendor/lib64/libmm-disp-apis.so
+vendor/lib64/libmm-dspp-utils.so
+vendor/lib64/libmm-qdcm-diag.so
 vendor/lib64/libmm-qdcm.so
 vendor/lib64/libq3dtools_esx.so
 vendor/lib64/libSampleAuthJNI.so
@@ -925,3 +1000,7 @@ vendor/qcril_database/upgrade/2_db_upgrade.sql
 vendor/qcril_database/upgrade/3_remove_ecc_999_from_us_and_canada.sql
 vendor/qcril_database/upgrade/4_db_upgrade.sql
 vendor/qcril_database/upgrade/5_update_india_ecc.sql
+vendor/qcril_database/upgrade/6_recheck_ecc_setting.sql
+vendor/qcril_database/upgrade/7_singapore_ecc_995.sql
+vendor/qcril_database/upgrade/8_germany_ecc_110.sql
+vendor/qcril_database/upgrade/9_remove_germany_ecc_110.sql

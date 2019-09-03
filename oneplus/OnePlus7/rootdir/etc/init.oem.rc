@@ -1009,7 +1009,7 @@ service wifitestdiag /vendor/bin/wifi_diag
     disabled
     seclabel u:r:ftmdaemon:s0
 
-on property:persist.vendor.oem.dump=1
+on property:persist.vendor.oem.dump=1 && property:persist.vendor.oem.ssrdump=0
     write /sys/module/msm_poweroff/parameters/download_mode 1
     write /sys/kernel/dload/dload_mode full
     write /sys/kernel/dload/emmc_dload 0
@@ -1017,13 +1017,21 @@ on property:persist.vendor.oem.dump=1
     write /proc/restart_level_all 1
     write /proc/sys/kernel/printk "4 6 1 7"
 
-on property:persist.vendor.oem.dump=0
+on property:persist.vendor.oem.dump=0 && property:persist.vendor.oem.ssrdump=0
     write /sys/module/msm_poweroff/parameters/download_mode 1
     write /sys/kernel/dload/dload_mode mini
     write /sys/kernel/dload/emmc_dload 1
     write /proc/otrace_on 0
     write /proc/restart_level_all 0
     write /proc/sys/kernel/printk "1 6 1 7"
+
+on property:persist.vendor.oem.dump=0 && property:persist.vendor.oem.ssrdump=1
+    write /sys/module/msm_poweroff/parameters/download_mode 1
+    write /sys/kernel/dload/dload_mode full
+    write /sys/kernel/dload/emmc_dload 0
+    write /proc/otrace_on 7978
+    write /proc/restart_level_all 0
+    write /proc/sys/kernel/printk "4 6 1 7"
 
 # lynn.guo@Multimedia, 2019/07/01, Add for automatic brightness log
 on property:persist.vendor.brightness.debug=1
@@ -1045,28 +1053,28 @@ service disable_auto_brightness_log /system/bin/auto_brightness_log.sh disable
     oneshot
 
 # simon.miao@Multimedia, 2019/07/13, Add for gamut mapping
-on property:persist.vendor.color.mode=0
+on property:vendor.sys.color.mode=0
     start notify_srgb_color_mode
 
-on property:persist.vendor.color.mode=1
+on property:vendor.sys.color.mode=1
     start notify_p3_color_mode
 
-on property:persist.vendor.color.mode=2
+on property:vendor.sys.color.mode=2
     start notify_hdr_color_mode
 
-on property:persist.vendor.color.mode=3
+on property:vendor.sys.color.mode=3
     start notify_native_color_mode
 
-on property:persist.vendor.hardware.decoding=1
+on property:vendor.sys.hardware.decoding=1
     start notify_video_state_on
 
-on property:persist.vendor.hardware.decoding=0
+on property:vendor.sys.hardware.decoding=0
     start notify_video_state_off
 
-on property:persist.vendor.blacklist.layer=0
+on property:vendor.sys.blacklist.layer=0
     start notify_blacklist_layer_off
 
-on property:persist.vendor.blacklist.layer=1
+on property:vendor.sys.blacklist.layer=1
     start notify_blacklist_layer_on
 
 service notify_srgb_color_mode /system/bin/notify_color_mode.sh srgb

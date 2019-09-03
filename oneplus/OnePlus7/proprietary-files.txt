@@ -855,6 +855,8 @@ vendor/firmware/tp/LIMIT_19801_SY761.img
 vendor/firmware/tp/LIMIT_19801_SY761_NEW.img
 vendor/firmware/tp/LIMIT_19861_SY761.img
 vendor/firmware/tp/LIMIT_19861_SY761_NEW.img
+vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -970,12 +972,14 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
+vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
+vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -993,12 +997,14 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
+vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
+vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -1249,6 +1255,7 @@ vendor/lib64/libplatformconfig.so
 vendor/lib64/libstagefrighthw.so
 
 # NFC
+-app/NxpNfcNci/lib/arm64/libnxpnfc_nci_jni.so
 -app/NxpNfcNci/NxpNfcNci.apk
 -app/NxpSecureElement/NxpSecureElement.apk
 etc/nfcee_access.xml
@@ -1373,6 +1380,7 @@ vendor/overlay/oneplus_basiccolor_black_OPLauncher/net.oneplus.launcher.apk
 vendor/overlay/oneplus_basiccolor_black_OPMms/com.oneplus.mms.apk
 vendor/overlay/oneplus_basiccolor_black_OPNote/com.oneplus.note.apk
 vendor/overlay/oneplus_basiccolor_black_OPSafe/com.oneplus.security.apk
+vendor/overlay/oneplus_basiccolor_black_OPScreenRecord/com.oneplus.screenrecord.apk
 vendor/overlay/oneplus_basiccolor_black_OPSoundRecorder/com.oneplus.soundrecorder.apk
 vendor/overlay/oneplus_basiccolor_black_OPWeather/net.oneplus.weather.apk
 vendor/overlay/oneplus_basiccolor_black_phone/black_phone.apk
@@ -1399,6 +1407,7 @@ vendor/overlay/oneplus_basiccolor_white_OPLauncher/net.oneplus.launcher.apk
 vendor/overlay/oneplus_basiccolor_white_OPMms/com.oneplus.mms.apk
 vendor/overlay/oneplus_basiccolor_white_OPNote/com.oneplus.note.apk
 vendor/overlay/oneplus_basiccolor_white_OPSafe/com.oneplus.security.apk
+vendor/overlay/oneplus_basiccolor_white_OPScreenRecord/com.oneplus.screenrecord.apk
 vendor/overlay/oneplus_basiccolor_white_OPSoundRecorder/com.oneplus.soundrecorder.apk
 vendor/overlay/oneplus_basiccolor_white_OPWeather/net.oneplus.weather.apk
 vendor/overlay/oneplus_basiccolor_white_phone/white_phone.apk
@@ -1413,6 +1422,7 @@ vendor/overlay/oneplus_black_OPCalendar/com.oneplus.calendar.apk
 vendor/overlay/oneplus_black_OPFilemanager/com.oneplus.filemanager.apk
 vendor/overlay/oneplus_black_OPNote/com.oneplus.note.apk
 vendor/overlay/oneplus_black_OPScreenRecord/com.oneplus.screenrecord.apk
+vendor/overlay/oneplus_black_OPSoundRecorder/com.oneplus.soundrecorder.apk
 vendor/overlay/oneplus_black_OPWeather/net.oneplus.weather.apk
 vendor/overlay/oneplus_shape_circle/OnePlusIconShapeCircleOverlay.apk
 vendor/overlay/oneplus_shape_roundedrect/OnePlusIconShapeRoundedRectOverlay.apk
@@ -1424,6 +1434,7 @@ vendor/overlay/oneplus_white_OPCalendar/com.oneplus.calendar.apk
 vendor/overlay/oneplus_white_OPFilemanager/com.oneplus.filemanager.apk
 vendor/overlay/oneplus_white_OPNote/com.oneplus.note.apk
 vendor/overlay/oneplus_white_OPScreenRecord/com.oneplus.screenrecord.apk
+vendor/overlay/oneplus_white_OPSoundRecorder/com.oneplus.soundrecorder.apk
 vendor/overlay/oneplus_white_OPWeather/net.oneplus.weather.apk
 
 # Pasrmanager
@@ -2026,6 +2037,7 @@ lib64/libwfduibcsink.so
 lib64/libwfduibcsinkinterface.so
 lib64/libwfduibcsrc.so
 lib64/libwfduibcsrcinterface.so
+-priv-app/WfdService/lib/arm64/libwfdnative.so
 -priv-app/WfdService/WfdService.apk
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
@@ -2099,10 +2111,12 @@ vendor/app/TimeService/oat/arm64/TimeService.odex
 vendor/app/TimeService/oat/arm64/TimeService.vdex
 vendor/bin/adpl
 vendor/bin/athdiag
+vendor/bin/bc
 vendor/bin/ccid_daemon
 vendor/bin/chre
 vendor/bin/climax
 vendor/bin/cplay
+vendor/bin/devmem
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
@@ -2112,7 +2126,9 @@ vendor/bin/e_loop
 vendor/bin/fmconfig
 vendor/bin/fmfactorytest
 vendor/bin/fmfactorytestserver
+vendor/bin/fsync
 vendor/bin/ftmtest
+vendor/bin/getconf
 vendor/bin/hal_proxy_daemon
 vendor/bin/hbtp_daemon
 vendor/bin/hdcp1prov
@@ -2122,13 +2138,23 @@ vendor/bin/hw/capabilityconfigstoretest
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
 vendor/bin/hw/vendor.qti.hardware.cryptfshw@1.0-service-qti
 vendor/bin/hw/vendor.qti.hardware.servicetracker@1.0-service
+vendor/bin/i2cdetect
+vendor/bin/i2cdump
+vendor/bin/i2cget
+vendor/bin/i2cset
+vendor/bin/iconv
+vendor/bin/install
 vendor/bin/ipacm-diag
 vendor/bin/ks
 vendor/bin/loadalgo
 vendor/bin/mdm_helper_proxy
 vendor/bin/mm-vidc-omx-test
 vendor/bin/myftm
+vendor/bin/nc
+vendor/bin/netcat
+vendor/bin/nproc
 vendor/bin/npu_launcher
+vendor/bin/nsenter
 vendor/bin/oemnvbkdaemon
 vendor/bin/PktRspTest
 vendor/bin/ppd
@@ -2141,7 +2167,11 @@ vendor/bin/sigma_dut
 vendor/bin/spectraltool
 vendor/bin/StoreKeybox
 vendor/bin/test_diag
+vendor/bin/unlink
+vendor/bin/unshare
+vendor/bin/uuidgen
 vendor/bin/vppservice
+vendor/bin/watch
 vendor/bin/wdsdaemon
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
@@ -2417,3 +2447,4 @@ vendor/lib64/vendor.qti.hardware.display.mapper@2.0.so
 vendor/lib64/vendor.qti.hardware.display.mapperextensions@1.0.so
 vendor/lib64/vendor.qti.hardware.servicetracker@1.0.so
 vendor/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
+vendor/odm

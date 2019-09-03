@@ -50,7 +50,7 @@ on charger
     mount ext4 /dev/block/bootdevice/by-name/cache /cache
     start charger_logkit
 
-on property:persist.vendor.oem.dump=1
+on property:persist.vendor.oem.dump=1 && property:persist.vendor.oem.ssrdump=0
     write /sys/module/msm_poweroff/parameters/download_mode 1
     write /sys/kernel/dload/dload_mode full
     write /sys/kernel/dload/emmc_dload 0
@@ -58,13 +58,21 @@ on property:persist.vendor.oem.dump=1
     write /proc/restart_level_all 1
     write /proc/sys/kernel/printk "4 6 1 7"
 
-on property:persist.vendor.oem.dump=0
+on property:persist.vendor.oem.dump=0 && property:persist.vendor.oem.ssrdump=0
     write /sys/module/msm_poweroff/parameters/download_mode 1
     write /sys/kernel/dload/dload_mode mini
     write /sys/kernel/dload/emmc_dload 1
     write /proc/otrace_on 0
     write /proc/restart_level_all 0
     write /proc/sys/kernel/printk "1 6 1 7"
+
+on property:persist.vendor.oem.dump=0 && property:persist.vendor.oem.ssrdump=1
+    write /sys/module/msm_poweroff/parameters/download_mode 1
+    write /sys/kernel/dload/dload_mode full
+    write /sys/kernel/dload/emmc_dload 0
+    write /proc/otrace_on 7978
+    write /proc/restart_level_all 0
+    write /proc/sys/kernel/printk "4 6 1 7"
 
 on property:sys.oem.aging_test=1
     write /sys/class/power_supply/battery/is_aging_test  1

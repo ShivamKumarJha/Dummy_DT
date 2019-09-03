@@ -105,6 +105,7 @@ on early-boot
 on boot
     overlay_oneplus overlay overlay /product/app lowerdir=/oneplus/app:/product/app,context=u:object_r:system_file:s0
     overlay_oneplus overlay overlay /product/priv-app lowerdir=/oneplus/priv-app:/product/priv-app,context=u:object_r:system_file:s0
+    overlay_oneplus overlay overlay /product/etc lowerdir=/oneplus/etc:/product/etc,context=u:object_r:system_file:s0
     overlay_oneplus overlay overlay /product/framework lowerdir=/oneplus/framework:/product/framework,context=u:object_r:system_file:s0
     overlay_oneplus overlay overlay /product/media lowerdir=/oneplus/media:/product/media,context=u:object_r:system_file:s0
     overlay_oneplus overlay overlay /product/lib64 lowerdir=/oneplus/lib64:/product/lib64,context=u:object_r:system_lib_file:s0

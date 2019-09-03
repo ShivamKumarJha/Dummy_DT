@@ -4298,7 +4298,14 @@ case "$target" in
 
 	# Disable wsf, beacause we are using efk.
 	# wsf Range : 1..1000 So set to bare minimum value 1.
-        echo 1 > /proc/sys/vm/watermark_scale_factor
+	# set watermark_scale_factor = 36MB * 1024 * 1024 * 10 / MemTotal
+	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+	MemTotal=${MemTotalStr:16:8}
+	factor=`expr 377487360 / $MemTotal`
+	echo $factor > /proc/sys/vm/watermark_scale_factor
+
+	# set min_free_kbytes = 32MB
+	echo 32768 > /proc/sys/vm/min_free_kbytes
 
         #ifdef VENDOR_EDIT
         #yankelong@BSP, 2019/5/8/, add for Enable ufs performance.

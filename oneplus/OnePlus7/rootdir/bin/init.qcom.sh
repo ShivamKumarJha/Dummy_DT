@@ -460,13 +460,16 @@ default_dump=`getprop ro.vendor.default.dump.enable`
 if [ "$oemdump" == "" ]; then
     if [ "$default_dump" == "true" ]; then
         setprop persist.vendor.oem.dump 1
+        setprop persist.vendor.oem.ssrdump 0
     else
         case "$buildtype" in
             "release" | "cta")
                setprop persist.vendor.oem.dump 0
+               setprop persist.vendor.oem.ssrdump 0
                ;;
             *)
                setprop persist.vendor.oem.dump 1
+               setprop persist.vendor.oem.ssrdump 0
                ;;
         esac
     fi

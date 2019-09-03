@@ -2,7 +2,7 @@ DEVICE_PATH := device/xiaomi/pyxis
 BOARD_VENDOR := xiaomi
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-07-01
+VENDOR_SECURITY_PATCH := 2019-08-01
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

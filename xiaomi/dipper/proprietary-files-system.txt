@@ -37,7 +37,6 @@ etc/permissions/qti_permissions.xml
 etc/permissions/telephonyservice.xml
 etc/permissions/vendor-xiaomi-hardware-citsensorservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
-etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.2-java-permission.xml
@@ -78,7 +77,6 @@ framework/vendor.qti.ims.callinfo-V1.0-java.jar
 framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 framework/vendor.qti.latency-V2.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
-framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.2-java.jar
@@ -154,7 +152,6 @@ lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
-lib/vendor.xiaomi.hardware.misys@2.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.1.so
 lib/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -215,7 +212,6 @@ lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
-lib64/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 lib64/vendor.xiaomi.hardware.mtdservice@1.0.so

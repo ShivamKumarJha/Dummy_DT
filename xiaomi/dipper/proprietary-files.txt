@@ -396,9 +396,6 @@ vendor/lib64/libarcsoft_supernight.so
 vendor/bin/cameratest
 
 # Camera-configs
-vendor/camera/fonts/MFYueYuan-Regular.ttf
-vendor/camera/fonts/MI+LanTing_GB+Outside+YS_V2.3_20160322.ttf
-vendor/camera/fonts/MIUI_Time.ttf
 vendor/etc/camera/age_gender_bg
 vendor/etc/camera/beauty_ui9_intelligent_params.config
 vendor/etc/camera/camxoverridesettings.txt
@@ -982,7 +979,6 @@ vendor/etc/libnfc-qrd_rf1.conf
 vendor/etc/libnfc-qrd_rf2.conf
 vendor/etc/permissions/com.android.nfc_extras.xml
 vendor/etc/permissions/com.nxp.mifare.xml
-vendor/firmware/libpn553_fw.so
 vendor/firmware/libpn553_rec.so
 vendor/lib/hw/android.hardware.nfc@1.0-impl.so
 vendor/lib/hw/android.hardware.secure_element@1.0-impl.so
@@ -1146,6 +1142,7 @@ framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+vendor/bin/ATFWD-daemon
 vendor/bin/hw/qcrild
 vendor/bin/netmgrd
 vendor/bin/port-bridge
@@ -1568,13 +1565,11 @@ vendor/bin/nv_mac
 # Xiaomi
 etc/permissions/vendor-xiaomi-hardware-citsensorservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
-etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.2-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
-framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.2-java.jar
@@ -1585,7 +1580,6 @@ lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
-lib/vendor.xiaomi.hardware.misys@2.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.1.so
 lib/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -1599,7 +1593,6 @@ lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
-lib64/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -1611,7 +1604,6 @@ lib64/vendor.xiaomi.hardware.touchfeature@1.0.so
 vendor/bin/hw/vendor.xiaomi.hardware.citsensorservice@1.1-service
 vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
@@ -1619,7 +1611,6 @@ vendor/bin/tidad@1.1
 vendor/etc/init/vendor.xiaomi.hardware.citsensorservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
@@ -1628,7 +1619,6 @@ vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/lib/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
@@ -1641,7 +1631,6 @@ vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
@@ -1722,11 +1711,7 @@ vendor/bin/spectraltool
 vendor/bin/test_diag
 vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
--vendor/data-app/aiasst_service/aiasst_service.apk
 -vendor/data-app/SmartHome/SmartHome.apk
--vendor/data-app/wps-lite/wps-lite.apk
--vendor/data-app/XMRemoteController/XMRemoteController.apk
--vendor/data-app/Youpin/Youpin.apk
 vendor/etc/hdr_config.cfg
 vendor/etc/pm_test_item_config.xml
 vendor/etc/rcv.wav
@@ -1751,7 +1736,6 @@ vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
 vendor/lib/libfeedbackhandler.so
 vendor/lib/libnanopb.so
-vendor/lib/libperfmgr.so
 vendor/lib/libsi.so
 vendor/lib/libspiris.so
 vendor/lib/libstfaceunlockoclqcom.so
@@ -1759,7 +1743,6 @@ vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libtonemapalgo.so
 vendor/lib/libwapi_cert.so
-vendor/lib/vndk/libxlog.so
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/hw/flp.brcm.so
 vendor/lib64/hw/gps.brcm.so
@@ -1771,7 +1754,6 @@ vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libfeedbackhandler.so
 vendor/lib64/libmdmimgload.so
 vendor/lib64/libnanopb.so
-vendor/lib64/libperfmgr.so
 vendor/lib64/libsi.so
 vendor/lib64/libspiris.so
 vendor/lib64/libteeclientjni.so

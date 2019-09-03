@@ -231,7 +231,7 @@
      <bool name="skip_restoring_network_selection">true</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">24.0dip</dimen>
+     <dimen name="status_bar_height_portrait">32.359985dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -325,13 +325,27 @@
          Specify the component name or an empty string if none.
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
-     <string name="config_dozeComponent">com.miui.aod/com.miui.aod.doze.DozeService</string>
+     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
 
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
 
     <!-- ImsService package name to bind to by default, if config_dynamic_bind_ims is true -->
      <string name="config_ims_package">org.codeaurora.ims</string>
+
+    <!-- The bounding path of the cutout region of the main built-in display.
+         Must either be empty if there is no cutout region, or a string that is parsable by
+         {@link android.util.PathParser}.
+    
+         The path is assumed to be specified in display coordinates with pixel units and in
+         the display's native orientation, with the origin of the coordinate system at the
+         center top of the display.
+    
+         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
+         appended after the path string to interpret coordinates in dp instead of px units.
+         Note that a physical cutout should be configured in pixels for the best results.
+    -->
+     <string name="config_mainBuiltInDisplayCutout">M-1.76214598e-12,89 L-236.156733,89 C-267.243762,89 -285.295731,69.7665865 -292.311611,44.1680123 L-297.818519,24.0967202 C-303.921221,1.82568157 -318.287069,3.54182863e-06 -338.438235,0 L338.438235,0 C318.287069,3.54182863e-06 303.921221,1.82568157 297.818519,24.0967202 L292.311611,44.1680123 C285.295731,69.7665865 267.243762,89 236.156733,89 L-1.76214598e-12,89 Z</string>
 
     <!-- MMS user agent string -->
      <string name="config_mms_user_agent">Android-Mms/2.0</string>

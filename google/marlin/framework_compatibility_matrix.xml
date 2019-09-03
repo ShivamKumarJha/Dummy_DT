@@ -24,5 +24,6 @@
         <sepolicy-version>26.0</sepolicy-version>
         <sepolicy-version>27.0</sepolicy-version>
         <sepolicy-version>28.0</sepolicy-version>
+        <sepolicy-version>29.0</sepolicy-version>
     </sepolicy>
 </compatibility-matrix>

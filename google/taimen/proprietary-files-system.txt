@@ -1,11 +1,8 @@
--app/QtiTelephonyService/QtiTelephonyService.apk
 -app/datastatusnotification/datastatusnotification.apk
 -app/embms/embms.apk
 -app/ims/lib/arm64/libimscamera_jni.so
 -app/ims/lib/arm64/libimsmedia_jni.so
 -app/uceShimService/uceShimService.apk
--lib/libsdm-disp-apis.so
--lib64/libsdm-disp-apis.so
 -priv-app/CNEService/CNEService.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -product/priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
@@ -14,9 +11,6 @@ etc/firmware/dnd.descriptor
 etc/firmware/dnd.sound_model
 etc/firmware/music_detector.descriptor
 etc/firmware/music_detector.sound_model
-etc/permissions/embms.xml
-etc/permissions/qcrilhook.xml
-etc/permissions/telephonyservice.xml
 framework/cneapiclient.jar
 framework/com.quicinc.cne.api-V1.0-java.jar
 framework/com.quicinc.cne.jar

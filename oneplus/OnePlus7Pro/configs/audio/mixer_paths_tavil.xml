@@ -364,7 +364,11 @@
     <!-- audio record compress end-->
 
     <!-- split a2dp -->
+    <!-- #ifdef VENDOR_EDIT-->
+    <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
     <ctl name="BT SampleRate" value="KHZ_8" />
+    -->
+    <!-- #endif VENDOR_EDIT-->
     <ctl name="AFE Input Channels" value="Zero" />
     <ctl name="SLIM7_RX ADM Channels" value="Zero" />
     <!-- split a2dp end-->
@@ -747,7 +751,11 @@
     </path>
 
     <path name="deep-buffer-playback bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="deep-buffer-playback bt-sco" />
     </path>
 
@@ -847,7 +855,11 @@
     </path>
 
     <path name="low-latency-playback bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="low-latency-playback bt-sco" />
     </path>
 
@@ -978,7 +990,11 @@
     </path>
 
     <path name="audio-ull-playback bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-ull-playback bt-sco" />
     </path>
 
@@ -1077,7 +1093,11 @@
     </path>
 
     <path name="compress-offload-playback bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback bt-sco" />
     </path>
 
@@ -1184,7 +1204,11 @@
     </path>
 
     <path name="compress-offload-playback2 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback2 bt-sco" />
     </path>
 
@@ -1284,7 +1308,11 @@
     </path>
 
     <path name="compress-offload-playback3 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback3 bt-sco" />
     </path>
 
@@ -1354,7 +1382,11 @@
     </path>
 
     <path name="compress-offload-playback4 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback4 bt-sco" />
     </path>
 
@@ -1425,7 +1457,11 @@
     </path>
 
     <path name="compress-offload-playback5 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback5 bt-sco" />
     </path>
 
@@ -1495,7 +1531,11 @@
     </path>
 
     <path name="compress-offload-playback6 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback6 bt-sco" />
     </path>
 
@@ -1565,7 +1605,11 @@
     </path>
 
     <path name="compress-offload-playback7 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback7 bt-sco" />
     </path>
 
@@ -1635,7 +1679,11 @@
     </path>
 
     <path name="compress-offload-playback8 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback8 bt-sco" />
     </path>
 
@@ -1705,7 +1753,11 @@
     </path>
 
     <path name="compress-offload-playback9 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-offload-playback9 bt-sco" />
     </path>
 
@@ -1786,7 +1838,11 @@
     </path>
 
     <path name="audio-record bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-record bt-sco" />
     </path>
 
@@ -1807,7 +1863,11 @@
     </path>
 
     <path name="audio-record-compress bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-record-compress bt-sco" />
     </path>
 
@@ -1832,7 +1892,11 @@
     </path>
 
     <path name="audio-record-compress2 bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-record-compress2 bt-sco" />
     </path>
 
@@ -1849,7 +1913,11 @@
     </path>
 
     <path name="low-latency-record bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="low-latency-record bt-sco" />
     </path>
 
@@ -2075,7 +2143,11 @@
     </path>
 
     <path name="compress-voip-call bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="compress-voip-call bt-sco" />
     </path>
 
@@ -2124,7 +2196,11 @@
     </path>
 
     <path name="voicemmode1-call bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="voicemmode1-call bt-sco" />
     </path>
 
@@ -2183,7 +2259,11 @@
     </path>
 
     <path name="voicemmode2-call bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="voicemmode2-call bt-sco" />
     </path>
 
@@ -2237,7 +2317,11 @@
     </path>
 
     <path name="audio-playback-voip bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-playback-voip bt-sco" />
     </path>
 
@@ -2315,7 +2399,11 @@
     </path>
 
     <path name="audio-record-voip bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="audio-record-voip bt-sco" />
     </path>
    <path name="spkr-rx-calib">
@@ -3242,10 +3330,10 @@
         <ctl name="CDC_IF TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="AMIC" />
         <ctl name="AMIC MUX6" value="ADC3" />
-        <ctl name="DEC5 Volume" value="84" />
-        <ctl name="DEC6 Volume" value="84" />
-        <ctl name="ADC3 Volume" value="3" />
-        <ctl name="ADC4 Volume" value="3" />
+        <ctl name="DEC5 Volume" value="90" />
+        <ctl name="DEC6 Volume" value="90" />
+        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="ADC4 Volume" value="6" />
     </path>
 
      <path name="handset-mic-re-sbc-other">
@@ -4022,7 +4110,11 @@
     </path>
 
     <path name="mmap-playback bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="mmap-playback bt-sco" />
     </path>
 
@@ -4085,7 +4177,11 @@
     </path>
 
     <path name="mmap-record bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="mmap-record bt-sco" />
     </path>
 
@@ -4132,7 +4228,11 @@
     </path>
 
     <path name="hifi-record bt-sco-wb">
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- zhangrun@MM.Audio, 2019/08/30, fix bug HD-12197 qcom CR#2515179
         <ctl name="BT SampleRate" value="KHZ_16" />
+        -->
+        <!-- #endif VENDOR_EDIT-->
         <path name="hifi-record bt-sco" />
     </path>
 <!-- wangbuqing,config hifi-record ,20190326 ,end -->

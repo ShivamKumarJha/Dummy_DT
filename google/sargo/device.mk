@@ -134,7 +134,7 @@ PRODUCT_PACKAGES += \
     init.sdm670.power.rc \
     init.sdm670.rc \
     init.sdm670.usb.rc \
-    fstab.qcom \
+    fstab.sdm670 \
     ueventd.qcom.rc \
 
 # Seccomp

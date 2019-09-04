@@ -130,7 +130,8 @@ PRODUCT_PACKAGES += \
     init.sdm845.power.rc \
     init.sdm845.rc \
     init.sdm845.usb.rc \
-    fstab.qcom \
+    fstab.persist \
+    fstab.sdm845 \
     ueventd.qcom.rc \
 
 # Seccomp

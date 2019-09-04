@@ -42,8 +42,6 @@ copy_pstore_files_if_enabled()
 copy_pstore_files_if_enabled
 
 echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
-echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
-echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
 echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
 echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
 echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres

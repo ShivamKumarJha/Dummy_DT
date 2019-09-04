@@ -109,7 +109,7 @@ PRODUCT_PACKAGES += \
     init.msm.usb.configfs.rc \
     init.qcom.usb.rc \
     init.recovery.mata.rc \
-    fstab.qcom \
+    fstab.mata \
     ueventd.qcom.rc \
 
 # Seccomp

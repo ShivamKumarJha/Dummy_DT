@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
     init.wahoo.usb.rc \
     init.walleye.rc \
     init.walleye.usb.rc \
-    fstab.qcom \
+    fstab.walleye \
     ueventd.qcom.rc \
 
 # Seccomp

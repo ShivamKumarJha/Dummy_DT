@@ -117,7 +117,7 @@ PRODUCT_PACKAGES += \
     init.power.sh \
     init.qcom.devstart.sh \
     init.radio.sh \
-    fstab.qcom \
+    fstab.sailfish \
     ueventd.qcom.rc \
 
 # Seccomp

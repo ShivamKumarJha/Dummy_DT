@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
     init.taimen.rc \
     init.taimen.usb.rc \
     init.wahoo.usb.rc \
-    fstab.qcom \
+    fstab.taimen \
     ueventd.qcom.rc \
 
 # Seccomp

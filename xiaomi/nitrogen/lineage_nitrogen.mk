@@ -17,7 +17,7 @@ PRODUCT_MODEL := MI MAX 3
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := nitrogen
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="nitrogen-user 9 PKQ1.181007.001 9.8.22 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="nitrogen-user 9 PKQ1.181007.001 V10.3.5.0.PEDMIXM release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/nitrogen/nitrogen:9/PKQ1.181007.001/9.8.22:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/nitrogen/nitrogen:9/PKQ1.181007.001/V10.3.5.0.PEDMIXM:user/release-keys

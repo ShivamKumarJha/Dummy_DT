@@ -2754,8 +2754,7 @@ case "$target" in
       echo "0:1209600" > /sys/module/cpu_boost/parameters/input_boost_freq
       echo 150 > /sys/module/cpu_boost/parameters/input_boost_ms
       echo "0:1209600 1:0 2:0 3:0 4:0 5:0 6:2054400 7:0" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-      echo 2 > /sys/module/cpu_boost/parameters/sched_boost_on_powerkey_input
-      echo "0:1209600 1:0 2:0 3:0 4:0 5:0 6:2054400 7:0" > /sys/module/cpu_boost/parameters/suspend_boost_freq
+      echo 400 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
 
       # Set Memory parameters
       configure_memory_parameters
@@ -2812,13 +2811,11 @@ case "$target" in
             echo N > /sys/module/lpm_levels/L3/cpu7/ret/idle_enabled
 
             # cpuset parameters
-            echo 0-2 > /dev/cpuset/background/cpus
+            #echo 0-5 > /dev/cpuset/background/cpus
             #echo 0-5 > /dev/cpuset/system-background/cpus
 
             # Turn off scheduler boost at the end
             echo 0 > /proc/sys/kernel/sched_boost
-            # Turn on scheduler boost for top app main
-            echo 1 > /proc/sys/kernel/sched_boost_top_app
 
             # Turn on sleep modes.
             echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled

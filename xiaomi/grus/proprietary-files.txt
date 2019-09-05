@@ -33,7 +33,6 @@ vendor/lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 vendor/lib/rfsa/adsp/libSuperSensor_skel.so
 vendor/lib/rfsa/adsp/libVC1Dec.so
 vendor/lib/rfsa/adsp/libVC1DecDsp_skel.so
-vendor/lib/rfsa/adsp/libVDHexagonSuperPhoto_skel.so
 vendor/lib/rfsa/adsp/misound_karaokemix_res.bin
 vendor/lib/rfsa/adsp/misound_karaoke_res.bin
 vendor/lib/rfsa/adsp/misound_res.bin
@@ -260,7 +259,6 @@ vendor/lib/camera/com.qti.sensormodule.s5k3l6.bin
 vendor/lib/camera/com.qti.sensormodule.s5k3l6_II.bin
 vendor/lib/camera/com.qti.sensormodule.s5k3t1.bin
 vendor/lib/camera/com.qti.sensormodule.s5k3t1_II.bin
-vendor/lib/camera/com.qti.sensormodule.s5k3t1_largan.bin
 vendor/lib/camera/com.qti.tuned.default.bin
 vendor/lib/camera/com.qti.tuned.grus_ofilm_imx586.bin
 vendor/lib/camera/com.qti.tuned.grus_ofilm_ov8856.bin
@@ -318,7 +316,6 @@ vendor/lib/camera/components/com.xiaomi.node.misegment.so
 vendor/lib/camera/components/etc/morpho_lowlight4.0.xml
 vendor/lib/camera/components/etc/morpho_lowlight4.0_adrc_high.xml
 vendor/lib/camera/components/etc/morpho_lowlight4.0_adrc_high_1.xml
-vendor/lib/camera/components/etc/visidon_clearshot_params.xml
 vendor/lib/camera/fdconfigpreview.bin
 vendor/lib/camera/fdconfigpreviewlite.bin
 vendor/lib/camera/fdconfigvideo.bin
@@ -342,7 +339,6 @@ vendor/lib/libgui_vendor.so
 vendor/lib/libHalSuperSensorServer.so
 vendor/lib/libmegface.so
 vendor/lib/libMegviiFacepp-0.5.2.so
-vendor/lib/libmialgo_fs.so
 vendor/lib/libmialgo_sd.so
 vendor/lib/libmibokeh_712.so
 vendor/lib/libmpbase.so
@@ -376,7 +372,6 @@ vendor/lib64/libcapiv2vop.so
 vendor/lib64/libgui_vendor.so
 vendor/lib64/libHalSuperSensorServer.so
 vendor/lib64/libmialgoengine.so
-vendor/lib64/libmialgo_fs.so
 vendor/lib64/libmibokeh_712.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libremosaiclib.so
@@ -391,7 +386,6 @@ vendor/lib64/libSuperSensorCPU.so
 vendor/lib64/libswvdec.so
 vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libVDClearShot.so
-vendor/lib64/libVDDualCameraClearShot.so
 vendor/lib64/libVDSuperPhotoAPI.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
@@ -430,9 +424,6 @@ vendor/lib64/libarcsoft_supernight.so
 vendor/bin/cameratest
 
 # Camera-configs
-vendor/camera/fonts/MFYueYuan-Regular.ttf
-vendor/camera/fonts/MI+LanTing_GB+Outside+YS_V2.3_20160322.ttf
-vendor/camera/fonts/MIUI_Time.ttf
 vendor/etc/camera/beauty_ui9_intelligent_params.config
 vendor/etc/camera/body_slim_ui9_params.config
 vendor/etc/camera/camxoverridesettings.txt
@@ -1875,7 +1866,6 @@ vendor/etc/ultrasound.wav
 
 # Misc
 vendor/bin/athdiag
-vendor/bin/batteryd
 vendor/bin/cplay
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
@@ -1909,10 +1899,7 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
--vendor/data-app/aiasst_service/aiasst_service.apk
 -vendor/data-app/SmartHome/SmartHome.apk
--vendor/data-app/wps-lite/wps-lite.apk
--vendor/data-app/Youpin/Youpin.apk
 vendor/etc/cirrus.cfg
 vendor/etc/cs35l41_cal.wav
 vendor/etc/ftm_test_config_sdm710-skuw-snd-card

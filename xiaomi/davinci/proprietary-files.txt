@@ -2111,6 +2111,7 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+-vendor/data-app/SmartHome/SmartHome.apk
 vendor/etc/ftm_test_config_qrd
 vendor/etc/ftm_test_config_sm6150-tavil-snd-card
 vendor/etc/ftm_test_config_sm6150-wcd9375qrd-snd-card

@@ -594,9 +594,12 @@ vendor/lib64/libFIDOKeyProvisioning.so
 vendor/lib64/libmfido.so
 
 # Fingerprint
+-vendor/app/QFingerprintService/QFingerprintService.apk
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
+vendor/bin/qfp-daemon
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/permissions/com.fingerprints.extension.xml
+vendor/etc/permissions/qti_fingerprint_interface.xml
 vendor/lib/hw/fingerprint.goodix.so
 vendor/lib/libgf_ca.so
 vendor/lib/libgf_hal.so
@@ -608,6 +611,7 @@ vendor/lib64/hw/fingerprint.fpc.so
 vendor/lib64/hw/fingerprint.goodix.so
 vendor/lib64/libgf_ca.so
 vendor/lib64/libgf_hal.so
+vendor/lib64/libqfp-service.so
 vendor/lib64/vendor.goodix.hardware.fingerprintextension@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
@@ -1057,7 +1061,6 @@ vendor/etc/perf/commonresourceconfigs.xml
 vendor/etc/perf/perfboostsconfig.xml
 vendor/etc/perf/targetconfig.xml
 vendor/etc/perf/targetresourceconfigs.xml
-vendor/etc/perf/thermalboost.conf
 vendor/etc/powerhint.xml
 vendor/lib/libperfgluelayer.so
 vendor/lib/libqti-perfd-client.so
@@ -1639,12 +1642,10 @@ vendor/bin/nv_mac
 # Xiaomi
 etc/permissions/vendor-xiaomi-hardware-citsensorservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
-etc/permissions/vendor.xiaomi.hardware.misys-V2.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
-framework/vendor.xiaomi.hardware.misys-V2.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
 framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
@@ -1654,13 +1655,11 @@ lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib/vendor.xiaomi.hardware.misys@1.0.so
-lib/vendor.xiaomi.hardware.misys@2.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.0.so
 lib/vendor.xiaomi.hardware.mlipay@1.1.so
 lib/vendor.xiaomi.hardware.mtdservice@1.0.so
 lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 lib/vendor.xiaomi.hardware.tidaservice@1.1.so
-lib/vendor.xiaomi.hardware.touchfeature@1.0.so
 lib/vendor.xiaomi.hardware.vsimapp@1.0.so
 lib64/vendor.xiaomi.hardware.citsensorservice@1.0.so
 lib64/vendor.xiaomi.hardware.citsensorservice@1.1.so
@@ -1668,7 +1667,6 @@ lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 lib64/vendor.xiaomi.hardware.fingerprintextension@1.0.so
 lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
 lib64/vendor.xiaomi.hardware.misys@1.0.so
-lib64/vendor.xiaomi.hardware.misys@2.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
@@ -1676,13 +1674,10 @@ lib64/vendor.xiaomi.hardware.mtdservice@1.1.so
 lib64/vendor.xiaomi.hardware.mtdservice@1.2.so
 lib64/vendor.xiaomi.hardware.tidaservice@1.0.so
 lib64/vendor.xiaomi.hardware.tidaservice@1.1.so
-lib64/vendor.xiaomi.hardware.touchfeature@1.0.so
 vendor/bin/hw/android.hardware.dumpstate@1.0-service.xiaomi
 vendor/bin/hw/vendor.xiaomi.hardware.citsensorservice@1.1-service
 vendor/bin/hw/vendor.xiaomi.hardware.displayfeature@1.0-service
 vendor/bin/hw/vendor.xiaomi.hardware.misys@1.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.misys@2.0-service
-vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
 vendor/bin/mlipayd@1.1
 vendor/bin/mtd@1.2
 vendor/bin/tidad@1.1
@@ -1690,17 +1685,13 @@ vendor/etc/init/android.hardware.dumpstate@1.0-service.xiaomi.rc
 vendor/etc/init/vendor.xiaomi.hardware.citsensorservice@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.displayfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.misys@1.0-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.misys@2.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.mtdservice@1.2-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.tidaservice@1.1-service.rc
-vendor/etc/init/vendor.xiaomi.hardware.touchfeature@1.0-service.rc
 vendor/etc/init/vendor.xiaomi.hardware.vsimapp@1.0-service.rc
 vendor/lib/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
-vendor/lib/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
@@ -1713,8 +1704,6 @@ vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.citsensorservice@1.1-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib64/hw/vendor.xiaomi.hardware.misys@1.0-impl.so
-vendor/lib64/hw/vendor.xiaomi.hardware.misys@2.0-impl.so
-vendor/lib64/hw/vendor.xiaomi.hardware.touchfeature@1.0-impl.so
 vendor/lib64/libmlipay.so
 vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
@@ -1785,10 +1774,6 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
--vendor/data-app/SmartHome/SmartHome.apk
--vendor/data-app/wps-lite/wps-lite.apk
--vendor/data-app/XMRemoteController/XMRemoteController.apk
--vendor/data-app/Youpin/Youpin.apk
 vendor/etc/ftm_test_config_sdm710-skuw-snd-card
 vendor/etc/ftm_test_config_sdm710-tasha-snd-card
 vendor/etc/ftm_test_config_sdm710-tavil-snd-card

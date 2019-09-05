@@ -92,7 +92,6 @@
         <device name="SND_DEVICE_OUT_USB_HEADPHONES" acdb_id="10"/>
         <device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" acdb_id="45"/>
         <device name="SND_DEVICE_OUT_VOICE_USB_HEADPHONES" acdb_id="45"/>
-        <device name="SND_DEVICE_OUT_AFE_PROXY" acdb_id="10"/>
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="10003"/>
     </acdb_ids>
     <backend_names>

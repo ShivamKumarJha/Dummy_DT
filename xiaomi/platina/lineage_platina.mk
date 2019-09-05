@@ -17,7 +17,7 @@ PRODUCT_MODEL := MI 8 Lite
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := platina
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="platina-user 9 PKQ1.181007.001 9.8.22 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="platina-user 9 PKQ1.181007.001 V10.3.7.0.PDTCNXM release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := Xiaomi/platina/platina:9/PKQ1.181007.001/9.8.22:user/release-keys
+BUILD_FINGERPRINT := Xiaomi/platina/platina:9/PKQ1.181007.001/V10.3.7.0.PDTCNXM:user/release-keys

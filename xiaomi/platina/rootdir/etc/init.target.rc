@@ -63,7 +63,7 @@ on fs
     mkdir /mnt/vendor/persist/audio 0755 system system
     mkdir /mnt/vendor/persist/bms 0700 root system
     mkdir /mnt/vendor/persist/stability 0755 system system
-    restorecon_recursive_skip_sehash /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
     write /sys/kernel/boot_adsp/boot 1
     mkdir /persist/wlan_bt 0700 system system
     mkdir /persist/audio 0755 system system
@@ -220,7 +220,6 @@ on property:sys.boot_completed=1
     start charge_logger
 
 service vendor.qseecomd /vendor/bin/qseecomd
-   shutdown critical
    class core
    user root
    group root
@@ -593,8 +592,3 @@ service nv_mac /vendor/bin/nv_mac
     user system
     group system inet net_admin wifi net_raw
     oneshot
-
-service remosaic_daemon /system/vendor/bin/remosaic_daemon
-    class late_start
-    user camera
-    group camera

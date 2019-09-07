@@ -3972,6 +3972,7 @@ vendor/bin/vsimd
 vendor/bin/wdsdaemon
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+-vendor/data-app/CloudSim/CloudSim.apk
 -vendor/data-app/SmartHome/SmartHome.apk
 -vendor/data-app/wps-lite/wps-lite.apk
 vendor/etc/cit1.xml

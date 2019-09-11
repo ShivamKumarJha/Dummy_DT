@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="ims_call_transfer_enable" value="false" />
+        <string name="config_ims_package_override_string">com.google.android.ims</string>
+    </carrier_config>
+    <carrier_config mcc="310" mnc="160">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="200">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="210">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="220">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="230">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="240">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="250">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="260">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="270">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="300">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="310">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="490">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="491">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="530">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="580">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="590">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="640">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="660">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="800">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_auto_upgrade" value="false" />
+        <boolean name="carrier_rtt_supported_on_vtcalls" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="170">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="410">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="380">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="680">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="70">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="90">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="311" mnc="180">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="560">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="150">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="280">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+    <carrier_config mcc="310" mnc="30">
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="false" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
+        <boolean name="carrier_rtt_supported" value="false" />
+        <boolean name="carrier_rtt_upgrade_supported" value="false" />
+        <boolean name="carrier_rtt_downgrade_supported" value="false" />
+    </carrier_config>
+</carrier_config_list>

@@ -1,0 +1,476 @@
+# Copyright (C) 2012 ZTE by RUIJIAGUI
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+# import vendor/etc/init/hw/init.fingerprint.${ro.hardware.fingerprint}.rc
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
+on init
+    mkdir /dev/cpuctl/cpu_hungry_app
+    chown system system /dev/cpuctl/cpu_hungry_app/tasks
+    chmod 0666 /dev/cpuctl/cpu_hungry_app/tasks
+    write /dev/cpuctl/cpu_hungry_app/cpu.shares 52
+    write /dev/cpuctl/cpu_hungry_app/cpu.rt_period_us 1000000
+    write /dev/cpuctl/cpu_hungry_app/cpu.rt_runtime_us 950000
+
+on late-init
+    class_start brd_normal
+    write /sys/module/zte_misc/parameters/screen_on 1
+
+on charger
+    class_start brd_charger
+
+on boot
+    # add for CHG related interface permissions
+    chmod 0660 /sys/class/power_supply/battery/charging_enabled
+    chown root system sys/class/power_supply/battery/charging_enabled
+    chmod 0660 /sys/module/zte_misc/parameters/enable_to_shutdown
+    chown root system /sys/module/zte_misc/parameters/enable_to_shutdown
+    chmod 0660 /sys/module/zte_misc/parameters/charging_enabled
+    chown root system /sys/module/zte_misc/parameters/charging_enabled
+    chmod 0660 /sys/module/zte_misc/parameters/poweroff_bs
+    chown root system /sys/module/zte_misc/parameters/poweroff_bs
+    chmod 0660 /sys/module/zte_misc/parameters/factory_mode
+    chown root system /sys/module/zte_misc/parameters/factory_mode
+    chmod 0660 /sys/class/power_supply/battery/voltage_max_design
+    chown root system sys/class/power_supply/battery/voltage_max_design
+    chmod 0660 /sys/class/power_supply/battery/voltage_min_design
+    chown root system sys/class/power_supply/battery/voltage_min_design
+    chmod 0660 /sys/module/zte_misc/parameters/store_mode
+    chown root system /sys/module/zte_misc/parameters/store_mode
+
+    chown system system /sys/class/leds/lcd-backlight-2/brightness
+    chown system system /proc/touchscreen/ts_main_ctrl
+    chown system system /proc/touchscreen/integrate_device_mode
+    chown system system /proc/touchscreen/gamemode_coordinate_map
+
+    # add for Fingerprint wakeup accelerate
+    chmod 0660 /sys/module/zte_misc/parameters/fp_msg_type
+    chown system system /sys/module/zte_misc/parameters/fp_msg_type
+
+    # add for HALL interface permissions
+    chmod 0660 /sys/module/zte_hall/parameters/factory_mode
+    chmod 0660 /sys/module/zte_hall/parameters/hall_timer_debug
+    chmod 0660 /sys/module/zte_hall/parameters/hall_interrupt_count
+    chown root system /sys/module/zte_hall/parameters/factory_mode
+    chown root system /sys/module/zte_hall/parameters/hall_timer_debug
+    chown root system /sys/module/zte_hall/parameters/hall_interrupt_count
+
+    #add for GPIO_LED interface permissions
+    chmod 0660 /sys/module/zte_spmi_lite/parameters/green_led_mode
+    chmod 0660 /sys/module/zte_misc/parameters/red_led_mode
+    chown root system /sys/module/zte_spmi_lite/parameters/green_led_mode
+    chown root system /sys/module/zte_misc/parameters/red_led_mode
+
+    #add for charging policy
+    chown system system /sys/module/zte_misc/parameters/demo_charging_policy
+    chown system system /sys/module/zte_misc/parameters/expired_charging_policy
+    chown system system /sys/module/zte_misc/parameters/screen_on
+
+    #add for battery charging cycle counter
+    chown system system /persist/charging_cycles
+    chmod 0664 /persist/charging_cycles
+
+    # add for ignor sddump control
+    chown system system /sys/module/msm_poweroff/parameters/ignore_sd_dump
+    chmod 0664 /sys/module/msm_poweroff/parameters/ignore_sd_dump
+
+    # add for ramdump report
+    chown system system /sys/module/subsystem_restart/parameters/sddump_status
+    chmod 0664 /sys/module/subsystem_restart/parameters/sddump_status
+
+    # Create directory for BT pcm sample
+    mkdir /data/vendor/audio/bt 0770 media audio
+
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/aw2013_led/device/mode
+    chown system system /sys/class/leds/aw2013_led/brightness
+    chown system system /sys/module/msm_thermal/freq_wmark/app_max_freq_limit
+
+    chown system system /sys/class/leds/aw9523b_led/device/mode
+    chown system system /sys/class/leds/aw9523b_led/device/number
+    chown system system /sys/class/leds/aw9523b_led/device/led_on_mesc
+    chown system system /sys/class/leds/aw9523b_led/device/led_off_mesc
+    chown system system /sys/class/leds/aw9523b_led/brightness
+
+    chmod 0664 /sys/class/leds/aw9523b_led/device/mode
+    chmod 0664 /sys/class/leds/aw9523b_led/device/number
+    chmod 0664 /sys/class/leds/aw9523b_led/device/led_on_mesc
+    chmod 0664 /sys/class/leds/aw9523b_led/device/led_off_mesc
+    chmod 0664 /sys/class/leds/aw9523b_led/brightness
+    chown system system /sys/module/msm_thermal/freq_wmark/app_max_freq_limit
+
+    # add ssx1207 authority
+    chown system system /dev/ssx1207
+    chmod 0660 /dev/ssx1207
+    chmod 0666 /dev/spidev1.0
+
+    # add for touch
+    chown system system /proc/touchscreen/smart_cover
+    chmod 0644 /proc/touchscreen/smart_cover
+    chown system system /proc/touchscreen/glove_mode
+    chmod 0644 /proc/touchscreen/glove_mode
+    chown system system /proc/touchscreen/tp_switch
+    chmod 0666 /proc/touchscreen/tp_switch
+    chown system system /proc/touchscreen/single_tap
+    chmod 0666 /proc/touchscreen/single_tap
+    chown system system /sys/bus/platform/devices/synaptics_tcm.0/uevent
+    chown 0666 /sys/bus/platform/devices/synaptics_tcm.0/uevent
+    # add for touch self-test
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_cmd
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_filename
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_ini_file_path
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_save_file_path
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_save_file_name
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_bsc_calibration
+    chown system system /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_bsc_calibration_start
+    chown system system /proc/gmnode
+    chmod 0646 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_cmd
+    chmod 0646 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_filename
+    chmod 0646 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_ini_file_path
+    chmod 0646 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_save_file_path
+    chmod 0646 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_save_file_name
+    chmod 0666 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_bsc_calibration
+    chmod 0666 /sys/devices/virtual/tsp_fw/touchscreen/tpd_test_bsc_calibration_start
+    chmod 0666 /proc/gmnode
+    # add for sar
+    chown system system /proc/sar/disable_sar_in_call
+    chmod 0644 /proc/sar/disable_sar_in_call
+    chown system system /sys/bus/i2c/drivers/sx9500-input/5-0028/status
+    chown system system /sys/bus/i2c/drivers/sx932x/5-0028/status
+    #
+    # Support for FTM by ZTE_BOOT
+    #
+    insmod /vendor/lib/modules/ftmmod.ko
+    chown root system /sys/devices/platform/zte_ftm/zte_ftm/appsbl_anr_ver
+    chown root system /sys/devices/platform/zte_ftm/zte_ftm/jtag_fuse_status
+    chown root system /sys/devices/platform/zte_ftm/zte_ftm/antirollback_en
+    restorecon_recursive /sys/devices/platform/zte_ftm/
+
+
+    #add iris2p dev by ZTE #on boot
+    chown system system /dev/iris2p
+    chmod 0666 /dev/iris2p
+    chown system system /sys/devices/virtual/misc/iris2p/iris2p_func_status
+    chown system system /sys/devices/virtual/misc/iris2p/iris2p_pt_power
+    chown system system /sys/devices/virtual/misc/iris2p/memc_status
+    chown system system /sys/devices/virtual/misc/iris2p/iris2p_firmware
+    chown system system /sys/devices/virtual/misc/iris2p/iris2p_force_func_disable
+    chmod 0444 /sys/devices/virtual/misc/iris2p/iris2p_func_status
+    chmod 0664 /sys/devices/virtual/misc/iris2p/iris2p_pt_power
+    chmod 0444 /sys/devices/virtual/misc/iris2p/memc_status
+    chmod 0664 /sys/devices/virtual/misc/iris2p/iris2p_firmware
+    chmod 0644 /sys/devices/virtual/misc/iris2p/iris2p_force_func_disable
+    chmod 0664 /data/vendor/display/firmware/MCF.bin
+    chmod 0664 /data/vendor/display/firmware/iris2p_ccf1.fw
+    chmod 0664 /data/vendor/display/firmware/iris2p_ccf2.fw
+    chown system system /proc/driver/lcd_hbm
+    chmod 0666 /proc/driver/lcd_hbm
+    chown system system /proc/driver/lcd_hdr
+    chmod 0666 /proc/driver/lcd_hdr
+    chown system system /proc/driver/lcd_aod_bl
+    chmod 0666 /proc/driver/lcd_aod_bl
+
+    #load ufsd modules
+    insmod /sbin/jnl.ko
+    insmod /sbin/ufsd.ko
+
+    #add for after-sale-requirement
+    mkdir /mnt/vendor/persist/zstats 0755 system system
+    chown system system /sys/class/power_supply/bcl/charge_full
+    chown system system /sys/class/power_supply/bcl/charge_full_design
+    chown system system /sys/class/power_supply/bcl/current_avg
+    chown system system /mnt/vendor/persist/zstats/capacity.dat
+    chown system system /mnt/vendor/persist/zstats/charging.dat
+    chown system system /mnt/vendor/persist/zstats/cycle.dat
+    chmod 0664 /mnt/vendor/persist/zstats/capacity.dat
+    chmod 0664 /mnt/vendor/persist/zstats/charging.dat
+    chmod 0664 /mnt/vendor/persist/zstats/cycle.dat
+
+    # add for secureemode
+    chmod 0644 /sys/module/audit/parameters/audit_printk_no_ratelimit
+    chown system system /sys/module/audit/parameters/audit_printk_no_ratelimit
+
+on fs
+    # add carrier parti dir permission
+    mkdir /carrier 0771 system system
+    restorecon_recursive /carrier
+
+on post-fs-data
+    mkdir /data/misc/dolby 0770 media audio
+    mkdir /data/vendor/dolby 0770 media audio
+    #add for iris2p dev
+    mkdir /data/vendor/display 0771 system graphics
+    mkdir /data/vendor/display/firmware 0771 system graphics
+
+    # DTS_EAGLE START
+    mkdir /data/vendor/audio/dts 0771 media audio
+    copy /data/vendor/audio/dts/dts_audio_settings /data/vendor/audio/dts/temp
+    copy /vendor/etc/dts/dts_audio_settings /data/vendor/audio/dts/dts_audio_settings
+    copy /data/vendor/audio/dts/temp /data/vendor/audio/dts/dts_audio_settings
+    rm /data/vendor/audio/dts/temp
+    chown audioserver audio /data/vendor/audio/dts/dts_audio_settings
+    setprop ro.vendor.dts.licensepath "/vendor/etc/dts/"
+    setprop ro.vendor.dts.cfgpath "/vendor/etc/dts/"
+    setprop vendor.dts.audio.allow_offload true
+    # DTS_EAGLE END
+
+on post-fs
+   chmod 0771 /cache
+   mkdir /cache/keybox  0777 root root
+   mkdir /persist/keybox 0755 root root
+
+service fmmi_slicd /system/bin/fmmi_slicd
+   class late_start
+   user system
+   group system
+
+on mmi
+   start vendorcfgd
+   start fmmi_slicd
+
+on mmi && property:ro.bootmode=ffbm-02
+    chown system system /dev/i2c-8
+    chmod 0666 /dev/i2c-8
+    chown system system /dev/i2c-5
+    chmod 0666 /dev/i2c-5
+
+#
+# zte: adb over wifi
+#
+on property:persist.sys.wifiadb.enable=1
+    setprop service.adb.tcp.port 5555
+    stop adbd
+    start adbd
+
+#add for sddump
+on property:persist.sys.sddump.enable=0
+    write /sys/module/msm_poweroff/parameters/ignore_sd_dump 1
+on property:persist.sys.sddump.enable=1
+    write /sys/module/msm_poweroff/parameters/ignore_sd_dump 0
+
+on property:persist.odm.sys.dlctrl=0
+     write /sys/module/msm_poweroff/parameters/download_mode 0
+
+on property:persist.odm.sys.dlctrl=1
+     write /sys/module/msm_poweroff/parameters/download_mode 1
+
+on property:odm.force_warm_reset=0
+    write /sys/module/msm_poweroff/parameters/restart_type 0
+
+on property:odm.force_warm_reset=1
+    write /sys/module/msm_poweroff/parameters/restart_type 1
+
+service run_athdiag /system/bin/sh /system/etc/wifi/run_athdiag.sh
+    oneshot
+    disabled
+
+service vendor-sh /vendor/bin/init.vendor.sh
+    class core
+    user root
+    group root system
+    oneshot
+
+#
+# qsee and tz log
+#
+service qsee_log /system/bin/sh /system/etc/qsee_log.sh
+    class core
+    user root
+    disabled
+    oneshot
+
+service tz_log /system/bin/sh /system/etc/tz_log.sh
+    class core
+    user root
+    disabled
+    oneshot
+
+
+service sshd /system/bin/start-ssh
+    class main
+    disabled
+
+# hubo add for ztediag screencapture
+service screencappart /system/bin/screencap1 /cache/capture1.bmp
+    user root
+    group cache
+    oneshot
+    disabled
+    seclabel u:r:surfaceflinger:s0
+
+#ZTE_LC_IP_DEBUG, 20130513 start
+on property:persist.shell.tcpip.debug=0
+    write /sys/kernel/debug/tcp_output_debug/enable_debug 0
+on property:persist.shell.tcpip.debug=1
+    write /sys/kernel/debug/tcp_output_debug/enable_debug 1
+on property:persist.shell.tcpip.debug=2
+    write /sys/kernel/debug/tcp_output_debug/enable_debug 2
+on property:persist.shell.tcpip.debug=3
+    write /sys/kernel/debug/tcp_output_debug/enable_debug 3
+on property:persist.shell.tcpip.debug=4
+    write /sys/kernel/debug/tcp_output_debug/enable_debug 4
+#ZTE_LC_IP_DEBUG, 20130513 end
+
+service screencapwhole /system/bin/screencap1 -p /cache/capture.bmp
+    user root
+    group cache
+    oneshot
+    disabled
+    seclabel u:r:surfaceflinger:s0
+
+#ZTE_MiaoMiao_added for backup
+service app6939 /system/bin/app6939
+    class main
+    user root
+    seclabel u:r:app6939:s0
+#end ZTE_MiaoMiao_added for backup
+
+#
+# add diag_socket_log
+#
+service diag_socket_log /system/bin/diag_socket_log.sh
+    user root
+    disabled
+    oneshot
+
+on property:sys.diag_socket_log.enable=1
+    start diag_socket_log
+
+on property:sys.diag_socket_log.enable=0
+    stop diag_socket_log
+
+on property:persist.sys.tskin=*
+    restart thermal-engine
+
+#zte lcd backlight reduce
+on property:persist.sys.lcd.backlight_ratio=*
+    write /sys/lcd_backlight_reduce/lcd_backlight ${persist.sys.lcd.backlight_ratio}
+
+
+#add by zte_pm for hotplug begin
+service hotplug /system/bin/hotplug_cpu
+    disabled
+    oneshot
+
+on property:sys.power.app_profile=1
+    start hotplug
+#zte_pm add end
+
+#ZTE_FEATURE_DRM, needed by ALL projects
+service drm /system/bin/drmserver
+    class main
+    user drm
+    group drm system inet drmrpc readproc sdcard_r sdcard_rw media_rw radio
+    writepid /dev/cpuset/foreground/tasks
+#ZTE_FEATURE_DRM, needed by ALL projects
+
+
+# Run Giraffic service with root priviledge
+# by ZTE_MULTIMEDIA_20170116
+# --->
+service configava-daemon /system/bin/configava
+    class main
+    user root
+    seclabel u:r:configava:s0
+# <---
+
+# ZTE_YJ_20130221 begin
+on property:net.tcp.windowscaling=1
+    write /proc/sys/net/ipv4/tcp_window_scaling 1
+
+on property:net.tcp.windowscaling=0
+    write /proc/sys/net/ipv4/tcp_window_scaling 0
+# ZTE_YJ_20130221 end
+
+#Add by wf for DoCoMo begin
+on property:persist.odm.sys.qxdm.enable=1
+    start mdlog_start
+
+on property:persist.odm.sys.qxdm.enable=0
+    start mdlog_stop
+
+service mdlog_start /system/bin/sh  /system/bin/diag_mdlog_start.sh
+    user root
+    disabled
+    oneshot
+
+service mdlog_stop /system/bin/sh  /system/bin/diag_mdlog_stop.sh
+    user root
+    disabled
+    oneshot
+
+#Add by wf for DoCoMo end
+
+service fs_reserve /system/bin/filesystem_reserve.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start fs_reserve
+
+#touchscreen wakeup gesture function
+on property:sys.boot_completed=1
+     write /proc/touchscreen/wake_gesture ${persist.ts.blackscreen}
+
+#FTM stop surfaceflinger
+on property:ro.boot.mode=ffbm-99
+    stop surfaceflinger
+
+service shutdownanim /system/bin/bootanimation -s
+    class core animation
+    user root
+    group root graphics audio system
+    disabled
+    oneshot
+    writepid /dev/stune/top-app/tasks
+
+service slicd /system/bin/slicd
+   class late_start
+   user system
+   group system
+
+on property:sys.demochargingpolicy.protect=1
+    write /sys/module/zte_misc/parameters/demo_charging_policy 1
+on property:sys.demochargingpolicy.protect=0
+    write /sys/module/zte_misc/parameters/demo_charging_policy 0
+
+on property:sys.driverchargingpolicy.protect=1
+    write /sys/module/zte_misc/parameters/driver_charging_policy 1
+on property:sys.driverchargingpolicy.protect=0
+    write /sys/module/zte_misc/parameters/driver_charging_policy 0
+
+#for tp joystick fuction
+on property:persist.joystick.mode=1
+     write /proc/touchscreen/joystick_mode 1
+on property:persist.joystick.mode=0
+     write /proc/touchscreen/joystick_mode 0
+
+service brd_normal /vendor/bin/battery_record_daemon normal
+    class brd_normal
+    user system
+    group system root
+    oneshot
+
+service brd_charger /vendor/bin/battery_record_daemon charger
+    class brd_charger
+    user system
+    group system root
+    oneshot
+
+service random_service /system/bin/sh  /system/etc/zte_random_shell_z.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:random_service:s0
+
+on property:persist.odm.sys.truerandom=1
+    start random_service

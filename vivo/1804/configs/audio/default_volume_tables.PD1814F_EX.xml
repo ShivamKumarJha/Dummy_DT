@@ -331,10 +331,10 @@
         <point>255,-1500</point>
     </reference>
     <reference name="ENFORCED_AUDIBLE_VOLUME_SPEAKER">
-        <point>1,-1700</point>
-        <point>85,-1700</point>
-        <point>170,-1700</point>
-        <point>255,-1700</point>
+        <point>1,-1200</point>
+        <point>85,-1200</point>
+        <point>170,-1200</point>
+        <point>255,-1200</point>
     </reference>
     <reference name="ENFORCED_AUDIBLE_VOLUME_EARPIECE">
         <point>1,-4950</point>

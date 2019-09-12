@@ -1,0 +1,28 @@
+service oppo_face_sh /vendor/bin/sh /vendor/bin/init.oppo.face.sh
+    class late_start
+    user root
+    oneshot
+    disabled
+    seclabel u:r:rutilsdaemon:s0
+
+on post-fs-data
+    mkdir /data/system/users/0/facedata 0770 system system
+    mkdir /data/system/users/0/faceunlock 0770 system system
+    mkdir /data/system/users/0/faceauth 0770 system system
+    mkdir /data/system/users/0/facedldata 0770 system system
+    chown system system /proc/oppo_face_common/face_ntc_svc
+    chown system system /proc/lm3644_enable
+    chown system system /proc/lm3643_enable
+    chown system system /proc/ldmp_enable
+    chown system system /proc/flood_led_enable
+    chown system system /proc/lm3644_power
+    chown system system /proc/lm3644_lightpower
+    chown system system /proc/ldmp_wdt_test
+    chown system system /vendor/bin/face_hw_security
+    chown system system /proc/ldmp_doe_security
+    chown system system /proc/ldmp_sn
+    rm /persist/camera/Tiger_181_calib.bin
+    chown system system /persist/camera/DepthParams.bin
+    chown system system /persist/camera/stereoParams.bin
+    chmod 0644 /persist/camera/DepthParams.bin
+    chmod 0644 /persist/camera/stereoParams.bin

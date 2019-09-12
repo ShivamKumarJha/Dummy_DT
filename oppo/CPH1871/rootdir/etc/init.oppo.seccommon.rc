@@ -1,0 +1,4 @@
+on boot
+    mkdir /persist/rpmb_status
+    chmod 0777 /persist/rpmb_status
+    chown system system /proc/oppo_secure_common/secureType

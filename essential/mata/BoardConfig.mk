@@ -2,7 +2,7 @@ DEVICE_PATH := device/essential/mata
 BOARD_VENDOR := essential
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-08-05
+VENDOR_SECURITY_PATCH := 2019-09-05
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

@@ -2,5 +2,7 @@
 <carrier_config_list>
     <carrier_config>
         <string name="config_ims_package_override_string">com.google.android.ims</string>
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="hide_lte_plus_data_icon_bool" value="false" />
     </carrier_config>
 </carrier_config_list>

@@ -554,9 +554,6 @@ vendor/etc/firmware/TFA9891.ini
 vendor/etc/firmware/TFA9891.speaker
 vendor/etc/firmware/TFA9891N1A_Dec2015.config
 vendor/etc/firmware/TFA9891_N1A_11_1_31_NL3_HQ.patch
-vendor/etc/firmware/wcd9320/wcd9320_anc.bin
-vendor/etc/firmware/wcd9320/wcd9320_mad_audio.bin
-vendor/etc/firmware/wcd9320/wcd9320_mbhc.bin
 vendor/firmware/a225p5_pm4.fw
 vendor/firmware/a225_pfp.fw
 vendor/firmware/a225_pm4.fw
@@ -588,10 +585,7 @@ vendor/firmware/crnv20.bin
 vendor/firmware/crnv21.bin
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
-vendor/firmware/msadp
 vendor/firmware/TFA9891.cnt
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 framework/izat.xt.srv.jar
@@ -661,13 +655,11 @@ vendor/lib/libc2d30-a4xx.so
 vendor/lib/libc2d30-a5xx.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/librs_adreno.so
@@ -690,13 +682,11 @@ vendor/lib64/libc2d30-a4xx.so
 vendor/lib64/libc2d30-a5xx.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/librs_adreno.so
@@ -967,8 +957,6 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/radio/qcril_database/qcril.db
 
 # Radio-IMS
--app/ims/lib/arm64/libimscamera_jni.so
--app/ims/lib/arm64/libimsmedia_jni.so
 -app/uceShimService/uceShimService.apk
 lib/com.qualcomm.qti.imscmservice@1.0.so
 lib/libdiag_system.so
@@ -1222,40 +1210,22 @@ vendor/app/radioconfig/oat/arm64/radioconfig.vdex
 vendor/app/TimeService/oat/arm64/TimeService.odex
 vendor/app/TimeService/oat/arm64/TimeService.vdex
 vendor/bin/athdiag
-vendor/bin/bc
 vendor/bin/chamomile_provision
-vendor/bin/devmem
 vendor/bin/diag_klog
 vendor/bin/diag_mdlog
 vendor/bin/diag_socket_log
 vendor/bin/diag_uart_log
 vendor/bin/dumpsys
-vendor/bin/fsync
-vendor/bin/getconf
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
 vendor/bin/hw/vendor.essential.hardware.sidecar@1.0-service
-vendor/bin/i2cdetect
-vendor/bin/i2cdump
-vendor/bin/i2cget
-vendor/bin/i2cset
 vendor/bin/icm
-vendor/bin/iconv
-vendor/bin/install
 vendor/bin/myftm
-vendor/bin/nc
-vendor/bin/netcat
-vendor/bin/nproc
-vendor/bin/nsenter
 vendor/bin/qmi_tsext_hook
 vendor/bin/StoreKeybox
 vendor/bin/tbaseLoader
-vendor/bin/unlink
-vendor/bin/unshare
-vendor/bin/uuidgen
 vendor/bin/vendor_cmd_tool
-vendor/bin/watch
 vendor/etc/gps_softbank.conf
 vendor/etc/init/init.mata.diag.rc
 vendor/etc/init/vendor.essential.hardware.sidecar@1.0-service.rc
@@ -1280,7 +1250,6 @@ vendor/framework/oat/arm64/qcrilhook.odex
 vendor/framework/oat/arm64/qcrilhook.vdex
 vendor/framework/oat/arm64/qti-vzw-ims-internal.odex
 vendor/framework/oat/arm64/qti-vzw-ims-internal.vdex
--vendor/framework/vendor.essential.hardware.sidecar-V1.0-java.jar
 vendor/lib/android.hardware.audio.common-util.so
 vendor/lib/android.hardware.audio.common@2.0-util.so
 vendor/lib/android.hardware.camera.provider@2.4-external.so

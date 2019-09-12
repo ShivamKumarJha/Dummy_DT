@@ -69,7 +69,7 @@
      <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
     <!-- Flag specifying whether or not IMS will use the ImsResolver dynamically -->
-     <bool name="config_dynamic_bind_ims">true</bool>
+     <bool name="config_dynamic_bind_ims">false</bool>
 
     <!--  Whether Multiuser UI should be shown -->
      <bool name="config_enableMultiUserUI">true</bool>
@@ -83,7 +83,7 @@
          be picked. Anyone who wants to disable the overlay mechanism can set it
          to false.
     -->
-     <bool name="config_enableNetworkLocationOverlay">true</bool>
+     <bool name="config_enableNetworkLocationOverlay">false</bool>
 
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
@@ -118,6 +118,9 @@
     <!-- Should the pinner service pin the Camera application? -->
      <bool name="config_pinnerCameraApp">false</bool>
 
+    <!-- Should the pinner service pin the Home application? -->
+     <bool name="config_pinnerHomeApp">false</bool>
+
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
          When false, autosuspend_disable() will be called before the display is turned on
@@ -132,7 +135,7 @@
          to maximize power savings but not all devices support it.
          Refer to autosuspend.h for details.
     -->
-     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">false</bool>
 
     <!-- Power Management: Specifies whether to decouple the interactive state of the
          device from the display on/off state.
@@ -147,10 +150,10 @@
          to maximize power savings but not all devices support it.
          Refer to power.h for details.
     -->
-     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently in hardware. -->
-     <bool name="config_setColorTransformAccelerated">true</bool>
+     <bool name="config_setColorTransformAccelerated">false</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -186,6 +189,11 @@
          phone object irrespective of this config -->
      <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
 
+    <!-- When true, the tethering upstream network follows the current default
+         Internet network (except when the current default network is mobile,
+         in which case a DUN network will be used if required). -->
+     <bool name="config_tether_upstream_automatic">true</bool>
+
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
      <bool name="config_unplugTurnsOnScreen">true</bool>
 
@@ -218,7 +226,7 @@
      <bool name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
-     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
+     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">true</bool>
 
     <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
      <bool name="config_wifi_softap_acs_supported">true</bool>
@@ -259,7 +267,7 @@
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
      <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
-     <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+     <integer name="config_autoBrightnessDarkeningLightDebounce">3000</integer>
 
     <!-- Operating volatage for bluetooth controller. 0 by default-->
      <integer name="config_bluetooth_operating_voltage_mv">0</integer>
@@ -312,8 +320,8 @@
 
     <!-- Integer parameters of the wifi to cellular handover feature
          wifi should not stick to bad networks -->
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
 
@@ -329,9 +337,6 @@
 
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
-
-    <!-- ImsService package name to bind to by default, if config_dynamic_bind_ims is true -->
-     <string name="config_ims_package">org.codeaurora.ims</string>
 
     <!-- The bounding path of the cutout region of the main built-in display.
          Must either be empty if there is no cutout region, or a string that is parsable by
@@ -372,22 +377,20 @@
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
     <array name="config_autoBrightnessDisplayValuesNits">
-        <item>3.5077</item>
-        <item>6.8394</item>
-        <item>15.2619</item>
-        <item>30.2619</item>
-        <item>40.671</item>
-        <item>52.3019</item>
-        <item>65.2512</item>
-        <item>77.37</item>
-        <item>90.152</item>
+        <item>2.0487</item>
+        <item>4.848</item>
+        <item>17.2347</item>
+        <item>39.0867</item>
+        <item>50.671</item>
+        <item>92.3019</item>
+        <item>94.2512</item>
+        <item>98.372</item>
         <item>100.297</item>
-        <item>110.385</item>
-        <item>135.064</item>
-        <item>160.5179</item>
-        <item>195.0267</item>
-        <item>380.2814</item>
-        <item>409.2867</item>
+        <item>105.297</item>
+        <item>120.385</item>
+        <item>142.064</item>
+        <item>236.5179</item>
+        <item>350.0267</item>
         <item>427.6287</item>
     </array>
     <array name="config_autoBrightnessKeyboardBacklightValues" />
@@ -407,8 +410,6 @@
         <item>1300</item>
         <item>2000</item>
         <item>3300</item>
-        <item>6000</item>
-        <item>10000</item>
     </integer-array>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
@@ -434,8 +435,6 @@
         <item>1300</item>
         <item>2000</item>
         <item>3300</item>
-        <item>6000</item>
-        <item>10000</item>
     </integer-array>
 
     <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
@@ -459,9 +458,7 @@
         <item>300</item>
         <item>300</item>
         <item>300</item>
-        <item>300</item>
         <item>400</item>
-        <item>500</item>
     </integer-array>
 
     <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
@@ -485,8 +482,6 @@
         <item>400</item>
         <item>400</item>
         <item>400</item>
-        <item>400</item>
-        <item>500</item>
         <item>500</item>
     </integer-array>
 
@@ -515,8 +510,6 @@
         <item>1300</item>
         <item>2000</item>
         <item>3300</item>
-        <item>6000</item>
-        <item>10000</item>
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
@@ -684,11 +677,8 @@
         <item>424.646</item>
         <item>427.6287</item>
     </array>
-    <integer-array name="config_scrollBarrierVibePattern">
-        <item>0</item>
-        <item>15</item>
-        <item>10</item>
-        <item>10</item>
+    <integer-array name="config_screenDarkeningThresholds">
+        <item>200</item>
     </integer-array>
 
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
@@ -706,19 +696,6 @@
         <item>0</item>
         <item>10</item>
     </integer-array>
-
-    <!-- Values for GPS configuration -->
-    <string-array name="config_gpsParameters">
-        <item>SUPL_HOST=supl.google.com</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_VER=0x20000</item>
-        <item>SUPL_MODE=1</item>
-        <item>SUPL_ES=1</item>
-        <item>LPP_PROFILE=2</item>
-        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
-        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
-        <item>GPS_LOCK=0</item>
-    </string-array>
 
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max

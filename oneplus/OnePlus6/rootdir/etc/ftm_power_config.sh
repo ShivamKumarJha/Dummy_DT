@@ -9,3 +9,4 @@
 
     echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
     echo "ftm_power_config done" > /dev/kmsg
+

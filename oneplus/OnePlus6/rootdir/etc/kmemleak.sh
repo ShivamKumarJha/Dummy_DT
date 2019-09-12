@@ -16,4 +16,3 @@ if [ -f /sys/kernel/debug/kmemleak ]; then
         sleep 3600
     done
 fi
-

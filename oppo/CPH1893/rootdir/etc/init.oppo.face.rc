@@ -1,0 +1,3 @@
+on post-fs-data
+    mkdir /data/system/users/0/facedata 0770 system system
+    mkdir /data/system/users/0/faceunlock 0770 system system

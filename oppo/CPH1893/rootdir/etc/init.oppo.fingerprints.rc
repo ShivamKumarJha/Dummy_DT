@@ -1,0 +1,19 @@
+on boot
+    mkdir /persist/rpmb_status
+    chmod 0777 /persist/rpmb_status
+#for goodix_fp.
+    chown system system /dev/goodix_fp
+
+service oppo_fingerprints_sh /vendor/bin/sh /vendor/bin/init.oppo.fingerprints.sh
+    class main
+    user root
+    oneshot
+    seclabel u:r:oppo_fingerprints_init_shell:s0
+
+on post-fs-data
+    mkdir /data/gf_data 0700 system system
+    mkdir /data/system/gf_data 0700 system system
+    mkdir /data/images 0700 system system
+    chown system system /sys/kernel/oppo_display/hbm
+    mkdir /data/system/silead 0770 system system
+    mkdir /persist/silead 0770 system system

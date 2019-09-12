@@ -197,9 +197,11 @@ if [ -d /config/usb_gadget ]; then
 	msm_serial=`cat /sys/devices/soc0/serial_number`;
 	msm_serial_hex=`printf %08X $msm_serial`
 	machine_type=`cat /sys/devices/soc0/machine`
-	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
-	asus_product_string=`getprop ro.product.model`
-	echo "$asus_product_string" > /config/usb_gadget/g1/strings/0x409/product
+	product_str=`cat /config/usb_gadget/g1/strings/0x409/product 2> /dev/null`
+	if [ "$product_str" == "" ]; then
+		product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
+		echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
+	fi
 
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
 	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber` 2> /dev/null

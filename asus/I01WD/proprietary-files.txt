@@ -2230,6 +2230,8 @@ vendor/bin/VerifyVouchers
 vendor/bin/wdsdaemon
 vendor/bin/writekey
 vendor/etc/ArmHDCP_QTI_Android.cfg
+vendor/etc/BR/ASUS/Launcher/default_workspace/default_allapp.xml
+vendor/etc/BR/ASUS/Launcher/default_workspace/phone_workspace.xml
 vendor/etc/check_rcvcal.sh
 vendor/etc/check_spkcal.sh
 vendor/etc/devcfg_tzOn.mbn

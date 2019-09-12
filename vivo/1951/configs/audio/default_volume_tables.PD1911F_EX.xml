@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2015 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!-- Default Volume Tables included by Audio Policy Configuration file -->
+<!-- Full Default Volume table for all device category -->
+<volumes>
+    <reference name="FULL_SCALE_VOLUME_CURVE">
+    <!-- Full Scale reference Volume Curve -->
+        <point>0,0</point>
+        <point>100,0</point>
+    </reference>
+	<!--
+    <reference name="SILENT_VOLUME_CURVE">
+        <point>0,-9600</point>
+        <point>100,-9600</point>
+    </reference>
+	-->
+    <!-- VOICE Volume Curve -->
+    <reference name="VOICE_VOLUME_HEADSET">
+        <point>0,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="VOICE_VOLUME_SPEAKER">
+        <point>0,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="VOICE_VOLUME_EARPIECE">
+        <point>0,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="VOICE_VOLUME_EXT">
+        <point>0,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="VOICE_VOLUME_BLUETOOTH">
+        <point>0,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- SYSTEM Volume Curve -->
+    <reference name="SYSTEM_VOLUME_HEADSET">
+        <point>1,-700</point>
+        <point>85,-700</point>
+        <point>170,-700</point>
+        <point>255,-700</point>
+    </reference>
+    <reference name="SYSTEM_VOLUME_SPEAKER">
+        <point>1,-2000</point>
+        <point>85,-2000</point>
+        <point>170,-2000</point>
+        <point>255,-2000</point>
+    </reference>
+    <reference name="SYSTEM_VOLUME_EARPIECE">
+        <point>1,-1700</point>
+        <point>85,-1700</point>
+        <point>170,-1700</point>
+        <point>255,-1700</point>
+    </reference>
+    <reference name="SYSTEM_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="SYSTEM_VOLUME_BLUETOOTH">
+        <point>1,-700</point>
+        <point>85,-700</point>
+        <point>170,-700</point>
+        <point>255,-700</point>
+    </reference>
+
+    <!-- RING Volume Curve -->
+    <reference name="RING_VOLUME_HEADSET">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="RING_VOLUME_SPEAKER">
+        <point>1,-3500</point>
+        <point>85,-2400</point>
+        <point>170,-1300</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="RING_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="RING_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="RING_VOLUME_BLUETOOTH">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- MUSIC Volume Curve -->
+    <reference name="MUSIC_VOLUME_HEADSET">
+    <!-- BBK Custom Default Media System Volume Curve Range 0~150-->
+        <point>1,-6800</point>
+        <point>10,-6300</point>
+        <point>20,-5800</point>
+        <point>30,-5300</point>
+        <point>40,-4800</point>
+        <point>50,-4300</point>
+        <point>60,-3800</point>
+        <point>70,-3300</point>
+        <point>80,-2800</point>
+        <point>90,-2400</point>
+        <point>100,-2000</point>
+        <point>110,-1600</point>
+        <point>120,-1200</point>
+        <point>130,-800</point>
+        <point>140,-400</point>
+        <point>150,0</point>
+    </reference>
+    <reference name="MUSIC_VOLUME_SPEAKER">
+    <!-- BBK Custom Default Media System Volume Curve Range 0~150-->
+        <point>1,-5700</point>
+        <point>10,-4800</point>
+        <point>20,-4400</point>
+        <point>30,-3950</point>
+        <point>40,-3500</point>
+        <point>50,-3050</point>
+        <point>60,-2600</point>
+        <point>70,-2150</point>
+        <point>80,-1700</point>
+        <point>90,-1500</point>
+        <point>100,-1300</point>
+        <point>110,-1050</point>
+        <point>120,-800</point>
+        <point>130,-550</point>
+        <point>140,-300</point>
+        <point>150,0</point>
+    </reference>
+    <reference name="MUSIC_VOLUME_EARPIECE">
+    <!-- BBK Custom Default Media System Volume Curve Range 0~150-->
+        <point>1,-6000</point>
+        <point>10,-5600</point>
+        <point>20,-5200</point>
+        <point>30,-4800</point>
+        <point>40,-4400</point>
+        <point>50,-4000</point>
+        <point>60,-3600</point>
+        <point>70,-3200</point>
+        <point>80,-2800</point>
+        <point>90,-2400</point>
+        <point>100,-2000</point>
+        <point>110,-1600</point>
+        <point>120,-1200</point>
+        <point>130,-800</point>
+        <point>140,-400</point>
+        <point>150,0</point>
+    </reference>
+    <reference name="MUSIC_VOLUME_EXT">
+    <!-- BBK Custom Default Media System Volume Curve Range 0~150-->
+        <point>1,-6000</point>
+        <point>10,-5600</point>
+        <point>20,-5200</point>
+        <point>30,-4800</point>
+        <point>40,-4400</point>
+        <point>50,-4000</point>
+        <point>60,-3600</point>
+        <point>70,-3200</point>
+        <point>80,-2800</point>
+        <point>90,-2400</point>
+        <point>100,-2000</point>
+        <point>110,-1600</point>
+        <point>120,-1200</point>
+        <point>130,-800</point>
+        <point>140,-400</point>
+        <point>150,0</point>
+    </reference>
+    <reference name="MUSIC_VOLUME_BLUETOOTH">
+    <!-- BBK Custom Default Media System Volume Curve Range 0~150-->
+        <point>1,-4900</point>
+        <point>10,-4600</point>
+        <point>20,-4300</point>
+        <point>30,-4000</point>
+        <point>40,-3700</point>
+        <point>50,-3400</point>
+        <point>60,-3100</point>
+        <point>70,-2800</point>
+        <point>80,-2500</point>
+        <point>90,-2200</point>
+        <point>100,-1900</point>
+        <point>110,-1600</point>
+        <point>120,-1200</point>
+        <point>130,-800</point>
+        <point>140,-400</point>
+        <point>150,0</point>
+    </reference>
+
+    <!-- ALARM Volume Curve -->
+    <reference name="ALARM_VOLUME_HEADSET">
+        <point>1,-3600</point>
+        <point>85,-2600</point>
+        <point>170,-1600</point>
+        <point>255,-600</point>
+    </reference>
+    <reference name="ALARM_VOLUME_SPEAKER">
+        <point>1,-4000</point>
+        <point>39,-3300</point>
+        <point>75,-2700</point>
+        <point>125,-2050</point>
+        <point>147,-1900</point>
+        <point>183,-1550</point>
+        <point>219,-1100</point>
+        <point>255,-700</point>
+    </reference>
+    <reference name="ALARM_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ALARM_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="ALARM_VOLUME_BLUETOOTH">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- NOTIFICATION Volume Curve -->
+    <reference name="NOTIFICATION_VOLUME_HEADSET">
+        <point>1,-4950</point>
+        <point>85,-3300</point>
+        <point>170,-1750</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="NOTIFICATION_VOLUME_SPEAKER">
+        <point>1,-4000</point>
+        <point>85,-2900</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="NOTIFICATION_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="NOTIFICATION_VOLUME_EXT">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="NOTIFICATION_VOLUME_BLUETOOTH">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- BLUETOOTH_SCO Volume Curve -->
+    <reference name="BLUETOOTH_SCO_VOLUME_HEADSET">
+        <point>1,-1500</point>
+        <point>85,-1000</point>
+        <point>170,-500</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BLUETOOTH_SCO_VOLUME_SPEAKER">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BLUETOOTH_SCO_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BLUETOOTH_SCO_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="BLUETOOTH_SCO_VOLUME_BLUETOOTH">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- ENFORCED_AUDIBLE Volume Curve -->
+    <reference name="ENFORCED_AUDIBLE_VOLUME_HEADSET">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="ENFORCED_AUDIBLE_VOLUME_SPEAKER">
+        <point>1,-1200</point>
+        <point>85,-1200</point>
+        <point>170,-1200</point>
+        <point>255,-1200</point>
+    </reference>
+    <reference name="ENFORCED_AUDIBLE_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ENFORCED_AUDIBLE_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="ENFORCED_AUDIBLE_VOLUME_BLUETOOTH">
+        <point>1,-2100</point>
+        <point>85,-2100</point>
+        <point>170,-2100</point>
+        <point>255,-2100</point>
+    </reference>
+
+    <!-- DTMF Volume Curve -->
+    <reference name="DTMF_VOLUME_HEADSET">
+        <point>1,-2000</point>
+        <point>85,-2000</point>
+        <point>170,-2000</point>
+        <point>255,-2000</point>
+    </reference>
+    <reference name="DTMF_VOLUME_SPEAKER">
+        <point>1,-1300</point>
+        <point>85,-1300</point>
+        <point>170,-1300</point>
+        <point>255,-1300</point>
+    </reference>
+    <reference name="DTMF_VOLUME_EARPIECE">
+        <point>1,-1500</point>
+        <point>85,-1500</point>
+        <point>170,-1500</point>
+        <point>255,-1500</point>
+    </reference>
+    <reference name="DTMF_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="DTMF_VOLUME_BLUETOOTH">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+
+    <!-- TTS Volume Curve -->
+    <reference name="TTS_VOLUME_HEADSET">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="TTS_VOLUME_SPEAKER">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="TTS_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="TTS_VOLUME_EXT">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="TTS_VOLUME_BLUETOOTH">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+
+    <!-- BOOT Volume Curve -->
+    <reference name="BOOT_VOLUME_HEADSET">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+    <reference name="BOOT_VOLUME_SPEAKER">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BOOT_VOLUME_EARPIECE">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BOOT_VOLUME_EXT">
+        <point>1,-4950</point>
+        <point>85,-3350</point>
+        <point>170,-1700</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="BOOT_VOLUME_BLUETOOTH">
+        <point>1,-1800</point>
+        <point>85,-1800</point>
+        <point>170,-1800</point>
+        <point>255,-1800</point>
+    </reference>
+
+    <!-- ASSISTANT Volume Curve-->
+    <reference name="ASSISTANT_VOLUME_HEADSET">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ASSISTANT_VOLUME_SPEAKER">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>190,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ASSISTANT_VOLUME_EARPIECE">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ASSISTANT_VOLUME_EXT">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+    <reference name="ASSISTANT_VOLUME_BLUETOOTH">
+        <point>1,-3000</point>
+        <point>85,-2000</point>
+        <point>170,-1000</point>
+        <point>255,0</point>
+    </reference>
+
+</volumes>

@@ -103,6 +103,52 @@
         <value>301</value>
     </array>
     <item name="cpu.idle">5</item>
+    <item name="cpu.cluster_power.cluster0">0.1</item>
+    <array name="cpu.core_speeds.cluster0">
+        <value>576000</value>
+        <value>748800</value>
+        <value>1017600</value>
+        <value>1209600</value>
+        <value>1363200</value>
+        <value>1516800</value>
+        <value>1593600</value>
+        <value>1708800</value>
+    </array>
+    <array name="cpu.core_power.cluster0">
+        <value>15</value>
+        <value>20</value>
+        <value>30</value>
+        <value>35</value>
+        <value>40</value>
+        <value>45</value>
+        <value>51</value>
+        <value>60</value>
+    </array>
+    <item name="cpu.cluster_power.cluster1">0.1</item>
+    <array name="cpu.core_speeds.cluster1">
+        <value>652800</value>
+        <value>768000</value>
+        <value>979200</value>
+        <value>1017600</value>
+        <value>1209600</value>
+        <value>1363200</value>
+        <value>1516800</value>
+        <value>1708800</value>
+        <value>1900800</value>
+        <value>2016000</value>
+    </array>
+    <array name="cpu.core_power.cluster1">
+        <value>50</value>
+        <value>57</value>
+        <value>71</value>
+        <value>75</value>
+        <value>93</value>
+        <value>124</value>
+        <value>144</value>
+        <value>187</value>
+        <value>256</value>
+        <value>301</value>
+    </array>
     <array name="memory.bandwidths">
         <value>22.7</value>
     </array>

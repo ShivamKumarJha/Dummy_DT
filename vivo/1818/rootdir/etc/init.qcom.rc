@@ -430,6 +430,9 @@ on post-fs-data
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
 
+    #set max size for protect cache
+    write /proc/sys/vm/pcache/pcache_max_mbytes "100 100 100"
+
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
@@ -1279,11 +1282,19 @@ service cnss_diag_system /system/bin/cnss_diag_system -q -f -t HELIUM
     group system wifi inet net_admin sdcard_rw media_rw diag
     disabled
 
+service cnss_diag_pktlog /system/bin/cnss_diag_system --pktlog_collect
+    class main
+    user system
+    group system wifi inet net_admin sdcard_rw media_rw diag
+    oneshot
+    disabled	
+	
 on property:persist.sys.is_wlan_log=2
     stop cnss_diag_system
     start cnss_diag_system
 
 on property:persist.sys.is_wlan_log=0
     stop cnss_diag_system
+    start cnss_diag_pktlog
 # vivo wcn_team added by liufan/luoguizhao for cnss_diag_system end
 

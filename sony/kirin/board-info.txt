@@ -1,0 +1,2 @@
+require version-baseband=3.1.c10-00012-SDM660_GEN_PACK-1
+require version-vendor=1564128771

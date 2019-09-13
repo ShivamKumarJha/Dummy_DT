@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="rounded_corner_content_padding">2.0dip</dimen>
+</resources>

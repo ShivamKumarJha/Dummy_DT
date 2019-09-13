@@ -1,0 +1,288 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+import /init.fac.rc
+
+on init
+# Carrier
+    mkdir /carrier 0771 system system
+	
+# Add preload partition.
+	mkdir /preload 0771 system system	
+
+on post-fs-data
+    chown system system /sys/block/mmcblk0/queue/read_ahead_kb
+    chown system system /sys/block/dm-0/queue/read_ahead_kb
+    chown system system /sys/block/mmcblk0/queue/nr_requests
+    chmod 0664 /sys/block/mmcblk0/queue/read_ahead_kb
+    chmod 0664 /sys/block/dm-0/queue/read_ahead_kb
+    chmod 0664 /sys/block/mmcblk0/queue/nr_requests
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/nr_requests 256
+    
+# Samsung Pay
+    mkdir /efs/pfw_data 0760 spay spay
+
+# OLAF setup cgroup freezer
+    mkdir /dev/freezer
+    mount cgroup none /dev/freezer freezer
+    mkdir /dev/freezer/olaf
+    write /dev/freezer/olaf/freezer.state THAWED
+    mkdir /dev/cpuset/olaf
+    copy /dev/cpuset/cpus /dev/cpuset/olaf/cpus
+    copy /dev/cpuset/mems /dev/cpuset/olaf/mems
+    chown system system /dev/freezer/olaf
+    chown system system /dev/freezer/olaf/tasks
+    chown system system /dev/freezer/olaf/cgroup.procs
+    chown system system /dev/freezer/olaf/freezer.state
+    chown system system /dev/cpuset/olaf
+    chown system system /dev/cpuset/olaf/tasks
+    chown system system /dev/cpuset/olaf/cpus
+    chmod 0644 /dev/freezer/olaf/tasks
+    chmod 0644 /dev/freezer/olaf/cgroup.procs
+    chmod 0644 /dev/freezer/olaf/freezer.state
+    chmod 0664 /dev/cpuset/olaf
+    chmod 0664 /dev/cpuset/olaf/tasks
+    chmod 0664 /dev/cpuset/olaf/cpus
+
+# MST/NFC Switch
+    chown spay system /dev/mst_ctrl
+    chmod 0660 /dev/mst_ctrl    
+
+#SystemFramework
+    chown system system /data/cache/backup
+    chmod 0711 /data/cache/backup
+    chown system system /data/cache/backup_stage
+    chmod 0711 /data/cache/backup_stage
+
+#Private Mode
+    mkdir /mnt/shell/ 0750 shell shell
+    mkdir /mnt/shell/privatemode 0700 system system
+    mkdir /storage/Private 0000 system system
+    mkdir /data/privatemode 0770 system system
+    chown system system /data/privatemode
+    restorecon /data/privatemode
+
+# Create carrier folder for HiddenMenu
+on post-fs
+     mkdir /efs/carrier 0755 system system
+
+on early-boot
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+
+on fs
+
+#carrier
+#For Verizon Device Stats Partition
+#    mkdir /vzw 0755 system system
+
+#    wait /dev/block/bootdevice/by-name/carrier
+#    check_fs /dev/block/bootdevice/by-name/carrier ext4
+#    mount ext4 /dev/block/bootdevice/by-name/carrier /vzw nosuid nodev barrier=1
+
+#    chown system system /vzw
+#    chmod 0755 /vzw
+
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+# FINGERPRINT FRAMEWORK : starts fingerprintd
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system
+
+#faced
+service faced /system/bin/faced
+    class late_start
+    user system
+    group system
+
+on boot
+
+# remove resampling
+    setprop ro.input.noresample 1
+
+# permission for Input Device(Touchkey).
+    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/sec_touchkey/glove_mode
+    chown system radio /sys/class/sec/sec_touchkey/sar_enable
+    chown system radio /sys/class/sec/sec_touchkey/sw_reset
+
+# SSWAP
+    write /proc/sys/vm/swappiness 130
+
+# Permissions for Input Booster
+    chmod 0660 /sys/class/input_booster/level
+    chown system radio /sys/class/input_booster/level
+    chmod 0660 /sys/class/input_booster/head
+    chown system radio /sys/class/input_booster/head
+    chmod 0660 /sys/class/input_booster/tail
+    chown system radio /sys/class/input_booster/tail
+
+# Keypad
+    chown system system /sys/class/sec/sec_keypad/brightness
+
+#Bluetooth	
+    # for BT MAC address
+    mkdir /efs/bluetooth 0770 system bluetooth
+    # if already exist
+    chown system bluetooth /efs/bluetooth
+    chown system bluetooth /efs/bluetooth/bt_addr
+    chmod 0770 /efs/bluetooth
+    chmod 0660 /efs/bluetooth/bt_addr
+
+# permissions for bluetooth.
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+    chown radio bluetooth /efs/bluetooth/bt_addr
+    chmod 0640 /efs/bluetooth/bt_addr
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+
+# Permissions for Charging
+    chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/store_mode
+
+# Audio NXP
+    chmod 0660 /dev/i2c-1
+    chown system system /dev/i2c-1
+
+# vibrator type
+    chmod 0666 "/sys/class/sec/vib/dc_pmic"
+
+# Muic
+    chown system radio /sys/class/sec/switch/afc_disable
+
+# LED
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_brightness
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_lowpower
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_r
+
+# cpu online
+    chown system radio /sys/devices/system/cpu/cpu0/online
+    chown system radio /sys/devices/system/cpu/cpu1/online
+    chown system radio /sys/devices/system/cpu/cpu2/online
+    chown system radio /sys/devices/system/cpu/cpu3/online
+    chown system radio /sys/devices/system/cpu/cpu4/online
+
+#NFC
+	chmod 0660 /dev/sec-nfc
+	chown nfc nfc /dev/sec-nfc
+#ESE
+	chmod 0660 /dev/p3
+	chown system system /dev/p3
+
+# Permissions for NXP NFC
+# NFC : Permissions for NFC
+    chmod 0660 /dev/pn547
+# NFC : change owner
+    chown nfc nfc /dev/pn547
+
+# Permissions for NXP ESE
+    chmod 0660 /dev/p61
+    chown system system /dev/p61
+
+#MST HW Support
+    setprop ro.mst.support 0
+
+#SLocation
+	service cellgeofenced /system/bin/cellgeofenced
+		class main
+		socket cellgeofence seqpacket 0660 gps system
+		user gps
+		group system inet
+
+
+# SSWAP
+service swapon /sbin/sswap -s -f 1536
+    class core
+    user root
+    group root
+    seclabel u:r:sswap:s0
+    oneshot
+
+# for wlan FTM app
+service ftm_ptt /system/bin/ftm_ptt -d
+    user root
+    group radio system
+    disabled
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
+
+# sem_daemon permission
+    chown system system /efs/sec_efs/ssp_data
+    chmod 0644 /efs/sec_efs/ssp_data
+
+# sem_daemon
+service sem_daemon /system/bin/sem_daemon
+    class core
+    user system
+    group system nfc
+    disabled
+
+# svc LED
+    chown system system /sys/class/sec/led/led_r
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_lowpower
+	
+# Move 2 SD card
+service extSdUFSVold /system/bin/extSDCardServiceVold
+    class main
+    user system
+    group system mount radio net_bt sdcard_rw shell media media_rw
+
+# Create carrier folder for HiddenMenu
+on post-fs
+     mkdir /efs/carrier 0755 system system
+
+#add tunman
+service tunman /system/bin/tunman
+    class main
+    user system
+    group system shell net_admin inet net_raw net_bw_acct
+    socket tunman stream 0666 system system
+
+on property:sys.boot_completed=1
+    setprop security.semdaemonfinish 0
+    start sem_daemon
+
+on property:sys.boot_completed=1
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/nr_requests 128
+
+on property:security.semdaemonfinish=1
+    stop sem_daemon
+
+# umount service
+service umount_service /system/bin/umount -D /preload
+    disabled
+    seclabel u:r:umount_service:s0
+    oneshot
+
+# Support Preload install apks
+on property:persist.sys.storage_preload=1
+    mount ext4 /dev/block/bootdevice/by-name/hidden /preload nosuid nodev ro barrier=1
+    setprop storage.preload.complete 1
+
+on property:persist.sys.storage_preload=0
+    start umount_service	

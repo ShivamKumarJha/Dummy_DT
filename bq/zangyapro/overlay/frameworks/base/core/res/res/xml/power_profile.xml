@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="screen.on">39.54</item>
+    <item name="screen.full">358</item>
+    <item name="bluetooth.active">108</item>
+    <item name="bluetooth.on">1.2</item>
+    <item name="wifi.on">1.6</item>
+    <item name="wifi.active">86</item>
+    <item name="wifi.scan">112</item>
+    <item name="audio">23.25</item>
+    <item name="video">96.5</item>
+    <item name="camera.flashlight">246</item>
+    <item name="camera.avg">427</item>
+    <item name="gps.on">79.4</item>
+    <item name="battery.capacity">3100</item>
+    <item name="radio.active">93</item>
+    <item name="radio.scanning">105</item>
+    <array name="radio.on">
+        <value>17</value>
+        <value>4</value>
+    </array>
+    <item name="cpu.suspend">3.7</item>
+    <item name="cpu.idle">16.65</item>
+    <item name="cpu.active">10.6</item>
+    <array name="cpu.clusters.cores">
+        <value>4</value>
+        <value>4</value>
+    </array>
+    <item name="cpu.cluster_power.cluster0">1</item>
+    <item name="cpu.cluster_power.cluster1">1.5</item>
+    <array name="cpu.core_speeds.cluster0">
+        <value>633600</value>
+        <value>902400</value>
+        <value>1113600</value>
+        <value>1401600</value>
+        <value>1536000</value>
+        <value>1747200</value>
+        <value>1843200</value>
+    </array>
+    <array name="cpu.core_speeds.cluster1">
+        <value>1113600</value>
+        <value>1401600</value>
+        <value>1747200</value>
+        <value>1958400</value>
+        <value>2150400</value>
+        <value>2208000</value>
+    </array>
+    <array name="cpu.core_power.cluster0">
+        <value>9.28</value>
+        <value>22.82</value>
+        <value>30.49</value>
+        <value>42.10</value>
+        <value>57.59</value>
+        <value>71.65</value>
+        <value>77.12</value>
+    </array>
+    <array name="cpu.core_power.cluster1">
+        <value>64.73</value>
+        <value>111.20</value>
+        <value>162.36</value>
+        <value>229.49</value>
+        <value>270.57</value>
+        <value>322.85</value>
+    </array>
+    <item name="wifi.controller.idle">1</item>
+    <item name="wifi.controller.rx">23</item>
+    <item name="wifi.controller.tx">151</item>
+    <item name="wifi.controller.voltage">3300</item>
+    <array name="wifi.batchedscan">
+        <value>.0112</value>
+        <value>.0910</value>
+        <value>0.719</value>
+        <value>5.743</value>
+        <value>45.93</value>
+    </array>
+    <item name="bluetooth.controller.idle">0</item>
+    <item name="bluetooth.controller.rx">10</item>
+    <item name="bluetooth.controller.tx">108</item>
+    <item name="bluetooth.controller.voltage">3300</item>
+</device>

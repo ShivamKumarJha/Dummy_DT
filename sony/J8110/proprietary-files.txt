@@ -1495,9 +1495,6 @@ vendor/firmware/tzwvcpybuf.b05
 vendor/firmware/tzwvcpybuf.b06
 vendor/firmware/tzwvcpybuf.b07
 vendor/firmware/tzwvcpybuf.mdt
-vendor/firmware/wlan/qca_cld/bdwlan.bin
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -1607,14 +1604,12 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -1632,14 +1627,12 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -2690,7 +2683,6 @@ vendor/bin/PktRspTest
 vendor/bin/ppd
 vendor/bin/qdcmss
 vendor/bin/qmi_simple_ril_test
-vendor/bin/replayevents
 vendor/bin/sct_service
 vendor/bin/secure_ui_sample_client
 vendor/bin/sigma_dut
@@ -2764,7 +2756,6 @@ vendor/lib/libexcal_core.so
 vendor/lib/libexcal_system.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
-vendor/lib/libGLESv2_adreno.so
 vendor/lib/libGPMTEEC_vendor.so
 vendor/lib/libhalide_hexagon_host.so
 vendor/lib/libhigh_dynamic_range.so
@@ -2855,7 +2846,6 @@ vendor/lib64/libets_teeclient_v2.so
 vendor/lib64/libexcal_core.so
 vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libgameoptfeature.so
-vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libGPMTEEC_vendor.so
 vendor/lib64/libidd.so
 vendor/lib64/libjansson.so

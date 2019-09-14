@@ -168,6 +168,7 @@ PRODUCT_PACKAGES += \
     vendor.oem_ftm.rc \
     vendor.oem_ftm_svc_disable.rc \
     fstab.qcom \
+    fstab_nodata.qcom \
     ueventd.qcom.rc \
 
 # Seccomp

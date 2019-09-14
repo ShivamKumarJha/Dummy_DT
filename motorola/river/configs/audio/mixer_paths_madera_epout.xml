@@ -803,7 +803,6 @@
 	</path>
 
 	<path name="voice-speaker">
-		<ctl name="VOC_EXT_EC MUX" value="SLIM_1_TX" />
 		<path name="speaker" />
 	</path>
 
@@ -812,6 +811,7 @@
 	</path>
 
 	<path name="voice-speaker-mic">
+		<ctl name="VOC_EXT_EC MUX" value="SLIM_1_TX" />
 		<path name="speaker-mic" />
 	</path>
 

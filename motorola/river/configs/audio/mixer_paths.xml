@@ -743,7 +743,9 @@
 	</path>
 
 	<path name="handset-mic">
-		<path name="mic1" />
+		<path name="AOV" />
+		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC1" />
+		<ctl name="IN1L Volume" value="12" />
 	</path>
 
 	<path name="headphones">
@@ -794,7 +796,6 @@
 	</path>
 
 	<path name="voice-speaker">
-		<ctl name="VOC_EXT_EC MUX" value="SLIM_1_TX" />
 		<path name="speaker" />
 	</path>
 
@@ -803,6 +804,7 @@
 	</path>
 
 	<path name="voice-speaker-mic">
+		<ctl name="VOC_EXT_EC MUX" value="SLIM_1_TX" />
 		<path name="speaker-mic" />
 	</path>
 
@@ -866,7 +868,8 @@
 	</path>
 
 	<path name="camcorder-mic">
-		<path name="mic1" />
+		<path name="speaker-mic" />
+		<ctl name="IN2L Volume" value="12" />
 	</path>
 
 	<path name="bt-sco-headset">
@@ -912,7 +915,12 @@
 	</path>
 
 	<path name="dmic-endfire">
-		<path name="voice-dmic-ef" />
+		<path name="AOV" />
+		<ctl name="SLIM_0_TX Channels" value="Two" />
+		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC1" />
+		<ctl name="SLIMTX2 Input 1" value="ISRC2DEC2" />
+		<ctl name="IN1L Volume" value="12" />
+		<ctl name="IN2L Volume" value="12" />
 	</path>
 
 	<path name="voice-speaker-dmic-ef">
@@ -920,11 +928,11 @@
 	</path>
 
 	<path name="voice-rec-dmic-ef">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="voice-rec-dmic-ef-fluence">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="camcorder-mic-bf">

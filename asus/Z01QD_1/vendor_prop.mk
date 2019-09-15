@@ -196,7 +196,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.internal.tcpdump.file \
     /data/logcat_log/capture.pcap \
     ro.kernel.qemu.gles=0 \
-    ro.lineage.build.vendor_security_patch=2019-03-01 \
+    ro.lineage.build.vendor_security_patch=2019-07-05 \
     ro.optiflex.lowbound.4gb=450 \
     ro.optiflex.lowbound.6gb=450 \
     ro.optiflex.lowbound.8gb=450 \

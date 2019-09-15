@@ -107,7 +107,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.internal.tcpdump.file \
     /data/logcat_log/capture.pcap \
     ro.kernel.qemu.gles=0 \
-    ro.lineage.build.vendor_security_patch=2019-03-01 \
+    ro.lineage.build.vendor_security_patch=2019-07-05 \
     sdm.debug.disable_dest_scalar=1 \
     sdm.debug.disable_inline_rotator=1 \
     sdm.debug.disable_inline_rotator_secure=1 \

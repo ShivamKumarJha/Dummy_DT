@@ -872,8 +872,6 @@ vendor/firmware/ipa_uc.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
 vendor/firmware/mono.cnt
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -989,14 +987,12 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -1014,14 +1010,12 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -1885,7 +1879,6 @@ lib64/libwfduibcsink.so
 lib64/libwfduibcsinkinterface.so
 lib64/libwfduibcsrc.so
 lib64/libwfduibcsrcinterface.so
--priv-app/WfdService/lib/arm64/libwfdnative.so
 -priv-app/WfdService/WfdService.apk
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
@@ -2066,18 +2059,14 @@ vendor/app/IWlanService/oat/arm64/IWlanService.vdex
 vendor/app/pasrservice/oat/arm64/pasrservice.odex
 vendor/app/pasrservice/oat/arm64/pasrservice.vdex
 -vendor/app/pasrservice/pasrservice.apk
-vendor/app/QDMA-UI/lib/arm64/libvndfwk_detect_jni.qti.so
-vendor/app/QDMA/lib/arm64/libvndfwk_detect_jni.qti.so
 vendor/app/TimeService/oat/arm64/TimeService.odex
 vendor/app/TimeService/oat/arm64/TimeService.vdex
 vendor/bin/adpl
 vendor/bin/athdiag
 vendor/bin/batteryd
-vendor/bin/bc
 vendor/bin/ccid_daemon
 vendor/bin/cplay
 vendor/bin/dc_cal
-vendor/bin/devmem
 vendor/bin/diag_callback_sample
 vendor/bin/diag_dci_sample
 vendor/bin/diag_klog
@@ -2089,10 +2078,8 @@ vendor/bin/e_loop
 vendor/bin/fmconfig
 vendor/bin/fmfactorytest
 vendor/bin/fmfactorytestserver
-vendor/bin/fsync
 vendor/bin/ftmdaemon
 vendor/bin/ftmtest
-vendor/bin/getconf
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
@@ -2105,8 +2092,6 @@ vendor/bin/i2cdetect
 vendor/bin/i2cdump
 vendor/bin/i2cget
 vendor/bin/i2cset
-vendor/bin/iconv
-vendor/bin/install
 vendor/bin/ipacm-diag
 vendor/bin/KmInstallKeybox
 vendor/bin/ks
@@ -2115,11 +2100,7 @@ vendor/bin/mdm_helper_proxy
 vendor/bin/minidump64
 vendor/bin/mm-vidc-omx-test
 vendor/bin/myftm
-vendor/bin/nc
-vendor/bin/netcat
-vendor/bin/nproc
 vendor/bin/npu_launcher
-vendor/bin/nsenter
 vendor/bin/pktlogconf
 vendor/bin/PktRspTest
 vendor/bin/poweroffm64
@@ -2132,13 +2113,9 @@ vendor/bin/shell_11ad
 vendor/bin/sigma_dut
 vendor/bin/spectraltool
 vendor/bin/test_diag
-vendor/bin/unlink
-vendor/bin/unshare
-vendor/bin/uuidgen
 vendor/bin/vendor_cmd_tool
 vendor/bin/vppservice
 vendor/bin/vsimd
-vendor/bin/watch
 vendor/bin/wdsdaemon
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice

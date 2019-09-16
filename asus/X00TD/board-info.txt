@@ -1,4 +1,4 @@
 require version-baseband=3.1-00784-SDM660_GEN_PACK-1.204336.1
-require version-modem=2019-08-1612:30:57
+require version-modem=2019-09-0303:54:16
 require version-trustzone=TZ.BF.4.0.7-00101
-require version-vendor=1565924503
+require version-vendor=1567448661

@@ -2154,6 +2154,7 @@ vendor/lib/libGPQTEEC_vendor.so
 vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
 vendor/lib/libGPTEE_vendor.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librmp.so
@@ -2174,6 +2175,7 @@ vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libGPTEE_vendor.so
+vendor/lib64/liboemcrypto.so
 vendor/lib64/libprdrmdecrypt.so
 vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so

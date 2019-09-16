@@ -183,8 +183,10 @@ on post-fs-data
     chmod 0644 /sys/class/proximity_front/proximity_front/reg
     chmod 0644 /sys/class/proximity_front/proximity_front/prox_value
     chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset_cal
-    chmod 0644 /sys/class/proximity_front/proximity_front/dev_init
-    chmod 0644 /sys/class/proximity_front/proximity_front/prox_manual_calibrate_threshold
+    chmod 0666 /sys/class/proximity_front/proximity_front/dev_init
+    chmod 0666 /sys/class/proximity_front/proximity_front/prox_init
+    chmod 0666 /sys/class/proximity_front/proximity_front/enable
+    chmod 0666 /sys/class/proximity_front/proximity_front/prox_manual_calibrate_threshold
     chmod 0644 /sys/class/proximity_front/proximity_front/chip_name
     chmod 0644 /sys/class/proximity_front/proximity_front/prox_threshold_cal_start
     chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset_cal_start
@@ -208,14 +210,14 @@ on post-fs-data
     chmod 0644 /sys/class/proximity_front/proximity_front/prox_offset
 
 	##add for PA224 for proximity_back for NX616J
-	chmod 0664 /sys/class/proximity_back/proximity_back/chip_name
-    chmod 0664 /sys/class/proximity_back/proximity_back/enable
+    chmod 0664 /sys/class/proximity_back/proximity_back/chip_name
+    chmod 0666 /sys/class/proximity_back/proximity_back/enable
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_data_max
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_debug
 #   chmod 0664 /sys/class/proximity_back/proximity_back/prox_detect
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_first_event
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_gain
-    chmod 0664 /sys/class/proximity_back/proximity_back/prox_init
+    chmod 0666 /sys/class/proximity_back/proximity_back/prox_init
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_offset
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_offset_cal
     chmod 0664 /sys/class/proximity_back/proximity_back/prox_persist
@@ -261,22 +263,22 @@ on post-fs-data
     chown system system /sys/class/light/light/dev_init
     chown system system /sys/class/light/light/light_fb
 
-    chmod 0644 system system /sys/class/light/light/enable
-    chmod 0644 system system /sys/class/light/light/tp_cfg
-    chmod 0644 system system /sys/class/light/light/fac_calibrate
-    chmod 0644 system system /sys/class/light/light/calibrate
-    chmod 0644 system system /sys/class/light/light/chip_name
-    chmod 0644 system system /sys/class/light/light/light_value
-    chmod 0644 system system /sys/class/light/light/delay
-    chmod 0644 system system /sys/class/light/light/red_data
-    chmod 0644 system system /sys/class/light/light/blue_data
-    chmod 0644 system system /sys/class/light/light/green_data
-    chmod 0644 system system /sys/class/light/light/clear_data
-    chmod 0644 system system /sys/class/light/light/dump_reg
-    chmod 0644 system system /sys/class/light/light/module_tpcolor
-    chmod 0644 system system /sys/class/light/light/dump_tp_parameter
-    chown 0644 system system /sys/class/light/light/dev_init
-    chown 0644 system system /sys/class/light/light/light_fb
+    chmod 0644 /sys/class/light/light/enable
+    chmod 0666 /sys/class/light/light/light_fb
+    chmod 0664 /sys/class/light/light/tp_cfg
+    chmod 0664 /sys/class/light/light/fac_calibrate
+    chmod 0644 /sys/class/light/light/calibrate
+    chmod 0644 /sys/class/light/light/chip_name
+    chmod 0644 /sys/class/light/light/light_value
+    chmod 0644 /sys/class/light/light/delay
+    chmod 0644 /sys/class/light/light/red_data
+    chmod 0644 /sys/class/light/light/blue_data
+    chmod 0644 /sys/class/light/light/green_data
+    chmod 0644 /sys/class/light/light/clear_data
+    chmod 0644 /sys/class/light/light/dump_reg
+    chmod 0644 /sys/class/light/light/module_tpcolor
+    chmod 0644 /sys/class/light/light/dump_tp_parameter
+    chmod 0644 /sys/class/light/light/dev_init
 
     # Optical light front
     chown system system /sys/class/light_front/light_front/enable
@@ -295,21 +297,21 @@ on post-fs-data
     chown system system /sys/class/light_front/light_front/dump_tp_parameter
     chown system system /sys/class/light_front/light_front/dev_init
 
-    chmod 0644 system system /sys/class/light_front/light_front/enable
-    chmod 0644 system system /sys/class/light_front/light_front/tp_cfg
-    chmod 0644 system system /sys/class/light_front/light_front/fac_calibrate
-    chmod 0644 system system /sys/class/light_front/light_front/calibrate
-    chmod 0644 system system /sys/class/light_front/light_front/chip_name
-    chmod 0644 system system /sys/class/light_front/light_front/light_value
-    chmod 0644 system system /sys/class/light_front/light_front/delay
-    chmod 0644 system system /sys/class/light_front/light_front/red_data
-    chmod 0644 system system /sys/class/light_front/light_front/blue_data
-    chmod 0644 system system /sys/class/light_front/light_front/green_data
-    chmod 0644 system system /sys/class/light_front/light_front/clear_data
-    chmod 0644 system system /sys/class/light_front/light_front/dump_reg
-    chmod 0644 system system /sys/class/light_front/light_front/module_tpcolor
-    chmod 0644 system system /sys/class/light_front/light_front/dump_tp_parameter
-    chown 0644 system system /sys/class/light_front/light_front/dev_init
+    chmod 0666 /sys/class/light_front/light_front/enable
+    chmod 0664 /sys/class/light_front/light_front/tp_cfg
+    chmod 0664 /sys/class/light_front/light_front/fac_calibrate
+    chmod 0644 /sys/class/light_front/light_front/calibrate
+    chmod 0644 /sys/class/light_front/light_front/chip_name
+    chmod 0644 /sys/class/light_front/light_front/light_value
+    chmod 0644 /sys/class/light_front/light_front/delay
+    chmod 0644 /sys/class/light_front/light_front/red_data
+    chmod 0644 /sys/class/light_front/light_front/blue_data
+    chmod 0644 /sys/class/light_front/light_front/green_data
+    chmod 0644 /sys/class/light_front/light_front/clear_data
+    chmod 0644 /sys/class/light_front/light_front/dump_reg
+    chmod 0644 /sys/class/light_front/light_front/module_tpcolor
+    chmod 0644 /sys/class/light_front/light_front/dump_tp_parameter
+    chmod 0666 /sys/class/light_front/light_front/dev_init
 
     #Optical light back
     chown system system /sys/class/light_back/light_back/enable
@@ -328,21 +330,21 @@ on post-fs-data
     chown system system /sys/class/light_back/light_back/dump_tp_parameter
     chown system system /sys/class/light_back/light_back/dev_init
 
-    chmod 0644 system system /sys/class/light_back/light_back/enable
-    chmod 0644 system system /sys/class/light_back/light_back/tp_cfg
-    chmod 0644 system system /sys/class/light_back/light_back/fac_calibrate
-    chmod 0644 system system /sys/class/light_back/light_back/calibrate
-    chmod 0644 system system /sys/class/light_back/light_back/chip_name
-    chmod 0644 system system /sys/class/light_back/light_back/light_value
-    chmod 0644 system system /sys/class/light_back/light_back/delay
-    chmod 0644 system system /sys/class/light_back/light_back/red_data
-    chmod 0644 system system /sys/class/light_back/light_back/blue_data
-    chmod 0644 system system /sys/class/light_back/light_back/green_data
-    chmod 0644 system system /sys/class/light_back/light_back/clear_data
-    chmod 0644 system system /sys/class/light_back/light_back/dump_reg
-    chmod 0644 system system /sys/class/light_back/light_back/module_tpcolor
-    chmod 0644 system system /sys/class/light_back/light_back/dump_tp_parameter
-    chown 0644 system system /sys/class/light_back/light_back/dev_init
+    chmod 0666 /sys/class/light_back/light_back/enable
+    chmod 0644 /sys/class/light_back/light_back/tp_cfg
+    chmod 0664 /sys/class/light_back/light_back/fac_calibrate
+    chmod 0644 /sys/class/light_back/light_back/calibrate
+    chmod 0644 /sys/class/light_back/light_back/chip_name
+    chmod 0644 /sys/class/light_back/light_back/light_value
+    chmod 0644 /sys/class/light_back/light_back/delay
+    chmod 0644 /sys/class/light_back/light_back/red_data
+    chmod 0644 /sys/class/light_back/light_back/blue_data
+    chmod 0644 /sys/class/light_back/light_back/green_data
+    chmod 0644 /sys/class/light_back/light_back/clear_data
+    chmod 0644 /sys/class/light_back/light_back/dump_reg
+    chmod 0644 /sys/class/light_back/light_back/module_tpcolor
+    chmod 0644 /sys/class/light_back/light_back/dump_tp_parameter
+    chmod 0666 /sys/class/light_back/light_back/dev_init
 
     #Optical light calibration
     chown system system /persist/sensors/rgb_color_cfg

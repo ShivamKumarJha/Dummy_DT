@@ -149,6 +149,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/adsprpc-smd-secure   0644   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
+/dev/cpu_dma_latency      0660   root       system
 
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
@@ -161,6 +162,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/devices/soc/a000000.qcom,wcnss-wlan/net/wlan0/queues/rx-* rps_cpus           0660   system     system
 /sys/devices/soc/a000000.qcom,wcnss-wlan/net/p2p0/queues/rx-* rps_cpus            0660   system     system
 /dev/spidev0.0            0660   system     audio
+/dev/i2c-7                0660   system     audio
 /dev/msm_camera/*         0660   system     camera
 /dev/gemini/              0660   system     camera
 /dev/mercury0             0660   system     camera
@@ -213,8 +215,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/i2c-5                0660   media       media
 /dev/avtimer              0660   system     audio
 /dev/spidev2.0            0660   system     audio
-#deleted by lvwei for disable power collapse
-#/dev/cpu_dma_latency      0660   system     audio
 
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
@@ -365,9 +365,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/dual_role_usb/*	power_role	0660	system	system
 /sys/class/dual_role_usb/*	mode		0660	system	system
 
-#Memory Offline
-/sys/devices/system/memory/memory* state    0660 system system
-
 # sys-fs display
 /sys/class/graphics/fb*     hpd                      0664    system  graphics
 /sys/class/graphics/fb*     res_info                 0664    system  graphics
@@ -400,3 +397,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/graphics/fb0     dynamic_bitclk           0664    system  graphics
 
 /sys/devices/virtual/hdcp/msm_hdcp  min_level_change 0664    system  graphics
+
+#QG device
+/dev/qg               0660   system     system
+/dev/qg_battery       0660   system     system

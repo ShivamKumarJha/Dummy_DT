@@ -116,7 +116,7 @@
      <bool name="config_lidControlsSleep">false</bool>
 
     <!-- Should the pinner service pin the Camera application? -->
-     <bool name="config_pinnerCameraApp">false</bool>
+     <bool name="config_pinnerCameraApp">true</bool>
 
     <!-- Should the pinner service pin the Home application? -->
      <bool name="config_pinnerHomeApp">false</bool>
@@ -204,12 +204,6 @@
     <!-- Enable video pause workaround when enabling/disabling the camera. -->
      <bool name="config_useVideoPauseWorkaround">false</bool>
 
-    <!-- Boolean indicating whether the wifi chipset has background scan support -->
-     <bool name="config_wifi_background_scan_support">false</bool>
-
-    <!-- Wifi driver supports batched scan -->
-     <bool name="config_wifi_batched_scan_supported">false</bool>
-
     <!-- Set to true if the wifi display supports compositing content stored
          in gralloc protected buffers.  For this to be true, there must exist
          a protected hardware path for surface flinger to composite and send
@@ -221,6 +215,12 @@
          flag is set for wifi displays.
     -->
      <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
+
+    <!-- Boolean indicating whether the wifi chipset has background scan support -->
+     <bool name="config_wifi_background_scan_support">false</bool>
+
+    <!-- Wifi driver supports batched scan -->
+     <bool name="config_wifi_batched_scan_supported">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
      <bool name="config_wifi_dual_band_support">false</bool>
@@ -239,7 +239,7 @@
      <bool name="skip_restoring_network_selection">false</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">24.0dip</dimen>
+     <dimen name="status_bar_height_portrait">37.0dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -331,32 +331,9 @@
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
 
-    <!--  Define Google play service package for FRP-->
-     <string name="config_persistentDataPackageName">com.google.android.gms</string>
-
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
      <string name="config_wifi_tcp_buffers">524288,1048576,2097152,262144,524288,1048576</string>
-
-    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
-         percent. The length of this array is assumed to be one greater than
-         config_dynamicHysteresisLuxLevels. The brightening threshold is calculated as
-         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
-         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
-         description for how the constraint value is chosen. -->
-    <integer-array name="config_dynamicHysteresisBrightLevels">
-        <item>100</item>
-    </integer-array>
-
-    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
-         percent. The length of this array is assumed to be one greater than
-         config_dynamicHysteresisLuxLevels. The darkening threshold is calculated as
-         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
-         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
-         description for how the constraint value is chosen. -->
-    <integer-array name="config_dynamicHysteresisDarkLevels">
-        <item>200</item>
-    </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">

@@ -320,6 +320,12 @@ case "$target" in
         echo 10 10 > /proc/sys/kernel/sched_upmigrate
         echo 10 > /proc/sys/kernel/sched_group_upmigrate
         #nubia add end for boot boost
+
+        #nubia add for check gpu overclock
+        if [ `cat /sys/class/kgsl/kgsl-3d0/num_pwrlevels` -gt 5 ]; then
+            setprop ro.vendor.gpu.overclock true
+        fi
+        #nubia add end for check gpu overclock
         ;;
     "sdm710" | "msmpeafowl")
         case "$soc_hwplatform" in
@@ -375,27 +381,25 @@ product=`getprop ro.build.product`
 case "$product" in
         "msmnile_au")
          setprop vendor.display.lcd_density 160
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
+         echo 902400000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
          echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
+         echo 902400000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
          echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
          ;;
         *)
         ;;
 esac
-case "$product" in
-        "msmnile_gvmq")
-         setprop vendor.display.lcd_density 160
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu0-cpu-l3-lat/max_freq
-         echo 864000000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/min_freq
-         echo 1612800000 > /sys/class/devfreq/soc:qcom,cpu4-cpu-l3-lat/max_freq
-         ;;
-        *)
-        ;;
-esac
+
 case "$product" in
         "sm6150_au")
+         setprop vendor.display.lcd_density 160
+         ;;
+        *)
+        ;;
+esac
+
+case "$product" in
+        "sdmshrike_au")
          setprop vendor.display.lcd_density 160
          ;;
         *)

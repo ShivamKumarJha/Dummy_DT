@@ -1,4 +1,4 @@
-# Copyright (c) 2009-2012, 2014-2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2012, 2014-2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -70,6 +70,7 @@ on early-boot
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qti.can.sh
 
     # for backward compatibility
     chown system system /persist/sensors
@@ -91,10 +92,6 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
-
-on property:ro.hardware.type=automotive
-    wait /sys/class/net/can0
-    start can
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -288,12 +285,14 @@ on post-fs-data
     chown cameraserver cameraserver /sys/kernel/camera/file_dump
     chown cameraserver cameraserver /sys/kernel/camera/torch_switch
     chown cameraserver cameraserver /sys/kernel/camera/ois_switch
+    chown cameraserver cameraserver /sys/kernel/camera/eeprom_calibration
     chmod 0666 /sys/kernel/camera/file_dump
     chmod 0666 /sys/kernel/camera/torch_switch
     chmod 0666 /sys/kernel/camera/ois_switch
+    chmod 0666 /sys/kernel/camera/eeprom_calibration
 
-    #Create directory for tftp
-    mkdir /data/vendor/tombstones 0771 system system
+    #Change ownership to system
+    chown system system /data/vendor/tombstones
 
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
@@ -898,6 +897,7 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     capabilities NET_ADMIN
 
 on property:sys.shutdown.requested=*
+    write /sys/kernel/shutdown_wlan/shutdown 1
     stop cnss-daemon
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
@@ -1068,12 +1068,6 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-service can /vendor/bin/init.qti.can.sh
-   class late_start
-   user root
-   disabled
-   oneshot
-
 service poweroffcharge /sbin/poweroffcharge
     class charger
     seclabel u:r:healthd:s0
@@ -1196,20 +1190,9 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     disabled
     oneshot
 
-#Mixed HWC versions among targets
-on property:init.svc.surfaceflinger=restarting
-    stop  vendor.hwcomposer-2-1
-    stop  vendor.hwcomposer-2-2
-    start vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-2
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
-
-service time_daemon /system/vendor/bin/time_daemon
-    class main
-    user root
-    group root
 
 service vendor.vppservice /vendor/bin/vppservice
     class main
@@ -1284,7 +1267,7 @@ service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
     class hal
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock
+    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock system
     capabilities BLOCK_SUSPEND
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
@@ -1294,3 +1277,11 @@ service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
     oneshot
     interface android.hardware.audio@4.0::IDevicesFactory default
     interface android.hardware.audio@2.0::IDevicesFactory default
+
+service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0-service
+    override
+    class hal
+    interface android.hardware.contexthub@1.0::IContexthub default
+    user system
+    group system
+    disabled

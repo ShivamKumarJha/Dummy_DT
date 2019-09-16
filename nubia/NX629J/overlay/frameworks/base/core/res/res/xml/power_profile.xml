@@ -20,7 +20,6 @@
         <value>2.8</value>
     </array>
     <array name="gpu.speeds">
-        <value>710000</value>
         <value>675000</value>
         <value>585000</value>
         <value>499200</value>
@@ -29,13 +28,12 @@
         <value>257000</value>
     </array>
     <array name="gpu.active">
-        <value>800</value>
-        <value>702</value>
-        <value>579</value>
-        <value>531</value>
-        <value>350</value>
-        <value>254</value>
-        <value>179</value>
+        <value>455</value>
+        <value>385</value>
+        <value>373</value>
+        <value>310</value>
+        <value>244</value>
+        <value>170</value>
     </array>
     <item name="cpu.idle">4</item>
     <item name="cpu.awake">20</item>
@@ -143,28 +141,30 @@
         <value>2649600</value>
         <value>2745600</value>
         <value>2841600</value>
+        <value>2956800</value>
     </array>
     <array name="cpu.core_power.cluster2">
-        <value>96</value>
-        <value>105</value>
-        <value>115</value>
-        <value>124</value>
-        <value>131</value>
-        <value>142</value>
-        <value>150</value>
-        <value>159</value>
-        <value>167</value>
-        <value>175</value>
-        <value>184</value>
-        <value>213</value>
-        <value>235</value>
-        <value>246</value>
-        <value>271</value>
-        <value>338</value>
-        <value>319</value>
-        <value>353</value>
-        <value>386</value>
-        <value>442</value>
+        <value>71</value>
+        <value>79</value>
+        <value>87</value>
+        <value>94</value>
+        <value>103</value>
+        <value>114</value>
+        <value>123</value>
+        <value>134</value>
+        <value>144</value>
+        <value>155</value>
+        <value>170</value>
+        <value>195</value>
+        <value>218</value>
+        <value>228</value>
+        <value>245</value>
+        <value>270</value>
+        <value>295</value>
+        <value>325</value>
+        <value>354</value>
+        <value>404</value>
+        <value>440</value>
     </array>
     <item name="battery.capacity">5000</item>
     <array name="wifi.batchedscan">

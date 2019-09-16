@@ -125,6 +125,11 @@ on boot
     write /dev/cpuset/systemserver/cpus 0-7
     #NUBIA END
 
+    #nubia begin add for TGPA
+    write /dev/cpuset/bigcluster/cpus 4-7
+    write /dev/cpuset/littlecluster/cpus 0-3
+    #nubia add for TGPA end
+
     # Create netmgr recovery folder
     mkdir /data/vendor/netmgr/recovery 0700 radio radio
     chmod 0770 /data/vendor/netmgr/recovery
@@ -183,7 +188,7 @@ on property:sys.shutdown.requested=*
 on charger
     start vendor.hvdcp_opti
     start vendor.power_off_alarm
-    setprop vendor.usb.controller a600000.dwc3
+    setprop sys.usb.controller a600000.dwc3
     setprop sys.usb.configfs 1
 
 

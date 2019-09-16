@@ -77,9 +77,12 @@ on boot
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/f54
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/ic_ver
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/gamemode
+    chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/tptest
+    chomd 664 /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/tptest
+	
     symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/ic_ver /data/vendor/tp/ic_ver1
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/f54/autotest
-    symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/f54/autotest /data/vendor/tp/ic_detect1
+    symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/tptest /data/vendor/tp/ic_detect1
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/start_update
     symlink /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/start_update /data/vendor/tp/start_update1
     chown system system /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/f54/rawdata
@@ -104,6 +107,7 @@ on boot
 #lcd
     chown system system /sys/kernel/lcd_enhance/cabc
 	chown system system /sys/kernel/lcd_enhance/dfps
+	chown system system /sys/kernel/lcd_enhance/preference
 
 on property:sys.nubia.touch.private=1
     write /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/gamemode 1
@@ -112,4 +116,13 @@ on property:sys.nubia.touch.private=1
 on property:sys.nubia.touch.private=0
     write /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input5/gamemode 0
     write /sys/devices/platform/soc/c80000.i2c/i2c-5/5-0020/input/input6/gamemode 0
+
+on property:sys.nubia.lcd.preference=0
+   write /sys/kernel/lcd_enhance/preference 0
+
+on property:sys.nubia.lcd.preference=1
+   write /sys/kernel/lcd_enhance/preference 1
+
+on property:sys.nubia.lcd.preference=2
+   write /sys/kernel/lcd_enhance/preference 2
 #nubia end

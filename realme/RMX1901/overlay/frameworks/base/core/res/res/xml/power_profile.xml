@@ -32,22 +32,22 @@
         <value>576000</value>
         <value>748800</value>
         <value>998400</value>
-        <value>1209600</value>
+        <value>1132800</value>
         <value>1324800</value>
         <value>1516800</value>
         <value>1612800</value>
         <value>1708800</value>
     </array>
     <array name="cpu.core_power.cluster0">
-        <value>33</value>
         <value>36</value>
-        <value>37</value>
         <value>39</value>
-        <value>43</value>
+        <value>42</value>
+        <value>45</value>
         <value>47</value>
-        <value>52</value>
-        <value>55</value>
-        <value>63</value>
+        <value>57</value>
+        <value>60</value>
+        <value>62</value>
+        <value>69</value>
     </array>
     <array name="cpu.core_speeds.cluster1">
         <value>300000</value>
@@ -65,26 +65,21 @@
         <value>2208000</value>
     </array>
     <array name="cpu.core_power.cluster1">
-        <value>256</value>
-        <value>307</value>
-        <value>332</value>
-        <value>382</value>
-        <value>408</value>
-        <value>448</value>
-        <value>586</value>
-        <value>641</value>
-        <value>659</value>
-        <value>696</value>
-        <value>876</value>
-        <value>900</value>
-        <value>924</value>
-        <value>948</value>
-        <value>1170</value>
-        <value>1200</value>
-        <value>1300</value>
-        <value>1400</value>
+        <value>49</value>
+        <value>57</value>
+        <value>63</value>
+        <value>71</value>
+        <value>80</value>
+        <value>95</value>
+        <value>109</value>
+        <value>128</value>
+        <value>160</value>
+        <value>190</value>
+        <value>203</value>
+        <value>232</value>
+        <value>241</value>
     </array>
-    <item name="cpu.awake">9.6</item>
+    <item name="cpu.awake">12</item>
     <item name="cpu.idle">5.5</item>
     <array name="memory.bandwidths">
         <value>22.7</value>

@@ -164,6 +164,7 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.wlan.qcom.rc \
     init.wlan.target.rc \
+    fstab-wlan.qcom \
     fstab.qcom \
     ueventd.qcom.rc \
 

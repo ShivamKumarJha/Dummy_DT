@@ -70,6 +70,11 @@
         <MediaCodec name="OMX.qti.audio.decoder.mpegh" type="audio/mhas" >
             <Limit name="concurrent-instances" max="10" />
         </MediaCodec>
+        <!-- add vivo flac decoder after qcom flac -->
+        <MediaCodec name="OMX.vivo.flac.decoder" type="audio/flac">
+            <Limit name="channel-count" max="8" />
+            <Limit name="sample-rate" ranges="8000,11025,12000,16000,22050,24000,32000,44100,48000,88200,96000,176400,192000" />
+        </MediaCodec>
     </Decoders>
     <Encoders>
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm">

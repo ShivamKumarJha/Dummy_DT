@@ -60,7 +60,7 @@
         </interface>
     </hal>
     <vendor-ndk>
-        <version>Q</version>
+        <version>29</version>
     </vendor-ndk>
     <system-sdk>
         <version>28</version>

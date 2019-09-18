@@ -84,7 +84,7 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "313" |"353")
+		    "239" | "293" | "294" | "295" | "304" | "313" | "353" | "354")
 			start vendor.msm_irqbalance;;
 		    "349" | "350" )
 			start vendor.msm_irqbal_lb;;
@@ -117,7 +117,7 @@ start_msm_irqbalance()
 {
 	if [ -f /vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "317" | "324" | "325" | "326" | "336" | "345" | "346")
+		    "317" | "321" | "324" | "325" | "326" | "336" | "345" | "346" | "360" | "393")
 			start vendor.msm_irqbalance;;
 		    "318" | "327" | "385")
 			start vendor.msm_irqbl_sdm630;;
@@ -274,7 +274,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845" | "sdm710" | "qcs605" | "talos")
+    "msm8994" | "msm8992" | "msm8998" | "apq8098_latv" | "sdm845" | "sdm710" | "qcs605" | "sm6150")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -430,7 +430,9 @@ if [ ! -f /vendor/firmware_mnt/verinfo/ver_info.txt -o "$prev_version_info" != "
     # the group must be root, otherwise this script could not add "W" for group recursively
     chown -hR radio.root /data/vendor/modem_config/*
 fi
-chmod g-w /data/vendor/modem_config
+#vivo<jishanjin>delete at 18109,for [B180912-783]
+#chmod g-w /data/vendor/modem_config
+#vivo<jishanjin>delete end
 setprop ro.vendor.ril.mbn_copy_completed 1
 
 #check build variant for printk logging

@@ -33,8 +33,8 @@ audio_wglink audio_adsp_loader audio_q6_pdr audio_q6_notifier audio_q6 audio_usf
 audio_pinctrl_wcd audio_pinctrl_lpi audio_swr audio_platform audio_hdmi audio_wcd_spi audio_stub \
 audio_digital_cdc audio_analog_cdc audio_msm_sdw audio_wcd_cpe audio_cpe_lsm audio_wcd9335 \
 audio_vivo_codec_common audio_vivo_codec_TD1704 audio_vivo_codec_ak4376 audio_vivo_codec_tfa9891 \
-audio_vivo_codec_tfa9894 audio_vivo_codec_aw87319 audio_vivo_codec_ia610 audio_vivo_codec_ak4377a_common \
-audio_machine_sdm710
+audio_vivo_codec_tfa9894 audio_vivo_codec_aw87319 audio_vivo_codec_aw87339 audio_vivo_codec_ia610 \
+audio_vivo_codec_ak4377a_common audio_machine_sdm710
     write /proc/sys/kernel/sched_boost 1
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
@@ -159,6 +159,7 @@ on boot
     setprop vendor.usb.rmnet.func.name "gsi"
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
+    setprop vendor.usb.qdss.inst.name "qdss"
     setprop sys.usb.configfs 1
 
 #start camera server as daemon
@@ -197,7 +198,6 @@ on boot
     chown system system /sys/class/leds/blue/blink
 
 on charger
-    start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
 
 ## import cne init file
@@ -435,13 +435,13 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     disabled
 
-on property:init.svc.vendor.hwcomposer-2-1=stopped
+on property:init.svc.vendor.hwcomposer-2-3=stopped
     stop ppd
 
-on property:init.svc.vendor.hwcomposer-2-1=running
+on property:init.svc.vendor.hwcomposer-2-3=running
     start ppd
 
-on property:init.svc.vendor.hwcomposer-2-1=restarting
+on property:init.svc.vendor.hwcomposer-2-3=restarting
     stop ppd
 
 #service nqs /system/bin/nqs
@@ -477,17 +477,8 @@ service energy-awareness /system/vendor/bin/energy-awareness
     group system
     oneshot
 
-service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
-    class main
-    user root
-    group system wakelock
-
 service tlocd /vendor/bin/tloc_daemon
     class late_start
     user system
     group drmrpc gps net_raw
 
-service smcinvoked /system/bin/smcinvoked
-    class main
-    user system
-    group system

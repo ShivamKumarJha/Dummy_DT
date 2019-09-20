@@ -1,4 +1,4 @@
-require version-baseband=3.1.c5-00002-8937_GENNS_PACK-1.186504.1
-require version-modem=2019-02-1817:28:53
+require version-baseband=3.1.c5-00003-8937_GENNS_PACK-1
+require version-modem=2019-07-1822:13:16
 require version-trustzone=TZ.BF.4.0.5-00132
-require version-vendor=1550489652
+require version-vendor=1564127111

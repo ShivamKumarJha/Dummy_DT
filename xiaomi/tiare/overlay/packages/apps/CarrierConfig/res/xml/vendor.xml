@@ -1652,6 +1652,11 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
     </carrier_config>
+    <carrier_config mcc="250" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
     <carrier_config mcc="250" mnc="02">
         <boolean name="carrier_volte_available_bool" value="true" />
     </carrier_config>
@@ -1738,6 +1743,9 @@
     </carrier_config>
     <carrier_config mcc="202" mnc="01">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
     </carrier_config>
     <carrier_config mcc="234" mnc="20">
         <boolean name="carrier_volte_available_bool" value="true" />
@@ -1801,5 +1809,25 @@
     </carrier_config>
     <carrier_config mcc="235" mnc="02">
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="470" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="470" mnc="02">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="470" mnc="07">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="268" mnc="06">
+        <string-array name="carrier_metered_apn_types_strings" num="4">
+            <item value="default" />
+            <item value="dun" />
+            <item value="supl" />
+            <item value="fota" />
+        </string-array>
     </carrier_config>
 </carrier_config_list>

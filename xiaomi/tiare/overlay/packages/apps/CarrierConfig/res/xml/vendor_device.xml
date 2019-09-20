@@ -25,17 +25,18 @@
     <carrier_config mcc="202" mnc="10">
         <boolean name="carrier_volte_available_bool" value="true" />
     </carrier_config>
-    <carrier_config mcc="222" mnc="01,10">
-        <boolean name="carrier_volte_available_bool" value="true" />
-    </carrier_config>
     <carrier_config mcc="202" mnc="01">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="202" mnc="10">
         <boolean name="carrier_volte_available_bool" value="true" />
     </carrier_config>
-    <carrier_config mcc="260" mnc="02,06">
+    <carrier_config mcc="222" mnc="01,10">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="hide_enhanced_4g_lte_bool" value="true" />
+        <boolean name="editable_enhanced_4g_lte_bool" value="false" />
+        <boolean name="enhanced_4g_lte_on_by_default_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="334" mnc="020">
         <boolean name="carrier_volte_available_bool" value="true" />
@@ -47,6 +48,19 @@
         <boolean name="carrier_volte_available_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="214" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="456" mnc="11">
+        <boolean name="carrier_volte_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="202" mnc="01">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="470" mnc="01,02,07">
+        <boolean name="carrier_volte_available_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="242" mnc="14">
         <boolean name="carrier_volte_available_bool" value="true" />
     </carrier_config>
 </carrier_config_list>

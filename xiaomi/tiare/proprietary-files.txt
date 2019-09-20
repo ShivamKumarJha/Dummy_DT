@@ -1478,6 +1478,7 @@ vendor/etc/mmigroup/MMIGroupAudioManual.json
 vendor/etc/mmigroup/MMIGroupCameraAta.json
 vendor/etc/mmigroup/MMIGroupCameraManual.json
 vendor/etc/mmigroup/MMIGroupFqc.json
+vendor/etc/mmigroup/MMIGroupMmI2_1.json
 vendor/etc/mmigroup/MMIGroupMmiAta.json
 vendor/etc/mmigroup/MMIGroupMmiAtaManual.json
 vendor/etc/mmigroup/MMIGroupMmiManual.json

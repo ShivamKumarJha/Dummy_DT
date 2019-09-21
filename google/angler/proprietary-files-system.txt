@@ -1,0 +1,8 @@
+-priv-app/CNEService/CNEService.apk
+-priv-app/HotwordEnrollmentOKGoogleWCD9330/HotwordEnrollmentOKGoogleWCD9330.apk
+-priv-app/HotwordEnrollmentTGoogleWCD9330/HotwordEnrollmentTGoogleWCD9330.apk
+-priv-app/HotwordEnrollmentXGoogleWCD9330/HotwordEnrollmentXGoogleWCD9330.apk
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+etc/permissions/cneapiclient.xml
+etc/permissions/qcrilhook.xml
+framework/qcrilhook.jar

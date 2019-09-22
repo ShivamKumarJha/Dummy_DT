@@ -184,8 +184,10 @@
                              samplingRates="8000,16000,48000"
                              channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
                 </mixPort>
-
-                <mixPort name="primary input" role="sink" maxOpenCount="2" maxActiveCount="2">
+<!-- zhanglei@MM.Audio, 2019.9.5, [PATCH] config: Remove 2 instance support for "primary input"  -->
+                <!-- mixPort name="primary input" role="sink" maxOpenCount="2" maxActiveCount="2"> -->
+                <mixPort name="primary input" role="sink">
+<!-- add end -->
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
                              channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO,AUDIO_CHANNEL_IN_FRONT_BACK"/>
@@ -376,8 +378,12 @@
                 <route type="mix" sink="primary input"
                        sources="Built-In Mic,Built-In Back Mic,Wired Headset Mic,BT SCO Headset Mic,FM Tuner,USB Device In,USB Headset In,Telephony Rx"/>
 <!-- add end -->
+<!-- zhanglei@MM.Audio, 2019.9.5, [PATCH] config: add wired headset mic support for voip_tx  -->
+                <!--route type="mix" sink="voip_tx"
+                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/> -->
                 <route type="mix" sink="voip_tx"
-                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In"/>
+                       sources="Built-In Mic,Built-In Back Mic,BT SCO Headset Mic,USB Device In,USB Headset In,Wired Headset Mic"/>
+<!-- add end -->
                 <route type="mix" sink="usb_surround_sound"
                        sources="USB Device In,USB Headset In"/>
                 <route type="mix" sink="record_24"

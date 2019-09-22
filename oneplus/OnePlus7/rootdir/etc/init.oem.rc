@@ -252,6 +252,12 @@ on property:sys.boot_completed=1
     write /config/usb_gadget/g1/functions/gsi.rndis/rndis_class_id 1
 #endif
 
+#ifdef VENDOR_EDIT
+#kim@bsp 2019/09/09 add to fix apsd wrong issue when boot with dash connected
+on property:sys.boot_completed=1
+    write /sys/module/smb5_lib/parameters/sys_boot_complete 1
+#endif
+
 service qseeproxysd /system/vendor/bin/qseeproxysampledaemon
     class core
     user system
@@ -447,15 +453,19 @@ service oemsysd /vendor/bin/oem-system-daemon
     seclabel u:r:ftmdaemon:s0
 
 on property:vendor.service.wifi.socket.enable=1
+    start oemsysd
     start wifisocket
 
 on property:vendor.service.wifi.socket.enable=0
+    stop oemsysd
     start wifisocket-stop
 
 on property:vendor.service.wifi.socket.mdm.enable=1
+    start oemsysd
     start wifisocket-mdm
 
 on property:vendor.service.wifi.socket.mdm.enable=0
+    stop oemsysd
     start wifisocket-mdm-stop
 
 on property:persist.vendor.memplus.enable=*
@@ -878,6 +888,15 @@ service KmInstallKeybox19801 /vendor/bin/KmInstallKeybox /op2/.lii/keyboxes_ciph
     seclabel u:r:keybox_oem:s0
 
 service KmInstallKeybox19863 /vendor/bin/KmInstallKeybox /op2/.lii/keyboxes_ciphered.xml OnePlus7TTMO_Key_Attest_00 true
+    class core
+    setenv LD_LIBRARY_PATH /vendor/lib64
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:keybox_oem:s0
+
+service KmInstallKeybox19861 /vendor/bin/KmInstallKeybox /op2/.lii/keyboxes_ciphered.xml OnePlus7TProNR_Key_Attest_00 true
     class core
     setenv LD_LIBRARY_PATH /vendor/lib64
     user root

@@ -192,6 +192,7 @@ on boot
     chmod 0666 /sys/class/drm/card0-DSI-1/dimlayer_bl_en
     chmod 0666 /sys/class/drm/card0-DSI-1/dither_en
     chmod 0666 /sys/class/drm/card0-DSI-1/dp_en
+    chmod 0666 /sys/class/drm/card0-DSI-1/dimming_speed
 #liuhaituo@MM.Audio, 2019/6/17, add for dump audio related codec
     chmod 0644 /d/regmap/tavil-slim-pgd/registers
     chmod 0644 /d/regmap/0-0034/registers

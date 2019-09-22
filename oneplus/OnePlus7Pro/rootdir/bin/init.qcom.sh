@@ -455,9 +455,11 @@ setprop ro.vendor.ril.mbn_copy_completed 1
 
 
 oemdump=`getprop persist.vendor.oem.dump`
+oemssrdump=`getprop persist.vendor.oem.ssrdump`
 buildtype=`getprop ro.vendor.build.release_type`
+oemdefaultdump=`getprop persist.vendor.oem.defaultdump`
 default_dump=`getprop ro.vendor.default.dump.enable`
-if [ "$oemdump" == "" ]; then
+if [ "$oemdump" == "" ] && [ "$oemssrdump" == "" ]; then
     if [ "$default_dump" == "true" ]; then
         setprop persist.vendor.oem.dump 1
         setprop persist.vendor.oem.ssrdump 0
@@ -475,6 +477,15 @@ if [ "$oemdump" == "" ]; then
     fi
 fi
 
+if [ "$oemdump" != "" ] && [ "$oemssrdump" == "" ]; then
+    setprop persist.vendor.oem.ssrdump 0
+fi
+
+if [ "$default_dump" == "false" ] && [ "$oemdefaultdump" == "" ]; then
+    setprop persist.vendor.oem.dump 0
+    setprop persist.vendor.oem.ssrdump 0
+    setprop persist.vendor.oem.defaultdump 1
+fi
 
 #check build variant for printk logging
 #current default minimum boot-time-default

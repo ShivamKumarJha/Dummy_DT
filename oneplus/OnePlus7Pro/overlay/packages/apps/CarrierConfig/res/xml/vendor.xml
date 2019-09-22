@@ -137,6 +137,7 @@
     <carrier_config mcc="208" mnc="13" />
     <carrier_config mcc="208" mnc="20">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="vendor_hide_volte_settng_ui" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
@@ -145,6 +146,7 @@
     </carrier_config>
     <carrier_config mcc="208" mnc="21">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="vendor_hide_volte_settng_ui" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
@@ -153,6 +155,7 @@
     </carrier_config>
     <carrier_config mcc="208" mnc="88">
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="vendor_hide_volte_settng_ui" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
@@ -213,6 +216,7 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
         <string name="carrier_name_string">H3G-UK</string>
     </carrier_config>
@@ -269,6 +273,7 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="vendor_hide_wfc_preference_ui" value="true" />
         <string name="carrier_name_string">H3G-UK</string>
     </carrier_config>

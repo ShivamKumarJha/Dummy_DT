@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="config_bluetooth_pan_enable_autoconnect">true</bool>
+    <bool name="enable_phone_policy">true</bool>
+    <bool name="headset_client_initial_audio_route_allowed">true</bool>
+    <bool name="hfp_clcc_poll_during_call">true</bool>
+    <bool name="hfp_client_connection_service_enabled">false</bool>
+    <bool name="instant_supported_a2dp_sink">true</bool>
+    <bool name="instant_supported_hfpclient">true</bool>
+    <bool name="pbap_include_photos_in_vcard">true</bool>
+    <bool name="pbap_use_profile_for_owner_vcard">true</bool>
+    <bool name="profile_supported_a2dp">true</bool>
+    <bool name="profile_supported_a2dp_sink">false</bool>
+    <bool name="profile_supported_a2dp_sink_ss">false</bool>
+    <bool name="profile_supported_avrcp_controller">false</bool>
+    <bool name="profile_supported_avrcp_target">true</bool>
+    <bool name="profile_supported_gatt">true</bool>
+    <bool name="profile_supported_hdp">true</bool>
+    <bool name="profile_supported_hearing_aid">true</bool>
+    <bool name="profile_supported_hfpclient">false</bool>
+    <bool name="profile_supported_hid_device_ss">true</bool>
+    <bool name="profile_supported_hid_host_ss">true</bool>
+    <bool name="profile_supported_hs_hfp">true</bool>
+    <item type="bool" name="profile_supported_map">@android:bool/config_wifi_softap_ieee80211ac_supported</item>
+    <bool name="profile_supported_map_email_support">true</bool>
+    <bool name="profile_supported_map_mms_support">true</bool>
+    <bool name="profile_supported_mapmce">false</bool>
+    <bool name="profile_supported_opp">true</bool>
+    <bool name="profile_supported_pan">true</bool>
+    <item type="bool" name="profile_supported_pbap">@android:bool/config_wifi_softap_ieee80211ac_supported</item>
+    <bool name="profile_supported_pbapclient">false</bool>
+    <bool name="profile_supported_sap">true</bool>
+    <bool name="strict_location_check">false</bool>
+</resources>

@@ -1,0 +1,11 @@
+libOpenCL.so
+libadsprpc.so
+libcdsprpc.so
+libfastcvopt.so
+libhumantracking_util.camera.samsung.so
+liblistenjni.so
+liblistensoundmodel2.so
+libnpu.so
+libqti-perfd-client.so
+libsdsprpc.so
+libsmart_cropping.camera.samsung.so

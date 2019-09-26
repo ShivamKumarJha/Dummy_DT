@@ -1378,3 +1378,9 @@ on property:sys.camera.not.ctsverify.apk=*
 #add vtcall flag
 on property:sys.camera.vtcall=*
 	setprop vendor.camera.vtcall ${sys.camera.vtcall}
+	
+#add 720p@240fps video
+on  property:vendor.camera.cpuperf.en=1
+	write /dev/stune/foreground/schedtune.prefer_idle 1
+on  property:vendor.camera.cpuperf.en=0
+	write /dev/stune/foreground/schedtune.prefer_idle 0

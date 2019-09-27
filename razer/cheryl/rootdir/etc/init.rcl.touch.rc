@@ -18,7 +18,7 @@ on boot
     chmod 644 /proc/AllHWList/tp_alt_rst
     chmod 644 /proc/AllHWList/tp_alt_st_count
     chmod 644 /proc/AllHWList/tp_alt_st_enable
-    chmod 644 /proc/AllHWList/tp_double_tap
+    chmod 664 /proc/AllHWList/tp_double_tap
     chmod 644 /proc/AllHWList/tp_prox_status
 
 on post-fs-data

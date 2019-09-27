@@ -42,6 +42,14 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := init.class_late.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.class_late.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.class_main.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -138,14 +146,6 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.qcom.syspart_fixup.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := bin/init.qcom.syspart_fixup.sh
-LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.usb.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -154,10 +154,10 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.qcom.wifi.sh
+LOCAL_MODULE       := init.qti.can.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := bin/init.qcom.wifi.sh
+LOCAL_SRC_FILES    := bin/init.qti.can.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -178,6 +178,14 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := init.qti.manifest_sku.sh
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := bin/init.qti.manifest_sku.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qti.qseecomd.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -186,18 +194,18 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := qca6234-service.sh
+LOCAL_MODULE       := init.rcl.smartamp_init.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := bin/qca6234-service.sh
+LOCAL_SRC_FILES    := bin/init.rcl.smartamp_init.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := wifisar.sh
+LOCAL_MODULE       := qca6234-service.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := bin/wifisar.sh
+LOCAL_SRC_FILES    := bin/qca6234-service.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_EXECUTABLES)
 include $(BUILD_PREBUILT)
 
@@ -274,6 +282,30 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE       := init.razer.chargelimit.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.razer.chargelimit.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.razer.common.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.razer.common.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.razer.theme.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.razer.theme.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE       := init.rcl.battery.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
@@ -330,26 +362,10 @@ LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.rcl.smartamp_init.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.rcl.smartamp_init.sh
-LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE       := init.rcl.target.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.rcl.target.rc
-LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.rcl.theme.rc
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.rcl.theme.rc
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init/hw
 include $(BUILD_PREBUILT)
 

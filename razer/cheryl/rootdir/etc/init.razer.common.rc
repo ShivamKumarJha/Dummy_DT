@@ -1,0 +1,18 @@
+import /vendor/etc/init/hw/init.razer.ckh.rc
+import /vendor/etc/init/hw/init.razer.theme.rc
+import /vendor/etc/init/hw/init.razer.chargelimit.rc
+
+on property:gsm.sim.operator.numeric=50502
+    setprop ro.com.google.clientidbase.am android-optus-au-revc
+    setprop ro.com.google.clientidbase.ms android-optus-au-revc
+
+on property:gsm.sim.operator.numeric=50590
+    setprop ro.com.google.clientidbase.am android-optus-au-revc
+    setprop ro.com.google.clientidbase.ms android-optus-au-revc
+
+on post-fs-data
+    # Workaround for a device mapper bug
+    write /sys/block/dm-0/queue/iosched/slice_idle 0
+    write /sys/block/dm-1/queue/iosched/slice_idle 0
+    write /sys/block/dm-2/queue/iosched/slice_idle 0
+    write /sys/block/dm-3/queue/iosched/slice_idle 0

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string name="gps.supl_host">supl.iusacell.com</string>
+        <string name="gps.supl_port">7275</string>
+        <string name="gps.supl_ver">0x10000</string>
+    </carrier_config>
+</carrier_config_list>

@@ -1,0 +1,6 @@
+on post-fs-data
+    # Mounting of securefs is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /vendor/securefs again so because mount is run as root + defaults
+    mkdir /vendor/securefs/data 0700 system system
+    chown system system /vendor/securefs/data
+    restorecon_recursive /vendor/securefs

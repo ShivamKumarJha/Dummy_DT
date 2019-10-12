@@ -1,0 +1,16 @@
+on boot
+    chown system system /proc/AllHWList/tp_fw_ver
+    chmod 644 /proc/AllHWList/tp_fw_ver
+    chmod 644 /dev/ilitek_ctrl
+    chown system system /dev/ilitek_ctrl
+    chown system system /proc/AllHWList/tp_alt_rst
+    chown system system /proc/AllHWList/tp_alt_st_count
+    chown system system /proc/AllHWList/tp_alt_st_enable
+    chmod 644 /proc/AllHWList/tp_alt_rst
+    chmod 644 /proc/AllHWList/tp_alt_st_count
+    chmod 644 /proc/AllHWList/tp_alt_st_enable
+    chown system system /proc/AllHWList/tp_double_tap
+    chmod 644 /proc/AllHWList/tp_double_tap
+
+on post-fs-data
+    mkdir /data/misc/touch 0770 system system

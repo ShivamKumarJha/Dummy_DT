@@ -1,0 +1,53 @@
+import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+#roy.zy.shang disable NFC for TAS
+#import /vendor/etc/init/hw/init.sat.nfc.rc
+# SW4-HL-TP-B2N-NT36672-DoubleTap-00*_20180302
+import /vendor/etc/init/hw/init.B2N.tp.rc
+import /vendor/etc/init/hw/init.b2n.fqc_audio.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+# Jason add for ALT
+import /vendor/etc/init/hw/init.alt.rc
+
+#For SSR ramdump
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+
+import /vendor/etc/init/hw/init.c1n.poweroff_charging.rc
+
+# SW4-HL-Display-ImplementCECTCABC-00+_20160126
+import /vendor/etc/init/hw/init.C1N.lcm.rc
+
+import /vendor/etc/init/hw/init.vibrator.rc
+
+# { roy.zy.shang remove NFC hidl rc for TAS
+#CP add Samsung NFC hidl rc
+#import /vendor/etc/init/hw/vendor.${ro.boot.nfc}.hardware.nfc@1.1-service.rc
+# }
+
+on early-boot
+        #Enable Camera ISP turbo mode for dualcam
+        setprop persist.vendor.camera.isp.turbo 1
+        setprop persist.camera.ffcolor ffc891
+        setprop ro.rf.power.reduction.for.mcc 1
+
+        #Enable QCOM Extend API
+        setprop persist.radio.qcom_ext_enable true
+
+#Fih Add for 3A information mobicat
+       #disable for CTS verifier ITS test item temporarily {
+       #fix me if test_param_noise_reduction & test_reprocess_noise_reduction can be passed
+       setprop persist.vendor.camera.mobicat 0
+       setprop persist.vendor.camera.stats.debugexif 0
+       #disable for CTS verifier ITS test item temporarily }
+#Fih Add for 3A information mobicat
+
+#JYLee for camera fovc and mw 20180201
+       setprop persist.vendor.camera.fovc.enable 1
+       #setprop persist.camera.mw.enable 1
+
+#Fih add Change Voice path to audio path
+       setprop vendor.voice.path.for.pcm.voip false
+        setprop persist.vendor.audio.fluence.speaker false
+        setprop debug.ftm.mixerpath /vendor/etc/mixer_paths_tas.xml
+
+#roy.zy.shang disable uicc se for TAS
+        setprop persist.vendor.radio.uicc_se_enabled false

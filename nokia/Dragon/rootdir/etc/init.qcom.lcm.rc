@@ -1,0 +1,5 @@
+on boot
+    chown system system /proc/AllHWList/LCM0/awer_cnt
+    chown system system /proc/AllHWList/LCM0/awer_status
+    chmod 664 /proc/AllHWList/LCM0/awer_cnt
+    chmod 664 /proc/AllHWList/LCM0/awer_status

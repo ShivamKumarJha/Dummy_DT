@@ -1,0 +1,2 @@
+on init
+    setprop ro.wifi.power.reduction 1

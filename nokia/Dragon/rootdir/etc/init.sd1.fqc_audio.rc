@@ -1,0 +1,40 @@
+service fqcaudioloopback /vendor/bin/fqcaudioloopback_sd1.sh
+	user system
+	oneshot
+  disabled
+
+on property:vendor.sys.fqcaudio=11
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=10
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=21
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=20
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=31
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=30
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=41
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=40
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=51
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=50
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=61
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=60
+	start fqcaudioloopback

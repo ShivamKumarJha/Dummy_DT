@@ -1,0 +1,45 @@
+import /vendor/etc/init/hw/init.ftm.rc
+import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+import /vendor/etc/init/hw/init.qcom.cda.rc
+
+# touch
+import /vendor/etc/init/hw/init.qcom.tp.rc
+
+# lcm
+import /vendor/etc/init/hw/init.qcom.lcm.rc
+
+# emmc + ddr
+import /vendor/etc/init/hw/init.qcom.emmc.rc
+
+# sensor
+import /vendor/etc/init/hw/init.qcom.sensor.rc
+
+#Fih add for securefs
+import /vendor/etc/init/hw/init.qcom.fs.rc
+
+import /vendor/etc/init/hw/init.qcom.battery.rc
+
+on early-init
+    setprop ro.bsp.device ${ro.boot.device}
+
+service wireless-init /system/vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot
+
+#create the necessary /data/preloads directory for In-Factory APK Caching
+on zygote-start
+    mkdir /data/preloads 0775 system system
+    mkdir /data/preloads/media 0775 system system
+    mkdir /data/preloads/demo 0775 system system
+    restorecon_recursive /data/preloads
+
+on boot
+    setprop persist.vendor.sys.exif.model ${ro.product.nickname}
+
+on property:vendor.gxfp.version=*
+    setprop sys.fp.firmware.version  Goodix-${vendor.gxfp.version}
+
+on property:sys.boot_completed=1
+    write /config/usb_gadget/g1/functions/mass_storage.0/lun.0/file /vendor/hidden/custom.iso

@@ -1,0 +1,53 @@
+import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+import /vendor/etc/init/hw/init.nfc.${ro.boot.nfc}.rc
+# SW4-HL-TouchPanel-BringUpILI2121-00+_20170421
+import /vendor/etc/init/hw/init.DRG.tp.rc
+import /vendor/etc/init/hw/init.c1n.fqc_audio.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+# Jason add for ALT
+import /vendor/etc/init/hw/init.alt.rc
+
+#For SSR ramdump
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+
+# SW4-HL-Display-GlanceMode-00+_20170524
+import /vendor/etc/init/hw/init.C1N.lcm.rc
+
+import /vendor/etc/init/hw/init.c1n.poweroff_charging.rc
+
+import /vendor/etc/init/hw/init.vibrator.rc
+
+#20170221 GaryTCShih add for ZI1 power command
+import /vendor/etc/init/hw/init.PL2.wifi.rc
+
+#20180713 TommyYSHung add for CTL APTX Function
+import /vendor/etc/init/hw/init.CTL.aptx.rc
+
+# Disable offload for ozo 
+on early-boot
+        setprop persist.camera.ffcolor FFDAB9
+        setprop persist.capture.burst.exposures 0,-9,9
+        #Enable Camera ISP turbo mode for dualcam
+        setprop persist.vendor.camera.isp.turbo 1
+        setprop vendor.voice.path.for.pcm.voip false
+        setprop persist.vendor.audio.fluence.speaker false
+        setprop debug.ftm.mixerpath /vendor/etc/mixer_paths_ctl.xml
+
+#PeterLai for camera fovc and mw 20180601
+       setprop persist.camera.fovc.enable 1
+       #setprop persist.camera.mw.enable 1
+
+#DerekCWWu, workaround for CTL
+        setprop camera.ans.yproc.int.main 20,20,50,60
+        setprop camera.ans.uvproc.int.main 20,20,20,20
+        setprop camera.ans.scene.contract.main 0,0,0,0
+
+#DerekCWWu, front flash
+        setprop persist.camera.ffcolor ffbb77
+        setprop persist.camera.ffcolor.th 3500
+        setprop persist.camera.ffcolor.lev3 ffdcb9
+        setprop persist.camera.ffcolor.th2 4500
+        setprop persist.camera.ffcolor.lev2 fff3ee
+
+on property:sys.boot_completed=1
+        write /proc/sys/vm/extra_free_kbytes 51200

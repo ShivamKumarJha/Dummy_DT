@@ -1,0 +1,13 @@
+on boot
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0664 /sys/class/power_supply/battery/input_suspend
+    restorecon /sys/class/power_supply/battery/input_suspend
+    
+    chown system system /sys/class/power_supply/battery/device/fih_otg_fun
+    chmod 0664 /sys/class/power_supply/battery/device/fih_otg_fun
+
+    chown system system /sys/class/power_supply/battery/device/otg_status
+    chmod 0664 /sys/class/power_supply/battery/device/otg_status
+    
+    chown system system /sys/class/power_supply/battery/device/lcm_status
+    chmod 0664 /sys/class/power_supply/battery/device/lcm_status

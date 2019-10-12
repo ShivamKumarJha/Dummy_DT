@@ -1,0 +1,16 @@
+#Samsung NFC hidl rc
+import /vendor/etc/init/hw/android.hardware.nfc@1.2-service.sec.rc
+
+on post-fs-data
+# NFC storage
+    mkdir /data/nfc
+
+    # add for Sec-NFC solution
+    chown nfc nfc /dev/sec-nfc
+    chmod 0770 /dev/sec-nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/nfc/param 0770 nfc nfc
+
+on early-boot
+#NFC hal surfix
+setprop ro.hardware.nfc_nci sec

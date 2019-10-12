@@ -1,0 +1,4 @@
+on init
+    #for sensor config read
+    chown system system /proc/dt_info
+    chmod 0664 /proc/dt_info

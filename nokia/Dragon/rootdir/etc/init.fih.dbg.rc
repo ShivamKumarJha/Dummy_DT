@@ -1,0 +1,12 @@
+on property:persist.dbg.dev.info=0
+    write /sys/module/tick_sched_ext/parameters/debug_cpu_usage_enable 0
+
+on property:persist.dbg.dev.info=1
+    write /sys/module/tick_sched_ext/parameters/debug_cpu_usage_enable 1
+
+on property:persist.dbg.dev.info=2
+    write /sys/module/tick_sched_ext/parameters/debug_cpu_usage_enable 2
+
+on property:persist.dbg.dev.info=3
+    write /sys/module/tick_sched_ext/parameters/debug_cpu_usage_enable 3
+

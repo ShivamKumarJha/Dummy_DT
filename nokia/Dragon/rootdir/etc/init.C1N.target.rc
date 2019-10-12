@@ -1,0 +1,24 @@
+import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+import /vendor/etc/init/hw/init.nfc.${ro.boot.nfc}.rc
+# SW4-HL-TouchPanel-BringUpILI2121-00+_20170421
+import /vendor/etc/init/hw/init.C1N.tp.rc
+import /vendor/etc/init/hw/init.c1n.fqc_audio.rc
+import /vendor/etc/init/hw/init.fih.elabel.rc
+# Jason add for ALT
+import /vendor/etc/init/hw/init.alt.rc
+
+#For SSR ramdump
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+
+import /vendor/etc/init/hw/init.c1n.poweroff_charging.rc
+
+# SW4-HL-Display-ImplementCECTCABC-00+_20160126
+import /vendor/etc/init/hw/init.C1N.lcm.rc
+
+import /vendor/etc/init/hw/init.vibrator.rc
+
+# Disable offload for ozo 
+on early-boot
+        setprop persist.camera.ffcolor ffddbe
+        setprop persist.capture.burst.exposures 0,-9,9
+#        setprop audio.offload.video flase

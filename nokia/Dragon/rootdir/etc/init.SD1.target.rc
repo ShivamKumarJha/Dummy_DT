@@ -1,0 +1,20 @@
+import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+import /vendor/etc/init/hw/init.sat.nfc.rc
+import /vendor/etc/init/hw/init.sd1.fqc_audio.rc
+import /vendor/etc/init/hw/init.sat.smartamp.rc
+import /vendor/etc/init/hw/init.sat.battery.rc
+import /vendor/etc/init/hw/init.sat.lcm.rc
+#For SSR ramdump
+import /vendor/etc/init/hw/init.qcom.ramdump.rc
+import /vendor/etc/init/hw/init.sat.led.rc
+import /vendor/etc/init/hw/init.sat.poweroff_charging.rc
+
+#CP add Samsung NFC hidl rc
+import /vendor/etc/init/hw/vendor.${ro.boot.nfc}.hardware.nfc@1.1-service.rc
+
+on boot
+    setprop persist.vendor.camera.stats.test 5
+
+on early-boot
+        #Enable Camera ISP turbo mode for dualcam
+        setprop persist.vendor.camera.isp.turbo 1

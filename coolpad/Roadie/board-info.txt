@@ -1,0 +1,2 @@
+require version-baseband=3.1-00102-8909_GEN_PACK-3
+require version-vendor=1529761920

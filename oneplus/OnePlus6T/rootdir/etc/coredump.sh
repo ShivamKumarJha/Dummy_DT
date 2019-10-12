@@ -22,7 +22,7 @@ fi
 if [ "$pname" != "system_server" ]; then
     fname=$ts.$pid.$uid-$pname.app.core.gz
 else
-    fname=$ts.$pid.$uid-$pname.core.gz  
+    fname=$ts.$pid.$uid-$pname.core.gz
 fi
 
 OUTPUT=$PATH/$fname # absolute file name
@@ -34,7 +34,7 @@ LOG=$PATH/$ts.$pid.$uid.tmp.log # Log path
 
 echo "Generating coredump file of $pname ..." >> $LOG
 
-# Check last coredump time, if is app. limit the coredump interval 
+# Check last coredump time, if is app. limit the coredump interval
 if [ "$pname" != "system_server" ]; then
     loglist=(`/system/bin/ls $PATH/*core.gz.log`)
     if [ -n $loglist -a ${#loglist[@]} -gt 0 ]; then
@@ -44,7 +44,7 @@ if [ "$pname" != "system_server" ]; then
         logfile=${lastlog#$PATH/*}
         lastTime=${logfile%%.*}
 
-        if [ $(($ts - $lastTime)) -lt $LIMIT_TIME ]; then 
+        if [ $(($ts - $lastTime)) -lt $LIMIT_TIME ]; then
             echo "Skip! It had done core dump within $LIMIT_TIME seconds ago." >> $LOG
             echo "$ts $pid $uid $pname (skip dump)" >> $PATH/core_history
             exit 1
@@ -140,3 +140,4 @@ echo "uid = $uid" >> $LOG
 /system/bin/gzip -1 > $OUTPUT
 echo "Zip coredump file done..." >> $LOG
 echo "$ts $pid $uid $pname" >> $PATH/coredump_history
+

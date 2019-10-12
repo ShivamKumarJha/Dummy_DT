@@ -1,19 +1,19 @@
 ##################################################################################
-### VENDOR_EDIT, OEM All rights reserved.
+### VENDOR_EDIT, OnePlus All rights reserved.
 ###
 ### File: - init.oem.debug.rc
+### Author: yohann.zuo@oneplus.com
 ###
 ### ------------------------------- Revision History: ----------------------------
 ### <author>                        <data>       <version>   <desc>
 ### ------------------------------------------------------------------------------
+### yohann.zuo@oneplus.com        2018-07-17 	   v1.0     Create this file
 ##################################################################################
-
-
-##################################  Trigger Point Begin ###########################################
 
 on boot
     # oppo_trace
     chmod 0640 /dev/otracer
+    chmod 0711 /sbin/self-init
     mkdir /system/etc/param 0644 root root
     chown system system /sys/kernel/debug/dynamic_debug/control
 
@@ -69,7 +69,7 @@ on property:sys.oem.dtest=1
 
 on property:sys.oem.dtest=0
     stop dtest
- 
+
 service dtest /system/bin/sh /system/xbin/dtest.sh
     oneshot
     class main
@@ -84,7 +84,7 @@ service charger_logkit /charger_log
     disabled
     class charger
     seclabel u:r:charger_log:s0
-    
+
 service dumpstate_log /system/bin/dumpstate -o /sdcard/dumpstate.log
     oneshot
     disabled
@@ -95,5 +95,3 @@ service oemasserttip /system/bin/asserttip
     class main
     user system
     oneshot
-    
-##################################  Definitions of autochmod.sh End ###########################################

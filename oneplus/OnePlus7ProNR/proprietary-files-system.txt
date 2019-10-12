@@ -1,4 +1,5 @@
 -app/NxpNfcNci/NxpNfcNci.apk
+-app/NxpNfcNci/lib/arm64/libnxpnfc_nci_jni.so
 -app/NxpSecureElement/NxpSecureElement.apk
 -app/QtiTelephonyService/QtiTelephonyService.apk
 -app/SoterService/SoterService.apk

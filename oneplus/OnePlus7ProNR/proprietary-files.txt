@@ -941,6 +941,8 @@ vendor/firmware/tp/LIMIT_18821_ST_ALIX.csv
 vendor/firmware/tp/LIMIT_18821_SY761.img
 vendor/firmware/tp/LIMIT_18821_SY761_NEW.img
 vendor/firmware/wentai24k_rtp.bin
+vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -1047,11 +1049,13 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
+vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
+vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -1069,12 +1073,14 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
+vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
+vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -1326,6 +1332,7 @@ vendor/lib64/libplatformconfig.so
 vendor/lib64/libstagefrighthw.so
 
 # NFC
+-app/NxpNfcNci/lib/arm64/libnxpnfc_nci_jni.so
 -app/NxpNfcNci/NxpNfcNci.apk
 -app/NxpSecureElement/NxpSecureElement.apk
 etc/nfcee_access.xml
@@ -2109,6 +2116,7 @@ vendor/lib/libdapparamstorage.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
+vendor/lib/libGLESv2_adreno.so
 vendor/lib/libnpu.so
 vendor/lib/liboemnvbk_img_helper.so
 vendor/lib/libopenvx.so
@@ -2126,6 +2134,7 @@ vendor/lib64/libdiagjni.so
 vendor/lib64/libdlbdsservice.so
 vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libgameoptfeature.so
+vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libmdmimgload.so
 vendor/lib64/libminui.so
 vendor/lib64/libminui_vendor.so

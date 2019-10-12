@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="config_spn_override_enabled" value="false" />
+        <string name="carrier_name_string" />
+    </carrier_config>
+</carrier_config_list>

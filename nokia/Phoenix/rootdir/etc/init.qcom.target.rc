@@ -1,0 +1,15 @@
+import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+#import /vendor/etc/init/hw/init.qcom.cda.rc
+
+import /vendor/etc/init/hw/vendor.${ro.boot.nfc}.hardware.nfc@1.1-service.rc
+import /vendor/etc/init/hw/android.hardware.nfc@1.2-service.sec.rc
+
+# emmc + ddr
+import /vendor/etc/init/hw/init.qcom.emmc.rc
+
+# wifi mac address init
+service wireless-init /system/vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot

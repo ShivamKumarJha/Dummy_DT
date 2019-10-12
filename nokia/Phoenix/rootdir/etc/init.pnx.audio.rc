@@ -1,0 +1,30 @@
+# for FQC audio test
+
+service fqcaudioloopback /vendor/bin/fqcaudioloopback_pnx.sh
+	user system
+	oneshot
+	disabled
+
+on property:vendor.sys.fqcaudio=51
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=50
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=61
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=60
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=71
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=70
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=81
+	start fqcaudioloopback
+
+on property:vendor.sys.fqcaudio=80
+	start fqcaudioloopback

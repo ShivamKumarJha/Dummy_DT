@@ -1,0 +1,13 @@
+on post-fs-data
+# NFC storage
+    mkdir /data/vendor/nfc
+
+# NFC permission
+    chown nfc nfc /dev/sec-nfc
+    chmod 0770 /dev/sec-nfc
+    chown nfc nfc /data/vendor/nfc
+    chmod 0770 /data/vendor/nfc
+
+on early-boot
+#NFC hal surfix
+    setprop ro.hardware.nfc_nci sec

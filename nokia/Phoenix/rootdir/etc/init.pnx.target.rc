@@ -1,0 +1,45 @@
+import /vendor/etc/init/hw/init.pnx.elabel.rc
+import /vendor/etc/init/hw/init.pnx.chromatix.rc
+import /vendor/etc/init/hw/init.fih.ramdump.rc
+import /vendor/etc/init/hw/init.fingerprint.${ro.boot.fp}.rc
+import /vendor/etc/init/hw/init.pnx.sensor.rc
+#import /vendor/etc/init/hw/init.fih.dbg.rc
+import /vendor/etc/init/hw/init.pnx.touch.rc
+import /vendor/etc/init/hw/init.nfc.sec.rc
+import /vendor/etc/init/hw/init.pnx.audio.rc
+#import /vendor/etc/init/hw/init.pnx.wbg.rc
+#import /vendor/etc/init/hw/init.pnx.runin.rc
+#import /vendor/etc/init/hw/init.pnx.diagtest.rc
+import /vendor/etc/init/hw/init.pnx.lcm.rc
+
+on init
+    setprop persist.vendor.fih.dbg.dev.info 2
+
+#on early-boot
+#    rm /persist/bluetooth/.bt_nv.bin
+
+#add for PNX FM radio begin
+#on boot
+#service wdsdaemon /vendor/bin/wdsdaemon -ms
+#    class main
+#    user root
+#    disabled
+#    oneshot
+#add for PNX FM radio end
+
+# we change gp_persist_path from /persist/data/ to /vendor/securefs/data/
+# vendor/qcom/proprietary/securemsm/daemon/gpfspath_oem_config.xml
+# mkdir /persist/data 0700 system system in init.target.rc
+on fs
+    mkdir /vendor/securefs/data 0700 system system
+
+on zygote-start
+    mkdir /data/preloads 0775 system system
+    mkdir /data/preloads/media 0775 system system
+    mkdir /data/preloads/demo 0775 system system
+
+#on property:vendor.wifi.mtu=true
+#    write /sys/class/net/wlan0/mtu 1390
+#
+#on property:vendor.wifi.mtu=false
+    write /sys/class/net/wlan0/mtu 1500

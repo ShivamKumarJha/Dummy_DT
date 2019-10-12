@@ -1,0 +1,2 @@
+on fs
+    setprop ro.product.first_api_level 27

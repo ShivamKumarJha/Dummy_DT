@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="vilte_data_is_metered_bool" value="true" />
+        <boolean name="ignore_data_enabled_changed_for_video_calls" value="false" />
+        <boolean name="rtt_supported_bool" value="true" />
+        <string-array name="ims_reasoninfo_mapping_string_array" num="2">
+            <item value="*|Call is dropped due to Wi-Fi backhaul is congested|1407" />
+            <item value="*|Call is dropped due to Wi-Fi signal is degraded|1407" />
+        </string-array>
+        <boolean name="oem_enable_att_call_waiting_tone" value="true" />
+        <string-array name="roaming_operator_string_array" num="5">
+            <item value="310110" />
+            <item value="310140" />
+            <item value="310400" />
+            <item value="310470" />
+            <item value="311170" />
+        </string-array>
+        <string-array name="non_roaming_operator_string_array" num="7">
+            <item value="310" />
+            <item value="311" />
+            <item value="312" />
+            <item value="313" />
+            <item value="314" />
+            <item value="315" />
+            <item value="316" />
+        </string-array>
+        <boolean name="show_video_call_charges_alert_dialog_bool" value="true" />
+        <string-array name="carrier_metered_apn_types_strings" num="4">
+            <item value="default" />
+            <item value="supl" />
+            <item value="fota" />
+            <item value="dun" />
+        </string-array>
+        <string-array name="carrier_metered_roaming_apn_types_strings" num="4">
+            <item value="default" />
+            <item value="supl" />
+            <item value="fota" />
+            <item value="dun" />
+        </string-array>
+        <int-array name="wcdma_rscp_thresholds_int_array" num="4">
+            <item value="-105" />
+            <item value="-99" />
+            <item value="-89" />
+            <item value="-79" />
+        </int-array>
+        <int-array name="lte_rsrp_thresholds_int_array" num="4">
+            <item value="-118" />
+            <item value="-112" />
+            <item value="-106" />
+            <item value="-100" />
+        </int-array>
+        <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

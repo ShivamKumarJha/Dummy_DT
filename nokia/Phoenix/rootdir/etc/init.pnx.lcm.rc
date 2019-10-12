@@ -1,0 +1,41 @@
+on boot
+	chown system system /proc/AllHWList/LCM0
+	chown system system /proc/AllHWList/LCM0/panelid
+	chown system system /proc/AllHWList/LCM0/fs_curr
+	chmod 777 /proc/AllHWList/LCM0
+	chmod 664 /proc/AllHWList/LCM0/panelid
+	chmod 664 /proc/AllHWList/LCM0/fs_curr
+
+on property:sys.boot_completed=1
+	start qdcm_script
+
+on property:persist.vendor.qdcm.loadxml=1
+	setprop persist.vendor.qdcm.loadxml 0
+	copy /vendor/bin/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	copy /vendor/bin/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+	chown system system /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	chown system system /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+
+on property:persist.vendor.qdcm.configxml=1
+	setprop persist.vendor.qdcm.configxml 0
+	chown system system /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	chown system system /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	chmod 664 /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+
+on property:persist.vendor.qdcm.uninstall=1
+	setprop persist.vendor.qdcm.uninstall disable
+	rm /data/vendor/display/qdcm_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	rm /data/vendor/display/qdcm_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+	rm /data/vendor/display/disp_user_calib_data_hx83112_ctc_fhd_video_mode_dsi_panel.xml
+	rm /data/vendor/display/disp_user_calib_data_nt36672a_ctc_fhd_video_mode_dsi_panel.xml
+
+
+service qdcm_script /vendor/bin/sh /vendor/bin/init.pnx.lcm.sh
+	disabled
+	class main
+	user root
+	group shell
+	oneshot

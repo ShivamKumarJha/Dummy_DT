@@ -1,0 +1,6 @@
+on fs
+    # mount chromatix
+    wait /dev/block/bootdevice/by-name/chromatix
+    mount ext4 /dev/block/bootdevice/by-name/chromatix /vendor/chromatix noatime nosuid nodev barrier=1 context=u:object_r:chromatix_file:s0
+    chown system system /vendor/chromatix
+    restorecon_recursive /vendor/chromatix

@@ -1,0 +1,10 @@
+service e2p-sh /vendor/bin/init.sensor.e2pwrite.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
+on post-fs-data
+    start e2p-sh
+
+

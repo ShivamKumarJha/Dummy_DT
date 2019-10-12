@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <string-array name="oem_config_wifi_carrier_eap_string_array" num="3">
+            <item value="NO" />
+            <item value="AKA" />
+            <item value="T wifi zone_secure" />
+        </string-array>
+        <string-array name="carrier_metered_apn_types_strings" num="2">
+            <item value="default" />
+            <item value="supl" />
+        </string-array>
+    </carrier_config>
+</carrier_config_list>

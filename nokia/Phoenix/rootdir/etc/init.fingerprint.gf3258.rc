@@ -1,0 +1,52 @@
+on boot
+    setprop sys.fp.navigation.enable 1
+
+on fs
+    chown system system /dev/goodix_fp
+    chmod 666 /dev/goodix_fp
+
+setprop ro.hardware.fingerprint gxfp3258_pnx
+
+service gf_cmd_test_1 /vendor/bin/gf_cmd_test 1
+    user system
+    oneshot
+    disabled
+
+service gf_cmd_test_2 /vendor/bin/gf_cmd_test 2
+    user system
+    oneshot
+    disabled
+
+service gf_cmd_test_3 /vendor/bin/gf_cmd_test 3
+    user system
+    oneshot
+    disabled
+
+service gf_cmd_test_4 /vendor/bin/gf_cmd_test 4
+    user system
+    oneshot
+    disabled
+
+on property:vendor.sys.cmd_test=1 && property:ro.boot.fp=gf3258
+    setprop vendor.sys.fqcfpret 0
+    start gf_cmd_test_1
+
+on property:vendor.sys.cmd_test=2 && property:ro.boot.fp=gf3258
+    setprop vendor.sys.fqcfpret 0
+    start gf_cmd_test_2
+
+on property:vendor.sys.cmd_test=3 && property:ro.boot.fp=gf3258
+    setprop vendor.sys.fqcfpret 0
+    start gf_cmd_test_3
+
+on property:vendor.sys.cmd_test=4 && property:ro.boot.fp=gf3258
+    setprop vendor.sys.fqcfpret 0
+    start gf_cmd_test_4
+
+on property:vendor.gxfp.cid=*
+    setprop vendor.fp.firmware.version  Gx-${vendor.gxfp.cid}-${vendor.gxfp.version}
+
+on post-fs-data
+    mkdir /data/system/users/0/fpdata 0700 system system
+    restorecon_recursive /data/system/users/0/fpdata
+

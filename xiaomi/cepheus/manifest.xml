@@ -4,6 +4,7 @@
         manifest.xml
         manifest.xml
         manifest.xml
+        c2_manifest.xml
 -->
 <manifest version="1.0" type="device" target-level="3">
     <hal format="hidl">
@@ -226,10 +227,8 @@
         <interface>
             <name>IComponentStore</name>
             <instance>default</instance>
-            <instance>software</instance>
         </interface>
         <fqname>@1.0::IComponentStore/default</fqname>
-        <fqname>@1.0::IComponentStore/software</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -695,6 +694,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IQdutilsDisp/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.qseecom</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IQSEECom</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IQSEECom/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.qteeconnector</name>

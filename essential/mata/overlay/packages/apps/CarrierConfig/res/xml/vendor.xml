@@ -5,4 +5,8 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
     </carrier_config>
+    <carrier_config mcc="310" mnc="120">
+        <boolean name="carrier_settings_enable_bool" value="false" />
+        <boolean name="carrier_volte_available_bool" value="false" />
+    </carrier_config>
 </carrier_config_list>

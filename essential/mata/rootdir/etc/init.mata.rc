@@ -324,6 +324,9 @@ on fs
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
     start qseecomd
+    chmod 0664 /sys/devices/virtual/graphics/fb0/idle_time
+    chown system graphics /sys/devices/virtual/graphics/fb0/idle_time
+    write /sys/devices/virtual/graphics/fb0/idle_time 100
     wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
 
@@ -594,6 +597,9 @@ on property:sys.boot_completed=1
     write /dev/cpuset/foreground/cpus 0-3,6-7
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
+
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
 
 on property:persist.radio.atfwd.start=false
     stop atfwd
@@ -1088,16 +1094,6 @@ service spdaemon /vendor/bin/spdaemon
    class core
    user system
    group system
-
-service perfd /vendor/bin/perfd
-   class main
-   user root
-   group root readproc system
-   socket perfd seqpacket 0666 root system
-   disabled
-
-on property:sys.post_boot.parsed=1
-    start perfd
 
 service thermal-engine /vendor/bin/thermal-engine
    class main

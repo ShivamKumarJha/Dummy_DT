@@ -2312,7 +2312,7 @@
         <path name="handset" />
     </path>
 
-    <path name="voice-handset-hac">
+    <path name="voice-hac-handset">
         <ctl name="SLIM RX0 MUX" value="AIF_MIX1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX INT0_1 MIX1 INP0" value="RX0" />

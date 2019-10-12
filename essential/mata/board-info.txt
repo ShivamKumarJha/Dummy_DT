@@ -1,3 +1,2 @@
-require version-modem=2019-09-0518:29:33
 require version-trustzone=TZ.BF.4.0.6-00185
-require version-vendor=1567730849
+require version-vendor=1569279064

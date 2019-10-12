@@ -13,10 +13,16 @@
 <ctl name="ADC2 Volume" value="8" />
 <ctl name="ADC3 Volume" value="8" />
 <ctl name="ADC4 Volume" value="8" />
-<ctl name="PRIM_MI2S_RX Channels" value="Two" />
-<ctl name="PRIM_MI2S_TX Channels" value="Two" />
-<ctl name="PRIM_MI2S_RX_VI_FB_MUX" value="ZERO" />
 <ctl name="PRIM_MI2S_RX SampleRate" value="KHZ_48" />
+<ctl name="PRIM_MI2S_RX Channels" value="Two" />
+<ctl name="PRIM_MI2S_RX Format" value="S24_LE" />
+<ctl name="PRIM_MI2S_TX SampleRate" value="KHZ_48" />
+<ctl name="PRIM_MI2S_TX Channels" value="Two" />
+<ctl name="PRIM_MI2S_TX Format" value="S24_LE" />
+<ctl name="PRIM_MI2S_RX_VI_FB_MUX" value="ZERO" />
+<ctl name="ADC2_MIXER Switch" value="1" />
+<ctl name="ADC2 MUX" value="INP3" />
+
 
     <path name="deep-buffer-playback speaker-protected">
         <path name="deep-buffer-playback speaker" />

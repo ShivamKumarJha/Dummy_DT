@@ -22,7 +22,7 @@ qcom_spi_ctrl_str="qcom"
 #mtd device related
 mtd_module_name=m25p80.ko
 mtd_module_file=/vendor/lib/modules/$mtd_module_name
-mtd_dev=/dev/mtd/mtd0
+mtd_dev=/dev/mtd0
 erase_cmd="mtd_debug erase"
 write_cmd="mtd_debug write"
 read_cmd="mtd_debug read"

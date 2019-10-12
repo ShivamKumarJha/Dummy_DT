@@ -269,6 +269,7 @@
 
     <!-- Incall Music -->
     <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music Audio Mixer MultiMedia9" value="0" />
     <!-- Incall Music End -->
 
     <!-- compress-voip-call start -->
@@ -1685,6 +1686,84 @@
     <path name="incall-rec-uplink-and-downlink-compress afe-proxy">
         <path name="incall-rec-uplink-and-downlink-compress" />
     </path>
+    
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall_music_uplink speaker">
+        <path name="incall_music_uplink" />
+    </path>
+ 
+    <path name="incall_music_uplink handset">
+        <path name="incall_music_uplink" />
+    </path>
+ 
+    <path name="incall_music_uplink handset-hac">
+        <path name="incall_music_uplink" />
+
+    <path name="incall_music_uplink" />
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink display-port">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco-wb">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-display-port">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink afe-proxy">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink usb-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink usb-headset">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-usb-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-bt-sco">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink voice-tty-hco-handset">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-bt-a2dp">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-a2dp">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name ="voice-music-tx">
+    </path>
 
     <path name="hfp-sco">
     </path>
@@ -3028,32 +3107,35 @@
 
     <path name="fap-main-mic">
         <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic2" />
+        <ctl name="ADC MUX0" value="DMIC" />
+        <ctl name="DMIC MUX0" value="DMIC1" />
+        <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
     <path name="fap-second-mic">
         <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic4" />
+        <ctl name="ADC MUX0" value="DMIC" />
+        <ctl name="DMIC MUX0" value="DMIC3" />
+        <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
     <path name="fap-third-mic">
         <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic6" />
+        <ctl name="ADC MUX0" value="DMIC" />
+        <ctl name="DMIC MUX0" value="DMIC5" />
+        <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
     <path name="loopback-main-mic">
-        <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic2" />
+        <path name="fap-main-mic" />
     </path>
 
     <path name="loopback-second-mic">
-        <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic4" />
+        <path name="fap-second-mic" />
     </path>
 
     <path name="loopback-third-mic">
-        <ctl name="DMIC SampleRate" value="KHZ_600" />
-        <path name="dmic6" />
+        <path name="fap-third-mic" />
     </path>
 
     <path name="loopback-headphones">
@@ -3061,7 +3143,6 @@
         <ctl name="RX INT2_1 MIX1 INP0" value="IIR0" />
         <ctl name="RX INT1 DEM MUX" value="CLSH_DSM_OUT" />
         <ctl name="RX INT2 DEM MUX" value="CLSH_DSM_OUT" />
-        <ctl name="IIR0 INP0 Volume" value="84" />
     </path>
 
     <path name="loopback-headset">

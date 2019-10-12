@@ -1,9 +1,14 @@
 on fs
-    setprop ro.hardware.egl adreno
-    setprop ro.hardware.vulkan adreno
+    setprop ro.product.odm.brand Nokia
     setprop ro.product.vendor.brand Nokia
+    setprop ro.product.odm.model "Nokia 9"
+    setprop ro.product.odm.device AOP_sprout
+    setprop ro.product.odm.name Beholder_00WW
     setprop ro.product.vendor.model "Nokia 9"
+    setprop ro.product.vendor.device AOP_sprout
     setprop ro.product.vendor.name Beholder_00WW
+    setprop ro.product.odm.manufacturer "HMD Global"
     setprop ro.product.vendor.manufacturer "HMD Global"
 on fs
-	setprop ro.vendor.build.fingerprint Nokia/Beholder_00WW/fih_sdm845:9/PPR1.180610.011/00WW_4_27D:user/release-keys
+	setprop ro.vendor.build.fingerprint Nokia/Beholder_00WW/AOP_sprout:10/QKQ1.190725.002/00WW_5_120:user/dev-keys
+	setprop ro.odm.build.fingerprint Nokia/Beholder_00WW/AOP_sprout:10/QKQ1.190725.002/00WW_5_120:user/dev-keys

@@ -3,7 +3,6 @@ import /vendor/etc/init/hw/init.aop.elabel.rc
 import /vendor/etc/init/hw/init.aop.asic.rc
 import /vendor/etc/init/hw/init.aop.ramdump.rc
 import /vendor/etc/init/hw/init.aop.touch.rc
-import /vendor/etc/init/hw/init.aop.audio.rc
 import /vendor/etc/init/hw/init.aop.wbg.rc
 import /vendor/etc/init/hw/init.aop.runin.rc
 import /vendor/etc/init/hw/init.aop.sensor.rc

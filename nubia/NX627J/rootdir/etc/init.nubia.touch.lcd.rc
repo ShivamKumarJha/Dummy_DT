@@ -60,6 +60,7 @@ on boot
     chown system system /sys/kernel/lcd_enhance/sec_aod_mode
 	chown system system /sys/class/backlight/panel1-backlight/brightness
 	chown system system /sys/kernel/lcd_enhance/front_dimming
+	chown system system /sys/kernel/lcd_enhance/disp_reset
 
 #tp start
 	chown system system /sys/devices/platform/front_touch.0/chip_info
@@ -91,11 +92,11 @@ on boot
 #tp gameMode end
 
 #tp cfg change state start
-	on property:sys.nubia.touch_cfg.private=0
+	on property:persist.sys.nubia.touch_cfg=0
 	write /sys/devices/platform/front_touch.0/gesture/enable 2
-	on property:sys.nubia.touch_cfg.private=1
+	on property:persist.sys.nubia.touch_cfg=1
 	write /sys/devices/platform/front_touch.0/gesture/enable 3
-	on property:sys.nubia.touch_cfg.private=2
+	on property:persist.sys.nubia.touch_cfg=2
 	write /sys/devices/platform/front_touch.0/gesture/enable 4
 #tp cfg change state end
 #nubia end

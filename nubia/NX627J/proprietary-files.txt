@@ -692,6 +692,7 @@ vendor/lib/libsdmextension.so
 vendor/lib/libsdmutils.so
 vendor/lib/vendor.display.config@1.0.so
 vendor/lib/vendor.display.config@1.1.so
+vendor/lib/vendor.display.config@1.10.so
 vendor/lib/vendor.display.config@1.2.so
 vendor/lib/vendor.display.config@1.3.so
 vendor/lib/vendor.display.config@1.4.so
@@ -699,6 +700,7 @@ vendor/lib/vendor.display.config@1.5.so
 vendor/lib/vendor.display.config@1.6.so
 vendor/lib/vendor.display.config@1.7.so
 vendor/lib/vendor.display.config@1.8.so
+vendor/lib/vendor.display.config@1.9.so
 vendor/lib64/hw/android.hardware.graphics.mapper@2.0-impl-qti-display.so
 vendor/lib64/hw/gralloc.default.so
 vendor/lib64/hw/gralloc.msmnile.so
@@ -721,6 +723,7 @@ vendor/lib64/libsdmextension.so
 vendor/lib64/libsdmutils.so
 vendor/lib64/vendor.display.config@1.0.so
 vendor/lib64/vendor.display.config@1.1.so
+vendor/lib64/vendor.display.config@1.10.so
 vendor/lib64/vendor.display.config@1.2.so
 vendor/lib64/vendor.display.config@1.3.so
 vendor/lib64/vendor.display.config@1.4.so
@@ -728,6 +731,7 @@ vendor/lib64/vendor.display.config@1.5.so
 vendor/lib64/vendor.display.config@1.6.so
 vendor/lib64/vendor.display.config@1.7.so
 vendor/lib64/vendor.display.config@1.8.so
+vendor/lib64/vendor.display.config@1.9.so
 
 # Display-calibration
 vendor/etc/qdcm_calib_data_dsi_ew811_1080_2340_amoled_cmd_panel.xml
@@ -847,8 +851,6 @@ vendor/firmware/a640_zap.elf
 vendor/firmware/a640_zap.mdt
 vendor/firmware/leia_pfp_470.fw
 vendor/firmware/leia_pm4_470.fw
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 
 # GPS
 etc/permissions/com.qti.location.sdk.xml
@@ -957,14 +959,12 @@ vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30_bltlib.so
 vendor/lib/libCB.so
-vendor/lib/libEGL_adreno.so
 vendor/lib/libgsl.so
 vendor/lib/libhdr_tm.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libpvr.so
-vendor/lib/libq3dtools_adreno.so
 vendor/lib/libqseed3.so
 vendor/lib/libsdm-color.so
 vendor/lib/libsdm-diag.so
@@ -982,14 +982,12 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libC2D2.so
 vendor/lib64/libc2d30_bltlib.so
 vendor/lib64/libCB.so
-vendor/lib64/libEGL_adreno.so
 vendor/lib64/libgsl.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libpvr.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib64/libqseed3.so
 vendor/lib64/libsdm-color.so
 vendor/lib64/libsdm-diag.so
@@ -1997,7 +1995,6 @@ vendor/lib/libcom.nubia.chinodenubiautils.so
 vendor/lib/libdiagjni.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastrpc_utf_stub.so
-vendor/lib/libGLESv2_adreno.so
 vendor/lib/libhta_controller.so
 vendor/lib/libhta_hexagon_runtime.so
 vendor/lib/libnpu.so
@@ -2031,7 +2028,6 @@ vendor/lib64/libcom.nubia.chinodenubiautils.so
 vendor/lib64/libdiagjni.so
 vendor/lib64/libfastrpc_utf_stub.so
 vendor/lib64/libgameoptfeature.so
-vendor/lib64/libGLESv2_adreno.so
 vendor/lib64/libhta_controller.so
 vendor/lib64/libhta_hexagon_runtime.so
 vendor/lib64/libmdmimgload.so

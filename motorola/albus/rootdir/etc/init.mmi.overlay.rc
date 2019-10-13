@@ -1,0 +1,44 @@
+on init
+   # Change ownership for for HBM feature
+   chown system system /sys/class/graphics/fb0/hbm
+   # Change ownership for for ACL feature
+   chown system system /sys/class/graphics/fb0/acl
+
+on boot
+
+   # Change ownership for vibrator
+   chown root vendor_mod /sys/bus/i2c/devices/2-005a/reduce
+
+   # Change ownership and permission for laser_sensor
+   chown system system /sys/devices/virtual/laser/stmvl53l1/enable_sar
+   chmod 0660 /sys/devices/virtual/laser/stmvl53l1/enable_sar
+   chown system system /sys/devices/virtual/laser/stmvl53l1/set_delay_ms
+   chmod 0660 /sys/devices/virtual/laser/stmvl53l1/set_delay_ms
+   chown system system /sys/devices/virtual/laser/stmvl53l1/do_flush
+   chmod 0660 /sys/devices/virtual/laser/stmvl53l1/do_flush
+   chown system system /sys/devices/virtual/laser/stmvl53l1/autonomous_config
+   chmod 0660 /sys/devices/virtual/laser/stmvl53l1/autonomous_config
+   chown system system /sys/devices/virtual/laser/stmvl53l1/offset
+   chmod 0660 /sys/devices/virtual/laser/stmvl53l1/offset
+
+   # Change the ownership of display TE files for tcmds
+   chown root mot_tcmd /sys/class/graphics/fb0/te_test
+   chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+   chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+
+    # Change permission for fingerprint sensor
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/dev_enable
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq
+    chown system mot_tcmd /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+    chmod 0440 /sys/devices/soc/soc:fpc_fpc1020/irq_cnt
+
+service vl53l1_daemon /vendor/bin/vl53l1_daemon
+    class late_start
+    user root
+    group root
+    socket vl53l1_daemon stream 660 root system
+
+service mmi-laser-sh /vendor/bin/init.mmi.laser.sh
+    class core
+    user root
+    oneshot

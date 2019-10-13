@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config propcheck="ro.com.google.gmsversion=NOT_EMPTY">
+        <string name="config_ims_package_override_string">com.google.android.ims</string>
+        <boolean name="display_in_call_notification_wifi_icon_bool" value="false" />
+    </carrier_config>
+</carrier_config_list>

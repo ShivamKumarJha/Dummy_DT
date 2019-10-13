@@ -836,6 +836,8 @@ vendor/firmware/cryptoeng.b05
 vendor/firmware/cryptoeng.b06
 vendor/firmware/cryptoeng.b07
 vendor/firmware/cryptoeng.mdt
+vendor/firmware/dpAP_full.mbn
+vendor/firmware/dpAP_mini.mbn
 vendor/firmware/egista.b00
 vendor/firmware/egista.b01
 vendor/firmware/egista.b02

@@ -1,0 +1,16 @@
+##################################################################################
+### VENDOR_EDIT, OPPO All rights reserved.
+###
+### File: - init.oppo.diag.rc
+### Author: Canjie.Zheng@Swdp.Android.OppoDebug.LogKit
+###
+### ------------------------------- Revision History: ----------------------------
+### <author>                        <data>       <version>   <desc>
+### ------------------------------------------------------------------------------
+###   2016-03-18               Create this file
+##################################################################################
+
+on property:persist.sys.adddevdiag=1
+    write /sys/devices/virtual/diag/diag/uevent add
+on property:persist.sys.adddevdiag=0
+    write /sys/devices/virtual/diag/diag/uevent remove

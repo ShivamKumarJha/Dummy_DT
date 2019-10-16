@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config operator="ALL">
+        <boolean name="carrier_volte_available_bool" value="false" />
+        <boolean name="carrier_vt_available_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="false" />
+    </carrier_config>
+    <carrier_config operator="CMCC">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <string-array name="mccmnc" num="5">
+            <item value="46000" />
+            <item value="46002" />
+            <item value="46004" />
+            <item value="46007" />
+            <item value="46008" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="CMHK">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <string-array name="mccmnc" num="2">
+            <item value="45412" />
+            <item value="45413" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="CT">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="config_disable_clir_over_ut" value="true" />
+        <int name="volte_replacement_rat_int" value="0" />
+        <string-array name="mccmnc" num="2">
+            <item value="46003" />
+            <item value="46011" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="CU">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="config_disable_clir_over_ut" value="true" />
+        <string-array name="mccmnc" num="3">
+            <item value="46001" />
+            <item value="46006" />
+            <item value="46009" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="3HK">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <string-array name="mccmnc" num="1">
+            <item value="45403" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="HKT">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vt_available_bool" value="true" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <string-array name="mccmnc" num="2">
+            <item value="45400" />
+            <item value="45419" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="SMARTONE">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <string-array name="mccmnc" num="1">
+            <item value="45406" />
+        </string-array>
+    </carrier_config>
+    <carrier_config operator="TEST SIM">
+        <boolean name="carrier_volte_available_bool" value="true" />
+        <string-array name="mccmnc" num="1">
+            <item value="00101" />
+        </string-array>
+    </carrier_config>
+</carrier_config_list>

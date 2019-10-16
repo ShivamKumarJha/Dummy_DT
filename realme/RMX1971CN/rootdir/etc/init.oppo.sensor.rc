@@ -1,0 +1,31 @@
+/************************************************************************************
+** Copyright (C), 2008-2018, OPPO Mobile Comm Corp., Ltd
+** VENDOR_EDIT
+** File: init.oppo.sensor.rc
+**
+** Description:
+**	Definitions for init.oppo.sensor.rc
+**
+** Version: 1.0
+** Date created: 2018/11/20,20:27
+** Author: Chao.Zeng@PSW.BSP.Sensor
+**
+** --------------------------- Revision History: ------------------------------------
+* <version>		<date>		<author>		<desc>
+* Revision 1.0		2018/10/30	Chao.Zeng@PSW.BSP.Sensor	Created
+**************************************************************************************/
+
+on boot
+    chown system system /proc/oppoAls/blue_max_lux
+    chown system system /proc/oppoAls/cali_coe
+    chown system system /proc/oppoAls/green_max_lux
+    chown system system /proc/oppoAls/red_max_lux
+    chown system system /proc/oppoAls/row_coe
+    chown system system /proc/oppoAls/white_max_lux
+
+    chmod 0666 /proc/oppoAls/blue_max_lux
+    chmod 0666 /proc/oppoAls/cali_coe
+    chmod 0666 /proc/oppoAls/green_max_lux
+    chmod 0666 /proc/oppoAls/red_max_lux
+    chmod 0666 /proc/oppoAls/row_coe
+    chmod 0666 /proc/oppoAls/white_max_lux

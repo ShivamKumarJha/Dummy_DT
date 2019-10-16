@@ -1,6 +1,10 @@
 <mixer>
     <ctl name="PRIM_MI2S_RX Channels" value="Two" />
+    <ctl name="PRIM_MI2S_RX Format" value="S24_LE" />
+    <ctl name="PRIM_MI2S_RX SampleRate" value="KHZ_48" />
     <ctl name="PRIM_MI2S_TX Channels" value="Two" />
+    <ctl name="PRIM_MI2S_TX Format" value="S24_LE" />
+    <ctl name="PRIM_MI2S_TX SampleRate" value="KHZ_48" />
     <ctl name="PRI_MI2S_RX_VI_FB_MUX" value="ZERO" />
     <ctl name="PRIM_MI2S_RX SampleRate" value="KHZ_48" />
     <ctl name="ADC1 Volume" value="6" />

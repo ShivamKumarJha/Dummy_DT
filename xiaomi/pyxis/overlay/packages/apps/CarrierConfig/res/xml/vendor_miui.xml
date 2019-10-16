@@ -75,6 +75,9 @@
         <string-array name="read_only_apn_types_string_array" num="0" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
     </carrier_config>
+    <carrier_config mcc="234" mnc="15" cust_region="es_vodafone">
+        <boolean name="hide_wfc_mode_option" value="true" />
+    </carrier_config>
     <carrier_config mcc="214" mnc="01">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
@@ -83,6 +86,9 @@
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <string name="default_vm_number_string">5500</string>
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+    </carrier_config>
+    <carrier_config mcc="262" mnc="02,09" cust_region="es_vodafone">
+        <boolean name="hide_wfc_mode_option" value="true" />
     </carrier_config>
     <carrier_config mcc="222" mnc="10">
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -96,6 +102,9 @@
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
         <string name="default_vm_number_string">121</string>
         <boolean name="voicemail_notification_persistent_bool" value="true" />
+        <boolean name="editable_wfc_mode_bool" value="false" />
+        <boolean name="carrier_wfc_ims_available_bool" value="true" />
+        <boolean name="hide_wfc_mode_option" value="true" />
     </carrier_config>
     <carrier_config mcc="208" mnc="10">
         <string name="default_vm_number_string">123</string>

@@ -1,0 +1,4 @@
+service e2p-sh /vendor/bin/init.sensor.e2pwrite.sh
+    class late_start
+    user root
+    oneshot

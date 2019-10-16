@@ -1,0 +1,8 @@
+# Charge limiting (demo mode)
+on property:sys.vendor.razer.charge_limit.enable=1
+    write /sys/class/power_supply/battery/device/razer_charge_limit_enable 1
+    write /sys/class/power_supply/battery/device/razer_charge_limit_max ${sys.vendor.razer.charge_limit.max}
+    write /sys/class/power_supply/battery/device/razer_charge_limit_dropdown ${sys.vendor.razer.charge_limit.dropdown}
+
+on property:sys.vendor.razer.charge_limit.enable=0
+    write /sys/class/power_supply/battery/device/razer_charge_limit_enable 0

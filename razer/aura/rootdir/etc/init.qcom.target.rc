@@ -1,0 +1,11 @@
+import /vendor/etc/init/hw/init.rc2.target.rc
+#import /vendor/etc/init/hw/init.${ro.boot.device}.target.rc
+#import /vendor/etc/init/hw/init.qcom.cda.rc
+import /vendor/etc/init/hw/init.qcom.fs.rc
+
+service wireless-init /system/vendor/bin/wireless_init -i
+    class main
+    user system
+    group system
+    oneshot
+

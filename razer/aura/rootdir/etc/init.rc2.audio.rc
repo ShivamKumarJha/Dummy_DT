@@ -1,0 +1,23 @@
+service fqcaudioloopback /system/bin/sh /vendor/bin/fqcaudioloopback_run.sh
+    disabled
+    oneshot
+    seclabel u:r:fqcaudioloopback:s0
+
+on property:debug.sys.fqcaudio=11
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=10
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=21
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=20
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=31
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=30
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=41
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=40
+    restart fqcaudioloopback
+on property:debug.sys.fqcaudio=0
+    stop fqcaudioloopback

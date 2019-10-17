@@ -37,7 +37,7 @@
      <bool name="config_bluetooth_le_peripheral_mode_supported">false</bool>
 
     <!-- Whether camera shutter sound is forced or not  (country specific). -->
-     <bool name="config_camera_sound_forced">false</bool>
+     <bool name="config_camera_sound_forced">true</bool>
 
     <!-- Flag specifying whether VoLTE should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
@@ -108,7 +108,7 @@
      <bool name="config_hotswapCapable">true</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-     <bool name="config_intrusiveNotificationLed">true</bool>
+     <bool name="config_intrusiveNotificationLed">false</bool>
 
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
@@ -192,7 +192,7 @@
     <!-- When true, the tethering upstream network follows the current default
          Internet network (except when the current default network is mobile,
          in which case a DUN network will be used if required). -->
-     <bool name="config_tether_upstream_automatic">true</bool>
+     <bool name="config_tether_upstream_automatic">false</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
      <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -226,7 +226,7 @@
      <bool name="config_wifi_dual_band_support">false</bool>
 
     <!-- Boolean indicating whether single radio chain scan results are to be used for network selection -->
-     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">true</bool>
+     <bool name="config_wifi_framework_use_single_radio_chain_scan_results_network_selection">false</bool>
 
     <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
      <bool name="config_wifi_softap_acs_supported">false</bool>
@@ -239,7 +239,7 @@
      <bool name="skip_restoring_network_selection">false</bool>
 
     <!-- Height of the status bar -->
-     <dimen name="status_bar_height_portrait">24.0dip</dimen>
+     <dimen name="status_bar_height_portrait">35.0dip</dimen>
 
     <!-- The maximum range of gamma adjustment possible using the screen
          auto-brightness adjustment setting. -->
@@ -266,11 +266,11 @@
          when adapting to brighter or darker environments.  This parameter controls how quickly
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
-     <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
-     <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+     <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+     <integer name="config_autoBrightnessDarkeningLightDebounce">2000</integer>
 
     <!-- Operating volatage for bluetooth controller. 0 by default-->
-     <integer name="config_bluetooth_operating_voltage_mv">0</integer>
+     <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
 
     <!-- Fast brightness animation ramp rate in brightness units per second-->
      <integer name="config_brightness_ramp_rate_fast">2466</integer>
@@ -300,7 +300,7 @@
     <!-- Screen brightness used to dim the screen when the user activity
          timeout expires.  May be less than the minimum allowed brightness setting
          that can be set by the user. -->
-     <integer name="config_screenBrightnessDim">13</integer>
+     <integer name="config_screenBrightnessDim">8</integer>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
@@ -313,15 +313,15 @@
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
-     <integer name="config_screenBrightnessSettingMinimum">12</integer>
+     <integer name="config_screenBrightnessSettingMinimum">7</integer>
 
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
      <integer name="config_shutdownBatteryTemperature">600</integer>
 
     <!-- Integer parameters of the wifi to cellular handover feature
          wifi should not stick to bad networks -->
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
-     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
+     <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
 
@@ -354,6 +354,7 @@
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessDisplayValuesNits">
+        <item>4</item>
         <item>5</item>
         <item>9</item>
         <item>16</item>
@@ -363,7 +364,6 @@
         <item>48</item>
         <item>61</item>
         <item>83</item>
-        <item>87</item>
         <item>87</item>
         <item>87</item>
         <item>88</item>
@@ -419,16 +419,16 @@
          than the size of the config_autoBrightnessLevels array.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>17</item>
         <item>21</item>
         <item>40</item>
         <item>77</item>
         <item>111</item>
-        <item>133</item>
+        <item>144</item>
         <item>175</item>
         <item>245</item>
         <item>302</item>
-        <item>322</item>
-        <item>358</item>
+        <item>348</item>
         <item>382</item>
         <item>404</item>
         <item>406</item>
@@ -547,6 +547,60 @@
         <item>4500</item>
     </integer-array>
 
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The brightening threshold is calculated as
+         lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisBrightLevels">
+        <item>2000</item>
+        <item>2000</item>
+        <item>1000</item>
+        <item>1000</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+         percent. The length of this array is assumed to be one greater than
+         config_dynamicHysteresisLuxLevels. The darkening threshold is calculated as
+         lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+         the screen brightness is recalculated. See the config_dynamicHysteresisLuxLevels
+         description for how the constraint value is chosen. -->
+    <integer-array name="config_dynamicHysteresisDarkLevels">
+        <item>800</item>
+        <item>800</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+         values by calculating the index to use for lookup and then setting the constraint value
+         to the corresponding value of the array. The new brightening hysteresis constraint value
+         is the n-th element of config_dynamicHysteresisBrightLevels, and the new darkening
+         hysteresis constraint value is the n-th element of config_dynamicHysteresisDarkLevels.
+         The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+         condition                      calculated index
+         value < lux[0]                 0
+         lux[n] <= value < lux[n+1]     n+1
+         lux[MAX] <= value              MAX+1 -->
+    <integer-array name="config_dynamicHysteresisLuxLevels">
+        <item>2</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>800</item>
+        <item>2000</item>
+        <item>4000</item>
+    </integer-array>
+
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
         <item>40</item>
@@ -599,6 +653,19 @@
         <item>/system/lib64/libRSDriver.so</item>
         <item>/system/lib64/libRSCpuRef.so</item>
         <item>/system/lib64/libblas.so</item>
+    </string-array>
+
+    <!-- Values for GPS configuration -->
+    <string-array name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>SUPL_MODE=1</item>
+        <item>SUPL_ES=1</item>
+        <item>LPP_PROFILE=0</item>
+        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
+        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
+        <item>GPS_LOCK=0</item>
     </string-array>
 
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],

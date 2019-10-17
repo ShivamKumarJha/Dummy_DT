@@ -1,5 +1,6 @@
-#!/vendor/bin/sh
-# Copyright (c) 2015,2018 The Linux Foundation. All rights reserved.
+#! /vendor/bin/sh
+
+# Copyright (c) 2019 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,20 +27,21 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#
-# Function to start sensors for SSC enabled platforms
-#
-start_sensors()
-{
-    sscrpcd_status=`getprop init.svc.vendor.sensors`
-    chmod -h 664 /persist/sensors/sensors_settings
-    chown -h -R system.system /persist/sensors
-    start vendor.sensors.qti
+export PATH=/vendor/bin
 
-    # Only for SLPI
-    if [ -c /dev/msm_dsps -o -c /dev/sensors ] && [ -z "$sscrpcd_status" ]; then
-        start vendor.sensors
-    fi
-}
-
-start_sensors
+prefix="/sys/class/"
+#List of folder for ownership update
+arr=( "power_supply/battery/" "power_supply/usb/" "power_supply/main/" "power_supply/charge_pump_master/" "power_supply/pc_port/" "power_supply/dc/" "power_supply/bms/" "power_supply/parallel/" "usbpd/usbpd0/" "qc-vdm/" "charge_pump/" "qcom-battery/" )
+for i in "${arr[@]}"
+do
+    for j in `ls "$prefix""$i"`
+    do
+        #skip directories to prevent possible security issues.
+        if [[ -d "$prefix""$i""$j" ]]
+        then
+            continue
+        else
+            chown -h system.system "$prefix""$i""$j"
+        fi
+    done
+done

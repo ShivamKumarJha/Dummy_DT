@@ -29,7 +29,6 @@ ro.displayfeature.histogram.enable=true
 #
 # from device/xiaomi/sm6150_common/common_ro.prop
 #
-
 #
 # from device/xiaomi/sm6150_common/system.prop
 #
@@ -108,6 +107,7 @@ persist.radio.VT_CAM_INTERFACE=1
 
 #disble rcs service
 persist.rcs.supported=0
+# Set network mode to (T/L/G/W/1X/EVDO, T/L/G/W/1X/EVDO) for 7+7 mode device on DSDS mode
 
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
@@ -135,6 +135,9 @@ media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 #codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD MOV XVID
 vendor.mm.enable.qcom_parser=63963135
 persist.mm.enable.prefetch=true
+
+#Netflix custom property
+ro.netflix.bsp_rev=Q6150-17263-1
 
 #
 # system props for the data modules
@@ -191,9 +194,6 @@ persist.debug.wfd.enable=1
 ##property to choose between virtual/external wfd display
 persist.sys.wfd.virtual=0
 
-#property to enable HWC for VDS
-debug.sf.enable_hwc_vds=1
-
 # enable tunnel encoding for amrwb
 tunnel.audio.encode = true
 
@@ -218,6 +218,9 @@ sys.qca1530=detect
 #Enable stm events
 persist.debug.coresight.config=stm-events
 
+#Enable virtual display.
+debug.sf.enable_hwc_vds=1
+
 #hwui properties
 ro.hwui.texture_cache_size=72
 ro.hwui.layer_cache_size=48
@@ -238,44 +241,67 @@ persist.radio.atfwd.start=false
 ro.kernel.qemu.gles=0
 qemu.hw.mainkeys=0
 
+#Increase cached app limit
+#ro.vendor.qti.sys.fw.bg_apps_limit=60
+
+#Enable ZRAM
+ro.vendor.qti.config.zram=true
+
+#IOP properties
+vendor.iop.enable_uxe=0
+vendor.iop.enable_prefetch_ofr=0
+
+#Property to enable perf boosts from System Server
+vendor.perf.gestureflingboost.enable=true
+
 #logd buffer size
 ro.logd.size=2M
 
+#Property to enable WorkloadClassifier
+vendor.perf.workloadclassifier.enable=true
+
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=com.android.camera,com.miui.cit,com.xiaomi.cameratest,com.xiaomi.factory.mmi
-vendor.camera.aux.packagelist.ext=,org.codeaurora.snapcam,com.xiaomi.runin
-#enable RIL feature abot reporting data registration state
-persist.vendor.radio.data_con_rprt=1
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.miui.cit,com.android.camera
+
+# ro.location properties below are used in conjunction
+# with NLP_MODE setting in /vendor/etc/izat.conf
+# either as the main network provider or as a fallback
+# provider depending on NLP_MODE that is set
+# These properties are optional and will not cause
+# issues if not set to existing packages.
+# ro.location.osnlp.package sets the name of default
+# OS sepecific network location provider package to use
+# ro.location.osnlp.region.package is set to the name
+# of the alternative network location provider package
+# to be used for a particular region where the default
+# network location provider is not functional
+ro.location.osnlp.package=com.google.android.gms
+ro.location.osnlp.region.package=
+vendor.perf.dolphin.enable=true
 
 # enable b-services aging propagation
 ro.vendor.qti.sys.fw.bservice_enable=true
 
-# enable temp dds
-persist.vendor.radio.enable_temp_dds=true
-# end of device/xiaomi/sm6150_common/system.prop
+#enable RIL feature about reporting data registration state
+persist.vendor.radio.data_con_rprt=1
 #
 # from device/xiaomi/sm6150_common/common_rw.prop
 #
 #
 # from device/xiaomi/davinci/special_rw.prop
 #
+#modem SAR backoff properties
+persist.radio.dynamic_sar=true
+
 #pecial rw override property
 #system property for displayfeature hidl
 sys.displayfeature_hidl=true
 #system property for HBM mode
 sys.displayfeature.hbm.enable=true
-#modem SAR backoff properties
-persist.radio.dynamic_sar=true
 
 #system prop for Bluetooth TWS+ feature
 persist.vendor.btstack.enable.twsplus=true
 persist.vendor.btstack.connect.peer_earbud=true
-persist.vendor.btstack.enable.twsplussho=true
 
-#enable bg dexopt
-persist.bg.dexopt.enable=true
 
 #
-
-# LCD density
-ro.sf.lcd_density=440

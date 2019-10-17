@@ -1,3 +1,4 @@
+#!/vendor/bin/sh
 # Copyright (c) 2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -27,6 +28,8 @@
 #
 #
 
-PRIO=1,1,0,0,0,0,0,0
-#arch_timer, arm-pmu, arch_mem_timer
-IGNORED_IRQ=19,21,38
+while [ "$registered" != "true" ]
+do
+    sleep 0.1
+    registered="`getprop vendor.sys.listeners.registered`"
+done

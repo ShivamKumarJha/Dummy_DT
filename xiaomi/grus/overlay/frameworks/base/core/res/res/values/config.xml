@@ -50,7 +50,7 @@
      <bool name="config_carrier_wfc_ims_available">false</bool>
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
-     <bool name="config_cellBroadcastAppLinks">true</bool>
+     <bool name="config_cellBroadcastAppLinks">false</bool>
 
     <!-- Flag specifying whether VoLTE is available on device -->
      <bool name="config_device_volte_available">true</bool>
@@ -325,7 +325,7 @@
          Specify the component name or an empty string if none.
          Note that doze dreams are not subject to the same start conditions as ordinary dreams.
          Doze dreams will run whenever the power manager is in a dozing state. -->
-     <string name="config_dozeComponent">com.android.systemui/com.android.keyguard.doze.DozeService</string>
+     <string name="config_dozeComponent">com.miui.aod/com.miui.aod.doze.DozeService</string>
 
     <!-- Regex of wired ethernet ifaces -->
      <string name="config_ethernet_iface_regex">eth\\d</string>
@@ -343,9 +343,6 @@
          Note that a physical cutout should be configured in pixels for the best results.
     -->
      <string name="config_mainBuiltInDisplayCutout">M-138,0 C-100.319015,0 -78.8094286,11.585036 -56.9106598,48.2868587 C-45.0899716,68.1052477 -23.8069241,81 0.002904346,81 C23.8127328,81 45.0899716,68.1052477 56.9164685,48.2868587 C78.8094286,11.585036 100.324824,0 138,0 L-138,0 Z</string>
-
-    <!--  Define Google play service package for FRP-->
-     <string name="config_persistentDataPackageName">com.google.android.gms</string>
 
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->

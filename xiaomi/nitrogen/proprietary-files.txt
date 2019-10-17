@@ -3248,6 +3248,8 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+-vendor/data-app/wps-lite/wps-lite.apk
+-vendor/data-app/Youpin/Youpin.apk
 vendor/etc/audio.bsd
 vendor/etc/hdr_config.cfg
 vendor/etc/pm_test_item_config.xml

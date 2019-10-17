@@ -144,9 +144,9 @@
     </path>
 
     <path name="adc2">
-        <ctl name="AIF1_CAP Mixer I2S TX6" value="1"/>
-        <ctl name="CDC_IF TX6 MUX" value="DEC6" />
-        <ctl name="PRI_MI2S_TX Channels" value="One" />
+        <ctl name="AIF1_CAP Mixer SLIM TX6" value="1"/>
+        <ctl name="MI2S_TX Channels" value="One" />
+        <ctl name="SLIM TX6 MUX" value="DEC6" />
         <ctl name="ADC MUX6" value="AMIC" />
         <ctl name="AMIC MUX6" value="ADC2" />
     </path>
@@ -208,7 +208,6 @@
 
     <path name="handset-mic">
         <path name="adc2" />
-        <ctl name="DEC6 Volume" value="84" />
     </path>
 
     <path name="headphones">
@@ -227,11 +226,11 @@
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="DEC6 Volume" value="84" />
+        <ctl name="DEC8 Volume" value="84" />
     </path>
 
     <path name="voice-handset">
-        <path name="headphones" />
+        <path name="handset" />
     </path>
 
     <path name="voice-handset-tmus">

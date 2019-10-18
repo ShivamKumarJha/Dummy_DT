@@ -30,8 +30,6 @@ chown gps system /dev/bbd_patch
 chmod 0774 /dev/bbd_patch
 chown gps system /dev/bbd_sensor
 chmod 0774 /dev/bbd_sensor
-chown system system /sys/class/touch/touch_dev/p_sensor
-chmod 0666 /sys/class/touch/touch_dev/p_sensor
 
 service lhd /vendor/bin/lhd /vendor/etc/lhd.conf
     class late_start
@@ -50,8 +48,3 @@ service ignss_1_1 /vendor/bin/ignss_1_1
     class  hal
     user  system
     group system inet sdcard_rw wakelock
-
-service touch_prx /vendor/bin/touch_prx
-    class  hal
-    user  system
-    group system

@@ -141,7 +141,6 @@ on post-fs-data
     mkdir /data/vendor/thermal 0771 root system
     mkdir /data/vendor/thermal/config 0771 root system
     mkdir /data/vendor/misc/touch 0771 root system
-    mkdir /data/vendor/nfc 0770 nfc nfc
     chmod 0644 /dev/elliptic0
     chmod 0644 /dev/elliptic1
     mkdir /data/vendor/nnhal 0700 system system
@@ -164,7 +163,6 @@ service charge_logger /vendor/bin/charge_logger
 
 on property:sys.boot_completed=1
     start charge_logger
-    setprop vendor.powerhal.init 1
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -622,6 +620,12 @@ service displaycount /vendor/bin/displaycount
 
 on property:sys.boot_completed=1
     start displaycount
+
+service gpu_monitor /system/bin/gpu_monitor
+    class late_start
+    user system
+    group system sdcard_rw
+    oneshot
 
 on property:init.svc.surfaceflinger=stopped
     stop displayfeature

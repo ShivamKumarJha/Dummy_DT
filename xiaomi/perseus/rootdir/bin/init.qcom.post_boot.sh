@@ -3426,15 +3426,11 @@ case "$target" in
 	echo "compute" > /sys/class/devfreq/soc:qcom,mincpubw/governor
 	echo 10 > /sys/class/devfreq/soc:qcom,mincpubw/polling_interval
 
-	# Enable idle state listener
-	echo 1 > /sys/class/drm/card0/device/idle_encoder_mask
-	echo 100 > /sys/class/drm/card0/device/idle_timeout_ms
-
 	# cpuset parameters
         #echo 0-3 > /dev/cpuset/background/cpus
         #echo 0-3 > /dev/cpuset/system-background/cpus
-        echo 0-2 > /dev/cpuset/background/cpus
-        echo 0-3 > /dev/cpuset/system-background/cpus
+        echo 0-1 > /dev/cpuset/background/cpus
+        echo 0-2 > /dev/cpuset/system-background/cpus
         echo 4-7 > /dev/cpuset/foreground/boost/cpus
         echo 0-2,4-7 > /dev/cpuset/foreground/cpus
         echo 0-7 > /dev/cpuset/top-app/cpus
@@ -3456,34 +3452,12 @@ case "$target" in
 	echo 100 > /proc/sys/vm/swappiness
 	echo 120 > /proc/sys/vm/watermark_scale_factor
 
-	# Enable IO-Polling
-	io_polling=`getprop persist.sys.data_io_polling`
-	if [ "$io_polling" == "1" ]; then
-	    echo 1 > /sys/block/sda/queue/io_poll
-	else
-	    echo 0 > /sys/block/sda/queue/io_poll
-	fi
-
         # set lmk minfree for MemTotal greater than 6G
 	arch_type=`uname -m`
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 	MemTotal=${MemTotalStr:16:8}
 	if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 5505024 ]; then
 	    echo "18432,23040,27648,32256,85296,120640" > /sys/module/lowmemorykiller/parameters/minfree
-	fi
-
-	# set efficent safty barrier
-	esb=`getprop persist.sys.ext4.dataesb`
-
-	userdata_link=$(ls -l /dev/block/bootdevice/by-name/userdata)
-	userdata_block_name=${userdata_link##*/}
-
-	restorecon /sys/fs/ext4/$userdata_block_name/esb
-
-	if [ "$esb" == "1" ]; then
-		echo 1 > /sys/fs/ext4/$userdata_block_name/esb
-	else
-		echo 0 > /sys/fs/ext4/$userdata_block_name/esb
 	fi
     ;;
 esac

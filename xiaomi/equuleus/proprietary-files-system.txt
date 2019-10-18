@@ -11,8 +11,6 @@
 -lib64/libsdm-disp-apis.so
 -lib64/vendor.qti.hardware.fm@1.0.so
 -priv-app/CNEService/CNEService.apk
--priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
--priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
 -priv-app/WfdService/WfdService.apk
 -priv-app/dpmserviceapp/dpmserviceapp.apk
 -priv-app/ims/ims.apk
@@ -41,6 +39,7 @@ etc/permissions/vendor-xiaomi-hardware-citsensorservice.xml
 etc/permissions/vendor.xiaomi.hardware.misys-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.0-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.1-java-permission.xml
+etc/permissions/vendor.xiaomi.hardware.mtdservice-V1.2-java-permission.xml
 etc/permissions/vendor.xiaomi.hardware.vsimapp-V1.0-java-permission.xml
 etc/sysconfig/qti_whitelist.xml
 etc/wfdconfig.xml
@@ -80,6 +79,7 @@ framework/vendor.qti.latency-V2.0-java.jar
 framework/vendor.xiaomi.hardware.misys-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.0-java.jar
 framework/vendor.xiaomi.hardware.mtdservice-V1.1-java.jar
+framework/vendor.xiaomi.hardware.mtdservice-V1.2-java.jar
 framework/vendor.xiaomi.hardware.vsimapp-V1.0-java.jar
 lib/com.qualcomm.qti.ant@1.0.so
 lib/com.qualcomm.qti.dpm.api@1.0.so

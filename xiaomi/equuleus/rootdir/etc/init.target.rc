@@ -77,7 +77,7 @@ on fs
     chmod 0771 /mnt/vendor/persist
     swapon_all /vendor/etc/fstab.qcom
     mkdir /mnt/vendor/persist/fdsd 0777 root root
-    restorecon_recursive /mnt/vendor/persist
+    restorecon_recursive_force /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/audio 0755 system system
     chown system system /dev/tiload_node
@@ -292,6 +292,7 @@ on charger
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
+    shutdown critical
     class core
     user root
     group root

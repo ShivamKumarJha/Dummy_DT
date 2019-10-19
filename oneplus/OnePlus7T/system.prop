@@ -258,6 +258,3 @@ persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
 # end of vendor/oneplus/config/msmnile/system.prop
 
 #
-
-# LCD density
-ro.sf.lcd_density=440

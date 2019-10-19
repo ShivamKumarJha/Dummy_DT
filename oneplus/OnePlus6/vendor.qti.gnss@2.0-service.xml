@@ -6,6 +6,7 @@ Confidential and Proprietary - Qualcomm Technologies, Inc.
     <hal format="hidl">
         <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
+        <fqname>@1.2::ILocHidlGnss/gnss_vendor</fqname>
         <fqname>@2.0::ILocHidlGnss/gnss_vendor</fqname>
     </hal>
     <hal format="hidl">

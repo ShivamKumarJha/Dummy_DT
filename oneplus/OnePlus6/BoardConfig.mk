@@ -2,7 +2,7 @@ DEVICE_PATH := device/oneplus/OnePlus6
 BOARD_VENDOR := oneplus
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2019-07-05
+VENDOR_SECURITY_PATCH := 2019-09-05
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml

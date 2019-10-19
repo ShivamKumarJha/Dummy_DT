@@ -28,6 +28,9 @@
     <acdb_ids>
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15"/>
         <device name="SND_DEVICE_OUT_SPEAKER_REVERSE" acdb_id="15"/>
+        <!-- add by lifei for A2DP Dirac audio effect 20170413-->
+        <device name="SND_DEVICE_OUT_BT_A2DP" acdb_id="10"/>
+        <!-- add by lifei end-->
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="124"/>
         <device name="SND_DEVICE_IN_VOICE_REC_QMIC_FLUENCE" acdb_id="131"/>
         <device name="SND_DEVICE_IN_VOICE_REC_TMIC" acdb_id="131"/>
@@ -143,6 +146,11 @@
         <device name="SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES" backend="headphones" interface="SLIMBUS_6_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="SLIMBUS_0_RX-and-SLIMBUS_7_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="SLIMBUS_0_RX-and-SLIMBUS_7_RX"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_ANC_MIC" backend="voice-headset-anc-mic" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" backend="voice-headset-mic" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_DMIC" backend="voice-dmic-ef" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" backend="voice-speaker-mic" interface="SLIMBUS_0_TX"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" backend="voice-speaker-dmic-ef" interface="SLIMBUS_0_TX"/>
     </backend_names>
     <!-- below values are for ref purpose to OEM, doesn't contain actual hardware info on MTP -->
     <microphone_characteristics>

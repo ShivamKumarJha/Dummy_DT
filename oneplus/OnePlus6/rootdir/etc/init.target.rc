@@ -71,12 +71,20 @@ on fs
     chown system system /op2
 #endif
 
+#ifdef VENDOR_EDIT
+# bin.zhong@ASTI, 2019/6/17, add for smartboost
+    chown system system /sys/module/smartboost_core/parameters/page_cache_reside_switch
+#endif
+
+#ifdef VENDOR_EDIT
+# harshit.agarwal@BSP, 2019/9/04 mount odm on op_odm for system size
+    mount ext4 /dev/block/bootdevice/by-name/odm${ro.boot.slot_suffix} /op_odm ro barrier=1 noatime nosuid nodev context=u:object_r:system_file:s0
+#endif
+
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    start vendor.qseecomd
-    exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 service sec_nvm /vendor/bin/sec_nvm
@@ -94,9 +102,18 @@ on post-fs-data
     mkdir /data/vendor/tloc 0700 system drmrpc
     mkdir /data/vendor/nnhal 0700 system system
 
+#ifdef VENDOR_EDIT
+# balamurugan@SYSTEM, [AN-745] System Overlay Feature
+on late-fs
+    mount_reserve ext4 loop@/data/reserve/reserve.img /system/reserve ro context=u:object_r:system_file:s0
+#endif
+
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
+    mount_india ext4 loop@/data/india/india.img /system/india ro context=u:object_r:system_file:s0
+    overlay_india overlay overlay /product/app lowerdir=/system/india/app:/product/app,context=u:object_r:system_file:s0
+    overlay_india overlay overlay /product/priv-app lowerdir=/system/india/priv-app:/product/priv-app,context=u:object_r:system_file:s0
     chown system system /sys/kernel/hbtp/display_pwr
     start rmt_storage
     start rfs_access
@@ -152,6 +169,20 @@ on property:vendor.usb.controller=*
    chmod 0666 /sys/class/drm/card0-DSI-1/dim_alpha
    chmod 0666 /sys/class/drm/card0-DSI-1/notify_dim
    chmod 0666 /sys/class/drm/card0-DSI-1/force_screenfp
+   chmod 0666 /sys/class/drm/card0-DSI-1/dimlayer_bl_en
+   chmod 0666 /sys/class/drm/card0-DSI-1/dither_en
+   chmod 0666 /sys/class/drm/card0-DSI-1/dp_en
+   chmod 0666 /sys/class/drm/card0-DSI-1/dsi_seed_command
+   chmod 0666 /sys/class/drm/card0-DSI-1/native_display_p3_mode
+   chmod 0666 /sys/class/drm/card0-DSI-1/native_display_wide_color_mode
+   chmod 0666 /sys/class/drm/card0-DSI-1/native_display_srgb_color_mode
+   chmod 0666 /sys/class/drm/card0-DSI-1/native_display_customer_srgb_mode
+   chmod 0666 /sys/class/drm/card0-DSI-1/native_display_customer_p3_mode
+#endif
+
+# add property for cts-on-gsi camera test
+#ifdef VENDOR_EDIT
+  setprop camera.disable_zsl_mode "1"
 #endif
 
 #Load WLAN driver
@@ -198,7 +229,6 @@ on property:sys.shutdown.requested=*
     stop cnss-daemon
 
 on charger
-    start vendor.hvdcp_opti
     start vendor.power_off_alarm
     setprop sys.usb.configfs 1
 
@@ -212,11 +242,6 @@ on charger
 #
 #on property:persist.usb.chgdisabled=0
 #    write /sys/class/power_supply/battery/charging_enabled 1
-
-service vendor.qseecomd /vendor/bin/qseecomd
-    class core
-    user root
-    group root
 
 service spdaemon /vendor/bin/spdaemon
     class core
@@ -260,16 +285,6 @@ service thermal-engine /system/vendor/bin/thermal-engine
 #   class late_start
 #   user root
 #   group root
-
-service adsprpcd /vendor/bin/adsprpcd
-   class main
-   user media
-   group media
-
-service cdsprpcd /vendor/bin/cdsprpcd
-   class main
-   user system
-   group system
 
 #service audiod /vendor/bin/audiod
 #   class late_start
@@ -484,6 +499,7 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
+    disabled
 
 service smcinvoked /system/bin/smcinvoked
     class main

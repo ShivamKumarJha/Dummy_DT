@@ -1,4 +1,4 @@
-require version-baseband=4.0.c2.15-00007-SDM845_GEN_PACK-1.208889.1.211005.2
-require version-modem=2019-07-1123:57:13
-require version-trustzone=TZ.XF.5.0.1.C5-00058
-require version-vendor=1562860539
+require version-baseband=4.0.c2.15-00007-SDM845_GEN_PACK-1.222173.1.222422.2
+require version-modem=2019-10-0817:37:37
+require version-trustzone=TZ.XF.5.0.1.C5-00083.1
+require version-vendor=1570526426

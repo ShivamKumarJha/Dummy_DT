@@ -158,9 +158,24 @@
     <ctl name="MultiMedia5 Mixer USB_AUDIO_TX" value="0" />
     <ctl name="MultiMedia8 Mixer USB_AUDIO_TX" value="0" />
     <ctl name="MultiMedia10 Mixer USB_AUDIO_TX" value="0" />
-<!-- wangbuqing,add USB RX default config,20180620,add Start -->
-    <ctl name="USB_AUDIO_RX SampleRate" value="KHZ_48" />
-<!-- wangbuqing,add USB RX default config,20180620,add END -->
+    <!-- #ifdef VENDOR_EDIT-->
+    <!-- #if OP_FEATURE_MM_RECORDING_SCREEN == 1-->
+    <!-- zhanglixia@MM.Audio, 2019/07/13, add for screen record -->
+    <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="0" />
+    <ctl name="AUDIO_REF_EC_UL1 MUX" value="ZERO" />
+    <ctl name="EC Reference Channels" value="One" />
+    <ctl name="EC Reference Bit Format" value="S16_LE" />
+    <ctl name="EC Reference SampleRate" value="48000" />
+    <ctl name="USB_AUDIO_TX Channels" value="One" />
+    <ctl name="AFE_LOOPBACK_TX Channels" value="One" />
+    <ctl name="MultiMedia1 Channels" value="1" />
+    <ctl name="MultiMedia1 Channel Rule" value="2" />
+    <ctl name="MultiMedia1 Output Channel1" value="0 0" />
+    <ctl name="MultiMedia1 Channel Mixer" value="Enable" />
+    <ctl name="MultiMedia1 Channel1" value="USB_AUDIO_TX" />
+    <ctl name="MultiMedia1 Channel2" value="AFE_LOOPBACK_TX" />
+    <!-- #endif OP_FEATURE_MM_RECORDING_SCREEN-->
+    <!-- #endif VENDOR_EDIT-->
     <ctl name="MultiMedia6 Mixer SLIM_0_TX" value="0" />
     <ctl name="SLIM_2_RX Format" value="UNPACKED" />
     <ctl name="SLIM_2_RX SampleRate" value="KHZ_48" />
@@ -560,6 +575,7 @@
     <ctl name="MultiMedia16 Mixer SLIM_8_TX" value="0" />
     <ctl name="MultiMedia16 Mixer USB_AUDIO_TX" value="0" />
 
+    <ctl name="mono Profile" value="MUSIC_48000" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="gsm-mode">
@@ -575,8 +591,9 @@
     </path>
 
     <path name="echo-reference quat_i2s">
-         <ctl name="AUDIO_REF_EC_UL1 MUX" value="QUAT_MI2S_TX" />
+         <ctl name="AUDIO_REF_EC_UL10 MUX" value="QUAT_MI2S_TX" />
     </path>
+
     <path name="echo-reference headphones">
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_6_RX" />
     </path>
@@ -589,6 +606,31 @@
         <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_6_RX" />
     </path>
 
+<!-- #ifdef VENDOR_EDIT -->
+<!-- mohammed.ahmed@MultiMedia,2019/08/24,[EIDQ-3864] add voip echo reference path-->
+    <path name="echo-reference-voip">
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="SLIM_RX" />
+    </path>
+
+    <path name="echo-reference-voip quat_i2s">
+         <ctl name="AUDIO_REF_EC_UL1 MUX" value="QUAT_MI2S_RX" />
+         <ctl name="EC Reference Channels" value="Two"/>
+    </path>
+
+    <path name="echo-reference-voip headphones">
+        <ctl name="AUDIO_REF_EC_UL10 MUX" value="SLIM_6_RX" />
+    </path>
+
+    <path name="echo-reference-voip headset">
+        <path name="echo-reference-voip headphones" />
+    </path>
+<!--#endif-->
+
+<!-- mohammed.ahmed@MultiMedia,2019/09/04,[EIDQ-4311] add voip handset echo reference path-->
+    <path name="echo-reference-voip handset">
+         <ctl name="AUDIO_REF_EC_UL10 MUX" value="SLIM_RX" />
+    </path>
+<!--#endif-->
     <path name="deep-buffer-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
     </path>
@@ -1609,6 +1651,21 @@
         <path name="incall-rec-downlink" />
     </path>
 
+    <!-- #ifdef VENDOR_EDIT -->
+    <!-- abhijeet.chakraborty@Multimedia, 2019/10/04, EIDQ-5364, Fix Call rec playback silent -->
+    <path name="incall-rec-uplink-and-downlink voice-dmic-ef">
+    <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink voice-speaker-dmic-ef">
+    <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink voice-headset-mic">
+    <path name="incall-rec-uplink-and-downlink" />
+    </path>
+    <!-- #endif -->
+
     <path name="incall-rec-uplink-and-downlink bt-sco">
         <path name="incall-rec-uplink-and-downlink" />
     </path>
@@ -1904,6 +1961,44 @@
         <ctl name="IIR0 INP0 MUX" value="DEC0" />
     </path>
 
+    <!-- #ifdef VENDOR_EDIT-->
+    <!-- #if OP_FEATURE_MM_RECORDING_SCREEN == 1-->
+    <!-- zhanglixia@MM.Audio, 2019/07/13, add for screen record -->
+    <path name="afe-loopback-usb-headset">
+        <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1" />
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="USB_AUDIO_RX" />
+        <ctl name="EC Reference Channels" value="One" />
+        <ctl name="EC Reference Bit Format" value="S16_LE" />
+        <ctl name="EC Reference SampleRate" value="48000" />
+        <ctl name="USB_AUDIO_TX Channels" value="One" />
+        <ctl name="AFE_LOOPBACK_TX Channels" value="One" />
+        <ctl name="MultiMedia1 Channels" value="1" />
+        <ctl name="MultiMedia1 Channel Rule" value="2" />
+        <ctl name="MultiMedia1 Output Channel1" value="16384 16384" />
+        <ctl name="MultiMedia1 Channel Mixer" value="Enable" />
+        <ctl name="MultiMedia1 Channel1" value="USB_AUDIO_TX" />
+        <ctl name="MultiMedia1 Channel2" value="AFE_LOOPBACK_TX" />
+    </path>
+    <path name="afe-loopback-headset">
+        <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1"/>
+        <ctl name="MultiMedia1 Mixer AFE_LOOPBACK_TX" value="1" />
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_6_RX" />
+        <ctl name="EC Reference Channels" value="One" />
+        <ctl name="EC Reference Bit Format" value="S16_LE" />
+        <ctl name="EC Reference SampleRate" value="48000" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="AFE_LOOPBACK_TX Channels" value="One" />
+        <ctl name="MultiMedia1 Channels" value="1" />
+        <ctl name="MultiMedia1 Channel Rule" value="2" />
+        <ctl name="MultiMedia1 Output Channel1" value="16384 16384" />
+        <ctl name="MultiMedia1 Channel Mixer" value="Enable" />
+        <ctl name="MultiMedia1 Channel1" value="SLIM_0_TX" />
+        <ctl name="MultiMedia1 Channel2" value="AFE_LOOPBACK_TX" />
+    </path>
+    <!-- #endif OP_FEATURE_MM_RECORDING_SCREEN-->
+    <!-- #endif VENDOR_EDIT-->
+
 	<path name="amic3">
         <ctl name="AIF1_CAP Mixer SLIM TX0" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
@@ -2013,6 +2108,10 @@
    </path>
    <path name="speaker-ext-1">
    </path>
+<!-- suzhiguang,for speaker MMI test -->
+  <path name="speaker-mmi">
+     <ctl name="mono Profile" value="MMITest_48000" />
+  </path>
 <!--#endif-->
     <path name="speaker-mono">
  <!--         <ctl name="COMP7 Switch" value="1" /> -->
@@ -2103,6 +2202,9 @@
     <path name="voice-speaker-protected">
         <ctl name="AIF4_VI Mixer SPKR_VI_1" value="1" />
         <ctl name="SLIM_4_TX Format" value="PACKED_16B" />
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono" />
         <ctl name="VI_FEED_TX Channels" value="One" />
         <ctl name="SLIM0_RX_VI_FB_LCH_MUX" value="SLIM4_TX" />
@@ -2111,6 +2213,9 @@
     <path name="voice-speaker-2-protected">
         <ctl name="AIF4_VI Mixer SPKR_VI_2" value="1" />
         <ctl name="SLIM_4_TX Format" value="PACKED_16B" />
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono-2" />
         <ctl name="VI_FEED_TX Channels" value="One" />
         <ctl name="SLIM0_RX_VI_FB_LCH_MUX" value="SLIM4_TX" />
@@ -2319,22 +2424,37 @@
     </path>
 
     <path name="voice-speaker">
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono" />
     </path>
 
     <path name="voice-speaker-qrd">
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono-2" />
     </path>
 
     <path name="voice-speaker-hdk">
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono" />
     </path>
 
     <path name="voice-speaker-2">
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-mono-2" />
     </path>
 
     <path name="voice-speaker-fluid">
+<!--#ifdef VENDOR_EDIT  -->
+        <ctl name="mono Profile" value="VOICE_48000" />
+<!--endif -->
         <path name="speaker-fluid" />
     </path>
 
@@ -2599,6 +2719,23 @@
         <ctl name="ADC3 Volume" value="6" />
         <ctl name="ADC4 Volume" value="6" />
     </path>
+<!-- #ifdef VENDOR_EDIT -->
+<!--v-snigdh.upadhyay@15/07/2019_multimedia fix for EIDQ-1722 -> Whatsapp Recorded File Playing Mute -->
+    <path name="speaker-dmic-endfire-whatsapp">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
+        <ctl name="CDC_IF TX7 MUX" value="DEC7" />
+        <ctl name="ADC MUX7" value="AMIC" />
+        <ctl name="AMIC MUX7" value="ADC4" />
+        <ctl name="AMIC4_5 SEL" value="AMIC4" />
+        <ctl name="CDC_IF TX8 MUX" value="DEC8" />
+        <ctl name="ADC MUX8" value="AMIC" />
+        <ctl name="AMIC MUX8" value="ADC3" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="ADC3 Volume" value="6" />
+        <ctl name="ADC4 Volume" value="6" />
+    </path>
+<!--#endif-->
 
     <path name="speaker-mic-wechat-front">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
@@ -2882,6 +3019,22 @@
         <path name="headset-mic" />
     </path>
 
+    <!-- #ifdef VENDOR_EDIT-->
+    <!-- #if OP_FEATURE_MM_RECORDING_SCREEN == 1-->
+    <!-- zhanglixia@MM.Audio, 2019/07/13, add for screen record -->
+    <path name="hifi-playback screen-record-usb-headset-mic">
+    </path>
+    <path name="screen-record-headset-mic">
+        <path name="headset-mic" />
+        <path name="afe-loopback-headset" />
+    </path>
+    <path name="screen-record-usb-headset-mic">
+        <path name="usb-headset-mic" />
+        <path name="afe-loopback-usb-headset" />
+    </path>
+    <!-- #endif OP_FEATURE_MM_RECORDING_SCREEN-->
+    <!-- #endif VENDOR_EDIT-->
+
     <!-- USB TTY start -->
 
     <!-- full: both end tty -->
@@ -3125,6 +3278,10 @@
 
     <path name="hifi-playback usb-headphones">
         <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="hifi-record">
+        <ctl name="MultiMedia2 Mixer SLIM_0_TX" value="1" />
     </path>
 
     <path name="hifi-record usb-headset-mic">

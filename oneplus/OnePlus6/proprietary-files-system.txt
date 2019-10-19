@@ -23,7 +23,6 @@
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/iwpriv
 bin/wfdservice
-etc/firmware/mbn_ota/mbn_ota.txt
 etc/init/wfdservice.rc
 etc/nfcee_access.xml
 etc/permissions/audiosphere.xml
@@ -48,7 +47,6 @@ lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib/fm_helium.so
 lib/libFileMux.so
 lib/libOmxMux.so
-lib/libchromaflash.so
 lib/libdiag_system.so
 lib/libfm-hci.so
 lib/libmmosal.so
@@ -86,7 +84,6 @@ lib64/libmmrtpdecoder.so
 lib64/libmmrtpencoder.so
 lib64/libnxpnfc-nci.so
 lib64/libnxpnfc_nci_jni.so
-lib64/libseemore.so
 lib64/libwfdclient.so
 lib64/libwfdcommonutils.so
 lib64/libwfdconfigutils.so
@@ -193,10 +190,10 @@ product/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
 product/lib/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 product/lib/vendor.qti.hardware.scve.panorama@1.0.so
 product/lib/vendor.qti.hardware.vpp@1.1.so
-product/lib/vendor.qti.hardware.vpp@1.2.so
 product/lib/vendor.qti.ims.callinfo@1.0.so
 product/lib/vendor.qti.ims.rcsconfig@1.0.so
 product/lib/vendor.qti.imsrtpservice@2.0.so
+product/lib/vendor.qti.imsrtpservice@2.1.so
 product/lib/vendor.qti.latency@2.0.so
 product/lib64/com.qualcomm.qti.ant@1.0.so
 product/lib64/com.qualcomm.qti.dpm.api@1.0.so
@@ -242,8 +239,8 @@ product/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 product/lib64/vendor.qti.hardware.scve.panorama@1.0.so
 product/lib64/vendor.qti.hardware.soter@1.0.so
 product/lib64/vendor.qti.hardware.vpp@1.1.so
-product/lib64/vendor.qti.hardware.vpp@1.2.so
 product/lib64/vendor.qti.ims.callinfo@1.0.so
 product/lib64/vendor.qti.ims.rcsconfig@1.0.so
 product/lib64/vendor.qti.imsrtpservice@2.0.so
+product/lib64/vendor.qti.imsrtpservice@2.1.so
 product/lib64/vendor.qti.latency@2.0.so

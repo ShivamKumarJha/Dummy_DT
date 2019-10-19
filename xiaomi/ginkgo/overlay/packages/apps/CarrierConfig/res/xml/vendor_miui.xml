@@ -153,6 +153,14 @@
             <item value="73021" />
         </string-array>
     </carrier_config>
+    <carrier_config mcc="716" mnc="17">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+    </carrier_config>
+    <carrier_config mcc="730" mnc="01" cust_region="cl_entel">
+        <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
+        <int name="carrier_default_wfc_ims_mode_int" value="2" />
+    </carrier_config>
     <carrier_config mcc="222" mnc="50">
         <string-array name="read_only_apn_types_string_array" num="0" />
     </carrier_config>

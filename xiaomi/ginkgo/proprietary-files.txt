@@ -755,7 +755,6 @@ vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_common.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_ds_chromatix.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_hfr_60.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_liveshot.so
-vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_liveshot_720p.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_preview.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_snapshot.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_cpp_snapshot_hdr.so
@@ -773,10 +772,8 @@ vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_postproc.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_preview.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_snapshot.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_snapshot_hdr.so
-vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_video_720p.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_video_full.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_zsl_preview_bu64297.so
-vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_zsl_video_720p.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_india_i_zsl_video_bu64297.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_i_common.so
 vendor/lib/libchromatix_ginkgo_ov8856_sunny_i_cpp_ds_chromatix.so
@@ -1266,6 +1263,7 @@ vendor/lib/libGPQTEEC_vendor.so
 vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
 vendor/lib/libGPTEE_vendor.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libqisl.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librmp.so
@@ -1285,6 +1283,7 @@ vendor/lib64/libGPQTEEC_vendor.so
 vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libGPTEE_vendor.so
+vendor/lib64/liboemcrypto.so
 vendor/lib64/libqisl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librmp.so
@@ -2627,6 +2626,8 @@ vendor/bin/vendor_cmd_tool
 vendor/bin/vsimd
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
+-vendor/data-app/Miui_Fashiongallery_global_new/Miui_Fashiongallery_global_new.apk
+-vendor/data-app/wps_lite/wps_lite.apk
 vendor/etc/bt_diag.cfg
 vendor/etc/cit1.xml
 vendor/etc/cit2.xml
@@ -2675,6 +2676,7 @@ vendor/lib/libsns_registry_skel.so
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libteeclientjni.so
 vendor/lib/libwapi_cert.so
+vendor/lib/libwvkeybox.so
 vendor/lib/miwatermark.so
 vendor/lib/vendor.qti.hardware.servicetracker@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.0-impl.so
@@ -2698,4 +2700,5 @@ vendor/lib64/libsns_registry_skel.so
 vendor/lib64/libteeclientjni.so
 vendor/lib64/libUSTANative.so
 vendor/lib64/libwapi_cert.so
+vendor/lib64/libwvkeybox.so
 vendor/lib64/vendor.qti.hardware.servicetracker@1.0.so

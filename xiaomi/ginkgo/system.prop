@@ -252,6 +252,3 @@ persist.vendor.ssr.restart_level=ALL_ENABLE
 
 
 #
-
-# LCD density
-ro.sf.lcd_density=440

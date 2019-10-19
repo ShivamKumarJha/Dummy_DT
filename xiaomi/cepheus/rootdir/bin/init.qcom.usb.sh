@@ -180,7 +180,6 @@ if [ -d /config/usb_gadget ]; then
 	fi
 
 	setprop sys.usb.configfs 1
-	setprop vendor.usb.configfs 1
 fi
 
 #

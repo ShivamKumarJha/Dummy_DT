@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright (C) 2015-2019 The Linux Foundation. All rights reserved.
-     Not a contribution.
-     Copyright (C) 2012 The Android Open Source Project
+<!-- Copyright 2018 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,12 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<Included>
-    <Decoders>
-        <MediaCodec name="OMX.google.opus.decoder" type="audio/opus" update="true" rank="100"/>
-        <!-- SimpleOMXComponet based software decoder-->
-        <MediaCodec name="OMX.qti.audio.decoder.flac" type="audio/flac" rank="0">
-            <Limit name="concurrent-instances" max="10" />
-        </MediaCodec>
-    </Decoders>
-</Included>
+<MediaCodecs>
+    <Include href="media_codecs_google_c2_audio.xml" />
+    <Include href="media_codecs_google_c2_video.xml" />
+</MediaCodecs>
